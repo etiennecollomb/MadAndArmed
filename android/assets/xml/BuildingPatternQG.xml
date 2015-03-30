@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datas>
+    
+
+
+	
+    <!-- ######################################################################### -->
+    <!-- ##########################    NAO      ################################## -->
+    <!-- ######################################################################### -->
+    <Model buildingID="TURRET">
+		<name>FLAMETHOWER5</name>
+		<description>building01</description>
+		<buildingSize>BIG2</buildingSize>
+		<buildingQgType>DEMO</buildingQgType>
+		<buidable>1</buidable> 
+		<sellable>1</sellable>
+		<movable>1</movable>		
+		<animationNbFrame>16</animationNbFrame>
+		<animationSpeed>2</animationSpeed>
+		<animationPositionX>64</animationPositionX>
+		<animationPositionY>64</animationPositionY>
+		<spriteBuilding>TEST1</spriteBuilding>
+		<spriteBuilding1>B1_1</spriteBuilding1>
+		<spriteBuilding2>B1_2</spriteBuilding2>
+		<spriteBuilding3>B1_3</spriteBuilding3>
+		<spriteBuilding4>B1_4</spriteBuilding4>
+		<sprite>NAOBUILD</sprite>
+		<spriteIcone>QG_BUILDING_ICON_0</spriteIcone>
+		<price>150</price>
+		<cristaux>10</cristaux>
+		<GraphicID>0</GraphicID>
+		<QG_UI_Position>0</QG_UI_Position>
+		<!--<Condition conditionType="BUILDING" number="1" buildingID="NAOFACTORY" level="0"/>-->
+		<Unity unitID="GLADIATOR_TEAM1"/>
+		<Unity unitID="MARINE_SMALL_TEAM1"/>
+	</Model>
+	
+    	    
+    <!-- ######################################################################### -->
+    <!-- ##########################    NAO      ################################## -->
+    <!-- ######################################################################### -->
+    <Model buildingID="POWERPLANT">
+		<name>Power Plant</name>
+		<description>Génere des ressources building02</description>
+		<buildingSize>BIG2</buildingSize>
+		<buildingQgType>UPGRADE</buildingQgType>
+		<buidable>1</buidable> 
+		<sellable>1</sellable>
+		<movable>1</movable>		
+		<animationNbFrame>16</animationNbFrame>
+		<animationSpeed>2</animationSpeed>
+		<animationPositionX>64</animationPositionX>
+		<animationPositionY>64</animationPositionY>
+		<spriteBuilding>FLAMETHOWER3</spriteBuilding>
+		<spriteBuilding1>B2_1</spriteBuilding1>
+		<spriteBuilding2>B2_2</spriteBuilding2>
+		<spriteBuilding3>B2_3</spriteBuilding3>
+		<spriteBuilding4>B2_4</spriteBuilding4>
+		<sprite>NAOBUILD</sprite>
+		<spriteIcone>QG_BUILDING_ICON_1</spriteIcone>
+		<price>50</price>
+		<cristaux>10</cristaux>
+		<GraphicID>1</GraphicID>
+		<QG_UI_Position>1</QG_UI_Position>
+		<!--<Condition conditionType="BUILDING" number="1" buildingID="COMMANDPOST" level="0"/>-->
+		<!--<Condition conditionType="BUILDING" number="2" buildingID="NAOFACTORY" level="0"/>-->
+	</Model>
+	
+    
+    
+    <!-- ######################################################################### -->
+    <!-- ##########################    NAO      ################################## -->
+    <!-- ######################################################################### -->
+    <Model buildingID="COMMANDPOST">
+		<name>Command center</name>
+		<description>Le Centre de Commandement building03-br-Ce batiment permet la construction du centre de recherche-br-Il permet d'augmenter la collecte des ressources de 5%</description>
+		<buildingSize>BIG2</buildingSize>
+		<buildingQgType>UPGRADE</buildingQgType>
+		<buidable>1</buidable> 
+		<sellable>1</sellable>
+		<movable>1</movable>		
+		<animationNbFrame>4</animationNbFrame>
+		<animationSpeed>2</animationSpeed>
+		<animationPositionX>64</animationPositionX>
+		<animationPositionY>64</animationPositionY>
+		<spriteBuilding>FLAMETHOWER</spriteBuilding>
+		<spriteBuilding1>B3_1</spriteBuilding1>
+		<spriteBuilding2>B3_2</spriteBuilding2>
+		<spriteBuilding3>B3_3</spriteBuilding3>
+		<spriteBuilding4>B3_4</spriteBuilding4>
+		<sprite>NAOBUILD</sprite>
+		<spriteIcone>QG_BUILDING_ICON_2</spriteIcone>
+		<price>200</price>
+		<cristaux>10</cristaux>
+		<GraphicID>2</GraphicID>
+		<QG_UI_Position>2</QG_UI_Position>
+		<!--<Condition conditionType="BUILDING" number="1" buildingID="NAOFACTORY" level="0"/>-->
+		<Upgrade upgradeType="LIFE">
+		    <Level level="1">
+				<spriteUpgrade>HEART</spriteUpgrade>
+				<nameUpgrade>Bonus de vie COMMANDPOST</nameUpgrade> 
+				<descriptionUpgrade>Vie 110%</descriptionUpgrade>
+				<valueUpgrade>110</valueUpgrade>
+				<priceUpgrade>100</priceUpgrade>
+				<Targets>
+					<!--<target>HORUS</target>-->
+				</Targets>
+		    </Level>
+		</Upgrade>
+		<Upgrade upgradeType="DMG">
+		    <Level level="1">
+				<spriteUpgrade>SWORD</spriteUpgrade>
+				<nameUpgrade>Bonus de dégat COMMANDPOST</nameUpgrade> 
+				<descriptionUpgrade>dégat + 1</descriptionUpgrade>
+				<valueUpgrade>1</valueUpgrade>
+				<priceUpgrade>100</priceUpgrade>
+				<Targets>
+					<!--<target>HORUS</target>-->
+				</Targets>
+		    </Level>
+		</Upgrade>
+	</Model>
+	
+    
+    
+    <!-- ######################################################################### -->
+    <!-- ##########################    NAO      ################################## -->
+    <!-- ######################################################################### -->
+	<Model buildingID="BUILDING4">
+		<name>building04 name</name>
+		<description>building04</description>
+		<buildingSize>BIG2</buildingSize>
+		<buildingQgType>DEMO</buildingQgType>
+		<buidable>1</buidable> 
+		<sellable>1</sellable>
+		<movable>1</movable>		
+		<animationNbFrame>16</animationNbFrame>
+		<animationSpeed>2</animationSpeed>
+		<animationPositionX>64</animationPositionX>
+		<animationPositionY>64</animationPositionY>
+		<spriteBuilding>TEST1</spriteBuilding>
+		<spriteBuilding1>B4_1</spriteBuilding1>
+		<spriteBuilding2>B4_2</spriteBuilding2>
+		<spriteBuilding3>B4_3</spriteBuilding3>
+		<spriteBuilding4>B4_4</spriteBuilding4>
+		<sprite>NAOBUILD</sprite>
+		<spriteIcone>QG_BUILDING_ICON_3</spriteIcone>
+		<price>150</price>
+		<cristaux>10</cristaux>
+		<GraphicID>3</GraphicID>
+		<QG_UI_Position>3</QG_UI_Position>
+		<!--<Condition conditionType="BUILDING" number="1" buildingID="NAOFACTORY" level="0"/>-->
+		<Unity unitID="GLADIATOR_TEAM1"/>
+		<Unity unitID="MARINE_SMALL_TEAM1"/>
+	</Model>
+	
+	
+    
+    <!-- ######################################################################### -->
+    <!-- ##########################    NAO      ################################## -->
+    <!-- ######################################################################### -->
+    <Model buildingID="AIRPORT">
+		<name>AirPort</name>
+		<description>Déploque les unité aérienne-br-building05</description>
+		<buildingSize>BIG2</buildingSize>
+		<buildingQgType>UPGRADE</buildingQgType>
+		<buidable>1</buidable> 
+		<sellable>1</sellable>
+		<movable>1</movable>		
+		<animationNbFrame>8</animationNbFrame>
+		<animationSpeed>2</animationSpeed>
+		<animationPositionX>64</animationPositionX>
+		<animationPositionY>64</animationPositionY>
+		<spriteBuilding>FLAMETHOWER3</spriteBuilding> 
+		<spriteBuilding1>B5_0</spriteBuilding1>
+		<spriteBuilding2>B5_0</spriteBuilding2>
+		<spriteBuilding3>B5_0</spriteBuilding3>
+		<spriteBuilding4>B5_0</spriteBuilding4>
+		<sprite>NAOBUILD</sprite>
+		<spriteIcone>QG_BUILDING_ICON_4</spriteIcone>
+		<price>500</price>
+		<cristaux>10</cristaux>
+		<GraphicID>4</GraphicID>
+		<QG_UI_Position>4</QG_UI_Position>
+		<!--<Condition conditionType="BUILDING" number="1" buildingID="COMMANDPOST" level="0"/>-->
+	</Model>
+	
+    
+	    
+    <!-- ######################################################################### -->
+    <!-- ##########################    NAO      ################################## -->
+    <!-- ######################################################################### -->
+	<Model buildingID="TURRET2">
+		<name>building06 name</name>
+		<description>building06</description>
+		<buildingSize>BIG2</buildingSize>
+		<buildingQgType>DEMO</buildingQgType>
+		<buidable>1</buidable> 
+		<sellable>1</sellable>
+		<movable>1</movable>		
+		<animationNbFrame>16</animationNbFrame>
+		<animationSpeed>2</animationSpeed>
+		<animationPositionX>64</animationPositionX>
+		<animationPositionY>64</animationPositionY>
+		<spriteBuilding>TEST1</spriteBuilding>
+		<spriteBuilding1>B6_1</spriteBuilding1>
+		<spriteBuilding2>B6_2</spriteBuilding2>
+		<spriteBuilding3>B6_3</spriteBuilding3>
+		<spriteBuilding4>B6_4</spriteBuilding4>
+		<sprite>NAOBUILD</sprite>
+		<spriteIcone>QG_BUILDING_ICON_5</spriteIcone>
+		<price>150</price>
+		<cristaux>10</cristaux>
+		<GraphicID>5</GraphicID>
+		<QG_UI_Position>5</QG_UI_Position>
+		<!--<Condition conditionType="BUILDING" number="1" buildingID="NAOFACTORY" level="0"/>-->
+		<Unity unitID="GLADIATOR_TEAM1"/>
+		<Unity unitID="MARINE_SMALL_TEAM1"/>
+	</Model>
+	
+    
+    
+    <!-- ######################################################################### -->
+    <!-- ##########################    NAO      ################################## -->
+    <!-- ######################################################################### -->
+    <Model buildingID="NAOFACTORY">
+		<name>Centre cybernétique</name>
+		<description>Centre cybernétique building08-br-Ce bâtiment permet de rechercher des améliorations-br-Upgrade d'attaque et de défense pour l'Infanterie</description>
+		<buildingSize>BIG2</buildingSize>
+		<buildingQgType>UPGRADE</buildingQgType>
+		<buidable>1</buidable> 
+		<sellable>1</sellable>
+		<movable>1</movable>	
+		<animationNbFrame>16</animationNbFrame>
+		<animationSpeed>2</animationSpeed>
+		<animationPositionX>64</animationPositionX>
+		<animationPositionY>64</animationPositionY>
+		<spriteBuilding>FLAMETHOWER2</spriteBuilding>
+		<spriteBuilding1>B8_1</spriteBuilding1>
+		<spriteBuilding2>B8_2</spriteBuilding2>
+		<spriteBuilding3>B8_3</spriteBuilding3>
+		<spriteBuilding4>B8_4</spriteBuilding4>
+		<sprite>NAOBUILD</sprite>
+		<spriteIcone>QG_BUILDING_ICON_7</spriteIcone>
+		<price>100</price>
+		<cristaux>10</cristaux>
+		<GraphicID>7</GraphicID>
+		<QG_UI_Position>6</QG_UI_Position>
+		<UpgradeBuilding>
+		    <Level level="1">
+				<spriteUpgrade>ICONE_BUILD</spriteUpgrade>
+				<nameUpgrade>Evoultion du batiment</nameUpgrade> 
+				<descriptionUpgrade>Super batiment mieux qu'avant</descriptionUpgrade>
+				<valueUpgrade>110</valueUpgrade>
+				<priceUpgrade>100</priceUpgrade>
+				<!--<ConditionUpgrade conditionType="BUILDING" number="1" buildingID="NAOFACTORY" level="0"/>-->
+		    </Level>
+		    <Level level="2">
+				<spriteUpgrade>ICONE_BUILD</spriteUpgrade>
+				<nameUpgrade>Evoultion du batiment 2</nameUpgrade> 
+				<descriptionUpgrade>Super batiment 2 fois mieux qu'avant</descriptionUpgrade>
+				<valueUpgrade>120</valueUpgrade>
+				<priceUpgrade>150</priceUpgrade>
+				<!--<ConditionUpgrade conditionType="BUILDING" number="4" buildingID="NAOFACTORY" level="0"/>-->
+		    </Level>
+		</UpgradeBuilding>
+		
+		<Upgrade upgradeType="LIFE">
+		    <Level level="1">
+				<spriteUpgrade>HEART</spriteUpgrade>
+				<nameUpgrade>Pack premiers secours</nameUpgrade> 
+				<descriptionUpgrade>Pack de premier secours pour l'infanterie-br-Contient : bandages, cicatrisant, anti-douleur-br-Augmente la survabilité de l'infanterie de 10%</descriptionUpgrade>
+				<valueUpgrade>110</valueUpgrade>
+				<priceUpgrade>100</priceUpgrade>
+				<!--<ConditionUpgrade conditionType="BUILDING" number="1" buildingID="NAOFACTORY" level="0"/>-->
+				<Targets>
+					<!--<target>HORUS</target>-->
+				</Targets>
+		    </Level>
+		    <Level level="2">
+				<spriteUpgrade>HEART</spriteUpgrade>
+				<nameUpgrade>Pack premiers secours 2</nameUpgrade> 
+				<descriptionUpgrade>Pack de premier secours pour l'infanterie-br-Contient : bandages, cicatrisant, anti-douleur-br-Augmente la survabilité de l'infanterie de 20%</descriptionUpgrade>
+				<valueUpgrade>120</valueUpgrade>
+				<priceUpgrade>150</priceUpgrade>
+				<!--<ConditionUpgrade conditionType="BUILDING" number="4" buildingID="NAOFACTORY" level="0"/>-->
+				<Targets>
+					<!--<target>HORUS</target>-->
+				</Targets>
+		    </Level>
+		</Upgrade>
+		<Upgrade upgradeType="DMG">
+		    <Level level="1">
+				<spriteUpgrade>SWORD</spriteUpgrade>
+				<nameUpgrade>Munition chemisé </nameUpgrade> 
+				<descriptionUpgrade>munition plus performante pour l'ifanterie-br-Balle en plomb entièrement chemisé d'un métal dur-br-Augmente les dégats infligé de 10%</descriptionUpgrade>
+				<valueUpgrade>1</valueUpgrade>
+				<priceUpgrade>100</priceUpgrade>
+				<!--<ConditionUpgrade conditionType="BUILDING" number="1" buildingID="COMMANDPOST" level="0"/>-->
+				<Targets>
+					<!--<target>HORUS</target>-->
+				</Targets>
+		    </Level>
+		</Upgrade>
+		<Upgrade upgradeType="RESIST">
+		    <Level level="1">
+				<spriteUpgrade>SHIELD</spriteUpgrade>
+				<nameUpgrade>Gilet pare-balles</nameUpgrade> 
+				<descriptionUpgrade>Gilet pare-balles destiné à l'infanterie-br-Les gilets sont fabriqués en Kevlar-br-Reduit les dégats reçu de 10%</descriptionUpgrade>
+				<valueUpgrade>1</valueUpgrade>
+				<priceUpgrade>100</priceUpgrade>
+				<!--<ConditionUpgrade conditionType="BUILDING" number="1" buildingID="AIRPORT" level="0"/>-->
+				<Targets>
+					<!--<target>HORUS</target>-->
+				</Targets>
+		    </Level>
+		    <Level level="2">
+				<spriteUpgrade>HELMET</spriteUpgrade>
+				<nameUpgrade>Bonus d'armure</nameUpgrade> 
+				<descriptionUpgrade>armure + 2</descriptionUpgrade>
+				<valueUpgrade>2</valueUpgrade>
+				<priceUpgrade>200</priceUpgrade>
+				<Targets>
+					<!--<target>HORUS</target>-->
+				</Targets>
+		    </Level>
+		</Upgrade>
+	</Model>
+
+	
+    
+
+	<!-- 
+	<Model buildingID="TURRET3">
+		<name>TURRET3</name>
+		<description>building04</description>
+		<buildingSize>BIG2</buildingSize>
+		<buildingQgType>UPGRADE</buildingQgType>
+		<buidable>1</buidable> 
+		<sellable>1</sellable>
+		<movable>1</movable>		
+		<animationNbFrame>1</animationNbFrame>
+		<animationSpeed>2</animationSpeed>
+		<animationPositionX>64</animationPositionX>
+		<animationPositionY>64</animationPositionY>
+		<spriteBuilding>TEST1</spriteBuilding>
+		<spriteBuilding1>B4_1</spriteBuilding1>
+		<spriteBuilding2>B4_2</spriteBuilding2>
+		<spriteBuilding3>B4_3</spriteBuilding3>
+		<spriteBuilding4>B4_4</spriteBuilding4>
+		<sprite>NAOBUILD</sprite>
+		<spriteIcone>NAOBUILD</spriteIcone>
+		<price>150</price>
+		<cristaux>10</cristaux>
+		<Condition conditionType="BUILDING" number="1" buildingID="NAOFACTORY" level="0"/>
+		<Condition conditionType="RESSOURCE" number="1" ressourceID="OIL"/>
+		<UpgradeBuilding>
+		    <Level level="1">
+				<spriteUpgrade>ICONE_BUILD</spriteUpgrade>
+				<nameUpgrade>Evoultion du batiment 1</nameUpgrade> 
+				<descriptionUpgrade>Super batiment mieux qu'avant</descriptionUpgrade>
+				<valueUpgrade>110</valueUpgrade>
+				<priceUpgrade>10</priceUpgrade>
+				<spriteBuildingUpgrade1>B4_1_1</spriteBuildingUpgrade1>
+				<spriteBuildingUpgrade2>B4_1_2</spriteBuildingUpgrade2>
+				<spriteBuildingUpgrade3>B4_1_3</spriteBuildingUpgrade3>
+				<spriteBuildingUpgrade4>B4_1_4</spriteBuildingUpgrade4>
+		    </Level>
+		    <Level level="2">
+				<spriteUpgrade>ICONE_BUILD</spriteUpgrade>
+				<nameUpgrade>Evoultion du batiment 2</nameUpgrade> 
+				<descriptionUpgrade>Super batiment 2 fois mieux qu'avant</descriptionUpgrade>
+				<valueUpgrade>120</valueUpgrade>
+				<priceUpgrade>50</priceUpgrade>
+				<spriteBuildingUpgrade1>B4_2_1</spriteBuildingUpgrade1>
+				<spriteBuildingUpgrade2>B4_2_2</spriteBuildingUpgrade2>
+				<spriteBuildingUpgrade3>B4_2_3</spriteBuildingUpgrade3>
+				<spriteBuildingUpgrade4>B4_2_4</spriteBuildingUpgrade4>
+		    </Level>
+		</UpgradeBuilding>
+	</Model> -->
+</datas>

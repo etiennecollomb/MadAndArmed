@@ -1,0 +1,89 @@
+
+ui-atlas.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+greenArrow_bottom
+  rotate: false
+  xy: 1, 92
+  size: 231, 151
+  orig: 256, 256
+  offset: 13, 55
+  index: -1
+greenArrow_top
+  rotate: false
+  xy: 234, 92
+  size: 231, 151
+  orig: 256, 256
+  offset: 12, 50
+  index: -1
+greenArrow_left
+  rotate: false
+  xy: 467, 12
+  size: 151, 231
+  orig: 256, 256
+  offset: 55, 12
+  index: -1
+greenArrow_right
+  rotate: false
+  xy: 620, 12
+  size: 151, 231
+  orig: 256, 256
+  offset: 50, 13
+  index: -1
+score_bar_blue
+  rotate: false
+  xy: 1, 34
+  size: 201, 56
+  orig: 256, 64
+  offset: 28, 4
+  index: -1
+score_bar_yellow
+  rotate: false
+  xy: 773, 187
+  size: 201, 56
+  orig: 256, 64
+  offset: 28, 4
+  index: -1
+button_unit_background
+  rotate: false
+  xy: 773, 67
+  size: 118, 118
+  orig: 128, 128
+  offset: 5, 5
+  index: -1
+score_bar_background
+  rotate: false
+  xy: 1, 1
+  size: 180, 31
+  orig: 256, 64
+  offset: 39, 16
+  index: -1
+button_unit_background_shadow
+  rotate: false
+  xy: 893, 67
+  size: 118, 118
+  orig: 128, 128
+  offset: 9, 1
+  index: -1
+score_bar_border
+  rotate: false
+  xy: 204, 78
+  size: 161, 12
+  orig: 256, 64
+  offset: 48, 26
+  index: -1
+score_bar_reflet
+  rotate: false
+  xy: 773, 60
+  size: 157, 5
+  orig: 256, 64
+  offset: 50, 31
+  index: -1
+button_unit_background_reflet
+  rotate: false
+  xy: 773, 6
+  size: 105, 52
+  orig: 128, 128
+  offset: 11, 64
+  index: -1

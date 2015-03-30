@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datas>
+    
+	<!-- ######################################################################### -->
+    <!-- ########################      CASTLE      ############################### -->
+    <!-- ######################################################################### -->
+	<Model buildingID="CASTLE_TEAM1">
+		<buildingSize>MEDIUM</buildingSize>
+		<spriteBuilding>TURRET_02_HD_TEAM1</spriteBuilding>
+		<life>500000</life>
+		<price>400</price>
+		<AimAnimationRow>0</AimAnimationRow>
+		<Weapon>
+			<weaponType>MISSILE</weaponType>
+			<hitRange>200</hitRange>
+			<dmgEffect>30</dmgEffect>
+			<hitSpeed>35</hitSpeed>
+			<missileSpeed>6</missileSpeed>
+			<spriteWeaponEffect>MISSILE_EXPLOSION</spriteWeaponEffect>
+		</Weapon>
+	</Model>
+
+    <Model buildingID="CASTLE_TEAM2">
+        <buildingSize>MEDIUM</buildingSize>
+        <spriteBuilding>TURRET_02_HD_TEAM2</spriteBuilding>
+        <life>500000</life>
+        <price>400</price>
+        <AimAnimationRow>0</AimAnimationRow>
+        <Weapon>
+            <weaponType>MISSILE</weaponType>
+            <hitRange>200</hitRange>
+            <dmgEffect>30</dmgEffect>
+            <hitSpeed>35</hitSpeed>
+            <missileSpeed>6</missileSpeed>
+            <spriteWeaponEffect>MISSILE_EXPLOSION</spriteWeaponEffect>
+        </Weapon>
+    </Model>
+	
+	<!-- ######################################################################### -->
+    <!-- #########################      TOWER      ############################### -->
+    <!-- ######################################################################### -->
+	<Model buildingID="TOWER_TEAM1">
+		<buildingSize>MEDIUM</buildingSize>
+		<spriteBuilding>TURRET_01_HD_TEAM1</spriteBuilding>
+		<life>250000</life>
+		<price>400</price>
+		<aimAnimationRow>0</aimAnimationRow>
+		<Weapon>
+			<weaponType>MISSILE</weaponType>
+			<hitRange>200</hitRange>
+			<dmgEffect>5</dmgEffect>
+			<hitSpeed>35</hitSpeed>
+			<missileSpeed>6</missileSpeed>
+			<spriteWeaponEffect>MISSILE_EXPLOSION</spriteWeaponEffect>
+		</Weapon>
+	</Model>
+
+    <Model buildingID="TOWER_TEAM2">
+        <buildingSize>MEDIUM</buildingSize>
+        <spriteBuilding>TURRET_01_HD_TEAM2</spriteBuilding>
+        <life>250000</life>
+        <price>400</price>
+        <aimAnimationRow>0</aimAnimationRow>
+        <Weapon>
+            <weaponType>MISSILE</weaponType>
+            <hitRange>200</hitRange>
+            <dmgEffect>5</dmgEffect>
+            <hitSpeed>35</hitSpeed>
+            <missileSpeed>6</missileSpeed>
+            <spriteWeaponEffect>MISSILE_EXPLOSION</spriteWeaponEffect>
+        </Weapon>
+    </Model>
+	
+</datas>
