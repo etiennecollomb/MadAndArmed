@@ -20,12 +20,4 @@ public abstract class MoveBehavior extends GameElement {
 		this.pathFinding = pathFinding;
 	}
 
-
-	@Override
-	public void reset() {		
-    	if(pathFinding instanceof GroundPathFinding)PoolManager.getManager().getGroundPathFinding().free((GroundPathFinding) pathFinding);
-    	else if(pathFinding instanceof AirPathFinding)PoolManager.getManager().getAirPathFindingPool().free((AirPathFinding) pathFinding);
-    	pathFinding=null;
-	}
-
 }

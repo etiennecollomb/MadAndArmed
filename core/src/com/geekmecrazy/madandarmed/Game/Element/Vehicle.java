@@ -28,11 +28,13 @@ public abstract class Vehicle extends Military {
 	private Vector2d moveVector = new Vector2d();
 	private MoveBehavior behavior;
 
-    //TEST perf
+    /** tricks for performance
+     * We compute Path only every N cycles
+     */
     private Vector2d lastMoveVector = new Vector2d();
     private Random random = new Random();
-    private int maxIteration = 8;
-    private int iteration;
+    private int maxUpdateCounter = 8; // > 8 = pathfinding wierd behavior
+    private int updateCounter;
     private Vector2d tempPosition = new Vector2d();
 
 
@@ -47,7 +49,7 @@ public abstract class Vehicle extends Military {
 		super.init(posX, posY, diameter, diameter, life, myTeam, ennemyTeam, pattern.getWeaponPattern());
 		this.pattern=pattern;
 
-        iteration = random.nextInt(maxIteration);
+		updateCounter = random.nextInt(maxUpdateCounter);
         lastMoveVector.set(0, 0);
 	}
 
@@ -83,9 +85,9 @@ public abstract class Vehicle extends Military {
 	public void onUpdateNextState() {
 		super.onUpdateNextState();
 
-        iteration++;
-        if(iteration>=maxIteration) {
-            iteration=0;
+		updateCounter++;
+        if(updateCounter>=maxUpdateCounter) {
+        	updateCounter=0;
 
             //on calcul la distance de deplacement
             previousPos.set(-this.getPos().getX(), -this.getPos().getY());
@@ -177,13 +179,9 @@ public abstract class Vehicle extends Military {
                     //gestion des bords
                     if (tempX >= 0 && tempX < stateMap.getMapWidthInSmallNodes() && tempY >= 0 && tempY < stateMap.getMapHeightInSmallNodes()) {
 
-//                        System.out.println("_____________### 0");
-
                         if(stateMap.getCurrentZoneAPositionMap().isUsed(tempX, tempY)) {
                             //On regarde le CREEP presents dans CurrentCreepZoneAPosition
                             Vehicle neighborVehicle = stateMap.getCurrentCreepZoneAPositionMap()[tempX][tempY];
-
-//                            System.out.println("________________________### 1");
 
                             //neighborVehicle!=null est normalement INUTILE car il ya lui meme ! mais bon.....
                             if (neighborVehicle != null || neighborVehicle != this) {
@@ -193,8 +191,6 @@ public abstract class Vehicle extends Military {
                                 float distance = tempPosition.length();
                                 distance = distance - (this.getWidth() + neighborVehicle.getWidth());
 
-//                                System.out.println("________________________### 2");
-
                                 if (distance < 0) {
                                     //collision
                                     tempPosition.normalize(); //la direction avec le vehicle voisin
@@ -202,9 +198,6 @@ public abstract class Vehicle extends Military {
 
                                     tempPosition.add(this.getPos());
                                     this.setPos(tempPosition.getX(), tempPosition.getY());
-
-//                                    System.out.println("________________________### 3");
-
                                     //return; //stopper le calcul apres UN voisin trouvé
                                 }
                             }

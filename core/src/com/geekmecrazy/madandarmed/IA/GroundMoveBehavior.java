@@ -1,6 +1,7 @@
 package com.geekmecrazy.madandarmed.IA;
 
 import com.geekmecrazy.madandarmed.Game.Element.Vehicle;
+import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
 public class GroundMoveBehavior extends MoveBehavior {
@@ -10,14 +11,6 @@ public class GroundMoveBehavior extends MoveBehavior {
 		if(!v.isAttacking()){
 			
 			this.pathFinding.calculate(v);
-//			if(v.isNPC())
-//				this.pathFinding.applyPenetrationContrainte(v); //ne doivent jamais se supperposer
-			
-		}
-		else{
-			
-//			if(v.isNPC())
-//				this.pathFinding.applyPenetrationContrainte(v); //ne doivent jamais se supperposer
 			
 		}
 
@@ -30,6 +23,11 @@ public class GroundMoveBehavior extends MoveBehavior {
 	public void onUpdate() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void reset() {
+		PoolManager.getManager().getGroundPathFinding().free((GroundPathFinding) pathFinding);
 	}
 	
 }

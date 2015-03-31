@@ -1,6 +1,7 @@
 package com.geekmecrazy.madandarmed.IA;
 
 import com.geekmecrazy.madandarmed.Game.Element.Vehicle;
+import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
 public class AirMoveBehavior extends MoveBehavior{
@@ -27,6 +28,11 @@ public class AirMoveBehavior extends MoveBehavior{
 	public void onUpdate() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void reset() {
+		PoolManager.getManager().getAirPathFindingPool().free((AirPathFinding) pathFinding);
 	}
 	
 }
