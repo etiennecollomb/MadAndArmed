@@ -45,7 +45,7 @@ public class MadAndArmed extends ApplicationAdapter {
         ScreenManager.setCurrentScreen(FightScreen.getManager());
 
 		FightScreen.getManager().init(fightScene);
-		FightScreen.getManager().loadData(); //from xml, et precalcul ...222
+		FightScreen.getManager().loadData(); //from xml, et precalcul
 		FightScreen.getManager().newGame();
 */
 
