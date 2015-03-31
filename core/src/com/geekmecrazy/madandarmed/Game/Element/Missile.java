@@ -64,7 +64,7 @@ public class Missile extends Vehicle {
 
 		//on a atteint la cible au prochain coup?
 		if((distance - target.getWidth()/2f)<=vitesse){
-			target.hit(dmgEffect, hitAnimatedType, this.getPos().getX(), this.getPos().getY());
+			target.hit(dmgEffect, hitAnimatedType);
 			MissileManager.getManager().finishMissile(this);
 			return;
 		}
@@ -72,7 +72,6 @@ public class Missile extends Vehicle {
 		else this.getPos().add(m_vel);
 		
 		//on set la direction local du missile
-		m_vel.normalize();
 		setNormalizedDir(m_vel);
 
 	}

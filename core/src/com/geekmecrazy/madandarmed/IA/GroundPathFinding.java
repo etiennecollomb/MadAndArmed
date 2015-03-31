@@ -28,10 +28,10 @@ public class GroundPathFinding extends PathFinding {
 	private int updateAstarCounterLength ;
 	private int updateAstarCounter;
 	//random generator
-    private Random generator;
-    //check NPC (on ne le fait qu une fois sur n cycle pour les perfs)
-//    private int numberNPCCycle = 10; //every n cycle
-//    private int countNPCCycle; //every n cycle
+	private Random generator;
+	//check NPC (on ne le fait qu une fois sur n cycle pour les perfs)
+	//    private int numberNPCCycle = 10; //every n cycle
+	//    private int countNPCCycle; //every n cycle
 	/***********/
 
 
@@ -52,7 +52,7 @@ public class GroundPathFinding extends PathFinding {
 		updateAstarCounterLength = 12; //(int) (bigNodeSize * Math.min(astarMap.getZoneACreep().getWidth(), astarMap.getZoneACreep().getHeight()) / vitesse);
 		updateAstarCounter = 0;
 
-//        countNPCCycle = generator.nextInt(numberNPCCycle);
+		//        countNPCCycle = generator.nextInt(numberNPCCycle);
 
 	}
 
@@ -67,10 +67,10 @@ public class GroundPathFinding extends PathFinding {
 	//calcul fait pour placer le vehicule qd il est en mouvement (non considere a l arret)
 	public void calculate(Vehicle v) {
 
-        //si en mode Go Point
-        if(v.isGoPoint()) {
-            if (path.size() <= currentNode) v.setIsGoPoint(false); //on remet le target normal Si on est en fin de Path
-        }
+		//si en mode Go Point
+		if(v.isGoPoint()) {
+			if (path.size() <= currentNode) v.setIsGoPoint(false); //on remet le target normal Si on est en fin de Path
+		}
 
 		//si en mode prioritaire
 		if(!v.isNPC()){
@@ -93,38 +93,40 @@ public class GroundPathFinding extends PathFinding {
 				updateAstarCounter--;
 			}
 
-//			//Problem des creeps non attack en movement immobile
-//			//on les fait aller a un point precis coute que coute pour sortir de se trou noir, avant de reprendre les calculs normaux.
-//			if(!v.isAttacking()){
-//				if(debugX==v.getPos().getX() && debugY==v.getPos().getY()){
-//					debugCounter++;
-//
-//					if(debugCounter>=debugTime){
-//						//mettre un node proche en target et debloquer les CNP jusqua ce qu elle soit atteinte
-//						//puis recalculer un pathfinfing
-//						//retour a la normal ensuite
-//						this.path.clear();
-//						//On choisit un point au hasard "assez loin" pour recalculer un path ailleurs
-//						int node_X = generator.nextInt(5) - 2; //from 0 to 4 included, minus 2
-//						int node_Y = generator.nextInt(5) - 2; //from 0 to 4 included, minus 2
-//
-//						//on check pour les bords
-//						int coordX_ = v.getSmallNodeX()+node_X;	int coordY_ = v.getSmallNodeY()+node_Y;
-//						if(coordX_ < 0) coordX_ = 1; if(coordY_ < 0) coordY_ = 1;
-//						if(coordX_ >= AstarMap.mapWidthInSmallNodes) coordX_ = AstarMap.mapWidthInSmallNodes-1;
-//						if(coordY_ >= AstarMap.mapHeightInSmallNodes) coordY_ = AstarMap.mapHeightInSmallNodes-1;
-//
-//						Node targetNode = AstarMap.getNode(coordX_, coordY_);
-//						this.path.add(targetNode);
-//						currentNode=0;
-//						v.setNPC(false);
-//
-//					}
-//				}
-//				else{debugCounter=0;}
-//
-//				debugX=v.getPos().getX(); debugY=v.getPos().getY();
-//			}
+			/*
+			// Problem des creeps non attack en movement immobile
+			//on les fait aller a un point precis coute que coute pour sortir de se trou noir, avant de reprendre les calculs normaux.
+			if(!v.isAttacking()){
+				if(debugX==v.getPos().getX() && debugY==v.getPos().getY()){
+					debugCounter++;
+
+					if(debugCounter>=debugTime){
+						//mettre un node proche en target et debloquer les CNP jusqua ce qu elle soit atteinte
+						//puis recalculer un pathfinfing
+						//retour a la normal ensuite
+						this.path.clear();
+						//On choisit un point au hasard "assez loin" pour recalculer un path ailleurs
+						int node_X = generator.nextInt(5) - 2; //from 0 to 4 included, minus 2
+						int node_Y = generator.nextInt(5) - 2; //from 0 to 4 included, minus 2
+
+						//on check pour les bords
+						int coordX_ = v.getSmallNodeX()+node_X;	int coordY_ = v.getSmallNodeY()+node_Y;
+						if(coordX_ < 0) coordX_ = 1; if(coordY_ < 0) coordY_ = 1;
+						if(coordX_ >= AstarMap.mapWidthInSmallNodes) coordX_ = AstarMap.mapWidthInSmallNodes-1;
+						if(coordY_ >= AstarMap.mapHeightInSmallNodes) coordY_ = AstarMap.mapHeightInSmallNodes-1;
+
+						Node targetNode = AstarMap.getNode(coordX_, coordY_);
+						this.path.add(targetNode);
+						currentNode=0;
+						v.setNPC(false);
+
+					}
+				}
+				else{debugCounter=0;}
+
+				debugX=v.getPos().getX(); debugY=v.getPos().getY();
+			}
+			*/
 
 		}
 
@@ -141,13 +143,13 @@ public class GroundPathFinding extends PathFinding {
 	/****************************/
 	private void getNewPath(Vehicle v){
 
-//		//DEBUG
-//		if(v.isDrawAstarMapFlag()){
-//			//reset les voisins sinon on garde les anciens par dessus
-//			//en vrai pas besoin car on stock les voisin en cours , on prends pas ceux qui auraient existe au tour precedent (sinon il sont ecrase par le calcul en cours
-//			AstarMap.resetNeighborhoodNodes();
-//		}
-//		//FIN DEBUG
+		//		//DEBUG
+		//		if(v.isDrawAstarMapFlag()){
+		//			//reset les voisins sinon on garde les anciens par dessus
+		//			//en vrai pas besoin car on stock les voisin en cours , on prends pas ceux qui auraient existe au tour precedent (sinon il sont ecrase par le calcul en cours
+		//			AstarMap.resetNeighborhoodNodes();
+		//		}
+		//		//FIN DEBUG
 
 		currentNode=0;
 		//on prepare la map
@@ -162,29 +164,29 @@ public class GroundPathFinding extends PathFinding {
 
 		Node debutNode = AstarMap.getNode(coordX_, coordY_);
 
-        //si les unit selectionnees ont l ordre d aller a un point
+		//si les unit selectionnees ont l ordre d aller a un point
 		if(v.isGoPoint()){
-            coordX_ = (int)(v.getGoPoint().getX()/GlobalManager.SMALL_NODESIZE);
-            coordY_ = (int)(v.getGoPoint().getY()/GlobalManager.SMALL_NODESIZE);
-        }else {
-        //sinon target
-            coordX_ = v.getCurrentTarget().getSmallNodeX();
-            coordY_ = v.getCurrentTarget().getSmallNodeY();
-        }
-        //on check pour les bords
+			coordX_ = (int)(v.getGoPoint().getX()/GlobalManager.SMALL_NODESIZE);
+			coordY_ = (int)(v.getGoPoint().getY()/GlobalManager.SMALL_NODESIZE);
+		}else {
+			//sinon target
+			coordX_ = v.getCurrentTarget().getSmallNodeX();
+			coordY_ = v.getCurrentTarget().getSmallNodeY();
+		}
+		//on check pour les bords
 		if(coordX_ < 0) coordX_ = 1; if(coordY_ < 0) coordY_ = 1;
 		if(coordX_ >= AstarMap.mapWidthInSmallNodes) coordX_ = AstarMap.mapWidthInSmallNodes-1;
 		if(coordY_ >= AstarMap.mapHeightInSmallNodes) coordY_ = AstarMap.mapHeightInSmallNodes-1;
 
 		Node finNode = AstarMap.getNode(coordX_, coordY_);
-		
+
 		GlobalAstar.getPath(debutNode, finNode, this.path, v);
 
-//		//DEBUG
-//		if(v.isDrawAstarMapFlag()){
-//			AstarMap.drawAstarMap(v);
-//		}
-//		//FIN DEBUG
+		//		//DEBUG
+		//		if(v.isDrawAstarMapFlag()){
+		//			AstarMap.drawAstarMap(v);
+		//		}
+		//		//FIN DEBUG
 	}
 
 	/**********************************************************/
@@ -236,9 +238,9 @@ public class GroundPathFinding extends PathFinding {
 	}
 
 
-	
-	
-	
+
+
+
 
 
 

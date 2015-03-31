@@ -30,20 +30,7 @@ public class BuildingFactory{
 			life.init(buildingPattern.getLife());
 		}
 
-		
-//		// ANIM
-//		AnimatedBuilding animatedBuilding = PoolAnimManager.getManager().getAnimatedBuildingPool(buildingPattern.getSpriteBuilding()).obtainPoolItem();
-//		GameManager.getManager().getScene().attachChild(animatedBuilding, LayerIndex.GAME,true);
-//		animatedBuilding.setBuildingPattern(buildingPattern);
-//		
-//		AnimatedTurret animatedTurret = null;
-////		if(buildingPattern.getSpriteTurret()!=null){
-////			animatedTurret = PoolAnimManager.getAnimatedTurretPool(buildingPattern.getSpriteTurret()).obtainPoolItem();
-////			animatedTurret.setBuildingPattern(buildingPattern);
-////			GameManager.getScene().attachChild(animatedTurret, LayerIndex.GAME,true);
-////		}
-		
-
+		// ANIM
 		BuildingRenderer buildingRenderer = PoolAnimManager.getManager().getBuildingRendererPool().obtain();
 		
 		// BUILDING
@@ -53,7 +40,6 @@ public class BuildingFactory{
         if(buildingPattern.getBuildingID()==BuildingID.CASTLE_TEAM1
                 || buildingPattern.getBuildingID()==BuildingID.CASTLE_TEAM2)
             team.registerCastle(building);
-		
 		
 		// ATTACK
 		if(buildingPattern.getWeaponPattern()!=null){

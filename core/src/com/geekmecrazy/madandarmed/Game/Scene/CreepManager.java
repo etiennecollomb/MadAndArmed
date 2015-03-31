@@ -135,17 +135,8 @@ public class CreepManager {
 
 	/** Mise a jour de l'état des creeps a chaque cycle */
 	public void runUpdateNextState(){
-        this.setUniqueIDForCreeps();
 		for(Creep ce : listCreeps) ce.onUpdateNextState();
 	}
-
-    public void setUniqueIDForCreeps(){
-        int id = 0;
-        for(Creep ce : listCreeps){
-            ce.setID(id);
-            id++;
-        }
-    }
 
 	public List<Creep> getListCreeps() {
 		return listCreeps;

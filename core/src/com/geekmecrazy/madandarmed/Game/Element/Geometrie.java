@@ -19,7 +19,9 @@ public class Geometrie extends GameElement {
     private int mBigNodeX;
     private int mBigNodeY;
     
-    /** Taille reelles */
+    /** Taille reelles
+     * de la geometrie "visible"
+     * et non du sprite qui la contient*/
     private float mWidth;
     private float mHeight;
     
@@ -30,13 +32,6 @@ public class Geometrie extends GameElement {
     /** Non penetration constrainte */
     private boolean isNPC; //est ce que la geometrie est sujette a la Non Penetration Constraint (forcer un creep a aller a un point par exemple...)
     
-	// DEBUG
-    //===========
-    
-	private boolean drawPathFindingFlag=false;
-	private boolean drawAstarMapFlag=false;
-	private boolean drawStateMapFlag=false;
-
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -102,33 +97,7 @@ public class Geometrie extends GameElement {
 	public void setNPC(boolean isNPC) {
 		this.isNPC = isNPC;
 	}
-	
-	//DEBUG
-	//===========
-	
-	public boolean isDrawPathFindingFlag() {
-		return drawPathFindingFlag;
-	}
 
-	public void setDrawPathFindingFlag(boolean drawPathFindingFlag) {
-		this.drawPathFindingFlag = drawPathFindingFlag;
-	}	
-	
-	public boolean isDrawAstarMapFlag() {
-		return drawAstarMapFlag;
-	}
-
-	public void setDrawAstarMapFlag(boolean drawAstarMapFlag) {
-		this.drawAstarMapFlag = drawAstarMapFlag;
-	}
-
-	public boolean isDrawStateMapFlag() {
-		return drawStateMapFlag;
-	}
-
-	public void setDrawStateMapFlag(boolean drawStateMapFlag) {
-		this.drawStateMapFlag = drawStateMapFlag;
-	}
 	
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
@@ -145,8 +114,6 @@ public class Geometrie extends GameElement {
 		mWidth=0;
 		mHeight=0;
 		
-		//DEBUG
-		drawPathFindingFlag=false;
 	}
 
 	@Override

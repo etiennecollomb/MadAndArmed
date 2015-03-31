@@ -5,22 +5,45 @@ import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponType;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
 
 public class Attaque extends GameElement {
-	// ===========================================================
-	// Attributes
-	// ===========================================================
+
 	private Vector2d tempDistance = new Vector2d();
+	
 	private int shootCycleCounter;
-	//distance de tolerance si on "glisse" et qu on s ecarte de la target pour rester sur la target.
-	//En dehors on change de target , sino on reste dessus.
+	
+	//Distance de tolerance, si on "glisse" et qu on s'ecarte de la target pour rester sur la target.
+	//En dehors on change de target , sinon on reste dessus.
 	private float toleranceDistanceTirCoef = 2f; //N fois la distance
 
 	
-	// ===========================================================
-	// Methods
-	// ===========================================================
+    // ===========================================================
+    // Constructors
+    // ===========================================================
+        
+    // ===========================================================
+    // Getter & Setter
+    // ===========================================================
+
+    // ===========================================================
+    // Methods for/from SuperClass/Interfaces
+    // ===========================================================
+
+	@Override
+	public void reset(){
+		shootCycleCounter=0;
+	}
+
+	@Override
+	public void onUpdate(){
+		// TODO Auto-generated method stub		
+	}
+    
+    // ===========================================================
+    // Methods
+    // ===========================================================
 
 	public void initAttacking(Military pMilitary) {
-		shootCycleCounter=0; //A MIGRER, pour retarder le debut de l anim pour etre synchro avec le shoot pMilitary.getWeaponPattern().getReduceStartingFire();
+		shootCycleCounter=0; //TODO : A MIGRER, pour retarder le debut de l anim pour etre synchro avec le shoot pMilitary.getWeaponPattern().getReduceStartingFire();
+	
 	}
 	
 	public void calculate(Military m) {
@@ -36,7 +59,7 @@ public class Attaque extends GameElement {
 				if(shootCycleCounter>=m.getWeaponPattern().getHitSpeed()){
 					shootCycleCounter=0;	
 
-					//on attaque !
+					//On attaque !
 					if(WeaponType.MISSILE.equals(m.getWeaponPattern().getWeaponType())){
 						attackMissile(m, target);
 					} else if(WeaponType.GUN.equals(m.getWeaponPattern().getWeaponType())){
@@ -48,6 +71,7 @@ public class Attaque extends GameElement {
 				}
 				shootCycleCounter++;
 			}
+			
 			//Target Hors de portee
 			else{
 				m.setCurrentTarget(m.getMainTarget());
@@ -62,31 +86,26 @@ public class Attaque extends GameElement {
 		}			
 		
 	}
-	
-	/**********************************************************/
-	
-	// Attaque Missile
+
+	/** Attaque Missile */
 	private void attackMissile(Military shooter, Military target){
 		MissileManager.getManager().fireMissile(shooter, target);
 	}
 	
-	// Attaque Gun
+	/** Attaque Gun */
 	private void attackGun(Military shooter, Military target){
-		target.hit(shooter.getWeaponPattern().getDmgEffect(), shooter.getWeaponPattern().getAnimatedTextureType(), target.getPos().getX(), target.getPos().getY());
+		target.hit(shooter.getWeaponPattern().getDmgEffect(), shooter.getWeaponPattern().getAnimatedTextureType());
 	}
 	
-	// Attaque CAC
+	/** Attaque CAC */
 	private void attackCac(Military shooter, Military target){
-		target.hit(shooter.getWeaponPattern().getDmgEffect(), shooter.getWeaponPattern().getAnimatedTextureType(), target.getPos().getX(), target.getPos().getY());
+		target.hit(shooter.getWeaponPattern().getDmgEffect(), shooter.getWeaponPattern().getAnimatedTextureType());
 	}
 	
-	
-	/**********************************************************/
-
-	/****************************/
-	// CHECK DE DISTANCE DE TIR
-	// avec la target
-	/****************************/
+	/** Check de distance de Tir 
+	 * avec la target
+	 */
+	//TODO: toleranceDistanceTirCoef a mettre que si on est deja en mode attack, sinon il ne faut pas
 	public boolean isTirDistance(Military m){
 
 		boolean flag=false;
@@ -99,22 +118,6 @@ public class Attaque extends GameElement {
 		return flag;
 	}
 
-
-	
-	// ===========================================================
-	// Recycle
-	// ===========================================================
-
-	@Override
-	public void reset(){
-		shootCycleCounter=0;
-	}
-
-	@Override
-	public void onUpdate(){
-		// TODO Auto-generated method stub
-		
-	}
 
 
 }

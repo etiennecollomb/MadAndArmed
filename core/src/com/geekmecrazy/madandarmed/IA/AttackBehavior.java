@@ -7,37 +7,16 @@ import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
 public class AttackBehavior extends GameElement {
+
 	protected Attaque attaque;
 
-	public void calculate(Military m){
+	// ===========================================================
+	// Constructors
+	// ===========================================================
 
-		// On attaque la target deja reperee
-		if(m.isAttacking()){
-
-			this.attaque.calculate(m);
-
-		} else {
-
-			// On est a niveau de la target poursuivis, on tir desssu
-			if(m.getCurrentTarget().isAlive() && this.attaque.isTirDistance(m)){
-				// Si on est a distance de tir on passe en mode attaque
-				attaque.initAttacking(m);
-				m.setAttacking(true);
-
-			}else{
-
-				// On se deplace vers la target ENEMY la plus proche (soit une nouvelle soit celle en cours)
-				Military currentTarget = m.getEnnemyTeam().getNearestMilitary(m.getSmallNodeX(), m.getSmallNodeY());
-				if(currentTarget==null){
-					m.setCurrentTarget(m.getMainTarget());
-				}else{
-					m.setCurrentTarget(currentTarget);
-				}
-
-			}
-		}
-	}
-
+	// ===========================================================
+	// Getter & Setter
+	// ===========================================================
 
 	public Attaque getAttaque() {
 		return attaque;
@@ -48,17 +27,57 @@ public class AttackBehavior extends GameElement {
 	}
 
 
-	@Override
-	public void reset() {
-    	PoolManager.getManager().getAttaquePool().free(attaque);
-    	attaque=null;
-	}
-
+	// ===========================================================
+	// Methods for/from SuperClass/Interfaces
+	// ===========================================================
 
 	@Override
 	public void onUpdate() {
 		// TODO Auto-generated method stub
-		
 	}
+
+	@Override
+	public void reset() {
+		PoolManager.getManager().getAttaquePool().free(attaque);
+		attaque=null;
+	}
+
+
+	// ===========================================================
+	// Methods
+	// ===========================================================
+
+	public void calculate(Military m){
+
+		// On attaque la target deja reperee
+		if(m.isAttacking()){
+			this.attaque.calculate(m);
+
+		} else {
+
+			// On est a niveau de la target poursuivis, on tire dessus
+			// Si on est a distance de tir on passe en mode attaque
+			if(m.getCurrentTarget().isAlive() && this.attaque.isTirDistance(m)){
+				attaque.initAttacking(m);
+				m.setAttacking(true);
+			}
+
+			// On est trop loin de la target ou on en a pas
+			// On se deplace vers la target ENEMY la plus proche
+			else{
+
+				Military currentTarget = m.getEnnemyTeam().getNearestMilitary(m.getSmallNodeX(), m.getSmallNodeY());
+
+				//aucune target en vue, on focalise sur la MainTarget
+				if(currentTarget==null){
+					m.setCurrentTarget(m.getMainTarget());
+				}else{
+					m.setCurrentTarget(currentTarget);
+				}
+
+			}
+		}
+	}
+
 
 }

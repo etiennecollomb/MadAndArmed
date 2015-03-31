@@ -191,7 +191,7 @@ public class Team extends GameElement {
 	//DEBUG METHOD
 	public void instantKillAllUnit(){
 		for(Military m : listMilitary){
-			if(m instanceof Creep)m.hit(100000, AnimatedTextureType.MISSILE_EXPLOSION, m.getPos().getX(), m.getPos().getY());
+			if(m instanceof Creep) m.hit(100000, AnimatedTextureType.MISSILE_EXPLOSION);
 		}
 	}
 	
