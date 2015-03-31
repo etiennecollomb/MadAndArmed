@@ -31,6 +31,7 @@ public class Grid extends Entity{
                 rects[i][j] = new Rectangle();
                 rects[i][j].setAlignment(Alignment.NONE);
                 rects[i][j].init(j*this.cellSizeX+(this.cellSizeX/2f),i*this.cellSizeY+(this.cellSizeY/2f),this.cellSizeX,this.cellSizeY);
+                //Color 
                 float r = (float)Math.random();
                 rects[i][j].setColor(r,r,r,0.5f);
                 this.attachChild(rects[i][j]);

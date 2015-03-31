@@ -86,10 +86,12 @@ public class MilitaryRenderer extends MultiActionRenderer {
 	
 	@Override
 	public void onDraw(){
-		super.onDraw();
-
-		if(!this.getMilitary().isAlive()) onDrawDead();
-		this.onDrawHit();
+		if(this.isVisible()) {
+			super.onDraw();
+	
+			if(!this.getMilitary().isAlive()) onDrawDead();
+			this.onDrawHit();
+		}
 	}
 
 	// ===========================================================

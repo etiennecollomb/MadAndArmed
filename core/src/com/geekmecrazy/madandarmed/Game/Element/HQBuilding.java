@@ -30,8 +30,6 @@ public class HQBuilding extends Shape/* implements IMoveable*/{
     private Sprite topArrow;
     public Rectangle groundSquare;
 
-    private Color mIconColor;
-
     private float diffX;
     private float diffY;
 
@@ -65,8 +63,6 @@ public class HQBuilding extends Shape/* implements IMoveable*/{
 
         icon.init(pTextureType);
         icon.setAlignment(Alignment.CENTER);
-
-        mIconColor = icon.getColor().cpy();
 
         float topOrBottomHeight = arrowPercentSize*icon.getHeight();
         float leftOrRightWidth = arrowPercentSize*icon.getWidth();
