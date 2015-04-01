@@ -1,41 +1,84 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Entity;
-import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
-import com.geekmecrazy.madandarmed.Game.Element.HQBuilding;
+import com.geekmecrazy.madandarmed.Renderer.GridRenderer;
 
-public class Grid extends Entity{
-    public float cellSizeX;
-    public float cellSizeY;
-    public float cols;
-    public float rows;
-    public Rectangle[][] rects;
+public class Grid {
+    private float cellSizeX;
+	private float cellSizeY;
+    private int cols;
+	private int rows;
+	
+	private GridRenderer gridRenderer;
 
-    public Grid(int cols,int rows){
-        this.cols = (float)cols;
-        this.rows = (float)rows;
-        rects = new Rectangle[rows][cols];
-    }
+    // ===========================================================
+    // Constructors
+    // ===========================================================
 
-    public void init(float pX,float pY){
-        super.init(pX,pY);
-    }
+    // ===========================================================
+    // Getter & Setter
+    // ===========================================================
 
-    public void sync(Scene scene){
-        this.cellSizeX = scene.getWidth()/cols;
-        this.cellSizeY = scene.getHeight()/rows;
+    public float getCellSizeX() {
+		return cellSizeX;
+	}
 
-        for(int i = 0 ; i < rects.length ; i++){
-            for(int j = 0 ; j < rects[i].length ; j++){
-                rects[i][j] = new Rectangle();
-                rects[i][j].setAlignment(Alignment.NONE);
-                rects[i][j].init(j*this.cellSizeX+(this.cellSizeX/2f),i*this.cellSizeY+(this.cellSizeY/2f),this.cellSizeX,this.cellSizeY);
-                float r = (float)Math.random();
-                rects[i][j].setColor(r,r,r,0.5f);
-                this.attachChild(rects[i][j]);
-            }
-        }
+	public void setCellSizeX(float cellSizeX) {
+		this.cellSizeX = cellSizeX;
+	}
+
+	public float getCellSizeY() {
+		return cellSizeY;
+	}
+
+	public void setCellSizeY(float cellSizeY) {
+		this.cellSizeY = cellSizeY;
+	}
+
+    public int getCols() {
+		return cols;
+	}
+
+	public void setCols(int cols) {
+		this.cols = cols;
+	}
+
+	public int getRows() {
+		return rows;
+	}
+
+	public void setRows(int rows) {
+		this.rows = rows;
+	}
+	
+    public GridRenderer getGridRenderer() {
+		return gridRenderer;
+	}
+
+
+	public void setGridRenderer(GridRenderer gridRenderer) {
+		this.gridRenderer = gridRenderer;
+	}
+
+	
+    // ===========================================================
+    // Methods for/from SuperClass/Interfaces
+    // ===========================================================
+    
+    
+    // ===========================================================
+    // Methods
+    // ===========================================================
+
+    public void init(final float pCellWidth, final float pCellHeight, Scene scene){
+        this.cellSizeX = pCellWidth;
+        this.cellSizeY = pCellHeight;
+        this.cols = (int) (scene.getWidth() / GlobalManager.BIG_NODESIZE) +1;
+        this.rows = (int) (scene.getHeight() / GlobalManager.BIG_NODESIZE) +1;
+        
+        this.gridRenderer = null;
     }
 
     public void snap(Entity e,float row,float col){
@@ -49,4 +92,9 @@ public class Grid extends Entity{
     public float heightFor(int val){
         return val*cellSizeY;
     }
+    
+
+
+
+
 }

@@ -28,7 +28,7 @@ public class Rectangle extends Sprite {
 
 		Pixmap pixmap = new Pixmap((int)Rectangle.TEXTURE_WIDTH, (int)Rectangle.TEXTURE_HEIGHT, Format.RGBA8888);
 		pixmap.setColor(Color.WHITE);
-		pixmap.fillRectangle(0, 0, (int)Rectangle.TEXTURE_WIDTH, (int)Rectangle.TEXTURE_HEIGHT);
+		pixmap.fill();
 		
 		Texture texture = new Texture(pixmap, false);
 

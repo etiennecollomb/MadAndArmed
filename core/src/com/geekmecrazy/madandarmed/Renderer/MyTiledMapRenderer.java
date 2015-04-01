@@ -1,6 +1,5 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
-import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Core.TextureBuilder;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.CoreConfig.TilesType;
@@ -9,7 +8,6 @@ import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
@@ -70,7 +68,7 @@ public class MyTiledMapRenderer extends Shape {
 
 	public MyTiledMapRenderer(){
         this.usedCoordinates = new ArrayList<Vector2>();
-        this.backgroundSprite = new ArrayList<Sprite>();
+        //this.backgroundSprite = new ArrayList<Sprite>();
 
         this.mTilesType = new TilesType();
 
@@ -152,7 +150,7 @@ public class MyTiledMapRenderer extends Shape {
 
         this.generateOrthoMap(this.mTilesType.idStartGround00, this.mTilesType.idStartGround01);
         this.generateBackgroundSprites();
-        this.attachBackgroundSprites();
+        TextureBuilder.attachSprites(this, this.backgroundSprite);
 
     }
 
@@ -207,66 +205,11 @@ public class MyTiledMapRenderer extends Shape {
         //Create the full sprite
         textureBuilder.init((int)this.getWidth(), (int)this.getHeight()); //size
 
-        //debug
-//        textureBuilder.drawNewTexture(TileTypes.ARID_01.getTextureType(), 0, 0);
-
         this.addTileOnTexture(this.mTilesType.idStartGround00, this.mTilesType.idStartGround01);
 //        this.addDecoration();
-        Pixmap megaPixmap = textureBuilder.getFinalPixmap();
+        
+        backgroundSprite = textureBuilder.splitInSprites();
 
-        //max sub texture size allowed (depend about device capacity and <= of scene size
-        int maxTextureWidth = (GlobalManager.MAX_TEXTURE_WIDTH > this.getWidth())? (int)this.getWidth() : GlobalManager.MAX_TEXTURE_WIDTH;
-        int maxTextureHeight = (GlobalManager.MAX_TEXTURE_HEIGHT > this.getHeight())? (int)this.getHeight() : GlobalManager.MAX_TEXTURE_HEIGHT;
-
-        //Split texture in smaller one
-        int numberColumns = megaPixmap.getWidth() / maxTextureWidth;
-        int numberRows = megaPixmap.getHeight() / maxTextureHeight;
-
-        int posX = 0;
-        int posY = megaPixmap.getHeight() - maxTextureHeight;
-
-        for(int i=0; i < numberColumns; i++) {
-            for (int j=0; j < numberRows; j++) {
-
-                //Create Texture
-                //TODO : calculer la taille restante en puissance de 2 (limite espace memoire)
-                textureBuilder.init(maxTextureWidth, maxTextureHeight);
-                textureBuilder.getFinalPixmap().drawPixmap(megaPixmap, -posX, -posY);
-                Texture spriteTexture = textureBuilder.createTexture();
-
-                //Create Sprite
-                Sprite newSprite = new Sprite();
-//                newSprite.init(i*MyTiledMapRenderer.MAX_TEXTURE_WIDTH +i*4, j*MyTiledMapRenderer.MAX_TEXTURE_HEIGHT +j*4, spriteTexture.getWidth(), spriteTexture.getHeight()); //Debug
-                newSprite.init(i*maxTextureWidth, j*maxTextureHeight, spriteTexture.getWidth(), spriteTexture.getHeight());
-                newSprite.setTextureRegion(new TextureRegion(spriteTexture));
-                newSprite.setAlignment(Alignment.NONE);
-
-                backgroundSprite.add(newSprite);
-
-                posY = posY - maxTextureHeight;
-            }
-            posX = posX + maxTextureWidth;
-            posY = megaPixmap.getHeight() - maxTextureHeight;
-        }
-
-        megaPixmap.dispose();
-
-        //debug
-//        Texture spriteTexture = textureBuilder.createTexture();
-//        Sprite newSprite = new Sprite();
-//        newSprite.init(0, 0, spriteTexture.getWidth(), spriteTexture.getHeight());
-//        newSprite.setTextureRegion(new TextureRegion(spriteTexture));
-//        newSprite.setAlignment(Alignment.NONE);
-//        backgroundSprite.add(newSprite);
-    }
-
-    public void attachBackgroundSprites(){
-
-        int size = backgroundSprite.size();
-        for(int i = 0; i< size; i++) {
-            Sprite sprite = backgroundSprite.get(i);
-            this.attachChild(sprite);
-        }
     }
 
     /** from UsedTiled to CreatedTexture */

@@ -3,23 +3,18 @@ package com.geekmecrazy.madandarmed.Game.Element;
 import com.geekmecrazy.madandarmed.Assets.Assets;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
-import com.geekmecrazy.madandarmed.Entity.Entity;
-import com.geekmecrazy.madandarmed.Entity.IDrawable;
-import com.geekmecrazy.madandarmed.Entity.ITouchable;
 import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Scene.Grid;
-import com.geekmecrazy.madandarmed.Game.Tween.RectangleTween;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
 import com.geekmecrazy.madandarmed.Game.Tween.SpriteTween;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
-
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
+
 
 public class HQBuilding extends Shape/* implements IMoveable*/{
 
@@ -140,7 +135,7 @@ public class HQBuilding extends Shape/* implements IMoveable*/{
             case TOUCHUP:
                 break;
             case LONGPRESS:
-                this.focus();
+                this.setFocusState();
                 Tween
                         .to(this, ShapeTween.SCALE, 0.1f)
                         .target(1.15f,1.15f)
@@ -154,7 +149,7 @@ public class HQBuilding extends Shape/* implements IMoveable*/{
                         .start(GlobalManager.getTweenManager());
                 break;
             case TAP:
-                this.focus();
+                this.setFocusState();
                 Tween
                         .to(this, ShapeTween.SCALE, 0.1f)
                         .target(1.15f,1.15f)
@@ -172,7 +167,8 @@ public class HQBuilding extends Shape/* implements IMoveable*/{
                     float effectiveViewportWidth = GlobalManager.camera.viewportWidth * GlobalManager.camera.zoom;
                     float effectiveViewportHeight = GlobalManager.camera.viewportHeight * GlobalManager.camera.zoom;
 
-                    this.setPosition(Math.round((pTouchAreaLocalX-diffX)/grid.cellSizeX)*grid.cellSizeX,Math.round((pTouchAreaLocalY-diffY)/grid.cellSizeY)*grid.cellSizeY);
+                    this.setPosition(Math.round((pTouchAreaLocalX-diffX)/grid.getCellSizeX())*grid.getCellSizeX(), Math.round((pTouchAreaLocalY-diffY)/grid.getCellSizeY())*grid.getCellSizeY());
+                    
                     if(this.getX() < 0){
                         this.setPosition(0,this.getY());
                     }
@@ -205,6 +201,19 @@ public class HQBuilding extends Shape/* implements IMoveable*/{
         }
     }
 
+
+    public void setFocusState(){
+        if(state == HQBuildingState.FOCUSED){
+            unfocus();
+            unshine();
+        }
+        else{
+        	focus();
+            shine(0.1f, 0.1f, 0.1f);
+            isDark = true;
+        }
+    }
+
     public void unfocus(){
         GlobalManager.moveable = true;
         state = HQBuildingState.UNFOCUSED;
@@ -213,30 +222,25 @@ public class HQBuilding extends Shape/* implements IMoveable*/{
         topArrow.setVisible(false);
         bottomArrow.setVisible(false);
         groundSquare.setVisible(false);
+        
+        this.grid.getGridRenderer().setVisible(false);
     }
-
-    public void focus(){
-        if(state == HQBuildingState.FOCUSED){
-            unfocus();
-            unshine();
-        }
-        else{
-            GlobalManager.moveable = false;
-            state = HQBuildingState.FOCUSED;
-            leftArrow.setVisible(true);
-            rightArrow.setVisible(true);
-            topArrow.setVisible(true);
-            bottomArrow.setVisible(true);
-            groundSquare.setVisible(true);
-
-            isDark = true;
-            shine(0.1f, 0.1f, 0.1f);
-        }
-    }
-
+    
     public void unshine(){
         this.icon.setColor(1f,1f,1f,1f);
         GlobalManager.getTweenManager().killAll();
+    }
+    
+    public void focus(){
+    	GlobalManager.moveable = false;
+        state = HQBuildingState.FOCUSED;
+        leftArrow.setVisible(true);
+        rightArrow.setVisible(true);
+        topArrow.setVisible(true);
+        bottomArrow.setVisible(true);
+        groundSquare.setVisible(true);
+        
+        this.grid.getGridRenderer().setVisible(true);
     }
 
     public void shine(float r,float g,float b){

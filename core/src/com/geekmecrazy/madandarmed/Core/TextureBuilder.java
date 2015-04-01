@@ -1,7 +1,12 @@
 package com.geekmecrazy.madandarmed.Core;
 
 
+import java.util.ArrayList;
+
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
+import com.geekmecrazy.madandarmed.Entity.Entity;
+import com.geekmecrazy.madandarmed.Entity.Entity.Alignment;
+import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -103,8 +108,69 @@ public class TextureBuilder {
 
         return finalTexture;
     }
+    
+    /** split the generated texture in smaller one
+     * based on max texture size allowed by the device
+     */
+    public ArrayList<Sprite> splitInSprites(){
 
+		ArrayList<Sprite> sprites = new ArrayList<Sprite>();
+				
+		Pixmap megaPixmap = this.getFinalPixmap();
 
+        //max sub texture size allowed (depend about device capacity and <= of scene size
+        int maxTextureWidth = GlobalManager.MAX_TEXTURE_WIDTH;
+        int maxTextureHeight = GlobalManager.MAX_TEXTURE_HEIGHT;
+        
+        //Split texture in smaller one
+        int numberColumns = (megaPixmap.getWidth() < maxTextureWidth)? 1 : megaPixmap.getWidth() / maxTextureWidth;
+        int numberRows = (megaPixmap.getHeight() < maxTextureHeight)? 1 : megaPixmap.getHeight() / maxTextureHeight;
+        
+        int posX = 0;
+        int posY = megaPixmap.getHeight() - maxTextureHeight;
+
+        for(int i=0; i < numberColumns; i++) {
+            for (int j=0; j < numberRows; j++) {
+
+                //Create Texture
+                //TODO : calculer la taille restante en puissance de 2 (limite espace memoire)
+                this.init(maxTextureWidth, maxTextureHeight);
+                this.getFinalPixmap().drawPixmap(megaPixmap, -posX, -posY);
+                Texture spriteTexture = this.createTexture();
+
+                //Create Sprite
+                Sprite newSprite = new Sprite();
+                newSprite.init(i*maxTextureWidth, j*maxTextureHeight, spriteTexture.getWidth(), spriteTexture.getHeight());
+                newSprite.setTextureRegion(new TextureRegion(spriteTexture));
+                newSprite.setAlignment(Alignment.NONE);
+                
+                //Debug
+                //newSprite.setPosition(newSprite.getX()+1100, newSprite.getY()+1100); //global
+                //newSprite.setPosition(newSprite.getX()+i*100, newSprite.getY()+j*100); //local
+
+                sprites.add(newSprite);
+
+                posY = posY - maxTextureHeight;
+            }
+            posX = posX + maxTextureWidth;
+            posY = megaPixmap.getHeight() - maxTextureHeight;
+        }
+
+        megaPixmap.dispose();
+        
+        return sprites;
+
+    }
+    
+    
+    public static void attachSprites(Entity father, ArrayList<Sprite> sprites){
+
+        int size = sprites.size();
+        for(int i = 0; i< size; i++) {
+            Sprite sprite = sprites.get(i);
+            father.attachChild(sprite);
+        }
+    }
 
 
 }
