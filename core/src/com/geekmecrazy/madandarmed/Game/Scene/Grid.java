@@ -79,6 +79,7 @@ public class Grid {
         this.rows = (int) (scene.getHeight() / GlobalManager.BIG_NODESIZE) +1;
         
         this.gridRenderer = null;
+
     }
 
     public void snap(Entity e,float row,float col){

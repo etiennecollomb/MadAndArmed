@@ -81,7 +81,9 @@ public class UnitButtonRenderer extends Shape {
 
     @Override
     public void onDraw(){
-        super.onDraw();
+    	if(this.isVisible()) {
+    		super.onDraw();
+    	}
     }
 
     @Override
