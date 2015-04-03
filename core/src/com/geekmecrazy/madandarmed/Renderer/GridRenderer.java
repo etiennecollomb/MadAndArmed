@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.geekmecrazy.madandarmed.Core.TextureBuilder;
+import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Scene.Grid;
@@ -72,6 +73,7 @@ public class GridRenderer extends Shape {
 	
 	private void setGridGraphics(){
 		
+		/*
 		boolean colorSwap = true;
 		boolean lineSwap = true;
 		float gray1 = 0.2f;
@@ -106,21 +108,16 @@ public class GridRenderer extends Shape {
             
             lineSwap = lineSwap? false:true;
         }
-        
-        /*
-        Pixmap pixmap = new Pixmap((int)2000, (int)2000, Format.RGBA8888);
-        pixmap.setColor(0,0,1,0.5f);
-        pixmap.fillRectangle(0, 0, pixmap.getWidth(),  pixmap.getHeight());
-        textureBuilder.getFinalPixmap().drawPixmap(pixmap, 0, 0) ;
-		*/
-        
 		pixmap.dispose();
 		
 		this.setGridGraphics( textureBuilder.splitInSprites() );
 		TextureBuilder.attachSprites(this, this.getGridGraphics());
+		*/
 		
-		System.out.println("#####SIZE1 "+textureBuilder.getFinalPixmap().getWidth()+" "+textureBuilder.getFinalPixmap().getHeight());
-		System.out.println("#####SIZE2 "+this.getGridGraphics().size());
+		Sprite orthoGrid = new Sprite();
+		orthoGrid.init(TextureType.ORTHOGRID);
+		this.attachChild(orthoGrid, Alignment.NONE);
+		
 	}
 
 	

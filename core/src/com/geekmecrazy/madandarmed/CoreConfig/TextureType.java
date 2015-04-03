@@ -97,11 +97,15 @@ public enum TextureType{
     PLANT_03_MEDIUM                    ("game/Decorations/Plant03_128.png", 128, 128),
 
     //HQ
-    BUILDING_TEST       ("game/building_test.png", 200, 200);
+    BUILDING_TEST       ("game/building_test.png", 200, 200),
     //GREEN_ARROW_LEFT    ("game/greenArrow_left.png", 256, 256),
     //GREEN_ARROW_TOP     ("game/greenArrow_top.png", 256, 256),
     //GREEN_ARROW_RIGHT   ("game/greenArrow_right.png", 256, 256),
     //GREEN_ARROW_BOTTOM  ("game/greenArrow_bottom.png", 256, 256);
+	
+	ORTHOGRID       ("game/OrthometricGrid.png", 2048, 2048),
+	
+	;
 
 
 
