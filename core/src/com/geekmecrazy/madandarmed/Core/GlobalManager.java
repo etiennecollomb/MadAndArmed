@@ -102,7 +102,7 @@ public class GlobalManager {
     public static final int HQ_SCENE_WIDTH = 2048;
     public static final int HQ_SCENE_HEIGHT = 2048;
 
-    public static final float BIG_NODESIZE = 64f;//32f;
+    public static final float BIG_NODESIZE = 64f;//32f LD, 64f HD;
     public static final float SMALL_NODESIZE = BIG_NODESIZE/3f;
 
     public static final int STARMAP_WIDTH = (int)(MAP_FIGHT_WIDTH / BIG_NODESIZE);
