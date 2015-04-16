@@ -104,6 +104,7 @@ public enum TextureType{
     //GREEN_ARROW_BOTTOM  ("game/greenArrow_bottom.png", 256, 256);
 	
 	ORTHOGRID       ("game/OrthometricGrid.png", 2048, 2048),
+	ISOGRID       ("game/IsometricGrid.png", 1024, 1024),
 	
 	;
 

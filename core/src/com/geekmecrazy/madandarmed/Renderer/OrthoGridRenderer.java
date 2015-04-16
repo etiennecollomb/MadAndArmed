@@ -8,16 +8,16 @@ import com.geekmecrazy.madandarmed.Core.TextureBuilder;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
-import com.geekmecrazy.madandarmed.Game.Scene.Grid;
+import com.geekmecrazy.madandarmed.Game.Scene.OrthoGrid;
 
 
-public class GridRenderer extends Shape {
+public class OrthoGridRenderer extends Shape {
 	
 	/** gray grid */
     private ArrayList<Sprite> gridGraphics;
     
     /** Model */
-    private Grid grid;
+    private OrthoGrid grid;
     
     // ===========================================================
     // Constructors
@@ -35,15 +35,15 @@ public class GridRenderer extends Shape {
 		this.gridGraphics = gridGraphics;
 	}
 
-	public Grid getGrid() {
+	public OrthoGrid getGrid() {
 		return grid;
 	}
 
-	public void setGrid(Grid grid) {
+	public void setGrid(OrthoGrid grid) {
 		this.grid = grid;
 	}
 
-	public GridRenderer(){
+	public OrthoGridRenderer(){
 		super();
 	}
 	
@@ -60,7 +60,7 @@ public class GridRenderer extends Shape {
     // Methods
     // ===========================================================
 	
-	public void init(final Grid pGrid){
+	public void init(final OrthoGrid pGrid){
 		super.init(0, 0, pGrid.getCellSizeX()*pGrid.getCols(), pGrid.getCellSizeY()*pGrid.getRows());
 		
 		pGrid.setGridRenderer(this);

@@ -8,7 +8,7 @@ import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Element.HQBuilding;
 import com.geekmecrazy.madandarmed.Game.Tween.OrthographicCameraTween;
-import com.geekmecrazy.madandarmed.Renderer.GridRenderer;
+import com.geekmecrazy.madandarmed.Renderer.OrthoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import aurelienribon.tweenengine.Timeline;
 import aurelienribon.tweenengine.Tween;
@@ -47,10 +47,10 @@ public class HQScreen extends Screen implements IUpdatable {
             }
         }
 
-        Grid grid = new Grid();
+        OrthoGrid grid = new OrthoGrid();
         grid.init(GlobalManager.BIG_NODESIZE, GlobalManager.BIG_NODESIZE, pScene);
         
-        GridRenderer gridRenderer = new GridRenderer();
+        OrthoGridRenderer gridRenderer = new OrthoGridRenderer();
         gridRenderer.init(grid);
         gridRenderer.setVisible(false);
         

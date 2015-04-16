@@ -3,15 +3,15 @@ package com.geekmecrazy.madandarmed.Game.Scene;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
-import com.geekmecrazy.madandarmed.Renderer.GridRenderer;
+import com.geekmecrazy.madandarmed.Renderer.OrthoGridRenderer;
 
-public class Grid {
+public class OrthoGrid {
     private float cellSizeX;
 	private float cellSizeY;
     private int cols;
 	private int rows;
 	
-	private GridRenderer gridRenderer;
+	private OrthoGridRenderer gridRenderer;
 
     // ===========================================================
     // Constructors
@@ -53,12 +53,12 @@ public class Grid {
 		this.rows = rows;
 	}
 	
-    public GridRenderer getGridRenderer() {
+    public OrthoGridRenderer getGridRenderer() {
 		return gridRenderer;
 	}
 
 
-	public void setGridRenderer(GridRenderer gridRenderer) {
+	public void setGridRenderer(OrthoGridRenderer gridRenderer) {
 		this.gridRenderer = gridRenderer;
 	}
 

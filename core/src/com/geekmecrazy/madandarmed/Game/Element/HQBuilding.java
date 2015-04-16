@@ -6,7 +6,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
-import com.geekmecrazy.madandarmed.Game.Scene.Grid;
+import com.geekmecrazy.madandarmed.Game.Scene.OrthoGrid;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
 import com.geekmecrazy.madandarmed.Game.Tween.SpriteTween;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
@@ -28,7 +28,7 @@ public class HQBuilding extends Shape/* implements IMoveable*/{
     private float diffX;
     private float diffY;
 
-    private Grid grid;
+    private OrthoGrid grid;
 
     public static enum HQBuildingState {
         FOCUSED,
@@ -267,7 +267,7 @@ public class HQBuilding extends Shape/* implements IMoveable*/{
         return isDark;
     }
 
-    public void setGrid(Grid g){
+    public void setGrid(OrthoGrid g){
         this.grid = g;
     }
 
