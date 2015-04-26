@@ -11,6 +11,8 @@ import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
 import com.geekmecrazy.madandarmed.Game.UI.UnitButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
+import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
+import com.geekmecrazy.madandarmed.Renderer.OrthoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.XML.DataManager;
 
@@ -204,7 +206,13 @@ public class FightScreen extends Screen implements IUpdatable {
         mScoreBarUI.init(0, 0);
         this.getHUD().attachChild(mScoreBarUI, Entity.Alignment.LEFT_TOP);
 
-        //System.out.println("mScoreBarUI.getLeftScoreBar.getSceneY() vaut "+mScoreBarUI.)
+        /** Init IsoGrid */
+        IsoGrid grid = new IsoGrid();
+        grid.init(GlobalManager.BIG_NODESIZE, GlobalManager.BIG_NODESIZE, this.getScene());
+        IsoGridRenderer gridRenderer = new IsoGridRenderer();
+        gridRenderer.init(grid);
+        this.getScene().attachChild(gridRenderer);
+        
 	}
 
 	public void loadData() {

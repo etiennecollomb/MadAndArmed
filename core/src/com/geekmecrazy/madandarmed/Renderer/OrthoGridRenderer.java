@@ -12,9 +12,6 @@ import com.geekmecrazy.madandarmed.Game.Scene.OrthoGrid;
 
 
 public class OrthoGridRenderer extends Shape {
-	
-	/** gray grid */
-    private ArrayList<Sprite> gridGraphics;
     
     /** Model */
     private OrthoGrid grid;
@@ -26,14 +23,6 @@ public class OrthoGridRenderer extends Shape {
     // ===========================================================
     // Getter & Setter
     // ===========================================================
-    
-	public ArrayList<Sprite> getGridGraphics() {
-		return gridGraphics;
-	}
-
-	public void setGridGraphics(ArrayList<Sprite> gridGraphics) {
-		this.gridGraphics = gridGraphics;
-	}
 
 	public OrthoGrid getGrid() {
 		return grid;
@@ -43,10 +32,6 @@ public class OrthoGridRenderer extends Shape {
 		this.grid = grid;
 	}
 
-	public OrthoGridRenderer(){
-		super();
-	}
-	
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
@@ -72,47 +57,6 @@ public class OrthoGridRenderer extends Shape {
 	}
 	
 	private void setGridGraphics(){
-		
-		/*
-		boolean colorSwap = true;
-		boolean lineSwap = true;
-		float gray1 = 0.2f;
-		float gray2 = 0.6f;
-		float grayDelta = 0.0f;
-		
-		TextureBuilder textureBuilder = new TextureBuilder();
-        textureBuilder.init((int)this.getWidth(), (int)this.getHeight()); //size
-		
-        Pixmap pixmap = new Pixmap((int)this.grid.getCellSizeX(), (int)this.grid.getCellSizeY(), Format.RGBA8888);
-        
-		for(int i = 0 ; i < this.grid.getRows() ; i++){
-			
-			colorSwap = lineSwap;
-			
-            for(int j = 0 ; j < this.grid.getCols() ; j++){
-            	
-            	//Color
-            	float r = colorSwap?gray1:gray2;
-                r = r + (float)Math.random() * grayDelta;
-        		pixmap.setColor(r, r, r, 0.5f);
-        		pixmap.fill();
-                
-        		//Position
-        		int posX = (int)( j*this.grid.getCellSizeX() );
-        		int posY = (int)( i*this.grid.getCellSizeY() );
-                
-        		textureBuilder.getFinalPixmap().drawPixmap(pixmap, posX, posY) ;
-                
-                colorSwap = colorSwap? false:true;
-            }
-            
-            lineSwap = lineSwap? false:true;
-        }
-		pixmap.dispose();
-		
-		this.setGridGraphics( textureBuilder.splitInSprites() );
-		TextureBuilder.attachSprites(this, this.getGridGraphics());
-		*/
 		
 		Sprite orthoGrid = new Sprite();
 		orthoGrid.init(TextureType.ORTHOGRID);

@@ -246,7 +246,7 @@ public class GlobalManager {
 
         Screen currentScreen = ScreenManager.getCurrentScreen();
 
-        GlobalManager.checkCameraBound(currentScreen.getScene().getWidth(), currentScreen.getScene().getHeight());
+        //GlobalManager.checkCameraBound(currentScreen.getScene().getWidth(), currentScreen.getScene().getHeight());
 
         GlobalManager.camera.update();
         GlobalManager.spriteBatchScene.setProjectionMatrix(GlobalManager.camera.combined);
