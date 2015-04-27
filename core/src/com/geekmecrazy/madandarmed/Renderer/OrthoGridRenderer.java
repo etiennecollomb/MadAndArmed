@@ -46,7 +46,7 @@ public class OrthoGridRenderer extends Shape {
     // ===========================================================
 	
 	public void init(final OrthoGrid pGrid){
-		super.init(0, 0, pGrid.getCellSizeX()*pGrid.getCols(), pGrid.getCellSizeY()*pGrid.getRows());
+		super.init(0, 0, pGrid.getCellWidth()*pGrid.getCols(), pGrid.getCellHeight()*pGrid.getRows());
 		
 		pGrid.setGridRenderer(this);
 		this.setGrid(pGrid);

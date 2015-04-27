@@ -61,7 +61,7 @@ public class HQScreen extends Screen implements IUpdatable {
         hq.setGrid(grid);
         hq.setSize(grid.widthFor(3),grid.heightFor(3));
 
-        grid.snap(hq,grid.getCols()/2, grid.getRows()/2);
+        grid.place(hq, grid.getCols()/2, grid.getRows()/2);
 
         pScene.attachChild(gridRenderer);
 
