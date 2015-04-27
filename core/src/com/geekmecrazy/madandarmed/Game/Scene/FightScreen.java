@@ -1,9 +1,11 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
+import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
+import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Element.Property.GameMap;
 import com.geekmecrazy.madandarmed.Game.UI.ScoreBarUI;
@@ -208,10 +210,17 @@ public class FightScreen extends Screen implements IUpdatable {
 
         /** Init IsoGrid */
         IsoGrid grid = new IsoGrid();
-        grid.init(GlobalManager.BIG_NODESIZE, GlobalManager.BIG_NODESIZE, this.getScene());
+        grid.init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
         IsoGridRenderer gridRenderer = new IsoGridRenderer();
         gridRenderer.init(grid);
         this.getScene().attachChild(gridRenderer);
+        
+        //TEST ISO
+        Sprite testIsoSprite = new Sprite();
+        testIsoSprite.init(TextureType.TILE_FULL_RED);
+        testIsoSprite.setPosition(200, 400);
+        this.getScene().attachChild(testIsoSprite);
+        
         
 	}
 

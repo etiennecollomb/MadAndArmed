@@ -119,9 +119,11 @@ public class MenuScreen extends Screen implements IUpdatable {
                         FightScreen.getManager().newGame();
 
                         //init GROUND
+                        /*WORKING : A REMETTRE ON une fois debug fini
                         MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
                         tiledGround.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
                         FightScreen.getManager().setTiledGround(tiledGround);
+                        */
                     }
                 })
                 .ease(Quad.OUT)

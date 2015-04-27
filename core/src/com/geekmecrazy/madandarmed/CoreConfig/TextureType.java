@@ -84,6 +84,8 @@ public enum TextureType{
     TILE_DIAG_RIGHT_DOWN_BROWN          ("game/Tiles/128_64/diagRIGHT_DOWN_BROWN.png", 128, 64),
     TILE_DIAG_LEFT_DOWN_BROWN           ("game/Tiles/128_64/diagLEFT_DOWN_BROWN.png", 128, 64),
     TILE_FULL_BROWN                     ("game/Tiles/128_64/Full_BROWN.png", 128, 64),
+    
+    TILE_FULL_RED                     	("game/Tiles/Full_RED_64x32.png", 64, 32),
 
     //DECORATION
     PLANT_00                    ("game/Decorations/Plant00_64.png", 64, 64),

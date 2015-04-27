@@ -82,7 +82,7 @@ public class OrthoGrid {
 
     }
 
-    public void snap(Entity e,float row,float col){
+    public void snap(Entity e,int row,int col){
         e.setPosition(row*cellSizeX + cellSizeX/2f - e.getWidth()/2f,col*cellSizeY + cellSizeY/2f - e.getHeight()/2f);
     }
 
