@@ -13,8 +13,8 @@ import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
 import com.geekmecrazy.madandarmed.Game.UI.UnitButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
+import com.geekmecrazy.madandarmed.Renderer.FightBuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
-import com.geekmecrazy.madandarmed.Renderer.OrthoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.XML.DataManager;
 
@@ -216,10 +216,19 @@ public class FightScreen extends Screen implements IUpdatable {
         this.getScene().attachChild(gridRenderer);
         
         //TEST ISO
+        /*
         Sprite testIsoSprite = new Sprite();
         testIsoSprite.init(TextureType.TILE_FULL_RED);
-        testIsoSprite.setPosition(200, 400);
+        grid.place(testIsoSprite, 20, 50);
         this.getScene().attachChild(testIsoSprite);
+        */
+        FightBuildingRenderer fBR = new FightBuildingRenderer();
+        fBR.init(TextureType.TILE_FULL_RED);
+        fBR.setGrid(grid);
+        grid.place(fBR, 20, 50);
+        this.getScene().attachChild(fBR);
+        this.getScene().registerTouchableShape(fBR);
+        //FIN TEST
         
         
 	}

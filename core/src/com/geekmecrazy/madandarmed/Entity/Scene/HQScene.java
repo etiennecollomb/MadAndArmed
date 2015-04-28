@@ -1,8 +1,8 @@
 package com.geekmecrazy.madandarmed.Entity.Scene;
 
 import com.geekmecrazy.madandarmed.Entity.Shape;
-import com.geekmecrazy.madandarmed.Game.Element.HQBuilding;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
+import com.geekmecrazy.madandarmed.Renderer.HQBuildingRenderer;
 
 /**
  * Created by ECollomb on 10/03/2015.
@@ -28,14 +28,14 @@ public class HQScene extends Scene {
         int size = this.mRegisteredTouchableShape.size;
         for(int i=0; i<size; i++){
             Shape shape = this.mRegisteredTouchableShape.get(i);
-            if(shape instanceof HQBuilding && pGestureType.equals(MyGestureDetector.GestureType.PAN)){
-                if(((HQBuilding)shape).isFocused()){
+            if(shape instanceof HQBuildingRenderer && pGestureType.equals(MyGestureDetector.GestureType.PAN)){
+                if(((HQBuildingRenderer)shape).isFocused()){
                     shape.onTouch(pGestureType, touchX, touchY);
                 }
             }
-            else if(shape instanceof HQBuilding && pGestureType.equals(MyGestureDetector.GestureType.TOUCHDOWN)){
-                if(!shape.contains(touchX, touchY) && ((HQBuilding)shape).isFocused()){
-                    ((HQBuilding)shape).focus();
+            else if(shape instanceof HQBuildingRenderer && pGestureType.equals(MyGestureDetector.GestureType.TOUCHDOWN)){
+                if(!shape.contains(touchX, touchY) && ((HQBuildingRenderer)shape).isFocused()){
+                    ((HQBuildingRenderer)shape).focus();
                 }
             }
         }

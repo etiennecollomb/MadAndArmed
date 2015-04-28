@@ -6,10 +6,11 @@ import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
-import com.geekmecrazy.madandarmed.Game.Element.HQBuilding;
 import com.geekmecrazy.madandarmed.Game.Tween.OrthographicCameraTween;
+import com.geekmecrazy.madandarmed.Renderer.HQBuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.OrthoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
+
 import aurelienribon.tweenengine.Timeline;
 import aurelienribon.tweenengine.Tween;
 
@@ -17,7 +18,7 @@ public class HQScreen extends Screen implements IUpdatable {
 
     private static HQScreen hqScreen;
     private Sprite[][] bg;
-    private HQBuilding hq;
+    private HQBuildingRenderer hq;
     
 
     /** Access au manager */
@@ -55,7 +56,7 @@ public class HQScreen extends Screen implements IUpdatable {
         gridRenderer.setVisible(false);
         
 
-        hq = new HQBuilding();
+        hq = new HQBuildingRenderer();
         hq.init(TextureType.BUILDING_TEST);
         hq.setAlignment(Entity.Alignment.NONE);
         hq.setGrid(grid);

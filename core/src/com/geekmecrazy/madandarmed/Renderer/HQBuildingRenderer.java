@@ -1,4 +1,4 @@
-package com.geekmecrazy.madandarmed.Game.Element;
+package com.geekmecrazy.madandarmed.Renderer;
 
 import com.geekmecrazy.madandarmed.Assets.Assets;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
@@ -13,7 +13,7 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 
 
-public class HQBuilding extends OrthoShape/* implements IMoveable*/{
+public class HQBuildingRenderer extends OrthoShape/* implements IMoveable*/{
 
     private Sprite icon;
     private Sprite leftArrow;
@@ -29,7 +29,7 @@ public class HQBuilding extends OrthoShape/* implements IMoveable*/{
 	// ===========================================================
 
     
-    public HQBuilding(){
+    public HQBuildingRenderer(){
         super();
         
         icon = new Sprite();
@@ -87,7 +87,7 @@ public class HQBuilding extends OrthoShape/* implements IMoveable*/{
                 .setCallback(new TweenCallback() {
                     @Override
                     public void onEvent(int type, BaseTween<?> source) {
-                        Tween.to(HQBuilding.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
+                        Tween.to(HQBuildingRenderer.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
                     }
                 })
                 .start(GlobalManager.getTweenManager());
@@ -103,7 +103,7 @@ public class HQBuilding extends OrthoShape/* implements IMoveable*/{
                 .setCallback(new TweenCallback() {
                     @Override
                     public void onEvent(int type, BaseTween<?> source) {
-                        Tween.to(HQBuilding.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
+                        Tween.to(HQBuildingRenderer.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
                     }
                 })
                 .start(GlobalManager.getTweenManager());

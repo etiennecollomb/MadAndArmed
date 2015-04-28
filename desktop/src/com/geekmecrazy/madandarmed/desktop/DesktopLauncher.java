@@ -25,13 +25,13 @@ public class DesktopLauncher {
          */
         int phoneScreenWidth = 1920;
         int phoneScreenHeight = 1080;
-        int windowsSize = 75; // en %
+        int windowsSize = 25; //25 //75 en %
 
         int windowWidth = phoneScreenWidth / 100 * windowsSize;
         int windowHeight = phoneScreenHeight / 100 * windowsSize;
 
         int posX = 50; //50 (premier ecran) -550 (second ecran)
-        int posY = 200;
+        int posY = 700; //700 //200
 
         //my phone screen resolution
         config.width = windowWidth;

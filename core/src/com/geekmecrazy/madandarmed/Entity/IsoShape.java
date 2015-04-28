@@ -2,7 +2,6 @@ package com.geekmecrazy.madandarmed.Entity;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
-import com.geekmecrazy.madandarmed.Game.Scene.OrthoGrid;
 
 public class IsoShape extends Shape {
 	
@@ -17,7 +16,7 @@ public class IsoShape extends Shape {
     private float diffX;
     private float diffY;
     
-    /** associated to a OrthoGrid */
+    /** associated to a IsoGrid */
     private IsoGrid grid;
     
     // ===========================================================
@@ -67,12 +66,13 @@ public class IsoShape extends Shape {
             float effectiveViewportHeight = GlobalManager.camera.viewportHeight * GlobalManager.camera.zoom;
 
             this.setPosition(Math.round((pTouchAreaLocalX-diffX)/this.getGrid().getCellWidth())*this.getGrid().getCellWidth(), Math.round((pTouchAreaLocalY-diffY)/this.getGrid().getCellHeight())*this.getGrid().getCellHeight());
+            System.out.println("#########"+(pTouchAreaLocalX-diffX));
             
             if(this.getX() < 0){
                 this.setPosition(0,this.getY());
             }
-            else if(this.getX() + this.getWidth() > GlobalManager.HQ_SCENE_WIDTH){
-                this.setPosition(GlobalManager.HQ_SCENE_WIDTH - this.getWidth(),this.getY());
+            else if(this.getX() + this.getWidth() > GlobalManager.MAP_FIGHT_WIDTH){
+                this.setPosition(GlobalManager.MAP_FIGHT_WIDTH - this.getWidth(),this.getY());
             }
             else if(this.getX() < GlobalManager.camera.position.x - effectiveViewportWidth/2f){
                 GlobalManager.camera.position.x = this.getX() + effectiveViewportWidth/2f;
@@ -84,8 +84,8 @@ public class IsoShape extends Shape {
             if(this.getY() < 0){
                 this.setPosition(this.getX(),0);
             }
-            else if(this.getY() + this.getHeight() > GlobalManager.HQ_SCENE_HEIGHT){
-                this.setPosition(this.getX(),GlobalManager.HQ_SCENE_HEIGHT - this.getHeight());
+            else if(this.getY() + this.getHeight() > GlobalManager.MAP_FIGHT_HEIGHT){
+                this.setPosition(this.getX(),GlobalManager.MAP_FIGHT_HEIGHT - this.getHeight());
             }
             else if(this.getY() < (GlobalManager.camera.position.y - effectiveViewportHeight/2f)){
                 GlobalManager.camera.position.y = this.getY() + effectiveViewportHeight/2f;
