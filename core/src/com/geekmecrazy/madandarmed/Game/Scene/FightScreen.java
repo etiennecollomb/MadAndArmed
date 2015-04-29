@@ -201,6 +201,14 @@ public class FightScreen extends Screen implements IUpdatable {
 
 		GameMap.initMap();
 
+        /** Init IsoGrid */
+        final IsoGrid grid = new IsoGrid();
+        grid.init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
+        IsoGridRenderer gridRenderer = new IsoGridRenderer();
+        gridRenderer.init(grid);
+        this.getScene().attachChild(gridRenderer);
+        
+        
         /** init UIs */
 		uiFinishGame = new UIFinishGame();
 		uiFinishGame.initUI();
@@ -219,7 +227,14 @@ public class FightScreen extends Screen implements IUpdatable {
         newBarricadButton.setAction(new IAction(){
             @Override
             public void execute(){
-                System.out.println("#### TOUCH BARRICADE BUTTON !!");
+                //System.out.println("#### TOUCH BARRICADE BUTTON !!");
+                FightBuildingRenderer fBR = new FightBuildingRenderer();
+                SpriteSheet sp = new SpriteSheet(AnimatedTextureType.BARRICADES, true);
+                fBR.init(sp);
+                fBR.setGrid(grid);
+                grid.place(fBR, 20, 50);
+                getScene().attachChild(fBR);
+                getScene().registerTouchableShape(fBR);
             }
         });
         newBarricadButton.setSize(1.5f, 1.5f);
@@ -228,12 +243,6 @@ public class FightScreen extends Screen implements IUpdatable {
         
         
 
-        /** Init IsoGrid */
-        IsoGrid grid = new IsoGrid();
-        grid.init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
-        IsoGridRenderer gridRenderer = new IsoGridRenderer();
-        gridRenderer.init(grid);
-        this.getScene().attachChild(gridRenderer);
         
         //TEST ISO
         /*
@@ -242,14 +251,6 @@ public class FightScreen extends Screen implements IUpdatable {
         grid.place(testIsoSprite, 20, 50);
         this.getScene().attachChild(testIsoSprite);
         */
-        FightBuildingRenderer fBR = new FightBuildingRenderer();
-        SpriteSheet sp = new SpriteSheet(AnimatedTextureType.BARRICADES, true);
-        fBR.init(sp);
-        fBR.setGrid(grid);
-        grid.place(fBR, 20, 50);
-        this.getScene().attachChild(fBR);
-        this.getScene().registerTouchableShape(fBR);
-        
         //FIN TEST
         
         
