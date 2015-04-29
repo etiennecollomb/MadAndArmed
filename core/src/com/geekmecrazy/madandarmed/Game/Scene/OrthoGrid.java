@@ -94,6 +94,10 @@ public class OrthoGrid {
         e.setPosition(row*cellWidth + cellWidth/2f - e.getWidth()/2f,col*cellHeight + cellHeight/2f - e.getHeight()/2f);
     }
 
+    public void placeFromPosition(Entity e, float pX, float pY){
+    	e.setPosition(Math.round((pX)/this.getCellWidth())*this.getCellWidth(), Math.round((pY)/this.getCellHeight())*this.getCellHeight());
+    }
+    
 
 
 

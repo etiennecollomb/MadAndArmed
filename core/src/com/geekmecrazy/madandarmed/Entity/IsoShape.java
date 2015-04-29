@@ -60,13 +60,13 @@ public class IsoShape extends Shape {
 	};
 	
 	public void onPanEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){
+		
 		if(isFocused()){
 			
             float effectiveViewportWidth = GlobalManager.camera.viewportWidth * GlobalManager.camera.zoom;
             float effectiveViewportHeight = GlobalManager.camera.viewportHeight * GlobalManager.camera.zoom;
 
-            this.setPosition(Math.round((pTouchAreaLocalX-diffX)/this.getGrid().getCellWidth())*this.getGrid().getCellWidth(), Math.round((pTouchAreaLocalY-diffY)/this.getGrid().getCellHeight())*this.getGrid().getCellHeight());
-            System.out.println("#########"+(pTouchAreaLocalX-diffX));
+            this.grid.placeFromPosition(this, pTouchAreaLocalX-diffX, pTouchAreaLocalY-diffY);
             
             if(this.getX() < 0){
                 this.setPosition(0,this.getY());
