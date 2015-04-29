@@ -1,6 +1,5 @@
 package com.geekmecrazy.madandarmed.IA;
 
-import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Vehicle;
 import com.geekmecrazy.madandarmed.Game.Scene.BuildingManager;
