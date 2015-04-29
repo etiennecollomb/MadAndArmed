@@ -1,9 +1,9 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.IsoShape;
-import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
+import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
+import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
 import com.geekmecrazy.madandarmed.Game.Tween.SpriteTween;
 
@@ -14,7 +14,7 @@ import aurelienribon.tweenengine.TweenCallback;
 
 public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 
-    private Sprite icon;
+    private AnimatedSprite buildingSprite;
     
     private boolean isDark;
 
@@ -26,7 +26,7 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
     public FightBuildingRenderer(){
         super();
         
-        icon = new Sprite();
+        buildingSprite = new AnimatedSprite();
     }
 
 
@@ -37,14 +37,6 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
-
-    @Override
-    public void setSize(float w,float h){
-        super.setSize(w, h);
-
-        float arrowPercentSize = 1f;
-        icon.setSize(w,h);
-    }
     
     @Override
     public void setFocusState(){
@@ -94,19 +86,21 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 
     @Override
     public void reset(){
-    	icon.reset();
+    	buildingSprite.reset();
     }
     
 	// ===========================================================
 	// Methods
 	// ===========================================================
     
-    public void init(TextureType pTextureType){
-        super.init(0, 0, pTextureType.getWidth(), pTextureType.getHeight());
+    public void init(final SpriteSheet pSpriteSheet){
+        super.init(0, 0, pSpriteSheet.getFrameSize(0, 0), pSpriteSheet.getFrameSize(0, 0));
 
-        icon.init(pTextureType);
-        icon.setAlignment(Alignment.CENTER);
-        this.attachChild(icon);
+        buildingSprite.init(pSpriteSheet, 0, 0);
+        buildingSprite.setAlignment(Alignment.CENTER);
+        this.attachChild(buildingSprite);
+        
+        
         
         isDark = false;
     }
@@ -119,7 +113,7 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
     }
     
     public void unshine(){
-        this.icon.setColor(1f,1f,1f,1f);
+        this.buildingSprite.setColor(1f,1f,1f,1f);
         GlobalManager.getTweenManager().killAll();
     }
     
@@ -132,7 +126,7 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 
     public void shine(float r,float g,float b){
         Tween
-                .to(this.icon, SpriteTween.COLOR, 0.42f)
+                .to(this.buildingSprite, SpriteTween.COLOR, 0.42f)
                 .target(r, g, b)
                 .setCallbackTriggers(TweenCallback.END)
                 .setCallback(new TweenCallback() {

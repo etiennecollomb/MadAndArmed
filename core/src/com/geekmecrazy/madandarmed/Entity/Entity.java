@@ -28,6 +28,8 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
         CENTER_LEFT,
         CENTER_RIGHT,
         LEFT_BOTTOM,
+        RIGHT_BOTTOM,
+        RIGHT_TOP,
 
         NONE
     }
@@ -474,6 +476,14 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
             case LEFT_BOTTOM:
                 this.setAlignmentX(Alignment.LEFT);
                 this.setAlignmentY(Alignment.BOTTOM);
+                break;
+            case RIGHT_BOTTOM:
+                this.setAlignmentX(Alignment.RIGHT);
+                this.setAlignmentY(Alignment.BOTTOM);
+                break;
+            case RIGHT_TOP:
+                this.setAlignmentX(Alignment.RIGHT);
+                this.setAlignmentY(Alignment.TOP);
                 break;
             case NONE:
                 this.setAlignmentX(Alignment.NONE);

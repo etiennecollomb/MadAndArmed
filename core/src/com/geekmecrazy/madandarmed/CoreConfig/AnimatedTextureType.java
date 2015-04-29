@@ -205,6 +205,9 @@ public enum AnimatedTextureType {
     TURRET_02_HD_TEAM2_02   ("game/HD/Turret02_256px_Blue/Fr-Launcher-03-blue_256px_0000_0000#0002.png", 1024, 256, 4, 1),
     TURRET_02_HD_TEAM2_03   ("game/HD/Turret02_256px_Blue/Fr-Launcher-03-blue_256px_0000_0000#0003.png", 1024, 256, 4, 1),
 
+    
+    //BARRICADE
+    BARRICADES				("game/barricade_tiles.png", 512, 384, 4, 3, 128);
 
 	;
 

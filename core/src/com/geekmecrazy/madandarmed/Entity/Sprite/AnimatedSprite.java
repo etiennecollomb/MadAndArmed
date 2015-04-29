@@ -1,10 +1,7 @@
 package com.geekmecrazy.madandarmed.Entity.Sprite;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.Entity.Shape;
-import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
-import com.geekmecrazy.madandarmed.Input.MyGestureListener;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 

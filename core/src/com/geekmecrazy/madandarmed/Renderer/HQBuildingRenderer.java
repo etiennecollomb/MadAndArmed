@@ -51,20 +51,6 @@ public class HQBuildingRenderer extends OrthoShape/* implements IMoveable*/{
 	// ===========================================================
 
     @Override
-    public void setSize(float w,float h){
-        super.setSize(w, h);
-
-        float arrowPercentSize = 1f;
-
-        icon.setSize(w,h);
-        topArrow.setSize(topArrow.getWidth() * arrowPercentSize, topArrow.getHeight() * arrowPercentSize);
-        leftArrow.setSize(leftArrow.getWidth() * arrowPercentSize, leftArrow.getHeight() * arrowPercentSize);
-        bottomArrow.setSize(bottomArrow.getWidth() * arrowPercentSize, bottomArrow.getHeight() * arrowPercentSize);
-        rightArrow.setSize(rightArrow.getWidth() * arrowPercentSize, rightArrow.getHeight() * arrowPercentSize);
-        groundSquare.setSize(icon.getWidth(), icon.getHeight());
-    }
-    
-    @Override
     public void setFocusState(){
         if(this.getState() == OrthoShapeState.FOCUSED){
             unfocus();

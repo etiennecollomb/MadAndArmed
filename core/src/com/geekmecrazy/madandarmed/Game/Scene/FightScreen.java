@@ -1,13 +1,18 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
+import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
+import com.geekmecrazy.madandarmed.Entity.Entity.Alignment;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
+import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
+import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Element.Property.GameMap;
+import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.ScoreBarUI;
 import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
 import com.geekmecrazy.madandarmed.Game.UI.UnitButtonUI;
@@ -208,6 +213,21 @@ public class FightScreen extends Screen implements IUpdatable {
         mScoreBarUI.init(0, 0);
         this.getHUD().attachChild(mScoreBarUI, Entity.Alignment.LEFT_TOP);
 
+        /** Barricade Button */
+        Button newBarricadButton = new Button();
+        newBarricadButton.init(0, 0, TextureType.BARRICADE_ICON);
+        newBarricadButton.setAction(new IAction(){
+            @Override
+            public void execute(){
+                System.out.println("#### TOUCH BARRICADE BUTTON !!");
+            }
+        });
+        newBarricadButton.setSize(1.5f, 1.5f);
+        this.getHUD().attachChild(newBarricadButton, Entity.Alignment.RIGHT_BOTTOM);
+        FightScreen.getManager().getHUD().registerTouchableShape(newBarricadButton);
+        
+        
+
         /** Init IsoGrid */
         IsoGrid grid = new IsoGrid();
         grid.init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
@@ -218,16 +238,18 @@ public class FightScreen extends Screen implements IUpdatable {
         //TEST ISO
         /*
         Sprite testIsoSprite = new Sprite();
-        testIsoSprite.init(TextureType.TILE_FULL_RED);
+        testIsoSprite.init(TextureType.BARRICADE_ICON2);
         grid.place(testIsoSprite, 20, 50);
         this.getScene().attachChild(testIsoSprite);
         */
         FightBuildingRenderer fBR = new FightBuildingRenderer();
-        fBR.init(TextureType.TILE_FULL_RED);
+        SpriteSheet sp = new SpriteSheet(AnimatedTextureType.BARRICADES, true);
+        fBR.init(sp);
         fBR.setGrid(grid);
         grid.place(fBR, 20, 50);
         this.getScene().attachChild(fBR);
         this.getScene().registerTouchableShape(fBR);
+        
         //FIN TEST
         
         
