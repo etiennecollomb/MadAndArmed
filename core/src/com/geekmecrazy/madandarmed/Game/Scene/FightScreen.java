@@ -18,6 +18,7 @@ import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
 import com.geekmecrazy.madandarmed.Game.UI.UnitButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
+import com.geekmecrazy.madandarmed.IA.IsoMapState;
 import com.geekmecrazy.madandarmed.Renderer.FightBuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
@@ -207,8 +208,7 @@ public class FightScreen extends Screen implements IUpdatable {
         IsoGridRenderer gridRenderer = new IsoGridRenderer();
         gridRenderer.init(grid);
         this.getScene().attachChild(gridRenderer);
-        
-        
+                
         /** init UIs */
 		uiFinishGame = new UIFinishGame();
 		uiFinishGame.initUI();
@@ -230,8 +230,7 @@ public class FightScreen extends Screen implements IUpdatable {
                 //System.out.println("#### TOUCH BARRICADE BUTTON !!");
                 FightBuildingRenderer fBR = new FightBuildingRenderer();
                 SpriteSheet sp = new SpriteSheet(AnimatedTextureType.BARRICADES, true);
-                fBR.init(sp);
-                fBR.setGrid(grid);
+                fBR.init(sp, grid);
                 grid.place(fBR, 20, 50);
                 getScene().attachChild(fBR);
                 getScene().registerTouchableShape(fBR);

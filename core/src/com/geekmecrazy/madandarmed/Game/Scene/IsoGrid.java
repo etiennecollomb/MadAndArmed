@@ -1,7 +1,9 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
 import com.geekmecrazy.madandarmed.Entity.Entity;
+import com.geekmecrazy.madandarmed.Entity.IsoShape;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
+import com.geekmecrazy.madandarmed.IA.IsoMapState;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
 
 public class IsoGrid {
@@ -10,14 +12,24 @@ public class IsoGrid {
 
 	private float cellHeight;
 	
+	private int width;
+	private int height;
+	
 	private Scene scene;
 
 	private IsoGridRenderer isoGridRenderer;
+	
+	/** state of the grid */
+	private IsoMapState isoMapState;
 	
 	// ===========================================================
     // Constructors
     // ===========================================================
 
+	public IsoGrid(){
+		isoMapState = new IsoMapState();
+	}
+	
     // ===========================================================
     // Getter & Setter
     // ===========================================================
@@ -46,12 +58,36 @@ public class IsoGrid {
 		this.cellHeight = cellHeight;
 	}
 	
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
 	public Scene getScene() {
 		return scene;
 	}
 
 	public void setScene(Scene scene) {
 		this.scene = scene;
+	}
+	
+	public IsoMapState getIsoMapState() {
+		return isoMapState;
+	}
+
+	public void setIsoMapState(IsoMapState isoMapState) {
+		this.isoMapState = isoMapState;
 	}
 
 	// ===========================================================
@@ -77,9 +113,14 @@ public class IsoGrid {
         this.cellWidth = pCellWidth;
         this.cellHeight = pCellHeight;
         
+        this.setWidth((int)(pScene.getWidth() / pCellWidth));
+        this.setHeight((int)(pScene.getHeight() / pCellHeight));
+        
         this.scene = pScene;
         
         this.isoGridRenderer = null;
+        
+        this.isoMapState.init(this.getWidth(), this.getHeight());
 
     }
 
@@ -95,16 +136,19 @@ public class IsoGrid {
 		e.setPosition(posX, posY);
 	}
 	
-	/** from screen position (x,y) to screen position */
-	public void placeFromPosition(Entity e, float pX, float pY){
+	/** from screen position (x,y) to array position */
+	public void placeFromPosition(IsoShape e, float pX, float pY){
 		
 		int j = (int) (pY / (this.getCellHeight()/2f));
 		
 		pX = (j/2*2 != j)? pX+this.getCellWidth()/2f : pX;
 		int i = (int) (pX / this.getCellWidth());
 		
+		e.setGridPosX(i);
+		e.setGridPosY(j);
 		this.place(e, i, j);
 		
 	}
+
 	
 }

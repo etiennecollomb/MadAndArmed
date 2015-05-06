@@ -4,8 +4,10 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.IsoShape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
+import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
 import com.geekmecrazy.madandarmed.Game.Tween.SpriteTween;
+import com.geekmecrazy.madandarmed.IA.IsoMapState.Type;
 
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
@@ -43,11 +45,15 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
         if(this.getState() == IsoShapeState.FOCUSED){
             unfocus();
             unshine();
+            /**Put on gridMapState */
+            this.getGrid().getIsoMapState().add(Type.BARRICADE, this.getGridPosX(), this.getGridPosY());
         }
         else{
         	focus();
             shine(0.1f, 0.1f, 0.1f);
             isDark = true;
+            /**OFF of gridMapState */
+            this.getGrid().getIsoMapState().remove(this.getGridPosX(), this.getGridPosY());
         }
     }
 
@@ -93,14 +99,12 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 	// Methods
 	// ===========================================================
     
-    public void init(final SpriteSheet pSpriteSheet){
-        super.init(0, 0, pSpriteSheet.getFrameSize(0, 0), pSpriteSheet.getFrameSize(0, 0));
+    public void init(final SpriteSheet pSpriteSheet, final IsoGrid grid){
+        super.init(0, 0, pSpriteSheet.getFrameSize(0, 0), pSpriteSheet.getFrameSize(0, 0), grid);
 
         buildingSprite.init(pSpriteSheet, 0, 0);
         buildingSprite.setAlignment(Alignment.CENTER);
         this.attachChild(buildingSprite);
-        
-        
         
         isDark = false;
     }

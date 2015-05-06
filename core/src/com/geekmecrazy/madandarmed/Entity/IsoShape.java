@@ -16,6 +16,9 @@ public class IsoShape extends Shape {
     private float diffX;
     private float diffY;
     
+    private int gridPosX;
+	private int gridPosY;
+    
     /** associated to a IsoGrid */
     private IsoGrid grid;
     
@@ -25,8 +28,6 @@ public class IsoShape extends Shape {
 
     public IsoShape(){
     	super();
-    	
-    	this.state = IsoShapeState.UNFOCUSED;
     }
     
     // ===========================================================
@@ -49,16 +50,34 @@ public class IsoShape extends Shape {
 		this.grid = grid;
 	}
 	
+    public int getGridPosX() {
+		return gridPosX;
+	}
+
+	public void setGridPosX(int gridPosX) {
+		this.gridPosX = gridPosX;
+	}
+
+	public int getGridPosY() {
+		return gridPosY;
+	}
+
+	public void setGridPosY(int gridPosY) {
+		this.gridPosY = gridPosY;
+	}
+
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
 
+	@Override
 	public void onTouchDownEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){
 		//System.out.println("viewportWidth vaut "+GlobalManager.camera.viewportWidth+" et viewportHeight vaut "+GlobalManager.camera.viewportHeight);
         diffX = pTouchAreaLocalX - this.getX();
         diffY = pTouchAreaLocalY - this.getY();
 	};
 	
+	@Override
 	public void onPanEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){
 		
 		if(isFocused()){
@@ -102,10 +121,21 @@ public class IsoShape extends Shape {
     // Methods
     // ===========================================================
 
+	public void init(final float pX, final float pY, final float pWidth, final float pHeight, final IsoGrid grid){
+		super.init(pX, pY, pWidth, pHeight);
+		
+		gridPosX = 0;
+		gridPosY = 0;
+
+    	this.state = IsoShapeState.UNFOCUSED;
+    	
+    	this.setGrid(grid);
+	}
+	
     public boolean isFocused(){
         return this.getState() == IsoShapeState.FOCUSED;
     }
-    
-	public void setFocusState(){}
 
+    public void setFocusState(){}
+    
 }

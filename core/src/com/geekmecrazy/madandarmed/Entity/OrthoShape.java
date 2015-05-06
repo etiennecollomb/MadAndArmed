@@ -25,8 +25,6 @@ public class OrthoShape extends Shape {
 
     public OrthoShape(){
     	super();
-    	
-    	this.state = OrthoShapeState.UNFOCUSED;
     }
     
     // ===========================================================
@@ -100,11 +98,17 @@ public class OrthoShape extends Shape {
     // ===========================================================
     // Methods
     // ===========================================================
-
+	public void init(final float pX, final float pY, final float pWidth, final float pHeight){
+		super.init(pX, pY, pWidth, pHeight);
+		
+		this.state = OrthoShapeState.UNFOCUSED;
+	}
+	
     public boolean isFocused(){
         return this.getState() == OrthoShapeState.FOCUSED;
     }
     
-	public void setFocusState(){}
+    public void setFocusState(){}
+ 
 
 }
