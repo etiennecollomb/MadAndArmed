@@ -89,6 +89,15 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
                 .start(GlobalManager.getTweenManager());
 	};
 
+	@Override
+	public void afterOnPanEvent(){
+		if(this.getGrid().getIsoMapState().isOccupied(this.getGridPosX(), this.getGridPosY())){
+			this.buildingSprite.setCurrentFrame(2);
+		}
+		else{
+			this.buildingSprite.setCurrentFrame(0);
+		}
+	}
 
     @Override
     public void reset(){

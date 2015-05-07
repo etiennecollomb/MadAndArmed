@@ -82,6 +82,10 @@ public class IsoMapState {
 	public Type getType(final int pX, final int pY){
 		return positionMap[pX][pY];
 	}
+	
+	public boolean isOccupied(final int pX, final int pY){
+		return positionMap[pX][pY]!=Type.NONE;
+	}
 
 	
 	

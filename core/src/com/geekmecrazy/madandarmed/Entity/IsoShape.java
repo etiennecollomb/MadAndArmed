@@ -112,6 +112,8 @@ public class IsoShape extends Shape {
             else if(this.getY() + this.getHeight() > GlobalManager.camera.position.y + effectiveViewportHeight/2f){
                 GlobalManager.camera.position.y = this.getY() + this.getHeight() - effectiveViewportHeight/2f;
             }
+            
+            this.afterOnPanEvent();
         }
 		
 	};
@@ -137,5 +139,7 @@ public class IsoShape extends Shape {
     }
 
     public void setFocusState(){}
+    
+    public void afterOnPanEvent(){}
     
 }
