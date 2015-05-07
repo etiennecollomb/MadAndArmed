@@ -113,8 +113,8 @@ public class IsoGrid {
         this.cellWidth = pCellWidth;
         this.cellHeight = pCellHeight;
         
-        this.setWidth((int)(pScene.getWidth() / pCellWidth));
-        this.setHeight((int)(pScene.getHeight() / pCellHeight));
+        this.setWidth((int)(pScene.getWidth() / (pCellWidth) ));
+        this.setHeight((int)(pScene.getHeight() / (pCellHeight/2f) ));
         
         this.scene = pScene;
         
