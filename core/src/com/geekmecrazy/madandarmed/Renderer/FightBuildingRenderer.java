@@ -89,14 +89,50 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
                 .start(GlobalManager.getTweenManager());
 	};
 
+	/** Set Barricade Frame regarding state of cell */
 	@Override
 	public void afterOnPanEvent(){
-		if(this.getGrid().getIsoMapState().isOccupied(this.getGridPosX(), this.getGridPosY())){
-			this.buildingSprite.setCurrentFrame(2);
+		
+		if( this.getGrid().getIsoMapState().isLeftOccupied(this.getGridPosX(), this.getGridPosY())
+				&& this.getGrid().getIsoMapState().isDownOccupied(this.getGridPosX(), this.getGridPosY()) ){
+			this.buildingSprite.setCurrentFrame(4);
+			
+		}else if( this.getGrid().getIsoMapState().isLeftOccupied(this.getGridPosX(), this.getGridPosY())
+				&& this.getGrid().getIsoMapState().isUpOccupied(this.getGridPosX(), this.getGridPosY()) ){
+			this.buildingSprite.setCurrentFrame(5);
+			
+		}else if( this.getGrid().getIsoMapState().isUpOccupied(this.getGridPosX(), this.getGridPosY())
+				&& this.getGrid().getIsoMapState().isRightOccupied(this.getGridPosX(), this.getGridPosY()) ){
+			this.buildingSprite.setCurrentFrame(6);
+			
+		}else if( this.getGrid().getIsoMapState().isRightOccupied(this.getGridPosX(), this.getGridPosY())
+				&& this.getGrid().getIsoMapState().isDownOccupied(this.getGridPosX(), this.getGridPosY()) ){
+			this.buildingSprite.setCurrentFrame(7);
+			
+		}else if( this.getGrid().getIsoMapState().isUpOccupied(this.getGridPosX(), this.getGridPosY())
+				&& this.getGrid().getIsoMapState().isDownOccupied(this.getGridPosX(), this.getGridPosY()) ){
+			this.buildingSprite.setCurrentFrame(8);
+			
+		}else if( this.getGrid().getIsoMapState().isLeftOccupied(this.getGridPosX(), this.getGridPosY())
+				&& this.getGrid().getIsoMapState().isRightOccupied(this.getGridPosX(), this.getGridPosY()) ){
+			this.buildingSprite.setCurrentFrame(9);
 		}
+		
+		else if(this.getGrid().getIsoMapState().isLeftOccupied(this.getGridPosX(), this.getGridPosY())){
+			this.buildingSprite.setCurrentFrame(0);
+		}else if(this.getGrid().getIsoMapState().isUpOccupied(this.getGridPosX(), this.getGridPosY())){
+			this.buildingSprite.setCurrentFrame(1);
+		}else if(this.getGrid().getIsoMapState().isRightOccupied(this.getGridPosX(), this.getGridPosY())){
+			this.buildingSprite.setCurrentFrame(2);
+		}else if(this.getGrid().getIsoMapState().isDownOccupied(this.getGridPosX(), this.getGridPosY())){
+			this.buildingSprite.setCurrentFrame(3);
+		}
+		
+		
 		else{
 			this.buildingSprite.setCurrentFrame(0);
 		}
+
 	}
 
     @Override

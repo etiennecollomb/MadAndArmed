@@ -88,16 +88,16 @@ public class IsoMapState {
 	}
 	
 	public boolean isUpOccupied(final int pX, final int pY){
-		return isOccupied(pX, pY+1);
+		return isOccupied(pX+1, pY+1);
 	}
 	public boolean isDownOccupied(final int pX, final int pY){
-		return isOccupied(pX-1, pY-1);
+		return isOccupied(pX, pY-1);
 	}
 	public boolean isLeftOccupied(final int pX, final int pY){
-		return isOccupied(pX-1, pY+1);
+		return isOccupied(pX, pY+1);
 	}
 	public boolean isRightOccupied(final int pX, final int pY){
-		return isOccupied(pX, pY-1);
+		return isOccupied(pX+1, pY-1);
 	}
 
 	
