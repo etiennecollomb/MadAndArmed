@@ -98,7 +98,7 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 			this.buildingSprite.setCurrentFrame(0);
 		}
 	}
-
+	
     @Override
     public void reset(){
     	buildingSprite.reset();
