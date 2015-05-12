@@ -99,10 +99,14 @@ public class IsoShape extends Shape {
 		
 		if(isFocused()){
 			
+			/** pour etre visible et non sous le doigt */
+			float decallageX = -200;
+			float decallageY = 200;
+			
             float effectiveViewportWidth = GlobalManager.camera.viewportWidth * GlobalManager.camera.zoom;
             float effectiveViewportHeight = GlobalManager.camera.viewportHeight * GlobalManager.camera.zoom;
 
-            this.grid.placeFromPosition(this, pTouchAreaLocalX-diffX, pTouchAreaLocalY-diffY);
+            this.grid.placeFromPosition(this, pTouchAreaLocalX-diffX + decallageX, pTouchAreaLocalY-diffY + decallageY);
             
             if(this.getX() < 0){
                 this.setPosition(0,this.getY());
