@@ -1,5 +1,7 @@
 package com.geekmecrazy.madandarmed.IA;
 
+import com.geekmecrazy.madandarmed.Entity.IsoShape;
+
 public class IsoMapState {
 
 	public static enum Type{
@@ -15,7 +17,7 @@ public class IsoMapState {
 	/** Iso map state save in ortho array
 	 * Une ligne sur deux est decallee d'une case
 	 */
-	public Type[][] positionMap;
+	public IsoShape[][] positionMap;
 
 	
 	// ===========================================================
@@ -26,11 +28,11 @@ public class IsoMapState {
     // Getter & Setter
     // ===========================================================
 	
-	public Type[][] getPositionMap() {
+	public IsoShape[][] getPositionMap() {
 		return positionMap;
 	}
 
-	public void setPositionMap(Type[][] positionMap) {
+	public void setPositionMap(IsoShape[][] positionMap) {
 		this.positionMap = positionMap;
 	}
 
@@ -63,28 +65,31 @@ public class IsoMapState {
 		this.setWidth(pWidth);
 		this.setHeight(pHeight);
 		
-		positionMap = new Type[pWidth][pHeight];
+		positionMap = new IsoShape[pWidth][pHeight];
 		
 		for(int i=0; i<pWidth ; i++)
 			for(int j=0; j<pHeight ; j++)
-				positionMap[i][j] = Type.NONE;
-		
+				positionMap[i][j] = null;
 	}
 	
-	public void add(final Type pType, final int pX, final int pY){
-		positionMap[pX][pY] = pType;
+	public void add(final IsoShape pIsoShape, final int pX, final int pY){
+		positionMap[pX][pY] = pIsoShape;
 	}
 	
 	public void remove(final int pX, final int pY){
-		positionMap[pX][pY] = Type.NONE;
+		positionMap[pX][pY] = null;
 	}
 	
 	public Type getType(final int pX, final int pY){
+		return positionMap[pX][pY].getType();
+	}
+	
+	public IsoShape getIsoShape(final int pX, final int pY){
 		return positionMap[pX][pY];
 	}
 	
 	public boolean isOccupied(final int pX, final int pY){
-		return positionMap[pX][pY]!=Type.NONE;
+		return positionMap[pX][pY]!=null;
 	}
 	
 	public boolean isUpOccupied(final int pX, final int pY){

@@ -19,6 +19,7 @@ import com.geekmecrazy.madandarmed.Game.UI.UnitButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
 import com.geekmecrazy.madandarmed.IA.IsoMapState;
+import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.Renderer.FightBuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
@@ -228,7 +229,7 @@ public class FightScreen extends Screen implements IUpdatable {
             @Override
             public void execute(){
                 //System.out.println("#### TOUCH BARRICADE BUTTON !!");
-                FightBuildingRenderer fBR = new FightBuildingRenderer();
+                BarricadeRenderer fBR = new BarricadeRenderer();
                 SpriteSheet sp = new SpriteSheet(AnimatedTextureType.BARRICADES, true);
                 fBR.init(sp, grid);
                 grid.place(fBR, 20, 50);

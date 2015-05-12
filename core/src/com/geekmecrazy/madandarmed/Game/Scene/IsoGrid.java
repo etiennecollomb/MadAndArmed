@@ -125,13 +125,16 @@ public class IsoGrid {
     }
 
 	/** from array (i,j) to screen position */
-	public void place(Entity e, int i, int j){
+	public void place(IsoShape e, int i, int j){
 		
 		float posX = (j/2*2 == j)? this.getCellWidth()/2f : 0;
 		float posY = 0;
 		
 		posX = posX + i*this.getCellWidth();
 		posY = posY + j*this.getCellHeight()/2f;
+		
+		e.setGridPosX(i);
+		e.setGridPosY(j);
 		
 		e.setPosition(posX, posY);
 	}
@@ -143,11 +146,19 @@ public class IsoGrid {
 		
 		pX = (j/2*2 != j)? pX+this.getCellWidth()/2f : pX;
 		int i = (int) (pX / this.getCellWidth());
-		
-		e.setGridPosX(i);
-		e.setGridPosY(j);
+
 		this.place(e, i, j);
 		
+	}
+	
+	public int convertToGridPositionX(float pX, float pY){
+		int j = (int) (pY / (this.getCellHeight()/2f));
+		pX = (j/2*2 != j)? pX+this.getCellWidth()/2f : pX;
+		return (int) (pX / this.getCellWidth());
+	}
+	
+	public int convertToGridPositionY(float pY){
+		return (int) (pY / (this.getCellHeight()/2f));
 	}
 
 	

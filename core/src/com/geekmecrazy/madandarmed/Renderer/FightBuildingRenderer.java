@@ -7,8 +7,6 @@ import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
 import com.geekmecrazy.madandarmed.Game.Tween.SpriteTween;
-import com.geekmecrazy.madandarmed.IA.IsoMapState.Type;
-
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
@@ -17,8 +15,8 @@ import aurelienribon.tweenengine.TweenCallback;
 public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 
     private AnimatedSprite buildingSprite;
-    
-    private boolean isDark;
+
+	private boolean isDark;
 
 	// ===========================================================
 	// Constructors
@@ -35,6 +33,14 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
+    
+    public AnimatedSprite getBuildingSprite() {
+		return buildingSprite;
+	}
+
+	public void setBuildingSprite(AnimatedSprite buildingSprite) {
+		this.buildingSprite = buildingSprite;
+	}
 
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
@@ -46,7 +52,7 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
             unfocus();
             unshine();
             /**Put on gridMapState */
-            this.getGrid().getIsoMapState().add(Type.BARRICADE, this.getGridPosX(), this.getGridPosY());
+            this.getGrid().getIsoMapState().add(this, this.getGridPosX(), this.getGridPosY());
         }
         else{
         	focus();
@@ -89,52 +95,6 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
                 .start(GlobalManager.getTweenManager());
 	};
 
-	/** Set Barricade Frame regarding state of cell */
-	@Override
-	public void afterOnPanEvent(){
-		
-		if( this.getGrid().getIsoMapState().isLeftOccupied(this.getGridPosX(), this.getGridPosY())
-				&& this.getGrid().getIsoMapState().isDownOccupied(this.getGridPosX(), this.getGridPosY()) ){
-			this.buildingSprite.setCurrentFrame(4);
-			
-		}else if( this.getGrid().getIsoMapState().isLeftOccupied(this.getGridPosX(), this.getGridPosY())
-				&& this.getGrid().getIsoMapState().isUpOccupied(this.getGridPosX(), this.getGridPosY()) ){
-			this.buildingSprite.setCurrentFrame(5);
-			
-		}else if( this.getGrid().getIsoMapState().isUpOccupied(this.getGridPosX(), this.getGridPosY())
-				&& this.getGrid().getIsoMapState().isRightOccupied(this.getGridPosX(), this.getGridPosY()) ){
-			this.buildingSprite.setCurrentFrame(6);
-			
-		}else if( this.getGrid().getIsoMapState().isRightOccupied(this.getGridPosX(), this.getGridPosY())
-				&& this.getGrid().getIsoMapState().isDownOccupied(this.getGridPosX(), this.getGridPosY()) ){
-			this.buildingSprite.setCurrentFrame(7);
-			
-		}else if( this.getGrid().getIsoMapState().isUpOccupied(this.getGridPosX(), this.getGridPosY())
-				&& this.getGrid().getIsoMapState().isDownOccupied(this.getGridPosX(), this.getGridPosY()) ){
-			this.buildingSprite.setCurrentFrame(8);
-			
-		}else if( this.getGrid().getIsoMapState().isLeftOccupied(this.getGridPosX(), this.getGridPosY())
-				&& this.getGrid().getIsoMapState().isRightOccupied(this.getGridPosX(), this.getGridPosY()) ){
-			this.buildingSprite.setCurrentFrame(9);
-		}
-		
-		else if(this.getGrid().getIsoMapState().isLeftOccupied(this.getGridPosX(), this.getGridPosY())){
-			this.buildingSprite.setCurrentFrame(0);
-		}else if(this.getGrid().getIsoMapState().isUpOccupied(this.getGridPosX(), this.getGridPosY())){
-			this.buildingSprite.setCurrentFrame(1);
-		}else if(this.getGrid().getIsoMapState().isRightOccupied(this.getGridPosX(), this.getGridPosY())){
-			this.buildingSprite.setCurrentFrame(2);
-		}else if(this.getGrid().getIsoMapState().isDownOccupied(this.getGridPosX(), this.getGridPosY())){
-			this.buildingSprite.setCurrentFrame(3);
-		}
-		
-		
-		else{
-			this.buildingSprite.setCurrentFrame(0);
-		}
-
-	}
-	
     @Override
     public void reset(){
     	buildingSprite.reset();

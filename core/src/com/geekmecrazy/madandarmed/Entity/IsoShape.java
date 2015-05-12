@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Entity;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
+import com.geekmecrazy.madandarmed.IA.IsoMapState.Type;
 
 public class IsoShape extends Shape {
 	
@@ -10,8 +11,10 @@ public class IsoShape extends Shape {
         FOCUSED,
         UNFOCUSED
     }
-
+    
     private IsoShapeState state;
+    
+    private Type type;
     
     private float diffX;
     private float diffY;
@@ -66,10 +69,24 @@ public class IsoShape extends Shape {
 		this.gridPosY = gridPosY;
 	}
 
+    public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
-
+	
+	@Override
+	public boolean contains(final float pX, final float pY){
+		/** touch bound */
+		return ( (this.grid.convertToGridPositionX(pX, pY) == gridPosX) && (this.grid.convertToGridPositionY(pY) == gridPosY) ) ;
+	}
+	
 	@Override
 	public void onTouchDownEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){
 		//System.out.println("viewportWidth vaut "+GlobalManager.camera.viewportWidth+" et viewportHeight vaut "+GlobalManager.camera.viewportHeight);
