@@ -74,6 +74,12 @@ public class GlobalManager {
      */
     public static int MAX_TEXTURE_WIDTH;
     public static int MAX_TEXTURE_HEIGHT;
+    
+    private static VirtualViewport vvp;
+
+    private static TweenManager tweenManager;
+
+    public static boolean moveable;
 
 
     // ===========================================================
@@ -116,12 +122,6 @@ public class GlobalManager {
     // Singleton manager
     // ===========================================================
     private static GlobalManager globalManager;
-
-    private static VirtualViewport vvp;
-
-    private static TweenManager tweenManager;
-
-    public static boolean moveable;
 
     /** Disable object's instantiation (private constructor) */
     private GlobalManager(){

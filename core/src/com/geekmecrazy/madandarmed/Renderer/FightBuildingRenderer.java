@@ -51,15 +51,11 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
         if(this.getState() == IsoShapeState.FOCUSED){
             unfocus();
             unshine();
-            /**Put on gridMapState */
-            this.getGrid().getIsoMapState().add(this, this.getGridPosX(), this.getGridPosY());
         }
         else{
         	focus();
             shine(0.1f, 0.1f, 0.1f);
             isDark = true;
-            /**OFF of gridMapState */
-            this.getGrid().getIsoMapState().remove(this.getGridPosX(), this.getGridPosY());
         }
     }
 

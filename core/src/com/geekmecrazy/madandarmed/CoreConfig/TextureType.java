@@ -109,7 +109,7 @@ public enum TextureType{
 	ISOGRID       			("game/IsometricGrid.png", 1024, 1024),
 	
 	BARRICADE_ICON 			("game/BarricadeIcon.png", 1f, 1f),
-	BARRICADE_ICON2 			("game/BarricadeIcon.png", 128, 128),
+	BARRICADE_ICON2 		("game/BarricadeIcon.png", 128, 128),
 	
 	;
 

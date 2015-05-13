@@ -207,7 +207,7 @@ public enum AnimatedTextureType {
 
     
     //BARRICADE
-    BARRICADES				("game/barricade_tiles.png", 512, 384, 4, 3, 128);
+    BARRICADES				("game/barricade_tiles.png", 512, 512, 4, 4, 128);
 
 	;
 

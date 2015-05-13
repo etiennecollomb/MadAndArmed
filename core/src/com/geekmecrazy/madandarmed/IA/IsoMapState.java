@@ -73,11 +73,13 @@ public class IsoMapState {
 	}
 	
 	public void add(final IsoShape pIsoShape, final int pX, final int pY){
-		positionMap[pX][pY] = pIsoShape;
+		if( !isOccupied(pX, pY))
+			positionMap[pX][pY] = pIsoShape;
 	}
 	
-	public void remove(final int pX, final int pY){
-		positionMap[pX][pY] = null;
+	public void remove(final IsoShape pIsoShape, final int pX, final int pY){
+		if(pIsoShape == positionMap[pX][pY])
+			positionMap[pX][pY] = null;
 	}
 	
 	public Type getType(final int pX, final int pY){

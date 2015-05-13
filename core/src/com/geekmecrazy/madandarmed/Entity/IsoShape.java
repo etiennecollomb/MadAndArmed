@@ -106,7 +106,12 @@ public class IsoShape extends Shape {
             float effectiveViewportWidth = GlobalManager.camera.viewportWidth * GlobalManager.camera.zoom;
             float effectiveViewportHeight = GlobalManager.camera.viewportHeight * GlobalManager.camera.zoom;
 
+            /**OFF of gridMapState */
+            this.getGrid().getIsoMapState().remove(this, this.getGridPosX(), this.getGridPosY());
+            /** New Position */
             this.grid.placeFromPosition(this, pTouchAreaLocalX-diffX + decallageX, pTouchAreaLocalY-diffY + decallageY);
+            /**Put on gridMapState */
+            this.getGrid().getIsoMapState().add(this, this.getGridPosX(), this.getGridPosY());
             
             if(this.getX() < 0){
                 this.setPosition(0,this.getY());
