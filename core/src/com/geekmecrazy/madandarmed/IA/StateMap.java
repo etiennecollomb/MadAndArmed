@@ -71,7 +71,7 @@ public class StateMap {
         nextZoneAPositionMap.init();
 		currentCreepZoneAPositionMap = new Vehicle[mapWidthInSmallNodes][mapHeightInSmallNodes];
 		nextCreepZoneAPositionMap = new Vehicle[mapWidthInSmallNodes][mapHeightInSmallNodes];
-		zoneBPositionMap = new int[mapWidthInBigNodes][mapHeightInBigNodes];
+		zoneBPositionMap = new int[mapWidthInSmallNodes][mapHeightInSmallNodes];
 
 		//AIR
 		currentCreepAirPositionMap = new Vehicle[mapWidthInSmallNodes][mapHeightInSmallNodes];
@@ -142,10 +142,10 @@ public class StateMap {
 	public void addBuilding(Building building_){
 
 		int xmin_, ymin_,xmax_, ymax_;
-		xmin_ = building_.getBigNodeX()-building_.getBigNodeWidth()/2;
-		ymin_ = building_.getBigNodeY()-building_.getBigNodeHeight()/2;
-		xmax_ = xmin_ + building_.getBigNodeWidth();
-		ymax_ = ymin_ + building_.getBigNodeHeight();
+		xmin_ = building_.getSmallNodeX()-building_.getSmallNodeWidth()/2;
+		ymin_ = building_.getSmallNodeY()-building_.getSmallNodeHeight()/2;
+		xmax_ = xmin_ + building_.getSmallNodeWidth();
+		ymax_ = ymin_ + building_.getSmallNodeHeight();
 
 		//TODO: les buildings ne doivent jamais etre en dehors de la map
 		for(int i=xmin_; i<xmax_; i++)
@@ -158,10 +158,10 @@ public class StateMap {
 	public void removeBuilding(Building building_){
 
 		int xmin_, ymin_,xmax_, ymax_;
-		xmin_ = building_.getBigNodeX()-building_.getBigNodeWidth()/2;
-		ymin_ = building_.getBigNodeY()-building_.getBigNodeHeight()/2;
-		xmax_ = xmin_ + building_.getBigNodeWidth();
-		ymax_ = ymin_ + building_.getBigNodeHeight();
+		xmin_ = building_.getBigNodeX()-building_.getSmallNodeWidth()/2;
+		ymin_ = building_.getBigNodeY()-building_.getSmallNodeHeight()/2;
+		xmax_ = xmin_ + building_.getSmallNodeWidth();
+		ymax_ = ymin_ + building_.getSmallNodeHeight();
 
         //TODO: les buildings ne doivent jamais etre en dehors de la map
 		for(int i=xmin_; i<xmax_; i++)

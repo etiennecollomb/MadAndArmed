@@ -4,9 +4,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
-import com.geekmecrazy.madandarmed.Game.Scene.CreepManager;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
-import com.geekmecrazy.madandarmed.Input.MyGestureListener;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 
 

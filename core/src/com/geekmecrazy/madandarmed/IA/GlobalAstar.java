@@ -307,13 +307,10 @@ public class GlobalAstar {
 		int neihborSmallNode_X= smallNode_X+decallage_X;
 		int neihborSmallNode_Y= smallNode_Y+decallage_Y;
 
-        int neihborBigNode_X= neihborSmallNode_X/3;
-        int neihborBigNode_Y= neihborSmallNode_Y/3;
-
 		if(!isSmallBoderWall(neihborSmallNode_X, neihborSmallNode_Y)
                 &&
                 ( ! vehicle.getMyTeam().getStateMap().getCurrentZoneAPositionMap().isUsed(neihborSmallNode_X, neihborSmallNode_Y)
-                    && vehicle.getMyTeam().getStateMap().getZoneBPositionMap()[neihborBigNode_X][neihborBigNode_Y]==0 )
+                    && vehicle.getMyTeam().getStateMap().getZoneBPositionMap()[neihborSmallNode_X][neihborSmallNode_Y]<=0 )
                 )
 
 			return true;

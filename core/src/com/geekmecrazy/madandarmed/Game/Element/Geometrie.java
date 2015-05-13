@@ -25,9 +25,9 @@ public class Geometrie extends GameElement {
     private float mWidth;
     private float mHeight;
     
-    /** Taille Big Node */
-    private int mBigNodeWidth;
-    private int mBigNodeHeight;
+    /** Taille Small Node */
+    private int mSmallNodeWidth;
+    private int mSmallNodeHeight;
     
     /** Non penetration constrainte */
     private boolean isNPC; //est ce que la geometrie est sujette a la Non Penetration Constraint (forcer un creep a aller a un point par exemple...)
@@ -58,12 +58,12 @@ public class Geometrie extends GameElement {
 		return mPos;
 	}
 
-	public int getBigNodeWidth() {
-		return mBigNodeWidth;
+	public int getSmallNodeWidth() {
+		return mSmallNodeWidth;
 	}
 
-	public int getBigNodeHeight() {
-		return mBigNodeHeight;
+	public int getSmallNodeHeight() {
+		return mSmallNodeHeight;
 	}
 
     public int getSmallNodeX() {
@@ -129,8 +129,8 @@ public class Geometrie extends GameElement {
 		this.setPos(pPosX, pPosY);
 		this.mWidth = pWidth;
 		this.mHeight = pHeight;
-		this.mBigNodeWidth=(int)(this.mWidth/GlobalManager.BIG_NODESIZE);
-		this.mBigNodeHeight=(int)(this.mHeight/GlobalManager.BIG_NODESIZE);
+		this.mSmallNodeWidth=(int)(this.mWidth/GlobalManager.SMALL_NODESIZE);
+		this.mSmallNodeHeight=(int)(this.mHeight/GlobalManager.SMALL_NODESIZE);
 		this.mNormalizedDir.set(1, 0);
 		this.setNormalizedDir(this.mNormalizedDir);
 		setNPC(true);
