@@ -49,6 +49,8 @@ public class Turret extends Building {
 			directionVector.add(this.getAttackBehavior().getCurrentTarget().getPos());
 			setNormalizedDir(directionVector);
 		}
+		
+		this.getAttackBehavior().calculateMilitarySpace(this);
 
 	}
 	

@@ -140,8 +140,8 @@ public class FightScreen extends Screen implements IUpdatable {
         BuildingManager.getManager().recycleBuilding();
 
         /******** FINALISATION DU TOUR ********/
-        this.getTeamPlayer().calculateMilitarySpace();
-        this.getTeamIA().calculateMilitarySpace();
+//        this.getTeamPlayer().calculateMilitarySpace();
+//        this.getTeamIA().calculateMilitarySpace();
 
         this.getTeamPlayer().getStateMap().swap();
         this.getTeamIA().getStateMap().swap();

@@ -126,6 +126,8 @@ public class Military extends Geometrie {
 			if(attackBehavior!=null) attackBehavior.calculate(this);
 		}
 		
+		
+		
 	}
 
 	public void hit(float getDmgEffect, AnimatedTextureType hitAnimatedType){

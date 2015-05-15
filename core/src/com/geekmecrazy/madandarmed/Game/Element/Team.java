@@ -155,16 +155,9 @@ public class Team extends GameElement {
 		currentNbMilitary--;
 	}
 	
-	public void calculateMilitarySpace(){
-		/*for(int i=0; i<counterMilitaryRecycle; i++){
-			listMilitary.remove(listMilitaryRecycle[i]);
-			currentNbMilitary--;
-		}
-		*/
-		//counterMilitaryRecycle=0;
-		
-		for(int i=0; i<currentNbMilitary; i++)listMilitary.get(i).getAttackBehavior().calculateMilitarySpace(listMilitary.get(i));
-	}
+//	public void calculateMilitarySpace(){
+//		for(int i=0; i<currentNbMilitary; i++)listMilitary.get(i).getAttackBehavior().calculateMilitarySpace(listMilitary.get(i));
+//	}
 
 	// Check si (x_,y_) a un voisin dans cette team - Coord (x_,y_) en smallNode
 	public Military getNearestMilitary(int x_, int y_){
