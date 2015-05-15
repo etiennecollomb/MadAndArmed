@@ -2,7 +2,6 @@ package com.geekmecrazy.madandarmed.Game.Element;
 
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
-import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Renderer.MilitaryRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 

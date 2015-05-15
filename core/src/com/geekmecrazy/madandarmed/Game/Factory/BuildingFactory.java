@@ -5,6 +5,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Game.Scene.BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
@@ -34,25 +35,25 @@ public class BuildingFactory{
 		BuildingRenderer buildingRenderer = PoolAnimManager.getManager().getBuildingRendererPool().obtain();
 		
 		// BUILDING
-		Building building = PoolManager.getManager().getBuildingPool().obtain();
-		building.init(posX, posY, buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE,  buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), buildingRenderer);
+		Turret turret = PoolManager.getManager().getTurretPool().obtain();
+		turret.init(posX, posY, buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE,  buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), buildingRenderer);
 
         if(buildingPattern.getBuildingID()==BuildingID.CASTLE_TEAM1
                 || buildingPattern.getBuildingID()==BuildingID.CASTLE_TEAM2)
-            team.registerCastle(building);
+            team.registerCastle(turret);
 		
 		// ATTACK
 		if(buildingPattern.getWeaponPattern()!=null){
 			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
 			attackBehavior.init(buildingPattern.getWeaponPattern());
 			attackBehavior.setAttacking(true);
-			building.setAttackBehavior(attackBehavior);
+			turret.setAttackBehavior(attackBehavior);
 			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
 			attackBehavior.setAttaque(attaque);
 		}
 		
 		//building.addDestructibleObs(this);
-		BuildingManager.getManager().addBuilding(building);
+		BuildingManager.getManager().addBuilding(turret);
 	}
 
 	public static void destroy(Building building) {

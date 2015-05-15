@@ -1,27 +1,19 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
-import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
-import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Factory.BuildingFactory;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
-import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Renderer.BuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
-import com.geekmecrazy.madandarmed.Utils.Vector2d;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 
 public class Building extends Military{
 
 	private BuildingPattern pattern;
-
-	private Sprite floor;
 	
 	private LifeBarRenderer lifeBarreRenderer;
-
-	private Vector2d moveVector = new Vector2d();
 	
     // ===========================================================
     // Constructors
@@ -39,20 +31,6 @@ public class Building extends Military{
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
-	
-	@Override
-	public void onUpdateNextState(){
-
-		super.onUpdateNextState();
-
-		if(this.getAttackBehavior().isAttacking()){
-			//En mode attaque, on pointe sur la target
-			moveVector.set(-this.getPos().getX(), -this.getPos().getY());
-			moveVector.add(this.getAttackBehavior().getCurrentTarget().getPos());
-			setNormalizedDir(moveVector);
-		}
-
-	}
 
 	@Override
 	public void reset() {
@@ -83,13 +61,6 @@ public class Building extends Military{
 		super.init(posX, posY, width, height, life, myTeam, ennemyTeam);
 
 		this.pattern=buildingPattern;
-		
-		float floorPosX = this.getPos().getX();
-		float floorPosY = this.getPos().getY();
-		floor = new Sprite();
-		floor.init(TextureType.SOL_SOUS_BUILDING);
-		floor.setPosition(floorPosX, floorPosY+20);
-		FightScreen.getManager().getScene().attachChild(floor);
 
 		this.militaryRenderer=animatedMilitary;
 		((BuildingRenderer)this.militaryRenderer).init(PoolAnimManager.getManager().getSpriteSheets().get(buildingPattern.getAnimatedTextureType()), buildingPattern, this);

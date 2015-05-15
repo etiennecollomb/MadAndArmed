@@ -5,6 +5,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Missile;
+import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.IA.AirMoveBehavior;
 import com.geekmecrazy.madandarmed.IA.AirPathFinding;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
@@ -15,18 +16,17 @@ import com.badlogic.gdx.utils.Pool;
 
 public class PoolManager {
 
-	private static final int STARTING_ALLOCATE_ATTAQUE 				= 100;
-	private static final int STARTING_ALLOCATE_CREEP 				= 100;
-	private static final int STARTING_ALLOCATE_WEAPON 				= 100;
-	private static final int STARTING_ALLOCATE_MISSILE 				= 100;
-	private static final int STARTING_ALLOCATE_LIFE 				= 100;
-	private static final int STARTING_ALLOCATE_BUILDING 			= 20;
-	private static final int STARTING_ALLOCATE_GROUNDPATHFINDING 	= 100;
-	private static final int STARTING_ALLOCATE_AIRPATHFINDING 		= 100;
-	private static final int STARTING_ALLOCATE_GROUNDBEHAVIOR 		= 100;
-	private static final int STARTING_ALLOCATE_ATTACKBEHAVIOR 		= 100;
-	private static final int STARTING_ALLOCATE_AIRBEHAVIOR 			= 100;
-	private static final int STARTING_ALLOCATE_ASTARMAPZONE			= 100;
+	private static final int STARTING_ALLOCATE_ATTAQUE 				= 20;
+	private static final int STARTING_ALLOCATE_CREEP 				= 20;
+	private static final int STARTING_ALLOCATE_WEAPON 				= 20;
+	private static final int STARTING_ALLOCATE_MISSILE 				= 20;
+	private static final int STARTING_ALLOCATE_LIFE 				= 20;
+	private static final int STARTING_ALLOCATE_BUILDING 			= 10;
+	private static final int STARTING_ALLOCATE_GROUNDPATHFINDING 	= 20;
+	private static final int STARTING_ALLOCATE_AIRPATHFINDING 		= 20;
+	private static final int STARTING_ALLOCATE_GROUNDBEHAVIOR 		= 20;
+	private static final int STARTING_ALLOCATE_ATTACKBEHAVIOR 		= 20;
+	private static final int STARTING_ALLOCATE_AIRBEHAVIOR 			= 20;
 	
 	/** Pools */
 	private Pool<Attaque> attaquePool;
@@ -34,7 +34,7 @@ public class PoolManager {
 	private Pool<WeaponPattern> weaponPool;
 	private Pool<Missile> missilePool;
 	private Pool<Life> lifePool;
-	private Pool<Building> buildingPool;
+	private Pool<Turret> turretPool;
 	private Pool<GroundPathFinding> groundPathFinding;
 	private Pool<AirPathFinding> airPathFindingPool;
 	private Pool<AttackBehavior> attackBehaviorPool;
@@ -82,8 +82,8 @@ public class PoolManager {
 		return lifePool;
 	}
 
-	public Pool<Building> getBuildingPool() {
-		return buildingPool;
+	public Pool<Turret> getTurretPool() {
+		return turretPool;
 	}
 
 	public Pool<GroundPathFinding> getGroundPathFinding() {
@@ -197,11 +197,11 @@ public class PoolManager {
 			 }
 		};
 
-		buildingPool = new Pool<Building>(STARTING_ALLOCATE_BUILDING){
+		turretPool = new Pool<Turret>(STARTING_ALLOCATE_BUILDING){
 			@Override
-			protected Building newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + Building.class.getName());
-				return new Building();
+			protected Turret newObject() {
+                System.out.println("#__ POOL __# allocate new Object : " + Turret.class.getName());
+				return new Turret();
 			 }
 		};
 

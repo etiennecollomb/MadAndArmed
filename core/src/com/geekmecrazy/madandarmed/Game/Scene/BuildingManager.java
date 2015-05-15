@@ -10,6 +10,7 @@ import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Game.Factory.BuildingFactory;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.LevelBuildingPattern;
@@ -125,7 +126,7 @@ public class BuildingManager {
 			*/
 			listBuildings.remove(building);
 			//building.recycle();
-			PoolManager.getManager().getBuildingPool().free(building); //appel ensuite creep.reset()
+			PoolManager.getManager().getTurretPool().free((Turret)building); //appel ensuite creep.reset()
 		}
 		listBuildingsRecycle.clear();
 
