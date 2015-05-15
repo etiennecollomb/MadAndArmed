@@ -1,7 +1,6 @@
 package com.geekmecrazy.madandarmed.Entity;
 
 import com.geekmecrazy.madandarmed.Utils.ZIndexComparator;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool.Poolable;
 
@@ -392,7 +391,7 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
 
         int size = this.getChildren().size;
         for(int i=0; i<size; i++)
-            this.detachChild(this.getChildren().get(i));
+            this.detachChild(this.getChildren().get(0));
 
         this.getChildren().clear();
     }

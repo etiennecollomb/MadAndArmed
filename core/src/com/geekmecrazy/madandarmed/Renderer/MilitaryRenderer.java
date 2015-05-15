@@ -4,6 +4,8 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Military;
+import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.badlogic.gdx.utils.Array;
@@ -86,12 +88,13 @@ public class MilitaryRenderer extends MultiActionRenderer {
 	
 	@Override
 	public void onDraw(){
+
 		if(this.isVisible()) {
 			super.onDraw();
-	
-			if(!this.getMilitary().isAlive()) onDrawDead();
 			this.onDrawHit();
 		}
+		
+		if(!this.getMilitary().isAlive()) onDrawDead();
 	}
 
 	// ===========================================================

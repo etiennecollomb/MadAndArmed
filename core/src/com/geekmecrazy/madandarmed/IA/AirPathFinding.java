@@ -18,7 +18,7 @@ public class AirPathFinding extends PathFinding {
 	/****************************/
 	public void calculate(Vehicle v) {
 
-		tempPosition.set(v.getCurrentTarget().getPos());
+		tempPosition.set(v.getAttackBehavior().getCurrentTarget().getPos());
 		tempPosition.sub(v.getPos());
 		tempPosition.normalize();
 		tempPosition.scale(vitesse);

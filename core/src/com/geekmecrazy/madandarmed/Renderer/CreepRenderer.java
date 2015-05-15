@@ -6,6 +6,7 @@ import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
+import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 
 
 public class CreepRenderer extends VehicleRenderer {
@@ -100,13 +101,13 @@ public class CreepRenderer extends VehicleRenderer {
                 this.setFireCurrentFrame(this.getFireCurrentFrame()+1);
                 if(this.getFireCurrentFrame() >= this.getCreepPattern().getFireAnimation().length)
                     this.setFireCurrentFrame(0);
-                this.setCurrentFrame(thisCreep.getGraphicDirection(), this.getCreepPattern().getFireAnimation()[getFireCurrentFrame()]);
+                this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisCreep.getNormalizedDir()), this.getCreepPattern().getFireAnimation()[getFireCurrentFrame()]);
 
             }else{
                 this.setWalkCurrentFrame(this.getWalkCurrentFrame()+1);
                 if(this.getWalkCurrentFrame() >= this.getCreepPattern().getWalkAnimation().length)
                     this.setWalkCurrentFrame(0);
-                this.setCurrentFrame(thisCreep.getGraphicDirection(), this.getCreepPattern().getWalkAnimation()[getWalkCurrentFrame()]);
+                this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisCreep.getNormalizedDir()), this.getCreepPattern().getWalkAnimation()[getWalkCurrentFrame()]);
 
             }
         }

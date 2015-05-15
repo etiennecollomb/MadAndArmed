@@ -11,7 +11,7 @@
 		<unitType>SOL</unitType>
 		<unitSize>SMALL</unitSize>
 		<price>20</price>
-		<lifePts>2500</lifePts>
+		<lifePts>100</lifePts>
 		<walkSpeed>2.5</walkSpeed>
 		<spriteUnit>GLADIATOR_HD_TEAM1</spriteUnit>
 		<spriteButton>GLADIATOR_ICON</spriteButton>
@@ -24,7 +24,7 @@
 		<spriteWeaponEffect>IMPACT_BULLET</spriteWeaponEffect>
 		<weaponType>CAC</weaponType>
 		<hitRange>50</hitRange>
-		<dmgEffect>3</dmgEffect>
+		<dmgEffect>30</dmgEffect>
 		<hitSpeed>10</hitSpeed>
 	</Model>
 	
@@ -33,7 +33,7 @@
 		<unitType>SOL</unitType>
 		<unitSize>SMALL</unitSize>
 		<price>40</price>
-		<lifePts>5000</lifePts>
+		<lifePts>200</lifePts>
 		<walkSpeed>2.5</walkSpeed>
 		<spriteUnit>MARINE_HD_TEAM1</spriteUnit>
 		<spriteButton>MARINE_SMALL_ICON</spriteButton>
@@ -46,7 +46,7 @@
 		<spriteWeaponEffect>IMPACT_BULLET</spriteWeaponEffect>
 		<weaponType>GUN</weaponType>
 		<hitRange>400</hitRange>
-		<dmgEffect>5</dmgEffect>
+		<dmgEffect>50</dmgEffect>
 		<hitSpeed>20</hitSpeed>
 	</Model>
 	
@@ -55,7 +55,7 @@
 		<unitType>SOL</unitType>
 		<unitSize>MEDIUM</unitSize>
 		<price>80</price>
-		<lifePts>100</lifePts>
+		<lifePts>500</lifePts>
 		<walkSpeed>1</walkSpeed>
 		<spriteUnit>MESH_HD_TEAM1</spriteUnit>
 		<spriteButton>MARINE_BIG_ICON</spriteButton>
@@ -68,7 +68,7 @@
 		<spriteWeaponEffect>IMPACT_BULLET</spriteWeaponEffect>
         <weaponType>GUN</weaponType>
 		<hitRange>550</hitRange>
-		<dmgEffect>50</dmgEffect>
+		<dmgEffect>200</dmgEffect>
 		<hitSpeed>30</hitSpeed>
 	</Model>
 	
@@ -82,7 +82,7 @@
 		<unitType>SOL</unitType>
 		<unitSize>SMALL</unitSize>
 		<price>20</price>
-		<lifePts>2500</lifePts>
+		<lifePts>100</lifePts>
 		<walkSpeed>2.5</walkSpeed>
 		<spriteUnit>GLADIATOR_HD_TEAM2</spriteUnit>
 		<spriteButton>GLADIATOR_ICON</spriteButton>
@@ -95,7 +95,7 @@
 		<spriteWeaponEffect>IMPACT_BULLET</spriteWeaponEffect>
 		<weaponType>CAC</weaponType>
 		<hitRange>50</hitRange>
-		<dmgEffect>3</dmgEffect>
+		<dmgEffect>30</dmgEffect>
 		<hitSpeed>10</hitSpeed>
 	</Model>
 	
@@ -104,7 +104,7 @@
 		<unitType>SOL</unitType>
 		<unitSize>SMALL</unitSize>
 		<price>40</price>
-		<lifePts>5000</lifePts>
+		<lifePts>200</lifePts>
 		<walkSpeed>2.5</walkSpeed>
 		<spriteUnit>MARINE_HD_TEAM2</spriteUnit>
 		<spriteButton>MARINE_SMALL_ICON</spriteButton>
@@ -117,7 +117,7 @@
 		<spriteWeaponEffect>IMPACT_BULLET</spriteWeaponEffect>
 		<weaponType>GUN</weaponType>
 		<hitRange>400</hitRange>
-		<dmgEffect>5</dmgEffect>
+		<dmgEffect>50</dmgEffect>
 		<hitSpeed>20</hitSpeed>
 	</Model>
 	
@@ -126,7 +126,7 @@
 		<unitType>SOL</unitType>
 		<unitSize>MEDIUM</unitSize>
 		<price>80</price>
-		<lifePts>100</lifePts>
+		<lifePts>500</lifePts>
 		<walkSpeed>1</walkSpeed>
 		<spriteUnit>MESH_HD_TEAM2</spriteUnit>
 		<spriteButton>MARINE_BIG_ICON</spriteButton>
@@ -139,7 +139,7 @@
 		<spriteWeaponEffect>IMPACT_BULLET</spriteWeaponEffect>
         <weaponType>GUN</weaponType>
 		<hitRange>550</hitRange>
-		<dmgEffect>50</dmgEffect>
+		<dmgEffect>200</dmgEffect>
 		<hitSpeed>30</hitSpeed>
 	</Model>
 	

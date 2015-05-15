@@ -14,14 +14,7 @@ import java.util.Random;
 
 /** Class defining vehicles */
 public abstract class Vehicle extends Military {
-	// ===========================================================
-	// Constants
-	// ===========================================================
-
-
-	// ===========================================================
-	// Attributes
-	// ===========================================================
+	
 	private CreepPattern pattern;
 
 	private Vector2d previousPos = new Vector2d();
@@ -37,6 +30,10 @@ public abstract class Vehicle extends Military {
     private int updateCounter;
     private Vector2d tempPosition = new Vector2d();
 
+    /** the position to go if it is a selected unit */
+    protected boolean isGoPoint;
+    protected Vector2d goPoint;
+    
 
 	public Vehicle(){
 	}
@@ -51,6 +48,9 @@ public abstract class Vehicle extends Military {
 
 		updateCounter = random.nextInt(maxUpdateCounter);
         lastMoveVector.set(0, 0);
+        
+        this.isGoPoint = false;
+        this.goPoint = new Vector2d();
 	}
 
 
@@ -59,7 +59,21 @@ public abstract class Vehicle extends Military {
 	// Methods
 	// ===========================================================
 
+    public boolean isGoPoint() {
+        return isGoPoint;
+    }
 
+    public void setIsGoPoint(boolean isGoPoint) {
+        this.isGoPoint = isGoPoint;
+    }
+
+    public Vector2d getGoPoint() {
+        return goPoint;
+    }
+
+    public void setGoPoint(Vector2d goPoint) {
+        this.goPoint = goPoint;
+    }
 
 	// ===========================================================
 	// Attributes accessor
@@ -124,7 +138,7 @@ public abstract class Vehicle extends Military {
 
                 //En mode attaque, on focalise sur la target et non le sens de la direction
                 moveVector.set(previousPos);
-                moveVector.add(this.getCurrentTarget().getPos());
+                moveVector.add(this.getAttackBehavior().getCurrentTarget().getPos());
                 //moveVector.normalize();
                 setNormalizedDir(moveVector);
             }

@@ -5,6 +5,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
+import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 
 
 public class BuildingRenderer extends MilitaryRenderer {
@@ -91,7 +92,7 @@ public class BuildingRenderer extends MilitaryRenderer {
 				setFireCurrentFrame(getFireCurrentFrame()+1);
 				if(getFireCurrentFrame()>=getBuildingPattern().getmFireAnimation().length)
 					setFireCurrentFrame(0);
-				this.setCurrentFrame(thisBuilding.getGraphicDirection(), getBuildingPattern().getmFireAnimation()[getFireCurrentFrame()]);
+				this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisBuilding.getNormalizedDir()), getBuildingPattern().getmFireAnimation()[getFireCurrentFrame()]);
 			}else{
 				//TODO : put Aim Animation
 			}

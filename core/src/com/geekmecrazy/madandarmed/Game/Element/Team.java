@@ -163,7 +163,7 @@ public class Team extends GameElement {
 		*/
 		//counterMilitaryRecycle=0;
 		
-		for(int i=0; i<currentNbMilitary; i++)listMilitary.get(i).calculateMilitarySpace();
+		for(int i=0; i<currentNbMilitary; i++)listMilitary.get(i).getAttackBehavior().calculateMilitarySpace(listMilitary.get(i));
 	}
 
 	// Check si (x_,y_) a un voisin dans cette team - Coord (x_,y_) en smallNode
@@ -171,7 +171,7 @@ public class Team extends GameElement {
 		int min_distance = 99999999;
 		Military nearestMilitary = null;
 		for(int i=0; i<currentNbMilitary; i++){
-			int[] matrixPursuitRange = listMilitary.get(i).getMatrixPursuitRange();
+			int[] matrixPursuitRange = listMilitary.get(i).getAttackBehavior().getMatrixPursuitRange();
 			if(x_ >= matrixPursuitRange[0])
 				if(y_ >= matrixPursuitRange[1])
 					if(x_ <= matrixPursuitRange[2])

@@ -170,8 +170,8 @@ public class GroundPathFinding extends PathFinding {
 			coordY_ = (int)(v.getGoPoint().getY()/GlobalManager.SMALL_NODESIZE);
 		}else {
 			//sinon target
-			coordX_ = v.getCurrentTarget().getSmallNodeX();
-			coordY_ = v.getCurrentTarget().getSmallNodeY();
+			coordX_ = v.getAttackBehavior().getCurrentTarget().getSmallNodeX();
+			coordY_ = v.getAttackBehavior().getCurrentTarget().getSmallNodeY();
 		}
 		//on check pour les bords
 		if(coordX_ < 0) coordX_ = 1; if(coordY_ < 0) coordY_ = 1;

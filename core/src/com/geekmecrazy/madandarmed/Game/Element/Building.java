@@ -48,7 +48,7 @@ public class Building extends Military{
 		if(this.isAttacking()){
 			//En mode attaque, on pointe sur la target
 			moveVector.set(-this.getPos().getX(), -this.getPos().getY());
-			moveVector.add(this.getCurrentTarget().getPos());
+			moveVector.add(this.getAttackBehavior().getCurrentTarget().getPos());
 			setNormalizedDir(moveVector);
 		}
 

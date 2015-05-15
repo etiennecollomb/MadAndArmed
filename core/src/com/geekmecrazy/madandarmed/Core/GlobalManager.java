@@ -13,6 +13,7 @@ import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.geekmecrazy.madandarmed.Input.MyGestureListener;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
+import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -149,6 +150,9 @@ public class GlobalManager {
 
     public void init(){
 
+    	//Graphical Tools
+    	GraphicalTools.init();
+    	
         //MAX Texture Size
         IntBuffer buf = BufferUtils.newIntBuffer(16);
         Gdx.gl.glGetIntegerv(GL20.GL_MAX_TEXTURE_SIZE, buf);

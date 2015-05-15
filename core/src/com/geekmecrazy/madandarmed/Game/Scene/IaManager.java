@@ -43,7 +43,7 @@ public class IaManager {
 	private final long TURN=100; //100
 	private long nbTurnAfterPreviousSpawn;
 	
-	private final long BIG_TURN=3;
+	private final long BIG_TURN=6;
 	private long big_spawn;
 
 
@@ -63,9 +63,9 @@ public class IaManager {
 
                 CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
                 CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
 //                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
 //                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
 //                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
@@ -74,15 +74,15 @@ public class IaManager {
 
 
                 CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
+//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
 
 
                 nbTurnAfterPreviousSpawn = 0;

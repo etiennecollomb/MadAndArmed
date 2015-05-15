@@ -57,7 +57,7 @@ public class MissileManager {
 		float startingFirePosX = shooter.getPos().getX();
 		float startingFirePosY = shooter.getPos().getY();
 		MissileRenderer missileRenderer = PoolAnimManager.getManager().getMissileRendererPool().obtain();
-		missile.init(target, shooter.getWeaponPattern().getAnimatedTextureType(), shooter.getWeaponPattern().getMissileSpeed(), shooter.getWeaponPattern().getDmgEffect(), startingFirePosX, startingFirePosY, missileRenderer);
+		missile.init(target, shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType(), shooter.getAttackBehavior().getWeaponPattern().getMissileSpeed(), shooter.getAttackBehavior().getWeaponPattern().getDmgEffect(), startingFirePosX, startingFirePosY, missileRenderer);
 		addMissile(missile);
 	}
 

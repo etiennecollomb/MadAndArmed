@@ -44,6 +44,7 @@ public class BuildingFactory{
 		// ATTACK
 		if(buildingPattern.getWeaponPattern()!=null){
 			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
+			attackBehavior.init(buildingPattern.getWeaponPattern());
 			building.setAttackBehavior(attackBehavior);
 			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
 			attackBehavior.setAttaque(attaque);

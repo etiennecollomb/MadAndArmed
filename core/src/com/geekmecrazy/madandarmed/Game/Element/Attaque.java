@@ -47,7 +47,7 @@ public class Attaque extends GameElement {
 	}
 	
 	public void calculate(Military m) {
-		Military target = m.getCurrentTarget();
+		Military target = m.getAttackBehavior().getCurrentTarget();
 
 		//Target Vivante
 		if(target.isAlive()){
@@ -56,15 +56,15 @@ public class Attaque extends GameElement {
 			if(this.isTirDistance(m)){
 				
 				//On a recharge le tir
-				if(shootCycleCounter>=m.getWeaponPattern().getHitSpeed()){
+				if(shootCycleCounter>=m.getAttackBehavior().getWeaponPattern().getHitSpeed()){
 					shootCycleCounter=0;	
 
 					//On attaque !
-					if(WeaponType.MISSILE.equals(m.getWeaponPattern().getWeaponType())){
+					if(WeaponType.MISSILE.equals(m.getAttackBehavior().getWeaponPattern().getWeaponType())){
 						attackMissile(m, target);
-					} else if(WeaponType.GUN.equals(m.getWeaponPattern().getWeaponType())){
+					} else if(WeaponType.GUN.equals(m.getAttackBehavior().getWeaponPattern().getWeaponType())){
 						 attackGun(m, target);
-					} else if(WeaponType.CAC.equals(m.getWeaponPattern().getWeaponType())){
+					} else if(WeaponType.CAC.equals(m.getAttackBehavior().getWeaponPattern().getWeaponType())){
 						 attackCac(m, target);
 					}
 
@@ -74,14 +74,14 @@ public class Attaque extends GameElement {
 			
 			//Target Hors de portee
 			else{
-				m.setCurrentTarget(m.getMainTarget());
+				m.getAttackBehavior().setCurrentTarget(m.getAttackBehavior().getMainTarget());
 				m.setAttacking(false);
 			}
 			
 		}
 		//Target Morte
 		else{
-			m.setCurrentTarget(m.getMainTarget());
+			m.getAttackBehavior().setCurrentTarget(m.getAttackBehavior().getMainTarget());
 			m.setAttacking(false);
 		}			
 		
@@ -94,12 +94,12 @@ public class Attaque extends GameElement {
 	
 	/** Attaque Gun */
 	private void attackGun(Military shooter, Military target){
-		target.hit(shooter.getWeaponPattern().getDmgEffect(), shooter.getWeaponPattern().getAnimatedTextureType());
+		target.hit(shooter.getAttackBehavior().getWeaponPattern().getDmgEffect(), shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType());
 	}
 	
 	/** Attaque CAC */
 	private void attackCac(Military shooter, Military target){
-		target.hit(shooter.getWeaponPattern().getDmgEffect(), shooter.getWeaponPattern().getAnimatedTextureType());
+		target.hit(shooter.getAttackBehavior().getWeaponPattern().getDmgEffect(), shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType());
 	}
 	
 	/** Check de distance de Tir 
@@ -109,9 +109,9 @@ public class Attaque extends GameElement {
 	public boolean isTirDistance(Military m){
 
 		boolean flag=false;
-		float distanceTir=m.getWeaponPattern().getHitRange();
+		float distanceTir=m.getAttackBehavior().getWeaponPattern().getHitRange();
 
-		this.tempDistance.set(m.getCurrentTarget().getPos());
+		this.tempDistance.set(m.getAttackBehavior().getCurrentTarget().getPos());
 		this.tempDistance.sub(m.getPos().getX(), m.getPos().getY());
 		float distance=this.tempDistance.length();
 		if(distance<=(distanceTir*toleranceDistanceTirCoef)) flag=true;

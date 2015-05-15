@@ -42,9 +42,6 @@ public class CreepFactory {
 
 		/***********************************************/
 
-		creep.setMainTarget(FightScreen.getManager().getOtherTeam(team).getCastle());
-		creep.setCurrentTarget(FightScreen.getManager().getOtherTeam(team).getCastle());
-
 		if(creepPattern.getUnitType()==UnitType.SOL){
 			GroundPathFinding groundPathFinding = PoolManager.getManager().getGroundPathFinding().obtain();
 
@@ -63,9 +60,13 @@ public class CreepFactory {
 
 		// ATTAQUE
 		AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
+		attackBehavior.init(creepPattern.getWeaponPattern());
 		creep.setAttackBehavior(attackBehavior);
 		Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
 		attackBehavior.setAttaque(attaque);
+
+		creep.getAttackBehavior().setMainTarget(FightScreen.getManager().getOtherTeam(team).getCastle());
+		creep.getAttackBehavior().setCurrentTarget(FightScreen.getManager().getOtherTeam(team).getCastle());
 
 
 		return creep;
