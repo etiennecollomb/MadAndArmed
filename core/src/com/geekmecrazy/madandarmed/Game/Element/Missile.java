@@ -26,7 +26,7 @@ public class Missile extends Vehicle {
 	// ===========================================================
 	public void init(Military target, AnimatedTextureType hitAnimatedType, float vitesse, float dmgEffect, float posX, float posY, MissileRenderer missileRenderer){
 		
-		super.init(posX, posY, 0, vitesse, null, null, null, null);
+		super.init(posX, posY, 0, vitesse, null, null, null);
 		this.hitAnimatedType=hitAnimatedType;
 		this.target=target;
 		this.vitesse=vitesse;

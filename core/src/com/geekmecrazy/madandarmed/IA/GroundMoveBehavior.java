@@ -8,7 +8,7 @@ public class GroundMoveBehavior extends MoveBehavior {
 	
 	public void calculate(Vehicle v){
 
-		if(!v.isAttacking()){
+		if(!v.getAttackBehavior().isAttacking()){
 			
 			this.pathFinding.calculate(v);
 			

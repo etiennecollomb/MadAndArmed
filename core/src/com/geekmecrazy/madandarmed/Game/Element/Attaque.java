@@ -75,14 +75,14 @@ public class Attaque extends GameElement {
 			//Target Hors de portee
 			else{
 				m.getAttackBehavior().setCurrentTarget(m.getAttackBehavior().getMainTarget());
-				m.setAttacking(false);
+				m.getAttackBehavior().setAttacking(false);
 			}
 			
 		}
 		//Target Morte
 		else{
 			m.getAttackBehavior().setCurrentTarget(m.getAttackBehavior().getMainTarget());
-			m.setAttacking(false);
+			m.getAttackBehavior().setAttacking(false);
 		}			
 		
 	}

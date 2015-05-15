@@ -88,7 +88,7 @@ public class BuildingRenderer extends MilitaryRenderer {
 
 		if(thisBuilding.isAlive()){
 
-			if (thisBuilding.isAttacking()){
+			if (thisBuilding.getAttackBehavior().isAttacking()){
 				setFireCurrentFrame(getFireCurrentFrame()+1);
 				if(getFireCurrentFrame()>=getBuildingPattern().getmFireAnimation().length)
 					setFireCurrentFrame(0);

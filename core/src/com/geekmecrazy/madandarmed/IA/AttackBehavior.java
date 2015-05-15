@@ -26,6 +26,8 @@ public class AttackBehavior extends GameElement {
 	private Military mainTarget;
 	private Military currentTarget;
 	
+	/** Status */
+	protected boolean attacking;
 
 	// ===========================================================
 	// Constructors
@@ -71,6 +73,14 @@ public class AttackBehavior extends GameElement {
 		return mMatrixPursuitRange;
 	}
 
+	public boolean isAttacking() {
+		return attacking;
+	}
+
+	public void setAttacking(boolean attacking) {
+		this.attacking = attacking;
+	}
+
 
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
@@ -103,13 +113,13 @@ public class AttackBehavior extends GameElement {
 
 	public void init(WeaponPattern weaponPattern){
 		this.weaponPattern=weaponPattern;
-		//this.calculateMilitarySpace();
+		attacking=false;
 	}
 	
 	public void calculate(Military m){
 
 		// On attaque la target deja reperee
-		if(m.isAttacking()){
+		if(this.isAttacking()){
 			this.attaque.calculate(m);
 
 		} else {
@@ -118,7 +128,7 @@ public class AttackBehavior extends GameElement {
 			// Si on est a distance de tir on passe en mode attaque
 			if(m.getAttackBehavior().getCurrentTarget().isAlive() && this.attaque.isTirDistance(m)){
 				attaque.initAttacking(m);
-				m.setAttacking(true);
+				this.setAttacking(true);
 			}
 
 			// On est trop loin de la target ou on en a pas

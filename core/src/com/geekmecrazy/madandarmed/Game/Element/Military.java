@@ -25,8 +25,6 @@ public class Military extends Geometrie {
     
 	/** Status */
 	private boolean isAlive;
-	protected boolean attacking;
-	protected boolean moving;
 
     
     // ===========================================================
@@ -53,28 +51,12 @@ public class Military extends Geometrie {
 		return ennemyTeam;
 	}
 
-	public boolean isAttacking() {
-		return attacking;
-	}
-
-	public void setAttacking(boolean attacking) {
-		this.attacking = attacking;
-	}
-
 	public AttackBehavior getAttackBehavior() {
 		return attackBehavior;
 	}
 
 	public void setAttackBehavior(AttackBehavior attackBehavior) {
 		this.attackBehavior = attackBehavior;
-	}
-
-	public boolean isMoving() {
-		return moving;
-	}
-
-	public void setMoving(boolean moving) {
-		this.moving = moving;
 	}
 
 	public boolean isAlive() {
@@ -109,8 +91,6 @@ public class Military extends Geometrie {
 		}
 
 		isAlive = false;
-		attacking=false;
-		moving=false;
 	}
 	
     
@@ -118,7 +98,7 @@ public class Military extends Geometrie {
     // Methods
     // ===========================================================
 	
-	public void init(float posX, float posY, float width, float height, Life life, Team myTeam, Team ennemyTeam, WeaponPattern weaponPattern) {
+	public void init(float posX, float posY, float width, float height, Life life, Team myTeam, Team ennemyTeam) {
 		super.init(posX, posY, width, height);
 		
 		this.life=life;
@@ -132,7 +112,7 @@ public class Military extends Geometrie {
 
 		/** dead */
 		if(!this.isAlive()){
-			this.setAttacking(false);
+			this.getAttackBehavior().setAttacking(false);
 			this.militaryRenderer.setVisible(false);
 		}
 		

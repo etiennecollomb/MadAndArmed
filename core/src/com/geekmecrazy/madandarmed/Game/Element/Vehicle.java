@@ -34,6 +34,9 @@ public abstract class Vehicle extends Military {
     protected boolean isGoPoint;
     protected Vector2d goPoint;
     
+    /** status */
+	protected boolean moving;
+    
 
 	public Vehicle(){
 	}
@@ -43,7 +46,7 @@ public abstract class Vehicle extends Military {
 	// Init
 	// ===========================================================
 	public void init(CreepPattern pattern, float posX, float posY, float diameter, Life life, Team myTeam, Team ennemyTeam) {
-		super.init(posX, posY, diameter, diameter, life, myTeam, ennemyTeam, pattern.getWeaponPattern());
+		super.init(posX, posY, diameter, diameter, life, myTeam, ennemyTeam);
 		this.pattern=pattern;
 
 		updateCounter = random.nextInt(maxUpdateCounter);
@@ -51,6 +54,8 @@ public abstract class Vehicle extends Military {
         
         this.isGoPoint = false;
         this.goPoint = new Vector2d();
+        
+		moving=false;
 	}
 
 
@@ -74,6 +79,14 @@ public abstract class Vehicle extends Military {
     public void setGoPoint(Vector2d goPoint) {
         this.goPoint = goPoint;
     }
+
+	public boolean isMoving() {
+		return moving;
+	}
+
+	public void setMoving(boolean moving) {
+		this.moving = moving;
+	}
 
 	// ===========================================================
 	// Attributes accessor
@@ -114,7 +127,7 @@ public abstract class Vehicle extends Military {
             //On set la direction du vehicle en fonction de si il attaque ou pas
             //si on attaque pas
             //la direction est celle du mouvement de deplacement
-            if (!this.isAttacking()) {
+            if (!this.getAttackBehavior().isAttacking()) {
                 //on update localXY que si on bouge
                 if (moveVector.getX() != 0.0f && moveVector.getY() != 0.0f) {
 

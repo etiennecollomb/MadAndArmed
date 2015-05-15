@@ -45,7 +45,7 @@ public class Building extends Military{
 
 		super.onUpdateNextState();
 
-		if(this.isAttacking()){
+		if(this.getAttackBehavior().isAttacking()){
 			//En mode attaque, on pointe sur la target
 			moveVector.set(-this.getPos().getX(), -this.getPos().getY());
 			moveVector.add(this.getAttackBehavior().getCurrentTarget().getPos());
@@ -78,12 +78,11 @@ public class Building extends Military{
     // Methods
     // ===========================================================
     
-	public void init(float posX, float posY, float width, float height, BuildingPattern buildingPattern, Life life, Team myTeam, Team ennemyTeam, WeaponPattern weapon, BuildingRenderer animatedMilitary ) {
+	public void init(float posX, float posY, float width, float height, BuildingPattern buildingPattern, Life life, Team myTeam, Team ennemyTeam, BuildingRenderer animatedMilitary ) {
 
-		super.init(posX, posY, width, height, life, myTeam, ennemyTeam, weapon);
+		super.init(posX, posY, width, height, life, myTeam, ennemyTeam);
 
 		this.pattern=buildingPattern;
-		setAttacking(true);
 		
 		float floorPosX = this.getPos().getX();
 		float floorPosY = this.getPos().getY();

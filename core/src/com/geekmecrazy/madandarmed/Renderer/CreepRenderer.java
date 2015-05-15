@@ -97,7 +97,7 @@ public class CreepRenderer extends VehicleRenderer {
 
         if(thisCreep.isAlive()){
 
-            if (thisCreep.isAttacking()){
+            if (thisCreep.getAttackBehavior().isAttacking()){
                 this.setFireCurrentFrame(this.getFireCurrentFrame()+1);
                 if(this.getFireCurrentFrame() >= this.getCreepPattern().getFireAnimation().length)
                     this.setFireCurrentFrame(0);

@@ -26,8 +26,6 @@ public class Creep extends Vehicle {
         //on ne peut selectionner que les units de sa team
         if(creepPattern.getTeam() == CreepPattern.UnitTeam.TEAM1)
             FightScreen.getManager().getScene().registerTouchableShape(animatedMilitary);
-
-		this.setAttacking(false);
 		
 		/*
 		if(UnitType.AIR.equals(pattern.getUnitType()))GameManager.getManager().getScene().attachChild(animatedMilitary.getSupport(), LayerIndex.AIR);
@@ -82,7 +80,7 @@ public class Creep extends Vehicle {
 	public void onUpdateNextState(){
 		super.onUpdateNextState();
 		
-		this.setAttacking( !isMoving() && isAttacking() );
+		this.getAttackBehavior().setAttacking( !isMoving() && this.getAttackBehavior().isAttacking() );
 	}
 
 

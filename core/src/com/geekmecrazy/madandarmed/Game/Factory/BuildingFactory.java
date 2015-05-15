@@ -35,7 +35,7 @@ public class BuildingFactory{
 		
 		// BUILDING
 		Building building = PoolManager.getManager().getBuildingPool().obtain();
-		building.init(posX, posY, buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE,  buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), buildingPattern.getWeaponPattern(), buildingRenderer);
+		building.init(posX, posY, buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE,  buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), buildingRenderer);
 
         if(buildingPattern.getBuildingID()==BuildingID.CASTLE_TEAM1
                 || buildingPattern.getBuildingID()==BuildingID.CASTLE_TEAM2)
@@ -45,6 +45,7 @@ public class BuildingFactory{
 		if(buildingPattern.getWeaponPattern()!=null){
 			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
 			attackBehavior.init(buildingPattern.getWeaponPattern());
+			attackBehavior.setAttacking(true);
 			building.setAttackBehavior(attackBehavior);
 			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
 			attackBehavior.setAttaque(attaque);

@@ -57,7 +57,7 @@ public class AirPathFinding extends PathFinding {
 				Vehicle neighborVehicle = v.getMyTeam().getStateMap().getNextCreepAirPositionMap()[tempX][tempY];
 
 				//on s ecarte des vehicle qui sont dans la meme action uniquement
-				if(neighborVehicle!=null && (neighborVehicle.isAttacking()==v.isAttacking())){
+				if(neighborVehicle!=null && (neighborVehicle.getAttackBehavior().isAttacking()==v.getAttackBehavior().isAttacking())){
 					tempPosition.set(neighborVehicle.getPos());
 					tempPosition.sub(v.getPos());
 					float distance = tempPosition.length();
