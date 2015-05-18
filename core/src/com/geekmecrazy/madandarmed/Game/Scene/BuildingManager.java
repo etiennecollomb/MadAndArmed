@@ -84,6 +84,7 @@ public class BuildingManager {
 		}
 	}
 	
+	
 	// Cr�ation d'une Building (+gestion argent)
 	public void createBuilding(Team team, float posX, float posY, float width, float height, BuildingPattern buildingPattern) {
 		if (team.hasEnoughtMoney(buildingPattern.getPrice())) {
@@ -93,6 +94,7 @@ public class BuildingManager {
 			team.subMoney(buildingPattern.getPrice());
 		}
 	}
+	
 	
 	/** Enregistre le building dans le manager */
 	public void addBuilding(Building newBuilding){

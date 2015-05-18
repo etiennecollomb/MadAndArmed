@@ -100,8 +100,8 @@ public class IsoShape extends Shape {
 		if(isFocused()){
 			
 			/** pour etre visible et non sous le doigt */
-			float decallageX = -100;
-			float decallageY = 100;
+			float decallageX = 0; //-100;
+			float decallageY = 0; //100;
 			
             float effectiveViewportWidth = GlobalManager.camera.viewportWidth * GlobalManager.camera.zoom;
             float effectiveViewportHeight = GlobalManager.camera.viewportHeight * GlobalManager.camera.zoom;
