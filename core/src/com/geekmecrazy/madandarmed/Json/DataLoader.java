@@ -12,9 +12,15 @@ import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponType;
 
 public class DataLoader {
 
+	/**TEST*/
+	static ObjectMap<String, PhoneNumber> buildingPatternMap = new ObjectMap<String, PhoneNumber>();
+	/**FIN TEST*/
+
+
+
 	private static ObjectMap<BuildingType, BuildingPattern> buildingsPattern;
 	private static ObjectMap<WeaponType, WeaponPattern> weaponsPattern;
-	
+
 
 	// ===========================================================
 	// Constructors
@@ -23,19 +29,29 @@ public class DataLoader {
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
-	
+
 	@SuppressWarnings("unchecked")
 	public static void loadBuildingsPattern() { 
 		try {
-		    FileHandle fileHandle = Gdx.files.internal(GlobalManager.JSON_BUILDINGSPATTERN);
-		    Json json = new Json();
-		    buildingsPattern = json.fromJson(ObjectMap.class, fileHandle);
-		    		    
+			
+			/** TEST */
+//			Json json = new Json();
+//			FileHandle text = Gdx.files.internal(GlobalManager.JSON_BUILDINGSPATTERN);
+//			buildingPatternMap = json.fromJson(ObjectMap.class, text);
+//			System.out.println(buildingPatternMap.get("CASTEL"));
+			
+			Json json = new Json();
+			FileHandle text = Gdx.files.internal(GlobalManager.JSON_BUILDINGSPATTERN);
+			buildingPatternMap = json.fromJson(ObjectMap.class, text);
+			System.out.println(buildingPatternMap.get("first"));
+			/**FIN TEST*/
+
 		} catch(Exception e) { 
 			System.out.println("### Error DataLoader.java - loadBuildingsPattern()");
+			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
@@ -43,5 +59,5 @@ public class DataLoader {
 	// ===========================================================
 	// Methods
 	// ===========================================================
-	
+
 }

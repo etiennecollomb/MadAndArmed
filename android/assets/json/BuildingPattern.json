@@ -1,10 +1,12 @@
 {
     "first": {
-        "values": [ 0.11235, 0.81321 ],
-        "names": [ "John", "Jacob" ]
+        class: com.geekmecrazy.madandarmed.Json.PhoneNumber
+		name: Home
+		number: 206-555-1234
     },
     "second": {
-        "values": [ 3.14159 ],
-        "names": [ "Jingleheimer", "Schmidt" ]
+        class: com.geekmecrazy.madandarmed.Json.PhoneNumber
+		name: Work
+		number: 425-555-4321
     }
 }
