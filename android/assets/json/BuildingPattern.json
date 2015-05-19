@@ -1,0 +1,10 @@
+{
+    "first": {
+        "values": [ 0.11235, 0.81321 ],
+        "names": [ "John", "Jacob" ]
+    },
+    "second": {
+        "values": [ 3.14159 ],
+        "names": [ "Jingleheimer", "Schmidt" ]
+    }
+}
