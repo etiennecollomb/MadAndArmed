@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingID;
+import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
 import com.geekmecrazy.madandarmed.Pattern.BuildingQgPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingQgPattern.BuildingQgID;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
@@ -20,7 +20,7 @@ public class DataManager {
 	// Data loaded
 	// ===========================================================
 	private static Map<CreepID, CreepPattern> creepsPattern;
-	private static Map<BuildingID, BuildingPattern> buildingsPatern;
+	private static Map<BuildingType, BuildingPattern> buildingsPatern;
 	private static Map<BuildingQgID, BuildingQgPattern> buildingsQgPatern;
 	//private static Map<TiledPos, BasePattern> basePattern;
 	private static MapPattern mapPattern;
@@ -114,7 +114,7 @@ public class DataManager {
 		return creepsPattern;
 	}
 
-	public static Map<BuildingID, BuildingPattern> getBuildingsPatern() {
+	public static Map<BuildingType, BuildingPattern> getBuildingsPatern() {
 		return buildingsPatern;
 	}
 

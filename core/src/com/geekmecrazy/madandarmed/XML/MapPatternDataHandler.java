@@ -10,7 +10,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import com.geekmecrazy.madandarmed.Pattern.LevelBuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.MapPattern;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingID;
+import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
 
 
 
@@ -81,7 +81,7 @@ public class MapPatternDataHandler extends DefaultHandler {
 		String value = new String( ch , start , length );
 		if(!value.trim().equals("")) {
 			if(BUILDING_MODELID.equalsIgnoreCase(currentElement)) {
-				buildingCurrent.setModelID(BuildingID.valueOf(value));
+				buildingCurrent.setModelID(BuildingType.valueOf(value));
 			} else if(BUILDING_LIFE.equalsIgnoreCase(currentElement)) {
 				buildingCurrent.setLife((new Integer(value)).intValue());
 			} else if(BUILDING_POSNODEX.equalsIgnoreCase(currentElement)) {

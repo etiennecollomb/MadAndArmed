@@ -5,7 +5,6 @@ import com.geekmecrazy.madandarmed.Game.Factory.CreepFactory;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
-import com.geekmecrazy.madandarmed.Utils.Vector2d;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 

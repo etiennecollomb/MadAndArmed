@@ -19,6 +19,7 @@ import com.geekmecrazy.madandarmed.Game.UI.UnitButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
 import com.geekmecrazy.madandarmed.IA.IsoMapState;
+import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.Renderer.FightBuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
@@ -257,6 +258,7 @@ public class FightScreen extends Screen implements IUpdatable {
 	}
 
 	public void loadData() {
+		
 		DataManager.loadMapPattern();
 		DataManager.loadCreepsPattern();
 		DataManager.loadBuildingsPattern();

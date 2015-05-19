@@ -94,6 +94,6 @@ public class Building extends Military{
 		lifeBarreRenderer = null;
 		
 	}
-
+	
 
 }

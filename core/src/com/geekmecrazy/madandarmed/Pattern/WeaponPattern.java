@@ -1,39 +1,35 @@
 package com.geekmecrazy.madandarmed.Pattern;
 
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
-import com.geekmecrazy.madandarmed.Game.Element.GameElement;
-import com.geekmecrazy.madandarmed.Utils.Vector2d;
 
 
-public class WeaponPattern extends GameElement {
+public class WeaponPattern{
 
-	private WeaponType mWeaponType;						// Type de tir
-
-	private float mHitRange;							// distance maxi de tir
-
-	private int mHitSpeed;								// nombre de cycle entre chaque tir
-
-	private int mDmgEffect;								// dommage cause
-
-	private AnimatedTextureType mAnimatedTextureType;	// Animation sur l'unite touche
-
-	private float mMissileSpeed;						// Missile(weapon) move speed
-
-	public enum WeaponType {
+	public static enum WeaponType {
 		MISSILE,
 		GUN,
 		CAC
 	}	
+	
+	/** Type de tir */
+	private WeaponType weaponType;
 
-	public void init(float pHitRange, int pHitSpeed, int pDmgEffect, float pMissileSpeed, AnimatedTextureType pAnimatedTextureType, WeaponType pWeaponType){
-		this.mWeaponType=pWeaponType;
-		this.mHitRange=pHitRange;
-		this.mHitSpeed=pHitSpeed;
-		this.mDmgEffect=pDmgEffect;
-		this.mAnimatedTextureType=pAnimatedTextureType;
-		this.mMissileSpeed=pMissileSpeed;
-	}
+	/** distance maxi de tir */
+	private float hitRange;
 
+	/** nombre de cycle entre chaque tir */
+	private int hitSpeed;
+
+	/** Dommages causes */
+	private int dmgEffect;
+
+	/** Animation sur l'unite touche */
+	private AnimatedTextureType animatedTextureType;
+
+	/** Missile(weapon) move speed */
+	private float missileSpeed;
+
+	
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -43,66 +39,56 @@ public class WeaponPattern extends GameElement {
 	// ===========================================================
 
 	public WeaponType getWeaponType() {
-		return mWeaponType;
+		return weaponType;
 	}
 
-	public void setWeaponType(WeaponType pWeaponType) {
-		this.mWeaponType = pWeaponType;
+	public void setWeaponType(WeaponType weaponType) {
+		this.weaponType = weaponType;
 	}
 
 	public float getHitRange() {
-		return mHitRange;
+		return hitRange;
 	}
 
-	public void setHitRange(float pHitRange) {
-		this.mHitRange = pHitRange;
+	public void setHitRange(float hitRange) {
+		this.hitRange = hitRange;
 	}
 
 	public int getHitSpeed() {
-		return mHitSpeed;
+		return hitSpeed;
 	}
 
-	public void setHitSpeed(int pHitSpeed) {
-		this.mHitSpeed = pHitSpeed;
+	public void setHitSpeed(int hitSpeed) {
+		this.hitSpeed = hitSpeed;
 	}
 
 	public int getDmgEffect() {
-		return mDmgEffect;
+		return dmgEffect;
 	}
 
-	public void setDmgEffect(int pDmgEffect) {
-		this.mDmgEffect = pDmgEffect;
+	public void setDmgEffect(int dmgEffect) {
+		this.dmgEffect = dmgEffect;
 	}
 
 	public AnimatedTextureType getAnimatedTextureType() {
-		return mAnimatedTextureType;
+		return animatedTextureType;
 	}
 
-	public void setAnimatedTextureType(AnimatedTextureType pAnimatedTextureType) {
-		this.mAnimatedTextureType = pAnimatedTextureType;
+	public void setAnimatedTextureType(AnimatedTextureType animatedTextureType) {
+		this.animatedTextureType = animatedTextureType;
 	}
 
 	public float getMissileSpeed() {
-		return mMissileSpeed;
+		return missileSpeed;
 	}
 
-	public void setMissileSpeed(float pMissileSpeed) {
-		this.mMissileSpeed = pMissileSpeed;
+	public void setMissileSpeed(float missileSpeed) {
+		this.missileSpeed = missileSpeed;
 	}
 
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
-
-	@Override
-	public void reset() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void onUpdate() {
-		// TODO Auto-generated method stub
-	}
 
 	// ===========================================================
 	// Methods

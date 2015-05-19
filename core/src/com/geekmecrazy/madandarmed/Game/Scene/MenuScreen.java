@@ -9,20 +9,16 @@ import com.geekmecrazy.madandarmed.Entity.Scene.FightScene;
 import com.geekmecrazy.madandarmed.Entity.Scene.HQScene;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Game.IAction;
-import com.geekmecrazy.madandarmed.Game.Tween.ButtonTween;
 import com.geekmecrazy.madandarmed.Game.Tween.RectangleTween;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.Layout;
-import com.geekmecrazy.madandarmed.Renderer.MyTiledMapRenderer;
+import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
-import com.badlogic.gdx.Gdx;
 
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
-import aurelienribon.tweenengine.equations.Bounce;
-import aurelienribon.tweenengine.equations.Expo;
 import aurelienribon.tweenengine.equations.Quad;
 
 
@@ -92,6 +88,11 @@ public class MenuScreen extends Screen implements IUpdatable {
         this.getHUD().attachChild(titleLayout, Entity.Alignment.CENTER_TOP);
         this.getHUD().attachChild(l1,Entity.Alignment.CENTER);
         this.getHUD().attachChild(blackScreen, Entity.Alignment.CENTER);
+        
+        
+        //TEST DATA
+		/** Json */
+		DataLoader.loadBuildingsPattern();
 
     }
 

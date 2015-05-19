@@ -1,13 +1,13 @@
 package com.geekmecrazy.madandarmed.Pattern;
 
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingID;
+import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
 
 
 public class LevelBuildingPattern {
 	// ===========================================================
 	// Attributes
 	// ===========================================================
-	private BuildingID modelID;
+	private BuildingType modelID;
 	private float life;
 	private int posNodeX;
 	private int posNodeY;
@@ -18,11 +18,11 @@ public class LevelBuildingPattern {
 	// Attributes accessor
 	// ===========================================================
 	
-	public BuildingID getModelID() {
+	public BuildingType getModelID() {
 		return modelID;
 	}
 
-	public void setModelID(BuildingID modelID) {
+	public void setModelID(BuildingType modelID) {
 		this.modelID = modelID;
 	}
 

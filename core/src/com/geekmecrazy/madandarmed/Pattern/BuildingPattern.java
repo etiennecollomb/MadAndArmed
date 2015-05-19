@@ -1,35 +1,17 @@
 package com.geekmecrazy.madandarmed.Pattern;
 
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
-import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponType;
 
 
 public class BuildingPattern {
-
-	private BuildingID mBuildingID;
 	
-	private BuildingSize mBuildingSize;
-	
-	private AnimatedTextureType mAnimatedTextureType;
-	
-	private float mLife;
-	
-	private int mPrice;
-	
-	private WeaponPattern mWeaponPattern;
-	
-	private int[] mAimAnimationRow;
-	
-	private int[] mFireAnimation;
-	
-	public enum BuildingID {
-		CASTLE_TEAM1,
-        CASTLE_TEAM2,
-		TOWER_TEAM1,
-        TOWER_TEAM2,
+	public static enum BuildingType {
+		CASTLE,
+		TOWER,
+		BARRICADE
 	} 
 	
-	public enum BuildingSize {
+	public static enum BuildingSize {
 		SMALL		(1), 		//1x1
 		MEDIUM		(2), 		//3x3
 		BIG			(3);		//5x5
@@ -44,122 +26,131 @@ public class BuildingPattern {
 			return mBigNodeSize;
 		}
 	}
+	
+	/** Building Type */
+	private BuildingType buildingType;
+	
+	/** Weapon type */
+	private int weaponPatternType;
+	
+	/** size on the map */
+	private BuildingSize buildingSize;
+	
+	/** Animated Sprite of the building */
+	private AnimatedTextureType animatedTextureType;
+	
+	private float life;
+	
+	/** cost to buy this building */
+	private int price;
+	
+	/** list of row in spriteSheet for Aim Animation */
+	private int[] aimAnimationRow;
+	
+	/** list of row in spriteSheet for Fire Animation */
+	private int[] fireAnimationRow;
+
 
 	// ===========================================================
 	// Constructors
 	// ===========================================================
-	
+
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
 	
-	public BuildingID getBuildingID() {
-		return mBuildingID;
+	public BuildingType getBuildingType() {
+		return buildingType;
 	}
 
-	public void setBuildingID(BuildingID pBuildingID) {
-		this.mBuildingID = pBuildingID;
+	public void setBuildingID(BuildingType buildingType) {
+		this.buildingType = buildingType;
 	}
-	
+
+	public int getWeaponPatternType() {
+		return weaponPatternType;
+	}
+
+	public void setWeaponPatternType(int weaponPatternType) {
+		this.weaponPatternType = weaponPatternType;
+	}
+
 	public BuildingSize getBuildingSize() {
-		return mBuildingSize;
+		return buildingSize;
 	}
 
-	public void setBuildingSize(BuildingSize pBuildingSize) {
-		this.mBuildingSize = pBuildingSize;
+	public void setBuildingSize(BuildingSize buildingSize) {
+		this.buildingSize = buildingSize;
 	}
-	
+
 	public AnimatedTextureType getAnimatedTextureType() {
-		return mAnimatedTextureType;
+		return animatedTextureType;
 	}
 
-	public void setAnimatedTextureType(AnimatedTextureType pAnimatedTextureType) {
-		this.mAnimatedTextureType = pAnimatedTextureType;
+	public void setAnimatedTextureType(AnimatedTextureType animatedTextureType) {
+		this.animatedTextureType = animatedTextureType;
 	}
 
 	public float getLife() {
-		return mLife;
+		return life;
 	}
 
-	public void setLife(float pLife) {
-		this.mLife = pLife;
+	public void setLife(float life) {
+		this.life = life;
 	}
 
 	public int getPrice() {
-		return mPrice;
+		return price;
 	}
 
-	public void setPrice(int pPrice) {
-		this.mPrice = pPrice;
-	}
-
-	public WeaponPattern getWeaponPattern() {
-		return mWeaponPattern;
-	}
-
-	public void setWeaponPattern(WeaponPattern pWeaponPattern) {
-		this.mWeaponPattern = pWeaponPattern;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	public int[] getAimAnimationRow() {
-		return mAimAnimationRow;
+		return aimAnimationRow;
 	}
 
-	public void setAimAnimationRow(int[] pAimAnimationRow) {
-		this.mAimAnimationRow = pAimAnimationRow;
+	public void setAimAnimationRow(int[] aimAnimationRow) {
+		this.aimAnimationRow = aimAnimationRow;
 	}
 
-	public int[] getmFireAnimation() {
-		return mFireAnimation;
+	public int[] getFireAnimationRow() {
+		return fireAnimationRow;
 	}
 
-	public void setmFireAnimation(int[] mFireAnimation) {
-		this.mFireAnimation = mFireAnimation;
+	public void setFireAnimationRow(int[] fireAnimationRow) {
+		this.fireAnimationRow = fireAnimationRow;
 	}
-	
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("################  BuildingPattern  #####################");
-		builder.append("\n---- BuildingID=");
-		builder.append(mBuildingID);
-		builder.append("\n---- BuildingSize=");
-		builder.append(mBuildingSize);
-		builder.append("\n---- Life=");
-		builder.append(mLife);
-		builder.append("\n---- Price=");
-		builder.append(mPrice);
-		builder.append("\n---- AnimatedTextureType=");
-		builder.append(mAnimatedTextureType);
-		builder.append("\n---- weapon=");
-		builder.append(mWeaponPattern);
-		builder.append("\n");
-		return builder.toString();
-	}
-	
 	// ===========================================================
 	// Methods
 	// ===========================================================
-	
+
+
+	//A METTRE DANS RENDERER???
 	/** renvoie une array de row correspondant a une animation */
 	public void calculateAnimationListFire(){
-		if(mWeaponPattern!=null){
+		/** A REMETTRE !!!
+		if(weaponPattern!=null){
 			switch (this.getWeaponPattern().getWeaponType()){
 			case MISSILE:
 				//TODO: on set une anim de Aim
 				//revoir avec anim de Fire
-				mFireAnimation = new int[1];
-				mFireAnimation[0]=this.getAimAnimationRow()[0];
+				fireAnimation = new int[1];
+				fireAnimation[0]=this.getAimAnimationRow()[0];
 				break;
 			default:
 				break;
 			}
 		}
+		*/
 	}
+
 
 
 }

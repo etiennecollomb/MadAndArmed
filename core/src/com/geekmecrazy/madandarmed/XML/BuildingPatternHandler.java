@@ -8,7 +8,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingID;
+import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingSize;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponType;
@@ -37,7 +37,7 @@ public class BuildingPatternHandler extends DefaultHandler {
 	private static final String AIM_ANIMATION_ROW 				= "aimAnimationRow";
 
 	/** Internal */
-	private Map<BuildingID, BuildingPattern> buildingPattern;
+	private Map<BuildingType, BuildingPattern> buildingPattern;
 	private BuildingPattern currentPatern;
 	private String currentElement;
 	
@@ -55,7 +55,7 @@ public class BuildingPatternHandler extends DefaultHandler {
 
 	@Override
 	public void startDocument() throws SAXException {
-		buildingPattern = new HashMap<BuildingID, BuildingPattern>();
+		buildingPattern = new HashMap<BuildingType, BuildingPattern>();
 	}
 
 	@Override
@@ -64,10 +64,10 @@ public class BuildingPatternHandler extends DefaultHandler {
 		currentElement=qName;
 		if(MODEL.equalsIgnoreCase(currentElement)) {
 			currentPatern = new BuildingPattern();
-			currentPatern.setBuildingID(BuildingID.valueOf(atts.getValue(BUILDING_BUILDING_ID)));
-			buildingPattern.put(currentPatern.getBuildingID(), currentPatern);
+			currentPatern.setBuildingID(BuildingType.valueOf(atts.getValue(BUILDING_BUILDING_ID)));
+			buildingPattern.put(currentPatern.getBuildingType(), currentPatern);
 		}else if(WEAPON.equalsIgnoreCase(currentElement)) {
-			currentPatern.setWeaponPattern(new WeaponPattern());
+			//currentPatern.setWeaponPattern(new WeaponPattern());
 		}
 	}
 
@@ -90,19 +90,19 @@ public class BuildingPatternHandler extends DefaultHandler {
 			}
 
 			/** Weapon */
-			else if(WEAPON_WEAPON_TYPE.equalsIgnoreCase(currentElement)) {
-				currentPatern.getWeaponPattern().setWeaponType(WeaponType.valueOf(value));
-			}else if(WEAPON_HIT_RANGE.equalsIgnoreCase(currentElement)) {
-				currentPatern.getWeaponPattern().setHitRange(Integer.valueOf(value));
-			} else if(WEAPON_DMG_EFFECT.equalsIgnoreCase(currentElement)) {
-				currentPatern.getWeaponPattern().setDmgEffect(Integer.valueOf(value));
-			} else if(WEAPON_HIT_SPEED.equalsIgnoreCase(currentElement)) {
-				currentPatern.getWeaponPattern().setHitSpeed(Integer.valueOf(value));
-			} else if(WEAPON_SPRITE_EFFECT.equalsIgnoreCase(currentElement)) {
-				currentPatern.getWeaponPattern().setAnimatedTextureType(AnimatedTextureType.valueOf(value));
-			} else if(WEAPON_MISSILE_SPEED.equalsIgnoreCase(currentElement)) {
-				currentPatern.getWeaponPattern().setMissileSpeed(Float.valueOf(value));
-			}
+//			else if(WEAPON_WEAPON_TYPE.equalsIgnoreCase(currentElement)) {
+//				currentPatern.getWeaponPattern().setWeaponType(WeaponType.valueOf(value));
+//			}else if(WEAPON_HIT_RANGE.equalsIgnoreCase(currentElement)) {
+//				currentPatern.getWeaponPattern().setHitRange(Integer.valueOf(value));
+//			} else if(WEAPON_DMG_EFFECT.equalsIgnoreCase(currentElement)) {
+//				currentPatern.getWeaponPattern().setDmgEffect(Integer.valueOf(value));
+//			} else if(WEAPON_HIT_SPEED.equalsIgnoreCase(currentElement)) {
+//				currentPatern.getWeaponPattern().setHitSpeed(Integer.valueOf(value));
+//			} else if(WEAPON_SPRITE_EFFECT.equalsIgnoreCase(currentElement)) {
+//				currentPatern.getWeaponPattern().setAnimatedTextureType(AnimatedTextureType.valueOf(value));
+//			} else if(WEAPON_MISSILE_SPEED.equalsIgnoreCase(currentElement)) {
+//				currentPatern.getWeaponPattern().setMissileSpeed(Float.valueOf(value));
+//			}
 		}
 	}
 	
@@ -118,7 +118,7 @@ public class BuildingPatternHandler extends DefaultHandler {
 		return result;
 	}
 
-	public Map<BuildingID, BuildingPattern> getBuildingPattern() {
+	public Map<BuildingType, BuildingPattern> getBuildingPattern() {
 		return buildingPattern;
 	}
 

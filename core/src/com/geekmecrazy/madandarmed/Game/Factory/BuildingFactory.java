@@ -10,7 +10,7 @@ import com.geekmecrazy.madandarmed.Game.Scene.BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingID;
+import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
 import com.geekmecrazy.madandarmed.Renderer.BuildingRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
@@ -38,10 +38,10 @@ public class BuildingFactory{
 		Turret turret = PoolManager.getManager().getTurretPool().obtain();
 		turret.init(posX, posY, buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE,  buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), buildingRenderer);
 
-        if(buildingPattern.getBuildingID()==BuildingID.CASTLE_TEAM1
-                || buildingPattern.getBuildingID()==BuildingID.CASTLE_TEAM2)
+        if(buildingPattern.getBuildingType()==BuildingType.CASTLE)
             team.registerCastle(turret);
 		
+        /** A REMETTRE
 		// ATTACK
 		if(buildingPattern.getWeaponPattern()!=null){
 			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
@@ -51,6 +51,7 @@ public class BuildingFactory{
 			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
 			attackBehavior.setAttaque(attaque);
 		}
+		*/
 		
 		//building.addDestructibleObs(this);
 		BuildingManager.getManager().addBuilding(turret);

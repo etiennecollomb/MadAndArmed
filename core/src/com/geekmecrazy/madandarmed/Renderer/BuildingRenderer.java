@@ -90,9 +90,9 @@ public class BuildingRenderer extends MilitaryRenderer {
 
 			if (thisBuilding.getAttackBehavior().isAttacking()){
 				setFireCurrentFrame(getFireCurrentFrame()+1);
-				if(getFireCurrentFrame()>=getBuildingPattern().getmFireAnimation().length)
+				if(getFireCurrentFrame()>=getBuildingPattern().getFireAnimationRow().length)
 					setFireCurrentFrame(0);
-				this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisBuilding.getNormalizedDir()), getBuildingPattern().getmFireAnimation()[getFireCurrentFrame()]);
+				this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisBuilding.getNormalizedDir()), getBuildingPattern().getFireAnimationRow()[getFireCurrentFrame()]);
 			}else{
 				//TODO : put Aim Animation
 			}
