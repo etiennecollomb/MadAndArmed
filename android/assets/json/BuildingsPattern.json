@@ -15,7 +15,7 @@
 		buildingSize: MEDIUM
 		weaponName: MISSILE_1
 		animatedTextureType: TURRET_01_HD_TEAM1
-		life: 10000
+		life: 1
 		price: 400
 		aimAnimationRow: [ 0 ]
     }
