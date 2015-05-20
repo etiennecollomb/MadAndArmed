@@ -7,7 +7,7 @@ public class BuildingPattern {
 	
 	public static enum BuildingType {
 		CASTLE,
-		TOWER,
+		TURRET,
 		BARRICADE
 	} 
 	
