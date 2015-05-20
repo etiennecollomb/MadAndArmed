@@ -97,7 +97,7 @@ public class GlobalManager {
 	// JSON
 	// ===========================================================
 	
-	public static final String JSON_BUILDINGSPATTERN = "json/BuildingPattern.json";
+	public static final String JSON_BUILDINGSPATTERN = "json/BuildingsPattern.json";
 	public static final String JSON_WEAPONSPATTERN = "json/WeaponsPattern.json";
 	
 	// ===========================================================

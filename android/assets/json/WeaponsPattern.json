@@ -1,0 +1,20 @@
+{
+    "MISSILE_1": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+		weaponType: MISSILE
+		hitRange: 1500
+		hitSpeed: 15
+		dmgEffect: 500
+		missileSpeed: 6
+		animatedTextureType: MISSILE_EXPLOSION
+    },
+    "MISSILE_2": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+		weaponType: MISSILE
+		hitRange: 1000
+		hitSpeed: 25
+		dmgEffect: 5
+		missileSpeed: 6
+		animatedTextureType: MISSILE_EXPLOSION
+    }
+}

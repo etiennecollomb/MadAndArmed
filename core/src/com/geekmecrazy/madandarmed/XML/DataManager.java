@@ -20,7 +20,7 @@ public class DataManager {
 	// Data loaded
 	// ===========================================================
 	private static Map<CreepID, CreepPattern> creepsPattern;
-	private static Map<BuildingType, BuildingPattern> buildingsPatern;
+	//private static Map<BuildingType, BuildingPattern> buildingsPatern;
 	private static Map<BuildingQgID, BuildingQgPattern> buildingsQgPatern;
 	//private static Map<TiledPos, BasePattern> basePattern;
 	private static MapPattern mapPattern;
@@ -54,6 +54,7 @@ public class DataManager {
 		creepsPattern = null;
 	}
 	
+	/*
 	public static void loadBuildingsPattern() { 
 		try {
 		    
@@ -71,19 +72,16 @@ public class DataManager {
 	public static void unLoadBuildingsPattern() { 
 		buildingsPatern = null;
 	}
+	*/
 		
 	public static void loadMapPattern() { 
-		try {
-		    
+		
 			FileHandle fileHandle = Gdx.files.internal(GlobalManager.XML_LEVEL11);
 			MapPatternDataHandler dataHandler = new MapPatternDataHandler(); 
 		    XMLDecoder.getInstance().parseXML(fileHandle, dataHandler);
 		    
 		    mapPattern = dataHandler.getMapPattern();
 		    
-		} catch(Exception e) { 
-			System.out.println("###### ERROR ! DataManager.java - loadmapPattern");
-		} 
 	}
 	
 	public static void unLoadMapPattern() { 
@@ -98,11 +96,13 @@ public class DataManager {
 		}
 	}
 	
+	/*
 	public static void updateBuildingsPatternAnimation(){
 		for(BuildingPattern building : buildingsPatern.values()){
 			building.calculateAnimationListFire();
 		}
 	}
+	*/
 	
 	public static void updateBuildingsQGPatternAnimation(){
 		for(BuildingQgPattern building : buildingsQgPatern.values()){
@@ -114,9 +114,11 @@ public class DataManager {
 		return creepsPattern;
 	}
 
+	/*
 	public static Map<BuildingType, BuildingPattern> getBuildingsPatern() {
 		return buildingsPatern;
 	}
+	*/
 
 	public static MapPattern getMapPattern() {
 		return mapPattern;
@@ -138,6 +140,7 @@ public class DataManager {
 	// Debug Method
 	// ===========================================================
 
+	/*
 	public static void logCreepsPattern(){
 		for(CreepPattern creep : creepsPattern.values()){
 			System.out.println(creep);
@@ -155,6 +158,7 @@ public class DataManager {
 			System.out.println(b);
 		}
 	}
+	*/
 	
 
 }

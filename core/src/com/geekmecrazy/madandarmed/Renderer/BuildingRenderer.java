@@ -5,6 +5,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
+import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 
 
@@ -13,6 +14,8 @@ public class BuildingRenderer extends MilitaryRenderer {
 	private BuildingPattern mBuildingPattern;
 	
 	private int mFireCurrentFrame;
+	
+	private int[] fireAnimation;
 	
 	// ===========================================================
 	// Constructors
@@ -87,12 +90,11 @@ public class BuildingRenderer extends MilitaryRenderer {
 		this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)this.getMilitary().getPos().getY());
 
 		if(thisBuilding.isAlive()){
-
 			if (thisBuilding.getAttackBehavior().isAttacking()){
 				setFireCurrentFrame(getFireCurrentFrame()+1);
-				if(getFireCurrentFrame()>=getBuildingPattern().getFireAnimationRow().length)
+				if(getFireCurrentFrame()>=fireAnimation.length)
 					setFireCurrentFrame(0);
-				this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisBuilding.getNormalizedDir()), getBuildingPattern().getFireAnimationRow()[getFireCurrentFrame()]);
+				this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisBuilding.getNormalizedDir()), fireAnimation[getFireCurrentFrame()]);
 			}else{
 				//TODO : put Aim Animation
 			}
@@ -118,8 +120,30 @@ public class BuildingRenderer extends MilitaryRenderer {
 		super.init(pSpriteSheet, pBuilding);
 		
 		this.setBuildingPattern(pBuildingPattern);
-		this.setFireCurrentFrame(0);		
+		this.setFireCurrentFrame(0);
 	}
+
+
+	/** renvoie une array de row correspondant a une animation */
+	public void calculateAnimationListFire(){
+		
+		WeaponPattern weaponPattern = this.getMilitary().getAttackBehavior().getWeaponPattern();
+		
+		if(weaponPattern !=null){
+			switch (weaponPattern.getWeaponType()){
+			case MISSILE:
+				//TODO: on set une anim de Aim
+				//revoir avec anim de Fire
+				fireAnimation = new int[1];
+				fireAnimation[0]=this.getBuildingPattern().getAimAnimationRow().get(0);
+				break;
+			default:
+				break;
+			}
+		}
+
+	}
+
 
 }
 

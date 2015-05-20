@@ -9,8 +9,10 @@ import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Game.Scene.BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
+import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
+import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Renderer.BuildingRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
@@ -40,18 +42,20 @@ public class BuildingFactory{
 
         if(buildingPattern.getBuildingType()==BuildingType.CASTLE)
             team.registerCastle(turret);
-		
-        /** A REMETTRE
+
 		// ATTACK
-		if(buildingPattern.getWeaponPattern()!=null){
+		if(buildingPattern.getWeaponName()!=null){
+						
 			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
-			attackBehavior.init(buildingPattern.getWeaponPattern());
+			attackBehavior.init(DataLoader.getWeaponsPattern().get(buildingPattern.getWeaponName().name()));
 			attackBehavior.setAttacking(true);
 			turret.setAttackBehavior(attackBehavior);
 			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
 			attackBehavior.setAttaque(attaque);
+			
+			//A revoir pas propre de mettre ca ici....
+			((BuildingRenderer)turret.getMilitaryRenderer()).calculateAnimationListFire();
 		}
-		*/
 		
 		//building.addDestructibleObs(this);
 		BuildingManager.getManager().addBuilding(turret);

@@ -12,6 +12,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Game.Factory.BuildingFactory;
+import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.LevelBuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
@@ -75,11 +76,13 @@ public class BuildingManager {
 	/** Création des building en début de partie */
 	public void initBuildingAtStart(){
 		for(LevelBuildingPattern buildingLevelModel: DataManager.getMapPattern().getListBuildingPlayer()){
-			BuildingPattern buildingPattern = DataManager.getBuildingsPatern().get(BuildingType.valueOf(buildingLevelModel.getModelID().toString()));
+			//BuildingPattern buildingPattern = DataManager.getBuildingsPatern().get(BuildingType.valueOf(buildingLevelModel.getModelID().toString()));
+			BuildingPattern buildingPattern = DataLoader.getBuildingsPattern().get(buildingLevelModel.getModelID().toString());
 			BuildingFactory.create(buildingLevelModel.getPosNodeX()* GlobalManager.BIG_NODESIZE, buildingLevelModel.getPosNodeY()*GlobalManager.BIG_NODESIZE, buildingPattern, teamPlayer);
 		}
 		for(LevelBuildingPattern buildingLevelModel: DataManager.getMapPattern().getListBuildingIA()){
-			BuildingPattern buildingPattern = DataManager.getBuildingsPatern().get(BuildingType.valueOf(buildingLevelModel.getModelID().toString()));
+			//BuildingPattern buildingPattern = DataManager.getBuildingsPatern().get(BuildingType.valueOf(buildingLevelModel.getModelID().toString()));
+			BuildingPattern buildingPattern = DataLoader.getBuildingsPattern().get(buildingLevelModel.getModelID().toString());
 			BuildingFactory.create(buildingLevelModel.getPosNodeX()*GlobalManager.BIG_NODESIZE, buildingLevelModel.getPosNodeY()*GlobalManager.BIG_NODESIZE, buildingPattern, teamIA);
 		}
 	}

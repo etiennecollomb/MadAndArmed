@@ -3,6 +3,7 @@ package com.geekmecrazy.madandarmed.Pattern;
 import java.util.ArrayList;
 
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
+import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponName;
 
 
 public class BuildingPattern {
@@ -33,7 +34,7 @@ public class BuildingPattern {
 	private BuildingType buildingType;
 	
 	/** Weapon type */
-	private int weaponPatternType;
+	private WeaponName weaponName;
 	
 	/** size on the map */
 	private BuildingSize buildingSize;
@@ -50,7 +51,7 @@ public class BuildingPattern {
 	private ArrayList<Integer> aimAnimationRow;
 	
 	/** list of row in spriteSheet for Fire Animation */
-	private int[] fireAnimationRow;
+	private ArrayList<Integer> fireAnimationRow;
 
 
 	// ===========================================================
@@ -60,21 +61,21 @@ public class BuildingPattern {
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
-	
+
+	public void setBuildingType(BuildingType buildingType) {
+		this.buildingType = buildingType;
+	}
+
 	public BuildingType getBuildingType() {
 		return buildingType;
 	}
 
-	public void setBuildingID(BuildingType buildingType) {
-		this.buildingType = buildingType;
+	public WeaponName getWeaponName() {
+		return weaponName;
 	}
 
-	public int getWeaponPatternType() {
-		return weaponPatternType;
-	}
-
-	public void setWeaponPatternType(int weaponPatternType) {
-		this.weaponPatternType = weaponPatternType;
+	public void setWeaponName(WeaponName weaponName) {
+		this.weaponName = weaponName;
 	}
 
 	public BuildingSize getBuildingSize() {
@@ -117,11 +118,11 @@ public class BuildingPattern {
 		this.aimAnimationRow = aimAnimationRow;
 	}
 
-	public int[] getFireAnimationRow() {
+	public ArrayList<Integer> getFireAnimationRow() {
 		return fireAnimationRow;
 	}
 
-	public void setFireAnimationRow(int[] fireAnimationRow) {
+	public void setFireAnimationRow(ArrayList<Integer> fireAnimationRow) {
 		this.fireAnimationRow = fireAnimationRow;
 	}
 
@@ -132,27 +133,6 @@ public class BuildingPattern {
 	// ===========================================================
 	// Methods
 	// ===========================================================
-
-
-	//A METTRE DANS RENDERER???
-	/** renvoie une array de row correspondant a une animation */
-	public void calculateAnimationListFire(){
-		/** A REMETTRE !!!
-		if(weaponPattern!=null){
-			switch (this.getWeaponPattern().getWeaponType()){
-			case MISSILE:
-				//TODO: on set une anim de Aim
-				//revoir avec anim de Fire
-				fireAnimation = new int[1];
-				fireAnimation[0]=this.getAimAnimationRow()[0];
-				break;
-			default:
-				break;
-			}
-		}
-		*/
-	}
-
 
 
 }

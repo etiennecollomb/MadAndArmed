@@ -5,9 +5,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
-import com.geekmecrazy.madandarmed.Entity.Entity.Alignment;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
-import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
@@ -18,10 +16,8 @@ import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
 import com.geekmecrazy.madandarmed.Game.UI.UnitButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
-import com.geekmecrazy.madandarmed.IA.IsoMapState;
 import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
-import com.geekmecrazy.madandarmed.Renderer.FightBuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.XML.DataManager;
@@ -259,14 +255,16 @@ public class FightScreen extends Screen implements IUpdatable {
 
 	public void loadData() {
 		
+		/** Json */
+		DataLoader.loadBuildingsPattern();
+		DataLoader.loadWeaponsPattern();
+		
 		DataManager.loadMapPattern();
 		DataManager.loadCreepsPattern();
-		DataManager.loadBuildingsPattern();
+		//DataManager.loadBuildingsPattern();
 		DataManager.updateCreepsPatternAnimation();
-		DataManager.updateBuildingsPatternAnimation();
-		/** Debug */
-		DataManager.logCreepsPattern();
-		DataManager.logBuildingsPattern();
+		//DataManager.updateBuildingsPatternAnimation();
+		
 	}
 
     public void closeGame(){

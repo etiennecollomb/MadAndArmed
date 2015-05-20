@@ -4,19 +4,19 @@
 
 	<Player spawnPointX="100" spawnPointY="100">
 		<Building>
-  			<modelID>CASTLE_TEAM1</modelID>
+  			<modelID>CASTLE</modelID>
 			<life>500</life>
 			<posNodeX>7</posNodeX>
 			<posNodeY>7</posNodeY>
 	    </Building>
 	    <Building>
-  			<modelID>TOWER_TEAM1</modelID>
+  			<modelID>TURRET</modelID>
 			<life>200</life>
 			<posNodeX>10</posNodeX>
 			<posNodeY>12</posNodeY>
 	    </Building>
 	    <Building>
-  			<modelID>TOWER_TEAM1</modelID>
+  			<modelID>TURRET</modelID>
 			<life>200</life>
 			<posNodeX>12</posNodeX>
 			<posNodeY>10</posNodeY>
@@ -25,19 +25,19 @@
 
 	<Ia spawnPointX="4000" spawnPointY="4000">
 	    <Building>
-  			<modelID>CASTLE_TEAM2</modelID>
+  			<modelID>CASTLE</modelID>
 			<life>500</life>
 			<posNodeX>57</posNodeX>
 			<posNodeY>57</posNodeY>
 	    </Building>
 	    <Building>
-  			<modelID>TOWER_TEAM2</modelID>
+  			<modelID>TURRET</modelID>
 			<life>200</life>
 			<posNodeX>54</posNodeX>
 			<posNodeY>52</posNodeY>
 	    </Building>
 	    <Building>
-  			<modelID>TOWER_TEAM2</modelID>
+  			<modelID>TURRET</modelID>
 			<life>200</life>
 			<posNodeX>52</posNodeX>
 			<posNodeY>54</posNodeY>

@@ -89,11 +89,6 @@ public class MenuScreen extends Screen implements IUpdatable {
         this.getHUD().attachChild(l1,Entity.Alignment.CENTER);
         this.getHUD().attachChild(blackScreen, Entity.Alignment.CENTER);
         
-        
-        //TEST DATA
-		/** Json */
-		DataLoader.loadBuildingsPattern();
-
     }
 
     @Override

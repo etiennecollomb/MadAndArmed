@@ -64,7 +64,7 @@ public class BuildingPatternHandler extends DefaultHandler {
 		currentElement=qName;
 		if(MODEL.equalsIgnoreCase(currentElement)) {
 			currentPatern = new BuildingPattern();
-			currentPatern.setBuildingID(BuildingType.valueOf(atts.getValue(BUILDING_BUILDING_ID)));
+			//currentPatern.setBuildingID(BuildingType.valueOf(atts.getValue(BUILDING_BUILDING_ID)));
 			buildingPattern.put(currentPatern.getBuildingType(), currentPatern);
 		}else if(WEAPON.equalsIgnoreCase(currentElement)) {
 			//currentPatern.setWeaponPattern(new WeaponPattern());
