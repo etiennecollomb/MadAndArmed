@@ -1,5 +1,7 @@
 package com.geekmecrazy.madandarmed.Pattern;
 
+import java.util.ArrayList;
+
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 
 
@@ -45,7 +47,7 @@ public class BuildingPattern {
 	private int price;
 	
 	/** list of row in spriteSheet for Aim Animation */
-	private int[] aimAnimationRow;
+	private ArrayList<Integer> aimAnimationRow;
 	
 	/** list of row in spriteSheet for Fire Animation */
 	private int[] fireAnimationRow;
@@ -107,11 +109,11 @@ public class BuildingPattern {
 		this.price = price;
 	}
 
-	public int[] getAimAnimationRow() {
+	public ArrayList<Integer> getAimAnimationRow() {
 		return aimAnimationRow;
 	}
 
-	public void setAimAnimationRow(int[] aimAnimationRow) {
+	public void setAimAnimationRow(ArrayList<Integer> aimAnimationRow) {
 		this.aimAnimationRow = aimAnimationRow;
 	}
 

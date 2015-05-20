@@ -86,7 +86,7 @@ public class BuildingPatternHandler extends DefaultHandler {
 			}else if(BUILDING_SIZE.equalsIgnoreCase(currentElement)) {
 				currentPatern.setBuildingSize(BuildingSize.valueOf(value));
 			}else if(AIM_ANIMATION_ROW.equalsIgnoreCase(currentElement)) {
-				currentPatern.setAimAnimationRow(strArray2IntArray(value.split(",")));
+				//currentPatern.setAimAnimationRow(strArray2IntArray(value.split(",")));
 			}
 
 			/** Weapon */

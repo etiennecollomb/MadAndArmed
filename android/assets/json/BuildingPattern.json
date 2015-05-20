@@ -1,14 +1,17 @@
 {
-    "first": {
+    "CASTLE": {
         class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern
-		buildingType: "CASTLE"
-		buildingSize: "SMALL"
+		buildingType: CASTLE
+		buildingSize: SMALL
 		weaponPatternType: 0
+		life: 50000
+		price: 400
+		aimAnimationRow: [ 2, 5, 6 ]
     },
-    "second": {
+    "TURRET": {
         class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern
-		buildingType: "TURRET"
-		buildingSize: "SMALL"
+		buildingType: TURRET
+		buildingSize: SMALL
 		weaponPatternType: 1
     }
 }
