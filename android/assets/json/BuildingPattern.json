@@ -1,12 +1,18 @@
 {
     "first": {
-        class: com.geekmecrazy.madandarmed.Json.PhoneNumber
+        class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern2
 		name: Home
 		number: 206-555-1234
+		buildingType: "CASTLE"
+		buildingSize: "SMALL"
+		weaponPatternType: 0
     },
     "second": {
-        class: com.geekmecrazy.madandarmed.Json.PhoneNumber
+        class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern2
 		name: Work
 		number: 425-555-4321
+		buildingType: "TURRET"
+		buildingSize: "SMALL"
+		weaponPatternType: 1
     }
 }
