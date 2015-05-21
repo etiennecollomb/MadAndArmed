@@ -1,6 +1,7 @@
 package com.geekmecrazy.madandarmed.IA;
 
 import com.geekmecrazy.madandarmed.Game.Element.Building;
+import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Element.Vehicle;
 import com.geekmecrazy.madandarmed.Game.Scene.BuildingManager;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.UnitSize;
@@ -128,7 +129,7 @@ public class StateMap {
         nextZoneAPositionMap.reset();
 	}
 
-	public void setZoneBPositionMap(int teamID){
+	public void setZoneBPositionMap(TeamID teamID){
 
 		List<Building> list_buildings_ = BuildingManager.getManager().getListBuildings();
 		for(Building building_ : list_buildings_){

@@ -1,8 +1,10 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Game.Factory.BuildingFactory;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
+import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Renderer.BuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
@@ -63,7 +65,8 @@ public class Building extends Military{
 		this.pattern=buildingPattern;
 
 		this.militaryRenderer=animatedMilitary;
-		((BuildingRenderer)this.militaryRenderer).init(PoolAnimManager.getManager().getSpriteSheets().get(buildingPattern.getAnimatedTextureType()), buildingPattern, this);
+		AnimatedTextureType animatedTextureType = DataLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingType().name());
+		((BuildingRenderer)this.militaryRenderer).init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), buildingPattern, this);
 
 		/** Set LifeBar */
 		if(life!=null){

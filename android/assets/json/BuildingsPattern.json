@@ -4,7 +4,6 @@
 		buildingType: CASTLE
 		buildingSize: MEDIUM
 		weaponName: MISSILE_1
-		animatedTextureType: TURRET_02_HD_TEAM1
 		life: 50000
 		price: 400
 		aimAnimationRow: [ 0 ]
@@ -14,7 +13,6 @@
 		buildingType: TURRET
 		buildingSize: MEDIUM
 		weaponName: MISSILE_1
-		animatedTextureType: TURRET_01_HD_TEAM1
 		life: 1
 		price: 400
 		aimAnimationRow: [ 0 ]

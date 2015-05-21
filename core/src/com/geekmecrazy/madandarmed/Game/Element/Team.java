@@ -23,7 +23,12 @@ public class Team extends GameElement {
 	// Attributs
 	// ===========================================================
 	
-	private int teamID;
+	public static enum TeamID{
+		TEAM1,
+		TEAM2
+	}
+	
+	private TeamID teamID;
 	
 	private int money;
 	private int moneyByTurn;
@@ -51,7 +56,7 @@ public class Team extends GameElement {
 	private List<IMoneyListener> moneyListeners;
 	private List<IScoreListener> scoreListeners;
 	
-	public Team(int startingMoney, int moneyByTurn, int moneyMax, Vector2d spawnPoint, int teamID_, int thoriumMax) {
+	public Team(int startingMoney, int moneyByTurn, int moneyMax, Vector2d spawnPoint, TeamID teamID_, int thoriumMax) {
 		this.listMilitary = new ArrayList<Military>(FightScreen.MAX_UNITS);
 		this.listAskForCreateCreep=new ArrayList<CreepID>();
 		this.moneyListeners = new ArrayList<IMoneyListener>();
@@ -220,7 +225,7 @@ public class Team extends GameElement {
 		this.scoreListeners.add(scoreListener);
 	}
 
-	public int getTeamID() {
+	public TeamID getTeamID() {
 		return teamID;
 	}
 

@@ -1,0 +1,16 @@
+{
+	TEAM1: {
+		class: com.geekmecrazy.madandarmed.Pattern.TexturePattern
+		textures: {
+			CASTLE: TURRET_02_HD_TEAM1
+			TURRET: TURRET_01_HD_TEAM1
+		}
+	},
+	TEAM2: {
+		class: com.geekmecrazy.madandarmed.Pattern.TexturePattern
+		textures: {
+			CASTLE: TURRET_02_HD_TEAM2
+			TURRET: TURRET_01_HD_TEAM2
+		}
+	}
+}

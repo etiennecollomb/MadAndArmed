@@ -99,6 +99,7 @@ public class GlobalManager {
 	
 	public static final String JSON_BUILDINGSPATTERN = "json/BuildingsPattern.json";
 	public static final String JSON_WEAPONSPATTERN = "json/WeaponsPattern.json";
+	public static final String JSON_TEXTURESPATTERN = "json/TexturesPattern.json";
 	
 	// ===========================================================
 	// Scenes

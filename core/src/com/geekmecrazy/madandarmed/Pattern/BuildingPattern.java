@@ -39,9 +39,6 @@ public class BuildingPattern {
 	/** size on the map */
 	private BuildingSize buildingSize;
 	
-	/** Animated Sprite of the building */
-	private AnimatedTextureType animatedTextureType;
-	
 	private float life;
 	
 	/** cost to buy this building */
@@ -84,14 +81,6 @@ public class BuildingPattern {
 
 	public void setBuildingSize(BuildingSize buildingSize) {
 		this.buildingSize = buildingSize;
-	}
-
-	public AnimatedTextureType getAnimatedTextureType() {
-		return animatedTextureType;
-	}
-
-	public void setAnimatedTextureType(AnimatedTextureType animatedTextureType) {
-		this.animatedTextureType = animatedTextureType;
 	}
 
 	public float getLife() {

@@ -9,6 +9,7 @@ import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Element.Property.GameMap;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.ScoreBarUI;
@@ -33,9 +34,6 @@ public class FightScreen extends Screen implements IUpdatable {
     public static final int MAX_THORIUM=1000;
 
     public static final int MAX_UNITS=1000;
-
-    public static final int TEAM_PLAYER_ID = 0;
-    public static final int TEAM_IA_ID = 1;
 
     /** Teams */
     private static Team teamPlayer;
@@ -182,8 +180,8 @@ public class FightScreen extends Screen implements IUpdatable {
 	public void newGame(){
 
 		// Init des 2 teams
-		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataManager.getMapPattern().getSpawnPointPlayer(), TEAM_PLAYER_ID, MAX_THORIUM));
-		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataManager.getMapPattern().getSpawnPointIa(), TEAM_IA_ID, MAX_THORIUM));
+		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataManager.getMapPattern().getSpawnPointPlayer(), TeamID.TEAM1, MAX_THORIUM));
+		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataManager.getMapPattern().getSpawnPointIa(), TeamID.TEAM2, MAX_THORIUM));
 
 		BuildingManager.initManager(this.getScene(), this.getTeamPlayer(), this.getTeamIA());
 		CreepManager.initManager(this.getScene(), this.getTeamPlayer(), this.getTeamIA());
@@ -258,6 +256,7 @@ public class FightScreen extends Screen implements IUpdatable {
 		/** Json */
 		DataLoader.loadBuildingsPattern();
 		DataLoader.loadWeaponsPattern();
+		DataLoader.loadTexturesPattern();
 		
 		DataManager.loadMapPattern();
 		DataManager.loadCreepsPattern();
