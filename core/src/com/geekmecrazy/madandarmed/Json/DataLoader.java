@@ -99,7 +99,6 @@ public class DataLoader {
 		Json json = new Json();
 		FileHandle text = Gdx.files.internal(GlobalManager.JSON_MAPSPATTERN);
 		mapsPattern = json.fromJson(ObjectMap.class, text);
-		System.out.println("");
 	}
 	
 }
