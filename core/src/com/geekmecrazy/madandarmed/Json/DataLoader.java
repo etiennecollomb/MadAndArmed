@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
+import com.geekmecrazy.madandarmed.Pattern.MapPattern;
 import com.geekmecrazy.madandarmed.Pattern.TexturePattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 
@@ -14,6 +15,7 @@ public class DataLoader {
 	private static ObjectMap<String, BuildingPattern> buildingsPattern;
 	private static ObjectMap<String, WeaponPattern> weaponsPattern;
 	private static ObjectMap<String, TexturePattern> texturesPattern;
+	private static ObjectMap<String, MapPattern> mapsPattern;
 
 
 	// ===========================================================
@@ -23,6 +25,14 @@ public class DataLoader {
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
+
+	public static ObjectMap<String, MapPattern> getMapsPattern() {
+		return mapsPattern;
+	}
+
+	public static void setMapsPattern(ObjectMap<String, MapPattern> mapsPattern) {
+		DataLoader.mapsPattern = mapsPattern;
+	}
 
 	public static ObjectMap<String, TexturePattern> getTexturesPattern() {
 		return texturesPattern;
@@ -81,6 +91,15 @@ public class DataLoader {
 		Json json = new Json();
 		FileHandle text = Gdx.files.internal(GlobalManager.JSON_TEXTURESPATTERN);
 		texturesPattern = json.fromJson(ObjectMap.class, text);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static void loadMapsPattern() {
+
+		Json json = new Json();
+		FileHandle text = Gdx.files.internal(GlobalManager.JSON_MAPSPATTERN);
+		mapsPattern = json.fromJson(ObjectMap.class, text);
+		System.out.println("");
 	}
 	
 }

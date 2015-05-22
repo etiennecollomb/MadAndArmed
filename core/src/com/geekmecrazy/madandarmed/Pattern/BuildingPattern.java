@@ -2,7 +2,6 @@ package com.geekmecrazy.madandarmed.Pattern;
 
 import java.util.ArrayList;
 
-import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponName;
 
 

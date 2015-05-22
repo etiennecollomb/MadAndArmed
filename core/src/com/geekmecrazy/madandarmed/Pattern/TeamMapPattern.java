@@ -1,12 +1,15 @@
 package com.geekmecrazy.madandarmed.Pattern;
 
-import com.badlogic.gdx.utils.ObjectMap;
+import java.util.List;
 
+import com.geekmecrazy.madandarmed.Utils.Vector2d;
 
-public class MapPattern {
+public class TeamMapPattern {
 
-	/** Map names... and AnimatedTextureType associated */
-	private ObjectMap<String, TeamMapPattern> teamMapPattern;
+	private Vector2d spawnPoint;
+
+	/** Team names... and AnimatedTextureType associated */
+	private List<BuildingMapPattern> buildingsList;
 
 	// ===========================================================
 	// Constructors
@@ -15,15 +18,23 @@ public class MapPattern {
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
-
-	public ObjectMap<String, TeamMapPattern> getTeamMapPattern() {
-		return teamMapPattern;
-	}
-
-	public void setTeamMapPattern(ObjectMap<String, TeamMapPattern> teamMapPattern) {
-		this.teamMapPattern = teamMapPattern;
-	}
 	
+	public Vector2d getSpawnPoint() {
+		return spawnPoint;
+	}
+
+	public void setSpawnPoint(Vector2d spawnPoint) {
+		this.spawnPoint = spawnPoint;
+	}
+
+	public List<BuildingMapPattern> getBuildingsList() {
+		return buildingsList;
+	}
+
+	public void setBuildingsList(List<BuildingMapPattern> buildingsList) {
+		this.buildingsList = buildingsList;
+	}
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================

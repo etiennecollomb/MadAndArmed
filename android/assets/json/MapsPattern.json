@@ -1,0 +1,63 @@
+{
+"MAP_1": {
+		class: com.geekmecrazy.madandarmed.Pattern.MapPattern
+		teamMapPattern: {
+		    "TEAM1": {
+		        class: com.geekmecrazy.madandarmed.Pattern.TeamMapPattern
+		        spawnPoint: {
+							class: com.geekmecrazy.madandarmed.Utils.Vector2d
+							x: 100
+							y: 100
+						}
+		        buildingsList: [
+			        {
+				        class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: CASTLE
+						positionNodeX: 10
+						positionNodeY: 10
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: TURRET
+						positionNodeX: 10
+						positionNodeY: 20
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: TURRET
+						positionNodeX: 10
+						positionNodeY: 30
+					}
+				]
+		    },
+		    "TEAM2": {
+		        class: com.geekmecrazy.madandarmed.Pattern.TeamMapPattern
+		        spawnPoint: {
+							class: com.geekmecrazy.madandarmed.Utils.Vector2d
+							x: 4000
+							y: 4000
+						}
+		        buildingsList: [
+			        {
+				        class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: CASTLE
+						positionNodeX: 10
+						positionNodeY: 10
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: TURRET
+						positionNodeX: 10
+						positionNodeY: 20
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: TURRET
+						positionNodeX: 10
+						positionNodeY: 30
+					}
+				]
+		    }
+		}
+	}
+}

@@ -3,10 +3,6 @@ package com.geekmecrazy.madandarmed.XML;
 import java.util.Map;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
-import com.geekmecrazy.madandarmed.Pattern.BuildingQgPattern;
-import com.geekmecrazy.madandarmed.Pattern.BuildingQgPattern.BuildingQgID;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepID;
 import com.geekmecrazy.madandarmed.Pattern.MapPattern;
@@ -21,7 +17,7 @@ public class DataManager {
 	// ===========================================================
 	private static Map<CreepID, CreepPattern> creepsPattern;
 	//private static Map<BuildingType, BuildingPattern> buildingsPatern;
-	private static Map<BuildingQgID, BuildingQgPattern> buildingsQgPatern;
+	//private static Map<BuildingQgID, BuildingQgPattern> buildingsQgPatern;
 	//private static Map<TiledPos, BasePattern> basePattern;
 	private static MapPattern mapPattern;
 	
@@ -104,11 +100,13 @@ public class DataManager {
 	}
 	*/
 	
+	/*
 	public static void updateBuildingsQGPatternAnimation(){
 		for(BuildingQgPattern building : buildingsQgPatern.values()){
 			building.calculateAnimationList();
 		}
 	}
+	*/
 
 	public static Map<CreepID, CreepPattern> getCreepsPattern() {
 		return creepsPattern;
@@ -124,10 +122,11 @@ public class DataManager {
 		return mapPattern;
 	}
 	
-	
+	/*
 	public static Map<BuildingQgID, BuildingQgPattern> getBuildingsQgPatern() {
 		return buildingsQgPatern;
 	}
+	*/
 
 
 //A MIGRER

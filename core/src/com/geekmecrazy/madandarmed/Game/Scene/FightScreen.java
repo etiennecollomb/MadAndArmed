@@ -180,8 +180,8 @@ public class FightScreen extends Screen implements IUpdatable {
 	public void newGame(){
 
 		// Init des 2 teams
-		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataManager.getMapPattern().getSpawnPointPlayer(), TeamID.TEAM1, MAX_THORIUM));
-		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataManager.getMapPattern().getSpawnPointIa(), TeamID.TEAM2, MAX_THORIUM));
+		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getSpawnPoint(), TeamID.TEAM1, MAX_THORIUM));
+		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getSpawnPoint(), TeamID.TEAM2, MAX_THORIUM));
 
 		BuildingManager.initManager(this.getScene(), this.getTeamPlayer(), this.getTeamIA());
 		CreepManager.initManager(this.getScene(), this.getTeamPlayer(), this.getTeamIA());
@@ -257,6 +257,7 @@ public class FightScreen extends Screen implements IUpdatable {
 		DataLoader.loadBuildingsPattern();
 		DataLoader.loadWeaponsPattern();
 		DataLoader.loadTexturesPattern();
+		DataLoader.loadMapsPattern();
 		
 		DataManager.loadMapPattern();
 		DataManager.loadCreepsPattern();

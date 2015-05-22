@@ -53,9 +53,9 @@ public class MapPatternDataHandler extends DefaultHandler {
 	public void startDocument() throws SAXException {
 		mapPattern = new MapPattern();
 		listBuildingPlayer = new ArrayList<LevelBuildingPattern>();
-		mapPattern.setListBuildingPlayer(listBuildingPlayer);
+		//mapPattern.setListBuildingPlayer(listBuildingPlayer);
 		listBuildingIA = new ArrayList<LevelBuildingPattern>();
-		mapPattern.setListBuildingIA(listBuildingIA);
+		//mapPattern.setListBuildingIA(listBuildingIA);
 	}
 
 	@Override
@@ -63,13 +63,13 @@ public class MapPatternDataHandler extends DefaultHandler {
 		currentElement=qName;
 		if(PLAYER.equalsIgnoreCase(currentElement)) {
 			currentList = listBuildingPlayer;
-			mapPattern.setSpawnPointPlayer(new Vector2d());
-			mapPattern.getSpawnPointPlayer().set(new Integer(atts.getValue(TEAM_SPAWNPOINT_X)).intValue(),new Integer(atts.getValue(TEAM_SPAWNPOINT_Y)).intValue());
+			//mapPattern.setSpawnPointPlayer(new Vector2d());
+			//mapPattern.getSpawnPointPlayer().set(new Integer(atts.getValue(TEAM_SPAWNPOINT_X)).intValue(),new Integer(atts.getValue(TEAM_SPAWNPOINT_Y)).intValue());
 			
 		}else if(IA.equalsIgnoreCase(currentElement)) {
 			currentList = listBuildingIA;
-			mapPattern.setSpawnPointIa(new Vector2d());
-			mapPattern.getSpawnPointIa().set(new Integer(atts.getValue(TEAM_SPAWNPOINT_X)).intValue(),new Integer(atts.getValue(TEAM_SPAWNPOINT_Y)).intValue());
+			//mapPattern.setSpawnPointIa(new Vector2d());
+			//mapPattern.getSpawnPointIa().set(new Integer(atts.getValue(TEAM_SPAWNPOINT_X)).intValue(),new Integer(atts.getValue(TEAM_SPAWNPOINT_Y)).intValue());
 		}else if(BUILDING.equalsIgnoreCase(currentElement)) {
 			buildingCurrent = new LevelBuildingPattern();
 			currentList.add(buildingCurrent);
