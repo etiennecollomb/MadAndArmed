@@ -18,7 +18,6 @@ import com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.LevelBuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
-import com.geekmecrazy.madandarmed.XML.DataManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 

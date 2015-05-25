@@ -21,7 +21,6 @@ import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
-import com.geekmecrazy.madandarmed.XML.DataManager;
 
 
 public class FightScreen extends Screen implements IUpdatable {
@@ -258,12 +257,7 @@ public class FightScreen extends Screen implements IUpdatable {
 		DataLoader.loadWeaponsPattern();
 		DataLoader.loadTexturesPattern();
 		DataLoader.loadMapsPattern();
-		
-		DataManager.loadMapPattern();
-		DataManager.loadCreepsPattern();
-		//DataManager.loadBuildingsPattern();
-		DataManager.updateCreepsPatternAnimation();
-		//DataManager.updateBuildingsPatternAnimation();
+		DataLoader.loadCreepsPattern();
 		
 	}
 

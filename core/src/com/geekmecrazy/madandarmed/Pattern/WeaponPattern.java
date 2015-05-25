@@ -6,6 +6,9 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 public class WeaponPattern{
 
 	public static enum WeaponName {
+		CAC_1,
+		GUN_1,
+		GUN_2,
 		MISSILE_1,
 		MISSILE_2
 	}

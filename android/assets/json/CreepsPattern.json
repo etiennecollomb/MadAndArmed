@@ -1,0 +1,41 @@
+{
+	"GLADIATOR": {
+			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
+			creepType: GLADIATOR
+			weaponName: CAC_1
+			creepSize: SMALL
+			life: 100
+			walkSpeed: 2.5
+			price: 50
+			animationWalkPixelLength: 64
+			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12 ]
+			aimAnimationRow: [ 9 ]
+			fireAnimationRow: [ 16,17,18,19,20,21,22 ]
+			},
+	"MARINE": {
+			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
+			creepType: MARINE
+			weaponName: GUN_1
+			creepSize: SMALL
+			life: 200
+			walkSpeed: 2.5
+			price: 80
+			animationWalkPixelLength: 64
+			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13 ]
+			aimAnimationRow: [ 14 ]
+			fireAnimationRow: [ 14,16 ]
+			},
+	"MESH": {
+			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
+			creepType: MESH
+			weaponName: GUN_2
+			creepSize: MEDIUM
+			life: 500
+			walkSpeed: 1
+			price: 200
+			animationWalkPixelLength: 100
+			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 ]
+			aimAnimationRow: [ 20 ]
+			fireAnimationRow: [ 20 ]
+			}
+}

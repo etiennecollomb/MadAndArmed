@@ -4,7 +4,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Element.Vehicle;
 import com.geekmecrazy.madandarmed.Game.Scene.BuildingManager;
-import com.geekmecrazy.madandarmed.Pattern.CreepPattern.UnitSize;
+import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepSize;
 import com.geekmecrazy.madandarmed.Tools.ResetArray;
 
 import java.util.List;
@@ -179,9 +179,9 @@ public class StateMap {
 		//Gere les 3 size : on ecrase par dessus dans nextCreepZoneAPosition sans checker si size est plus grosse
 		//Cela sert pour les contrainte de penetration : on priviligie d abord les grosses units, et les petits qui s en ecratent, plutot que l inverse
 		//ATTENTION AUX BORDS!
-		if(vehicle.getPattern().getUnitSize() == UnitSize.BIG){
+		if(vehicle.getPattern().getCreepSize() == CreepSize.BIG){
 			//on check rien : prioritaire ds tous les cas, on ecrase
-			int rayon = vehicle.getPattern().getUnitSize().getRayon();
+			int rayon = vehicle.getPattern().getCreepSize().getRayon();
 			for(int i=-rayon; i<=rayon; i++){
 				for(int j=-rayon; j<=rayon; j++){
 
@@ -194,10 +194,10 @@ public class StateMap {
 			}
 
 		}
-		else if(vehicle.getPattern().getUnitSize() == UnitSize.MEDIUM){
+		else if(vehicle.getPattern().getCreepSize() == CreepSize.MEDIUM){
 			//on check si c est pas Big sinon ok
 			//ie: si vide ou si pas big c est OK
-			int rayon = vehicle.getPattern().getUnitSize().getRayon();
+			int rayon = vehicle.getPattern().getCreepSize().getRayon();
 			for(int i=-rayon; i<=rayon; i++){
 				for(int j=-rayon; j<=rayon; j++){
 
@@ -205,7 +205,7 @@ public class StateMap {
 					if(x__ >= 0 && x__ < mapWidthInSmallNodes && y__ >= 0 && y__ < mapHeightInSmallNodes){ //Check Bords
 
 
-						if(!nextZoneAPositionMap.isUsed(x__, y__) || nextCreepZoneAPositionMap[x__][y__].getPattern().getUnitSize() != UnitSize.BIG){
+						if(!nextZoneAPositionMap.isUsed(x__, y__) || nextCreepZoneAPositionMap[x__][y__].getPattern().getCreepSize() != CreepSize.BIG){
 							nextCreepZoneAPositionMap[x__][y__]=vehicle;
 							nextZoneAPositionMap.setUsed(x__, y__);
 						}
@@ -214,7 +214,7 @@ public class StateMap {
 			}
 
 		}
-		else if(vehicle.getPattern().getUnitSize() == UnitSize.SMALL){
+		else if(vehicle.getPattern().getCreepSize() == CreepSize.SMALL){
 			
 			if(x_ >= 0 && x_ < mapWidthInSmallNodes && y_ >= 0 && y_ < mapHeightInSmallNodes){ //Check Bords
 				

@@ -11,8 +11,9 @@ import com.geekmecrazy.madandarmed.IA.AirPathFinding;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.IA.GroundMoveBehavior;
 import com.geekmecrazy.madandarmed.IA.GroundPathFinding;
+import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
-import com.geekmecrazy.madandarmed.Pattern.CreepPattern.UnitType;
+import com.geekmecrazy.madandarmed.Renderer.BuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
@@ -42,14 +43,14 @@ public class CreepFactory {
 
 		/***********************************************/
 
-		if(creepPattern.getUnitType()==UnitType.SOL){
+		//if(creepPattern.getUnitType()==UnitType.SOL){
 			GroundPathFinding groundPathFinding = PoolManager.getManager().getGroundPathFinding().obtain();
 
 			groundPathFinding.init(creep, 3, 3, 20, 14);//(5, 5, 20, 20); zone A , zone B
 			GroundMoveBehavior groundBehavior = PoolManager.getManager().getGroundBehaviorPool().obtain();
 			groundBehavior.setPathFinding(groundPathFinding);
 			creep.setBehavior(groundBehavior);
-
+/*
 		}else if(creepPattern.getUnitType()==UnitType.AIR){
 			AirPathFinding airPathFinding = PoolManager.getManager().getAirPathFindingPool().obtain();
 			AirMoveBehavior airBehavior = PoolManager.getManager().getAirBehaviorPool().obtain();
@@ -57,16 +58,24 @@ public class CreepFactory {
 			creep.setBehavior(airBehavior);
 
 		}
+		*/
 
 		// ATTAQUE
-		AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
-		attackBehavior.init(creepPattern.getWeaponPattern());
-		creep.setAttackBehavior(attackBehavior);
-		Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
-		attackBehavior.setAttaque(attaque);
+		if(creepPattern.getWeaponName()!=null){
 
-		creep.getAttackBehavior().setMainTarget(FightScreen.getManager().getOtherTeam(team).getCastle());
-		creep.getAttackBehavior().setCurrentTarget(FightScreen.getManager().getOtherTeam(team).getCastle());
+			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
+			attackBehavior.init(DataLoader.getWeaponsPattern().get(creepPattern.getWeaponName().name()));
+			creep.setAttackBehavior(attackBehavior);
+			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
+			attackBehavior.setAttaque(attaque);
+	
+			creep.getAttackBehavior().setMainTarget(FightScreen.getManager().getOtherTeam(team).getCastle());
+			creep.getAttackBehavior().setCurrentTarget(FightScreen.getManager().getOtherTeam(team).getCastle());
+			
+			//A revoir pas propre de mettre ca ici....
+			((CreepRenderer)creep.getMilitaryRenderer()).calculateAnimationListFire();
+			((CreepRenderer)creep.getMilitaryRenderer()).calculateAnimationListWalk();
+		}
 
 
 		return creep;

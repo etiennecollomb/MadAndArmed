@@ -5,10 +5,14 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
+import com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
+import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Pattern.MapPattern;
+import com.geekmecrazy.madandarmed.Pattern.TeamMapPattern;
 import com.geekmecrazy.madandarmed.Pattern.TexturePattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
+import com.geekmecrazy.madandarmed.Utils.Vector2d;
 
 public class DataLoader {
 
@@ -16,6 +20,7 @@ public class DataLoader {
 	private static ObjectMap<String, WeaponPattern> weaponsPattern;
 	private static ObjectMap<String, TexturePattern> texturesPattern;
 	private static ObjectMap<String, MapPattern> mapsPattern;
+	private static ObjectMap<String, CreepPattern> creepsPattern;
 
 
 	// ===========================================================
@@ -61,6 +66,15 @@ public class DataLoader {
 		DataLoader.weaponsPattern = weaponsPattern;
 	}
 
+	public static ObjectMap<String, CreepPattern> getCreepsPattern() {
+		return creepsPattern;
+	}
+
+	public static void setCreepsPattern(
+			ObjectMap<String, CreepPattern> creepsPattern) {
+		DataLoader.creepsPattern = creepsPattern;
+	}
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
@@ -100,6 +114,16 @@ public class DataLoader {
 		FileHandle text = Gdx.files.internal(GlobalManager.JSON_MAPSPATTERN);
 		mapsPattern = json.fromJson(ObjectMap.class, text);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public static void loadCreepsPattern() {
+
+		Json json = new Json();
+		FileHandle text = Gdx.files.internal(GlobalManager.JSON_CREEPSPATTERN);
+		creepsPattern = json.fromJson(ObjectMap.class, text);
+	}
+	
+	
 	
 }
 

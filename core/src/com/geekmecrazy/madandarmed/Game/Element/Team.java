@@ -12,7 +12,7 @@ import com.geekmecrazy.madandarmed.Entity.IMoneyListener;
 import com.geekmecrazy.madandarmed.Entity.IScoreListener;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.StateMap;
-import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepID;
+import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
 
 /**
@@ -41,7 +41,7 @@ public class Team extends GameElement {
 	
 	private Building castle;
 	
-	private List<CreepID> listAskForCreateCreep;
+	private List<CreepType> listAskForCreateCreep;
 	
 	private List<Military> listMilitary; // liste des Military de la team (building + creep)
 	private int currentNbMilitary; // Nombre de Military courante
@@ -58,7 +58,7 @@ public class Team extends GameElement {
 	
 	public Team(int startingMoney, int moneyByTurn, int moneyMax, Vector2d spawnPoint, TeamID teamID_, int thoriumMax) {
 		this.listMilitary = new ArrayList<Military>(FightScreen.MAX_UNITS);
-		this.listAskForCreateCreep=new ArrayList<CreepID>();
+		this.listAskForCreateCreep=new ArrayList<CreepType>();
 		this.moneyListeners = new ArrayList<IMoneyListener>();
 		this.scoreListeners = new ArrayList<IScoreListener>();
 		this.money = startingMoney;
@@ -213,7 +213,7 @@ public class Team extends GameElement {
 		return spawnPoint;
 	}
 
-	public List<CreepID> getListAskForCreateCreep() {
+	public List<CreepType> getListAskForCreateCreep() {
 		return listAskForCreateCreep;
 	}
 

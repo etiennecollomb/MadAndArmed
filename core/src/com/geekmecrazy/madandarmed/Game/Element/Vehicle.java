@@ -197,7 +197,7 @@ public abstract class Vehicle extends Military {
 
             //TODO: ajouter les buildings aussi (calculer a chaque fois pour tous les buidings
             // car peu de buildings, ca dervait etre ok)
-            int rayon = this.getPattern().getUnitSize().getRayon() + 1; //+1 car on doit prendre en compte les units tres proches des bords d'une smallNode (important sinon les units se poussent pas suffisement....)
+            int rayon = this.getPattern().getCreepSize().getRayon() + 1; //+1 car on doit prendre en compte les units tres proches des bords d'une smallNode (important sinon les units se poussent pas suffisement....)
             for (int i = -rayon; i <= rayon; i++)
                 for (int j = -rayon; j <= rayon; j++) {
 

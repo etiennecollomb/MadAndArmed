@@ -213,7 +213,7 @@ public class GroundPathFinding extends PathFinding {
 			tempPosition.set(this.path.get(currentNode).getX()*(GlobalManager.SMALL_NODESIZE)+(GlobalManager.SMALL_NODESIZE/2f), this.path.get(currentNode).getY()*(GlobalManager.SMALL_NODESIZE)+(GlobalManager.SMALL_NODESIZE/2f));
 			tempPosition.sub(v.getPos());
 			tempPosition.normalize(); //la direction du vehicle
-			tempPosition.scale(v.getPattern().getSpeed());
+			tempPosition.scale(v.getPattern().getWalkSpeed());
 			tempPosition.add(v.getPos());
 			v.setPos(tempPosition.getX(),tempPosition.getY());
 		}

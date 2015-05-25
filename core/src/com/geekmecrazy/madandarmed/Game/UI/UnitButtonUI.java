@@ -12,7 +12,6 @@ import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Renderer.UnitButtonRenderer;
-import com.geekmecrazy.madandarmed.XML.DataManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +34,7 @@ public class UnitButtonUI extends Layout implements IMoneyListener {
         super.init(pX, pY);
 
         this.setOrientation(Orientation.HORIZONTAL);
-
+/*
         FightScreen.getManager().getTeamPlayer().addMoneyListener(this);
 
         java.util.Map<CreepPattern.CreepID, CreepPattern> creepsPattern = DataManager.getCreepsPattern();
@@ -66,7 +65,7 @@ public class UnitButtonUI extends Layout implements IMoneyListener {
 //                this.add(unitButtonRenderer);
 //                FightScreen.getManager().getHUD().registerTouchableShape(unitButtonRenderer);
 
-                /** State */
+                // State
                 setButtonOKState(unitButtonRenderer);
                 unitsButtonsState.put(creepPattern, Integer.valueOf(UnitButtonUI.BUTTON_OK_STATE));
 
@@ -95,6 +94,7 @@ public class UnitButtonUI extends Layout implements IMoneyListener {
 
             }
         }
+        */
     }
 
     public UnitButtonUI(){

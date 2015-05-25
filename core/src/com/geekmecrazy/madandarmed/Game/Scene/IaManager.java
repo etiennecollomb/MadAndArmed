@@ -1,6 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
-import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepID;
+import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 
 
 public class IaManager {
@@ -55,34 +55,17 @@ public class IaManager {
 
             if (nbTurnAfterPreviousSpawn >= TURN) {
                 if (big_spawn >= BIG_TURN) {
-                    CreepManager.getManager().askForCreateCreep(CreepID.MESH_HD_TEAM2, FightScreen.getManager().getTeamIA());
+                    CreepManager.getManager().askForCreateCreep(CreepType.MESH, FightScreen.getManager().getTeamIA());
                     big_spawn = 0;
                 } else {
                     big_spawn++;
                 }
 
-                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.GLADIATOR_HD_TEAM2, FightScreen.getManager().getTeamIA());
+                CreepManager.getManager().askForCreateCreep(CreepType.GLADIATOR, FightScreen.getManager().getTeamIA());
+                CreepManager.getManager().askForCreateCreep(CreepType.GLADIATOR, FightScreen.getManager().getTeamIA());
 
 
-                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
-//                CreepManager.getManager().askForCreateCreep(CreepID.MARINE_HD_TEAM2, FightScreen.getManager().getTeamIA());
+                CreepManager.getManager().askForCreateCreep(CreepType.MARINE, FightScreen.getManager().getTeamIA());
 
 
                 nbTurnAfterPreviousSpawn = 0;

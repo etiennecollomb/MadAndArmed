@@ -2,6 +2,9 @@
 	TEAM1: {
 		class: com.geekmecrazy.madandarmed.Pattern.TexturePattern
 		textures: {
+			GLADIATOR: GLADIATOR_HD_TEAM1
+			MARINE: MARINE_HD_TEAM1
+			MESH: MESH_HD_TEAM1
 			CASTLE: TURRET_02_HD_TEAM1
 			TURRET: TURRET_01_HD_TEAM1
 		}
@@ -9,6 +12,9 @@
 	TEAM2: {
 		class: com.geekmecrazy.madandarmed.Pattern.TexturePattern
 		textures: {
+			GLADIATOR: GLADIATOR_HD_TEAM2
+			MARINE: MARINE_HD_TEAM2
+			MESH: MESH_HD_TEAM2
 			CASTLE: TURRET_02_HD_TEAM2
 			TURRET: TURRET_01_HD_TEAM2
 		}

@@ -8,7 +8,7 @@
 package com.geekmecrazy.madandarmed.IA;
 
 import com.geekmecrazy.madandarmed.Game.Element.Vehicle;
-import com.geekmecrazy.madandarmed.Pattern.CreepPattern.UnitSize;
+import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepSize;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -191,12 +191,12 @@ public class GlobalAstar {
 		fin = finNode;
 		vehicle = v;
 		//BIG
-		if(vehicle.getPattern().getUnitSize() == UnitSize.BIG){
+		if(vehicle.getPattern().getCreepSize() == CreepSize.BIG){
 			corner_smallNodes=corner_smallNodes_5_5;
 			side_smallNodes=side_smallNodes_5_5;
 		}
 		//MEDIUM
-		else if(vehicle.getPattern().getUnitSize() == UnitSize.MEDIUM){
+		else if(vehicle.getPattern().getCreepSize() == CreepSize.MEDIUM){
 			corner_smallNodes=corner_smallNodes_3_3;
 			side_smallNodes=side_smallNodes_3_3;
 		}

@@ -1,4 +1,28 @@
 {
+    "CAC_1": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+		weaponType: CAC
+		hitRange: 50
+		hitSpeed: 10
+		dmgEffect: 30
+		animatedTextureType: IMPACT_BULLET
+    },
+    "GUN_1": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+		weaponType: GUN
+		hitRange: 100
+		hitSpeed: 20
+		dmgEffect: 50
+		animatedTextureType: IMPACT_BULLET
+    },
+    "GUN_2": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+		weaponType: GUN
+		hitRange: 500
+		hitSpeed: 30
+		dmgEffect: 200
+		animatedTextureType: IMPACT_BULLET
+    },
     "MISSILE_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
 		weaponType: MISSILE

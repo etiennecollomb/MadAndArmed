@@ -13,20 +13,20 @@
 			        {
 				        class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
 						buildingType: CASTLE
+						positionNodeX: 7
+						positionNodeY: 7
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: TURRET
 						positionNodeX: 10
+						positionNodeY: 12
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: TURRET
+						positionNodeX: 12
 						positionNodeY: 10
-					},
-					{
-						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: TURRET
-						positionNodeX: 10
-						positionNodeY: 20
-					},
-					{
-						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: TURRET
-						positionNodeX: 10
-						positionNodeY: 30
 					}
 				]
 		    },
@@ -41,20 +41,20 @@
 			        {
 				        class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
 						buildingType: CASTLE
-						positionNodeX: 10
-						positionNodeY: 10
+						positionNodeX: 57
+						positionNodeY: 57
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
 						buildingType: TURRET
-						positionNodeX: 10
-						positionNodeY: 20
+						positionNodeX: 54
+						positionNodeY: 52
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
 						buildingType: TURRET
-						positionNodeX: 10
-						positionNodeY: 30
+						positionNodeX: 52
+						positionNodeY: 54
 					}
 				]
 		    }

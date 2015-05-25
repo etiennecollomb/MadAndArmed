@@ -9,9 +9,9 @@ import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Factory.CreepFactory;
+import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
-import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepID;
-import com.geekmecrazy.madandarmed.XML.DataManager;
+import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 public class CreepManager {
@@ -73,29 +73,29 @@ public class CreepManager {
 	private Set<Creep> listCreepsRecycle;
 	
 	/** Enregistre les demandes création de creep */
-	public void askForCreateCreep(CreepID creepID, Team team){
-		CreepPattern creepPattern = DataManager.getCreepsPattern().get(creepID);
+	public void askForCreateCreep(CreepType creepType, Team team){
+		CreepPattern creepPattern = DataLoader.getCreepsPattern().get(creepType.name());
 		if(team.hasEnoughtMoney(creepPattern.getPrice())){
 			team.subMoney(creepPattern.getPrice());
-			team.getListAskForCreateCreep().add(creepID);
+			team.getListAskForCreateCreep().add(creepType);
 		}
 	}
 
 	/** Excecute les demandes de création de creep */
 	public void excuteAskForCreateCreep(){
-		for (CreepID creepID : teamPlayer.getListAskForCreateCreep()){
-			createCreep(creepID, teamPlayer);
+		for (CreepType creepType : teamPlayer.getListAskForCreateCreep()){
+			createCreep(creepType, teamPlayer);
 		}
-		for (CreepID creepID : teamIA.getListAskForCreateCreep()){
-			createCreep(creepID, teamIA);
+		for (CreepType creepType : teamIA.getListAskForCreateCreep()){
+			createCreep(creepType, teamIA);
 		}
 		teamPlayer.getListAskForCreateCreep().clear();
 		teamIA.getListAskForCreateCreep().clear();
 	}
 
 	/** Creation du nouveau creep */
-	public void createCreep(CreepID creepID, Team team){
-		CreepPattern creepPattern = DataManager.getCreepsPattern().get(creepID);
+	public void createCreep(CreepType creepID, Team team){
+		CreepPattern creepPattern = DataLoader.getCreepsPattern().get(creepID.name());
 		Creep creep = CreepFactory.createCreep(creepPattern, team);
 		addCreep(creep);
 	}
