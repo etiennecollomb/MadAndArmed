@@ -1,7 +1,6 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
-import com.geekmecrazy.madandarmed.Input.MyGestureListener;
 
 
 public class MultiActionRenderer extends SimpleRenderer {

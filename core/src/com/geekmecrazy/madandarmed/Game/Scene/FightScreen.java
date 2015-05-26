@@ -35,8 +35,8 @@ public class FightScreen extends Screen implements IUpdatable {
     public static final int MAX_UNITS=1000;
 
     /** Teams */
-    private static Team teamPlayer;
-    private static Team teamIA;
+    public static Team teamPlayer;
+    public static Team teamIA;
 
     /** UI */
     private UIFinishGame uiFinishGame;
@@ -182,7 +182,7 @@ public class FightScreen extends Screen implements IUpdatable {
 		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getSpawnPoint(), TeamID.TEAM1, MAX_THORIUM));
 		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getSpawnPoint(), TeamID.TEAM2, MAX_THORIUM));
 
-		BuildingManager.initManager(this.getScene(), this.getTeamPlayer(), this.getTeamIA());
+		BuildingManager.initManager();
 		CreepManager.initManager(this.getScene(), this.getTeamPlayer(), this.getTeamIA());
 		IaManager.initManager();
 		MissileManager.initManager();

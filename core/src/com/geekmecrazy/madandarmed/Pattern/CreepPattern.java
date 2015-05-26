@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Pattern;
 
 import java.util.List;
 
+import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponName;
 
 public class CreepPattern {
@@ -27,6 +28,9 @@ public class CreepPattern {
 			return mRayon;
 		}
 	}
+
+	private int[] fireAnimation;
+	private int[] walkAnimation;
 	
 	/** Creep Type */
 	private CreepType creepType;
@@ -67,7 +71,23 @@ public class CreepPattern {
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
-	
+
+	public int[] getFireAnimation() {
+		return fireAnimation;
+	}
+
+	public void setFireAnimation(int[] fireAnimation) {
+		this.fireAnimation = fireAnimation;
+	}
+
+	public int[] getWalkAnimation() {
+		return walkAnimation;
+	}
+
+	public void setWalkAnimation(int[] walkAnimation) {
+		this.walkAnimation = walkAnimation;
+	}
+
 	public CreepType getCreepType() {
 		return creepType;
 	}
@@ -163,71 +183,74 @@ public class CreepPattern {
 	// ===========================================================
 	// Methods
 	// ===========================================================
-	
-	
-	
-/*
-	private UnitTeam mTeam;								// Team de l'unite (a cause des texture associe a l unit ID ..; TODO : a refaire car ca devrait pas etre ici ...)
-	
-	private UnitType mUnitType;							// Unit type (air, sol)
-	
-	private UnitSize mUnitSize;							// Unit size in Small Node (small, medium, big)
 
-	private WeaponPattern mWeaponPattern;
+	//renvoie une array a lire de gauche a droite (ex: 012340123401234...etc)
+	public void calculateAnimationListFire(){
+		int state1Counter=0;
+		int state2Counter=0;
 
-	private int mPrice;									// Unit price
-	
-	private float mLife;								// Unit Life point
-	
-	private float mSpeed;								// Unit move speed
+		WeaponPattern weaponPattern = DataLoader.getWeaponsPattern().get(this.getWeaponName().name());
+		switch (weaponPattern.getWeaponType()){
+		case CAC:
+			//Corps a corps : 1234567 1234567...etc
+			state1Counter=this.getFireAnimationRow().size();
+			state2Counter = 2; //4 = ralenti x4 des coups 
 
-	private AnimatedTextureType mAnimatedTextureType;	// SpriteSheetRoot du creepRenderer
-	
-	private TextureType mSpriteButton;					// Sprite used for the button
-	
-	private int mMenuPosition;							//positon des boutons unit dans le menu en bas de Fight
+			this.fireAnimation = new int[state1Counter*state2Counter];
 
-	private int mWaitAnimationRow;						// Tile Row WAIT
-	
-	private int mAimAnimationRow;						// Tile Row AIM
-	
-	private int[] mFireAnimationRow;					// Tiles Row FIRE
-	
-	private int[] mWalkAnimationRow;					// Tiles Row WALK
+			for(int i=0; i<state1Counter; i++)
+				for(int j=0; j<state2Counter; j++)
+					fireAnimation[(i*state2Counter)+j]=this.getFireAnimationRow().get(i);
+			break; 
 
-	private int mAnimationWalkPixelLength;				// Number of pixel for one step for walk animation
+		case GUN:
+			//repetition d un tir pdt tout la duree d un hitSpeed
+			//GUN :  232323232 11111111...etc
 
-	private int[] mFireAnimation;						//List des animations Fire
-	
-	private int[] mWalkAnimation;						//List des animations Walk
+			int actionLength = this.getFireAnimationRow().size(); // un coup de tir ...
+			int nbOfRepetition = 2;
+			//(int)weaponPattern.getHitSpeed() / (int)actionLength;
 
-	public enum CreepID {
-		//TEAM 1 (PLAYER)
-        GLADIATOR_HD_TEAM1,
-		MARINE_HD_TEAM1,
-        MESH_HD_TEAM1,
+			this.fireAnimation = new int[weaponPattern.getHitSpeed()];
 
-		//TEAM 2 (IA)
-        GLADIATOR_HD_TEAM2,
-        MARINE_HD_TEAM2,
-        MESH_HD_TEAM2,
+			for(int i=0; i<nbOfRepetition; i++)
+				for(int j=0; j<actionLength; j++)
+					this.fireAnimation[i*actionLength + j] = this.getFireAnimationRow().get(j);
 
-		//OTHER TEMP
-		NAO,
-		SPARTAN,
-		HORUS
+			for(int i=actionLength*nbOfRepetition; i<this.fireAnimation.length; i++)
+				this.fireAnimation[i] = this.getAimAnimationRow().get(0);
+
+			break;
+			
+		default:
+			break; 
+
+		}
 	}
 
-	public enum UnitType {
-		AIR, 
-		SOL
+	//renvoie une array a lire de gauche a droite en boucle
+	//type marche : 123454321...etc
+	public void calculateAnimationListWalk(){
+
+		//on "etale" les frame selon le ratio modulo sur la array
+		int size_ = this.getWalkAnimationRow().size();
+		float nbFramePerStep = ((float)this.getAnimationWalkPixelLength())/((float)size_*(float)this.getWalkSpeed()); //nb de frame entre 2 dessins
+		this.walkAnimation = new int[(int)(((float)this.getAnimationWalkPixelLength())/((float)this.getWalkSpeed()))];
+
+		float frameCounter=0f;
+		int stepCounter=0;
+		for(int i=0; i<this.walkAnimation.length; i++){
+
+			if(frameCounter>nbFramePerStep){
+				stepCounter=stepCounter+1;
+				frameCounter=frameCounter-nbFramePerStep;
+			}
+			this.walkAnimation[i]=this.getWalkAnimationRow().get(stepCounter);
+			frameCounter = frameCounter+1;
+		}
 	}
 
-	public enum UnitTeam {
-		TEAM1, 
-		TEAM2
-	}
-*/
+
 
 }
 

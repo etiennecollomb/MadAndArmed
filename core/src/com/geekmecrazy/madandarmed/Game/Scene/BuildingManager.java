@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
+import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
@@ -21,29 +21,27 @@ import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 public class BuildingManager {
 	
+	private List<Building> listBuildings;
+
+	/** list of buildings to delete */
+	private Set<Building> listBuildingsRecycle;
+
 	// ===========================================================
-	// Singleton manager
+	// Constructors
 	// ===========================================================
+
 	private static BuildingManager buildingManager;
 	
 	/** Creation et initialisation du manager */
-	public static void initManager(Scene scene, Team teamPlayer, Team teamIA) {
+	public static void initManager() {
 		if (buildingManager != null) throw new RuntimeException("buildingManager already created ! buildingManager is not null");
-		buildingManager = new BuildingManager(scene, teamPlayer, teamIA);
+		buildingManager = new BuildingManager();
 	}
 
 	/** Disable object's instantiation (private constructor) */
-	private BuildingManager(Scene scene, Team teamPlayer, Team teamIA){
-		this.teamPlayer = teamPlayer;
-		this.teamIA = teamIA;
+	private BuildingManager(){
 		this.listBuildings = new ArrayList<Building>();
 		this.listBuildingsRecycle = new HashSet<Building>();
-	}
-	
-	/** Acces au manager */
-	public static BuildingManager getManager(){
-		if (buildingManager == null) throw new RuntimeException("buildingManager not created ! buildingManager is null");
-		return buildingManager;
 	}
 
 	/** Destruction du manager */
@@ -58,37 +56,37 @@ public class BuildingManager {
 	}
 	
 	// ===========================================================
-	// Manager
+	// Getter & Setter
 	// ===========================================================
-	public static final int MAX_DEAD_BUILDING=10;
 
-	// Team
-	private Team teamPlayer;
-	private Team teamIA;
+	// ===========================================================
+	// Methods for/from SuperClass/Interfaces
+	// ===========================================================
 	
-	private List<Building> listBuildings;
-	
-	// Dead & Recycle
-	private Set<Building> listBuildingsRecycle;
-
-	
-	/** Création des building en début de partie */
-	public void initBuildingAtStart(){
-		for(BuildingMapPattern buildingLevelModel: DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getBuildingsList()){
-			//BuildingPattern buildingPattern = DataManager.getBuildingsPatern().get(BuildingType.valueOf(buildingLevelModel.getModelID().toString()));
-			BuildingPattern buildingPattern = DataLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
-			BuildingFactory.create(buildingLevelModel.getPositionNodeX()* GlobalManager.BIG_NODESIZE, buildingLevelModel.getPositionNodeY()*GlobalManager.BIG_NODESIZE, buildingPattern, teamPlayer);
-		}
-		for(BuildingMapPattern buildingLevelModel: DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
-			//BuildingPattern buildingPattern = DataManager.getBuildingsPatern().get(BuildingType.valueOf(buildingLevelModel.getModelID().toString()));
-			BuildingPattern buildingPattern = DataLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
-			BuildingFactory.create(buildingLevelModel.getPositionNodeX()*GlobalManager.BIG_NODESIZE, buildingLevelModel.getPositionNodeY()*GlobalManager.BIG_NODESIZE, buildingPattern, teamIA);
-		}
+	public static BuildingManager getManager(){
+		return buildingManager;
 	}
 	
-	
-	// Cr�ation d'une Building (+gestion argent)
+	// ===========================================================
+	// Methods
+	// ===========================================================
+
+	/** Creation des buildings en debut de partie */
+	public void initBuildingAtStart(){
+		
+		for(BuildingMapPattern buildingLevelModel: DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getBuildingsList()){
+			BuildingPattern buildingPattern = DataLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
+			BuildingFactory.create(buildingLevelModel.getPositionNodeX()* GlobalManager.BIG_NODESIZE, buildingLevelModel.getPositionNodeY()*GlobalManager.BIG_NODESIZE, buildingPattern, FightScreen.teamPlayer);
+		}
+		for(BuildingMapPattern buildingLevelModel: DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
+			BuildingPattern buildingPattern = DataLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
+			BuildingFactory.create(buildingLevelModel.getPositionNodeX()*GlobalManager.BIG_NODESIZE, buildingLevelModel.getPositionNodeY()*GlobalManager.BIG_NODESIZE, buildingPattern, FightScreen.teamIA);
+		}
+	}
+		
+	/** Creation d'une Building (+gestion argent) */
 	public void createBuilding(Team team, float posX, float posY, float width, float height, BuildingPattern buildingPattern) {
+		
 		if (team.hasEnoughtMoney(buildingPattern.getPrice())) {
 			Life life = PoolManager.getManager().getLifePool().obtain();
 			life.init(100);
@@ -96,7 +94,6 @@ public class BuildingManager {
 			team.subMoney(buildingPattern.getPrice());
 		}
 	}
-	
 	
 	/** Enregistre le building dans le manager */
 	public void addBuilding(Building newBuilding){
@@ -112,8 +109,6 @@ public class BuildingManager {
 		}
 	}
 
-	///////////
-	
 	/** Desenregistre le building dans le manager */
 	public void removeBuilding(Building building){
 		listBuildingsRecycle.add(building);
@@ -123,14 +118,13 @@ public class BuildingManager {
 	public void recycleBuilding(){
 
 		for (Building building : listBuildingsRecycle){
-			/*
-			building.getMyTeam().removeMilitary(building);
-			building.getMyTeam().getStateMap().removeBuilding(building);
-			GameManager.getManager().getotherTeam(building.getMyTeam()).addScore(building.getPattern().getPrice());
-			*/
 			listBuildings.remove(building);
-			//building.recycle();
-			PoolManager.getManager().getTurretPool().free((Turret)building); //appel ensuite creep.reset()
+			
+			if(building instanceof Turret)
+				PoolManager.getManager().getTurretPool().free((Turret)building);
+			if(building instanceof Barricade)
+				PoolManager.getManager().getBarricadePool().free((Barricade)building);
+			
 		}
 		listBuildingsRecycle.clear();
 

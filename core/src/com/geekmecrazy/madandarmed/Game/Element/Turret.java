@@ -4,7 +4,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
-import com.geekmecrazy.madandarmed.Renderer.BuildingRenderer;
+import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
 
 public class Turret extends Building {
@@ -18,7 +18,7 @@ public class Turret extends Building {
 	// Constructors
 	// ===========================================================
 
-	public void init(float posX, float posY, float width, float height, BuildingPattern buildingPattern, Life life, Team myTeam, Team ennemyTeam, BuildingRenderer animatedMilitary ) {
+	public void init(float posX, float posY, float width, float height, BuildingPattern buildingPattern, Life life, Team myTeam, Team ennemyTeam, TurretRenderer animatedMilitary ) {
 		super.init(posX, posY, width, height, buildingPattern, life, myTeam, ennemyTeam, animatedMilitary);
 		
 		float floorPosX = this.getPos().getX();

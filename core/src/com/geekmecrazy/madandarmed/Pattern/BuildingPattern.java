@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Pattern;
 
 import java.util.ArrayList;
 
+import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponName;
 
 
@@ -29,6 +30,8 @@ public class BuildingPattern {
 		}
 	}
 	
+	private static int[] fireAnimation;
+
 	/** Building Type */
 	private BuildingType buildingType;
 	
@@ -57,6 +60,14 @@ public class BuildingPattern {
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
+	
+	public static int[] getFireAnimation() {
+		return fireAnimation;
+	}
+
+	public static void setFireAnimation(int[] fireAnimation) {
+		BuildingPattern.fireAnimation = fireAnimation;
+	}
 
 	public void setBuildingType(BuildingType buildingType) {
 		this.buildingType = buildingType;
@@ -122,5 +133,24 @@ public class BuildingPattern {
 	// Methods
 	// ===========================================================
 
+	/** renvoie une array de row correspondant a une animation */
+	public void calculateAnimationListFire(){
+		
+		WeaponPattern weaponPattern = DataLoader.getWeaponsPattern().get(this.getWeaponName().name());
+		
+		if(weaponPattern !=null){
+			switch (weaponPattern.getWeaponType()){
+			case MISSILE:
+				//TODO: on set une anim de Aim
+				//revoir avec anim de Fire
+				this.fireAnimation = new int[1];
+				this.fireAnimation[0]=this.getAimAnimationRow().get(0);
+				break;
+			default:
+				break;
+			}
+		}
+
+	}
 
 }

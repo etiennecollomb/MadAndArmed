@@ -67,10 +67,6 @@ public class CreepFactory {
 	
 			creep.getAttackBehavior().setMainTarget(FightScreen.getManager().getOtherTeam(team).getCastle());
 			creep.getAttackBehavior().setCurrentTarget(FightScreen.getManager().getOtherTeam(team).getCastle());
-			
-			//A revoir pas propre de mettre ca ici....
-			((CreepRenderer)creep.getMilitaryRenderer()).calculateAnimationListFire();
-			((CreepRenderer)creep.getMilitaryRenderer()).calculateAnimationListWalk();
 		}
 
 

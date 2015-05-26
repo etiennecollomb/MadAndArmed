@@ -13,8 +13,15 @@
 		buildingType: TURRET
 		buildingSize: MEDIUM
 		weaponName: MISSILE_1
-		life: 1
+		life: 5000
 		price: 400
 		aimAnimationRow: [ 0 ]
+    },
+    "BARRICADE": {
+        class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern
+		buildingType: BARRICADE
+		buildingSize: SMALL
+		life: 1000
+		price: 50
     }
 }

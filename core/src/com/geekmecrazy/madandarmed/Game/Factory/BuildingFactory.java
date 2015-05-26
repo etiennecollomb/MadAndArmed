@@ -12,55 +12,44 @@ import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
-import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
-import com.geekmecrazy.madandarmed.Renderer.BuildingRenderer;
+import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
-
 public class BuildingFactory{
 
+	// ===========================================================
+	// Constructors
+	// ===========================================================
+	
 	// disable object's instanciation (private constructor)
 	private BuildingFactory(){} 
 
 	public static void create (float posX, float posY, BuildingPattern buildingPattern, Team team) {
 		
-		// LIFE
-		Life life = null;
-		if(buildingPattern.getLife()>0){
-			life = PoolManager.getManager().getLifePool().obtain();
-			life.init(buildingPattern.getLife());
-		}
-
-		// ANIM
-		BuildingRenderer buildingRenderer = PoolAnimManager.getManager().getBuildingRendererPool().obtain();
+		Building building = null;
 		
-		// BUILDING
-		Turret turret = PoolManager.getManager().getTurretPool().obtain();
-		turret.init(posX, posY, buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE,  buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), buildingRenderer);
-
-        if(buildingPattern.getBuildingType()==BuildingType.CASTLE)
-            team.registerCastle(turret);
-
-		// ATTACK
-		if(buildingPattern.getWeaponName()!=null){
-						
-			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
-			attackBehavior.init(DataLoader.getWeaponsPattern().get(buildingPattern.getWeaponName().name()));
-			attackBehavior.setAttacking(true);
-			turret.setAttackBehavior(attackBehavior);
-			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
-			attackBehavior.setAttaque(attaque);
-			
-			//A revoir pas propre de mettre ca ici....
-			((BuildingRenderer)turret.getMilitaryRenderer()).calculateAnimationListFire();
-		}
+		if(buildingPattern.getBuildingType() == BuildingType.TURRET)
+			building = createTurret(posX, posY, buildingPattern, team);
+		else if(buildingPattern.getBuildingType() == BuildingType.CASTLE)
+			building = createTurret(posX, posY, buildingPattern, team);
 		
-		//building.addDestructibleObs(this);
-		BuildingManager.getManager().addBuilding(turret);
+		BuildingManager.getManager().addBuilding(building);
 	}
 
+	// ===========================================================
+	// Getter & Setter
+	// ===========================================================
+
+	// ===========================================================
+	// Methods for/from SuperClass/Interfaces
+	// ===========================================================
+	
+	// ===========================================================
+	// Methods
+	// ===========================================================
+	
 	public static void destroy(Building building) {
 		BuildingManager.getManager().removeBuilding(building);
 		//building.recycle();
@@ -72,5 +61,41 @@ public class BuildingFactory{
 
 	}
 
+	public static Building createTurret(float posX, float posY, BuildingPattern buildingPattern, Team team){
+		
+		/** Life */
+		Life life = null;
+		if(buildingPattern.getLife()>0){
+			life = PoolManager.getManager().getLifePool().obtain();
+			life.init(buildingPattern.getLife());
+		}
+
+		/** Renderer */
+		TurretRenderer turretRenderer = PoolAnimManager.getManager().getTurretRendererPool().obtain();
+		
+		/** Building */
+		Turret turret = PoolManager.getManager().getTurretPool().obtain();
+		float buildingSize = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
+		turret.init(posX, posY, buildingSize, buildingSize, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), turretRenderer);
+
+		/** AttackBehavior */
+		if(buildingPattern.getWeaponName()!=null){
+						
+			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
+			attackBehavior.init(DataLoader.getWeaponsPattern().get(buildingPattern.getWeaponName().name()));
+			attackBehavior.setAttacking(true);
+			turret.setAttackBehavior(attackBehavior);
+			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
+			attackBehavior.setAttaque(attaque);
+		}
+		
+		/** Castle Special Case */
+		if(buildingPattern.getBuildingType()==BuildingType.CASTLE)
+            team.registerCastle(turret);
+		
+		return turret;
+	}
+	
+	
 
 }

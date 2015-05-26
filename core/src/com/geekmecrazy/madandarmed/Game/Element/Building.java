@@ -8,6 +8,7 @@ import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Renderer.BuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
+import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 
@@ -42,7 +43,7 @@ public class Building extends Military{
 		
 		pattern=null;
 		
-		PoolAnimManager.getManager().getBuildingRendererPool().free((BuildingRenderer) this.militaryRenderer);
+		PoolAnimManager.getManager().getTurretRendererPool().free((TurretRenderer) this.militaryRenderer);
 
 		if(lifeBarreRenderer!=null) PoolAnimManager.getManager().getLifeBarRendererPool().free(lifeBarreRenderer);
 		lifeBarreRenderer = null;

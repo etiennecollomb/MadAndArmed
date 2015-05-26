@@ -23,7 +23,7 @@ public class Geometrie extends GameElement {
      * de la geometrie "visible"
      * et non du sprite qui la contient*/
     private float mWidth;
-    private float mHeight;
+	private float mHeight;
     
     /** Taille Small Node */
     private int mSmallNodeWidth;
@@ -57,6 +57,22 @@ public class Geometrie extends GameElement {
 	public Vector2d getPos() {
 		return mPos;
 	}
+	
+    public float getWidth() {
+		return mWidth;
+	}
+
+	public void setWidth(float pWidth) {
+		this.mWidth = pWidth;
+	}
+
+	public float getHeight() {
+		return mHeight;
+	}
+
+	public void setHeight(float pHeight) {
+		this.mHeight = pHeight;
+	}
 
 	public int getSmallNodeWidth() {
 		return mSmallNodeWidth;
@@ -80,14 +96,6 @@ public class Geometrie extends GameElement {
 
 	public int getBigNodeY() {
 		return mBigNodeY;
-	}
-
-	public float getWidth() {
-		return mWidth;
-	}
-
-	public float getHeight() {
-		return mHeight;
 	}
 	
 	public boolean isNPC() {

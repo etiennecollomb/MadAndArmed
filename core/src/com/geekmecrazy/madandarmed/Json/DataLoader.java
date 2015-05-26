@@ -1,11 +1,11 @@
 package com.geekmecrazy.madandarmed.Json;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
+import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Pattern.MapPattern;
 import com.geekmecrazy.madandarmed.Pattern.MenuPattern;
@@ -99,7 +99,17 @@ public class DataLoader {
 		mapsPattern = json.fromJson(ObjectMap.class, Gdx.files.internal(GlobalManager.JSON_MAPSPATTERN));
 		creepsPattern = json.fromJson(ObjectMap.class, Gdx.files.internal(GlobalManager.JSON_CREEPSPATTERN));
 		menusPattern = json.fromJson(ObjectMap.class, Gdx.files.internal(GlobalManager.JSON_MENUSPATTERN));
-		 
+		
+		for (BuildingPattern buildingPattern : buildingsPattern.values()) {
+			if(buildingPattern.getBuildingType() == BuildingType.TURRET)
+				buildingPattern.calculateAnimationListFire();
+		}
+		
+		for (CreepPattern creepPattern : creepsPattern.values()) {
+			creepPattern.calculateAnimationListFire();
+			creepPattern.calculateAnimationListWalk();
+		}
+		
 	}
 
 	

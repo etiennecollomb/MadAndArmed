@@ -9,6 +9,7 @@ import com.geekmecrazy.madandarmed.Renderer.BuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
 import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
+import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
 import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.badlogic.gdx.utils.Pool;
 
@@ -18,7 +19,7 @@ public class PoolAnimManager {
 	/** Number of Preloaded item */
 	private static final int ALLOCATE_UNIQUE_ACTION_RENDERER	= 100;
 	private static final int ALLOCATE_CREEP_ACTION_RENDERER		= 100;
-	private static final int ALLOCATE_BUILDING_ACTION_RENDERER	= 100;
+	private static final int ALLOCATE_TURRET_ACTION_RENDERER	= 100;
 	private static final int ALLOCATE_MISSILE_ACTION_RENDERER	= 100;
 	private static final int ALLOCATE_LIFEBAR_RENDERER			= 100;
 
@@ -62,7 +63,7 @@ public class PoolAnimManager {
 	/** Pools */
 	private static Pool<UniqueActionRenderer> uniqueActionRendererPool;
 	private static Pool<CreepRenderer> creepRendererPool;
-	private static Pool<BuildingRenderer> buildingRendererPool;
+	private static Pool<TurretRenderer> turretRendererPool;
 	private static Pool<MissileRenderer> missileRendererPool;
 	private static Pool<LifeBarRenderer> lifeBarRendererPool;
 
@@ -99,8 +100,8 @@ public class PoolAnimManager {
 		return creepRendererPool;
 	}
 
-	public Pool<BuildingRenderer> getBuildingRendererPool() {
-		return buildingRendererPool;
+	public Pool<TurretRenderer> getTurretRendererPool() {
+		return turretRendererPool;
 	}
 
 	public Pool<MissileRenderer> getMissileRendererPool() {
@@ -154,7 +155,7 @@ public class PoolAnimManager {
 		/** Pools */
 		uniqueActionRendererPool = createUniqueActionRendererPool(ALLOCATE_UNIQUE_ACTION_RENDERER);
 		creepRendererPool = createCreepRendererPool(ALLOCATE_CREEP_ACTION_RENDERER);
-		buildingRendererPool = createBuildingRendererPool(ALLOCATE_BUILDING_ACTION_RENDERER);
+		turretRendererPool = createTurretRendererPool(ALLOCATE_TURRET_ACTION_RENDERER);
 		missileRendererPool = createMissileRendererPool(ALLOCATE_MISSILE_ACTION_RENDERER);
 		lifeBarRendererPool = createLifeBarRendererPool(ALLOCATE_LIFEBAR_RENDERER);
 
@@ -202,14 +203,14 @@ public class PoolAnimManager {
 
 
 	//BUILDING RENDERER
-	private Pool<BuildingRenderer> createBuildingRendererPool(int initPoolNumber){
+	private Pool<TurretRenderer> createTurretRendererPool(int initPoolNumber){
 
-		Pool<BuildingRenderer> pool = new Pool<BuildingRenderer>(initPoolNumber) {
+		Pool<TurretRenderer> pool = new Pool<TurretRenderer>(initPoolNumber) {
 
 			@Override
-			protected BuildingRenderer newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + BuildingRenderer.class.getName());
-			    return new BuildingRenderer();
+			protected TurretRenderer newObject() {
+                System.out.println("#__ POOL __# allocate new Object : " + TurretRenderer.class.getName());
+			    return new TurretRenderer();
 			}
 
 		};

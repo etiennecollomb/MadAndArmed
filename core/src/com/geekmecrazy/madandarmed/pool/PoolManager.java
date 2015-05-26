@@ -1,7 +1,7 @@
 package com.geekmecrazy.madandarmed.pool;
 
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
-import com.geekmecrazy.madandarmed.Game.Element.Building;
+import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Missile;
@@ -21,7 +21,8 @@ public class PoolManager {
 	private static final int STARTING_ALLOCATE_WEAPON 				= 20;
 	private static final int STARTING_ALLOCATE_MISSILE 				= 20;
 	private static final int STARTING_ALLOCATE_LIFE 				= 20;
-	private static final int STARTING_ALLOCATE_BUILDING 			= 10;
+	private static final int STARTING_ALLOCATE_TURRET 				= 10;
+	private static final int STARTING_ALLOCATE_BARRICADE			= 10;
 	private static final int STARTING_ALLOCATE_GROUNDPATHFINDING 	= 20;
 	private static final int STARTING_ALLOCATE_AIRPATHFINDING 		= 20;
 	private static final int STARTING_ALLOCATE_GROUNDBEHAVIOR 		= 20;
@@ -35,6 +36,7 @@ public class PoolManager {
 	private Pool<Missile> missilePool;
 	private Pool<Life> lifePool;
 	private Pool<Turret> turretPool;
+	private Pool<Barricade> barricadePool;
 	private Pool<GroundPathFinding> groundPathFinding;
 	private Pool<AirPathFinding> airPathFindingPool;
 	private Pool<AttackBehavior> attackBehaviorPool;
@@ -84,6 +86,10 @@ public class PoolManager {
 
 	public Pool<Turret> getTurretPool() {
 		return turretPool;
+	}
+	
+	public Pool<Barricade> getBarricadePool() {
+		return barricadePool;
 	}
 
 	public Pool<GroundPathFinding> getGroundPathFinding() {
@@ -197,7 +203,7 @@ public class PoolManager {
 			 }
 		};
 
-		turretPool = new Pool<Turret>(STARTING_ALLOCATE_BUILDING){
+		turretPool = new Pool<Turret>(STARTING_ALLOCATE_TURRET){
 			@Override
 			protected Turret newObject() {
                 System.out.println("#__ POOL __# allocate new Object : " + Turret.class.getName());
@@ -205,7 +211,13 @@ public class PoolManager {
 			 }
 		};
 
-		
+		barricadePool = new Pool<Barricade>(STARTING_ALLOCATE_BARRICADE){
+			@Override
+			protected Barricade newObject() {
+                System.out.println("#__ POOL __# allocate new Object : " + Barricade.class.getName());
+				return new Barricade();
+			 }
+		};
 		
 	}
 
