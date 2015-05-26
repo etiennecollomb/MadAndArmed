@@ -105,15 +105,15 @@ public class CreepRenderer extends VehicleRenderer {
 
             if (thisCreep.getAttackBehavior().isAttacking()){
                 this.setFireCurrentFrame(this.getFireCurrentFrame()+1);
-                if(this.getFireCurrentFrame() >= this.getCreepPattern().getFireAnimationRow().size())
+                if(this.getFireCurrentFrame() >= this.fireAnimation.length)
                     this.setFireCurrentFrame(0);
-                this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisCreep.getNormalizedDir()), this.getCreepPattern().getFireAnimationRow().get(getFireCurrentFrame()));
+                this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisCreep.getNormalizedDir()), this.fireAnimation[getFireCurrentFrame()]);
 
             }else{
                 this.setWalkCurrentFrame(this.getWalkCurrentFrame()+1);
-                if(this.getWalkCurrentFrame() >= this.getCreepPattern().getWalkAnimationRow().size())
+                if(this.getWalkCurrentFrame() >= this.walkAnimation.length)
                     this.setWalkCurrentFrame(0);
-                this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisCreep.getNormalizedDir()), this.getCreepPattern().getWalkAnimationRow().get(getWalkCurrentFrame()));
+                this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisCreep.getNormalizedDir()), this.walkAnimation[getWalkCurrentFrame()]);
 
             }
         }
@@ -186,18 +186,9 @@ public class CreepRenderer extends VehicleRenderer {
 	//renvoie une array a lire de gauche a droite en boucle
 	//type marche : 123454321...etc
 	public void calculateAnimationListWalk(){
-		int size_ = 0;
-		int state1Counter=0;
 
-		state1Counter=this.getCreepPattern().getWalkAnimationRow().size();
-
-		//type marche : 123454321
-		size_=state1Counter;
-		int[] tempArray = new int[size_];
-		for(int i=0; i<state1Counter; i++)
-			tempArray[i]=this.getCreepPattern().getWalkAnimationRow().get(i);
-
-		//on "etale" les frame selon le ratio modulo sur la array	
+		//on "etale" les frame selon le ratio modulo sur la array
+		int size_ = this.getCreepPattern().getWalkAnimationRow().size();
 		float nbFramePerStep = ((float)this.getCreepPattern().getAnimationWalkPixelLength())/((float)size_*(float)this.getCreepPattern().getWalkSpeed()); //nb de frame entre 2 dessins
 		this.walkAnimation = new int[(int)(((float)this.getCreepPattern().getAnimationWalkPixelLength())/((float)this.getCreepPattern().getWalkSpeed()))];
 
@@ -209,7 +200,7 @@ public class CreepRenderer extends VehicleRenderer {
 				stepCounter=stepCounter+1;
 				frameCounter=frameCounter-nbFramePerStep;
 			}
-			this.walkAnimation[i]=tempArray[stepCounter];
+			this.walkAnimation[i]=this.getCreepPattern().getWalkAnimationRow().get(stepCounter);
 			frameCounter = frameCounter+1;
 		}
 	}

@@ -38,7 +38,7 @@ public class CreepPattern {
 	private CreepSize creepSize;
 
 	/** Unit diameter in pixel (used for boids algo) */
-	//private float diameter;
+	private float diameter;
 	
 	private float life;
 	
@@ -91,7 +91,7 @@ public class CreepPattern {
 	public void setCreepSize(CreepSize creepSize) {
 		this.creepSize = creepSize;
 	}
-/*
+
 	public float getDiameter() {
 		return diameter;
 	}
@@ -99,7 +99,7 @@ public class CreepPattern {
 	public void setDiameter(float diameter) {
 		this.diameter = diameter;
 	}
-*/
+
 	public float getLife() {
 		return life;
 	}

@@ -6,14 +6,11 @@ import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Scene.CreepManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.IA.AirMoveBehavior;
-import com.geekmecrazy.madandarmed.IA.AirPathFinding;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.IA.GroundMoveBehavior;
 import com.geekmecrazy.madandarmed.IA.GroundPathFinding;
 import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
-import com.geekmecrazy.madandarmed.Renderer.BuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
@@ -36,9 +33,8 @@ public class CreepFactory {
 		// ANIM
 		CreepRenderer creepRenderer = PoolAnimManager.getManager().getCreepRendererPool().obtain();
 		
-		int diameter = 20; //A mettre dans XML ! NOTE : 10 fonctionne bien mais plus ca pete  oO
 		Creep creep = PoolManager.getManager().getCreepPool().obtain();
-		creep.init(creepPattern, team.getSpawnPoint().getX()+randowSpawn(), team.getSpawnPoint().getY()+randowSpawn(), diameter, life, team, FightScreen.getManager().getOtherTeam(team), creepRenderer);
+		creep.init(creepPattern, team.getSpawnPoint().getX()+randowSpawn(), team.getSpawnPoint().getY()+randowSpawn(), creepPattern.getDiameter(), life, team, FightScreen.getManager().getOtherTeam(team), creepRenderer);
 
 
 		/***********************************************/
