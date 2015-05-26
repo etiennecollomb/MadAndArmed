@@ -12,7 +12,6 @@ import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Tween.RectangleTween;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.Layout;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 

@@ -8,6 +8,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Pattern.MapPattern;
+import com.geekmecrazy.madandarmed.Pattern.MenuPattern;
 import com.geekmecrazy.madandarmed.Pattern.TexturePattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 
@@ -18,7 +19,7 @@ public class DataLoader {
 	private static ObjectMap<String, TexturePattern> texturesPattern;
 	private static ObjectMap<String, MapPattern> mapsPattern;
 	private static ObjectMap<String, CreepPattern> creepsPattern;
-
+	private static ObjectMap<String, MenuPattern> menusPattern;
 
 	// ===========================================================
 	// Constructors
@@ -72,6 +73,14 @@ public class DataLoader {
 		DataLoader.creepsPattern = creepsPattern;
 	}
 
+	public static ObjectMap<String, MenuPattern> getMenusPattern() {
+		return menusPattern;
+	}
+
+	public static void setMenusPattern(ObjectMap<String, MenuPattern> menusPattern) {
+		DataLoader.menusPattern = menusPattern;
+	}
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
@@ -79,48 +88,20 @@ public class DataLoader {
 	// ===========================================================
 	// Methods
 	// ===========================================================
-
+	
 	@SuppressWarnings("unchecked")
-	public static void loadBuildingsPattern() {
+	public static void loadPatternsData() {
+		Json json = new Json();
 		
-		Json json = new Json();
-		FileHandle text = Gdx.files.internal(GlobalManager.JSON_BUILDINGSPATTERN);
-		buildingsPattern = json.fromJson(ObjectMap.class, text);
+		buildingsPattern = json.fromJson(ObjectMap.class, Gdx.files.internal(GlobalManager.JSON_BUILDINGSPATTERN));
+		weaponsPattern = json.fromJson(ObjectMap.class, Gdx.files.internal(GlobalManager.JSON_WEAPONSPATTERN));
+		texturesPattern = json.fromJson(ObjectMap.class, Gdx.files.internal(GlobalManager.JSON_TEXTURESPATTERN));
+		mapsPattern = json.fromJson(ObjectMap.class, Gdx.files.internal(GlobalManager.JSON_MAPSPATTERN));
+		creepsPattern = json.fromJson(ObjectMap.class, Gdx.files.internal(GlobalManager.JSON_CREEPSPATTERN));
+		menusPattern = json.fromJson(ObjectMap.class, Gdx.files.internal(GlobalManager.JSON_MENUSPATTERN));
+		 
 	}
 
-	@SuppressWarnings("unchecked")
-	public static void loadWeaponsPattern() {
-		
-		Json json = new Json();
-		FileHandle text = Gdx.files.internal(GlobalManager.JSON_WEAPONSPATTERN);
-		weaponsPattern = json.fromJson(ObjectMap.class, text);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public static void loadTexturesPattern() {
-
-		Json json = new Json();
-		FileHandle text = Gdx.files.internal(GlobalManager.JSON_TEXTURESPATTERN);
-		texturesPattern = json.fromJson(ObjectMap.class, text);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public static void loadMapsPattern() {
-
-		Json json = new Json();
-		FileHandle text = Gdx.files.internal(GlobalManager.JSON_MAPSPATTERN);
-		mapsPattern = json.fromJson(ObjectMap.class, text);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public static void loadCreepsPattern() {
-
-		Json json = new Json();
-		FileHandle text = Gdx.files.internal(GlobalManager.JSON_CREEPSPATTERN);
-		creepsPattern = json.fromJson(ObjectMap.class, text);
-	}
-	
-	
 	
 }
 

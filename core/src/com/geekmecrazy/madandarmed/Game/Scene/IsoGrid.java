@@ -1,6 +1,5 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
-import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IsoShape;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.IA.IsoMapState;

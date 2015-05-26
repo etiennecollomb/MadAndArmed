@@ -253,11 +253,7 @@ public class FightScreen extends Screen implements IUpdatable {
 	public void loadData() {
 		
 		/** Json */
-		DataLoader.loadBuildingsPattern();
-		DataLoader.loadWeaponsPattern();
-		DataLoader.loadTexturesPattern();
-		DataLoader.loadMapsPattern();
-		DataLoader.loadCreepsPattern();
+		DataLoader.loadPatternsData();
 		
 	}
 

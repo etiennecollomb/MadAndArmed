@@ -102,7 +102,7 @@ public class GlobalManager {
 	public static final String JSON_TEXTURESPATTERN = "json/TexturesPattern.json";
 	public static final String JSON_MAPSPATTERN = "json/MapsPattern.json";
 	public static final String JSON_CREEPSPATTERN = "json/CreepsPattern.json";
-	
+	public static final String JSON_MENUSPATTERN = "json/MenusPattern.json";
 	
 	// ===========================================================
 	// Scenes

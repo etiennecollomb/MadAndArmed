@@ -16,8 +16,6 @@ import com.geekmecrazy.madandarmed.Game.Factory.BuildingFactory;
 import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
-import com.geekmecrazy.madandarmed.Pattern.LevelBuildingPattern;
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 

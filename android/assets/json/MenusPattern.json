@@ -1,0 +1,22 @@
+{
+	"MENU_1": {
+		class: com.geekmecrazy.madandarmed.Pattern.MenuPattern
+		buttonsPattern: [
+		    {
+		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
+		    	creepType: GLADIATOR
+				icon: GLADIATOR_ICON
+		    },
+		    {
+		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
+		    	creepType: MARINE
+				icon: MARINE_SMALL_ICON
+		    },
+		    {
+		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
+		    	creepType: MESH
+				icon: MARINE_BIG_ICON
+		    }
+		]
+	}
+}
