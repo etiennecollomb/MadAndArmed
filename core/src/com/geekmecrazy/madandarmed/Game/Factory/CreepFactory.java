@@ -80,15 +80,10 @@ public class CreepFactory {
 	//permet de pas spawner pile poil l un sur l autre
 	private static float randowSpawn() {
 
-		float spawnDiameterMax = 20;
-		return (float) (Math.random()*spawnDiameterMax);
+		float spawnDiameterMax = 80;
+		return (float) (Math.random()*spawnDiameterMax) - spawnDiameterMax/2f;
 
 	}
 
-	//	@Override
-	//	public void updateDestroy(Destructible destructible) {
-	//		if(destructible instanceof Creep)destroy((Creep)destructible);
-	//		
-	//	}
 
 }
