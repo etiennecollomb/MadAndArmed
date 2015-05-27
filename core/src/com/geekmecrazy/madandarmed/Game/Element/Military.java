@@ -97,8 +97,8 @@ public class Military extends Geometrie {
     // Methods
     // ===========================================================
 	
-	public void init(float posX, float posY, float width, float height, Life life, Team myTeam, Team ennemyTeam) {
-		super.init(posX, posY, width, height);
+	public void init(float posX, float posY, float diameter, Life life, Team myTeam, Team ennemyTeam) {
+		super.init(posX, posY, diameter);
 		
 		this.life=life;
 		this.myTeam=myTeam;

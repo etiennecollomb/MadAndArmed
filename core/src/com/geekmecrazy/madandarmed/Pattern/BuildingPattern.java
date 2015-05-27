@@ -16,8 +16,8 @@ public class BuildingPattern {
 	
 	public static enum BuildingSize {
 		SMALL		(1), 		//1x1
-		MEDIUM		(2), 		//3x3
-		BIG			(3);		//5x5
+		MEDIUM		(3), 		//3x3
+		BIG			(5);		//5x5
 		
 		private int mBigNodeSize;
 

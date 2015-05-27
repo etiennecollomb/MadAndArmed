@@ -19,17 +19,15 @@ public class Geometrie extends GameElement {
     private int mBigNodeX;
     private int mBigNodeY;
     
-    /** Taille reelles
+    /** Diameter reelles
      * de la geometrie "visible"
      * et non du sprite qui la contient*/
-    private float mWidth;
-	private float mHeight;
-    
-    /** Taille Small Node */
-    private int mSmallNodeWidth;
-    private int mSmallNodeHeight;
-    
-    /** Non penetration constrainte */
+    private float diameter;
+
+	/** Diameter en Small Node */
+    private int smallNodeDiameter;
+
+	/** Non penetration constrainte */
     private boolean isNPC; //est ce que la geometrie est sujette a la Non Penetration Constraint (forcer un creep a aller a un point par exemple...)
     
 	// ===========================================================
@@ -58,28 +56,20 @@ public class Geometrie extends GameElement {
 		return mPos;
 	}
 	
-    public float getWidth() {
-		return mWidth;
+    public float getDiameter() {
+		return diameter;
 	}
 
-	public void setWidth(float pWidth) {
-		this.mWidth = pWidth;
+	public void setDiameter(float diameter) {
+		this.diameter = diameter;
+	}
+    
+    public int getSmallNodeDiameter() {
+		return smallNodeDiameter;
 	}
 
-	public float getHeight() {
-		return mHeight;
-	}
-
-	public void setHeight(float pHeight) {
-		this.mHeight = pHeight;
-	}
-
-	public int getSmallNodeWidth() {
-		return mSmallNodeWidth;
-	}
-
-	public int getSmallNodeHeight() {
-		return mSmallNodeHeight;
+	public void setSmallNodeDiameter(int smallNodeDiameter) {
+		this.smallNodeDiameter = smallNodeDiameter;
 	}
 
     public int getSmallNodeX() {
@@ -119,8 +109,7 @@ public class Geometrie extends GameElement {
 		mSmallNodeY=0;
 		mBigNodeX=0;
 		mBigNodeY=0;
-		mWidth=0;
-		mHeight=0;
+		diameter=0;
 		
 	}
 
@@ -132,13 +121,11 @@ public class Geometrie extends GameElement {
 	// Methods
 	// ===========================================================
 
-	public void init(float pPosX, float pPosY, float pWidth, float pHeight) {
+	public void init(float pPosX, float pPosY, float diameter) {
 		
 		this.setPos(pPosX, pPosY);
-		this.mWidth = pWidth;
-		this.mHeight = pHeight;
-		this.mSmallNodeWidth=(int)(this.mWidth/GlobalManager.SMALL_NODESIZE);
-		this.mSmallNodeHeight=(int)(this.mHeight/GlobalManager.SMALL_NODESIZE);
+		this.diameter = diameter;
+		this.smallNodeDiameter=(int)(this.diameter/GlobalManager.SMALL_NODESIZE);
 		this.mNormalizedDir.set(1, 0);
 		this.setNormalizedDir(this.mNormalizedDir);
 		setNPC(true);

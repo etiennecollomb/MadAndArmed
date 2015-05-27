@@ -75,8 +75,8 @@ public class BuildingFactory{
 		
 		/** Building */
 		Turret turret = PoolManager.getManager().getTurretPool().obtain();
-		float buildingSize = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
-		turret.init(posX, posY, buildingSize, buildingSize, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), turretRenderer);
+		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
+		turret.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), turretRenderer);
 
 		/** AttackBehavior */
 		if(buildingPattern.getWeaponName()!=null){

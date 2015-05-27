@@ -18,8 +18,8 @@ public class Turret extends Building {
 	// Constructors
 	// ===========================================================
 
-	public void init(float posX, float posY, float width, float height, BuildingPattern buildingPattern, Life life, Team myTeam, Team ennemyTeam, TurretRenderer animatedMilitary ) {
-		super.init(posX, posY, width, height, buildingPattern, life, myTeam, ennemyTeam, animatedMilitary);
+	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, Team myTeam, Team ennemyTeam, TurretRenderer animatedMilitary ) {
+		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam, animatedMilitary);
 		
 		float floorPosX = this.getPos().getX();
 		float floorPosY = this.getPos().getY();

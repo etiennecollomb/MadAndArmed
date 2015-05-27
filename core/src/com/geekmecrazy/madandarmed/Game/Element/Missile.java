@@ -26,7 +26,7 @@ public class Missile extends Vehicle {
 	// ===========================================================
 	public void init(Military target, AnimatedTextureType hitAnimatedType, float vitesse, float dmgEffect, float posX, float posY, MissileRenderer missileRenderer){
 		
-		super.init(posX, posY, 0, vitesse, null, null, null);
+		super.init(posX, posY, 0, null, null, null);
 		this.hitAnimatedType=hitAnimatedType;
 		this.target=target;
 		this.vitesse=vitesse;
@@ -54,8 +54,8 @@ public class Missile extends Vehicle {
 
 	
 		//calcul la trajectoire direct vers la target
-		float targetCenterX_ = target.getPos().getX()+target.getWidth()/2f;
-		float targetCenterY_ = target.getPos().getY()+target.getWidth()/2f;
+		float targetCenterX_ = target.getPos().getX()+target.getDiameter()/2f;
+		float targetCenterY_ = target.getPos().getY()+target.getDiameter()/2f;
 		m_vel.set(targetCenterX_, targetCenterY_);
 		m_vel.sub(this.getPos());
 		float distance = m_vel.length();
@@ -63,7 +63,7 @@ public class Missile extends Vehicle {
 		m_vel.scale(vitesse);
 
 		//on a atteint la cible au prochain coup?
-		if((distance - target.getWidth()/2f)<=vitesse){
+		if((distance - target.getDiameter()/2f)<=vitesse){
 			target.hit(dmgEffect, hitAnimatedType);
 			MissileManager.getManager().finishMissile(this);
 			return;

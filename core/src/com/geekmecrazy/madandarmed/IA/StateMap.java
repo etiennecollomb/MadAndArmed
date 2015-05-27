@@ -143,10 +143,10 @@ public class StateMap {
 	public void addBuilding(Building building_){
 
 		int xmin_, ymin_,xmax_, ymax_;
-		xmin_ = building_.getSmallNodeX()-building_.getSmallNodeWidth()/2;
-		ymin_ = building_.getSmallNodeY()-building_.getSmallNodeHeight()/2;
-		xmax_ = xmin_ + building_.getSmallNodeWidth();
-		ymax_ = ymin_ + building_.getSmallNodeHeight();
+		xmin_ = building_.getSmallNodeX()-building_.getSmallNodeDiameter()/2;
+		ymin_ = building_.getSmallNodeY()-building_.getSmallNodeDiameter()/2;
+		xmax_ = xmin_ + building_.getSmallNodeDiameter();
+		ymax_ = ymin_ + building_.getSmallNodeDiameter();
 
 		//TODO: les buildings ne doivent jamais etre en dehors de la map
 		for(int i=xmin_; i<xmax_; i++)
@@ -159,10 +159,10 @@ public class StateMap {
 	public void removeBuilding(Building building_){
 
 		int xmin_, ymin_,xmax_, ymax_;
-		xmin_ = building_.getBigNodeX()-building_.getSmallNodeWidth()/2;
-		ymin_ = building_.getBigNodeY()-building_.getSmallNodeHeight()/2;
-		xmax_ = xmin_ + building_.getSmallNodeWidth();
-		ymax_ = ymin_ + building_.getSmallNodeHeight();
+		xmin_ = building_.getBigNodeX()-building_.getSmallNodeDiameter()/2;
+		ymin_ = building_.getBigNodeY()-building_.getSmallNodeDiameter()/2;
+		xmax_ = xmin_ + building_.getSmallNodeDiameter();
+		ymax_ = ymin_ + building_.getSmallNodeDiameter();
 
         //TODO: les buildings ne doivent jamais etre en dehors de la map
 		for(int i=xmin_; i<xmax_; i++)

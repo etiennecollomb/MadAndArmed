@@ -61,7 +61,7 @@ public class AirPathFinding extends PathFinding {
 					tempPosition.set(neighborVehicle.getPos());
 					tempPosition.sub(v.getPos());
 					float distance = tempPosition.length();
-					distance = distance - (v.getWidth()+neighborVehicle.getWidth());
+					distance = distance - (v.getDiameter()+neighborVehicle.getDiameter());
 
 					if(distance < 0){
 						//collision

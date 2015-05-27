@@ -46,7 +46,7 @@ public abstract class Vehicle extends Military {
 	// Init
 	// ===========================================================
 	public void init(CreepPattern pattern, float posX, float posY, float diameter, Life life, Team myTeam, Team ennemyTeam) {
-		super.init(posX, posY, diameter, diameter, life, myTeam, ennemyTeam);
+		super.init(posX, posY, diameter, life, myTeam, ennemyTeam);
 		this.pattern=pattern;
 
 		updateCounter = random.nextInt(maxUpdateCounter);
@@ -216,7 +216,7 @@ public abstract class Vehicle extends Military {
                                 tempPosition.set(neighborVehicle.getPos());
                                 tempPosition.sub(this.getPos());
                                 float distance = tempPosition.length();
-                                distance = distance - (this.getWidth() + neighborVehicle.getWidth());
+                                distance = distance - (this.getDiameter() + neighborVehicle.getDiameter());
 
                                 if (distance < 0) {
                                     //collision
