@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
-import com.geekmecrazy.madandarmed.Renderer.BuildingRenderer;
+import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
 import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
@@ -18,9 +18,10 @@ public class PoolAnimManager {
 
 	/** Number of Preloaded item */
 	private static final int ALLOCATE_UNIQUE_ACTION_RENDERER	= 100;
-	private static final int ALLOCATE_CREEP_ACTION_RENDERER		= 100;
-	private static final int ALLOCATE_TURRET_ACTION_RENDERER	= 100;
-	private static final int ALLOCATE_MISSILE_ACTION_RENDERER	= 100;
+	private static final int ALLOCATE_CREEP_RENDERER			= 100;
+	private static final int ALLOCATE_TURRET_RENDERER			= 100;
+	private static final int ALLOCATE_BARRICADE_RENDERER		= 100;
+	private static final int ALLOCATE_MISSILE_RENDERER			= 100;
 	private static final int ALLOCATE_LIFEBAR_RENDERER			= 100;
 
 
@@ -48,13 +49,14 @@ public class PoolAnimManager {
 	public static final SpriteSheet MESH_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2, false);
 
 	//BUILDING
-    //---TEAM1
+	//---TEAM1
 	public static final SpriteSheet TURRET_01_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_01_HD_TEAM1, false);
 	public static final SpriteSheet TURRET_02_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_02_HD_TEAM1, false);
-    //---TEAM2
-    public static final SpriteSheet TURRET_01_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_01_HD_TEAM2, false);
-    public static final SpriteSheet TURRET_02_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_02_HD_TEAM2, false);
-
+	//---TEAM2
+	public static final SpriteSheet TURRET_01_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_01_HD_TEAM2, false);
+	public static final SpriteSheet TURRET_02_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_02_HD_TEAM2, false);
+	//---BARRICADE
+	public static final SpriteSheet BARRICADE_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BARRICADES, false);
 
 	//MISSILE
 	public static final SpriteSheet MISSILE_TYPE_1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MISSILE_TYPE_1, false);
@@ -64,6 +66,7 @@ public class PoolAnimManager {
 	private static Pool<UniqueActionRenderer> uniqueActionRendererPool;
 	private static Pool<CreepRenderer> creepRendererPool;
 	private static Pool<TurretRenderer> turretRendererPool;
+	private static Pool<BarricadeRenderer> barricadeRendererPool;
 	private static Pool<MissileRenderer> missileRendererPool;
 	private static Pool<LifeBarRenderer> lifeBarRendererPool;
 
@@ -104,6 +107,10 @@ public class PoolAnimManager {
 		return turretRendererPool;
 	}
 
+	public Pool<BarricadeRenderer> getBarricadeRendererPool() {
+		return barricadeRendererPool;
+	}
+
 	public Pool<MissileRenderer> getMissileRendererPool() {
 		return missileRendererPool;
 	}
@@ -138,25 +145,27 @@ public class PoolAnimManager {
 		spriteSheets.put(AnimatedTextureType.MARINE_HD_TEAM1, MARINE_HD_TEAM1_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.MESH_HD_TEAM1, MESH_HD_TEAM1_SPRITESHEET);
 		//---TEAM2
-        spriteSheets.put(AnimatedTextureType.GLADIATOR_HD_TEAM2, GLADIATOR_HD_TEAM2_SPRITESHEET);
-        spriteSheets.put(AnimatedTextureType.MARINE_HD_TEAM2, MARINE_HD_TEAM2_SPRITESHEET);
-        spriteSheets.put(AnimatedTextureType.MESH_HD_TEAM2, MESH_HD_TEAM2_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.GLADIATOR_HD_TEAM2, GLADIATOR_HD_TEAM2_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.MARINE_HD_TEAM2, MARINE_HD_TEAM2_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.MESH_HD_TEAM2, MESH_HD_TEAM2_SPRITESHEET);
 		//BUILDING
-        //---TEAM1
-        spriteSheets.put(AnimatedTextureType.TURRET_01_HD_TEAM1, TURRET_01_HD_TEAM1_SPRITESHEET);
-        spriteSheets.put(AnimatedTextureType.TURRET_02_HD_TEAM1, TURRET_02_HD_TEAM1_SPRITESHEET);
-        //---TEAM2
-        spriteSheets.put(AnimatedTextureType.TURRET_01_HD_TEAM2, TURRET_01_HD_TEAM2_SPRITESHEET);
-        spriteSheets.put(AnimatedTextureType.TURRET_02_HD_TEAM2, TURRET_02_HD_TEAM2_SPRITESHEET);
+		//---TEAM1
+		spriteSheets.put(AnimatedTextureType.TURRET_01_HD_TEAM1, TURRET_01_HD_TEAM1_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.TURRET_02_HD_TEAM1, TURRET_02_HD_TEAM1_SPRITESHEET);
+		//---TEAM2
+		spriteSheets.put(AnimatedTextureType.TURRET_01_HD_TEAM2, TURRET_01_HD_TEAM2_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.TURRET_02_HD_TEAM2, TURRET_02_HD_TEAM2_SPRITESHEET);
+		//---BARRICADE
+		spriteSheets.put(AnimatedTextureType.BARRICADES, BARRICADE_SPRITESHEET);
 		//MISSILE
 		spriteSheets.put(AnimatedTextureType.MISSILE_TYPE_1, MISSILE_TYPE_1_SPRITESHEET);
 
 
 		/** Pools */
 		uniqueActionRendererPool = createUniqueActionRendererPool(ALLOCATE_UNIQUE_ACTION_RENDERER);
-		creepRendererPool = createCreepRendererPool(ALLOCATE_CREEP_ACTION_RENDERER);
-		turretRendererPool = createTurretRendererPool(ALLOCATE_TURRET_ACTION_RENDERER);
-		missileRendererPool = createMissileRendererPool(ALLOCATE_MISSILE_ACTION_RENDERER);
+		creepRendererPool = createCreepRendererPool(ALLOCATE_CREEP_RENDERER);
+		turretRendererPool = createTurretRendererPool(ALLOCATE_TURRET_RENDERER);
+		missileRendererPool = createMissileRendererPool(ALLOCATE_MISSILE_RENDERER);
 		lifeBarRendererPool = createLifeBarRendererPool(ALLOCATE_LIFEBAR_RENDERER);
 
 	}
@@ -172,7 +181,7 @@ public class PoolAnimManager {
 			@Override
 			protected UniqueActionRenderer newObject() {
 				System.out.println("#__ POOL __# allocate new Object : " + UniqueActionRenderer.class.getName());
-                return new UniqueActionRenderer();
+				return new UniqueActionRenderer();
 			}
 
 		};
@@ -190,8 +199,8 @@ public class PoolAnimManager {
 
 			@Override
 			protected CreepRenderer newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + CreepRenderer.class.getName());
-                return new CreepRenderer();
+				System.out.println("#__ POOL __# allocate new Object : " + CreepRenderer.class.getName());
+				return new CreepRenderer();
 			}
 
 		};
@@ -202,15 +211,34 @@ public class PoolAnimManager {
 	}
 
 
-	//BUILDING RENDERER
+	//TURRET RENDERER
 	private Pool<TurretRenderer> createTurretRendererPool(int initPoolNumber){
 
 		Pool<TurretRenderer> pool = new Pool<TurretRenderer>(initPoolNumber) {
 
 			@Override
 			protected TurretRenderer newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + TurretRenderer.class.getName());
-			    return new TurretRenderer();
+				System.out.println("#__ POOL __# allocate new Object : " + TurretRenderer.class.getName());
+				return new TurretRenderer();
+			}
+
+		};
+
+		for(int i=0; i<initPoolNumber ; i++)
+			pool.obtain();
+		return pool;
+	}
+
+
+	//TURRET RENDERER
+	private Pool<BarricadeRenderer> createBarricadeRendererPool(int initPoolNumber){
+
+		Pool<BarricadeRenderer> pool = new Pool<BarricadeRenderer>(initPoolNumber) {
+
+			@Override
+			protected BarricadeRenderer newObject() {
+				System.out.println("#__ POOL __# allocate new Object : " + BarricadeRenderer.class.getName());
+				return new BarricadeRenderer();
 			}
 
 		};
@@ -228,8 +256,8 @@ public class PoolAnimManager {
 
 			@Override
 			protected MissileRenderer newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + MissileRenderer.class.getName());
-                return new MissileRenderer();
+				System.out.println("#__ POOL __# allocate new Object : " + MissileRenderer.class.getName());
+				return new MissileRenderer();
 			}
 
 		};
@@ -239,7 +267,7 @@ public class PoolAnimManager {
 		return pool;
 	}
 
-	
+
 	//LIFEBAR RENDERER
 	private Pool<LifeBarRenderer> createLifeBarRendererPool(int initPoolNumber){
 
@@ -247,8 +275,8 @@ public class PoolAnimManager {
 
 			@Override
 			protected LifeBarRenderer newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + LifeBarRenderer.class.getName());
-                return new LifeBarRenderer();
+				System.out.println("#__ POOL __# allocate new Object : " + LifeBarRenderer.class.getName());
+				return new LifeBarRenderer();
 			}
 
 		};

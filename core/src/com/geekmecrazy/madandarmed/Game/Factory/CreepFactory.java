@@ -77,7 +77,7 @@ public class CreepFactory {
 		CreepManager.getManager().removeCreep(creep);
 	}
 
-	//permet de pas spawner pile poil l un sur l autre
+	//permet de ne pas spawner pile poil l un sur l autre
 	private static float randowSpawn() {
 
 		float spawnDiameterMax = 80;

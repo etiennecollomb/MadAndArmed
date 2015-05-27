@@ -26,7 +26,7 @@ public class Barricade extends Building {
 	public void onUpdateNextState(){
 
 	}
-	
+
 	// ===========================================================
 	// Methods
 	// ===========================================================

@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Game.Factory;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
+import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
@@ -12,6 +13,7 @@ import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
+import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
@@ -34,6 +36,8 @@ public class BuildingFactory{
 			building = createTurret(posX, posY, buildingPattern, team);
 		else if(buildingPattern.getBuildingType() == BuildingType.CASTLE)
 			building = createTurret(posX, posY, buildingPattern, team);
+		else if(buildingPattern.getBuildingType() == BuildingType.BARRICADE)
+			building = createBarricade(posX, posY, buildingPattern, team);
 		
 		BuildingManager.getManager().addBuilding(building);
 	}
@@ -96,6 +100,25 @@ public class BuildingFactory{
 		return turret;
 	}
 	
+	public static Building createBarricade(float posX, float posY, BuildingPattern buildingPattern, Team team){
+		
+		/** Life */
+		Life life = null;
+		if(buildingPattern.getLife()>0){
+			life = PoolManager.getManager().getLifePool().obtain();
+			life.init(buildingPattern.getLife());
+		}
+		
+		/** Renderer */
+		BarricadeRenderer barricadeRenderer = PoolAnimManager.getManager().getBarricadeRendererPool().obtain();
+		
+		/** Building */
+		Barricade barricade = PoolManager.getManager().getBarricadePool().obtain();
+		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
+		//barricade.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), barricadeRenderer);
+		
+		return barricade;
+	}
 	
 
 }
