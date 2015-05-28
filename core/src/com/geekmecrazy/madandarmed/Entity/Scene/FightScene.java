@@ -2,7 +2,7 @@ package com.geekmecrazy.madandarmed.Entity.Scene;
 
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
-import com.geekmecrazy.madandarmed.Renderer.FightBuildingRenderer;
+import com.geekmecrazy.madandarmed.Renderer.IsoBuildingRenderer;
 
 /**
  * Created by ECollomb on 10/03/2015.
@@ -31,14 +31,14 @@ public class FightScene extends Scene {
 			
 			/** Deplacer des building sur la grid ISO */
 			Shape shape = this.mRegisteredTouchableShape.get(i);
-			if(shape instanceof FightBuildingRenderer && pGestureType.equals(MyGestureDetector.GestureType.PAN)){
-				if(((FightBuildingRenderer)shape).isFocused()){
+			if(shape instanceof IsoBuildingRenderer && pGestureType.equals(MyGestureDetector.GestureType.PAN)){
+				if(((IsoBuildingRenderer)shape).isFocused()){
 					shape.onTouch(pGestureType, touchX, touchY);
 				}
 			}
-			else if(shape instanceof FightBuildingRenderer && pGestureType.equals(MyGestureDetector.GestureType.TOUCHDOWN)){
-				if(!shape.contains(touchX, touchY) && ((FightBuildingRenderer)shape).isFocused()){
-					((FightBuildingRenderer)shape).focus();
+			else if(shape instanceof IsoBuildingRenderer && pGestureType.equals(MyGestureDetector.GestureType.TOUCHDOWN)){
+				if(!shape.contains(touchX, touchY) && ((IsoBuildingRenderer)shape).isFocused()){
+					((IsoBuildingRenderer)shape).focus();
 				}
 			}
 			

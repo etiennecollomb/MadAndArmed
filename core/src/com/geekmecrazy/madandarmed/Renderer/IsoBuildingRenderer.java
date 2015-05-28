@@ -4,18 +4,23 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.IsoShape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
+import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
 import com.geekmecrazy.madandarmed.Game.Tween.SpriteTween;
+import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
+
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 
 
-public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
+public class IsoBuildingRenderer extends IsoShape/* implements IMoveable*/{
 
     private AnimatedSprite buildingSprite;
 
+	private BuildingPattern mBuildingPattern;
+    
 	private boolean isDark;
 
 	// ===========================================================
@@ -23,7 +28,7 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 	// ===========================================================
 
     
-    public FightBuildingRenderer(){
+    public IsoBuildingRenderer(){
         super();
         
         buildingSprite = new AnimatedSprite();
@@ -40,6 +45,14 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 
 	public void setBuildingSprite(AnimatedSprite buildingSprite) {
 		this.buildingSprite = buildingSprite;
+	}
+	
+	public BuildingPattern getBuildingPattern() {
+		return mBuildingPattern;
+	}
+
+	public void setBuildingPattern(final BuildingPattern pBuildingPattern) {
+		this.mBuildingPattern = pBuildingPattern;
 	}
 
 	// ===========================================================
@@ -69,7 +82,7 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
                 .setCallback(new TweenCallback() {
                     @Override
                     public void onEvent(int type, BaseTween<?> source) {
-                        Tween.to(FightBuildingRenderer.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
+                        Tween.to(IsoBuildingRenderer.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
                     }
                 })
                 .start(GlobalManager.getTweenManager());
@@ -85,7 +98,7 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
                 .setCallback(new TweenCallback() {
                     @Override
                     public void onEvent(int type, BaseTween<?> source) {
-                        Tween.to(FightBuildingRenderer.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
+                        Tween.to(IsoBuildingRenderer.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
                     }
                 })
                 .start(GlobalManager.getTweenManager());
@@ -100,9 +113,11 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 	// Methods
 	// ===========================================================
     
-    public void init(final SpriteSheet pSpriteSheet, final IsoGrid grid){
+    public void init(final SpriteSheet pSpriteSheet, final IsoGrid grid, final BuildingPattern pBuildingPattern, final Building pBuilding){
         super.init(0, 0, pSpriteSheet.getFrameSize(0, 0), pSpriteSheet.getFrameSize(0, 0), grid);
 
+        this.setBuildingPattern(pBuildingPattern);
+        
         buildingSprite.init(pSpriteSheet, 0, 0);
         buildingSprite.setAlignment(Alignment.CENTER);
         this.attachChild(buildingSprite);
