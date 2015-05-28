@@ -56,7 +56,7 @@ public class PoolAnimManager {
 	public static final SpriteSheet TURRET_01_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_01_HD_TEAM2, false);
 	public static final SpriteSheet TURRET_02_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_02_HD_TEAM2, false);
 	//---BARRICADE
-	public static final SpriteSheet BARRICADE_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BARRICADES, false);
+	public static final SpriteSheet BARRICADE_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BARRICADES, true);
 
 	//MISSILE
 	public static final SpriteSheet MISSILE_TYPE_1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MISSILE_TYPE_1, false);
@@ -165,6 +165,7 @@ public class PoolAnimManager {
 		uniqueActionRendererPool = createUniqueActionRendererPool(ALLOCATE_UNIQUE_ACTION_RENDERER);
 		creepRendererPool = createCreepRendererPool(ALLOCATE_CREEP_RENDERER);
 		turretRendererPool = createTurretRendererPool(ALLOCATE_TURRET_RENDERER);
+		barricadeRendererPool = createBarricadeRendererPool(ALLOCATE_BARRICADE_RENDERER);
 		missileRendererPool = createMissileRendererPool(ALLOCATE_MISSILE_RENDERER);
 		lifeBarRendererPool = createLifeBarRendererPool(ALLOCATE_LIFEBAR_RENDERER);
 
