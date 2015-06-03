@@ -4,7 +4,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
 
-public class BarricadeRenderer extends IsoBuildingRenderer {
+public class BarricadeRenderer extends FightBuildingRenderer {
 	
 	// ===========================================================
 	// Constructors
