@@ -3,7 +3,7 @@ package com.geekmecrazy.madandarmed.Renderer;
 import com.geekmecrazy.madandarmed.Assets.Assets;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
-import com.geekmecrazy.madandarmed.Entity.OrthoShape;
+import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
@@ -13,7 +13,7 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 
 
-public class HQBuildingRenderer extends OrthoShape/* implements IMoveable*/{
+public class HQBuildingRenderer extends Shape/* implements IMoveable*/{
 
     private Sprite icon;
     private Sprite leftArrow;
@@ -52,7 +52,7 @@ public class HQBuildingRenderer extends OrthoShape/* implements IMoveable*/{
 
     @Override
     public void setFocusState(){
-        if(this.getState() == OrthoShapeState.FOCUSED){
+        if(this.getState() == ShapeState.FOCUSED){
             unfocus();
             unshine();
         }
@@ -156,14 +156,14 @@ public class HQBuildingRenderer extends OrthoShape/* implements IMoveable*/{
 
     public void unfocus(){
         GlobalManager.moveable = true;
-        this.setState(OrthoShapeState.UNFOCUSED);
+        this.setState(ShapeState.UNFOCUSED);
         leftArrow.setVisible(false);
         rightArrow.setVisible(false);
         topArrow.setVisible(false);
         bottomArrow.setVisible(false);
         groundSquare.setVisible(false);
         
-        this.getGrid().getGridRenderer().setVisible(false);
+        this.getOrthoGrid().getGridRenderer().setVisible(false);
     }
     
     public void unshine(){
@@ -173,14 +173,14 @@ public class HQBuildingRenderer extends OrthoShape/* implements IMoveable*/{
     
     public void focus(){
     	GlobalManager.moveable = false;
-        this.setState(OrthoShapeState.FOCUSED);
+        this.setState(ShapeState.FOCUSED);
         leftArrow.setVisible(true);
         rightArrow.setVisible(true);
         topArrow.setVisible(true);
         bottomArrow.setVisible(true);
         groundSquare.setVisible(true);
         
-        this.getGrid().getGridRenderer().setVisible(true);
+        this.getOrthoGrid().getGridRenderer().setVisible(true);
     }
 
     public void shine(float r,float g,float b){

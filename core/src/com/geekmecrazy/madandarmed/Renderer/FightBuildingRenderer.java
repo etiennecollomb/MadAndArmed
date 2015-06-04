@@ -1,7 +1,7 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.Entity.IsoShape;
+import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
@@ -12,7 +12,7 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 
 
-public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
+public class FightBuildingRenderer extends Shape/* implements IMoveable*/{
 
     private AnimatedSprite buildingSprite;
 
@@ -48,7 +48,7 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
     
     @Override
     public void setFocusState(){
-        if(this.getState() == IsoShapeState.FOCUSED){
+        if(this.getState() == ShapeState.FOCUSED){
             unfocus();
             unshine();
         }
@@ -112,7 +112,7 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
 
     public void unfocus(){
         GlobalManager.moveable = true;
-        this.setState(IsoShapeState.UNFOCUSED);
+        this.setState(ShapeState.UNFOCUSED);
         
         //this.getGrid().getIsoGridRenderer().setVisible(false);
     }
@@ -124,7 +124,7 @@ public class FightBuildingRenderer extends IsoShape/* implements IMoveable*/{
     
     public void focus(){
     	GlobalManager.moveable = false;
-        this.setState(IsoShapeState.FOCUSED);
+        this.setState(ShapeState.FOCUSED);
         
         //this.getGrid().getIsoGridRenderer().setVisible(true);
     }

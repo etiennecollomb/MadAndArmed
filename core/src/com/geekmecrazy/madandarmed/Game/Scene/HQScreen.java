@@ -59,7 +59,8 @@ public class HQScreen extends Screen implements IUpdatable {
         hq = new HQBuildingRenderer();
         hq.init(TextureType.BUILDING_TEST);
         hq.setAlignment(Entity.Alignment.NONE);
-        hq.setGrid(grid);
+        hq.setOrthoGrid(grid);
+        hq.setOrthoShape(true);
         hq.setSize(grid.widthFor(3),grid.heightFor(3));
 
         grid.place(hq, grid.getCols()/2, grid.getRows()/2);

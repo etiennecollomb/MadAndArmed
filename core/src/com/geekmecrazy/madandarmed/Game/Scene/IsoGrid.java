@@ -1,6 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
-import com.geekmecrazy.madandarmed.Entity.IsoShape;
+import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.IA.IsoMapState;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
@@ -124,7 +124,7 @@ public class IsoGrid {
     }
 
 	/** from array (i,j) to screen position */
-	public void place(IsoShape e, int i, int j){
+	public void place(Shape e, int i, int j){
 		
 		float posX = (j/2*2 == j)? this.getCellWidth()/2f : 0;
 		float posY = 0;
@@ -139,7 +139,7 @@ public class IsoGrid {
 	}
 	
 	/** from screen position (x,y) to array position */
-	public void placeFromPosition(IsoShape e, float pX, float pY){
+	public void placeFromPosition(Shape e, float pX, float pY){
 		
 		int j = (int) (pY / (this.getCellHeight()/2f));
 		

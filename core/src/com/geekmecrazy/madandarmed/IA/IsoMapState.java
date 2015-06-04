@@ -1,6 +1,6 @@
 package com.geekmecrazy.madandarmed.IA;
 
-import com.geekmecrazy.madandarmed.Entity.IsoShape;
+import com.geekmecrazy.madandarmed.Entity.Shape;
 
 public class IsoMapState {
 
@@ -17,7 +17,7 @@ public class IsoMapState {
 	/** Iso map state save in ortho array
 	 * Une ligne sur deux est decallee d'une case
 	 */
-	public IsoShape[][] positionMap;
+	public Shape[][] positionMap;
 
 	
 	// ===========================================================
@@ -28,11 +28,11 @@ public class IsoMapState {
     // Getter & Setter
     // ===========================================================
 	
-	public IsoShape[][] getPositionMap() {
+	public Shape[][] getPositionMap() {
 		return positionMap;
 	}
 
-	public void setPositionMap(IsoShape[][] positionMap) {
+	public void setPositionMap(Shape[][] positionMap) {
 		this.positionMap = positionMap;
 	}
 
@@ -65,19 +65,19 @@ public class IsoMapState {
 		this.setWidth(pWidth);
 		this.setHeight(pHeight);
 		
-		positionMap = new IsoShape[pWidth][pHeight];
+		positionMap = new Shape[pWidth][pHeight];
 		
 		for(int i=0; i<pWidth ; i++)
 			for(int j=0; j<pHeight ; j++)
 				positionMap[i][j] = null;
 	}
 	
-	public void add(final IsoShape pIsoShape, final int pX, final int pY){
+	public void add(final Shape pIsoShape, final int pX, final int pY){
 		if( !isOccupied(pX, pY))
 			positionMap[pX][pY] = pIsoShape;
 	}
 	
-	public void remove(final IsoShape pIsoShape, final int pX, final int pY){
+	public void remove(final Shape pIsoShape, final int pX, final int pY){
 		if(pIsoShape == positionMap[pX][pY])
 			positionMap[pX][pY] = null;
 	}
@@ -86,7 +86,7 @@ public class IsoMapState {
 		return positionMap[pX][pY].getType();
 	}
 	
-	public IsoShape getIsoShape(final int pX, final int pY){
+	public Shape getIsoShape(final int pX, final int pY){
 		return positionMap[pX][pY];
 	}
 	

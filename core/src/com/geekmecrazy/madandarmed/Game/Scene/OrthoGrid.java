@@ -98,7 +98,13 @@ public class OrthoGrid {
     	e.setPosition(Math.round((pX)/this.getCellWidth())*this.getCellWidth(), Math.round((pY)/this.getCellHeight())*this.getCellHeight());
     }
     
-
+    public int convertToGridPositionX(float pX){
+		return (int)(pX/this.getCellWidth());
+	}
+	
+	public int convertToGridPositionY(float pY){
+		return (int)(pY/this.getCellHeight());
+	}
 
 
 }
