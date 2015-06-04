@@ -22,6 +22,7 @@ public class Barricade extends Building {
 		
 		AnimatedTextureType animatedTextureType = DataLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingType().name());
 		barricadeRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), buildingPattern, this, FightScreen.isoGrid);
+		barricadeRenderer.setPosition(posX, posY); //TODO : convertir en isoGrid
 		this.setMilitaryRenderer(barricadeRenderer);
 		
 		FightScreen.getManager().getScene().attachChild(this.militaryRenderer);

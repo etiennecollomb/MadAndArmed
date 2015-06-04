@@ -33,6 +33,48 @@
 						buildingType: BARRICADE
 						positionNodeX: 15
 						positionNodeY: 15
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: BARRICADE
+						positionNodeX: 16
+						positionNodeY: 15
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: BARRICADE
+						positionNodeX: 17
+						positionNodeY: 15
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: BARRICADE
+						positionNodeX: 18
+						positionNodeY: 15
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: BARRICADE
+						positionNodeX: 19
+						positionNodeY: 15
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: BARRICADE
+						positionNodeX: 20
+						positionNodeY: 15
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: BARRICADE
+						positionNodeX: 21
+						positionNodeY: 15
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: BARRICADE
+						positionNodeX: 22
+						positionNodeY: 15
 					}
 				]
 		    },
