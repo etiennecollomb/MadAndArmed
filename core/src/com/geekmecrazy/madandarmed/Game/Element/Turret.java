@@ -1,26 +1,53 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
+import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
+import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
+import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
 import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
+import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 public class Turret extends Building {
 
 	private Sprite floor;
 
+	private LifeBarRenderer lifeBarreRenderer;
+
 	/** pointing to target */
 	private Vector2d directionVector = new Vector2d();
+	
 	
 	// ===========================================================
 	// Constructors
 	// ===========================================================
 
-	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, Team myTeam, Team ennemyTeam, TurretRenderer animatedMilitary ) {
-		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam, animatedMilitary);
+	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, Team myTeam, Team ennemyTeam) {
+		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam);
 		
+		/** Renderer */
+		TurretRenderer turretRenderer = PoolAnimManager.getManager().getTurretRendererPool().obtain();
+		AnimatedTextureType animatedTextureType = DataLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingType().name());
+		turretRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), buildingPattern, this);
+		this.setMilitaryRenderer(turretRenderer);
+		
+		/** Set LifeBar */
+		if(life!=null){
+			lifeBarreRenderer = PoolAnimManager.getManager().getLifeBarRendererPool().obtain();
+			int lifeBarreWidth = 64;
+			int lifeBarreHeight = 10;
+			this.lifeBarreRenderer.init(life, 0, 100, lifeBarreWidth, lifeBarreHeight);
+			this.militaryRenderer.attachChild(this.lifeBarreRenderer, Entity.Alignment.CENTER);
+		}
+
+		FightScreen.getManager().getScene().attachChild(this.militaryRenderer);
+
+		
+		/** Floor */
 		float floorPosX = this.getPos().getX();
 		float floorPosY = this.getPos().getY();
 		floor = new Sprite();
@@ -54,6 +81,23 @@ public class Turret extends Building {
 
 	}
 	
+	@Override
+	public void noMoreLife(){
+		super.noMoreLife();
+
+		//on efface la lifebar
+		if(lifeBarreRenderer!=null) PoolAnimManager.getManager().getLifeBarRendererPool().free(lifeBarreRenderer);
+		lifeBarreRenderer = null;
+		
+	}
+	
+	@Override
+	public void reset() {
+		super.reset();
+
+		if(lifeBarreRenderer!=null) PoolAnimManager.getManager().getLifeBarRendererPool().free(lifeBarreRenderer);
+		lifeBarreRenderer = null;
+	}
 	// ===========================================================
 	// Methods
 	// ===========================================================

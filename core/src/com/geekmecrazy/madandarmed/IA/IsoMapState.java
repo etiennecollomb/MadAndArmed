@@ -91,6 +91,9 @@ public class IsoMapState {
 	}
 	
 	public boolean isOccupied(final int pX, final int pY){
+		/** Check borders */
+		if(pX<0 || pY<0 || pX>=this.width || pY>=this.height)
+			return false;
 		return positionMap[pX][pY]!=null;
 	}
 	

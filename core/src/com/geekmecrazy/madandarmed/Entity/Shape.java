@@ -147,7 +147,51 @@ public class Shape extends Entity implements IColor, ITouchable {
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
+    
+	/* for IsoShape Type :
+	 * you should use setPosition(final float pX, final float pY) instead of setX(final float pX)
+	 * as gridPosX depend of pY to....
+	 */
+	public void setX(final float pX) {
+		super.setX(pX);
+        
+        /** IsoShape */
+		if(this.isIsoShape())
+			this.setGridPosX(this.isoGrid.convertToGridPositionX(pX, this.getY()));
+		/** OrthoShape */
+		else if(this.isOrthoShape())
+			this.setGridPosX(this.orthoGrid.convertToGridPositionX(pX));
+    }
 
+	public void setY(final float pY) {
+		super.setY(pY);
+        
+        /** IsoShape */
+		if(this.isIsoShape())
+			this.setGridPosY(this.isoGrid.convertToGridPositionY(pY));
+		/** OrthoShape */
+		else if(this.isOrthoShape())
+			this.setGridPosY(this.orthoGrid.convertToGridPositionY(pY));
+    }
+	
+	
+	@Override
+    public void setPosition(final float pX, final float pY) {
+		super.setX(pX);
+        super.setY(pY);
+        
+        /** IsoShape */
+		if(this.isIsoShape()){
+			this.setGridPosX(this.isoGrid.convertToGridPositionX(pX, pY));
+			this.setGridPosY(this.isoGrid.convertToGridPositionY(pY));
+		}
+		/** OrthoShape */
+		else if(this.isOrthoShape()){
+			this.setGridPosX(this.orthoGrid.convertToGridPositionX(pX));
+			this.setGridPosY(this.orthoGrid.convertToGridPositionY(pY));
+		}
+    }
+	
 	@Override
 	public void onTouch(final MyGestureDetector.GestureType pGestureType, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
 		switch(pGestureType){
@@ -321,9 +365,8 @@ public class Shape extends Entity implements IColor, ITouchable {
 			this.getIsoGrid().getIsoMapState().remove(this, this.getGridPosX(), this.getGridPosY());
 			/** New Position */
 			this.getIsoGrid().placeFromPosition(this, pTouchAreaLocalX-diffX + decallageX, pTouchAreaLocalY-diffY + decallageY);
-			/**Put on gridMapState */
-			this.getIsoGrid().getIsoMapState().add(this, this.getGridPosX(), this.getGridPosY());
 
+			/** Check boundaries */
 			if(this.getX() < 0){
 				this.setPosition(0,this.getY());
 			}
@@ -349,6 +392,9 @@ public class Shape extends Entity implements IColor, ITouchable {
 			else if(this.getY() + this.getHeight() > GlobalManager.camera.position.y + effectiveViewportHeight/2f){
 				GlobalManager.camera.position.y = this.getY() + this.getHeight() - effectiveViewportHeight/2f;
 			}
+			
+			/**Put on gridMapState */
+			this.getIsoGrid().getIsoMapState().add(this, this.getGridPosX(), this.getGridPosY());
 
 		}
 

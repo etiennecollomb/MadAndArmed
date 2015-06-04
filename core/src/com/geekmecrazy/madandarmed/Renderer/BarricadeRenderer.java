@@ -26,8 +26,12 @@ public class BarricadeRenderer extends IsoBuildingRenderer {
 
 	@Override
 	public void onUpdate(){
+
+		this.getMilitary().setPos(this.getX(), this.getY()); //Update the position of the model (can be moved)
+		
 		this.setOrientation();
         this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)this.getY());
+        
 		super.onUpdate();
 	}
 	
@@ -38,16 +42,12 @@ public class BarricadeRenderer extends IsoBuildingRenderer {
 	public void init(final SpriteSheet pSpriteSheet, final BuildingPattern pBuildingPattern, final Building pBuilding, final IsoGrid isoGrid){
 		 super.init(pSpriteSheet, pBuildingPattern, pBuilding, isoGrid);
 	}
-	
-	public void init(final SpriteSheet pSpriteSheet, final IsoGrid isoGrid){
-		 super.init(pSpriteSheet, null, null, isoGrid);
-	}
-	
+
 
 	/** Set Barricade Frame regarding state of neighbor cell */
 	public void setOrientation(){
 		
-		if(    this.getIsoGrid().getIsoMapState().isLeftOccupied(this.getGridPosX(), this.getGridPosY())
+		if( this.getIsoGrid().getIsoMapState().isLeftOccupied(this.getGridPosX(), this.getGridPosY())
 			&& this.getIsoGrid().getIsoMapState().isDownOccupied(this.getGridPosX(), this.getGridPosY()) 
 			&& this.getIsoGrid().getIsoMapState().isUpOccupied(this.getGridPosX(), this.getGridPosY())
 			&& this.getIsoGrid().getIsoMapState().isRightOccupied(this.getGridPosX(), this.getGridPosY()) ){

@@ -27,6 +27,12 @@
 						buildingType: TURRET
 						positionNodeX: 12
 						positionNodeY: 10
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingType: BARRICADE
+						positionNodeX: 15
+						positionNodeY: 15
 					}
 				]
 		    },

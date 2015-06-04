@@ -169,18 +169,20 @@ public class Team extends GameElement {
 		int min_distance = 99999999;
 		Military nearestMilitary = null;
 		for(int i=0; i<currentNbMilitary; i++){
-			int[] matrixPursuitRange = listMilitary.get(i).getAttackBehavior().getMatrixPursuitRange();
-			if(x_ >= matrixPursuitRange[0])
-				if(y_ >= matrixPursuitRange[1])
-					if(x_ <= matrixPursuitRange[2])
-						if(y_ <= matrixPursuitRange[3]){
-							//target encore plus proche?
-							int currentDistance = Math.abs(x_-listMilitary.get(i).getSmallNodeX())+Math.abs(y_-listMilitary.get(i).getSmallNodeY());
-							if(currentDistance<min_distance){
-								min_distance=currentDistance;
-								nearestMilitary=listMilitary.get(i);
+			if(listMilitary.get(i).getAttackBehavior() != null){
+				int[] matrixPursuitRange = listMilitary.get(i).getAttackBehavior().getMatrixPursuitRange();
+				if(x_ >= matrixPursuitRange[0])
+					if(y_ >= matrixPursuitRange[1])
+						if(x_ <= matrixPursuitRange[2])
+							if(y_ <= matrixPursuitRange[3]){
+								//target encore plus proche?
+								int currentDistance = Math.abs(x_-listMilitary.get(i).getSmallNodeX())+Math.abs(y_-listMilitary.get(i).getSmallNodeY());
+								if(currentDistance<min_distance){
+									min_distance=currentDistance;
+									nearestMilitary=listMilitary.get(i);
+								}
 							}
-						}
+			}
 		}
 		return nearestMilitary;
 	}

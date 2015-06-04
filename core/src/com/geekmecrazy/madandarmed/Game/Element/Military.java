@@ -104,6 +104,7 @@ public class Military extends Geometrie {
 		this.myTeam=myTeam;
 		this.ennemyTeam=ennemyTeam;
 		this.isAlive = true;
+		this.militaryRenderer = null;
         
 	}
 

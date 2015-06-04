@@ -13,9 +13,6 @@ import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
-import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
-import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
@@ -74,13 +71,10 @@ public class BuildingFactory{
 			life.init(buildingPattern.getLife());
 		}
 
-		/** Renderer */
-		TurretRenderer turretRenderer = PoolAnimManager.getManager().getTurretRendererPool().obtain();
-		
 		/** Building */
 		Turret turret = PoolManager.getManager().getTurretPool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
-		turret.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), turretRenderer);
+		turret.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team));
 
 		/** AttackBehavior */
 		if(buildingPattern.getWeaponName()!=null){
@@ -109,13 +103,10 @@ public class BuildingFactory{
 			life.init(buildingPattern.getLife());
 		}
 		
-		/** Renderer */
-		BarricadeRenderer barricadeRenderer = PoolAnimManager.getManager().getBarricadeRendererPool().obtain();
-		
 		/** Building */
 		Barricade barricade = PoolManager.getManager().getBarricadePool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
-		//barricade.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team), barricadeRenderer);
+		barricade.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team));
 		
 		return barricade;
 	}

@@ -46,13 +46,16 @@ public class FightScreen extends Screen implements IUpdatable {
     /** Time stuff */
     private static long currentTime;
     private static long previousMoneyTurnTime;
+    
+    /** IsoGrid of fight scene */
+    public static IsoGrid isoGrid;
 
 
     // ===========================================================
     // Singleton manager
     // ===========================================================
 
-    private static FightScreen fightScreen;
+	private static FightScreen fightScreen;
 
     /** Disable object's instantiation (private constructor) */
     private FightScreen(){ }
@@ -107,6 +110,11 @@ public class FightScreen extends Screen implements IUpdatable {
     public static void setPreviousMoneyTurnTime(final long pPreviousMoneyTurnTime) {
         FightScreen.previousMoneyTurnTime = pPreviousMoneyTurnTime;
     }
+
+	public static void setIsoGrid(IsoGrid isoGrid) {
+		FightScreen.isoGrid = isoGrid;
+	}
+
 
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
@@ -178,7 +186,14 @@ public class FightScreen extends Screen implements IUpdatable {
     // Lance une nouvelle partie
 	public void newGame(){
 
-		// Init des 2 teams
+        /** Init IsoGrid */
+		isoGrid = new IsoGrid();
+		isoGrid.init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
+        IsoGridRenderer gridRenderer = new IsoGridRenderer();
+        gridRenderer.init(isoGrid);
+        this.getScene().attachChild(gridRenderer);
+        
+		/** Init des 2 teams */
 		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getSpawnPoint(), TeamID.TEAM1, MAX_THORIUM));
 		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getSpawnPoint(), TeamID.TEAM2, MAX_THORIUM));
 
@@ -196,13 +211,6 @@ public class FightScreen extends Screen implements IUpdatable {
         this.getTeamIA().getStateMap().setZoneBPositionMap(this.getTeamIA().getTeamID());
 
 		GameMap.initMap();
-
-        /** Init IsoGrid */
-        final IsoGrid grid = new IsoGrid();
-        grid.init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
-        IsoGridRenderer gridRenderer = new IsoGridRenderer();
-        gridRenderer.init(grid);
-        this.getScene().attachChild(gridRenderer);
                 
         /** init UIs */
 		uiFinishGame = new UIFinishGame();
@@ -223,12 +231,14 @@ public class FightScreen extends Screen implements IUpdatable {
             @Override
             public void execute(){
                 //System.out.println("#### TOUCH BARRICADE BUTTON !!");
+            	/*
                 BarricadeRenderer fBR = new BarricadeRenderer();
                 SpriteSheet sp = new SpriteSheet(AnimatedTextureType.BARRICADES, true);
-                fBR.init(sp, grid);
-                grid.place(fBR, 20, 50);
+                fBR.init(sp, isoGrid);
+                isoGrid.place(fBR, 20, 50);
                 getScene().attachChild(fBR);
                 getScene().registerTouchableShape(fBR);
+                */
             }
         });
         newBarricadButton.setSize(1.5f, 1.5f);

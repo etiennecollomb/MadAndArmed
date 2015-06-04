@@ -104,8 +104,10 @@ public class BuildingManager {
 	/** Initialisation des cible des building */
 	public void initTarget(){
 		for(Building b : listBuildings){
-			b.getAttackBehavior().setMainTarget(FightScreen.getManager().getOtherTeam(b.getMyTeam()).getCastle());
-			b.getAttackBehavior().setCurrentTarget(FightScreen.getManager().getOtherTeam(b.getMyTeam()).getCastle());
+			if(b.getAttackBehavior()!=null){
+				b.getAttackBehavior().setMainTarget(FightScreen.getManager().getOtherTeam(b.getMyTeam()).getCastle());
+				b.getAttackBehavior().setCurrentTarget(FightScreen.getManager().getOtherTeam(b.getMyTeam()).getCastle());
+			}
 		}
 	}
 

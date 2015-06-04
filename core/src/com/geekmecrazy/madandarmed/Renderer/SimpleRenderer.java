@@ -2,7 +2,6 @@ package com.geekmecrazy.madandarmed.Renderer;
 
 import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
-import com.badlogic.gdx.utils.Pool.Poolable;
 
 
 public abstract class SimpleRenderer extends AnimatedSprite {

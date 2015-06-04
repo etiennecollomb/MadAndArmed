@@ -1,7 +1,6 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
@@ -14,9 +13,7 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 
 
-public class IsoBuildingRenderer extends BuildingRenderer/* implements IMoveable*/{
-
-    //private AnimatedSprite buildingSprite;
+public class IsoBuildingRenderer extends BuildingRenderer {
 
 	private boolean isDark;
 
@@ -27,22 +24,12 @@ public class IsoBuildingRenderer extends BuildingRenderer/* implements IMoveable
     
     public IsoBuildingRenderer(){
         super();
-        
-        //buildingSprite = new AnimatedSprite();
     }
 
 
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
-    
-//    public AnimatedSprite getBuildingSprite() {
-//		return buildingSprite;
-//	}
-//
-//	public void setBuildingSprite(AnimatedSprite buildingSprite) {
-//		this.buildingSprite = buildingSprite;
-//	}
 
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
@@ -95,7 +82,6 @@ public class IsoBuildingRenderer extends BuildingRenderer/* implements IMoveable
 
     @Override
     public void reset(){
-    	//buildingSprite.reset();
     }
     
 	// ===========================================================
@@ -108,22 +94,12 @@ public class IsoBuildingRenderer extends BuildingRenderer/* implements IMoveable
     	this.setIsoShape(true);
     	this.setIsoGrid(isoGrid);
     	
-    	/*
-        super.init(0, 0, pSpriteSheet.getFrameSize(0, 0), pSpriteSheet.getFrameSize(0, 0), grid);
-
-        buildingSprite.init(pSpriteSheet, 0, 0);
-        buildingSprite.setAlignment(Alignment.CENTER);
-        this.attachChild(buildingSprite);
-        */
-        
         isDark = false;
     }
 
     public void unfocus(){
         GlobalManager.moveable = true;
         this.setState(ShapeState.UNFOCUSED);
-        
-        //this.getGrid().getIsoGridRenderer().setVisible(false);
     }
     
     public void unshine(){
@@ -134,8 +110,6 @@ public class IsoBuildingRenderer extends BuildingRenderer/* implements IMoveable
     public void focus(){
     	GlobalManager.moveable = false;
         this.setState(ShapeState.FOCUSED);
-        
-        //this.getGrid().getIsoGridRenderer().setVisible(true);
     }
 
     public void shine(float r,float g,float b){
