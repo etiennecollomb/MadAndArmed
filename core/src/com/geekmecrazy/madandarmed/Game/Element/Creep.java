@@ -84,8 +84,6 @@ public class Creep extends Vehicle {
 		super.onUpdateNextState();
 		
 		this.getAttackBehavior().setAttacking( !isMoving() && this.getAttackBehavior().isAttacking() );
-		
-		this.getAttackBehavior().calculateMilitarySpace(this);
 	}
 
 

@@ -9,15 +9,6 @@ import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 public class AttackBehavior extends GameElement {
 
-	/** coord du carre definissant l espace dans lequel
-	 * un creep peut encore poursuivre un autre
-	 */
-	private static final int PURSUIT_DISTANCE_X = 3*3;
-	private static final int PURSUIT_DISTANCE_Y = 3*3;
-	private static final int PURSUIT_DISTANCE_X_2 = 3*3+1;
-	private static final int PURSUIT_DISTANCE_Y_2 = 3*3+1;
-	private int[] mMatrixPursuitRange;
-	
 	protected Attaque attaque;
 	
 	private WeaponPattern weaponPattern;
@@ -32,11 +23,7 @@ public class AttackBehavior extends GameElement {
 	// ===========================================================
 	// Constructors
 	// ===========================================================
-	
-	public AttackBehavior(){
-		this.mMatrixPursuitRange = new int[4];
-	}
-	
+
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
@@ -69,10 +56,6 @@ public class AttackBehavior extends GameElement {
 		this.currentTarget = currentTarget;
 	}
 
-	public int[] getMatrixPursuitRange() {
-		return mMatrixPursuitRange;
-	}
-
 	public boolean isAttacking() {
 		return attacking;
 	}
@@ -100,10 +83,6 @@ public class AttackBehavior extends GameElement {
 		mainTarget=null;
 		currentTarget=null;
 
-		mMatrixPursuitRange[0]=0;
-		mMatrixPursuitRange[1]=0;
-		mMatrixPursuitRange[2]=0;
-		mMatrixPursuitRange[3]=0;
 	}
 
 
@@ -147,17 +126,5 @@ public class AttackBehavior extends GameElement {
 			}
 		}
 	}
-	
-
-	/** Calcul distance de poursuite des Military
-	 * Coord (x_,y_) en smallNode
-	 */
-	public void calculateMilitarySpace(Military m){
-		mMatrixPursuitRange[0]=m.getSmallNodeX()-PURSUIT_DISTANCE_X;
-		mMatrixPursuitRange[1]=m.getSmallNodeY()-PURSUIT_DISTANCE_Y;
-		mMatrixPursuitRange[2]=m.getSmallNodeX()+PURSUIT_DISTANCE_X_2;
-		mMatrixPursuitRange[3]=m.getSmallNodeY()+PURSUIT_DISTANCE_Y_2;
-	}
-
 
 }

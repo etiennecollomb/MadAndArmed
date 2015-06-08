@@ -182,8 +182,9 @@ public class Shape extends Entity implements IColor, ITouchable {
         
         /** IsoShape */
 		if(this.isIsoShape()){
-			this.setGridPosX(this.isoGrid.convertToGridPositionX(pX, pY));
+			/** Order is important ... */
 			this.setGridPosY(this.isoGrid.convertToGridPositionY(pY));
+			this.setGridPosX(this.isoGrid.convertToGridPositionX(pX, pY));
 		}
 		/** OrthoShape */
 		else if(this.isOrthoShape()){

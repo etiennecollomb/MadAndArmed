@@ -21,7 +21,12 @@ public class Military extends Geometrie {
 	private Team ennemyTeam;
 		
 	protected AttackBehavior attackBehavior;
-    
+	
+	/** Radius Visibility of the military to other unit 
+	 * in Small Node
+	*/
+	protected int visibilityRadiusRange;
+
 	/** Status */
 	private boolean isAlive;
 
@@ -29,11 +34,7 @@ public class Military extends Geometrie {
     // ===========================================================
     // Constructors
     // ===========================================================
-    
-	public Military() {
-	}
 
-	
     // ===========================================================
     // Getter & Setter
     // ===========================================================
@@ -70,6 +71,14 @@ public class Military extends Geometrie {
         this.militaryRenderer = militaryRenderer;
     }
 
+	public int getVisibilityRadiusRange() {
+		return visibilityRadiusRange;
+	}
+
+
+	public void setVisibilityRadiusRange(int visibilityRadiusRange) {
+		visibilityRadiusRange = visibilityRadiusRange;
+	}
 	
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
@@ -105,6 +114,8 @@ public class Military extends Geometrie {
 		this.ennemyTeam=ennemyTeam;
 		this.isAlive = true;
 		this.militaryRenderer = null;
+		
+		this.visibilityRadiusRange = 10; //TODO : a parametrer dynamiquement
         
 	}
 
