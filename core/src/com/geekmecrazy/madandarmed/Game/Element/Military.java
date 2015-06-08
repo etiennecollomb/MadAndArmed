@@ -77,7 +77,7 @@ public class Military extends Geometrie {
 
 
 	public void setVisibilityRadiusRange(int visibilityRadiusRange) {
-		visibilityRadiusRange = visibilityRadiusRange;
+		this.visibilityRadiusRange = visibilityRadiusRange;
 	}
 	
     // ===========================================================
@@ -115,7 +115,7 @@ public class Military extends Geometrie {
 		this.isAlive = true;
 		this.militaryRenderer = null;
 		
-		this.visibilityRadiusRange = 10; //TODO : a parametrer dynamiquement
+		this.visibilityRadiusRange = 50; //TODO : a parametrer dynamiquement
         
 	}
 
