@@ -6,9 +6,9 @@ public class BuildingMapPattern {
 
 	private BuildingType buildingType;
 	
-	private int positionNodeX;
+	private int gridPositionX;
 	
-	private int positionNodeY;
+	private int gridPositionY;
 	
 	// ===========================================================
 	// Constructors
@@ -25,23 +25,23 @@ public class BuildingMapPattern {
 	public void setBuildingType(BuildingType buildingType) {
 		this.buildingType = buildingType;
 	}
-	
-	public int getPositionNodeX() {
-		return positionNodeX;
+
+	public int getGridPositionX() {
+		return gridPositionX;
 	}
-	
-	public void setPositionNodeX(int positionNodeX) {
-		this.positionNodeX = positionNodeX;
+
+	public void setGridPositionX(int gridPositionX) {
+		this.gridPositionX = gridPositionX;
 	}
-	
-	public int getPositionNodeY() {
-		return positionNodeY;
+
+	public int getGridPositionY() {
+		return gridPositionY;
 	}
-	
-	public void setPositionNodeY(int positionNodeY) {
-		this.positionNodeY = positionNodeY;
+
+	public void setGridPositionY(int gridPositionY) {
+		this.gridPositionY = gridPositionY;
 	}
-	
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================

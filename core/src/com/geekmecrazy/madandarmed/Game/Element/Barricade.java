@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
@@ -22,8 +23,10 @@ public class Barricade extends Building {
 		
 		AnimatedTextureType animatedTextureType = DataLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingType().name());
 		barricadeRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), buildingPattern, this, FightScreen.isoGrid);
-		barricadeRenderer.setPosition(posX, posY); //TODO : convertir en isoGrid
+		FightScreen.isoGrid.place(barricadeRenderer, (int)posX, (int)posY);
 		this.setMilitaryRenderer(barricadeRenderer);
+		
+		this.setPos(barricadeRenderer.getX(), barricadeRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
 		
 		FightScreen.getManager().getScene().attachChild(this.militaryRenderer);
 		

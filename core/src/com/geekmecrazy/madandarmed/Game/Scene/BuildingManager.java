@@ -76,11 +76,11 @@ public class BuildingManager {
 		
 		for(BuildingMapPattern buildingLevelModel: DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getBuildingsList()){
 			BuildingPattern buildingPattern = DataLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
-			BuildingFactory.create(buildingLevelModel.getPositionNodeX()* GlobalManager.BIG_NODESIZE, buildingLevelModel.getPositionNodeY()*GlobalManager.BIG_NODESIZE, buildingPattern, FightScreen.teamPlayer);
+			BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, FightScreen.teamPlayer);
 		}
 		for(BuildingMapPattern buildingLevelModel: DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
 			BuildingPattern buildingPattern = DataLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
-			BuildingFactory.create(buildingLevelModel.getPositionNodeX()*GlobalManager.BIG_NODESIZE, buildingLevelModel.getPositionNodeY()*GlobalManager.BIG_NODESIZE, buildingPattern, FightScreen.teamIA);
+			BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, FightScreen.teamIA);
 		}
 	}
 		
