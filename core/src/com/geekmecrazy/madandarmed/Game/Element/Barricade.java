@@ -1,12 +1,12 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
-import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Json.DataLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
+import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 public class Barricade extends Building {
@@ -50,6 +50,13 @@ public class Barricade extends Building {
 	@Override
 	public void onUpdateNextState(){
 
+	}
+	
+	@Override
+	public void noMoreLife(){
+		super.noMoreLife();
+
+		FightScreen.isoGrid.getIsoMapState().remove((TurretRenderer)this.getMilitaryRenderer());		
 	}
 
 	// ===========================================================

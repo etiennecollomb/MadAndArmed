@@ -34,6 +34,7 @@ public class Turret extends Building {
 		AnimatedTextureType animatedTextureType = DataLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingType().name());
 		turretRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), buildingPattern, this);
 		FightScreen.isoGrid.place(turretRenderer, (int)posX, (int)posY);
+		FightScreen.isoGrid.getIsoMapState().add(turretRenderer);
 		this.setMilitaryRenderer(turretRenderer);
 		
 		this.setPos(turretRenderer.getX(), turretRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
@@ -86,6 +87,8 @@ public class Turret extends Building {
 	public void noMoreLife(){
 		super.noMoreLife();
 
+		FightScreen.isoGrid.getIsoMapState().remove((TurretRenderer)this.getMilitaryRenderer());
+		
 		//on efface la lifebar
 		if(lifeBarreRenderer!=null) PoolAnimManager.getManager().getLifeBarRendererPool().free(lifeBarreRenderer);
 		lifeBarreRenderer = null;
