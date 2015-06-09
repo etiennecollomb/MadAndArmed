@@ -13,7 +13,6 @@ public class Building extends Military{
     // Constructors
     // ===========================================================
     
-    
     // ===========================================================
     // Getter & Setter
     // ===========================================================
@@ -40,8 +39,7 @@ public class Building extends Military{
 	public void notifyDestrution() {
 		BuildingFactory.destroy(this);
 	}
-	
-	
+
     // ===========================================================
     // Methods
     // ===========================================================
@@ -64,7 +62,6 @@ public class Building extends Military{
 		this.getMyTeam().getStateMap().removeBuilding(this);
 		FightScreen.getManager().getOtherTeam(this.getMyTeam()).addScore(this.getPattern().getPrice());
 
-		
 	}
 	
 

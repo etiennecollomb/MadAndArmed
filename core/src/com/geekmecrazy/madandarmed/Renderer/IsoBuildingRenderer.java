@@ -6,6 +6,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
 import com.geekmecrazy.madandarmed.Game.Tween.SpriteTween;
+
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
@@ -19,12 +20,10 @@ public class IsoBuildingRenderer extends BuildingRenderer {
 	// Constructors
 	// ===========================================================
 
-    
     public IsoBuildingRenderer(){
         super();
     }
-
-
+    
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
@@ -132,6 +131,12 @@ public class IsoBuildingRenderer extends BuildingRenderer {
 
     public boolean isDark(){
         return isDark;
+    }
+    
+    /** Release all control done by Touch Event ...etc */
+    public void releaseControls(){
+    	unfocus();
+        unshine();
     }
 
 }
