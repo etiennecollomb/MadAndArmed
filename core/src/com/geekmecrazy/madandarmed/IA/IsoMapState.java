@@ -72,12 +72,16 @@ public class IsoMapState {
 				positionMap[i][j] = null;
 	}
 	
-	public void add(final Shape pIsoShape, final int pX, final int pY){
+	public void add(final Shape pIsoShape){
+		int pX = pIsoShape.getGridPosX();
+		int pY = pIsoShape.getGridPosY();
 		if( !isOccupied(pX, pY))
 			positionMap[pX][pY] = pIsoShape;
 	}
 	
-	public void remove(final Shape pIsoShape, final int pX, final int pY){
+	public void remove(final Shape pIsoShape){
+		int pX = pIsoShape.getGridPosX();
+		int pY = pIsoShape.getGridPosY();
 		if(pIsoShape == positionMap[pX][pY])
 			positionMap[pX][pY] = null;
 	}

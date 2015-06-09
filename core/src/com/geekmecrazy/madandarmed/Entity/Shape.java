@@ -182,9 +182,8 @@ public class Shape extends Entity implements IColor, ITouchable {
         
         /** IsoShape */
 		if(this.isIsoShape()){
-			/** Order is important ... */
-			this.setGridPosY(this.isoGrid.convertToGridPositionY(pY));
 			this.setGridPosX(this.isoGrid.convertToGridPositionX(pX, pY));
+			this.setGridPosY(this.isoGrid.convertToGridPositionY(pY));
 		}
 		/** OrthoShape */
 		else if(this.isOrthoShape()){
@@ -363,7 +362,7 @@ public class Shape extends Entity implements IColor, ITouchable {
 			float effectiveViewportHeight = GlobalManager.camera.viewportHeight * GlobalManager.camera.zoom;
 
 			/**OFF of gridMapState */
-			this.getIsoGrid().getIsoMapState().remove(this, this.getGridPosX(), this.getGridPosY());
+			this.getIsoGrid().getIsoMapState().remove(this);
 			/** New Position */
 			this.getIsoGrid().placeFromPosition(this, pTouchAreaLocalX-diffX + decallageX, pTouchAreaLocalY-diffY + decallageY);
 
@@ -395,7 +394,7 @@ public class Shape extends Entity implements IColor, ITouchable {
 			}
 			
 			/**Put on gridMapState */
-			this.getIsoGrid().getIsoMapState().add(this, this.getGridPosX(), this.getGridPosY());
+			this.getIsoGrid().getIsoMapState().add(this);
 
 		}
 

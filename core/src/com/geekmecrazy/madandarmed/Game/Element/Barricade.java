@@ -24,6 +24,7 @@ public class Barricade extends Building {
 		AnimatedTextureType animatedTextureType = DataLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingType().name());
 		barricadeRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), buildingPattern, this, FightScreen.isoGrid);
 		FightScreen.isoGrid.place(barricadeRenderer, (int)posX, (int)posY);
+		FightScreen.isoGrid.getIsoMapState().add(barricadeRenderer);
 		this.setMilitaryRenderer(barricadeRenderer);
 		
 		this.setPos(barricadeRenderer.getX(), barricadeRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
