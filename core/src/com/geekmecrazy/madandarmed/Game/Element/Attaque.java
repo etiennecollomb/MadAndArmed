@@ -1,6 +1,9 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import com.badlogic.gdx.audio.Sound;
+import com.geekmecrazy.madandarmed.CoreConfig.SoundType;
 import com.geekmecrazy.madandarmed.Game.Scene.MissileManager;
+import com.geekmecrazy.madandarmed.Game.Scene.SoundManager;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponType;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
 
@@ -67,6 +70,8 @@ public class Attaque extends GameElement {
 					} else if(WeaponType.CAC.equals(m.getAttackBehavior().getWeaponPattern().getWeaponType())){
 						 attackCac(m, target);
 					}
+					
+					SoundManager.playSound(SoundType.SHOTGUN_BLAST_01);
 
 				}
 				shootCycleCounter++;

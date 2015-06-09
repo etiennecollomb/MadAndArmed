@@ -1,12 +1,12 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
+import com.badlogic.gdx.audio.Sound;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
+import com.geekmecrazy.madandarmed.CoreConfig.SoundType;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
-import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
@@ -18,7 +18,6 @@ import com.geekmecrazy.madandarmed.Game.UI.UnitButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
 import com.geekmecrazy.madandarmed.Json.DataLoader;
-import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 
@@ -192,6 +191,9 @@ public class FightScreen extends Screen implements IUpdatable {
         IsoGridRenderer gridRenderer = new IsoGridRenderer();
         gridRenderer.init(isoGrid);
         this.getScene().attachChild(gridRenderer);
+        
+        /** Init SoundManager */
+        new SoundManager();
         
 		/** Init des 2 teams */
 		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getSpawnPoint(), TeamID.TEAM1, MAX_THORIUM));

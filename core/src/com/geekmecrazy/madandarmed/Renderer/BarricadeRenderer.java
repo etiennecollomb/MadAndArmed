@@ -31,12 +31,8 @@ public class BarricadeRenderer extends IsoBuildingRenderer {
 		
 		if(thisBuilding.isAlive()){
 			thisBuilding.setPos(this.getX(), this.getY()); //Update the position of the model (can be moved)
-			
 			this.setOrientation();
 	        this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)this.getY());
-		}
-		else{
-			System.out.println("VISIBILITY = " + this.isVisible());
 		}
         
 		super.onUpdate();
