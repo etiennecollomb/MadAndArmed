@@ -22,7 +22,7 @@ public class Barricade extends Building {
 		BarricadeRenderer barricadeRenderer = PoolAnimManager.getManager().getBarricadeRendererPool().obtain();
 		
 		AnimatedTextureType animatedTextureType = DataLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingType().name());
-		barricadeRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), buildingPattern, this, FightScreen.isoGrid);
+		barricadeRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), this, FightScreen.isoGrid);
 		FightScreen.isoGrid.place(barricadeRenderer, (int)posX, (int)posY);
 		FightScreen.isoGrid.getIsoMapState().add(barricadeRenderer);
 		this.setMilitaryRenderer(barricadeRenderer);
@@ -46,17 +46,19 @@ public class Barricade extends Building {
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
-
-	@Override
-	public void onUpdateNextState(){
-
-	}
 	
 	@Override
 	public void noMoreLife(){
 		super.noMoreLife();
 
-		FightScreen.isoGrid.getIsoMapState().remove((TurretRenderer)this.getMilitaryRenderer());		
+		FightScreen.isoGrid.getIsoMapState().remove((BarricadeRenderer)this.getMilitaryRenderer());		
+	}
+	
+	@Override
+	public void reset() {
+		super.reset();
+		
+		PoolAnimManager.getManager().getBarricadeRendererPool().free((BarricadeRenderer) this.militaryRenderer);
 	}
 
 	// ===========================================================

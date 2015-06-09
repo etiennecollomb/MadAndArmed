@@ -6,8 +6,6 @@ import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
 import com.geekmecrazy.madandarmed.Game.Tween.SpriteTween;
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
-
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
@@ -88,8 +86,8 @@ public class IsoBuildingRenderer extends BuildingRenderer {
 	// Methods
 	// ===========================================================
     
-    public void init(final SpriteSheet pSpriteSheet, final BuildingPattern pBuildingPattern, final Building pBuilding, final IsoGrid isoGrid){
-    	this.init(pSpriteSheet, pBuildingPattern, pBuilding);
+    public void init(final SpriteSheet pSpriteSheet, final Building pBuilding, final IsoGrid isoGrid){
+    	this.init(pSpriteSheet, pBuilding);
 
     	this.setIsoShape(true);
     	this.setIsoGrid(isoGrid);

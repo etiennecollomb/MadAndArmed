@@ -123,7 +123,8 @@ public class Military extends Geometrie {
 
 		/** dead */
 		if(!this.isAlive()){
-			this.getAttackBehavior().setAttacking(false);
+			if(this.getAttackBehavior() != null)
+				this.getAttackBehavior().setAttacking(false);
 			this.militaryRenderer.setVisible(false);
 		}
 		

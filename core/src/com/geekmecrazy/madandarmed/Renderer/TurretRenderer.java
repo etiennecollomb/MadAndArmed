@@ -4,11 +4,8 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
-import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Json.DataLoader;
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
-import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 
 
@@ -107,8 +104,8 @@ public class TurretRenderer extends BuildingRenderer {
 	// Methods
 	// ===========================================================
 
-	public void init(final SpriteSheet pSpriteSheet, final BuildingPattern pBuildingPattern, final Building pBuilding){
-		super.init(pSpriteSheet, pBuildingPattern,  pBuilding);
+	public void init(final SpriteSheet pSpriteSheet, final Building pBuilding){
+		super.init(pSpriteSheet, pBuilding);
 		
 		this.setFireCurrentFrame(0);
 	}

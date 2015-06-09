@@ -3,8 +3,6 @@ package com.geekmecrazy.madandarmed.Game.Element;
 import com.geekmecrazy.madandarmed.Game.Factory.BuildingFactory;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
-import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 
 public class Building extends Military{
@@ -35,8 +33,6 @@ public class Building extends Military{
 		this.militaryRenderer.detachSelf();
 		
 		pattern=null;
-		
-		PoolAnimManager.getManager().getTurretRendererPool().free((TurretRenderer) this.militaryRenderer);
 
 	}
 
