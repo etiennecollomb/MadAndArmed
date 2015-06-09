@@ -5,11 +5,7 @@ import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Renderer.OrthoGridRenderer;
 
-public class OrthoGrid {
-    private float cellWidth;
-	private float cellHeight;
-    private int cols;
-	private int rows;
+public class OrthoGrid extends Grid {
 	
 	private OrthoGridRenderer gridRenderer;
 
@@ -21,77 +17,41 @@ public class OrthoGrid {
     // Getter & Setter
     // ===========================================================
 
-    public int getCols() {
-		return cols;
-	}
-
-	public float getCellWidth() {
-		return cellWidth;
-	}
-
-	public void setCellWidth(float cellWidth) {
-		this.cellWidth = cellWidth;
-	}
-
-	public float getCellHeight() {
-		return cellHeight;
-	}
-
-	public void setCellHeight(float cellHeight) {
-		this.cellHeight = cellHeight;
-	}
-
-	public void setCols(int cols) {
-		this.cols = cols;
-	}
-
-	public int getRows() {
-		return rows;
-	}
-
-	public void setRows(int rows) {
-		this.rows = rows;
-	}
-	
     public OrthoGridRenderer getGridRenderer() {
 		return gridRenderer;
 	}
-
 
 	public void setGridRenderer(OrthoGridRenderer gridRenderer) {
 		this.gridRenderer = gridRenderer;
 	}
 
-	
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
-    
-    
+
     // ===========================================================
     // Methods
     // ===========================================================
 
     public void init(final float pCellWidth, final float pCellHeight, Scene scene){
-        this.cellWidth = pCellWidth;
-        this.cellHeight = pCellHeight;
-        this.cols = (int) (scene.getWidth() / GlobalManager.BIG_NODESIZE) +1;
-        this.rows = (int) (scene.getHeight() / GlobalManager.BIG_NODESIZE) +1;
+        this.setCellWidth(pCellWidth);
+        this.setCellHeight(pCellHeight);
+        this.setWidth( (int) (scene.getWidth() / GlobalManager.BIG_NODESIZE) +1);
+        this.setHeight( (int) (scene.getHeight() / GlobalManager.BIG_NODESIZE) +1);
         
         this.gridRenderer = null;
-
     }
 
     public float widthFor(int val){
-        return val*cellWidth;
+        return val*this.getCellWidth();
     }
 
     public float heightFor(int val){
-        return val*cellHeight;
+        return val*this.getCellHeight();
     }
 
     public void place(Entity e, int row, int col){
-        e.setPosition(row*cellWidth + cellWidth/2f - e.getWidth()/2f,col*cellHeight + cellHeight/2f - e.getHeight()/2f);
+        e.setPosition(row*this.getCellWidth() + this.getCellWidth()/2f - e.getWidth()/2f,col*this.getCellHeight() + this.getCellHeight()/2f - e.getHeight()/2f);
     }
 
     public void placeFromPosition(Entity e, float pX, float pY){

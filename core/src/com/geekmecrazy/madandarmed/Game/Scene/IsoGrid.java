@@ -5,16 +5,7 @@ import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.IA.IsoMapState;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
 
-public class IsoGrid {
-
-	private float cellWidth;
-
-	private float cellHeight;
-	
-	private int width;
-	private int height;
-	
-	private Scene scene;
+public class IsoGrid extends Grid {
 
 	private IsoGridRenderer isoGridRenderer;
 	
@@ -39,46 +30,6 @@ public class IsoGrid {
 
 	public void setIsoGridRenderer(IsoGridRenderer isoGridRenderer) {
 		this.isoGridRenderer = isoGridRenderer;
-	}
-
-	public float getCellWidth() {
-		return cellWidth;
-	}
-
-	public void setCellWidth(float cellWidth) {
-		this.cellWidth = cellWidth;
-	}
-
-	public float getCellHeight() {
-		return cellHeight;
-	}
-
-	public void setCellHeight(float cellHeight) {
-		this.cellHeight = cellHeight;
-	}
-	
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	public Scene getScene() {
-		return scene;
-	}
-
-	public void setScene(Scene scene) {
-		this.scene = scene;
 	}
 	
 	public IsoMapState getIsoMapState() {
@@ -109,13 +60,13 @@ public class IsoGrid {
 	
 	public void init(final float pCellWidth, final float pCellHeight, final Scene pScene){
 		
-        this.cellWidth = pCellWidth;
-        this.cellHeight = pCellHeight;
+        this.setCellWidth(pCellWidth);
+        this.setCellHeight(pCellHeight);
         
         this.setWidth((int)(pScene.getWidth() / (pCellWidth) ));
         this.setHeight((int)(pScene.getHeight() / (pCellHeight/2f) ));
         
-        this.scene = pScene;
+        this.setScene(pScene);
         
         this.isoGridRenderer = null;
         

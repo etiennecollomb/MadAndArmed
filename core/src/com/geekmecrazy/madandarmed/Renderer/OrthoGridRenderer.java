@@ -1,10 +1,5 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
-import java.util.ArrayList;
-
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Pixmap.Format;
-import com.geekmecrazy.madandarmed.Core.TextureBuilder;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
@@ -46,7 +41,7 @@ public class OrthoGridRenderer extends Shape {
     // ===========================================================
 	
 	public void init(final OrthoGrid pGrid){
-		super.init(0, 0, pGrid.getCellWidth()*pGrid.getCols(), pGrid.getCellHeight()*pGrid.getRows());
+		super.init(0, 0, pGrid.getCellWidth()*pGrid.getWidth(), pGrid.getCellHeight()*pGrid.getHeight());
 		
 		pGrid.setGridRenderer(this);
 		this.setGrid(pGrid);
