@@ -78,7 +78,7 @@ public class Attaque extends GameElement {
 					
 					/** Sound */
 					if(weaponPattern.getSoundsType() != null){
-						SoundManager.playSound(weaponPattern.getRandometSoundsType());
+						SoundManager.playSound(weaponPattern);
 					}
 
 				}

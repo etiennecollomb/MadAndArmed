@@ -23,6 +23,9 @@ public class WeaponPattern{
 		CAC
 	}	
 	
+	/** Weapon Name */
+	private WeaponName weaponName;
+
 	/** Type de tir */
 	private WeaponType weaponType;
 
@@ -44,6 +47,9 @@ public class WeaponPattern{
 	/** Sounds  of the weapon (can be multiple, choosed by random) */
 	private List<SoundType> soundsType;
 
+	/** max sound played together at a time */
+	private int maxOverlappingSound;
+	
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -51,6 +57,14 @@ public class WeaponPattern{
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
+
+	public WeaponName getWeaponName() {
+		return weaponName;
+	}
+
+	public void setWeaponName(WeaponName weaponName) {
+		this.weaponName = weaponName;
+	}
 
 	public WeaponType getWeaponType() {
 		return weaponType;
@@ -106,6 +120,14 @@ public class WeaponPattern{
 
 	public void setSoundsType(List<SoundType> soundsType) {
 		this.soundsType = soundsType;
+	}
+	
+	public int getMaxOverlappingSound() {
+		return maxOverlappingSound;
+	}
+
+	public void setMaxOverlappingSound(int maxOverlappingSound) {
+		this.maxOverlappingSound = maxOverlappingSound;
 	}
 
 	// ===========================================================

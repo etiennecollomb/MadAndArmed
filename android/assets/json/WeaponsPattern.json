@@ -1,24 +1,29 @@
 {
     "CAC_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: CAC_1
 		weaponType: CAC
 		hitRange: 50
 		hitSpeed: 10
 		dmgEffect: 30
 		animatedTextureType: IMPACT_BULLET
 		soundsType: [ PUNCH_01, PUNCH_02 ]
+		maxOverlappingSound: 10
     },
     "GUN_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: GUN_1
 		weaponType: GUN
 		hitRange: 100
 		hitSpeed: 20
 		dmgEffect: 50
 		animatedTextureType: IMPACT_BULLET
 		soundsType: [ SHOTGUN_BLAST_01 ]
+		maxOverlappingSound: 2
     },
     "GUN_2": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: GUN_2
 		weaponType: GUN
 		hitRange: 500
 		hitSpeed: 30
@@ -27,6 +32,7 @@
     },
     "MISSILE_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: MISSILE_1
 		weaponType: MISSILE
 		hitRange: 1500
 		hitSpeed: 15
@@ -36,6 +42,7 @@
     },
     "MISSILE_2": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: MISSILE_2
 		weaponType: MISSILE
 		hitRange: 1000
 		hitSpeed: 25
