@@ -50,6 +50,9 @@ public class WeaponPattern{
 	/** max sound played together at a time */
 	private int maxOverlappingSound;
 	
+	/** min delay between playing sound in ms */
+	private int minDelayBetweenSound;
+	
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -128,6 +131,14 @@ public class WeaponPattern{
 
 	public void setMaxOverlappingSound(int maxOverlappingSound) {
 		this.maxOverlappingSound = maxOverlappingSound;
+	}
+
+	public int getMinDelayBetweenSound() {
+		return minDelayBetweenSound;
+	}
+
+	public void setMinDelayBetweenSound(int minDelayBetweenSound) {
+		this.minDelayBetweenSound = minDelayBetweenSound;
 	}
 
 	// ===========================================================

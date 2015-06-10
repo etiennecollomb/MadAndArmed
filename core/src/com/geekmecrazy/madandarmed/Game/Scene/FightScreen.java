@@ -1,8 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
-import com.badlogic.gdx.audio.Sound;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.CoreConfig.SoundType;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;

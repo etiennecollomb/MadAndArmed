@@ -9,6 +9,7 @@
 		animatedTextureType: IMPACT_BULLET
 		soundsType: [ PUNCH_01, PUNCH_02 ]
 		maxOverlappingSound: 10
+		minDelayBetweenSound: 50
     },
     "GUN_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
@@ -19,7 +20,8 @@
 		dmgEffect: 50
 		animatedTextureType: IMPACT_BULLET
 		soundsType: [ SHOTGUN_BLAST_01 ]
-		maxOverlappingSound: 2
+		maxOverlappingSound: 10
+		minDelayBetweenSound: 100
     },
     "GUN_2": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern

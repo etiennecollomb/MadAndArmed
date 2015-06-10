@@ -110,14 +110,20 @@ public class SoundManager {
 		
 		SoundManager.checkFinishedSound(soundPack);
 		
-		if(soundPack.getRunningSoundTypes().size() < soundPack.getMaxOverlappingSounds()){
-			
-			float volume = 0.1f;
-			SoundType soundType = weaponPattern.getRandometSoundsType();
-	    	Sound sound = SoundManager.soundsType.get(soundType); // Random sound from list of sounds
-	    	sound.play(volume);
-	    	soundPack.getRunningSoundTypes().add(soundType);
-	    	soundPack.getRunningSoundsStartTime().add( System.currentTimeMillis() );
+		/** Max sound Overlapping? */
+		int size = soundPack.getRunningSoundTypes().size();
+		if(size < soundPack.getMaxOverlappingSounds()){
+			/** Min delay between Sounds? */
+			if(size == 0 || soundPack.getRunningSoundsStartTime().get(size-1) + weaponPattern.getMinDelayBetweenSound() < System.currentTimeMillis()){
+				
+				float volume = 0.1f;
+				SoundType soundType = weaponPattern.getRandometSoundsType();
+		    	Sound sound = SoundManager.soundsType.get(soundType); // Random sound from list of sounds
+		    	sound.play(volume);
+		    	soundPack.getRunningSoundTypes().add(soundType);
+		    	soundPack.getRunningSoundsStartTime().add( System.currentTimeMillis() );
+		    	
+			}
 	    	
 		}
 		
