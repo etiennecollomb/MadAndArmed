@@ -1,9 +1,12 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import java.util.List;
+
 import com.badlogic.gdx.audio.Sound;
 import com.geekmecrazy.madandarmed.CoreConfig.SoundType;
 import com.geekmecrazy.madandarmed.Game.Scene.MissileManager;
 import com.geekmecrazy.madandarmed.Game.Scene.SoundManager;
+import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponType;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
 
@@ -58,20 +61,25 @@ public class Attaque extends GameElement {
 			//Target a portee de tir?
 			if(this.isTirDistance(m)){
 				
+				WeaponPattern weaponPattern = m.getAttackBehavior().getWeaponPattern();
+				
 				//On a recharge le tir
-				if(shootCycleCounter>=m.getAttackBehavior().getWeaponPattern().getHitSpeed()){
+				if(shootCycleCounter>=weaponPattern.getHitSpeed()){
 					shootCycleCounter=0;	
 
 					//On attaque !
-					if(WeaponType.MISSILE.equals(m.getAttackBehavior().getWeaponPattern().getWeaponType())){
+					if(WeaponType.MISSILE.equals(weaponPattern.getWeaponType())){
 						attackMissile(m, target);
-					} else if(WeaponType.GUN.equals(m.getAttackBehavior().getWeaponPattern().getWeaponType())){
+					} else if(WeaponType.GUN.equals(weaponPattern.getWeaponType())){
 						 attackGun(m, target);
-					} else if(WeaponType.CAC.equals(m.getAttackBehavior().getWeaponPattern().getWeaponType())){
+					} else if(WeaponType.CAC.equals(weaponPattern.getWeaponType())){
 						 attackCac(m, target);
 					}
 					
-					SoundManager.playSound(SoundType.SHOTGUN_BLAST_01);
+					/** Sound */
+					if(weaponPattern.getSoundsType() != null){
+						SoundManager.playSound(weaponPattern.getRandometSoundsType());
+					}
 
 				}
 				shootCycleCounter++;

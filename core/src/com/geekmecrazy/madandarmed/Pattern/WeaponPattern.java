@@ -1,6 +1,10 @@
 package com.geekmecrazy.madandarmed.Pattern;
 
+import java.util.List;
+
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
+import com.geekmecrazy.madandarmed.CoreConfig.SoundType;
 
 
 public class WeaponPattern{
@@ -36,8 +40,10 @@ public class WeaponPattern{
 
 	/** Missile(weapon) move speed */
 	private float missileSpeed;
-
 	
+	/** Sounds  of the weapon (can be multiple, choosed by random) */
+	private List<SoundType> soundsType;
+
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -94,6 +100,14 @@ public class WeaponPattern{
 		this.missileSpeed = missileSpeed;
 	}
 
+	public List<SoundType> getSoundsType() {
+		return soundsType;
+	}
+
+	public void setSoundsType(List<SoundType> soundsType) {
+		this.soundsType = soundsType;
+	}
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
@@ -102,6 +116,11 @@ public class WeaponPattern{
 	// Methods
 	// ===========================================================
 
+	public SoundType getRandometSoundsType() {
+		int size = this.soundsType.size();
+		return this.soundsType.get( GlobalManager.random.nextInt(size) );
+	}
+	
 }
 
 

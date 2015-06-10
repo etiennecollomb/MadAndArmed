@@ -30,6 +30,7 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.BufferUtils;
 
 import java.nio.IntBuffer;
+import java.util.Random;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
@@ -81,6 +82,8 @@ public class GlobalManager {
 	private static TweenManager tweenManager;
 
 	public static boolean moveable;
+	
+	public static Random random;
 
 
 	//    // ===========================================================
@@ -161,6 +164,8 @@ public class GlobalManager {
 
 	public void init(){
 
+		GlobalManager.random = new Random();
+		
 		//Graphical Tools
 		GraphicalTools.init();
 
@@ -168,15 +173,15 @@ public class GlobalManager {
 		IntBuffer buf = BufferUtils.newIntBuffer(16);
 		Gdx.gl.glGetIntegerv(GL20.GL_MAX_TEXTURE_SIZE, buf);
 		int maxSize = buf.get(0);
-		this.MAX_TEXTURE_WIDTH = maxSize;
-		this.MAX_TEXTURE_HEIGHT = maxSize;
+		GlobalManager.MAX_TEXTURE_WIDTH = maxSize;
+		GlobalManager.MAX_TEXTURE_HEIGHT = maxSize;
 
 		//Virtual viewport
-		this.vvp = new VirtualViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-		this.tweenManager = new TweenManager();
+		GlobalManager.vvp = new VirtualViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		GlobalManager.tweenManager = new TweenManager();
 		this.createCameras();
 		this.createInput();
-		this.moveable = true;
+		GlobalManager.moveable = true;
 
 		//SpriteBatches
 		GlobalManager.spriteBatchScene = new SpriteBatch();

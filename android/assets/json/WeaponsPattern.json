@@ -6,6 +6,7 @@
 		hitSpeed: 10
 		dmgEffect: 30
 		animatedTextureType: IMPACT_BULLET
+		soundsType: [ PUNCH_01, PUNCH_02 ]
     },
     "GUN_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
@@ -14,6 +15,7 @@
 		hitSpeed: 20
 		dmgEffect: 50
 		animatedTextureType: IMPACT_BULLET
+		soundsType: [ SHOTGUN_BLAST_01 ]
     },
     "GUN_2": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
