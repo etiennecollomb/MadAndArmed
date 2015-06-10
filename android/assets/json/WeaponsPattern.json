@@ -19,7 +19,7 @@
 		hitSpeed: 20
 		dmgEffect: 50
 		animatedTextureType: IMPACT_BULLET
-		soundsType: [ SHOTGUN_BLAST_01 ]
+		soundsType: [ SUBMACHIN_SHOT_01 ]
 		maxOverlappingSound: 10
 		minDelayBetweenSound: 100
     },
@@ -31,6 +31,9 @@
 		hitSpeed: 30
 		dmgEffect: 200
 		animatedTextureType: IMPACT_BULLET
+		soundsType: [ SHOTGUN_BLAST_01]
+		maxOverlappingSound: 10
+		minDelayBetweenSound: 100
     },
     "MISSILE_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern

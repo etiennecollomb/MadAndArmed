@@ -135,7 +135,7 @@ public class SoundManager {
 		int size = soundPack.getRunningSoundTypes().size();
 		for(int i=size-1; i>0; i--){
 			/** play duration is finished? */
-			if(soundPack.getRunningSoundsStartTime().get(i) + (soundPack.getRunningSoundTypes().get(i).getSecondsLength()) < System.currentTimeMillis() ){
+			if(soundPack.getRunningSoundsStartTime().get(i) + (soundPack.getRunningSoundTypes().get(i).getMsLength()) < System.currentTimeMillis() ){
 				soundPack.getRunningSoundTypes().remove(i);
 				soundPack.getRunningSoundsStartTime().remove(i);
 			}

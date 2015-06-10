@@ -84,6 +84,9 @@ public class GlobalManager {
 	public static boolean moveable;
 	
 	public static Random random;
+	
+	/** Sound */
+	public static boolean isSound;
 
 
 	//    // ===========================================================
@@ -164,6 +167,8 @@ public class GlobalManager {
 
 	public void init(){
 
+		GlobalManager.isSound = false;
+		
 		GlobalManager.random = new Random();
 		
 		//Graphical Tools

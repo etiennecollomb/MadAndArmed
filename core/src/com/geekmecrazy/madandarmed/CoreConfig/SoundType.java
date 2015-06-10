@@ -8,22 +8,24 @@ public enum SoundType {
 	//===========================================================
 
 	SHOTGUN_BLAST_01			("sound/Shotgun_Blast_01.mp3", 2000),
+	SUBMACHIN_SHOT_01			("sound/Submachin_shot_01.mp3", 800),
 	PUNCH_01					("sound/Punch_01.mp3", 500),
 	PUNCH_02					("sound/Punch_02.mp3", 500),
+	
 
 	;
 		
 	
 	private String path;
-	private int secondsLength;
+	private int msLength; /** MilliSeconds */
 
 	// ===========================================================
 	// Constructors
 	// ===========================================================
 
-	private SoundType(final String path, final int secondsLength) {
+	private SoundType(final String path, final int msLength) {
 		this.path = path;
-		this.secondsLength = secondsLength;
+		this.msLength = msLength;
 	}
 
 	// ===========================================================
@@ -34,8 +36,8 @@ public enum SoundType {
 		return path;
 	}
 
-	public int getSecondsLength() {
-		return secondsLength;
+	public int getMsLength() {
+		return msLength;
 	}
 
 	// ===========================================================

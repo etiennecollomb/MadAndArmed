@@ -1,5 +1,7 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
@@ -46,6 +48,9 @@ public class FightScreen extends Screen implements IUpdatable {
     
     /** IsoGrid of fight scene */
     public static IsoGrid isoGrid;
+    
+    /** Music background */
+    Music backgroundMusic;
 
 
     // ===========================================================
@@ -182,16 +187,16 @@ public class FightScreen extends Screen implements IUpdatable {
 
     // Lance une nouvelle partie
 	public void newGame(){
-
+		
+		/** Init SoundManager */
+        new SoundManager();
+        
         /** Init IsoGrid */
 		isoGrid = new IsoGrid();
 		isoGrid.init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
         IsoGridRenderer gridRenderer = new IsoGridRenderer();
         gridRenderer.init(isoGrid);
         this.getScene().attachChild(gridRenderer);
-        
-        /** Init SoundManager */
-        new SoundManager();
         
 		/** Init des 2 teams */
 		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getSpawnPoint(), TeamID.TEAM1, MAX_THORIUM));
@@ -226,36 +231,26 @@ public class FightScreen extends Screen implements IUpdatable {
 
         /** Barricade Button */
         Button newBarricadButton = new Button();
-        newBarricadButton.init(0, 0, TextureType.BARRICADE_ICON);
+        newBarricadButton.init(0, 0, TextureType.SOUND_ICON);
         newBarricadButton.setAction(new IAction(){
             @Override
             public void execute(){
-                //System.out.println("#### TOUCH BARRICADE BUTTON !!");
-            	/*
-                BarricadeRenderer fBR = new BarricadeRenderer();
-                SpriteSheet sp = new SpriteSheet(AnimatedTextureType.BARRICADES, true);
-                fBR.init(sp, isoGrid);
-                isoGrid.place(fBR, 20, 50);
-                getScene().attachChild(fBR);
-                getScene().registerTouchableShape(fBR);
-                */
+            	if(GlobalManager.isSound)
+            		GlobalManager.isSound = false;
+            	else
+            		GlobalManager.isSound = true;
             }
         });
-        newBarricadButton.setSize(1.5f, 1.5f);
+        newBarricadButton.setSize(1.0f, 1.0f);
         this.getHUD().attachChild(newBarricadButton, Entity.Alignment.RIGHT_BOTTOM);
         FightScreen.getManager().getHUD().registerTouchableShape(newBarricadButton);
         
         
-
-        
-        //TEST ISO
-        /*
-        Sprite testIsoSprite = new Sprite();
-        testIsoSprite.init(TextureType.BARRICADE_ICON2);
-        grid.place(testIsoSprite, 20, 50);
-        this.getScene().attachChild(testIsoSprite);
-        */
-        //FIN TEST
+		/** Start Sound Background */
+		this.backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("sound/Background_Music_Sci-Fi.mp3"));
+		this.backgroundMusic.setVolume(0.3f);
+		this.backgroundMusic.setLooping(true);
+		this.backgroundMusic.play();
         
         
 	}

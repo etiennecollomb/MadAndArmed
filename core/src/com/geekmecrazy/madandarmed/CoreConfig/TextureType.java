@@ -111,6 +111,9 @@ public enum TextureType{
 	BARRICADE_ICON 			("game/BarricadeIcon.png", 1f, 1f),
 	BARRICADE_ICON2 		("game/BarricadeIcon.png", 128, 128),
 	
+	SOUND_ICON 				("game/SoundIcon.png", 1f, 1f),
+	SOUND_ICON2 			("game/SoundIcon.png", 128, 128),
+	
 	;
 
 
