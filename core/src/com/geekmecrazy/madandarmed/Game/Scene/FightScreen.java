@@ -48,10 +48,6 @@ public class FightScreen extends Screen implements IUpdatable {
     
     /** IsoGrid of fight scene */
     public static IsoGrid isoGrid;
-    
-    /** Music background */
-    Music backgroundMusic;
-
 
     // ===========================================================
     // Singleton manager
@@ -235,10 +231,7 @@ public class FightScreen extends Screen implements IUpdatable {
         newBarricadButton.setAction(new IAction(){
             @Override
             public void execute(){
-            	if(GlobalManager.isSound)
-            		GlobalManager.isSound = false;
-            	else
-            		GlobalManager.isSound = true;
+            	SoundManager.swicthSoundONOFF();
             }
         });
         newBarricadButton.setSize(1.0f, 1.0f);
@@ -247,10 +240,7 @@ public class FightScreen extends Screen implements IUpdatable {
         
         
 		/** Start Sound Background */
-		this.backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("sound/Background_Music_Sci-Fi.mp3"));
-		this.backgroundMusic.setVolume(0.3f);
-		this.backgroundMusic.setLooping(true);
-		this.backgroundMusic.play();
+        SoundManager.playMusicBackground();
         
         
 	}
