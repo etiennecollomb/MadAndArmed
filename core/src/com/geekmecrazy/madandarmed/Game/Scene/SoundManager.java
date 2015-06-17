@@ -71,6 +71,11 @@ public class SoundManager {
 
 	/** SoundsPacks */
 	public static Map<WeaponName, SoundPack> soundsPacks;
+	
+	/** Volume */
+	public static float VOLUME_ON = 0.1f;
+	public static float VOLUME_OFF = 0f;
+	public static float volume;
 
 
 	// ===========================================================
@@ -93,7 +98,7 @@ public class SoundManager {
 
 			WeaponPattern weaponPattern = DataLoader.getWeaponsPattern().get(weaponName.name());
 
-			/** sound is setted ? */
+			/** sound is setted in json? */
 			if(weaponPattern.getSoundsType() != null){
 				int maxOverlappingSound = weaponPattern.getMaxOverlappingSound();
 				SoundPack soundPack = new SoundPack(maxOverlappingSound);
@@ -101,7 +106,7 @@ public class SoundManager {
 			}
 
 		}
-
+		
 		SoundManager.isSoundON = true;
 		SoundManager.swicthSoundONOFF(); /** Turn Off */
 
@@ -124,63 +129,86 @@ public class SoundManager {
 		/** Set ON */
 		if(!SoundManager.isSoundON){
 			SoundManager.isSoundON = true;
+			SoundManager.volume = SoundManager.VOLUME_ON;
 
-			if(SoundManager.backgroundMusic != null)
+			if(SoundManager.backgroundMusic != null){
 				SoundManager.backgroundMusic.play();
+				SoundManager.backgroundMusic.setVolume(SoundManager.volume);
+			}
+			
+			/** volume for all sounds */
+			SoundManager.setVolumeForAllSounds();
 
 		}
 		/** Set OFF */
 		else{
 			SoundManager.isSoundON = false;
+			SoundManager.volume = SoundManager.VOLUME_OFF;
 
-			if(SoundManager.backgroundMusic != null)
+			if(SoundManager.backgroundMusic != null){
 				SoundManager.backgroundMusic.pause();
-
-			/** clean all played sounds */
-			for (SoundPack soundPack : SoundManager.soundsPacks.values()) {
-				int size = soundPack.getRunningSoundTypes().size();
-				for(int i=size-1; i>0; i--){
-					SoundManager.soundsType.get(soundPack.getRunningSoundTypes().get(i)).stop(soundPack.getRunningSoundID().get(i)); //Stop Sound
-					soundPack.getRunningSoundTypes().remove(i);
-					soundPack.getRunningSoundID().remove(i);
-					soundPack.getRunningSoundsStartTime().remove(i);
-				}
+				SoundManager.backgroundMusic.setVolume(SoundManager.volume);
 			}
 
+			/** volume for all sounds */
+			SoundManager.setVolumeForAllSounds();
+
+		}
+	}
+	
+
+	/** volume for all sounds */
+	public static void setVolumeForAllSounds(){
+		for (SoundPack soundPack : SoundManager.soundsPacks.values()) {
+			int size = soundPack.getRunningSoundTypes().size();
+			for(int i=size-1; i>0; i--){
+				long soundId = soundPack.getRunningSoundID().get(i);
+				SoundManager.soundsType.get(soundPack.getRunningSoundTypes().get(i)).setVolume(soundId, SoundManager.volume);;
+			}
+		}
+	}
+
+	public static void stopAllSounds(){
+		/** clean all played sounds */
+		for (SoundPack soundPack : SoundManager.soundsPacks.values()) {
+			int size = soundPack.getRunningSoundTypes().size();
+			for(int i=size-1; i>0; i--){
+				long soundId = soundPack.getRunningSoundID().get(i);
+				SoundManager.soundsType.get(soundPack.getRunningSoundTypes().get(i)).stop(soundId); //Stop Sound
+				soundPack.getRunningSoundTypes().remove(i);
+				soundPack.getRunningSoundID().remove(i);
+				soundPack.getRunningSoundsStartTime().remove(i);
+			}
 		}
 	}
 
 	public static void playMusicBackground(){
 		/** Start Sound Background */
 		SoundManager.backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("sound/Background_Music_Sci-Fi.mp3"));
-		SoundManager.backgroundMusic.setVolume(0.3f);
+		SoundManager.backgroundMusic.setVolume(SoundManager.volume);
 		SoundManager.backgroundMusic.setLooping(true);
-		if(SoundManager.isSoundON)
-			SoundManager.backgroundMusic.play();
+		SoundManager.backgroundMusic.play();
 	}
 
 	public static void playSound(final WeaponPattern weaponPattern){
 
-		if(SoundManager.isSoundON){
-			SoundPack soundPack = SoundManager.soundsPacks.get( weaponPattern.getWeaponName() );
+		SoundPack soundPack = SoundManager.soundsPacks.get( weaponPattern.getWeaponName() );
 
-			SoundManager.checkFinishedSound(soundPack);
+		SoundManager.checkFinishedSound(soundPack);
 
-			/** Max sound Overlapping? */
-			int size = soundPack.getRunningSoundTypes().size();
-			if(size < soundPack.getMaxOverlappingSounds()){
-				/** Min delay between Sounds? */
-				if(size == 0 || soundPack.getRunningSoundsStartTime().get(size-1) + weaponPattern.getMinDelayBetweenSound() < System.currentTimeMillis()){
+		/** Max sound Overlapping? */
+		int size = soundPack.getRunningSoundTypes().size();
+		if(size < soundPack.getMaxOverlappingSounds()){
+			/** Min delay between Sounds? */
+			if(size == 0 || soundPack.getRunningSoundsStartTime().get(size-1) + weaponPattern.getMinDelayBetweenSound() < System.currentTimeMillis()){
 
-					float volume = 0.1f;
-					SoundType soundType = weaponPattern.getRandometSoundsType();
-					Sound sound = SoundManager.soundsType.get(soundType); // Random sound from list of sounds
-					Long id = sound.play(volume);
-					soundPack.getRunningSoundTypes().add(soundType);
-					soundPack.getRunningSoundID().add(id);
-					soundPack.getRunningSoundsStartTime().add( System.currentTimeMillis() );
+				SoundType soundType = weaponPattern.getRandometSoundsType();
+				Sound sound = SoundManager.soundsType.get(soundType); // Random sound from list of sounds
+				Long id = sound.play(SoundManager.volume);
+				soundPack.getRunningSoundTypes().add(soundType);
+				soundPack.getRunningSoundID().add(id);
+				soundPack.getRunningSoundsStartTime().add( System.currentTimeMillis() );
 
-				}
 			}
 		}
 

@@ -3,11 +3,9 @@ package com.geekmecrazy.madandarmed.Renderer;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
-import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 
 public class ScoreBarRenderer extends Shape {
