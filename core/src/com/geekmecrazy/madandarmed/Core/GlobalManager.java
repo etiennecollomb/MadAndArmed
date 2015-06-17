@@ -82,31 +82,31 @@ public class GlobalManager {
 	private static TweenManager tweenManager;
 
 	public static boolean moveable;
-	
+
 	public static Random random;
 
 
 	//    // ===========================================================
 	//    // XML
 	//    // ===========================================================
-	
-	    /** XML path */
-	    public static final String XML_CREEP = "xml/CreepPattern.xml";
-	    public static final String XML_BUILDINGPATTERN = "xml/BuildingPattern.xml";
-	    public static final String XML_BUILDINGQGPATTERN = "xml/BuildingPatternQG.xml";
-	    public static final String XML_LEVEL11 = "xml/level/map_1_1.xml";
+
+	/** XML path */
+	public static final String XML_CREEP = "xml/CreepPattern.xml";
+	public static final String XML_BUILDINGPATTERN = "xml/BuildingPattern.xml";
+	public static final String XML_BUILDINGQGPATTERN = "xml/BuildingPatternQG.xml";
+	public static final String XML_LEVEL11 = "xml/level/map_1_1.xml";
 
 	// ===========================================================
 	// JSON
 	// ===========================================================
-	
+
 	public static final String JSON_BUILDINGSPATTERN = "json/BuildingsPattern.json";
 	public static final String JSON_WEAPONSPATTERN = "json/WeaponsPattern.json";
 	public static final String JSON_TEXTURESPATTERN = "json/TexturesPattern.json";
 	public static final String JSON_MAPSPATTERN = "json/MapsPattern.json";
 	public static final String JSON_CREEPSPATTERN = "json/CreepsPattern.json";
 	public static final String JSON_MENUSPATTERN = "json/MenusPattern.json";
-	
+
 	// ===========================================================
 	// Scenes
 	// ===========================================================
@@ -163,9 +163,9 @@ public class GlobalManager {
 	// ===========================================================
 
 	public void init(){
-		
+
 		GlobalManager.random = new Random();
-		
+
 		//Graphical Tools
 		GraphicalTools.init();
 
@@ -309,16 +309,47 @@ public class GlobalManager {
 	}
 
 	/** SpriteBatch draw
-     x - the x-coordinate in screen space
-     y - the y-coordinate in screen space
-     originX - the x-coordinate of the scaling and rotation origin relative to the screen space coordinates
-     originY - the y-coordinate of the scaling and rotation origin relative to the screen space coordinates
-     width - the width in pixels
-     height - the height in pixels
-     scaleX - the scale of the rectangle around originX/originY in x
-     scaleY - the scale of the rectangle around originX/originY in y
-     rotation - the angle of counter clockwise rotation of the rectangle around originX/originY
+	    x - the x-coordinate in screen space
+	    y - the y-coordinate in screen space
+	    originX - the x-coordinate of the scaling and rotation origin relative to the screen space coordinates
+	    originY - the y-coordinate of the scaling and rotation origin relative to the screen space coordinates
+	    width - the width in pixels
+	    height - the height in pixels
+	    scaleX - the scale of the rectangle around originX/originY in x
+	    scaleY - the scale of the rectangle around originX/originY in y
+	    rotation - the angle of counter clockwise rotation of the rectangle around originX/originY
+		srcX - the x-coordinate in texel space
+		srcY - the y-coordinate in texel space
+		srcWidth - the source with in texels
+		srcHeight - the source height in texels
+		flipX - whether to flip the sprite horizontally
+		flipY - whether to flip the sprite vertically
 	 */
+	public static void spriteBatchDraw2(
+			Texture pTexture,
+			float pX, float pY,
+			float pOriginX, float pOriginY,
+			float width, float height,
+			float scaleX, float scaleY,
+			float rotation,
+			int srcX, int srcY,
+			int srcWidth, int srcHeight,
+			boolean flipX, boolean flipY
+			){
+		GlobalManager.currentSpriteBatch.draw(
+				pTexture,
+				pX, pY,
+				pOriginX, pOriginY,
+				width, height,
+				scaleX, scaleY,
+				rotation,
+				srcX, srcY,
+				srcWidth, srcHeight,
+				flipX, flipY);
+	}
+	
+	
+	
 	public static void spriteBatchDraw(TextureRegion pTextureRegion, float pX, float pY, float pOriginX, float pOriginY, float width, float height, float scaleX, float scaleY, float rotation){
 		GlobalManager.currentSpriteBatch.draw(pTextureRegion,
 				pX, pY,

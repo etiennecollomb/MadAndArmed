@@ -12,6 +12,7 @@ import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Tween.RectangleTween;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.Layout;
+import com.geekmecrazy.madandarmed.Game.UI.Layout.Orientation;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
@@ -31,6 +32,7 @@ public class MenuScreen extends Screen implements IUpdatable {
     private Rectangle blackScreen;
     private Button hqButton;
     private Button worldButton;
+    
 
     /** Access au manager */
     public static MenuScreen getManager(){
@@ -72,7 +74,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 
         Rectangle title = new Rectangle();
         title.init(0,0,7,1.6f);
-        title.setColor(1,1,0,1);
+        title.setColor(1,0,0,1);
 
         Layout l1 = new Layout();
         l1.init(0,0);
@@ -88,6 +90,28 @@ public class MenuScreen extends Screen implements IUpdatable {
         this.getHUD().attachChild(l1,Entity.Alignment.CENTER);
         this.getHUD().attachChild(blackScreen, Entity.Alignment.CENTER);
         
+        //TEST
+        Rectangle r1 = new Rectangle();
+        r1.init(0,0,3f, 1.2f);
+        r1.setColor(0,1,0f,1);
+        
+        Rectangle r2 = new Rectangle();
+        r2.init(0,0,3f, 1.2f);
+        r2.setColor(0.5f,1,0,1);
+        
+        Rectangle r3 = new Rectangle();
+        r3.init(0,0,3f, 1.2f);
+        r3.setColor(0,1,1f,1);
+        
+        Layout layout_test;
+        layout_test = new Layout();
+        layout_test.init(0,0);
+        layout_test.setOrientation(Orientation.HORIZONTAL);
+        layout_test.setLayoutSize(6f, Layout.Dimension.WRAP_CONTENT);
+        layout_test.add(r1);
+        layout_test.add(r2);
+        layout_test.add(r3);
+        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
     }
 
     @Override

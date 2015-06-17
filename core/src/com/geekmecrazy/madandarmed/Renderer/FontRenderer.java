@@ -2,9 +2,6 @@ package com.geekmecrazy.madandarmed.Renderer;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Shape;
-import com.geekmecrazy.madandarmed.Game.UI.Layout;
-import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 
