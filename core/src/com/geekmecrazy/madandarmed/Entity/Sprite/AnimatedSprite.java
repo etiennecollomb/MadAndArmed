@@ -89,6 +89,8 @@ public class AnimatedSprite extends Sprite {
 		}
 	}
 
+
+
 	@Override
 	public void reset() {
 		super.reset();

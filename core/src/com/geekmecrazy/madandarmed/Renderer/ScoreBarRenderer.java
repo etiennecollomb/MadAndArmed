@@ -158,71 +158,71 @@ public class ScoreBarRenderer extends Shape {
 	}
 
 	// ===========================================================
-			// Methods for/from SuperClass/Interfaces
-			// ===========================================================
+	// Methods for/from SuperClass/Interfaces
+	// ===========================================================
 
-			@Override
-			public void onDraw(){
+	@Override
+	public void onDraw(){
 
-				super.onDraw();
-			}
+		super.onDraw();
+	}
 
-			@Override
-			public void reset() {
-				super.reset();
+	@Override
+	public void reset() {
+		super.reset();
 
-			}
+	}
 
-			// ===========================================================
-			// Methods
-			// ===========================================================
+	// ===========================================================
+	// Methods
+	// ===========================================================
 
-			public void init(final TextureType textureType, final float pX, final float pY, final float pScore_bar_min, final float pScore_bar_max, final float pScore_bar_min_size){
-				super.init(pX, pY, textureType.getWidth(), textureType.getHeight());
+	public void init(final TextureType textureType, final float pX, final float pY, final float pScore_bar_min, final float pScore_bar_max, final float pScore_bar_min_size){
+		super.init(pX, pY, textureType.getWidth(), textureType.getHeight());
 
-				this.setScore_bar_minX(pScore_bar_min);
-				this.setScore_bar_maxX(pScore_bar_max);
-				this.setScore_bar_minSize(pScore_bar_min_size/2f * 2f);
+		this.setScore_bar_minX(pScore_bar_min);
+		this.setScore_bar_maxX(pScore_bar_max);
+		this.setScore_bar_minSize(pScore_bar_min_size/2f * 2f);
 
-				this.setLeftBar_Width( getScore_bar_minX()+getScore_bar_minSize() );
+		this.setLeftBar_Width( getScore_bar_minX()+getScore_bar_minSize() );
 
-				this.getScore_bar_background().init(TextureType.SCORE_BAR_BACKGROUND);
-				this.getScore_bar_border().init(TextureType.SCORE_BAR_BORDER);
-				this.getScore_bar_leftPart().init(textureType);
-				this.getScore_bar_rightPart().init(textureType);
-				this.getScore_bar_reflet().init(TextureType.SCORE_BAR_REFLET);
+		this.getScore_bar_background().init(TextureType.SCORE_BAR_BACKGROUND);
+		this.getScore_bar_border().init(TextureType.SCORE_BAR_BORDER);
+		this.getScore_bar_leftPart().init(textureType);
+		this.getScore_bar_rightPart().init(textureType);
+		this.getScore_bar_reflet().init(TextureType.SCORE_BAR_REFLET);
 
-				this.attachChild(this.getScore_bar_background(), Entity.Alignment.CENTER);
-				this.attachChild(this.getScore_bar_border(), Entity.Alignment.CENTER);
-				this.attachChild(this.getScore_bar_leftPart(), Entity.Alignment.CENTER);
-				this.attachChild(this.getScore_bar_rightPart(), Entity.Alignment.CENTER);
-				this.attachChild(this.getScore_bar_reflet(), Entity.Alignment.CENTER);
+		this.attachChild(this.getScore_bar_background(), Entity.Alignment.CENTER);
+		this.attachChild(this.getScore_bar_border(), Entity.Alignment.CENTER);
+		this.attachChild(this.getScore_bar_leftPart(), Entity.Alignment.CENTER);
+		this.attachChild(this.getScore_bar_rightPart(), Entity.Alignment.CENTER);
+		this.attachChild(this.getScore_bar_reflet(), Entity.Alignment.CENTER);
 
-				this.setBarSize(0);
+		this.setBarSize(0);
 
-			}
+	}
 
-			public void setBarSize(float score_bar_size_){
+	public void setBarSize(float score_bar_size_){
 
-				//Hide Bar, Score too small
-				if(score_bar_size_ < score_bar_minSize){
-					score_bar_leftPart.setVisible(false);
-					score_bar_rightPart.setVisible(false);
-				}
-				//Show Bar, Score OK
-				else{
-					score_bar_leftPart.setVisible(true);
-					score_bar_rightPart.setVisible(true);
+		//Hide Bar, Score too small
+		if(score_bar_size_ < score_bar_minSize){
+			score_bar_leftPart.setVisible(false);
+			score_bar_rightPart.setVisible(false);
+		}
+		//Show Bar, Score OK
+		else{
+			score_bar_leftPart.setVisible(true);
+			score_bar_rightPart.setVisible(true);
 
-					if(score_bar_size_ > (score_bar_maxX-score_bar_minX))
-						score_bar_size_ = (score_bar_maxX-score_bar_minX);
+			if(score_bar_size_ > (score_bar_maxX-score_bar_minX))
+				score_bar_size_ = (score_bar_maxX-score_bar_minX);
 
-					float rightBarWidth = (score_bar_size_-score_bar_minSize/2);
-					this.setRightBar_PosX(score_bar_maxX - rightBarWidth);
+			float rightBarWidth = (score_bar_size_-score_bar_minSize/2);
+			this.setRightBar_PosX(score_bar_maxX - rightBarWidth);
 
-				}
+		}
 
-			}
+	}
 
 
 }

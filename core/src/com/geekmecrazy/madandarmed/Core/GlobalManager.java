@@ -325,27 +325,30 @@ public class GlobalManager {
 		flipX - whether to flip the sprite horizontally
 		flipY - whether to flip the sprite vertically
 	 */
-	public static void spriteBatchDraw2(
-			Texture pTexture,
-			float pX, float pY,
-			float pOriginX, float pOriginY,
-			float width, float height,
-			float scaleX, float scaleY,
-			float rotation,
-			int srcX, int srcY,
-			int srcWidth, int srcHeight,
-			boolean flipX, boolean flipY
-			){
+	public static void spriteBatchDraw2(final Sprite sprite){
+		
+		GlobalManager.currentSpriteBatch.setColor(sprite.getColor());
+		
 		GlobalManager.currentSpriteBatch.draw(
-				pTexture,
-				pX, pY,
-				pOriginX, pOriginY,
-				width, height,
-				scaleX, scaleY,
-				rotation,
-				srcX, srcY,
-				srcWidth, srcHeight,
-				flipX, flipY);
+				sprite.getTextureRegion().getTexture(),
+				sprite.getDraw_x(),
+				sprite.getDraw_y(),
+				sprite.getDraw_originX(),
+				sprite.getDraw_originY(),
+				sprite.getDraw_width(),
+				sprite.getDraw_height(),
+				sprite.getDraw_scaleX(),
+				sprite.getDraw_scaleY(),
+				sprite.getDraw_rotation(),
+				sprite.getDraw_srcX(),
+				sprite.getDraw_srcY(),
+				sprite.getDraw_srcWidth(),
+				sprite.getDraw_srcHeight(),
+				sprite.isDraw_flipX(),
+				sprite.isDraw_flipY()
+				);
+
+		GlobalManager.currentSpriteBatch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 	
 	
