@@ -1,6 +1,5 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
-import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Shape;
@@ -42,32 +41,20 @@ public class ScoreBarRenderer extends Shape {
 		this.setScore_bar_border(new Sprite());
 		this.setScore_bar_leftPart(new Sprite(){
 			@Override
-			public void onDraw(){
-				if(this.isVisible()){
-					GlobalManager.spriteBatchDrawPortion(
-							this.getTextureRegion().getTexture(),
-							this.getSceneX(), this.getSceneY(),
-							0, 0, //int srcX, int srcY,
-							(int)getLeftBar_Width(), //int srcWidtht
-							this.getTextureRegion().getTexture().getHeight() //int srcHeight
-							);
-					this.onDrawChildren();
-				}
+			public void onUpdate() {
+				super.onUpdate();
+				
+				/** HUD Conversion */
+				this.setDraw_width(VirtualViewport.convertUIWidthToUnit(getLeftBar_Width()));
+				this.setDraw_srcWidth((int)getLeftBar_Width());
 			}
 		});
 		this.setScore_bar_rightPart(new Sprite(){
 			@Override
-			public void onDraw(){
-				if(this.isVisible()){
-					GlobalManager.spriteBatchDrawPortion(
-							this.getTextureRegion().getTexture(),
-							this.getSceneX()+VirtualViewport.convertUIWidthToUnit(getLeftBar_Width()), this.getSceneY(),
-							(int) getRightBar_PosX(), 0, //int srcX, int srcY,
-							(int) this.getTextureRegion().getTexture().getWidth(), //int srcWidtht
-							(int) this.getTextureRegion().getTexture().getHeight() //int srcHeight
-							);
-					this.onDrawChildren();
-				}
+			public void onUpdate() {
+				super.onUpdate();
+				this.setDraw_x(this.getSceneX()+VirtualViewport.convertUIWidthToUnit(getLeftBar_Width()));
+				this.setDraw_srcX((int)getRightBar_PosX());
 			}
 		});
 		this.setScore_bar_reflet(new Sprite());

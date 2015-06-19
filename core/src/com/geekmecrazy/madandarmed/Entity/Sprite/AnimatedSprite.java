@@ -77,21 +77,6 @@ public class AnimatedSprite extends Sprite {
 	}
 
 	@Override
-	public void onDraw(){
-		if(this.isVisible()){
-            GlobalManager.spriteBatchDrawWithColor(this.getTextureRegion(),
-                    this.getSceneX(), this.getSceneY(),
-                    this.getCenterX(), this.getCenterY(),
-                    this.getWidth(), this.getHeight(),
-                    this.getSceneScaleX(), this.getSceneScaleY(),
-                    0f, this.getColor());
-			this.onDrawChildren();
-		}
-	}
-
-
-
-	@Override
 	public void reset() {
 		super.reset();
 		

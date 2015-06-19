@@ -350,54 +350,6 @@ public class GlobalManager {
 
 		GlobalManager.currentSpriteBatch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 	}
-	
-	
-	
-	public static void spriteBatchDraw(TextureRegion pTextureRegion, float pX, float pY, float pOriginX, float pOriginY, float width, float height, float scaleX, float scaleY, float rotation){
-		GlobalManager.currentSpriteBatch.draw(pTextureRegion,
-				pX, pY,
-				pOriginX, pOriginY,
-				width, height,
-				scaleX, scaleY,
-				rotation);
-	}
-
-	/** Filled Rectangle draw */
-	public static void spriteBatchDrawWithColor(TextureRegion pTextureRegion, float pX, float pY, float pOriginX, float pOriginY, float width, float height, float scaleX, float scaleY, float rotation, Color pColor){
-		GlobalManager.currentSpriteBatch.setColor(pColor);
-		GlobalManager.spriteBatchDraw(pTextureRegion,
-				pX, pY,
-				pOriginX, pOriginY,
-				width, height,
-				scaleX, scaleY,
-				rotation);
-		GlobalManager.currentSpriteBatch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-	}
-
-	/** SpriteBatch draw
-	 * portion of Texture
-	 * */
-	public static void spriteBatchDrawPortion(Texture texture, float pX, float pY, int srcX, int srcY, int srcWidth, int srcHeight){
-
-		float width = srcWidth;
-		float height = srcHeight;
-		if(GlobalManager.currentSpriteBatch == GlobalManager.spriteBatchHUD) {
-			width = VirtualViewport.convertUIWidthToUnit(srcWidth);
-			height = VirtualViewport.convertUIHeightToUnit(srcHeight);
-		}
-
-		//System.out.println("px vaut "+pX+", py vaut "+pY+", width vaut "+width+", height vaut "+height+" srcX vaut "+srcX+", srcY vaut "+srcY);
-		//System.out.println("srcWidth vaut "+srcWidth+", srcHeight "+srcHeight);
-		//System.out.println("texture.width vaut "+texture.getWidth()+" texture.height vaut "+texture.getHeight());
-
-		//SCALE : if we want scale , we have to do width = (width x scaleX) & height = (height x scaleY) just before the draw
-		GlobalManager.currentSpriteBatch.draw(texture,
-				pX, pY,
-				width, height,
-				srcX, srcY,
-				srcWidth, srcHeight,
-				false, false); //flip X&Y
-	}
 
 	/** SpriteBatch draw
 	 * Font

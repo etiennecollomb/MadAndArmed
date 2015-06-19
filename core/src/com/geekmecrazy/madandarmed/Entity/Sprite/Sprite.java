@@ -238,8 +238,11 @@ public class Sprite extends Shape {
 		this.setDraw_scaleX(this.getSceneScaleX());
 		this.setDraw_scaleY(this.getSceneScaleY());
 		
-        this.setDraw_srcWidth(this.getTextureRegion().getTexture().getWidth());
-        this.setDraw_srcHeight(this.getTextureRegion().getTexture().getHeight());
+		this.setDraw_srcX(this.getTextureRegion().getRegionX());
+		this.setDraw_srcY(this.getTextureRegion().getRegionY());
+		
+        this.setDraw_srcWidth(this.getTextureRegion().getRegionWidth());
+        this.setDraw_srcHeight(this.getTextureRegion().getRegionHeight());
 		
 	}
 	
