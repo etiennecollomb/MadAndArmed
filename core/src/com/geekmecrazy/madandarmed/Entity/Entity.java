@@ -612,6 +612,7 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
             this.setSceneScales();
 
         this.setSceneCoordinates();
+
         this.onUpdateChildren();
 
     }

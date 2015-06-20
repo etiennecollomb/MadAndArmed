@@ -68,9 +68,9 @@ public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 	// ===========================================================
 
     @Override
-    public void onTouch(final MyGestureDetector.GestureType pGestureType, final float pX, final float pY){
-        this.getScene().onTouch(pGestureType, pX, pY);
-        this.getHUD().onTouch(pGestureType, pX, pY);
+    public void onTouch(){
+        this.getScene().onTouch();
+        this.getHUD().onTouch();
     }
 
     @Override

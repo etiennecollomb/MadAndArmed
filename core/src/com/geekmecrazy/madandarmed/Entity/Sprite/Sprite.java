@@ -3,6 +3,7 @@ package com.geekmecrazy.madandarmed.Entity.Sprite;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape;
+import com.geekmecrazy.madandarmed.Game.UI.Layout;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,23 +13,23 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Sprite extends Shape {
 
 	private TextureRegion mTextureRegion;
-	
-    /** Draw Stuff */
-    private float draw_x;
-    private float draw_y;
-    private float draw_originX;
-    private float draw_originY;
-    private float draw_width;
-    private float draw_height;
-    private float draw_scaleX;
-    private float draw_scaleY;
-    private float draw_rotation;
-    private int draw_srcX;
-    private int draw_srcY;
-    private int draw_srcWidth;
-    private int draw_srcHeight;
-    private boolean draw_flipX;
-    private boolean draw_flipY;
+
+	/** Draw Stuff */
+	private float draw_x;
+	private float draw_y;
+	private float draw_originX;
+	private float draw_originY;
+	private float draw_width;
+	private float draw_height;
+	private float draw_scaleX;
+	private float draw_scaleY;
+	private float draw_rotation;
+	private int draw_srcX;
+	private int draw_srcY;
+	private int draw_srcWidth;
+	private int draw_srcHeight;
+	private boolean draw_flipX;
+	private boolean draw_flipY;
 
 	// ===========================================================
 	// Constructors
@@ -50,7 +51,7 @@ public class Sprite extends Shape {
 		this.mTextureRegion = pTextureRegion;
 	}
 
-    /** Draw Stuff */
+	/** Draw Stuff */
 
 	public float getDraw_x() {
 		return draw_x;
@@ -177,11 +178,6 @@ public class Sprite extends Shape {
 	// ===========================================================
 
 	@Override
-	public void onTouch(final MyGestureDetector.GestureType pGestureType, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
-		super.onTouch(pGestureType, pTouchAreaLocalX, pTouchAreaLocalY);
-	}
-
-	@Override
 	public void onDraw(){
 		if(this.isVisible()){
 			GlobalManager.spriteBatchDraw2(this);
@@ -192,109 +188,130 @@ public class Sprite extends Shape {
 	@Override
 	public void reset() {
 		super.reset();
-		
+
 		this.setTextureRegion(null);
-        
-        /** Draw Stuff */
-        this.setDraw_x(0);
-        this.setDraw_y(0);
-        
-        this.setDraw_originX(0);
-        this.setDraw_originY(0);
-        
-        this.setDraw_width(0);
-        this.setDraw_height(0);
-        
-        this.setDraw_scaleX(0);
-        this.setDraw_scaleY(0);
-        
-        this.setDraw_rotation(0);
-        
-        this.setDraw_srcX(0);
-        this.setDraw_srcY(0);
-        
-        this.setDraw_srcWidth(0);
-        this.setDraw_srcHeight(0);
-        
-        this.setDraw_flipX(false);
-        this.setDraw_flipY(false);
+
+		/** Draw Stuff */
+		this.setDraw_x(0);
+		this.setDraw_y(0);
+
+		this.setDraw_originX(0);
+		this.setDraw_originY(0);
+
+		this.setDraw_width(0);
+		this.setDraw_height(0);
+
+		this.setDraw_scaleX(0);
+		this.setDraw_scaleY(0);
+
+		this.setDraw_rotation(0);
+
+		this.setDraw_srcX(0);
+		this.setDraw_srcY(0);
+
+		this.setDraw_srcWidth(0);
+		this.setDraw_srcHeight(0);
+
+		this.setDraw_flipX(false);
+		this.setDraw_flipY(false);
 
 	}
-	
+
 	@Override
-    public void onUpdate() {
+	public void onUpdate() {
 		super.onUpdate();
-		
+
 		/** update Draw Parameter for onDraw() */
 		this.setDraw_x(this.getSceneX());
 		this.setDraw_y(this.getSceneY());
-		
+
 		this.setDraw_originX(this.getCenterX());
 		this.setDraw_originY(this.getCenterY());
-		
+
 		this.setDraw_width(this.getWidth());
 		this.setDraw_height(this.getHeight());
-		
+
 		this.setDraw_scaleX(this.getSceneScaleX());
 		this.setDraw_scaleY(this.getSceneScaleY());
-		
+
 		this.setDraw_srcX(this.getTextureRegion().getRegionX());
 		this.setDraw_srcY(this.getTextureRegion().getRegionY());
-		
-        this.setDraw_srcWidth(this.getTextureRegion().getRegionWidth());
-        this.setDraw_srcHeight(this.getTextureRegion().getRegionHeight());
-		
+
+		this.setDraw_srcWidth(this.getTextureRegion().getRegionWidth());
+		this.setDraw_srcHeight(this.getTextureRegion().getRegionHeight());
+
+		/** si dans un Layout
+		 * on gere les bord coupés
+		 */
+		if(this.getParent() != null && this.getParent() instanceof Layout){
+
+			if(this.getX() > this.getParent().getWidth()){
+				this.setVisible(false);
+			}else{
+				this.setVisible(true);
+				
+				float maxParentX = this.getParent().getWidth();
+				float maxChildX = this.getX()+this.getWidth();
+				float deltaX = maxChildX - maxParentX;
+
+				if(deltaX > 0){
+					float rapport = 1 - ( deltaX / this.getWidth() );
+					this.setDraw_srcWidth((int)(rapport*this.getTextureRegion().getRegionWidth()));
+					this.setDraw_width(rapport*this.getWidth());
+				}
+			}
+		}
 	}
-	
+
 	// ===========================================================
 	// Methods
 	// ===========================================================
 
 	public void init(final TextureType pTextureType){
 		super.init(0, 0, pTextureType.getWidth(), pTextureType.getHeight());
-		
+
 		Texture spriteTexture = new Texture(Gdx.files.internal(pTextureType.getPath()));
 		this.setTextureRegion(new TextureRegion(spriteTexture));
-        
+
 		this.initDraw();
 
 	}
 
-    public void init(final TextureRegion region){
-        super.init(0, 0, region.getRegionWidth(), region.getRegionHeight());
+	public void init(final TextureRegion region){
+		super.init(0, 0, region.getRegionWidth(), region.getRegionHeight());
 
-        this.setTextureRegion(region);
-        
-        this.initDraw();
-    }
+		this.setTextureRegion(region);
+
+		this.initDraw();
+	}
 
 
 	/** Draw Stuff */
-    private void initDraw(){
-    	
-        this.setDraw_x(0);
-        this.setDraw_y(0);
-        
-        this.setDraw_originX(0);
-        this.setDraw_originY(0);
-        
-        this.setDraw_width(0);
-        this.setDraw_height(0);
-        
-        this.setDraw_scaleX(0);
-        this.setDraw_scaleY(0);
-        
-        this.setDraw_rotation(0);
-        
-        this.setDraw_srcX(0);
-        this.setDraw_srcY(0);
-        
-        this.setDraw_srcWidth(this.getTextureRegion().getTexture().getWidth());
-        this.setDraw_srcHeight(this.getTextureRegion().getTexture().getHeight());
-        
-        this.setDraw_flipX(false);
-        this.setDraw_flipY(false);
-    }
+	private void initDraw(){
+
+		this.setDraw_x(0);
+		this.setDraw_y(0);
+
+		this.setDraw_originX(0);
+		this.setDraw_originY(0);
+
+		this.setDraw_width(0);
+		this.setDraw_height(0);
+
+		this.setDraw_scaleX(0);
+		this.setDraw_scaleY(0);
+
+		this.setDraw_rotation(0);
+
+		this.setDraw_srcX(0);
+		this.setDraw_srcY(0);
+
+		this.setDraw_srcWidth(this.getTextureRegion().getTexture().getWidth());
+		this.setDraw_srcHeight(this.getTextureRegion().getTexture().getHeight());
+
+		this.setDraw_flipX(false);
+		this.setDraw_flipY(false);
+	}
 }
 
 

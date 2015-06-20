@@ -1,9 +1,9 @@
 package com.geekmecrazy.madandarmed.Game.UI;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Shape;
-import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
+import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
+import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 
 
 public class Layout extends Shape {
@@ -22,6 +22,7 @@ public class Layout extends Shape {
 
 	private Dimension dimension_X;
 	private Dimension dimension_Y;
+	
 
 	// ===========================================================
 	// Constructors
@@ -78,14 +79,15 @@ public class Layout extends Shape {
 		super.setScaleX(1f); //scale not allowed on Layout Object
 		super.setScaleY(1f); //scale not allowed on Layout Object
 	}
-
+	
 	@Override
 	public void onUpdate(){
 
-		this.updateChildrenPositions();
-		this.updateSize();
+		this.updateChildrenPositions(); //TODO: a mettre que qd on add une entity, pas besoin de recalculer a chaque fois
+		this.updateSize(); //TODO: a mettre que qd on add une entity, pas besoin de recalculer a chaque fois
 
 		super.onUpdate();
+
 	}
 
 	@Override
@@ -93,6 +95,17 @@ public class Layout extends Shape {
 		super.reset();
 
 		this.setOrientation(Orientation.VERTICAL);
+	}
+	
+	/** Touch Events */
+	public void onTouchDownEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){
+		
+	}
+	
+	@Override
+	public void onPanEvent() {
+		
+		//GlobalManager.camera.translate(-pDeltaX * GlobalManager.camera.zoom, pDeltaY * GlobalManager.camera.zoom)
 	}
 
 	// ===========================================================
@@ -235,22 +248,6 @@ public class Layout extends Shape {
 		}
 	}
 
-	
-//	this.setScore_bar_rightPart(new Sprite(){
-//        @Override
-//        public void onDraw(){
-//            if(this.isVisible()){
-//                GlobalManager.spriteBatchDrawPortion(
-//                        this.getTextureRegion().getTexture(),
-//                        this.getSceneX()+VirtualViewport.convertUIWidthToUnit(getLeftBar_Width()), this.getSceneY(),
-//                                (int) getRightBar_PosX(), 0, //int srcX, int srcY,
-//                                (int) this.getTextureRegion().getTexture().getWidth(), //int srcWidtht
-//                                (int) this.getTextureRegion().getTexture().getHeight() //int srcHeight
-//                        );
-//                this.onDrawChildren();
-//            }
-//        }
-//    });
 
 }
 

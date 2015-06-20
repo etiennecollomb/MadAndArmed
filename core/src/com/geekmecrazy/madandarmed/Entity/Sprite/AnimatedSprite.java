@@ -1,6 +1,5 @@
 package com.geekmecrazy.madandarmed.Entity.Sprite;
 
-import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -70,11 +69,6 @@ public class AnimatedSprite extends Sprite {
     public TextureRegion getTextureRegion(){
         return this.getSpriteSheet().getFrame(this.getCurrentFrameX(), this.getCurrentFrameY());
     }
-
-	@Override
-	public void onTouch(final MyGestureDetector.GestureType pGestureType, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
-		super.onTouch(pGestureType, pTouchAreaLocalX, pTouchAreaLocalY);
-	}
 
 	@Override
 	public void reset() {

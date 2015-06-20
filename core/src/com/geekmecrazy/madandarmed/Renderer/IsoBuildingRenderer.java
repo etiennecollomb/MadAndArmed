@@ -46,7 +46,7 @@ public class IsoBuildingRenderer extends BuildingRenderer {
     }
 
 	@Override
-	public void onLongPressEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){
+	public void onLongPressEvent(){
 		this.setFocusState();
         Tween
                 .to(this, ShapeTween.SCALE, 0.1f)
@@ -62,7 +62,7 @@ public class IsoBuildingRenderer extends BuildingRenderer {
 	};
 	
 	@Override
-	public void onTapEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){
+	public void onTapEvent(){
 		this.setFocusState();
         Tween
                 .to(this, ShapeTween.SCALE, 0.1f)

@@ -5,6 +5,8 @@ import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
 import com.geekmecrazy.madandarmed.Game.Scene.OrthoGrid;
 import com.geekmecrazy.madandarmed.IA.IsoMapState.Type;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
+import com.geekmecrazy.madandarmed.Input.MyGestureDetector.GestureType;
+import com.geekmecrazy.madandarmed.Input.TouchData;
 import com.badlogic.gdx.graphics.Color;
 
 public class Shape extends Entity implements IColor, ITouchable {
@@ -193,22 +195,22 @@ public class Shape extends Entity implements IColor, ITouchable {
     }
 	
 	@Override
-	public void onTouch(final MyGestureDetector.GestureType pGestureType, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
-		switch(pGestureType){
+	public void onTouch() {
+		switch(TouchData.gestureType){
 		case TOUCHDOWN:
-			this.onTouchDownEvent(pTouchAreaLocalX, pTouchAreaLocalY);
+			this.onTouchDownEvent();
 			break;
 		case TOUCHUP:
-			this.onTouchUpEvent(pTouchAreaLocalX, pTouchAreaLocalY);
+			this.onTouchUpEvent();
 			break;
 		case LONGPRESS:
-			this.onLongPressEvent(pTouchAreaLocalX, pTouchAreaLocalY);
+			this.onLongPressEvent();
 			break;
 		case TAP:
-			this.onTapEvent(pTouchAreaLocalX, pTouchAreaLocalY);
+			this.onTapEvent();
 			break;
 		case PAN:
-			this.onPanEvent(pTouchAreaLocalX, pTouchAreaLocalY);
+			this.onPanEvent();
 			break;
 		default:
 			break;
@@ -316,17 +318,17 @@ public class Shape extends Entity implements IColor, ITouchable {
 
 
 	/** Touch Events */
-	public void onTouchUpEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){};
+	public void onTouchUpEvent(){};
 
-	public void onLongPressEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){};
+	public void onLongPressEvent(){};
 
-	public void onTapEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){};
+	public void onTapEvent(){};
 
-	public void onTouchDownEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){
+	public void onTouchDownEvent(){
 		/** IsoShape || OrthoShape */
 		if(this.isIsoShape() || this.isOrthoShape()){
-			diffX = pTouchAreaLocalX - this.getX();
-			diffY = pTouchAreaLocalY - this.getY();
+			diffX = TouchData.touchX - this.getX();
+			diffY = TouchData.touchY - this.getY();
 		}
 		/** Normal case */
 		else{
@@ -334,14 +336,14 @@ public class Shape extends Entity implements IColor, ITouchable {
 		}
 	};
 
-	public void onPanEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){
+	public void onPanEvent(){
 		/** IsoShape */
 		if(this.isIsoShape()){
-			onPanEventIsoGrig(pTouchAreaLocalX, pTouchAreaLocalY);
+			onPanEventIsoGrig(TouchData.touchX, TouchData.touchY);
 		}
 		/** OrthoShape */
 		else if(this.isOrthoShape()){
-			onPanEventOrthoGrid(pTouchAreaLocalX, pTouchAreaLocalY);
+			onPanEventOrthoGrid(TouchData.touchX, TouchData.touchY);
 		}
 		/** Normal case */
 		else{

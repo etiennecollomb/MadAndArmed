@@ -68,7 +68,7 @@ public class MadAndArmed extends ApplicationAdapter {
 //
 		Rectangle rect1 = new Rectangle(){
             @Override
-            public void onTouch(final MyGestureDetector.GestureType pGestureType, final float pTouchAreaLocalX, final float pTouchAreaLocalY){
+            public void onTouch(){
                 System.out.println("#### TOUCH !!");
             }
         };

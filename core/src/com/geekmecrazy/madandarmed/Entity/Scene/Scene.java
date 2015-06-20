@@ -4,15 +4,13 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.ITouchable;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
+import com.geekmecrazy.madandarmed.Input.TouchData;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
 public class Scene extends Shape implements ITouchable {
 
     private static Vector3 VERTICES_TOUCH_TO_SCENE_TMP = new Vector3();
-
-    protected float touchX;
-    protected float touchY;
 
 	protected Array<Shape> mRegisteredTouchableShape;
 
@@ -43,23 +41,23 @@ public class Scene extends Shape implements ITouchable {
     }
 
     @Override
-    public void onTouch(final MyGestureDetector.GestureType pGestureType, final float pX, final float pY){
+    public void onTouch(){
 
         //System.out.println("_________________________________________________");
         //System.out.println("### TOUCH SCREEN X: "+pX+" Y:"+pY);
 
-        this.touchToSceneCoord(pX, pY);
+        this.touchToSceneCoord(TouchData.touchX, TouchData.touchY);
 
-        touchX = VERTICES_TOUCH_TO_SCENE_TMP.x;
-        touchY = VERTICES_TOUCH_TO_SCENE_TMP.y;
+        TouchData.screenTouchX = VERTICES_TOUCH_TO_SCENE_TMP.x;
+        TouchData.screenTouchY = VERTICES_TOUCH_TO_SCENE_TMP.y;
 
         //System.out.println("### TOUCH SCENE X: "+X+" Y:"+Y);
 
         int size = this.mRegisteredTouchableShape.size;
         for(int i=0; i<size; i++){
             Shape shape = this.mRegisteredTouchableShape.get(i);
-            if(shape.contains(touchX, touchY)){
-                shape.onTouch(pGestureType, touchX, touchY);
+            if(shape.contains(TouchData.screenTouchX, TouchData.screenTouchY)){
+                shape.onTouch();
             }
         }
     }

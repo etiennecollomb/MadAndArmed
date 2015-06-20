@@ -8,6 +8,7 @@ import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Tween.ButtonTween;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
+import com.geekmecrazy.madandarmed.Input.TouchData;
 
 import aurelienribon.tweenengine.Tween;
 
@@ -70,8 +71,8 @@ public class Button extends Shape{
     }
 
     @Override
-    public void onTouch(final MyGestureDetector.GestureType pGestureType, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
-        switch(pGestureType){
+    public void onTouch() {
+        switch(TouchData.gestureType){
             case TOUCHDOWN:
                 if(!this.isPressed() && !this.isDisabled()) {
                     this.disable();

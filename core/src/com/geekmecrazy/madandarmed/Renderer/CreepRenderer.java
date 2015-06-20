@@ -84,7 +84,7 @@ public class CreepRenderer extends VehicleRenderer {
 
     @Override
     /** Units Selection */
-    public void onTouch(final MyGestureDetector.GestureType gestureType, final float pTouchAreaLocalX, final float pTouchAreaLocalY){
+    public void onTouch(){
 //        if(gestureType == MyGestureDetector.GestureType.PAN) {
 //            this.setColor(0f, 1f, 0f, 1f);
 //            Creep thisCreep = ((Creep) this.getMilitary());

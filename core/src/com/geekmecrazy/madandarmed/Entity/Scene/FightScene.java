@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Entity.Scene;
 
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
+import com.geekmecrazy.madandarmed.Input.TouchData;
 import com.geekmecrazy.madandarmed.Renderer.IsoBuildingRenderer;
 
 /**
@@ -22,8 +23,8 @@ public class FightScene extends Scene {
 	// ===========================================================
 
 	@Override
-	public void onTouch(final MyGestureDetector.GestureType pGestureType, final float pX, final float pY){
-		super.onTouch(pGestureType, pX, pY);
+	public void onTouch(){
+		super.onTouch();
 
 
 		int size = this.mRegisteredTouchableShape.size;
@@ -31,13 +32,13 @@ public class FightScene extends Scene {
 			
 			/** Deplacer des building sur la grid ISO */
 			Shape shape = this.mRegisteredTouchableShape.get(i);
-			if(shape instanceof IsoBuildingRenderer && pGestureType.equals(MyGestureDetector.GestureType.PAN)){
+			if(shape instanceof IsoBuildingRenderer && TouchData.gestureType.equals(MyGestureDetector.GestureType.PAN)){
 				if(((IsoBuildingRenderer)shape).isFocused()){
-					shape.onTouch(pGestureType, touchX, touchY);
+					shape.onTouch();
 				}
 			}
-			else if(shape instanceof IsoBuildingRenderer && pGestureType.equals(MyGestureDetector.GestureType.TOUCHDOWN)){
-				if(!shape.contains(touchX, touchY) && ((IsoBuildingRenderer)shape).isFocused()){
+			else if(shape instanceof IsoBuildingRenderer && TouchData.gestureType.equals(MyGestureDetector.GestureType.TOUCHDOWN)){
+				if(!shape.contains(TouchData.touchX, TouchData.touchY) && ((IsoBuildingRenderer)shape).isFocused()){
 					((IsoBuildingRenderer)shape).focus();
 				}
 			}

@@ -8,6 +8,7 @@ import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Scene.FightScene;
 import com.geekmecrazy.madandarmed.Entity.Scene.HQScene;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
+import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Tween.RectangleTween;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
@@ -72,6 +73,8 @@ public class MenuScreen extends Screen implements IUpdatable {
         });
         this.getManager().getHUD().registerTouchableShape(hqButton);
 
+        
+        //TEST/////////////////////////////////////////
         Rectangle title = new Rectangle();
         title.init(0,0,7,1.6f);
         title.setColor(1,0,0,1);
@@ -90,7 +93,7 @@ public class MenuScreen extends Screen implements IUpdatable {
         this.getHUD().attachChild(l1,Entity.Alignment.CENTER);
         this.getHUD().attachChild(blackScreen, Entity.Alignment.CENTER);
         
-        //TEST
+        //TEST scrollable
         Rectangle r1 = new Rectangle();
         r1.init(0,0,3f, 1.2f);
         r1.setColor(0,1,0f,1);
@@ -103,15 +106,20 @@ public class MenuScreen extends Screen implements IUpdatable {
         r3.init(0,0,3f, 1.2f);
         r3.setColor(0,1,1f,1);
         
+        Sprite sp1 = new Sprite();
+        sp1.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        
         Layout layout_test;
         layout_test = new Layout();
         layout_test.init(0,0);
         layout_test.setOrientation(Orientation.HORIZONTAL);
-        layout_test.setLayoutSize(6f, Layout.Dimension.WRAP_CONTENT);
+        layout_test.setLayoutSize(7f, Layout.Dimension.WRAP_CONTENT);        
         layout_test.add(r1);
         layout_test.add(r2);
+        layout_test.add(sp1);
         layout_test.add(r3);
         this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
+        
     }
 
     @Override

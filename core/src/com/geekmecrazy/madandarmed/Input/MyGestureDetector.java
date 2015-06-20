@@ -32,14 +32,20 @@ public class MyGestureDetector extends GestureDetector {
     @Override
     public boolean touchUp(float x, float y, int pointer, int button) {
         super.touchUp(x, y, pointer, button);
-        ScreenManager.getCurrentScreen().onTouch(GestureType.TOUCHUP, x, y);
+        TouchData.gestureType = MyGestureDetector.GestureType.TOUCHUP;
+    	TouchData.touchX = x;
+    	TouchData.touchY = y;
+        ScreenManager.getCurrentScreen().onTouch();
         return false;
     }
 
     @Override
     public boolean touchDragged(float x, float y, int pointer){
         super.touchDragged(x,y,pointer);
-        ScreenManager.getCurrentScreen().onTouch(GestureType.PAN, x, y);
+        TouchData.gestureType = MyGestureDetector.GestureType.PAN;
+    	TouchData.touchX = x;
+    	TouchData.touchY = y;
+        ScreenManager.getCurrentScreen().onTouch();
         return false;
     }
 

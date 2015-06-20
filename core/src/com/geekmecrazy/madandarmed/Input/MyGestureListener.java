@@ -46,7 +46,10 @@ public class MyGestureListener implements GestureDetector.GestureListener {
 
 //        //ONE finger
 //        else{
-            ScreenManager.getCurrentScreen().onTouch(MyGestureDetector.GestureType.TOUCHDOWN, pX, pY);
+        	TouchData.gestureType = MyGestureDetector.GestureType.TOUCHDOWN;
+        	TouchData.touchX = pX;
+        	TouchData.touchY = pY;
+            ScreenManager.getCurrentScreen().onTouch();
 //        }
 
         return false;
@@ -55,22 +58,25 @@ public class MyGestureListener implements GestureDetector.GestureListener {
     @Override
     public boolean tap(final float pX, final float pY, final int pCount, final int pButton) {
 
-        ScreenManager.getCurrentScreen().onTouch(MyGestureDetector.GestureType.TAP, pX, pY);
+    	TouchData.gestureType = MyGestureDetector.GestureType.TAP;
+    	TouchData.touchX = pX;
+    	TouchData.touchY = pY;
+        ScreenManager.getCurrentScreen().onTouch();
         return false;
     }
 
     @Override
     public boolean longPress(final float pX, final float pY) {
-        ScreenManager.getCurrentScreen().onTouch(MyGestureDetector.GestureType.LONGPRESS, pX, pY);
+    	TouchData.gestureType = MyGestureDetector.GestureType.LONGPRESS;
+    	TouchData.touchX = pX;
+    	TouchData.touchY = pY;
+        ScreenManager.getCurrentScreen().onTouch();
 
         return false;
     }
 
     @Override
     public boolean fling(final float pVelocityX, final float pVelocityY, final int pButton) {
-        // TODO Auto-generated method stub
-
-//        System.out.println("##### FLING " + numberOfActiveTouch);
 
         float velocityRatio = 0.3f;
 
@@ -91,11 +97,16 @@ public class MyGestureListener implements GestureDetector.GestureListener {
     public boolean pan(final float pX, final float pY, final float pDeltaX, final float pDeltaY) {
         //MOUSE CONTROL
         if(cameraVelocityTween != null) cameraVelocityTween.kill();
+        
+        TouchData.gestureType = MyGestureDetector.GestureType.PAN;
+    	TouchData.touchX = pX;
+    	TouchData.touchY = pY;
+        ScreenManager.getCurrentScreen().onTouch(); //Selection d unite
 
+        /** rien de selectionner dans Screen n'empeche le scroll de la camera... */
         if(GlobalManager.moveable) {
             GlobalManager.camera.translate(-pDeltaX * GlobalManager.camera.zoom, pDeltaY * GlobalManager.camera.zoom);
-            //FINGER CONTROL
-//            ScreenManager.getCurrentScreen().getScene().onTouch(MyGestureDetector.GestureType.PAN, pX, pY); //Selection d unite
+            
         }
 
         return false;
@@ -103,7 +114,10 @@ public class MyGestureListener implements GestureDetector.GestureListener {
 
     @Override
     public boolean panStop(final float pX, final float pY, final int pPointer, final int pButton) {
-        ScreenManager.getCurrentScreen().getScene().onTouch(MyGestureDetector.GestureType.PANSTOP, pX, pY);
+    	TouchData.gestureType = MyGestureDetector.GestureType.PANSTOP;
+    	TouchData.touchX = pX;
+    	TouchData.touchY = pY;
+        ScreenManager.getCurrentScreen().getScene().onTouch();
         return false;
     }
 

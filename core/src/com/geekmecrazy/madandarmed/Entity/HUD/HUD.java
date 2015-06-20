@@ -7,6 +7,7 @@ import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.geekmecrazy.madandarmed.Input.MyGestureListener;
+import com.geekmecrazy.madandarmed.Input.TouchData;
 import com.geekmecrazy.madandarmed.MadAndArmed;
 import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 import com.badlogic.gdx.Gdx;
@@ -37,23 +38,23 @@ public class HUD extends Shape implements ITouchable {
 	// ===========================================================
 
     @Override
-    public void onTouch(final MyGestureDetector.GestureType pGestureType, final float pX, final float pY){
+    public void onTouch(){
 
-        this.touchToHUDCoord(pX, pY);
+        this.touchToHUDCoord(TouchData.touchX, TouchData.touchY);
 
-        float X = VERTICES_TOUCH_TO_HUD_TMP.x;
-        float Y = VERTICES_TOUCH_TO_HUD_TMP.y;
+        TouchData.screenTouchX = VERTICES_TOUCH_TO_HUD_TMP.x;
+        TouchData.screenTouchY = VERTICES_TOUCH_TO_HUD_TMP.y;
 
 //        System.out.println("### TOUCH HUD X: "+X+" Y:"+Y);
 
         int size = this.mRegisteredTouchableShape.size;
         for(int i=0; i<size; i++){
             Shape shape = this.mRegisteredTouchableShape.get(i);
-            if(shape.contains(X, Y)){
-                shape.onTouch(pGestureType, X, Y);
+            if(shape.contains(TouchData.screenTouchX, TouchData.screenTouchY)){
+                shape.onTouch();
             }
             else if(shape instanceof Button){
-                if(pGestureType == MyGestureDetector.GestureType.PAN && (((Button) shape).isPressed())){
+                if(TouchData.gestureType == MyGestureDetector.GestureType.PAN && (((Button) shape).isPressed())){
                     ((Button)shape).onRelease(false);
                 }
             }
