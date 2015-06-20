@@ -327,8 +327,8 @@ public class Shape extends Entity implements IColor, ITouchable {
 	public void onTouchDownEvent(){
 		/** IsoShape || OrthoShape */
 		if(this.isIsoShape() || this.isOrthoShape()){
-			diffX = TouchData.touchX - this.getX();
-			diffY = TouchData.touchY - this.getY();
+			diffX = TouchData.screenTouchX - this.getX();
+			diffY = TouchData.screenTouchY - this.getY();
 		}
 		/** Normal case */
 		else{
@@ -339,11 +339,11 @@ public class Shape extends Entity implements IColor, ITouchable {
 	public void onPanEvent(){
 		/** IsoShape */
 		if(this.isIsoShape()){
-			onPanEventIsoGrig(TouchData.touchX, TouchData.touchY);
+			onPanEventIsoGrig(TouchData.screenTouchX, TouchData.screenTouchY);
 		}
 		/** OrthoShape */
 		else if(this.isOrthoShape()){
-			onPanEventOrthoGrid(TouchData.touchX, TouchData.touchY);
+			onPanEventOrthoGrid(TouchData.screenTouchX, TouchData.screenTouchY);
 		}
 		/** Normal case */
 		else{

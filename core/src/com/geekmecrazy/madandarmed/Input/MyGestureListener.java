@@ -83,12 +83,14 @@ public class MyGestureListener implements GestureDetector.GestureListener {
         float targetX = GlobalManager.camera.position.x - velocityRatio* pVelocityX *GlobalManager.camera.zoom;
         float targetY = GlobalManager.camera.position.y + velocityRatio* pVelocityY *GlobalManager.camera.zoom;
 
-        if(cameraVelocityTween != null) cameraVelocityTween.kill();
-        cameraVelocityTween = Tween.to(GlobalManager.camera, OrthographicCameraTween.TRANSLATE, 1f)
-                    .target(targetX, targetY)
-                    .ease(Quint.OUT)
-                    .start(GlobalManager.getTweenManager());
-
+        if(GlobalManager.moveable) {
+	        if(cameraVelocityTween != null) cameraVelocityTween.kill();
+	        cameraVelocityTween = Tween.to(GlobalManager.camera, OrthographicCameraTween.TRANSLATE, 1f)
+	                    .target(targetX, targetY)
+	                    .ease(Quint.OUT)
+	                    .start(GlobalManager.getTweenManager());
+        }
+        
         return false;
     }
 
@@ -103,7 +105,7 @@ public class MyGestureListener implements GestureDetector.GestureListener {
     	TouchData.touchY = pY;
     	TouchData.deltaX = pDeltaX;
     	TouchData.deltaY = pDeltaY;
-        ScreenManager.getCurrentScreen().onTouch(); //Selection d unite
+        ScreenManager.getCurrentScreen().onTouch();
 
         /** rien de selectionner dans Screen n'empeche le scroll de la camera... */
         if(GlobalManager.moveable) {

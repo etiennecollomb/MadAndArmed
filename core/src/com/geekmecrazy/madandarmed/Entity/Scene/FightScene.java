@@ -38,7 +38,7 @@ public class FightScene extends Scene {
 				}
 			}
 			else if(shape instanceof IsoBuildingRenderer && TouchData.gestureType.equals(MyGestureDetector.GestureType.TOUCHDOWN)){
-				if(!shape.contains(TouchData.touchX, TouchData.touchY) && ((IsoBuildingRenderer)shape).isFocused()){
+				if(!shape.contains(TouchData.screenTouchX, TouchData.screenTouchY) && ((IsoBuildingRenderer)shape).isFocused()){
 					((IsoBuildingRenderer)shape).focus();
 				}
 			}

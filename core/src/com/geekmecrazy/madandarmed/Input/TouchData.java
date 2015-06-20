@@ -9,6 +9,7 @@ public class TouchData {
 	public static MyGestureDetector.GestureType gestureType;
 
 	/** Position sur l'ecran physique */
+	//ONLY USE FOR SAVE DATA
 	public static float touchX;
 	public static float touchY;
 
@@ -19,6 +20,7 @@ public class TouchData {
 	public static float velocityY;
 
 	/** Position en fonction de la camera */
+	//ONLY USE FOR GET DATA
 	public static float screenTouchX;
 	public static float screenTouchY;
 
