@@ -3,6 +3,7 @@ package com.geekmecrazy.madandarmed.Game.UI;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
+import com.geekmecrazy.madandarmed.Input.TouchData;
 import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 
 
@@ -79,16 +80,6 @@ public class Layout extends Shape {
 		super.setScaleX(1f); //scale not allowed on Layout Object
 		super.setScaleY(1f); //scale not allowed on Layout Object
 	}
-	
-	@Override
-	public void onUpdate(){
-
-		this.updateChildrenPositions(); //TODO: a mettre que qd on add une entity, pas besoin de recalculer a chaque fois
-		this.updateSize(); //TODO: a mettre que qd on add une entity, pas besoin de recalculer a chaque fois
-
-		super.onUpdate();
-
-	}
 
 	@Override
 	public void reset(){
@@ -105,7 +96,22 @@ public class Layout extends Shape {
 	@Override
 	public void onPanEvent() {
 		
-		//GlobalManager.camera.translate(-pDeltaX * GlobalManager.camera.zoom, pDeltaY * GlobalManager.camera.zoom)
+		/** Swipe children */
+		switch(this.getOrientation()){
+		case VERTICAL:
+			for(int i=this.getChildren().size-1; i>=0; i--) {
+				this.getChildren().get(i).setY( this.getChildren().get(i).getY() + TouchData.deltaY );
+			}
+			break;
+		case HORIZONTAL:
+			for(int i=0; i<this.getChildren().size; i++) {
+				this.getChildren().get(i).setX( this.getChildren().get(i).getX() - TouchData.deltaX );
+			}
+			break;
+		default :
+			break;
+		}
+		
 	}
 
 	// ===========================================================
@@ -116,10 +122,6 @@ public class Layout extends Shape {
 		super.init(pX, pY, 0, 0);
 
 		this.setOrientation(Orientation.VERTICAL);
-
-		//DEBUG
-		//        this.setColor(0f, 0f, 0f, 0.5f);
-
 		this.setLayoutSize(Dimension.WRAP_CONTENT, Dimension.WRAP_CONTENT);
 	}
 
@@ -171,6 +173,9 @@ public class Layout extends Shape {
 		default:
 			break;
 		}
+		
+		this.updateChildrenPositions();
+		this.updateSize();
 
 	}
 

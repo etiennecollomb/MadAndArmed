@@ -119,6 +119,7 @@ public class MenuScreen extends Screen implements IUpdatable {
         layout_test.add(sp1);
         layout_test.add(r3);
         this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
+        this.getManager().getHUD().registerTouchableShape(layout_test);
         
     }
 

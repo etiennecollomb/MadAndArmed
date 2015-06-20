@@ -16,8 +16,6 @@ import com.badlogic.gdx.utils.Array;
 
 public class HUD extends Shape implements ITouchable {
 
-    private static Vector3 VERTICES_TOUCH_TO_HUD_TMP=new Vector3();
-
 	private Array<Shape> mRegisteredTouchableShape;
 
 	// ===========================================================
@@ -40,13 +38,8 @@ public class HUD extends Shape implements ITouchable {
     @Override
     public void onTouch(){
 
-        this.touchToHUDCoord(TouchData.touchX, TouchData.touchY);
-
-        TouchData.screenTouchX = VERTICES_TOUCH_TO_HUD_TMP.x;
-        TouchData.screenTouchY = VERTICES_TOUCH_TO_HUD_TMP.y;
-
-//        System.out.println("### TOUCH HUD X: "+X+" Y:"+Y);
-
+    	TouchData.convertToHud();
+    	
         int size = this.mRegisteredTouchableShape.size;
         for(int i=0; i<size; i++){
             Shape shape = this.mRegisteredTouchableShape.get(i);
@@ -83,11 +76,4 @@ public class HUD extends Shape implements ITouchable {
 		this.mRegisteredTouchableShape.removeValue(pShape, true);
 	}
 
-    /** Convert touch coord to scene coord **/
-    private void touchToHUDCoord(final float pX, final float pY){
-        VERTICES_TOUCH_TO_HUD_TMP.x = pX;
-        VERTICES_TOUCH_TO_HUD_TMP.y = pY;
-        VERTICES_TOUCH_TO_HUD_TMP.z = 0;
-        GlobalManager.hudCamera.unproject(VERTICES_TOUCH_TO_HUD_TMP);
-    }
 }

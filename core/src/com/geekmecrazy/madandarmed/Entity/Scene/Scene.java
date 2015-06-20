@@ -10,8 +10,6 @@ import com.badlogic.gdx.utils.Array;
 
 public class Scene extends Shape implements ITouchable {
 
-    private static Vector3 VERTICES_TOUCH_TO_SCENE_TMP = new Vector3();
-
 	protected Array<Shape> mRegisteredTouchableShape;
 
 	// ===========================================================
@@ -43,16 +41,8 @@ public class Scene extends Shape implements ITouchable {
     @Override
     public void onTouch(){
 
-        //System.out.println("_________________________________________________");
-        //System.out.println("### TOUCH SCREEN X: "+pX+" Y:"+pY);
-
-        this.touchToSceneCoord(TouchData.touchX, TouchData.touchY);
-
-        TouchData.screenTouchX = VERTICES_TOUCH_TO_SCENE_TMP.x;
-        TouchData.screenTouchY = VERTICES_TOUCH_TO_SCENE_TMP.y;
-
-        //System.out.println("### TOUCH SCENE X: "+X+" Y:"+Y);
-
+    	TouchData.convertToScene();
+    	
         int size = this.mRegisteredTouchableShape.size;
         for(int i=0; i<size; i++){
             Shape shape = this.mRegisteredTouchableShape.get(i);
@@ -78,15 +68,5 @@ public class Scene extends Shape implements ITouchable {
 	public void unregisterTouchableShape(final Shape pShape){
 		this.mRegisteredTouchableShape.removeValue(pShape, true);
 	}
-
-    /** Convert touch coord to scene coord **/
-    private void touchToSceneCoord(final float pX, final float pY){
-        VERTICES_TOUCH_TO_SCENE_TMP.x = pX;
-        VERTICES_TOUCH_TO_SCENE_TMP.y = pY;
-        VERTICES_TOUCH_TO_SCENE_TMP.z = 0;
-        GlobalManager.camera.unproject(VERTICES_TOUCH_TO_SCENE_TMP);
-    }
-
-
 
 }

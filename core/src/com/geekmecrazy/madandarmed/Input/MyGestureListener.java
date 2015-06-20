@@ -101,6 +101,8 @@ public class MyGestureListener implements GestureDetector.GestureListener {
         TouchData.gestureType = MyGestureDetector.GestureType.PAN;
     	TouchData.touchX = pX;
     	TouchData.touchY = pY;
+    	TouchData.deltaX = pDeltaX;
+    	TouchData.deltaY = pDeltaY;
         ScreenManager.getCurrentScreen().onTouch(); //Selection d unite
 
         /** rien de selectionner dans Screen n'empeche le scroll de la camera... */
