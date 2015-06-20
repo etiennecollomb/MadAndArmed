@@ -40,16 +40,6 @@ public class MyGestureDetector extends GestureDetector {
     }
 
     @Override
-    public boolean touchDragged(float x, float y, int pointer){
-        super.touchDragged(x,y,pointer);
-        TouchData.gestureType = MyGestureDetector.GestureType.PAN;
-    	TouchData.touchX = x;
-    	TouchData.touchY = y;
-        ScreenManager.getCurrentScreen().onTouch();
-        return false;
-    }
-
-    @Override
     public boolean scrolled(int amount) {
         GlobalManager.camera.zoom += (amount*0.5f);
         return true;
