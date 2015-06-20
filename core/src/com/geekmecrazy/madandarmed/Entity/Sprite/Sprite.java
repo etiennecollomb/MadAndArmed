@@ -5,6 +5,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Game.UI.Layout;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
+import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -245,20 +246,25 @@ public class Sprite extends Shape {
 		 */
 		if(this.getParent() != null && this.getParent() instanceof Layout){
 
-			if(this.getX() > this.getParent().getWidth()){
-				this.setVisible(false);
-			}else{
-				this.setVisible(true);
-				
-				float maxParentX = this.getParent().getWidth();
-				float maxChildX = this.getX()+this.getWidth();
-				float deltaX = maxChildX - maxParentX;
+			this.setVisible(true);
 
-				if(deltaX > 0){
-					float rapport = 1 - ( deltaX / this.getWidth() );
-					this.setDraw_srcWidth((int)(rapport*this.getTextureRegion().getRegionWidth()));
-					this.setDraw_width(rapport*this.getWidth());
-				}
+			/** outside the layout */
+			if(this.getX()+this.getWidth() < 0 || this.getX() > this.getParent().getWidth()){
+				this.setVisible(false);
+			}
+			/** left border */
+			if(this.getX()<0){
+				
+				float rapport = -this.getX() / this.getWidth();
+				this.setDraw_x(this.getSceneX() -this.getX() );
+				this.setDraw_srcX((int)(rapport*this.getTextureRegion().getRegionWidth()));
+			}
+			/** right border */
+			else if(this.getX()+this.getWidth() > this.getParent().getWidth()){
+				
+				float rapport = (this.getParent().getWidth()-this.getX()) / this.getWidth();
+				this.setDraw_srcWidth((int)(rapport*this.getTextureRegion().getRegionWidth()));
+				this.setDraw_width(rapport*this.getWidth());
 			}
 		}
 	}

@@ -1,10 +1,7 @@
 package com.geekmecrazy.madandarmed.Game.UI;
 
-import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Shape;
-import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Input.TouchData;
-import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 
 
 public class Layout extends Shape {
@@ -100,12 +97,12 @@ public class Layout extends Shape {
 		switch(this.getOrientation()){
 		case VERTICAL:
 			for(int i=this.getChildren().size-1; i>=0; i--) {
-				this.getChildren().get(i).setY( this.getChildren().get(i).getY() + TouchData.deltaY );
+				this.getChildren().get(i).setY( this.getChildren().get(i).getY() + TouchData.screenDeltaY );
 			}
 			break;
 		case HORIZONTAL:
 			for(int i=0; i<this.getChildren().size; i++) {
-				this.getChildren().get(i).setX( this.getChildren().get(i).getX() - TouchData.deltaX );
+				this.getChildren().get(i).setX( this.getChildren().get(i).getX() + TouchData.screenDeltaX );
 			}
 			break;
 		default :

@@ -40,6 +40,7 @@ public class VirtualViewport {
 		return unitH*unit_scale_y;
 	}
 	
+	//pixel to HUD
 	public static float convertUIWidthToUnit(float pixelW){
 		return pixelW/unit_ui_scale_x;
 	}
@@ -48,6 +49,7 @@ public class VirtualViewport {
 		return pixelH/unit_ui_scale_y;
 	}
 	
+	//HUD to pixel
 	public static float convertUIWidthToPixel(float unitW){
 		return unitW*unit_ui_scale_x;
 	}

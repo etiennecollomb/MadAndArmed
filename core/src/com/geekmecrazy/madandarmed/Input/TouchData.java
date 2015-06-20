@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Input;
 
 import com.badlogic.gdx.math.Vector3;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
+import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 
 public class TouchData {
 
@@ -68,7 +69,8 @@ public class TouchData {
         TouchData.screenTouchY = VERTICES_TOUCH_TO_HUD_TMP.y;
 //        System.out.println("### TOUCH HUD X: "+X+" Y:"+Y);
         
-        //screenDeltaX = 
+        screenDeltaX = VirtualViewport.convertUIWidthToUnit(deltaX);
+		screenDeltaY = VirtualViewport.convertUIHeightToUnit(deltaY); 
 
 	}
 

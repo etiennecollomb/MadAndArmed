@@ -109,15 +109,23 @@ public class MenuScreen extends Screen implements IUpdatable {
         Sprite sp1 = new Sprite();
         sp1.init(TextureType.BUTTON_UNIT_BACKGROUND);
         
+        Sprite sp2 = new Sprite();
+        sp2.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        
+        Sprite sp3 = new Sprite();
+        sp3.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        
         Layout layout_test;
         layout_test = new Layout();
         layout_test.init(0,0);
         layout_test.setOrientation(Orientation.HORIZONTAL);
-        layout_test.setLayoutSize(7f, Layout.Dimension.WRAP_CONTENT);        
-        layout_test.add(r1);
-        layout_test.add(r2);
+        layout_test.setLayoutSize(7f, Layout.Dimension.WRAP_CONTENT);
         layout_test.add(sp1);
-        layout_test.add(r3);
+        layout_test.add(sp2);
+        layout_test.add(sp3);
+//        layout_test.add(r1);
+//        layout_test.add(r2);
+//        layout_test.add(r3);
         this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
         this.getManager().getHUD().registerTouchableShape(layout_test);
         
