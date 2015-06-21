@@ -8,6 +8,9 @@ public class SelectedShapeMananger {
 
 	public static boolean isTouchLocked = false;
 	
+	/** stocke les shapes qui ont lockés le touch
+	 * et qui ont l exclusivitéé du onTouch()
+	 */
 	public static ArrayList<Shape> selectedShapes = new ArrayList<Shape>();
 	
 	// ===========================================================

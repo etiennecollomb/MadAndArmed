@@ -39,6 +39,7 @@ public class MyGestureDetector extends GestureDetector {
         return false;
     }
 
+    /** mouse middle button Zoom */
     @Override
     public boolean scrolled(int amount) {
         GlobalManager.camera.zoom += (amount*0.5f);
