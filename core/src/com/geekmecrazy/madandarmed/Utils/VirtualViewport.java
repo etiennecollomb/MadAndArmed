@@ -1,18 +1,26 @@
 package com.geekmecrazy.madandarmed.Utils;
 
+import com.badlogic.gdx.Gdx;
+
 public class VirtualViewport {
 
-	public float ui_virtual_width = 800;
-	public float ui_virtual_height = 480;
+	public static int device_screen_width = Gdx.graphics.getWidth();
+	public static int device_screen_height = Gdx.graphics.getHeight();
 	
-	public float world_x = 15;
-	public float world_y = 10;
+	public static float ui_virtual_width = 800;
+	public static float ui_virtual_height = 480;
+	
+	public static float world_x = 15;
+	public static float world_y = 10;
 	
 	public static float unit_scale_x;
 	public static float unit_scale_y;
 	
 	public static float unit_ui_scale_x;
 	public static float unit_ui_scale_y;
+	
+	public static float device_to_virtual_width = ui_virtual_width / device_screen_width;
+	public static float device_to_virtual_height = ui_virtual_height / device_screen_height;
 	
 	public VirtualViewport(float screenWidth,float screenHeight){
 		unit_scale_x = screenWidth/world_x;
@@ -24,6 +32,7 @@ public class VirtualViewport {
 		unit_ui_scale_y = unit_ui_scale_x;
     }
 	
+	//pixel to Scene
 	public static float convertWorldWidthToUnit(float pixelW){
 		return pixelW/unit_scale_x;
 	}
@@ -32,6 +41,7 @@ public class VirtualViewport {
 		return pixelH/unit_scale_y;
 	}
 	
+	//Scene to pixel
 	public static float convertWorldWidthToPixel(float unitW){
 		return unitW*unit_scale_x;
 	}

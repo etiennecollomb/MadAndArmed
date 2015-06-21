@@ -1,6 +1,5 @@
 package com.geekmecrazy.madandarmed.Game.Tween;
 
-import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import aurelienribon.tweenengine.TweenAccessor;

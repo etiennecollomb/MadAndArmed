@@ -78,12 +78,17 @@ public class MyGestureListener implements GestureDetector.GestureListener {
     @Override
     public boolean fling(final float pVelocityX, final float pVelocityY, final int pButton) {
 
-        float velocityRatio = 0.3f;
-
-        float targetX = GlobalManager.camera.position.x - velocityRatio* pVelocityX *GlobalManager.camera.zoom;
-        float targetY = GlobalManager.camera.position.y + velocityRatio* pVelocityY *GlobalManager.camera.zoom;
+//    	TouchData.gestureType = MyGestureDetector.GestureType.FLING;
+//    	TouchData.velocityX = pVelocityX;
+//    	TouchData.velocityX = pVelocityY;
+//        ScreenManager.getCurrentScreen().onTouch();
 
         if(GlobalManager.moveable) {
+        	
+            float velocityRatio = 0.3f;
+            float targetX = GlobalManager.camera.position.x - velocityRatio* pVelocityX *GlobalManager.camera.zoom;
+            float targetY = GlobalManager.camera.position.y + velocityRatio* pVelocityY *GlobalManager.camera.zoom;
+            
 	        if(cameraVelocityTween != null) cameraVelocityTween.kill();
 	        cameraVelocityTween = Tween.to(GlobalManager.camera, OrthographicCameraTween.TRANSLATE, 1f)
 	                    .target(targetX, targetY)

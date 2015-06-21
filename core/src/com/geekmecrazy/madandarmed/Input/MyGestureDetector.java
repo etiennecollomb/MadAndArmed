@@ -18,7 +18,7 @@ public class MyGestureDetector extends GestureDetector {
         TOUCHUP,
         TAP,
         LONGPRESS,
-        FLYING,
+        FLING,
         PAN,
         PANSTOP,
         ZOOM,

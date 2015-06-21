@@ -71,11 +71,10 @@ public class TouchData {
         TouchData.screenTouchY = VERTICES_TOUCH_TO_HUD_TMP.y;
 //        System.out.println("### TOUCH HUD X: "+X+" Y:"+Y);
         
-        screenDeltaX = VirtualViewport.convertUIWidthToUnit(deltaX);
-		screenDeltaY = VirtualViewport.convertUIHeightToUnit(deltaY); 
+        screenDeltaX = VirtualViewport.convertUIWidthToUnit(deltaX * VirtualViewport.device_to_virtual_width);
+		screenDeltaY = VirtualViewport.convertUIHeightToUnit(deltaY * VirtualViewport.device_to_virtual_height); 
 
 	}
-
 
 	/** Convert touch coord to scene coord **/
 	private static void touchToSceneCoord(final float pX, final float pY){
