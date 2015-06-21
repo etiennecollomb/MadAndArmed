@@ -123,6 +123,7 @@ public class MyGestureListener implements GestureDetector.GestureListener {
 
     @Override
     public boolean panStop(final float pX, final float pY, final int pPointer, final int pButton) {
+    	
     	TouchData.gestureType = MyGestureDetector.GestureType.PANSTOP;
     	TouchData.touchX = pX;
     	TouchData.touchY = pY;

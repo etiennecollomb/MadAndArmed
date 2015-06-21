@@ -212,6 +212,9 @@ public class Shape extends Entity implements IColor, ITouchable {
 		case PAN:
 			this.onPanEvent();
 			break;
+		case FLING:
+			this.onFlingEvent();
+			break;
 		default:
 			break;
 		}
@@ -350,6 +353,8 @@ public class Shape extends Entity implements IColor, ITouchable {
 
 		}
 	};
+	
+	public void onFlingEvent(){};
 
 
 	public void onPanEventIsoGrig(final float pTouchAreaLocalX, final float pTouchAreaLocalY){

@@ -71,21 +71,17 @@ public class Button extends Shape{
     }
 
     @Override
-    public void onTouch() {
-        switch(TouchData.gestureType){
-            case TOUCHDOWN:
-                if(!this.isPressed() && !this.isDisabled()) {
-                    this.disable();
-                    this.onPress();
-                }
-                break;
-            case TOUCHUP:
-                if(this.isPressed())
-                    this.onRelease(true);
-                break;
-            default:
-                break;
+    public void onTouchDownEvent(){
+    	if(!this.isPressed() && !this.isDisabled()) {
+            this.disable();
+            this.onPress();
         }
+    }
+    
+    @Override
+    public void onTouchUpEvent(){
+    	if(this.isPressed())
+            this.onRelease(true);
     }
 
     // ===========================================================

@@ -1,13 +1,9 @@
 package com.geekmecrazy.madandarmed.Screen;
 
-import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.HUD.HUD;
-import com.geekmecrazy.madandarmed.Entity.IDrawable;
 import com.geekmecrazy.madandarmed.Entity.ITouchable;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
-import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
-import com.geekmecrazy.madandarmed.Input.MyGestureListener;
 import com.geekmecrazy.madandarmed.Renderer.MyTiledMapRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool.Poolable;
@@ -69,8 +65,9 @@ public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 
     @Override
     public void onTouch(){
-        this.getScene().onTouch();
+    	/** HUD prioritaire */
         this.getHUD().onTouch();
+        this.getScene().onTouch();
     }
 
     @Override
