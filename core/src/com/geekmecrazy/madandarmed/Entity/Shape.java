@@ -6,6 +6,7 @@ import com.geekmecrazy.madandarmed.Game.Scene.OrthoGrid;
 import com.geekmecrazy.madandarmed.IA.IsoMapState.Type;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector.GestureType;
+import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
 import com.geekmecrazy.madandarmed.Input.TouchData;
 import com.badlogic.gdx.graphics.Color;
 
@@ -35,8 +36,8 @@ public class Shape extends Entity implements IColor, ITouchable {
 	private OrthoGrid orthoGrid;
 
 	/** Common to IsoShape and OrthoShape */
-    private Type type;
-    
+	private Type type;
+
 	private float diffX;
 	private float diffY;
 
@@ -149,40 +150,40 @@ public class Shape extends Entity implements IColor, ITouchable {
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
-    
+
 	/* for IsoShape Type :
 	 * you should use setPosition(final float pX, final float pY) instead of setX(final float pX)
 	 * as gridPosX depend of pY to....
 	 */
 	public void setX(final float pX) {
 		super.setX(pX);
-        
-        /** IsoShape */
+
+		/** IsoShape */
 		if(this.isIsoShape())
 			this.setGridPosX(this.isoGrid.convertToGridPositionX(pX, this.getY()));
 		/** OrthoShape */
 		else if(this.isOrthoShape())
 			this.setGridPosX(this.orthoGrid.convertToGridPositionX(pX));
-    }
+	}
 
 	public void setY(final float pY) {
 		super.setY(pY);
-        
-        /** IsoShape */
+
+		/** IsoShape */
 		if(this.isIsoShape())
 			this.setGridPosY(this.isoGrid.convertToGridPositionY(pY));
 		/** OrthoShape */
 		else if(this.isOrthoShape())
 			this.setGridPosY(this.orthoGrid.convertToGridPositionY(pY));
-    }
-	
-	
+	}
+
+
 	@Override
-    public void setPosition(final float pX, final float pY) {
+	public void setPosition(final float pX, final float pY) {
 		super.setX(pX);
-        super.setY(pY);
-        
-        /** IsoShape */
+		super.setY(pY);
+
+		/** IsoShape */
 		if(this.isIsoShape()){
 			this.setGridPosX(this.isoGrid.convertToGridPositionX(pX, pY));
 			this.setGridPosY(this.isoGrid.convertToGridPositionY(pY));
@@ -192,32 +193,33 @@ public class Shape extends Entity implements IColor, ITouchable {
 			this.setGridPosX(this.orthoGrid.convertToGridPositionX(pX));
 			this.setGridPosY(this.orthoGrid.convertToGridPositionY(pY));
 		}
-    }
-	
+	}
+
 	@Override
 	public void onTouch() {
-		switch(TouchData.gestureType){
-		case TOUCHDOWN:
-			this.onTouchDownEvent();
-			break;
-		case TOUCHUP:
-			this.onTouchUpEvent();
-			break;
-		case LONGPRESS:
-			this.onLongPressEvent();
-			break;
-		case TAP:
-			this.onTapEvent();
-			break;
-		case PAN:
-			this.onPanEvent();
-			break;
-		case FLING:
-			this.onFlingEvent();
-			break;
-		default:
-			break;
-		}
+
+			switch(TouchData.gestureType){
+			case TOUCHDOWN:
+				this.onTouchDownEvent();
+				break;
+			case TOUCHUP:
+				this.onTouchUpEvent();
+				break;
+			case LONGPRESS:
+				this.onLongPressEvent();
+				break;
+			case TAP:
+				this.onTapEvent();
+				break;
+			case PAN:
+				this.onPanEvent();
+				break;
+			case FLING:
+				this.onFlingEvent();
+				break;
+			default:
+				break;
+			}
 	}
 
 	@Override
@@ -353,7 +355,7 @@ public class Shape extends Entity implements IColor, ITouchable {
 
 		}
 	};
-	
+
 	public void onFlingEvent(){};
 
 
@@ -399,7 +401,7 @@ public class Shape extends Entity implements IColor, ITouchable {
 			else if(this.getY() + this.getHeight() > GlobalManager.camera.position.y + effectiveViewportHeight/2f){
 				GlobalManager.camera.position.y = this.getY() + this.getHeight() - effectiveViewportHeight/2f;
 			}
-			
+
 			/**Put on gridMapState */
 			this.getIsoGrid().getIsoMapState().add(this);
 
@@ -443,12 +445,12 @@ public class Shape extends Entity implements IColor, ITouchable {
 		}
 
 	};
-	
-	public boolean isFocused(){
-        return this.getState() == ShapeState.FOCUSED;
-    }
 
-    public void setFocusState(){}
+	public boolean isFocused(){
+		return this.getState() == ShapeState.FOCUSED;
+	}
+
+	public void setFocusState(){}
 
 }
 

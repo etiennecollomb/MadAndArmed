@@ -8,6 +8,7 @@ import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Tween.ButtonTween;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
+import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
 import com.geekmecrazy.madandarmed.Input.TouchData;
 
 import aurelienribon.tweenengine.Tween;
@@ -72,6 +73,10 @@ public class Button extends Shape{
 
     @Override
     public void onTouchDownEvent(){
+    	System.out.println("####TOUCHDOWN !!!");
+    	SelectedShapeManager.lockTouch(); /** a button lock the touch */
+    	SelectedShapeManager.addMe(this);
+    	
     	if(!this.isPressed() && !this.isDisabled()) {
             this.disable();
             this.onPress();
@@ -82,6 +87,19 @@ public class Button extends Shape{
     public void onTouchUpEvent(){
     	if(this.isPressed())
             this.onRelease(true);
+    	SelectedShapeManager.removeMe(); /** no more need to lock the touch */
+    }
+    
+    @Override
+    public void onPanEvent(){
+    	System.out.println("####PAN !!!");
+    	/** outside the button */
+    	if(!this.contains(TouchData.screenTouchX, TouchData.screenTouchY)){
+    		if(this.isPressed())
+                this.onRelease(false);
+        	SelectedShapeManager.removeMe(); /** no more need to lock the touch */
+    	}
+    		
     }
 
     // ===========================================================

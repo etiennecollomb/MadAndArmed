@@ -4,14 +4,17 @@ import java.util.ArrayList;
 
 import com.geekmecrazy.madandarmed.Entity.Shape;
 
-public class SelectedShapeMananger {
+public class SelectedShapeManager {
+
+	/** stocke les shapes qui ont lockés le touch
+	 * et qui ont l exclusivitéé du onTouch()
+	 * Les shapes doivent gerer eux meme si elles lockent ou pas
+	 */
+	public static ArrayList<Shape> selectedShapes = new ArrayList<Shape>();
 
 	public static boolean isTouchLocked = false;
 	
-	/** stocke les shapes qui ont lockés le touch
-	 * et qui ont l exclusivitéé du onTouch()
-	 */
-	public static ArrayList<Shape> selectedShapes = new ArrayList<Shape>();
+	private static boolean isRemoveMe = false;
 	
 	// ===========================================================
 	// Constructors
@@ -29,18 +32,41 @@ public class SelectedShapeMananger {
 	// Methods
 	// ===========================================================
 
+	/** isTouchLocked can be set in onTouch() from one shape */
 	public static void doTouch(){
+		
+    	System.out.println("#--- " + TouchData.gestureType.name());
+		
 		int size = selectedShapes.size();
-		for(int i=0; i<size; i++)
+		for(int i=size-1; i>=0; i--){
+			
+			isRemoveMe = false;
 			selectedShapes.get(i).onTouch();
+
+			/** si le removeShape() a ete appele dans le onTouch */
+			if(isRemoveMe){
+				selectedShapes.remove(i);
+				if(selectedShapes.size() == 0)
+					isTouchLocked = false; //no more shape lock touch
+			}
+		}
+			
+	}
+	
+	public static void addMe(Shape shape){
+		selectedShapes.add(shape);
+	}
+	
+	/** a shape request delete in doTouch() */
+	public static void removeMe(){
+		isRemoveMe = true;
 	}
 	
 	public static void lockTouch(){
 		isTouchLocked = true;
 	}
 	
-	public static void cleanSelectedShape(){
+	public static void unlockTouch(){
 		isTouchLocked = false;
-		selectedShapes.clear();
 	}
 }
