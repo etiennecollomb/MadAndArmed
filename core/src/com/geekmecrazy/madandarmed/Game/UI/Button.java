@@ -70,9 +70,9 @@ public class Button extends Shape{
     @Override
     public void onTouchUpEvent(){
     	if(this.isPressed())
-            this.onRelease(true);
+            this.onRelease(false);
     	SelectedShapeManager.removeMe(); /** no more need to lock the touch */
-    	Tween.to(this, ButtonTween.SCALE, 0.11f).target(1f, 1f).start(GlobalManager.getTweenManager());
+    	this.tweenRegress();
     }
     
     @Override
@@ -82,7 +82,8 @@ public class Button extends Shape{
     		if(this.isPressed())
                 this.onRelease(false);
         	SelectedShapeManager.removeMe(); /** no more need to lock the touch */
-        	Tween.to(this, ButtonTween.SCALE, 0.11f).target(1f, 1f).start(GlobalManager.getTweenManager());
+        	this.tweenRegress();
+        	this.tweenRegress(); //TODO : ?? 2 fois car sinon le button reste figé parfois en mode "expand"
     	}
     		
     }
@@ -114,7 +115,7 @@ public class Button extends Shape{
     
     private void onPress(){
         this.buttonState = ButtonState.PRESSED;
-        Tween.to(this, ButtonTween.SCALE, 0.11f).target(1.12f, 1.12f).start(GlobalManager.getTweenManager());
+        this.tweenExtend();
     }
 
     private void onRelease(final boolean doAction){
@@ -124,7 +125,14 @@ public class Button extends Shape{
             }
         }
         this.buttonState = ButtonState.RELEASED;
-        Tween.to(this, ButtonTween.SCALE, 0.11f).target(1f, 1f).start(GlobalManager.getTweenManager());
+    }
+    
+    private void tweenExtend(){
+    	Tween.to(this, ButtonTween.SCALE, 0.11f).target(1.12f, 1.12f).start(GlobalManager.getTweenManager());
+    }
+    
+    private void tweenRegress(){
+    	Tween.to(this, ButtonTween.SCALE, 0.11f).target(1f, 1f).start(GlobalManager.getTweenManager());
     }
 
     
