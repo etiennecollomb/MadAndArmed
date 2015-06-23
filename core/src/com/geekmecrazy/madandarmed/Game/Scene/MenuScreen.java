@@ -137,7 +137,6 @@ public class MenuScreen extends Screen implements IUpdatable {
     }
 
     public void showWorldScreen(){
-        worldButton.disable();
         Tween.to(blackScreen, RectangleTween.ALPHA, 0.45f)
                 .target(1f)
                 .setCallbackTriggers(TweenCallback.END)
@@ -168,7 +167,6 @@ public class MenuScreen extends Screen implements IUpdatable {
     }
 
     public void showHQScreen(){
-        hqButton.disable();
         Tween.to(blackScreen, RectangleTween.ALPHA, 0.45f)
                 .target(1f)
                 .setCallbackTriggers(TweenCallback.END)

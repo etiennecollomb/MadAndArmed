@@ -9,6 +9,7 @@ public class SelectedShapeManager {
 	/** stocke les shapes qui ont lockés le touch
 	 * et qui ont l exclusivitéé du onTouch()
 	 * Les shapes doivent gerer eux meme si elles lockent ou pas
+	 * Si locked, on appel le doTouch qui s apliquera qu aux selected Shapes
 	 */
 	public static ArrayList<Shape> selectedShapes = new ArrayList<Shape>();
 
@@ -59,6 +60,7 @@ public class SelectedShapeManager {
 	
 	/** a shape request delete in doTouch() */
 	public static void removeMe(){
+		System.out.println("REMOOOOOVE");
 		isRemoveMe = true;
 	}
 	

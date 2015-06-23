@@ -66,17 +66,17 @@ public class MadAndArmed extends ApplicationAdapter {
 //        entity1.init(0, 0);
 //        menuScene.attachChild(entity1);
 //
-		Rectangle rect1 = new Rectangle(){
-            @Override
-            public void onTouch(){
-                System.out.println("#### TOUCH !!");
-            }
-        };
-        rect1.init(0, 0, 200, 200);
-        rect1.setColor(0f, 0f, 1f, 1f);
+//		Rectangle rect1 = new Rectangle(){
+//            @Override
+//            public void onTouch(){
+//                System.out.println("#### TOUCH !!");
+//            }
+//        };
+//        rect1.init(0, 0, 200, 200);
+//        rect1.setColor(0f, 0f, 1f, 1f);
 //        menuScene.attachChild(rect1);
 //        rect1.setAlignment(Entity.Alignment.CENTER);
-        menuScene.registerTouchableShape(rect1);
+//        menuScene.registerTouchableShape(rect1);
 
 		Rectangle rect2 = new Rectangle();
         rect2.init(0, 0, 100, 100);
@@ -97,7 +97,7 @@ public class MadAndArmed extends ApplicationAdapter {
         Layout layout1 = new Layout();
         layout1.init(0, 0);
         layout1.add(rect2);
-        layout1.add(rect1);
+//        layout1.add(rect1);
         layout1.add(rect3);
 
         menuScene.attachChild(layout1);

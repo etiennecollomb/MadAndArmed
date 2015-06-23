@@ -7,7 +7,6 @@ import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Tween.ButtonTween;
-import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
 import com.geekmecrazy.madandarmed.Input.TouchData;
 
@@ -19,8 +18,6 @@ public class Button extends Shape{
         PRESSED,
         RELEASED
     }
-
-    private boolean isDisabled;
 
     private ButtonState buttonState;
 
@@ -38,20 +35,8 @@ public class Button extends Shape{
     // Getter & Setter
     // ===========================================================
 
-    public void disable(){
-        this.isDisabled = true;
-    }
-
-    public void enable(){
-        this.isDisabled = false;
-    }
-
     public boolean isPressed(){
         return this.buttonState == ButtonState.PRESSED;
-    }
-
-    public boolean isDisabled(){
-        return this.isDisabled;
     }
 
     public void setAction(IAction action){
@@ -62,6 +47,7 @@ public class Button extends Shape{
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
 
+    //TODO: c'est du specifique sur juste une couche d enfant
     @Override
     public void setSize(float w,float h){
         super.setSize(w,h);
@@ -73,12 +59,10 @@ public class Button extends Shape{
 
     @Override
     public void onTouchDownEvent(){
-    	System.out.println("####TOUCHDOWN !!!");
     	SelectedShapeManager.lockTouch(); /** a button lock the touch */
     	SelectedShapeManager.addMe(this);
     	
-    	if(!this.isPressed() && !this.isDisabled()) {
-            this.disable();
+    	if(!this.isPressed()) {
             this.onPress();
         }
     }
@@ -88,16 +72,17 @@ public class Button extends Shape{
     	if(this.isPressed())
             this.onRelease(true);
     	SelectedShapeManager.removeMe(); /** no more need to lock the touch */
+    	Tween.to(this, ButtonTween.SCALE, 0.11f).target(1f, 1f).start(GlobalManager.getTweenManager());
     }
     
     @Override
     public void onPanEvent(){
-    	System.out.println("####PAN !!!");
     	/** outside the button */
     	if(!this.contains(TouchData.screenTouchX, TouchData.screenTouchY)){
     		if(this.isPressed())
                 this.onRelease(false);
         	SelectedShapeManager.removeMe(); /** no more need to lock the touch */
+        	Tween.to(this, ButtonTween.SCALE, 0.11f).target(1f, 1f).start(GlobalManager.getTweenManager());
     	}
     		
     }
@@ -110,7 +95,6 @@ public class Button extends Shape{
         super.init(pX, pY);
 
         this.buttonState = ButtonState.RELEASED;
-        this.isDisabled = false;
         this.setScalable(true);
     }
 
@@ -127,23 +111,22 @@ public class Button extends Shape{
         sprite.init(pTextureType);
         this.attachChild(sprite, Entity.Alignment.CENTER);
     }
+    
+    private void onPress(){
+        this.buttonState = ButtonState.PRESSED;
+        Tween.to(this, ButtonTween.SCALE, 0.11f).target(1.12f, 1.12f).start(GlobalManager.getTweenManager());
+    }
 
-    public void onRelease(final boolean doAction){
-        Button.this.enable();
+    private void onRelease(final boolean doAction){
         if (doAction) {
             if (action != null) {
                 action.execute();
             }
         }
         this.buttonState = ButtonState.RELEASED;
-        Tween.to(this, ButtonTween.SCALE, 0.11f).target(1f, 1f)
-        .start(GlobalManager.getTweenManager());
+        Tween.to(this, ButtonTween.SCALE, 0.11f).target(1f, 1f).start(GlobalManager.getTweenManager());
     }
 
-    public void onPress(){
-        this.buttonState = ButtonState.PRESSED;
-        Tween.to(this, ButtonTween.SCALE, 0.11f).target(1.12f, 1.12f).start(GlobalManager.getTweenManager());
-    }
-
+    
 
 }
