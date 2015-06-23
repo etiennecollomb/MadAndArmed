@@ -41,30 +41,23 @@ public class HUD extends Shape implements ITouchable {
 
 		TouchData.convertToHud();
 
-		if(!SelectedShapeManager.isTouchLocked){
-			int size = this.mRegisteredTouchableShape.size;
-			for(int i=0; i<size; i++){
-				Shape shape = this.mRegisteredTouchableShape.get(i);
-				if(shape.contains(TouchData.screenTouchX, TouchData.screenTouchY)){
-					shape.onTouch();
-					if(SelectedShapeManager.isTouchLocked) /** si locked on ne teste plus le reste */
-						break;
-				}
-				//            else if(shape instanceof Button){
-				//                if(TouchData.gestureType == MyGestureDetector.GestureType.PAN && (((Button) shape).isPressed())){
-				//                    ((Button)shape).onRelease(false);
-				//                }
-				//            }
+		int size = this.mRegisteredTouchableShape.size;
+		for(int i=0; i<size; i++){
+			if(SelectedShapeManager.isTouchLocked) /** si locked on ne teste plus le reste */
+				break;
+
+			Shape shape = this.mRegisteredTouchableShape.get(i);
+			if(shape.contains(TouchData.screenTouchX, TouchData.screenTouchY)){
+				shape.onTouch();
 			}
+			//            else if(shape instanceof Button){
+			//                if(TouchData.gestureType == MyGestureDetector.GestureType.PAN && (((Button) shape).isPressed())){
+			//                    ((Button)shape).onRelease(false);
+			//                }
+			//            }
 		}
-		/** if touch locked */
-		else{
-			SelectedShapeManager.doTouch();
-		}
-
-
-
 	}
+
 
 	@Override
 	public boolean contains(final float pX, final float pY){

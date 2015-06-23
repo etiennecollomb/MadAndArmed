@@ -4,6 +4,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.ITouchable;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
+import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
 import com.geekmecrazy.madandarmed.Input.TouchData;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
@@ -45,6 +46,9 @@ public class Scene extends Shape implements ITouchable {
     	
         int size = this.mRegisteredTouchableShape.size;
         for(int i=0; i<size; i++){
+        	if(SelectedShapeManager.isTouchLocked) /** si locked on ne teste plus le reste */
+				break;
+        	
             Shape shape = this.mRegisteredTouchableShape.get(i);
             if(shape.contains(TouchData.screenTouchX, TouchData.screenTouchY)){
                 shape.onTouch();

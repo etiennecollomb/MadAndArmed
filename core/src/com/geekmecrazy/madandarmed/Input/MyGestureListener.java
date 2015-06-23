@@ -83,7 +83,7 @@ public class MyGestureListener implements GestureDetector.GestureListener {
 //    	TouchData.velocityX = pVelocityY;
 //        ScreenManager.getCurrentScreen().onTouch();
 
-        if(GlobalManager.moveable) {
+        if(!SelectedShapeManager.isTouchLocked) {
         	
             float velocityRatio = 0.3f;
             float targetX = GlobalManager.camera.position.x - velocityRatio* pVelocityX *GlobalManager.camera.zoom;
@@ -113,7 +113,7 @@ public class MyGestureListener implements GestureDetector.GestureListener {
         ScreenManager.getCurrentScreen().onTouch();
 
         /** rien de selectionner dans Screen n'empeche le scroll de la camera... */
-        if(GlobalManager.moveable) {
+        if(!SelectedShapeManager.isTouchLocked) {
             GlobalManager.camera.translate(-pDeltaX * GlobalManager.camera.zoom, pDeltaY * GlobalManager.camera.zoom);
             
         }

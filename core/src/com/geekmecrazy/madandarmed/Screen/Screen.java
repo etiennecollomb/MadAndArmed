@@ -4,19 +4,20 @@ import com.geekmecrazy.madandarmed.Entity.HUD.HUD;
 import com.geekmecrazy.madandarmed.Entity.ITouchable;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
+import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
 import com.geekmecrazy.madandarmed.Renderer.MyTiledMapRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool.Poolable;
 
 public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 
-    private Array<IUpdatable> mRegisteredUpdatable;
+	private Array<IUpdatable> mRegisteredUpdatable;
 
-    private MyTiledMapRenderer mTiledGround;
+	private MyTiledMapRenderer mTiledGround;
 
 	private Scene mScene;
 
-    private HUD mHUD;
+	private HUD mHUD;
 
 	// ===========================================================
 	// Constructors
@@ -24,28 +25,28 @@ public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 
 	public Screen(){
 		this.setRegisteredUpdatable( new Array<IUpdatable>() );
-        this.setHUD( new HUD() );
+		this.setHUD( new HUD() );
 	}
 
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
 
-    public Array<IUpdatable> getRegisteredUpdatable() {
-        return mRegisteredUpdatable;
-    }
+	public Array<IUpdatable> getRegisteredUpdatable() {
+		return mRegisteredUpdatable;
+	}
 
-    public void setRegisteredUpdatable(Array<IUpdatable> pRegisteredUpdatable) {
-        this.mRegisteredUpdatable = pRegisteredUpdatable;
-    }
+	public void setRegisteredUpdatable(Array<IUpdatable> pRegisteredUpdatable) {
+		this.mRegisteredUpdatable = pRegisteredUpdatable;
+	}
 
-    public MyTiledMapRenderer getTiledGround() {
-        return mTiledGround;
-    }
+	public MyTiledMapRenderer getTiledGround() {
+		return mTiledGround;
+	}
 
-    public void setTiledGround(MyTiledMapRenderer pTiledGround) {
-        this.mTiledGround = pTiledGround;
-    }
+	public void setTiledGround(MyTiledMapRenderer pTiledGround) {
+		this.mTiledGround = pTiledGround;
+	}
 
 	public Scene getScene() {
 		return mScene;
@@ -55,25 +56,32 @@ public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 		this.mScene = pScene;
 	}
 
-    public HUD getHUD() { return mHUD; }
+	public HUD getHUD() { return mHUD; }
 
-    public void setHUD(final HUD pHUD) { this.mHUD = pHUD; }
+	public void setHUD(final HUD pHUD) { this.mHUD = pHUD; }
 
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
 
-    @Override
-    public void onTouch(){
-    	/** HUD prioritaire */
-        this.getHUD().onTouch();
-        this.getScene().onTouch();
-    }
+	@Override
+	public void onTouch(){
 
-    @Override
-    public boolean contains(final float pX, final float pY){
-        return true;
-    }
+		if(!SelectedShapeManager.isTouchLocked){
+			/** HUD prioritaire */
+			this.getHUD().onTouch();
+			this.getScene().onTouch();
+		}
+		/** if touch locked */
+		else{
+			SelectedShapeManager.doTouch();
+		}
+	}
+
+	@Override
+	public boolean contains(final float pX, final float pY){
+		return true;
+	}
 
 	@Override
 	public void onUpdate() {
@@ -82,28 +90,28 @@ public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 		for(int i=0; i<size; i++)
 			this.mRegisteredUpdatable.get(i).onUpdate();
 
-        if(this.mTiledGround != null) this.mTiledGround.onUpdate();
-        this.getScene().onUpdate();
-        this.getHUD().onUpdate();
+		if(this.mTiledGround != null) this.mTiledGround.onUpdate();
+		this.getScene().onUpdate();
+		this.getHUD().onUpdate();
 	}
 
-    @Override
-    public void reset() {
-        this.getRegisteredUpdatable().clear();
-        this.mTiledGround = null;
-        this.mScene = null;
-        this.getHUD().reset();
-    }
+	@Override
+	public void reset() {
+		this.getRegisteredUpdatable().clear();
+		this.mTiledGround = null;
+		this.mScene = null;
+		this.getHUD().reset();
+	}
 
 	// ===========================================================
 	// Methods
 	// ===========================================================
 
-    public void init(final Scene pScene){
-        this.mTiledGround = null;
-        this.setScene(pScene);
-        this.getHUD().init();
-    }
+	public void init(final Scene pScene){
+		this.mTiledGround = null;
+		this.setScene(pScene);
+		this.getHUD().init();
+	}
 
 	public void registerUpdatable(final IUpdatable pUpdatable){
 		this.mRegisteredUpdatable.add(pUpdatable);
@@ -113,7 +121,7 @@ public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 		this.mRegisteredUpdatable.removeValue(pUpdatable, true);
 	}
 
-    public abstract void show();
+	public abstract void show();
 
 
 }
