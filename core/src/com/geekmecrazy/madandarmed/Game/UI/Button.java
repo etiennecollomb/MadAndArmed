@@ -70,7 +70,7 @@ public class Button extends Shape{
     @Override
     public void onTouchUpEvent(){
     	if(this.isPressed())
-            this.onRelease(false);
+            this.onRelease(true);
     	SelectedShapeManager.removeMe(); /** no more need to lock the touch */
     	this.tweenRegress();
     }
