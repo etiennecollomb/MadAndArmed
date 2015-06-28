@@ -72,7 +72,6 @@ public class SelectedShapeManager {
 	
 	/** a shape request delete in doTouch() */
 	public static void removeMe(){
-		System.out.println("REMOOOOOVE");
 		isRemoveMe = true;
 	}
 	
