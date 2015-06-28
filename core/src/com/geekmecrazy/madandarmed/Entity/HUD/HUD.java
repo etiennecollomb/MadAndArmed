@@ -50,11 +50,6 @@ public class HUD extends Shape implements ITouchable {
 			if(shape.contains(TouchData.screenTouchX, TouchData.screenTouchY)){
 				shape.onTouch();
 			}
-			//            else if(shape instanceof Button){
-			//                if(TouchData.gestureType == MyGestureDetector.GestureType.PAN && (((Button) shape).isPressed())){
-			//                    ((Button)shape).onRelease(false);
-			//                }
-			//            }
 		}
 	}
 
@@ -75,10 +70,12 @@ public class HUD extends Shape implements ITouchable {
 
 	public void registerTouchableShape(final Shape pShape){
 		this.mRegisteredTouchableShape.add(pShape);
+		pShape.setHUD(true);
 	}
 
 	public void unregisterTouchableShape(final Shape pShape){
 		this.mRegisteredTouchableShape.removeValue(pShape, true);
+		pShape.setHUD(false);
 	}
 
 }

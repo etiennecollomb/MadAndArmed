@@ -67,10 +67,12 @@ public class Scene extends Shape implements ITouchable {
 
 	public void registerTouchableShape(final Shape pShape){
 		this.mRegisteredTouchableShape.add(pShape);
+		pShape.setHUD(false);
 	}
 
 	public void unregisterTouchableShape(final Shape pShape){
 		this.mRegisteredTouchableShape.removeValue(pShape, true);
+		pShape.setHUD(false);
 	}
 
 }

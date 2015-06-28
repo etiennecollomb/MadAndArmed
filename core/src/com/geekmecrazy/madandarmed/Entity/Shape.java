@@ -43,7 +43,9 @@ public class Shape extends Entity implements IColor, ITouchable {
 
 	private int gridPosX;
 	private int gridPosY;
-
+	
+	/** is on HUD or Scene */
+	private boolean isHUD; //used in SelectedShapeManager
 
 	// ===========================================================
 	// Constructors
@@ -145,6 +147,14 @@ public class Shape extends Entity implements IColor, ITouchable {
 
 	public void setGridPosY(int gridPosY) {
 		this.gridPosY = gridPosY;
+	}
+
+	public boolean isHUD() {
+		return isHUD;
+	}
+
+	public void setHUD(boolean isHUD) {
+		this.isHUD = isHUD;
 	}
 
 	// ===========================================================
@@ -278,6 +288,8 @@ public class Shape extends Entity implements IColor, ITouchable {
 
 		this.setGridPosX(0);
 		this.setGridPosY(0);
+		
+		this.setHUD(false);
 
 	}
 
@@ -304,6 +316,8 @@ public class Shape extends Entity implements IColor, ITouchable {
 
 		this.setGridPosX(0);
 		this.setGridPosY(0);
+		
+		this.setHUD(false);
 
 	}
 
