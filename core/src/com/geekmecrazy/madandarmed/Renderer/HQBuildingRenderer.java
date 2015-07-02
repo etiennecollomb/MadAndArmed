@@ -8,6 +8,8 @@ import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
 import com.geekmecrazy.madandarmed.Game.Tween.SpriteTween;
+import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
+
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
@@ -155,7 +157,8 @@ public class HQBuildingRenderer extends Shape/* implements IMoveable*/{
     }
 
     public void unfocus(){
-        GlobalManager.moveable = true;
+    	SelectedShapeManager.removeMe(); /** no more need to lock the touch */
+    	
         this.setState(ShapeState.UNFOCUSED);
         leftArrow.setVisible(false);
         rightArrow.setVisible(false);
@@ -172,7 +175,9 @@ public class HQBuildingRenderer extends Shape/* implements IMoveable*/{
     }
     
     public void focus(){
-    	GlobalManager.moveable = false;
+    	SelectedShapeManager.lockTouch(); /** a button lock the touch */
+    	SelectedShapeManager.addMe(this);
+    	
         this.setState(ShapeState.FOCUSED);
         leftArrow.setVisible(true);
         rightArrow.setVisible(true);

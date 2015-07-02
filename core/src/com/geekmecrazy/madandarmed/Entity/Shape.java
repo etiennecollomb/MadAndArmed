@@ -4,9 +4,6 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
 import com.geekmecrazy.madandarmed.Game.Scene.OrthoGrid;
 import com.geekmecrazy.madandarmed.IA.IsoMapState.Type;
-import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
-import com.geekmecrazy.madandarmed.Input.MyGestureDetector.GestureType;
-import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
 import com.geekmecrazy.madandarmed.Input.TouchData;
 import com.badlogic.gdx.graphics.Color;
 
@@ -43,9 +40,9 @@ public class Shape extends Entity implements IColor, ITouchable {
 
 	private int gridPosX;
 	private int gridPosY;
-	
-	/** is on HUD or Scene */
-	private boolean isHUD; //used in SelectedShapeManager
+
+	/** Is part of HUD */
+	private boolean isHUD; //Used in selectedShapeManager
 
 	// ===========================================================
 	// Constructors
@@ -383,7 +380,7 @@ public class Shape extends Entity implements IColor, ITouchable {
 
 			float effectiveViewportWidth = GlobalManager.camera.viewportWidth * GlobalManager.camera.zoom;
 			float effectiveViewportHeight = GlobalManager.camera.viewportHeight * GlobalManager.camera.zoom;
-
+			
 			/**OFF of gridMapState */
 			this.getIsoGrid().getIsoMapState().remove(this);
 			/** New Position */

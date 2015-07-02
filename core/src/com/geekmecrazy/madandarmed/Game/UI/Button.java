@@ -77,12 +77,13 @@ public class Button extends Shape{
     
     @Override
     public void onPanEvent(){
-    	/** outside the button */
+    	/** outside */
     	if(!this.contains(TouchData.screenTouchX, TouchData.screenTouchY)){
     		if(this.isPressed())
                 this.onRelease(false);
         	SelectedShapeManager.removeMe(); /** no more need to lock the touch */
         	this.tweenRegress();
+        	this.tweenRegress(); //TODO : ?? 2 fois car sinon le button reste figé parfois en mode "expand"
     	}
     		
     }

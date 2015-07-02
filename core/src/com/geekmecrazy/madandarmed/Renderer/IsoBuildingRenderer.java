@@ -6,6 +6,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
 import com.geekmecrazy.madandarmed.Game.Tween.SpriteTween;
+import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
 
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
@@ -44,7 +45,7 @@ public class IsoBuildingRenderer extends BuildingRenderer {
             isDark = true;
         }
     }
-
+    
 	@Override
 	public void onLongPressEvent(){
 		this.setFocusState();
@@ -95,7 +96,8 @@ public class IsoBuildingRenderer extends BuildingRenderer {
     }
 
     public void unfocus(){
-        GlobalManager.moveable = true;
+    	SelectedShapeManager.removeMe(); /** no more need to lock the touch */
+    	
         this.setState(ShapeState.UNFOCUSED);
     }
     
@@ -105,7 +107,9 @@ public class IsoBuildingRenderer extends BuildingRenderer {
     }
     
     public void focus(){
-    	GlobalManager.moveable = false;
+    	SelectedShapeManager.lockTouch(); /** a button lock the touch */
+    	SelectedShapeManager.addMe(this);
+    	
         this.setState(ShapeState.FOCUSED);
     }
 

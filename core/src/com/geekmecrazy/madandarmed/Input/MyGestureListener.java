@@ -1,18 +1,10 @@
 package com.geekmecrazy.madandarmed.Input;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.Game.Tween.OrthographicCameraTween;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-
-import aurelienribon.tweenengine.Timeline;
-import aurelienribon.tweenengine.Tween;
-import aurelienribon.tweenengine.equations.Quad;
-import aurelienribon.tweenengine.equations.Quint;
 
 public class MyGestureListener implements GestureDetector.GestureListener {
 
@@ -26,7 +18,6 @@ public class MyGestureListener implements GestureDetector.GestureListener {
 //    private Vector2 delta1 = new Vector2(0,0);
 //    private Vector2 delta2 = new Vector2(0,0);
 
-    private Tween cameraVelocityTween;
     private int numberOfActiveTouch = 0;
 
 
@@ -78,46 +69,25 @@ public class MyGestureListener implements GestureDetector.GestureListener {
     @Override
     public boolean fling(final float pVelocityX, final float pVelocityY, final int pButton) {
 
-//    	TouchData.gestureType = MyGestureDetector.GestureType.FLING;
-//    	TouchData.velocityX = pVelocityX;
-//    	TouchData.velocityX = pVelocityY;
-//        ScreenManager.getCurrentScreen().onTouch();
+    	TouchData.gestureType = MyGestureDetector.GestureType.FLING;
+    	TouchData.velocityX = pVelocityX;
+    	TouchData.velocityY = pVelocityY;
+    	ScreenManager.getCurrentScreen().onTouch();
 
-        if(!SelectedShapeManager.isTouchLocked) {
-        	
-            float velocityRatio = 0.3f;
-            float targetX = GlobalManager.camera.position.x - velocityRatio* pVelocityX *GlobalManager.camera.zoom;
-            float targetY = GlobalManager.camera.position.y + velocityRatio* pVelocityY *GlobalManager.camera.zoom;
-            
-	        if(cameraVelocityTween != null) cameraVelocityTween.kill();
-	        cameraVelocityTween = Tween.to(GlobalManager.camera, OrthographicCameraTween.TRANSLATE, 1f)
-	                    .target(targetX, targetY)
-	                    .ease(Quint.OUT)
-	                    .start(GlobalManager.getTweenManager());
-        }
-        
         return false;
     }
 
 
     @Override
     public boolean pan(final float pX, final float pY, final float pDeltaX, final float pDeltaY) {
-        //MOUSE CONTROL
-        if(cameraVelocityTween != null) cameraVelocityTween.kill();
-        
+
         TouchData.gestureType = MyGestureDetector.GestureType.PAN;
     	TouchData.touchX = pX;
     	TouchData.touchY = pY;
     	TouchData.deltaX = pDeltaX;
     	TouchData.deltaY = pDeltaY;
         ScreenManager.getCurrentScreen().onTouch();
-
-        /** rien de selectionner dans Screen n'empeche le scroll de la camera... */
-        if(!SelectedShapeManager.isTouchLocked) {
-            GlobalManager.camera.translate(-pDeltaX * GlobalManager.camera.zoom, pDeltaY * GlobalManager.camera.zoom);
-            
-        }
-
+		
         return false;
     }
 

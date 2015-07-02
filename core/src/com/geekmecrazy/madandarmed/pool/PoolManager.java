@@ -126,7 +126,7 @@ public class PoolManager {
 		attaquePool = new Pool<Attaque>(STARTING_ALLOCATE_ATTAQUE){
 			@Override
 			protected Attaque newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + Attaque.class.getName());
+                //System.out.println("#__ POOL __# allocate new Object : " + Attaque.class.getName());
 				return new Attaque();
 			}
 		};
@@ -134,7 +134,7 @@ public class PoolManager {
 		creepPool = new Pool<Creep>(STARTING_ALLOCATE_CREEP){
 			@Override
 			protected Creep newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + Creep.class.getName());
+                //System.out.println("#__ POOL __# allocate new Object : " + Creep.class.getName());
                 return new Creep();
 			 }
 		};
@@ -142,7 +142,7 @@ public class PoolManager {
 		weaponPool = new Pool<WeaponPattern>(STARTING_ALLOCATE_WEAPON){
 			@Override
 			protected WeaponPattern newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + WeaponPattern.class.getName());
+                //System.out.println("#__ POOL __# allocate new Object : " + WeaponPattern.class.getName());
                 return new WeaponPattern();
 			 }
 		};
@@ -150,7 +150,7 @@ public class PoolManager {
 		missilePool = new Pool<Missile>(STARTING_ALLOCATE_MISSILE){
 			@Override
 			protected Missile newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + Missile.class.getName());
+                //System.out.println("#__ POOL __# allocate new Object : " + Missile.class.getName());
 				return new Missile();
 			 }
 		};
@@ -158,7 +158,7 @@ public class PoolManager {
 		lifePool = new Pool<Life>(STARTING_ALLOCATE_LIFE){
 			@Override
 			protected Life newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + Life.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + Life.class.getName());
 				return new Life();
 			 }
 		};
@@ -166,7 +166,7 @@ public class PoolManager {
 		groundPathFinding = new Pool<GroundPathFinding>(STARTING_ALLOCATE_GROUNDPATHFINDING){
 			@Override
 			protected GroundPathFinding newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + GroundPathFinding.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + GroundPathFinding.class.getName());
 				return new GroundPathFinding();
 			 }
 		};
@@ -174,7 +174,7 @@ public class PoolManager {
 		airPathFindingPool = new Pool<AirPathFinding>(STARTING_ALLOCATE_AIRPATHFINDING){
 			@Override
 			protected AirPathFinding newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + AirPathFinding.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + AirPathFinding.class.getName());
 				return new AirPathFinding();
 			 }
 		};
@@ -182,7 +182,7 @@ public class PoolManager {
 		attackBehaviorPool = new Pool<AttackBehavior>(STARTING_ALLOCATE_ATTACKBEHAVIOR){
 			@Override
 			protected AttackBehavior newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + AttackBehavior.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + AttackBehavior.class.getName());
 				return new AttackBehavior();
 			 }
 		};
@@ -190,7 +190,7 @@ public class PoolManager {
 		groundBehaviorPool = new Pool<GroundMoveBehavior>(STARTING_ALLOCATE_GROUNDBEHAVIOR){
 			@Override
 			protected GroundMoveBehavior newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + GroundMoveBehavior.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + GroundMoveBehavior.class.getName());
 				return new GroundMoveBehavior();
 			 }
 		};
@@ -198,7 +198,7 @@ public class PoolManager {
 		airBehaviorPool = new Pool<AirMoveBehavior>(STARTING_ALLOCATE_AIRBEHAVIOR){
 			@Override
 			protected AirMoveBehavior newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + AirMoveBehavior.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + AirMoveBehavior.class.getName());
 				return new AirMoveBehavior();
 			 }
 		};
@@ -206,7 +206,7 @@ public class PoolManager {
 		turretPool = new Pool<Turret>(STARTING_ALLOCATE_TURRET){
 			@Override
 			protected Turret newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + Turret.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + Turret.class.getName());
 				return new Turret();
 			 }
 		};
@@ -214,7 +214,7 @@ public class PoolManager {
 		barricadePool = new Pool<Barricade>(STARTING_ALLOCATE_BARRICADE){
 			@Override
 			protected Barricade newObject() {
-                System.out.println("#__ POOL __# allocate new Object : " + Barricade.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + Barricade.class.getName());
 				return new Barricade();
 			 }
 		};

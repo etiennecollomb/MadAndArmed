@@ -17,13 +17,10 @@ import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Matrix4;
@@ -80,8 +77,6 @@ public class GlobalManager {
 	private static VirtualViewport vvp;
 
 	private static TweenManager tweenManager;
-
-	public static boolean moveable;
 
 	public static Random random;
 
@@ -181,7 +176,6 @@ public class GlobalManager {
 		GlobalManager.tweenManager = new TweenManager();
 		this.createCameras();
 		this.createInput();
-		GlobalManager.moveable = true;
 
 		//SpriteBatches
 		GlobalManager.spriteBatchScene = new SpriteBatch();

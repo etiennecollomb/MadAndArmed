@@ -1,6 +1,7 @@
 package com.geekmecrazy.madandarmed.Game.UI;
 
 import com.geekmecrazy.madandarmed.Entity.Shape;
+import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
 import com.geekmecrazy.madandarmed.Input.TouchData;
 
 
@@ -20,7 +21,7 @@ public class Layout extends Shape {
 
 	private Dimension dimension_X;
 	private Dimension dimension_Y;
-	
+
 
 	// ===========================================================
 	// Constructors
@@ -84,15 +85,37 @@ public class Layout extends Shape {
 
 		this.setOrientation(Orientation.VERTICAL);
 	}
-	
+
 	/** Touch Events */
-	public void onTouchDownEvent(final float pTouchAreaLocalX, final float pTouchAreaLocalY){
-		
+	@Override
+	public void onTouchDownEvent(){
+		SelectedShapeManager.lockTouch(); /** a button lock the touch */
+		SelectedShapeManager.addMe(this);
 	}
-	
+
+	@Override
+	public void onTouchUpEvent(){
+		SelectedShapeManager.removeMe(); /** no more need to lock the touch */
+	}
+
+	public void onFlingEvent(){
+
+//		float velocityRatio = 0.3f;
+//		float targetX = GlobalManager.camera.position.x - velocityRatio* TouchData.velocityX *GlobalManager.camera.zoom;
+//		float targetY = GlobalManager.camera.position.y + velocityRatio* TouchData.velocityY *GlobalManager.camera.zoom;
+//
+//		if(cameraVelocityTween != null) cameraVelocityTween.kill();
+//		cameraVelocityTween = Tween.to(GlobalManager.camera, OrthographicCameraTween.TRANSLATE, 1f)
+//				.target(targetX, targetY)
+//				.ease(Quint.OUT)
+//				.start(GlobalManager.getTweenManager());
+
+	}
+
+
 	@Override
 	public void onPanEvent() {
-		
+
 		/** Swipe children */
 		switch(this.getOrientation()){
 		case VERTICAL:
@@ -108,7 +131,7 @@ public class Layout extends Shape {
 		default :
 			break;
 		}
-		
+
 	}
 
 	// ===========================================================
@@ -170,7 +193,7 @@ public class Layout extends Shape {
 		default:
 			break;
 		}
-		
+
 		this.updateChildrenPositions();
 		this.updateSize();
 

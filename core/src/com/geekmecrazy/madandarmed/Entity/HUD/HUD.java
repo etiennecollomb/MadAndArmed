@@ -1,18 +1,10 @@
 package com.geekmecrazy.madandarmed.Entity.HUD;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.ITouchable;
 import com.geekmecrazy.madandarmed.Entity.Shape;
-import com.geekmecrazy.madandarmed.Game.UI.Button;
-import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
-import com.geekmecrazy.madandarmed.Input.MyGestureListener;
 import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
 import com.geekmecrazy.madandarmed.Input.TouchData;
-import com.geekmecrazy.madandarmed.MadAndArmed;
-import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
 public class HUD extends Shape implements ITouchable {
@@ -43,16 +35,21 @@ public class HUD extends Shape implements ITouchable {
 
 		int size = this.mRegisteredTouchableShape.size;
 		for(int i=0; i<size; i++){
-			if(SelectedShapeManager.isTouchLocked) /** si locked on ne teste plus le reste */
-				break;
-
 			Shape shape = this.mRegisteredTouchableShape.get(i);
 			if(shape.contains(TouchData.screenTouchX, TouchData.screenTouchY)){
 				shape.onTouch();
+				if(SelectedShapeManager.isTouchLocked) /** si locked on ne teste plus le reste */
+					break;
 			}
 		}
-	}
+		
+		if(!SelectedShapeManager.isTouchLocked) {
+			/** if touch not locked, we play event on shape itself */
+			super.onTouch();
+		}
 
+
+	}
 
 	@Override
 	public boolean contains(final float pX, final float pY){

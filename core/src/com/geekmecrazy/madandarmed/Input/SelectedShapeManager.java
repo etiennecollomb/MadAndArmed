@@ -11,8 +11,8 @@ public class SelectedShapeManager {
 	 * Les shapes doivent gerer eux meme si elles lockent ou pas
 	 * Si locked, on appel le doTouch qui s apliquera qu aux selected Shapes
 	 */
-	public static ArrayList<Shape> selectedSceneShapes = new ArrayList<Shape>();
 	public static ArrayList<Shape> selectedHUDShapes = new ArrayList<Shape>();
+	public static ArrayList<Shape> selectedSceneShapes = new ArrayList<Shape>();
 
 	public static boolean isTouchLocked = false;
 	
@@ -37,30 +37,39 @@ public class SelectedShapeManager {
 	/** isTouchLocked can be set in onTouch() from one shape */
 	public static void doTouch(){
 		
-    	TouchData.convertToHud();
-    	doTouch(selectedHUDShapes);
-    	
-    	TouchData.convertToScene();
-    	doTouch(selectedSceneShapes);
-
-    	if(selectedHUDShapes.size() == 0 && selectedSceneShapes.size() == 0)
-			isTouchLocked = false; //no more shape lock touch
-			
-	}
-	
-	private static void doTouch(ArrayList<Shape> selectedShapes){
+		int size;
 		
-		int size = selectedShapes.size();
+		/** HUD */
+		TouchData.convertToHud();
+		size = selectedHUDShapes.size();
 		for(int i=size-1; i>=0; i--){
 			
 			isRemoveMe = false;
-			selectedShapes.get(i).onTouch();
+			selectedHUDShapes.get(i).onTouch();
 
 			/** si le removeShape() a ete appele dans le onTouch */
 			if(isRemoveMe){
-				selectedShapes.remove(i);
+				selectedHUDShapes.remove(i);
 			}
 		}
+		
+		/** Scene */
+		TouchData.convertToScene();
+		size = selectedSceneShapes.size();
+		for(int i=size-1; i>=0; i--){
+			
+			isRemoveMe = false;
+			selectedSceneShapes.get(i).onTouch();
+
+			/** si le removeShape() a ete appele dans le onTouch */
+			if(isRemoveMe){
+				selectedSceneShapes.remove(i);
+			}
+		}
+
+		if(selectedHUDShapes.size() == 0 && selectedSceneShapes.size() == 0)
+			isTouchLocked = false; //no more shape lock touch
+			
 	}
 	
 	public static void addMe(Shape shape){

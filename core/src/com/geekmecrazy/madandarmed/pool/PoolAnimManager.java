@@ -181,7 +181,7 @@ public class PoolAnimManager {
 
 			@Override
 			protected UniqueActionRenderer newObject() {
-				System.out.println("#__ POOL __# allocate new Object : " + UniqueActionRenderer.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + UniqueActionRenderer.class.getName());
 				return new UniqueActionRenderer();
 			}
 
@@ -200,7 +200,7 @@ public class PoolAnimManager {
 
 			@Override
 			protected CreepRenderer newObject() {
-				System.out.println("#__ POOL __# allocate new Object : " + CreepRenderer.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + CreepRenderer.class.getName());
 				return new CreepRenderer();
 			}
 
@@ -219,7 +219,7 @@ public class PoolAnimManager {
 
 			@Override
 			protected TurretRenderer newObject() {
-				System.out.println("#__ POOL __# allocate new Object : " + TurretRenderer.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + TurretRenderer.class.getName());
 				return new TurretRenderer();
 			}
 
@@ -238,7 +238,7 @@ public class PoolAnimManager {
 
 			@Override
 			protected BarricadeRenderer newObject() {
-				System.out.println("#__ POOL __# allocate new Object : " + BarricadeRenderer.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + BarricadeRenderer.class.getName());
 				return new BarricadeRenderer();
 			}
 
@@ -257,7 +257,7 @@ public class PoolAnimManager {
 
 			@Override
 			protected MissileRenderer newObject() {
-				System.out.println("#__ POOL __# allocate new Object : " + MissileRenderer.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + MissileRenderer.class.getName());
 				return new MissileRenderer();
 			}
 
@@ -276,7 +276,7 @@ public class PoolAnimManager {
 
 			@Override
 			protected LifeBarRenderer newObject() {
-				System.out.println("#__ POOL __# allocate new Object : " + LifeBarRenderer.class.getName());
+				//System.out.println("#__ POOL __# allocate new Object : " + LifeBarRenderer.class.getName());
 				return new LifeBarRenderer();
 			}
 
