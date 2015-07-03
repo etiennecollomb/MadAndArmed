@@ -120,7 +120,7 @@ public class Layout extends Shape {
 		switch(this.getOrientation()){
 		case VERTICAL:
 			for(int i=this.getChildren().size-1; i>=0; i--) {
-				this.getChildren().get(i).setY( this.getChildren().get(i).getY() + TouchData.screenDeltaY );
+				this.getChildren().get(i).setY( this.getChildren().get(i).getY() - TouchData.screenDeltaY );
 			}
 			break;
 		case HORIZONTAL:

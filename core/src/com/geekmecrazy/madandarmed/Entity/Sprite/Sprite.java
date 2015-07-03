@@ -4,6 +4,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Game.UI.Layout;
+import com.geekmecrazy.madandarmed.Game.UI.Layout.Orientation;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 import com.badlogic.gdx.Gdx;
@@ -247,25 +248,54 @@ public class Sprite extends Shape {
 		if(this.getParent() != null && this.getParent() instanceof Layout){
 
 			this.setVisible(true);
+			Layout layout = (Layout)this.getParent();
 
-			/** outside the layout */
-			if(this.getX()+this.getWidth() < 0 || this.getX() > this.getParent().getWidth()){
-				this.setVisible(false);
+			if(layout.getOrientation() == Orientation.HORIZONTAL){
+
+				/** outside the layout */
+				if(this.getX()+this.getWidth() < 0 || this.getX() > layout.getWidth()){
+					this.setVisible(false);
+				}
+				/** left border */
+				if(this.getX()<0){
+
+					float rapport = -this.getX() / this.getWidth();
+					this.setDraw_x(this.getSceneX() -this.getX() );
+					this.setDraw_srcX((int)(rapport*this.getTextureRegion().getRegionWidth()));
+				}
+				/** right border */
+				else if(this.getX()+this.getWidth() > layout.getWidth()){
+
+					float rapport = (layout.getWidth()-this.getX()) / this.getWidth();
+					this.setDraw_srcWidth((int)(rapport*this.getTextureRegion().getRegionWidth()));
+					this.setDraw_width(rapport*this.getWidth());
+				}
 			}
-			/** left border */
-			if(this.getX()<0){
-				
-				float rapport = -this.getX() / this.getWidth();
-				this.setDraw_x(this.getSceneX() -this.getX() );
-				this.setDraw_srcX((int)(rapport*this.getTextureRegion().getRegionWidth()));
+			else if(layout.getOrientation() == Orientation.VERTICAL){
+
+				/** outside the layout */
+				if(this.getY()+this.getHeight() < 0 || this.getY() > layout.getHeight()){
+					this.setVisible(false);
+				}
+				/** down border */
+				if(this.getY()<0){
+					
+					float rapport = (this.getHeight() + this.getY()) / this.getHeight();
+					this.setDraw_srcHeight((int)(rapport*this.getTextureRegion().getRegionHeight()));
+					this.setDraw_height(rapport*this.getHeight());
+					this.setDraw_y(this.getSceneY() - this.getY() );
+				}
+				/** up border */
+				else if(this.getY()+this.getHeight() > layout.getHeight()){
+
+					float partOutside = this.getY()+this.getHeight()-layout.getHeight();
+					float rapport = (partOutside) / this.getHeight();
+					this.setDraw_y(this.getSceneY() - partOutside );
+					this.setDraw_srcY((int)(rapport*this.getTextureRegion().getRegionHeight()));
+				}
 			}
-			/** right border */
-			else if(this.getX()+this.getWidth() > this.getParent().getWidth()){
-				
-				float rapport = (this.getParent().getWidth()-this.getX()) / this.getWidth();
-				this.setDraw_srcWidth((int)(rapport*this.getTextureRegion().getRegionWidth()));
-				this.setDraw_width(rapport*this.getWidth());
-			}
+
+
 		}
 	}
 
