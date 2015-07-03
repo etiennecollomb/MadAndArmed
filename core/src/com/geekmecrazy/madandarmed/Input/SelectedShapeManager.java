@@ -62,7 +62,6 @@ public class SelectedShapeManager {
 			/** si le removeShape() a ete appele dans le onTouch */
 			if(isRemoveMe){
 				selectedShapes.remove(i);
-				System.out.println("###__ REMOOOVE");
 			}
 		}
 	}

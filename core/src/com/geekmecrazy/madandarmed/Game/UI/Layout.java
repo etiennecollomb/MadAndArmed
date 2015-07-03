@@ -21,7 +21,10 @@ public class Layout extends Shape {
 
 	private Dimension dimension_X;
 	private Dimension dimension_Y;
-
+	
+	/** Decallage Horizontal ou Vertical du contenu du Layout */
+	private float shiftX;
+	private float shiftY;
 
 	// ===========================================================
 	// Constructors
@@ -57,6 +60,22 @@ public class Layout extends Shape {
 
 	public void setDimension_Y(Dimension dimension_Y) {
 		this.dimension_Y = dimension_Y;
+	}
+
+	public float getShiftX() {
+		return shiftX;
+	}
+
+	public void setShiftX(float shiftX) {
+		this.shiftX = shiftX;
+	}
+
+	public float getShiftY() {
+		return shiftY;
+	}
+
+	public void setShiftY(float shiftY) {
+		this.shiftY = shiftY;
 	}
 
 	// ===========================================================
@@ -100,38 +119,30 @@ public class Layout extends Shape {
 
 	public void onFlingEvent(){
 
-//		float velocityRatio = 0.3f;
-//		float targetX = GlobalManager.camera.position.x - velocityRatio* TouchData.velocityX *GlobalManager.camera.zoom;
-//		float targetY = GlobalManager.camera.position.y + velocityRatio* TouchData.velocityY *GlobalManager.camera.zoom;
-//
-//		if(cameraVelocityTween != null) cameraVelocityTween.kill();
-//		cameraVelocityTween = Tween.to(GlobalManager.camera, OrthographicCameraTween.TRANSLATE, 1f)
-//				.target(targetX, targetY)
-//				.ease(Quint.OUT)
-//				.start(GlobalManager.getTweenManager());
+		//		float velocityRatio = 0.3f;
+		//		float targetX = GlobalManager.camera.position.x - velocityRatio* TouchData.velocityX *GlobalManager.camera.zoom;
+		//		float targetY = GlobalManager.camera.position.y + velocityRatio* TouchData.velocityY *GlobalManager.camera.zoom;
+		//
+		//		if(cameraVelocityTween != null) cameraVelocityTween.kill();
+		//		cameraVelocityTween = Tween.to(GlobalManager.camera, OrthographicCameraTween.TRANSLATE, 1f)
+		//				.target(targetX, targetY)
+		//				.ease(Quint.OUT)
+		//				.start(GlobalManager.getTweenManager());
 
 	}
 
 
 	@Override
 	public void onPanEvent() {
-
-		/** Swipe children */
-		switch(this.getOrientation()){
-		case VERTICAL:
-			for(int i=this.getChildren().size-1; i>=0; i--) {
-				this.getChildren().get(i).setY( this.getChildren().get(i).getY() - TouchData.screenDeltaY );
-			}
-			break;
-		case HORIZONTAL:
-			for(int i=0; i<this.getChildren().size; i++) {
-				this.getChildren().get(i).setX( this.getChildren().get(i).getX() + TouchData.screenDeltaX );
-			}
-			break;
-		default :
-			break;
-		}
-
+		this.setShiftX(TouchData.screenDeltaX);
+		this.setShiftY(-TouchData.screenDeltaY);
+		shiftPosition();
+	}
+	
+	@Override
+	public void onUpdate() {
+		
+		super.onUpdate();
 	}
 
 	// ===========================================================
@@ -226,7 +237,6 @@ public class Layout extends Shape {
 		float newWidth = 0;
 		float newHeight = 0;
 
-
 		int size = this.getChildren().size;
 		for(int i=0; i<size; i++) {
 			switch(this.getOrientation()) {
@@ -271,6 +281,26 @@ public class Layout extends Shape {
 		if(this.getParent() != null && this.getParent() instanceof Layout){
 			((Layout)this.getParent()).updateSize();
 		}
+	}
+	
+	public void shiftPosition() {
+
+		/** Swipe children */
+		switch(this.getOrientation()){
+		case VERTICAL:
+			for(int i=this.getChildren().size-1; i>=0; i--) {
+				this.getChildren().get(i).setY( this.getChildren().get(i).getY() + this.shiftY );
+			}
+			break;
+		case HORIZONTAL:
+			for(int i=0; i<this.getChildren().size; i++) {
+				this.getChildren().get(i).setX( this.getChildren().get(i).getX() + this.shiftX );
+			}
+			break;
+		default :
+			break;
+		}
+
 	}
 
 

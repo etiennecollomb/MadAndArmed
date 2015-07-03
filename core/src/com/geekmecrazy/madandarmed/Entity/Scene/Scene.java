@@ -72,18 +72,15 @@ public class Scene extends Shape implements ITouchable {
 
 
 	public void onFlingEvent(){
-		if(!SelectedShapeManager.isTouchLocked) {
+		float velocityRatio = 0.3f;
+		float targetX = GlobalManager.camera.position.x - velocityRatio* TouchData.velocityX *GlobalManager.camera.zoom;
+		float targetY = GlobalManager.camera.position.y + velocityRatio* TouchData.velocityY *GlobalManager.camera.zoom;
 
-			float velocityRatio = 0.3f;
-			float targetX = GlobalManager.camera.position.x - velocityRatio* TouchData.velocityX *GlobalManager.camera.zoom;
-			float targetY = GlobalManager.camera.position.y + velocityRatio* TouchData.velocityY *GlobalManager.camera.zoom;
-
-			if(cameraVelocityTween != null) cameraVelocityTween.kill();
-			cameraVelocityTween = Tween.to(GlobalManager.camera, OrthographicCameraTween.TRANSLATE, 1f)
-					.target(targetX, targetY)
-					.ease(Quint.OUT)
-					.start(GlobalManager.getTweenManager());
-		}
+		if(cameraVelocityTween != null) cameraVelocityTween.kill();
+		cameraVelocityTween = Tween.to(GlobalManager.camera, OrthographicCameraTween.TRANSLATE, 1f)
+				.target(targetX, targetY)
+				.ease(Quint.OUT)
+				.start(GlobalManager.getTweenManager());
 	}
 
 
