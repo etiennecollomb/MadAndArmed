@@ -1,8 +1,5 @@
 package com.geekmecrazy.madandarmed.Entity;
 
-import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
-import com.geekmecrazy.madandarmed.Input.MyGestureListener;
-
 public interface ITouchable {
 	
 	// ===========================================================

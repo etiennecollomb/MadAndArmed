@@ -232,6 +232,8 @@ public class Shape extends Entity implements IColor, ITouchable {
 	@Override
 	public boolean contains(final float pX, final float pY){
 
+		if(!this.isVisible()) return false;
+		
 		/** IsoShape */
 		if(this.isIsoShape()){
 			/** Touch in Grid Cases ? */
