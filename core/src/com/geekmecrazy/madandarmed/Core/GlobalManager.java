@@ -4,11 +4,13 @@ import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Tween.ButtonTween;
+import com.geekmecrazy.madandarmed.Game.Tween.LayoutTween;
 import com.geekmecrazy.madandarmed.Game.Tween.OrthographicCameraTween;
 import com.geekmecrazy.madandarmed.Game.Tween.RectangleTween;
 import com.geekmecrazy.madandarmed.Game.Tween.ShapeTween;
 import com.geekmecrazy.madandarmed.Game.Tween.SpriteTween;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
+import com.geekmecrazy.madandarmed.Game.UI.Layout;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.geekmecrazy.madandarmed.Input.MyGestureListener;
 import com.geekmecrazy.madandarmed.Screen.Screen;
@@ -192,6 +194,7 @@ public class GlobalManager {
 		Tween.registerAccessor(Shape.class, new ShapeTween());
 		Tween.registerAccessor(OrthographicCamera.class, new OrthographicCameraTween());
 		Tween.registerAccessor(Sprite.class, new SpriteTween());
+		Tween.registerAccessor(Layout.class, new LayoutTween());
 	}
 
 	/** Set Camera */

@@ -1,6 +1,11 @@
 package com.geekmecrazy.madandarmed.Game.UI;
 
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.equations.Quint;
+
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Shape;
+import com.geekmecrazy.madandarmed.Game.Tween.LayoutTween;
 import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
 import com.geekmecrazy.madandarmed.Input.TouchData;
 
@@ -21,10 +26,14 @@ public class Layout extends Shape {
 
 	private Dimension dimension_X;
 	private Dimension dimension_Y;
-	
+
 	/** Decallage Horizontal ou Vertical du contenu du Layout */
-	private float shiftX;
-	private float shiftY;
+	private float translateX;
+	private float translateY;
+
+	private boolean eraseShift; /** Used for Tween action */
+	
+	private Tween layoutTween;
 
 	// ===========================================================
 	// Constructors
@@ -62,20 +71,28 @@ public class Layout extends Shape {
 		this.dimension_Y = dimension_Y;
 	}
 
-	public float getShiftX() {
-		return shiftX;
+	public float getTranslateX() {
+		return (this.getOrientation() == Orientation.HORIZONTAL)? translateX : 0f;
 	}
 
-	public void setShiftX(float shiftX) {
-		this.shiftX = shiftX;
+	public void setTranslateX(float translateX) {
+		this.translateX = translateX;
 	}
 
-	public float getShiftY() {
-		return shiftY;
+	public float getTranslateY() {
+		return (this.getOrientation() == Orientation.VERTICAL)? translateY : 0f;
 	}
 
-	public void setShiftY(float shiftY) {
-		this.shiftY = shiftY;
+	public void setTranslateY(float translateY) {
+		this.translateY = translateY;
+	}
+
+	public boolean isEraseShift() {
+		return eraseShift;
+	}
+
+	public void setEraseShift(boolean eraseShift) {
+		this.eraseShift = eraseShift;
 	}
 
 	// ===========================================================
@@ -103,6 +120,9 @@ public class Layout extends Shape {
 		super.reset();
 
 		this.setOrientation(Orientation.VERTICAL);
+		this.setLayoutSize(Dimension.WRAP_CONTENT, Dimension.WRAP_CONTENT);
+
+		this.setEraseShift(true);
 	}
 
 	/** Touch Events */
@@ -119,30 +139,52 @@ public class Layout extends Shape {
 
 	public void onFlingEvent(){
 
-		//		float velocityRatio = 0.3f;
-		//		float targetX = GlobalManager.camera.position.x - velocityRatio* TouchData.velocityX *GlobalManager.camera.zoom;
-		//		float targetY = GlobalManager.camera.position.y + velocityRatio* TouchData.velocityY *GlobalManager.camera.zoom;
-		//
-		//		if(cameraVelocityTween != null) cameraVelocityTween.kill();
-		//		cameraVelocityTween = Tween.to(GlobalManager.camera, OrthographicCameraTween.TRANSLATE, 1f)
-		//				.target(targetX, targetY)
-		//				.ease(Quint.OUT)
-		//				.start(GlobalManager.getTweenManager());
+		this.setEraseShift(false);
+		
+		float velocityRatio = 0.003f;
+		float startTranslateX = (this.getOrientation() == Orientation.HORIZONTAL)? velocityRatio* TouchData.velocityX : 0f;
+		float startTranslateY = (this.getOrientation() == Orientation.VERTICAL)?   velocityRatio* TouchData.velocityY : 0f;
+
+		/** limit speed */
+		startTranslateX = (startTranslateX > 1f)? 1f : startTranslateX;
+		startTranslateY = (startTranslateY > 1f)? 1f : startTranslateY;
+		
+		this.setTranslateX(startTranslateX);
+		this.setTranslateY(startTranslateY);
+		
+		if(layoutTween != null) layoutTween.kill();
+		layoutTween = Tween.to(this, LayoutTween.TRANSLATE, 1f)
+				.target(0f,0f)
+				.ease(Quint.OUT)
+				.start(GlobalManager.getTweenManager());
 
 	}
 
 
 	@Override
 	public void onPanEvent() {
-		this.setShiftX(TouchData.screenDeltaX);
-		this.setShiftY(-TouchData.screenDeltaY);
-		shiftPosition();
+		this.setTranslateX(TouchData.screenDeltaX);
+		this.setTranslateY(-TouchData.screenDeltaY);
 	}
-	
+
 	@Override
 	public void onUpdate() {
+
+		if(this.getTranslateX()!=0 || this.getTranslateY()!=0)
+			this.shiftPosition();
+		
+		/** means in this case that the tween action has finished */
+		if(layoutTween == null || layoutTween.isFinished())
+			this.setEraseShift(true);
+
+		/** we clean shift datas for the next onUpdate() */
+		if(this.isEraseShift()){
+			this.setTranslateX(0);
+			this.setTranslateY(0);
+		}
 		
 		super.onUpdate();
+
 	}
 
 	// ===========================================================
@@ -154,6 +196,8 @@ public class Layout extends Shape {
 
 		this.setOrientation(Orientation.VERTICAL);
 		this.setLayoutSize(Dimension.WRAP_CONTENT, Dimension.WRAP_CONTENT);
+
+		this.setEraseShift(true);
 	}
 
 	public void setLayoutSize(Dimension pDimension_X, Dimension pDimension_Y){
@@ -282,19 +326,19 @@ public class Layout extends Shape {
 			((Layout)this.getParent()).updateSize();
 		}
 	}
-	
-	public void shiftPosition() {
 
+	public void shiftPosition() {
+		
 		/** Swipe children */
 		switch(this.getOrientation()){
 		case VERTICAL:
 			for(int i=this.getChildren().size-1; i>=0; i--) {
-				this.getChildren().get(i).setY( this.getChildren().get(i).getY() + this.shiftY );
+				this.getChildren().get(i).setY( this.getChildren().get(i).getY() + this.getTranslateY() );
 			}
 			break;
 		case HORIZONTAL:
 			for(int i=0; i<this.getChildren().size; i++) {
-				this.getChildren().get(i).setX( this.getChildren().get(i).getX() + this.shiftX );
+				this.getChildren().get(i).setX( this.getChildren().get(i).getX() + this.getTranslateX() );
 			}
 			break;
 		default :
