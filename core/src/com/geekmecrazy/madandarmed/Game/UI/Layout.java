@@ -31,8 +31,9 @@ public class Layout extends Shape {
 	private float translateX;
 	private float translateY;
 
+	private boolean outBorder; /** check for outside of layout */
 	private boolean eraseShift; /** Used for Tween action */
-	
+
 	private Tween layoutTween;
 
 	// ===========================================================
@@ -95,6 +96,14 @@ public class Layout extends Shape {
 		this.eraseShift = eraseShift;
 	}
 
+	public boolean isOutBorder() {
+		return outBorder;
+	}
+
+	public void setOutBorder(boolean outBorder) {
+		this.outBorder = outBorder;
+	}
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
@@ -140,18 +149,21 @@ public class Layout extends Shape {
 	public void onFlingEvent(){
 
 		this.setEraseShift(false);
-		
+
 		float velocityRatio = 0.003f;
 		float startTranslateX = (this.getOrientation() == Orientation.HORIZONTAL)? velocityRatio* TouchData.velocityX : 0f;
-		float startTranslateY = (this.getOrientation() == Orientation.VERTICAL)?   velocityRatio* TouchData.velocityY : 0f;
+		float startTranslateY = (this.getOrientation() == Orientation.VERTICAL)?   -velocityRatio* TouchData.velocityY : 0f;
 
 		/** limit speed */
-		startTranslateX = (startTranslateX > 1f)? 1f : startTranslateX;
-		startTranslateY = (startTranslateY > 1f)? 1f : startTranslateY;
-		
+		float maxSpeed = 0.5f;
+		startTranslateX = (startTranslateX > maxSpeed)? maxSpeed : startTranslateX;
+		startTranslateX = (startTranslateX < -maxSpeed)? -maxSpeed : startTranslateX;
+		startTranslateY = (startTranslateY > maxSpeed)? maxSpeed : startTranslateY;
+		startTranslateY = (startTranslateY < -maxSpeed)? -maxSpeed : startTranslateY;
+
 		this.setTranslateX(startTranslateX);
 		this.setTranslateY(startTranslateY);
-		
+
 		if(layoutTween != null) layoutTween.kill();
 		layoutTween = Tween.to(this, LayoutTween.TRANSLATE, 1f)
 				.target(0f,0f)
@@ -172,7 +184,7 @@ public class Layout extends Shape {
 
 		if(this.getTranslateX()!=0 || this.getTranslateY()!=0)
 			this.shiftPosition();
-		
+
 		/** means in this case that the tween action has finished */
 		if(layoutTween == null || layoutTween.isFinished())
 			this.setEraseShift(true);
@@ -182,7 +194,7 @@ public class Layout extends Shape {
 			this.setTranslateX(0);
 			this.setTranslateY(0);
 		}
-		
+
 		super.onUpdate();
 
 	}
@@ -197,6 +209,7 @@ public class Layout extends Shape {
 		this.setOrientation(Orientation.VERTICAL);
 		this.setLayoutSize(Dimension.WRAP_CONTENT, Dimension.WRAP_CONTENT);
 
+		this.setOutBorder(false);
 		this.setEraseShift(true);
 	}
 
@@ -328,17 +341,44 @@ public class Layout extends Shape {
 	}
 
 	public void shiftPosition() {
-		
+
 		/** Swipe children */
 		switch(this.getOrientation()){
 		case VERTICAL:
+
+			float shifY = this.getTranslateY();
+			
+//			if(){
+//
+//			}
+//			else if(){
+//
+//			}
+			
 			for(int i=this.getChildren().size-1; i>=0; i--) {
-				this.getChildren().get(i).setY( this.getChildren().get(i).getY() + this.getTranslateY() );
+				this.getChildren().get(i).setY( this.getChildren().get(i).getY() + shifY );
 			}
 			break;
 		case HORIZONTAL:
+			
+			float shifX = this.getTranslateX();
+			
+			/** check out of border */
+			/** Left */
+			if( this.getTranslateX() > 0 && this.getChildren().get(0).getX() + this.getTranslateX() > 0 ){
+				shifX = -this.getChildren().get(0).getX();
+			}
+
+			/** Right */
+			float deltaRight = this.getChildren().get(this.getChildren().size-1).getX()
+					+ this.getChildren().get(this.getChildren().size-1).getWidth()
+					- this.getWidth();
+			if(this.getTranslateX() < 0 && deltaRight + this.getTranslateX() < 0){
+				shifX =  -deltaRight;
+			}
+			
 			for(int i=0; i<this.getChildren().size; i++) {
-				this.getChildren().get(i).setX( this.getChildren().get(i).getX() + this.getTranslateX() );
+				this.getChildren().get(i).setX( this.getChildren().get(i).getX() + shifX );
 			}
 			break;
 		default :

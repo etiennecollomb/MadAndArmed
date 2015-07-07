@@ -108,27 +108,50 @@ public class MenuScreen extends Screen implements IUpdatable {
         
         Sprite sp1 = new Sprite();
         sp1.init(TextureType.BUTTON_UNIT_BACKGROUND);
-        
         Sprite sp2 = new Sprite();
         sp2.init(TextureType.BUTTON_UNIT_BACKGROUND);
-        
         Sprite sp3 = new Sprite();
         sp3.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        Sprite sp4 = new Sprite();
+        sp4.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        Sprite sp5 = new Sprite();
+        sp5.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        Sprite sp6 = new Sprite();
+        sp6.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        Sprite sp7 = new Sprite();
+        sp7.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        Sprite sp8 = new Sprite();
+        sp8.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        Sprite sp9 = new Sprite();
+        sp9.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        Sprite sp10 = new Sprite();
+        sp10.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        Sprite sp11 = new Sprite();
+        sp11.init(TextureType.BUTTON_UNIT_BACKGROUND);
         
         Layout layout_test;
         layout_test = new Layout();
         layout_test.init(0,0);
-        layout_test.setOrientation(Orientation.HORIZONTAL);
-        layout_test.setLayoutSize(7f, Layout.Dimension.WRAP_CONTENT);
-//        layout_test.setOrientation(Orientation.VERTICAL);
-//        layout_test.setLayoutSize(Layout.Dimension.WRAP_CONTENT, 6f);
+//        layout_test.setOrientation(Orientation.HORIZONTAL);
+//        layout_test.setLayoutSize(7f, Layout.Dimension.WRAP_CONTENT);
+        layout_test.setOrientation(Orientation.VERTICAL);
+        layout_test.setLayoutSize(Layout.Dimension.WRAP_CONTENT, 6f);
         layout_test.add(sp1);
         layout_test.add(sp2);
         layout_test.add(sp3);
+        layout_test.add(sp4);
+        layout_test.add(sp5);
+        layout_test.add(sp6);
+        layout_test.add(sp7);
+        layout_test.add(sp8);
+        layout_test.add(sp9);
+        layout_test.add(sp10);
+        layout_test.add(sp11);
 //        layout_test.add(r1);
 //        layout_test.add(r2);
 //        layout_test.add(r3);
-        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER);
+//        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
+        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_LEFT);
         this.getManager().getHUD().registerTouchableShape(layout_test);
         
     }
