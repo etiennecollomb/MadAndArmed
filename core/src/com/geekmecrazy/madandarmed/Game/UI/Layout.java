@@ -348,12 +348,19 @@ public class Layout extends Shape {
 
 			float shifY = this.getTranslateY();
 			
-//			if(){
-//
-//			}
-//			else if(){
-//
-//			}
+			/** check out of border */
+			/** Down */
+			if( this.getTranslateY() > 0 && this.getChildren().get(this.getChildren().size-1).getY() + this.getTranslateY() >0 ){
+				shifY = -this.getChildren().get(this.getChildren().size-1).getY();
+			}
+			
+			/** Up */
+			float deltaUp = this.getChildren().get(0).getY()
+					+ this.getChildren().get(0).getHeight()
+					- this.getHeight();
+			if(this.getTranslateY() < 0 &&  deltaUp + this.getTranslateY() < 0 ){
+				shifY =  -deltaUp;
+			}
 			
 			for(int i=this.getChildren().size-1; i>=0; i--) {
 				this.getChildren().get(i).setY( this.getChildren().get(i).getY() + shifY );

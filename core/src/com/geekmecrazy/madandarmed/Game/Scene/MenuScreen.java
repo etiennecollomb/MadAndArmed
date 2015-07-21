@@ -127,7 +127,7 @@ public class MenuScreen extends Screen implements IUpdatable {
         Sprite sp10 = new Sprite();
         sp10.init(TextureType.BUTTON_UNIT_BACKGROUND);
         Sprite sp11 = new Sprite();
-        sp11.init(TextureType.BUTTON_UNIT_BACKGROUND);
+        sp11.init(TextureType.BUTTON_UNIT_REFLET);
         
         Layout layout_test;
         layout_test = new Layout();
