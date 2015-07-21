@@ -60,7 +60,7 @@ public class MenuScreen extends Screen implements IUpdatable {
                 showWorldScreen();
             }
         });
-        this.getManager().getHUD().registerTouchableShape(worldButton);
+        MenuScreen.getManager().getHUD().registerTouchableShape(worldButton);
 
         hqButton = new Button();
         hqButton.init(0, 0, TextureType.BUTTON_UNIT_BACKGROUND);
@@ -71,7 +71,7 @@ public class MenuScreen extends Screen implements IUpdatable {
                 showHQScreen();
             }
         });
-        this.getManager().getHUD().registerTouchableShape(hqButton);
+        MenuScreen.getManager().getHUD().registerTouchableShape(hqButton);
 
         
         //TEST/////////////////////////////////////////
@@ -132,10 +132,10 @@ public class MenuScreen extends Screen implements IUpdatable {
         Layout layout_test;
         layout_test = new Layout();
         layout_test.init(0,0);
-//        layout_test.setOrientation(Orientation.HORIZONTAL);
-//        layout_test.setLayoutSize(7f, Layout.Dimension.WRAP_CONTENT);
-        layout_test.setOrientation(Orientation.VERTICAL);
-        layout_test.setLayoutSize(Layout.Dimension.WRAP_CONTENT, 6f);
+        layout_test.setOrientation(Orientation.HORIZONTAL);
+        layout_test.setLayoutSize(7f, Layout.Dimension.WRAP_CONTENT);
+//        layout_test.setOrientation(Orientation.VERTICAL);
+//        layout_test.setLayoutSize(Layout.Dimension.WRAP_CONTENT, 6f);
         layout_test.add(sp1);
         layout_test.add(sp2);
         layout_test.add(sp3);
@@ -150,9 +150,9 @@ public class MenuScreen extends Screen implements IUpdatable {
 //        layout_test.add(r1);
 //        layout_test.add(r2);
 //        layout_test.add(r3);
-//        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
-        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_LEFT);
-        this.getManager().getHUD().registerTouchableShape(layout_test);
+        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
+//        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_LEFT);
+        MenuScreen.getManager().getHUD().registerTouchableShape(layout_test);
         
     }
 
