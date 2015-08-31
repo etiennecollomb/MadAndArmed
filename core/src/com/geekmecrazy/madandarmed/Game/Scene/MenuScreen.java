@@ -1,6 +1,7 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
+import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
@@ -8,12 +9,15 @@ import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Scene.FightScene;
 import com.geekmecrazy.madandarmed.Entity.Scene.HQScene;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
+import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
+import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Tween.RectangleTween;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.Layout;
 import com.geekmecrazy.madandarmed.Game.UI.Layout.Orientation;
+import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
@@ -68,7 +72,8 @@ public class MenuScreen extends Screen implements IUpdatable {
         hqButton.setAction(new IAction(){
             @Override
             public void execute(){
-                showHQScreen();
+            	fireThrower(); //TEST
+                //showHQScreen(); //A REMETTRE POUR LE QG
             }
         });
         MenuScreen.getManager().getHUD().registerTouchableShape(hqButton);
@@ -154,6 +159,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 //        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_LEFT);
         MenuScreen.getManager().getHUD().registerTouchableShape(layout_test);
         
+        
     }
 
     @Override
@@ -208,6 +214,43 @@ public class MenuScreen extends Screen implements IUpdatable {
                 })
                 .ease(Quad.OUT)
                 .start(GlobalManager.getTweenManager());
+    }
+    
+    
+    
+    // TEST FIRETHROWER
+    public void fireThrower(){
+    	
+    	int delai = 0;
+    	int delaiIncrement = 5;
+    	float numberOfBalls = 5;
+    	float positionX = 20;
+    	float positionY = 30;
+    	float positionSpaceX = 5;
+    	float positionSpaceY = 10;
+    	float scale = 0.25f;
+    	float scaleIncrement = (1.0f - scale)/numberOfBalls;
+    	
+    	for(int i=0; i<numberOfBalls; i++){
+    		
+    		SpriteSheet sp = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_SB2_64PX, true); 
+	        UniqueActionRenderer asp1 = new UniqueActionRenderer();
+	        asp1.init(sp);
+	        asp1.setScalable(true);
+	        asp1.setScale(scale);
+	        asp1.setStartDelay(delai);
+	        asp1.setPosition(positionX, positionY);
+	        this.getScene().attachChild(asp1);
+	        
+	        delai = delai + delaiIncrement;
+	        positionX = positionX + positionSpaceX;
+	        positionY = positionY + positionSpaceY;
+	        scale = scale + scaleIncrement;
+	        
+    	}
+        
+        
+        
     }
 
 
