@@ -1,6 +1,5 @@
 package com.geekmecrazy.madandarmed.Entity.Sprite;
 
-import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 

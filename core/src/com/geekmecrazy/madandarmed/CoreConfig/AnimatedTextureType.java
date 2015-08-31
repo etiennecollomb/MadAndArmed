@@ -11,10 +11,9 @@ public enum AnimatedTextureType {
 	MISSILE_TYPE_1			("game/missile.png", 64, 64, 1, 1, 1),
 
 	//WEAPON HIT EFFECT8,4
-	MISSILE_EXPLOSION		("game/wind_002_s2_blue.png", 512, 512, 5, 5, 25),
+	MISSILE_EXPLOSION		("game/wind_002_s2_blue.png", 512, 512, 5, 5, 25), //A REVOIR !!!
 	IMPACT_BULLET			("game/metal_impact_strip_64px.png", 256, 64, 4, 1, 3),
-	FIRE_BLAST_SB2_64PX		("game/SB-2_1_64px.png", 512, 512, 8, 8, 64),
-	
+	FIRE_BLAST_001_64PX		("game/SB-2_1_64px.png", 512, 512, 8, 8, 64),
 
 	//DEAD ANIMATION
 	DEAD					("game/deadCreep.png", 512, 64, 8, 1, 8),  //CREEP

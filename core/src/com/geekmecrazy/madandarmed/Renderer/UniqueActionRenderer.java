@@ -5,13 +5,21 @@ import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 
 public class UniqueActionRenderer extends SimpleRenderer  {
 
+	/** Dealy before running the animation **/
+	private int delay = 0;
+	
 	/** One action, can be set on NxN */
-	private int mCurrentFrame;	
+	private int mCurrentFrame;
+
+	/** Speed of the animation
+	n times the cycle speed (ie. 0.5f every 2 frames, 2f skip one frame **/
+	private float animationSpeed;
+	private float animationSpeedModulo;
 
 	// ===========================================================
 	// Constructors
 	// ===========================================================
-	
+
 	public UniqueActionRenderer(){
 		super();
 	}
@@ -19,6 +27,14 @@ public class UniqueActionRenderer extends SimpleRenderer  {
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
+	
+	public float getAnimationSpeed() {
+		return animationSpeed;
+	}
+
+	public void setAnimationSpeed(float animationSpeed) {
+		this.animationSpeed = animationSpeed;
+	}
 
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
@@ -27,13 +43,27 @@ public class UniqueActionRenderer extends SimpleRenderer  {
 	@Override
 	public void onUpdate() {		
 		//on demarre apres le delay
-		if(this.mCurrentFrame>=0 && !this.isFinished()){
+		if(this.delay <= 0 && !this.isFinished()){
 			this.setVisible(true);
 			this.setCurrentFrame(this.mCurrentFrame);
 		}else{
 			this.setVisible(false);
+			this.delay = this.delay - 1;
 		}
-		this.mCurrentFrame++;
+		
+		//Set current frame regarding the animation speed
+		if(this.getAnimationSpeed()<=1.0f){
+			animationSpeedModulo = animationSpeedModulo + this.getAnimationSpeed();
+			if(animationSpeedModulo>1.0f){
+				animationSpeedModulo = animationSpeedModulo - 1.0f;
+				this.mCurrentFrame++;
+			}
+		}else{ // ie. > 1.0f
+			animationSpeedModulo = animationSpeedModulo + this.getAnimationSpeed() % 1.0f;
+			this.mCurrentFrame = this.mCurrentFrame + (int)this.getAnimationSpeed();
+		}
+			
+		
 		
 		//after because OffSet has been modified
 		super.onUpdate();
@@ -44,6 +74,7 @@ public class UniqueActionRenderer extends SimpleRenderer  {
 		super.reset();
 		
 		this.setStartDelay(0);
+		this.setAnimationSpeed(1f);
 	}
 	
 	// ===========================================================
@@ -54,8 +85,13 @@ public class UniqueActionRenderer extends SimpleRenderer  {
 	public void init(final SpriteSheet pSpriteSheet){
 		super.init(pSpriteSheet, 0, 0);
 		
+		this.setAnimationSpeed(1f);
+		
 		this.setStartDelay(0);
 		this.setVisible(false);
+		
+		mCurrentFrame = 0;
+		animationSpeedModulo = 0f;
 	}
 
 	public boolean isFinished(){
@@ -63,8 +99,9 @@ public class UniqueActionRenderer extends SimpleRenderer  {
 	}
 
 	public void setStartDelay(final int pStartDelay){
-		this.mCurrentFrame = -pStartDelay;
+		this.delay = pStartDelay;
 	}
+	
 
 
 }

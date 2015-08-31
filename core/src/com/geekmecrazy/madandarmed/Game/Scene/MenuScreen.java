@@ -20,6 +20,7 @@ import com.geekmecrazy.madandarmed.Game.UI.Layout.Orientation;
 import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
+import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
@@ -72,7 +73,7 @@ public class MenuScreen extends Screen implements IUpdatable {
         hqButton.setAction(new IAction(){
             @Override
             public void execute(){
-            	fireThrower(); //TEST
+            	fireThrower(20f, 30f, 0.71f, 0.71f); //TEST
                 //showHQScreen(); //A REMETTRE POUR LE QG
             }
         });
@@ -219,33 +220,46 @@ public class MenuScreen extends Screen implements IUpdatable {
     
     
     // TEST FIRETHROWER
-    public void fireThrower(){
+    /** from Pos through the direction vector
+     dirX, dirY must be unitary vector
+     */
+    public void fireThrower(final float posX, final float posY, final float dirX, final float dirY){
     	
+    	SpriteSheet sp = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_64PX, true); //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
+		
+    	float positionX = posX;
+    	float positionY = posY;
+    	
+    	float distanceBetweenSprite = (float) (Math.sqrt(2.0f*5.0f*5.0f) * (float)sp.getFrameSize(0, 0)/64.0f); // 5.0f for 64px looks good
+
     	int delai = 0;
-    	int delaiIncrement = 5;
-    	float numberOfBalls = 5;
-    	float positionX = 20;
-    	float positionY = 30;
-    	float positionSpaceX = 5;
-    	float positionSpaceY = 10;
-    	float scale = 0.25f;
-    	float scaleIncrement = (1.0f - scale)/numberOfBalls;
+    	int delaiIncrement = 1;
+    	float numberOfBalls = 7;
+    	float animationSpeedStart = 4.0f;
     	
-    	for(int i=0; i<numberOfBalls; i++){
-    		
-    		SpriteSheet sp = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_SB2_64PX, true); 
-	        UniqueActionRenderer asp1 = new UniqueActionRenderer();
-	        asp1.init(sp);
-	        asp1.setScalable(true);
-	        asp1.setScale(scale);
-	        asp1.setStartDelay(delai);
-	        asp1.setPosition(positionX, positionY);
-	        this.getScene().attachChild(asp1);
+    	float increment, currentValue, scale, animationSpeed;
+    	for(int i=0; i<=numberOfBalls; i++){
+    			        
+    		//Exponential value : Exp(-2) = env. 0 to Exp(0) = 1
+	        increment = -2.0f + (2.0f/numberOfBalls)*(i);
+	        currentValue = (float) Math.exp(increment);
 	        
-	        delai = delai + delaiIncrement;
-	        positionX = positionX + positionSpaceX;
-	        positionY = positionY + positionSpaceY;
-	        scale = scale + scaleIncrement;
+	        scale = currentValue;
+	        animationSpeed = (1.0f-currentValue)*animationSpeedStart;
+	        
+    		UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+    		uar.init(sp);
+    		uar.setScalable(true);
+    		uar.setScale(scale);
+    		uar.setStartDelay(delai);
+    		uar.setAnimationSpeed(animationSpeed);
+    		uar.setPosition(positionX, positionY);
+	        this.getScene().attachChild(uar);
+	        
+    		delai = delai + delaiIncrement;
+
+	        positionX = positionX + distanceBetweenSprite*dirX;
+	        positionY = positionY + distanceBetweenSprite*dirY;
 	        
     	}
         
