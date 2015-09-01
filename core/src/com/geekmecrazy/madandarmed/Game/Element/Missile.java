@@ -47,6 +47,7 @@ public class Missile extends Vehicle {
 	public void onUpdateNextState(){
 		
 		//le cas ou la target est morte
+		//TODO : suivre les derniere coordonnée connues avant mort?
 		if(!target.isAlive()){
 			MissileManager.getManager().finishMissile(this);
 			return;
