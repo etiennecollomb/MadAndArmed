@@ -90,8 +90,11 @@ public class MilitaryRenderer extends MultiActionRenderer {
 			super.onDraw();
 		}
 		
-		this.onDrawHit();
-		if(!this.getMilitary().isAlive()) onDrawDead();
+		if(!this.getMilitary().isAlive()) {
+			//Cas particuliers : On affiche les child qui sont pas affichés si le millitary est dead (visible = false)
+			this.onDrawHit(); //on affiche qd meme le hit meme si le military est morte
+			this.onDrawDead();
+		}
 	}
 
 	// ===========================================================

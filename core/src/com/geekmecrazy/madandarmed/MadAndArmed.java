@@ -28,7 +28,7 @@ public class MadAndArmed extends ApplicationAdapter {
 	public void create () {
 		
 		/** 24 fps */
-		fpsControl = new FPSControl(25); //25 fps
+		fpsControl = new FPSControl(100); //25 fps
 		
 		System.out.println("### Gdx.graphics: " + Gdx.graphics.getWidth() + " " + Gdx.graphics.getHeight());
 		fpsLogger = new FPSLogger();

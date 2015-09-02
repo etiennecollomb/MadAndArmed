@@ -2,13 +2,13 @@ package com.geekmecrazy.madandarmed.Game.Element;
 
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Game.Scene.MissileManager;
+import com.geekmecrazy.madandarmed.Game.Scene.WeaponManager;
 import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 
-public class Missile extends Vehicle {
+public class Missile extends Weapon {
 	// ===========================================================
 	// Attributes
 	// ===========================================================
@@ -17,6 +17,7 @@ public class Missile extends Vehicle {
 	private Military target;
 	private float vitesse;
 	private float dmgEffect;
+	MissileRenderer missileRenderer;
 	
 	public Missile() {
 	}
@@ -24,18 +25,18 @@ public class Missile extends Vehicle {
 	// ===========================================================
 	// Init
 	// ===========================================================
-	public void init(Military target, AnimatedTextureType hitAnimatedType, float vitesse, float dmgEffect, float posX, float posY, MissileRenderer missileRenderer){
+	public void init(Military shooter, Military target, AnimatedTextureType hitAnimatedType, float vitesse, float dmgEffect, float posX, float posY, MissileRenderer missileRenderer){
 		
-		super.init(posX, posY, 0, null, null, null);
+		super.init(posX, posY, shooter, target);
 		this.hitAnimatedType=hitAnimatedType;
 		this.target=target;
 		this.vitesse=vitesse;
 		this.dmgEffect=dmgEffect;
 		
-		this.militaryRenderer = missileRenderer;
-		this.militaryRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(hitAnimatedType), this);
+		this.missileRenderer = missileRenderer;
+		this.missileRenderer.init(this);
 
-		FightScreen.getManager().getScene().attachChild(this.militaryRenderer);
+		FightScreen.getManager().getScene().attachChild(this.missileRenderer);
 		
 		}
 
@@ -44,12 +45,12 @@ public class Missile extends Vehicle {
 	// Run item
 	// ===========================================================
 	@Override
-	public void onUpdateNextState(){
+	public void onUpdate(){
 		
 		//le cas ou la target est morte
 		//TODO : suivre les derniere coordonnée connues avant mort?
 		if(!target.isAlive()){
-			MissileManager.getManager().finishMissile(this);
+			WeaponManager.getManager().destroyWeapon(this);
 			return;
 		}
 
@@ -66,7 +67,7 @@ public class Missile extends Vehicle {
 		//on a atteint la cible au prochain coup?
 		if((distance - target.getDiameter()/2f)<=vitesse){
 			target.hit(dmgEffect, hitAnimatedType);
-			MissileManager.getManager().finishMissile(this);
+			WeaponManager.getManager().destroyWeapon(this);
 			return;
 		}
 		//sinon on "avance" vers elle
@@ -87,7 +88,7 @@ public class Missile extends Vehicle {
 		target=null;
 		vitesse=0f;
 		//animatedMissile.setPosition(XSceneManager.OUT_OF_SCENE, XSceneManager.OUT_OF_SCENE);
-		PoolAnimManager.getManager().getMissileRendererPool().free((MissileRenderer)this.militaryRenderer);
+		PoolAnimManager.getManager().getMissileRendererPool().free(missileRenderer);
 		hitAnimatedType=null;
 	}
 

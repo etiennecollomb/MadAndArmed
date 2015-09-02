@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.geekmecrazy.madandarmed.CoreConfig.SoundType;
 import com.geekmecrazy.madandarmed.Game.Scene.MissileManager;
 import com.geekmecrazy.madandarmed.Game.Scene.SoundManager;
+import com.geekmecrazy.madandarmed.Game.Scene.WeaponManager;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponType;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
@@ -102,7 +103,8 @@ public class Attaque extends GameElement {
 
 	/** Attaque Missile */
 	private void attackMissile(Military shooter, Military target){
-		MissileManager.getManager().fireMissile(shooter, target);
+		WeaponManager.getManager().fireWeapon(shooter, target);
+		//MissileManager.getManager().fireMissile(shooter, target);
 	}
 	
 	/** Attaque Gun */

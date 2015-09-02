@@ -1,20 +1,20 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
-import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
-import com.geekmecrazy.madandarmed.Game.Element.Missile;
+import com.geekmecrazy.madandarmed.Entity.Entity;
+import com.geekmecrazy.madandarmed.Game.Element.Weapon;
+import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 
-public class MissileRenderer extends VehicleRenderer {
-	
+public class MissileRenderer extends WeaponRenderer {
+
 	// ===========================================================
 	// Constructors
 	// ===========================================================
-	
+
 	public MissileRenderer(){
 		super();
 	}
-	
+
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
@@ -24,33 +24,37 @@ public class MissileRenderer extends VehicleRenderer {
 	// ===========================================================
 
 	@Override
-	public void onUpdate(){
-		
-		Missile thisMissile = ((Missile)this.getMilitary());
-
-		this.setPosition(thisMissile.getPos().getX(), thisMissile.getPos().getY());
-		this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)thisMissile.getPos().getY());
-		
-		if(thisMissile.isAlive()){
-			this.setCurrentFrame(0, 0);
-		}
-		
-		//after because OffSet has been modified
-		super.onUpdate();
-	}
-	
-	@Override
 	public void reset() {
 		super.reset();
 	}
-	
+
+	@Override
+	public void setWeaponTravellingEffect(){
+		//Put pSpriteSheet in the uniqueAnmitedSprite list
+		UniqueActionRenderer deadActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+		deadActionRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(pDeadActionTypeTexture));
+		deadActionRenderer.setStartDelay(pStartDelay);
+		deadActionRenderer.setPosition(pPosX, pPosY);
+
+		/** on add le dead renderer sur le render du military */
+		this.attachChild(deadActionRenderer, Entity.Alignment.CENTER);
+
+		this.getDeadActionRendererList().add(deadActionRenderer);
+	}
+
+	@Override
+	protected void setWeaponEffect() {
+	}
+
 	// ===========================================================
 	// Methods
 	// ===========================================================
 
-	public void init(final  SpriteSheet pSpriteSheet, final Missile pMissile){
-		super.init(pSpriteSheet, pMissile);
+	public void init(final Weapon weapon){
+		super.init(weapon);
 	}
+
+
 
 
 }

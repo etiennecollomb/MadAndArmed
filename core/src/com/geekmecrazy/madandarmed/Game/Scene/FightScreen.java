@@ -201,7 +201,7 @@ public class FightScreen extends Screen implements IUpdatable {
 		BuildingManager.initManager();
 		CreepManager.initManager(this.getScene(), this.getTeamPlayer(), this.getTeamIA());
 		IaManager.initManager();
-		MissileManager.initManager();
+		WeaponManager.initManager();
 
 		BuildingManager.getManager().initBuildingAtStart();
 		BuildingManager.getManager().initTarget();
@@ -257,7 +257,7 @@ public class FightScreen extends Screen implements IUpdatable {
         BuildingManager.destroyManager();
         CreepManager.destroyManager();
         IaManager.destroyManager();
-        MissileManager.destroyManager();
+        WeaponManager.destroyManager();
     }
 
 	public Team getOtherTeam(final Team team){
@@ -271,7 +271,7 @@ public class FightScreen extends Screen implements IUpdatable {
 		IaManager.getManager().runUpdateNextState();	
 		BuildingManager.getManager().runUpdateNextState();
 		CreepManager.getManager().runUpdateNextState();
-		MissileManager.getManager().runUpdateNextState();
+		WeaponManager.getManager().onUpdate();
 	}
 
 	public void updateNextMoneyTurn(){
