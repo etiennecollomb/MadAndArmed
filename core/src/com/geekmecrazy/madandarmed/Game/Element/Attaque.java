@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.badlogic.gdx.audio.Sound;
 import com.geekmecrazy.madandarmed.CoreConfig.SoundType;
-import com.geekmecrazy.madandarmed.Game.Scene.MissileManager;
 import com.geekmecrazy.madandarmed.Game.Scene.SoundManager;
 import com.geekmecrazy.madandarmed.Game.Scene.WeaponManager;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;

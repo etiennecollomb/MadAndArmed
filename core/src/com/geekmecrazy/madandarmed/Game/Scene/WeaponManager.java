@@ -7,6 +7,7 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 import com.badlogic.gdx.utils.Pool.Poolable;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
+import com.geekmecrazy.madandarmed.Game.Element.FlameThrower;
 import com.geekmecrazy.madandarmed.Game.Element.Military;
 import com.geekmecrazy.madandarmed.Game.Element.Missile;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
@@ -79,7 +80,8 @@ public class WeaponManager implements IUpdatable {
 			this.fireGUN(shooter, target);
 			break;
 		case MISSILE:
-			this.fireMISSILE(shooter, target);
+			this.fireFlameThrower(shooter, target); //TEST
+			//this.fireMISSILE(shooter, target);
 			break;
 		default:
 			break;
@@ -112,14 +114,24 @@ public class WeaponManager implements IUpdatable {
 
 	private void fireGUN(Military shooter, Military target){}
 
+	private void fireFlameThrower(Military shooter, Military target){
+
+		//SoundManager.playSound(SoundType.ROCKET_LAUNCH);
+		FlameThrower flameThrower = PoolAnimManager.getManager().getMissilePool().obtain();//new FlameThrower(); 
+		float startingFirePosX = shooter.getPos().getX();
+		float startingFirePosY = shooter.getPos().getY();
+		flameThrower.init(startingFirePosX, startingFirePosY, shooter, target);
+		this.addWeapon(flameThrower);
+
+	}
+	
 	private void fireMISSILE(Military shooter, Military target){
 
 		//SoundManager.playSound(SoundType.ROCKET_LAUNCH);
 		Missile missile = PoolManager.getManager().getMissilePool().obtain();
 		float startingFirePosX = shooter.getPos().getX();
 		float startingFirePosY = shooter.getPos().getY();
-		MissileRenderer missileRenderer = PoolAnimManager.getManager().getMissileRendererPool().obtain();
-		missile.init(shooter, target, shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType(), shooter.getAttackBehavior().getWeaponPattern().getMissileSpeed(), shooter.getAttackBehavior().getWeaponPattern().getDmgEffect(), startingFirePosX, startingFirePosY, missileRenderer);
+		missile.init(startingFirePosX, startingFirePosY, shooter, target);
 		this.addWeapon(missile);
 
 	}

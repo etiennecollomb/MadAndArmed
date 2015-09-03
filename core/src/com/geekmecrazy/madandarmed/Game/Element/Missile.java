@@ -14,7 +14,6 @@ public class Missile extends Weapon {
 	// ===========================================================
 	private Vector2d m_vel = new Vector2d();
 	private AnimatedTextureType hitAnimatedType;
-	private Military target;
 	private float vitesse;
 	private float dmgEffect;
 	MissileRenderer missileRenderer;
@@ -25,15 +24,14 @@ public class Missile extends Weapon {
 	// ===========================================================
 	// Init
 	// ===========================================================
-	public void init(Military shooter, Military target, AnimatedTextureType hitAnimatedType, float vitesse, float dmgEffect, float posX, float posY, MissileRenderer missileRenderer){
+	public void init(float posX, float posY, Military shooter, Military target){
 		
 		super.init(posX, posY, shooter, target);
-		this.hitAnimatedType=hitAnimatedType;
-		this.target=target;
-		this.vitesse=vitesse;
-		this.dmgEffect=dmgEffect;
+		this.hitAnimatedType=shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType();
+		this.vitesse=shooter.getAttackBehavior().getWeaponPattern().getMissileSpeed();
+		this.dmgEffect=shooter.getAttackBehavior().getWeaponPattern().getDmgEffect();
 		
-		this.missileRenderer = missileRenderer;
+		this.missileRenderer = PoolAnimManager.getManager().getMissileRendererPool().obtain();;
 		this.missileRenderer.init(this);
 
 		FightScreen.getManager().getScene().attachChild(this.missileRenderer);
@@ -49,15 +47,15 @@ public class Missile extends Weapon {
 		
 		//le cas ou la target est morte
 		//TODO : suivre les derniere coordonnée connues avant mort?
-		if(!target.isAlive()){
+		if(!this.getTarget().isAlive()){
 			WeaponManager.getManager().destroyWeapon(this);
 			return;
 		}
 
 	
 		//calcul la trajectoire direct vers la target
-		float targetCenterX_ = target.getPos().getX()+target.getDiameter()/2f;
-		float targetCenterY_ = target.getPos().getY()+target.getDiameter()/2f;
+		float targetCenterX_ = this.getTarget().getPos().getX()+this.getTarget().getDiameter()/2f;
+		float targetCenterY_ = this.getTarget().getPos().getY()+this.getTarget().getDiameter()/2f;
 		m_vel.set(targetCenterX_, targetCenterY_);
 		m_vel.sub(this.getPos());
 		float distance = m_vel.length();
@@ -65,8 +63,8 @@ public class Missile extends Weapon {
 		m_vel.scale(vitesse);
 
 		//on a atteint la cible au prochain coup?
-		if((distance - target.getDiameter()/2f)<=vitesse){
-			target.hit(dmgEffect, hitAnimatedType);
+		if((distance - this.getTarget().getDiameter()/2f)<=vitesse){
+			this.getTarget().hit(dmgEffect, hitAnimatedType);
 			WeaponManager.getManager().destroyWeapon(this);
 			return;
 		}
@@ -84,8 +82,7 @@ public class Missile extends Weapon {
 	// ===========================================================
 	@Override
 	public void reset() {
-		super.reset();		
-		target=null;
+		super.reset();
 		vitesse=0f;
 		//animatedMissile.setPosition(XSceneManager.OUT_OF_SCENE, XSceneManager.OUT_OF_SCENE);
 		PoolAnimManager.getManager().getMissileRendererPool().free(missileRenderer);

@@ -52,9 +52,9 @@ public class Weapon extends Geometrie {
 	/** Pos : position of the weapon effect (can be little bit shift from the shooter itself, ie: flame thrower) **/
 	public void init(final float posX, final float poxY, Military shooter, Military target){
 		super.init(posX, poxY, 0);
-		
+
+		this.setShooter(shooter);
 		this.setTarget(target);
-		this.setTarget(shooter);
 	}
 
 
