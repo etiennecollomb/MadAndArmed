@@ -11,15 +11,16 @@ public abstract class WeaponRenderer extends Entity {
 
 	Weapon weapon;
 
-	private List<UniqueActionRenderer> weaponTravellingEffect;
-	private List<UniqueActionRenderer> weaponEffect;
+	private List<UniqueActionRenderer> weaponTravellingEffectList;
+	private List<UniqueActionRenderer> weaponEffectList;
 
 	// ===========================================================
 	// Constructors
 	// ===========================================================
 
 	public WeaponRenderer(){
-		weaponTravellingEffect = new ArrayList<UniqueActionRenderer>();
+		weaponTravellingEffectList = new ArrayList<UniqueActionRenderer>();
+		weaponEffectList = new ArrayList<UniqueActionRenderer>();
 	}
 
 	// ===========================================================
@@ -33,14 +34,22 @@ public abstract class WeaponRenderer extends Entity {
 	public void setWeapon(Weapon weapon) {
 		this.weapon = weapon;
 	}
-
-	public List<UniqueActionRenderer> getUniqueActionRendererList() {
-		return weaponTravellingEffect;
+	
+	public List<UniqueActionRenderer> getWeaponTravellingEffectList() {
+		return weaponTravellingEffectList;
 	}
 
-	public void setUniqueActionRendererList(
-			List<UniqueActionRenderer> uniqueActionRendererList) {
-		this.weaponTravellingEffect = uniqueActionRendererList;
+	public void setWeaponTravellingEffectList(
+			List<UniqueActionRenderer> weaponTravellingEffectList) {
+		this.weaponTravellingEffectList = weaponTravellingEffectList;
+	}
+
+	public List<UniqueActionRenderer> getWeaponEffectList() {
+		return weaponEffectList;
+	}
+
+	public void setWeaponEffectList(List<UniqueActionRenderer> weaponEffectList) {
+		this.weaponEffectList = weaponEffectList;
 	}
 
 	// ===========================================================
@@ -51,7 +60,7 @@ public abstract class WeaponRenderer extends Entity {
 	public void onUpdate(){
 		
 		this.setPosition(this.getWeapon().getPos().getX(), this.getWeapon().getPos().getY());
-		this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)this.getWeapon().getPos().getY());
+		this.setZIndex(GlobalManager.ZINDEXMAXVALUE);// - (int)this.getWeapon().getPos().getY()); //todo : zindex max, doit etre au dessus de tout le monde
 
 		//after because Position has been modified
 		super.onUpdate();
@@ -76,5 +85,20 @@ public abstract class WeaponRenderer extends Entity {
 	
 	/** Pattern of the weapon to the unit **/
 	protected abstract void setWeaponEffect();
+
+	/** attach all UniqueActionRenderer to entity **/
+	public void attachWeaponTravellingEffect(final Entity entity){
+		int size = weaponTravellingEffectList.size();
+		for(int i=0; i<size; i++)
+			entity.attachChild(this.weaponTravellingEffectList.get(i), Entity.Alignment.CENTER);
+	}
+	
+	/** attach all UniqueActionRenderer to entity **/
+	public void attachWeaponEffect(final Entity entity){
+		int size = weaponEffectList.size();
+		for(int i=0; i<size; i++)
+			entity.attachChild(this.weaponEffectList.get(i), Entity.Alignment.CENTER);
+	}
+	
 
 }

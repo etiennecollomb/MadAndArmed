@@ -39,11 +39,6 @@ public class Weapon extends Geometrie {
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
-
-	@Override
-	public void onUpdate() {
-		
-	}
 	
 	@Override
 	public void reset() {
