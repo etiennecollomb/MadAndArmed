@@ -30,9 +30,11 @@ public class PoolAnimManager {
 	/** SpriteSheet */
 	private static Map<AnimatedTextureType, SpriteSheet> spriteSheets;
 
-	//HIT
+	//WEAPON EFFECT
 	public static final SpriteSheet MISSILE_EXPLOSION_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MISSILE_EXPLOSION, true);
 	public static final SpriteSheet IMPACT_BULLET_SPRITESHEET = new SpriteSheet(AnimatedTextureType.IMPACT_BULLET, true);
+	public static final SpriteSheet FIRE_BLAST_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_64PX, true);
+	public static final SpriteSheet FIRE_BLAST_001_128PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_128PX, true);
 
 	//DEAD
 	public static final SpriteSheet DEAD_SPRITESHEET = new SpriteSheet(AnimatedTextureType.DEAD, true);
@@ -138,9 +140,11 @@ public class PoolAnimManager {
 
 		/** Sprites */
 		spriteSheets = new HashMap<AnimatedTextureType, SpriteSheet>();
-		//HIT
+		//WEAPON EFFECT
 		spriteSheets.put(AnimatedTextureType.MISSILE_EXPLOSION, MISSILE_EXPLOSION_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.IMPACT_BULLET, IMPACT_BULLET_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.FIRE_BLAST_001_64PX, FIRE_BLAST_001_64PX_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.FIRE_BLAST_001_128PX, FIRE_BLAST_001_128PX_SPRITESHEET);
 		//DEAD
 		spriteSheets.put(AnimatedTextureType.DEAD, DEAD_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.BUILDING_DEATH_128PX, BUILDING_DEATH_128PX_SPRITESHEET);

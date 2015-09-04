@@ -225,7 +225,7 @@ public class MenuScreen extends Screen implements IUpdatable {
      */
     public void fireThrower(final float posX, final float posY, final float dirX, final float dirY){
     	
-    	SpriteSheet sp = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_64PX, true); //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
+    	SpriteSheet sp = PoolAnimManager.FIRE_BLAST_001_128PX_SPRITESHEET; //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
 		
     	float positionX = posX;
     	float positionY = posY;

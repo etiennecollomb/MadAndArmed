@@ -32,7 +32,7 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 	@Override
 	public void setWeaponTravellingEffect(){
 
-		SpriteSheet sp = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_64PX, true); //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
+		SpriteSheet sp = PoolAnimManager.FIRE_BLAST_001_128PX_SPRITESHEET; //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
 		
     	float positionX = 0;
     	float positionY = 0;
