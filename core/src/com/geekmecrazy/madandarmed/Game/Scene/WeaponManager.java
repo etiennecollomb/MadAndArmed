@@ -117,7 +117,7 @@ public class WeaponManager implements IUpdatable {
 	private void fireFlameThrower(Military shooter, Military target){
 
 		//SoundManager.playSound(SoundType.ROCKET_LAUNCH);
-		FlameThrower flameThrower = PoolAnimManager.getManager().getMissilePool().obtain();//new FlameThrower(); 
+		FlameThrower flameThrower = PoolManager.getManager().getFlameThrowerPool().obtain();//new FlameThrower(); 
 		float startingFirePosX = shooter.getPos().getX();
 		float startingFirePosY = shooter.getPos().getY();
 		flameThrower.init(startingFirePosX, startingFirePosY, shooter, target);

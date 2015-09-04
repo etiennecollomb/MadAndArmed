@@ -7,6 +7,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
+import com.geekmecrazy.madandarmed.Renderer.FlameThrowerRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
 import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
 import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
@@ -22,6 +23,7 @@ public class PoolAnimManager {
 	private static final int ALLOCATE_TURRET_RENDERER			= 100;
 	private static final int ALLOCATE_BARRICADE_RENDERER		= 100;
 	private static final int ALLOCATE_MISSILE_RENDERER			= 100;
+	private static final int ALLOCATE_FLAMETHROWER_RENDERER		= 100;
 	private static final int ALLOCATE_LIFEBAR_RENDERER			= 100;
 
 
@@ -68,6 +70,7 @@ public class PoolAnimManager {
 	private static Pool<TurretRenderer> turretRendererPool;
 	private static Pool<BarricadeRenderer> barricadeRendererPool;
 	private static Pool<MissileRenderer> missileRendererPool;
+	private static Pool<FlameThrowerRenderer> flameThrowerRendererPool;
 	private static Pool<LifeBarRenderer> lifeBarRendererPool;
 
 	// ===========================================================
@@ -109,6 +112,10 @@ public class PoolAnimManager {
 
 	public Pool<BarricadeRenderer> getBarricadeRendererPool() {
 		return barricadeRendererPool;
+	}
+
+	public Pool<FlameThrowerRenderer> getFlameThrowerRendererPool() {
+		return flameThrowerRendererPool;
 	}
 
 	public Pool<MissileRenderer> getMissileRendererPool() {
@@ -166,6 +173,7 @@ public class PoolAnimManager {
 		creepRendererPool = createCreepRendererPool(ALLOCATE_CREEP_RENDERER);
 		turretRendererPool = createTurretRendererPool(ALLOCATE_TURRET_RENDERER);
 		barricadeRendererPool = createBarricadeRendererPool(ALLOCATE_BARRICADE_RENDERER);
+		flameThrowerRendererPool = createFlameThrowerRendererPool(ALLOCATE_FLAMETHROWER_RENDERER);
 		missileRendererPool = createMissileRendererPool(ALLOCATE_MISSILE_RENDERER);
 		lifeBarRendererPool = createLifeBarRendererPool(ALLOCATE_LIFEBAR_RENDERER);
 
@@ -231,7 +239,7 @@ public class PoolAnimManager {
 	}
 
 
-	//TURRET RENDERER
+	//BARRICADE RENDERER
 	private Pool<BarricadeRenderer> createBarricadeRendererPool(int initPoolNumber){
 
 		Pool<BarricadeRenderer> pool = new Pool<BarricadeRenderer>(initPoolNumber) {
@@ -240,6 +248,25 @@ public class PoolAnimManager {
 			protected BarricadeRenderer newObject() {
 				//System.out.println("#__ POOL __# allocate new Object : " + BarricadeRenderer.class.getName());
 				return new BarricadeRenderer();
+			}
+
+		};
+
+		for(int i=0; i<initPoolNumber ; i++)
+			pool.obtain();
+		return pool;
+	}
+
+
+	//FLAMETHROWER RENDERER
+	private Pool<FlameThrowerRenderer> createFlameThrowerRendererPool(int initPoolNumber){
+
+		Pool<FlameThrowerRenderer> pool = new Pool<FlameThrowerRenderer>(initPoolNumber) {
+
+			@Override
+			protected FlameThrowerRenderer newObject() {
+				//System.out.println("#__ POOL __# allocate new Object : " + FlameThrowerRenderer.class.getName());
+				return new FlameThrowerRenderer();
 			}
 
 		};

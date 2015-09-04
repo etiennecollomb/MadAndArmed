@@ -3,6 +3,7 @@ package com.geekmecrazy.madandarmed.pool;
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
+import com.geekmecrazy.madandarmed.Game.Element.FlameThrower;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Missile;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
@@ -19,6 +20,7 @@ public class PoolManager {
 	private static final int STARTING_ALLOCATE_ATTAQUE 				= 20;
 	private static final int STARTING_ALLOCATE_CREEP 				= 20;
 	private static final int STARTING_ALLOCATE_WEAPON 				= 20;
+	private static final int STARTING_ALLOCATE_FLAMETHROWER			= 20;
 	private static final int STARTING_ALLOCATE_MISSILE 				= 20;
 	private static final int STARTING_ALLOCATE_LIFE 				= 20;
 	private static final int STARTING_ALLOCATE_TURRET 				= 10;
@@ -33,6 +35,7 @@ public class PoolManager {
 	private Pool<Attaque> attaquePool;
 	private Pool<Creep> creepPool;
 	private Pool<WeaponPattern> weaponPool;
+	private Pool<FlameThrower> flameThrowerPool;
 	private Pool<Missile> missilePool;
 	private Pool<Life> lifePool;
 	private Pool<Turret> turretPool;
@@ -75,7 +78,11 @@ public class PoolManager {
 	public Pool<WeaponPattern> getWeaponPool() {
 		return weaponPool;
 	}
-
+	
+	public Pool<FlameThrower> getFlameThrowerPool() {
+		return flameThrowerPool;
+	}
+	
 	public Pool<Missile> getMissilePool() {
 		return missilePool;
 	}
@@ -144,6 +151,14 @@ public class PoolManager {
 			protected WeaponPattern newObject() {
                 //System.out.println("#__ POOL __# allocate new Object : " + WeaponPattern.class.getName());
                 return new WeaponPattern();
+			 }
+		};
+		
+		flameThrowerPool = new Pool<FlameThrower>(STARTING_ALLOCATE_FLAMETHROWER){
+			@Override
+			protected FlameThrower newObject() {
+                //System.out.println("#__ POOL __# allocate new Object : " + FlameThrower.class.getName());
+				return new FlameThrower();
 			 }
 		};
 		

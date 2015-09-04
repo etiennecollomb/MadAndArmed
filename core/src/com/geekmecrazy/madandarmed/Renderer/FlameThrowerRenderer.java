@@ -34,8 +34,8 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 
 		SpriteSheet sp = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_64PX, true); //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
 		
-    	float positionX = this.getWeapon().getPos().getX();
-    	float positionY = this.getWeapon().getPos().getY();
+    	float positionX = 0;
+    	float positionY = 0;
     	
     	float distanceBetweenSprite = (float) (Math.sqrt(2.0f*5.0f*5.0f) * (float)sp.getFrameSize(0, 0)/64.0f); // 5.0f for 64px looks good
 
