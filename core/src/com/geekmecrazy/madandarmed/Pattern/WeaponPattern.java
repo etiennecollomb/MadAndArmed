@@ -10,7 +10,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.SoundType;
 public class WeaponPattern{
 
 	public static enum WeaponName {
-		CAC_1,
+		SWORD_1,
 		GUN_1,
 		GUN_2,
 		MISSILE_1,
@@ -18,9 +18,10 @@ public class WeaponPattern{
 	}
 	
 	public static enum WeaponType {
-		MISSILE,
+		SWORD,
 		GUN,
-		CAC
+		FLAMETHROWER,
+		MISSILE
 	}	
 	
 	/** Weapon Name */

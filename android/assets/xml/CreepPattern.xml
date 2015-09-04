@@ -22,7 +22,7 @@
 		<animationRowFire>16,17,18,19,20,21,22</animationRowFire>
 		<!-- Weapon -->
 		<spriteWeaponEffect>IMPACT_BULLET</spriteWeaponEffect>
-		<weaponType>CAC</weaponType>
+		<weaponType>SWORD</weaponType>
 		<hitRange>50</hitRange>
 		<dmgEffect>30</dmgEffect>
 		<hitSpeed>10</hitSpeed>
@@ -93,7 +93,7 @@
 		<animationRowFire>16,17,18,19,20,21,22</animationRowFire>
 		<!-- Weapon -->
 		<spriteWeaponEffect>IMPACT_BULLET</spriteWeaponEffect>
-		<weaponType>CAC</weaponType>
+		<weaponType>SWORD</weaponType>
 		<hitRange>50</hitRange>
 		<dmgEffect>30</dmgEffect>
 		<hitSpeed>10</hitSpeed>

@@ -8,8 +8,10 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 import com.badlogic.gdx.utils.Pool.Poolable;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Game.Element.FlameThrower;
+import com.geekmecrazy.madandarmed.Game.Element.Gun;
 import com.geekmecrazy.madandarmed.Game.Element.Military;
 import com.geekmecrazy.madandarmed.Game.Element.Missile;
+import com.geekmecrazy.madandarmed.Game.Element.Sword;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponType;
@@ -73,14 +75,17 @@ public class WeaponManager implements IUpdatable {
 	public void fireWeapon(Military shooter, Military target){
 
 		switch(shooter.getAttackBehavior().getWeaponPattern().getWeaponType()){
-		case CAC:
-			this.fireCAC(shooter, target);
+		case SWORD:
+			this.fireSWORD(shooter, target);
 			break;
 		case GUN:
 			this.fireGUN(shooter, target);
 			break;
+		case FLAMETHROWER:
+			this.fireFlameThrower(shooter, target);
+			break;
 		case MISSILE:
-			//this.fireFlameThrower(shooter, target); //TEST
+			
 			this.fireMISSILE(shooter, target);
 			break;
 		default:
@@ -110,14 +115,28 @@ public class WeaponManager implements IUpdatable {
 	
 
 	/** Type of weapons **/
-	private void fireCAC(Military shooter, Military target){}
+	private void fireSWORD(Military shooter, Military target){
+		
+		Sword sword = PoolManager.getManager().getSwordPool().obtain();
+		float startingFirePosX = shooter.getPos().getX();
+		float startingFirePosY = shooter.getPos().getY();
+		sword.init(startingFirePosX, startingFirePosY, shooter, target);
+		this.addWeapon(sword);
+	}
 
-	private void fireGUN(Military shooter, Military target){}
+	private void fireGUN(Military shooter, Military target){
+		
+		Gun gun = PoolManager.getManager().getGunPool().obtain();
+		float startingFirePosX = shooter.getPos().getX();
+		float startingFirePosY = shooter.getPos().getY();
+		gun.init(startingFirePosX, startingFirePosY, shooter, target);
+		this.addWeapon(gun);
+	}
 
 	private void fireFlameThrower(Military shooter, Military target){
 
 		//SoundManager.playSound(SoundType.ROCKET_LAUNCH);
-		FlameThrower flameThrower = PoolManager.getManager().getFlameThrowerPool().obtain();//new FlameThrower(); 
+		FlameThrower flameThrower = PoolManager.getManager().getFlameThrowerPool().obtain();
 		float startingFirePosX = shooter.getPos().getX();
 		float startingFirePosY = shooter.getPos().getY();
 		flameThrower.init(startingFirePosX, startingFirePosY, shooter, target);

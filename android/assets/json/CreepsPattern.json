@@ -2,7 +2,7 @@
 	"GLADIATOR": {
 			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
 			creepType: GLADIATOR
-			weaponName: CAC_1
+			weaponName: SWORD_1
 			creepSize: SMALL
 			diameter: 20
 			life: 100

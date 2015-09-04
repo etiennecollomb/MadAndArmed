@@ -1,8 +1,8 @@
 {
-    "CAC_1": {
+    "SWORD_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
-        weaponName: CAC_1
-		weaponType: CAC
+        weaponName: SWORD_1
+		weaponType: SWORD
 		hitRange: 50
 		hitSpeed: 10
 		dmgEffect: 30

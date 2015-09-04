@@ -4,8 +4,10 @@ import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.FlameThrower;
+import com.geekmecrazy.madandarmed.Game.Element.Gun;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Missile;
+import com.geekmecrazy.madandarmed.Game.Element.Sword;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.IA.AirMoveBehavior;
 import com.geekmecrazy.madandarmed.IA.AirPathFinding;
@@ -19,7 +21,8 @@ public class PoolManager {
 
 	private static final int STARTING_ALLOCATE_ATTAQUE 				= 20;
 	private static final int STARTING_ALLOCATE_CREEP 				= 20;
-	private static final int STARTING_ALLOCATE_WEAPON 				= 20;
+	private static final int STARTING_ALLOCATE_SWORD				= 20;
+	private static final int STARTING_ALLOCATE_GUN					= 20;
 	private static final int STARTING_ALLOCATE_FLAMETHROWER			= 20;
 	private static final int STARTING_ALLOCATE_MISSILE 				= 20;
 	private static final int STARTING_ALLOCATE_LIFE 				= 20;
@@ -34,7 +37,8 @@ public class PoolManager {
 	/** Pools */
 	private Pool<Attaque> attaquePool;
 	private Pool<Creep> creepPool;
-	private Pool<WeaponPattern> weaponPool;
+	private Pool<Sword> swordPool;
+	private Pool<Gun> gunPool;
 	private Pool<FlameThrower> flameThrowerPool;
 	private Pool<Missile> missilePool;
 	private Pool<Life> lifePool;
@@ -75,8 +79,12 @@ public class PoolManager {
 		return creepPool;
 	}
 
-	public Pool<WeaponPattern> getWeaponPool() {
-		return weaponPool;
+	public Pool<Sword> getSwordPool() {
+		return swordPool;
+	}
+	
+	public Pool<Gun> getGunPool() {
+		return gunPool;
 	}
 	
 	public Pool<FlameThrower> getFlameThrowerPool() {
@@ -146,11 +154,19 @@ public class PoolManager {
 			 }
 		};
 		
-		weaponPool = new Pool<WeaponPattern>(STARTING_ALLOCATE_WEAPON){
+		swordPool = new Pool<Sword>(STARTING_ALLOCATE_SWORD){
 			@Override
-			protected WeaponPattern newObject() {
-                //System.out.println("#__ POOL __# allocate new Object : " + WeaponPattern.class.getName());
-                return new WeaponPattern();
+			protected Sword newObject() {
+                //System.out.println("#__ POOL __# allocate new Object : " + Sword.class.getName());
+                return new Sword();
+			 }
+		};
+		
+		gunPool = new Pool<Gun>(STARTING_ALLOCATE_GUN){
+			@Override
+			protected Gun newObject() {
+                //System.out.println("#__ POOL __# allocate new Object : " + Gun.class.getName());
+                return new Gun();
 			 }
 		};
 		

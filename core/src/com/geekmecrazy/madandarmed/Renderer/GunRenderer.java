@@ -5,16 +5,11 @@ import java.util.List;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
-
-public class MissileRenderer extends WeaponRenderer {
+public class GunRenderer extends WeaponRenderer {
 
 	// ===========================================================
 	// Constructors
 	// ===========================================================
-
-	public MissileRenderer(){
-		super();
-	}
 
 	// ===========================================================
 	// Getter & Setter
@@ -25,21 +20,13 @@ public class MissileRenderer extends WeaponRenderer {
 	// ===========================================================
 
 	@Override
-	public void reset() {
-		super.reset();
-	}
-
-	@Override
 	public void setWeaponTravellingEffect(){
-		UniqueActionRenderer uniqueActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-		uniqueActionRenderer.init(PoolAnimManager.MISSILE_EXPLOSION_SPRITESHEET);
-		this.getWeaponTravellingEffectList().add(uniqueActionRenderer);
 	}
 	
 	@Override
 	protected void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList) {
 		UniqueActionRenderer uniqueActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-		uniqueActionRenderer.init(PoolAnimManager.FIRE_BLAST_001_128PX_SPRITESHEET);
+		uniqueActionRenderer.init(PoolAnimManager.IMPACT_BULLET_SPRITESHEET);
 		weaponEffectList.add(uniqueActionRenderer);
 	}
 	
@@ -49,11 +36,8 @@ public class MissileRenderer extends WeaponRenderer {
 
 	public void init(final Weapon weapon){
 		super.init(weapon);
-		
-		this.attachWeaponTravellingEffect(this); //atacah to himself the travelling effect
 	}
 
 
-
-
+	
 }

@@ -68,13 +68,7 @@ public class Attaque extends GameElement {
 					shootCycleCounter=0;	
 
 					//On attaque !
-					if(WeaponType.MISSILE.equals(weaponPattern.getWeaponType())){
-						attackMissile(m, target);
-					} else if(WeaponType.GUN.equals(weaponPattern.getWeaponType())){
-						 attackGun(m, target);
-					} else if(WeaponType.CAC.equals(weaponPattern.getWeaponType())){
-						 attackCac(m, target);
-					}
+					WeaponManager.getManager().fireWeapon(m, target);
 					
 					/** Sound */
 					if(weaponPattern.getSoundsType() != null){
@@ -100,22 +94,6 @@ public class Attaque extends GameElement {
 		
 	}
 
-	/** Attaque Missile */
-	private void attackMissile(Military shooter, Military target){
-		WeaponManager.getManager().fireWeapon(shooter, target);
-		//MissileManager.getManager().fireMissile(shooter, target);
-	}
-	
-	/** Attaque Gun */
-	private void attackGun(Military shooter, Military target){
-		//target.hit(shooter.getAttackBehavior().getWeaponPattern().getDmgEffect(), shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType());
-	}
-	
-	/** Attaque CAC */
-	private void attackCac(Military shooter, Military target){
-		//target.hit(shooter.getAttackBehavior().getWeaponPattern().getDmgEffect(), shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType());
-	}
-	
 	/** Check de distance de Tir 
 	 * avec la target
 	 */

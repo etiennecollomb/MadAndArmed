@@ -8,8 +8,10 @@ import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
 import com.geekmecrazy.madandarmed.Renderer.FlameThrowerRenderer;
+import com.geekmecrazy.madandarmed.Renderer.GunRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
 import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
+import com.geekmecrazy.madandarmed.Renderer.SwordRenderer;
 import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
 import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.badlogic.gdx.utils.Pool;
@@ -22,8 +24,10 @@ public class PoolAnimManager {
 	private static final int ALLOCATE_CREEP_RENDERER			= 10;
 	private static final int ALLOCATE_TURRET_RENDERER			= 10;
 	private static final int ALLOCATE_BARRICADE_RENDERER		= 10;
-	private static final int ALLOCATE_MISSILE_RENDERER			= 10;
+	private static final int ALLOCATE_SWORD_RENDERER			= 10;
+	private static final int ALLOCATE_GUN_RENDERER				= 10;
 	private static final int ALLOCATE_FLAMETHROWER_RENDERER		= 10;
+	private static final int ALLOCATE_MISSILE_RENDERER			= 10;
 	private static final int ALLOCATE_LIFEBAR_RENDERER			= 10;
 
 
@@ -35,6 +39,8 @@ public class PoolAnimManager {
 	public static final SpriteSheet IMPACT_BULLET_SPRITESHEET = new SpriteSheet(AnimatedTextureType.IMPACT_BULLET, true);
 	public static final SpriteSheet FIRE_BLAST_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_64PX, true);
 	public static final SpriteSheet FIRE_BLAST_001_128PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_128PX, true);
+	public static final SpriteSheet SWORD_001_256PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.SWORD_001_256PX, true);
+	
 
 	//DEAD
 	public static final SpriteSheet DEAD_SPRITESHEET = new SpriteSheet(AnimatedTextureType.DEAD, true);
@@ -71,6 +77,8 @@ public class PoolAnimManager {
 	private static Pool<CreepRenderer> creepRendererPool;
 	private static Pool<TurretRenderer> turretRendererPool;
 	private static Pool<BarricadeRenderer> barricadeRendererPool;
+	private static Pool<SwordRenderer> swordRendererPool;
+	private static Pool<GunRenderer> gunRendererPool;
 	private static Pool<FlameThrowerRenderer> flameThrowerRendererPool;
 	private static Pool<MissileRenderer> missileRendererPool;
 	private static Pool<LifeBarRenderer> lifeBarRendererPool;
@@ -116,6 +124,14 @@ public class PoolAnimManager {
 		return barricadeRendererPool;
 	}
 
+	public Pool<SwordRenderer> getSwordRendererPool() {
+		return swordRendererPool;
+	}
+
+	public Pool<GunRenderer> getGunRendererPool() {
+		return gunRendererPool;
+	}
+
 	public Pool<FlameThrowerRenderer> getFlameThrowerRendererPool() {
 		return flameThrowerRendererPool;
 	}
@@ -145,6 +161,8 @@ public class PoolAnimManager {
 		spriteSheets.put(AnimatedTextureType.IMPACT_BULLET, IMPACT_BULLET_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.FIRE_BLAST_001_64PX, FIRE_BLAST_001_64PX_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.FIRE_BLAST_001_128PX, FIRE_BLAST_001_128PX_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.SWORD_001_256PX, SWORD_001_256PX_SPRITESHEET);
+		
 		//DEAD
 		spriteSheets.put(AnimatedTextureType.DEAD, DEAD_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.BUILDING_DEATH_128PX, BUILDING_DEATH_128PX_SPRITESHEET);
@@ -177,6 +195,8 @@ public class PoolAnimManager {
 		creepRendererPool = createCreepRendererPool(ALLOCATE_CREEP_RENDERER);
 		turretRendererPool = createTurretRendererPool(ALLOCATE_TURRET_RENDERER);
 		barricadeRendererPool = createBarricadeRendererPool(ALLOCATE_BARRICADE_RENDERER);
+		swordRendererPool = createSwordRendererPool(ALLOCATE_SWORD_RENDERER);
+		gunRendererPool = createGunRendererPool(ALLOCATE_GUN_RENDERER);
 		flameThrowerRendererPool = createFlameThrowerRendererPool(ALLOCATE_FLAMETHROWER_RENDERER);
 		missileRendererPool = createMissileRendererPool(ALLOCATE_MISSILE_RENDERER);
 		lifeBarRendererPool = createLifeBarRendererPool(ALLOCATE_LIFEBAR_RENDERER);
@@ -252,6 +272,44 @@ public class PoolAnimManager {
 			protected BarricadeRenderer newObject() {
 				//System.out.println("#__ POOL __# allocate new Object : " + BarricadeRenderer.class.getName());
 				return new BarricadeRenderer();
+			}
+
+		};
+
+		for(int i=0; i<initPoolNumber ; i++)
+			pool.obtain();
+		return pool;
+	}
+
+	
+	//SWORD RENDERER
+	private Pool<SwordRenderer> createSwordRendererPool(int initPoolNumber){
+
+		Pool<SwordRenderer> pool = new Pool<SwordRenderer>(initPoolNumber) {
+
+			@Override
+			protected SwordRenderer newObject() {
+				//System.out.println("#__ POOL __# allocate new Object : " + SwordRenderer.class.getName());
+				return new SwordRenderer();
+			}
+
+		};
+
+		for(int i=0; i<initPoolNumber ; i++)
+			pool.obtain();
+		return pool;
+	}
+
+	
+	//GUN RENDERER
+	private Pool<GunRenderer> createGunRendererPool(int initPoolNumber){
+
+		Pool<GunRenderer> pool = new Pool<GunRenderer>(initPoolNumber) {
+
+			@Override
+			protected GunRenderer newObject() {
+				//System.out.println("#__ POOL __# allocate new Object : " + GunRenderer.class.getName());
+				return new GunRenderer();
 			}
 
 		};
