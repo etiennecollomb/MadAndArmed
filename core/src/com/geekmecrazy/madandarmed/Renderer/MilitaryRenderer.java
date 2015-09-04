@@ -19,10 +19,10 @@ public class MilitaryRenderer extends MultiActionRenderer {
 
 	/** Taille reel de l'image affichee */
 	private float mMilitaryRealSize;
-	
+
 	/** List des anims de Hit*/
 	private Array<UniqueActionRenderer> mHitActionRendererList = new Array<UniqueActionRenderer>();
-	
+
 	/** List des anims de Dead*/
 	private Array<UniqueActionRenderer> mDeadActionRendererList = new Array<UniqueActionRenderer>();
 
@@ -34,7 +34,7 @@ public class MilitaryRenderer extends MultiActionRenderer {
 
 	public MilitaryRenderer(){
 		super();
-		
+
 		this.setHitActionRendererList(new Array<UniqueActionRenderer>());
 		this.setDeadActionRendererList(new Array<UniqueActionRenderer>());
 	}
@@ -86,19 +86,26 @@ public class MilitaryRenderer extends MultiActionRenderer {
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
-	
+
 	@Override
 	public void onDraw(){
 
 		if(this.isVisible()) {
 			super.onDraw();
 		}
-		
+
 		if(!this.getMilitary().isAlive()) {
 			//Cas particuliers : On affiche les child qui sont pas affichés si le millitary est dead (visible = false)
 			this.onDrawHit(); //on affiche qd meme le hit meme si le military est morte
 			this.onDrawDead();
+
+			//on a fini de dessiner dead? alors on peut supprimer le millitary DEFINITIVEMENT
+			if(this.getDeadActionRendererList().size == 0 && this.getHitActionRendererList().size == 0){
+				this.setIsDeadRenderingFinish(true);
+			}
 		}
+
+
 	}
 
 	// ===========================================================
@@ -107,10 +114,10 @@ public class MilitaryRenderer extends MultiActionRenderer {
 
 	public void init(final SpriteSheet pSpriteSheet, final Military pMilitary){
 		super.init(pSpriteSheet, 0, 0);
-		
+
 		this.getHitActionRendererList().clear();
 		this.getDeadActionRendererList().clear();
-		
+
 		this.setMilitaryRealSize(pSpriteSheet.getAnimatedTextureTypeRoot().getRealSizeRenderer());
 		this.setIsDeadRenderingFinish(false);
 		this.setMilitary(pMilitary);
@@ -119,22 +126,22 @@ public class MilitaryRenderer extends MultiActionRenderer {
 	/** Method pour ajouter des anims de mort quand isAlive = false */
 	public void setDeadPattern(){
 	}
-	
+
 	/** C est ici que l on met les animations a afficher, elles se supperposent
 	 * on peut en supperposer pls pour un hit pour faire une grose explosion
 	 */
 	public void addHitActionRenderer(final Weapon weapon){
-		
+
 		List<UniqueActionRenderer> weaponEffectList = new ArrayList<UniqueActionRenderer>();;
 		weapon.getWeaponRenderer().setWeaponEffect(weaponEffectList);
-		
-		
+
+
 		UniqueActionRenderer hitActionRenderer;
-		
+
 		int size = weaponEffectList.size();
 		for(int i=0; i<size; i++){
 			hitActionRenderer = weaponEffectList.get(i);
-			
+
 			//Position du hit
 			float hitPosX, hitPosY;
 			switch(hitActionRenderer.getSpriteSheet().getAnimatedTextureTypeRoot()){
@@ -157,15 +164,15 @@ public class MilitaryRenderer extends MultiActionRenderer {
 
 			this.getHitActionRendererList().add(hitActionRenderer);
 		}	
-		
-		
+
+
 	}
 
 	/** C est ici que l on met les animations a afficher, elles se supperposent
 	 * on peut en supperposer pls pour un dead pour faire pls explosions simultanees
 	 */
 	public void addDeadActionRenderer(final AnimatedTextureType pDeadActionTypeTexture, final float pPosX, final float pPosY, final int pStartDelay){
-		
+
 		UniqueActionRenderer deadActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
 		deadActionRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(pDeadActionTypeTexture));
 		deadActionRenderer.setStartDelay(pStartDelay);
@@ -179,7 +186,7 @@ public class MilitaryRenderer extends MultiActionRenderer {
 
 	/** On dessine tous les hits */
 	private void onDrawHit() {
-		
+
 		for(int i=0; i<this.getHitActionRendererList().size; i++){
 			UniqueActionRenderer hitActionRenderer = this.getHitActionRendererList().get(i);
 			if(hitActionRenderer.isFinished()) {
@@ -194,30 +201,25 @@ public class MilitaryRenderer extends MultiActionRenderer {
 
 	/** On dessine tous les deads */
 	private void onDrawDead() {
-		//on a fini de dessiner dead?
-		if(this.getDeadActionRendererList().size == 0){
-			this.setIsDeadRenderingFinish(true);
-		}
-		else{
-			for(int i=0; i<this.getDeadActionRendererList().size; i++){
-				UniqueActionRenderer deadActionRenderer = this.getDeadActionRendererList().get(i);
-				if(deadActionRenderer.isFinished()) {
-					PoolAnimManager.getManager().getUniqueActionRendererPool().free(deadActionRenderer);
-					this.getDeadActionRendererList().removeIndex(i);
-				}
-				else{
-					deadActionRenderer.onDraw();		    
-				}
+		
+		for(int i=0; i<this.getDeadActionRendererList().size; i++){
+			UniqueActionRenderer deadActionRenderer = this.getDeadActionRendererList().get(i);
+			if(deadActionRenderer.isFinished()) {
+				PoolAnimManager.getManager().getUniqueActionRendererPool().free(deadActionRenderer);
+				this.getDeadActionRendererList().removeIndex(i);
+			}
+			else{
+				deadActionRenderer.onDraw();		    
 			}
 		}
 	}	
 
 	public void reset() {
 		super.reset();	
-		
+
 		this.resetHits();
 		this.resetDeads();
-		
+
 		this.setMilitaryRealSize(0);
 		this.setIsDeadRenderingFinish(false);
 		this.setMilitary(null);
