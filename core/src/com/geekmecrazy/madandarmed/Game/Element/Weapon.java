@@ -1,9 +1,17 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponRenderer;
+import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
+
 public class Weapon extends Geometrie {
 
 	private Military shooter;
 	private Military target;
+	
+	private WeaponRenderer weaponRenderer;
+	
+	private float dmgEffect;
 	
 	/** Weapon
 	 * OnUpdate : trajectory of the weapon before reaching the target and until that time, manage by WeaponManager
@@ -35,14 +43,34 @@ public class Weapon extends Geometrie {
 	public void setTarget(Military target) {
 		this.target = target;
 	}
-	
+
+	public WeaponRenderer getWeaponRenderer() {
+		return weaponRenderer;
+	}
+
+	public void setWeaponRenderer(WeaponRenderer weaponRenderer) {
+		this.weaponRenderer = weaponRenderer;
+	}
+
+	public float getDmgEffect() {
+		return dmgEffect;
+	}
+
+	public void setDmgEffect(float dmgEffect) {
+		this.dmgEffect = dmgEffect;
+	}
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
 	
 	@Override
 	public void reset() {
+		this.shooter = null;
 		this.target = null;
+
+		if(this.getWeaponRenderer() instanceof MissileRenderer)
+			PoolAnimManager.getManager().getMissileRendererPool().free(((MissileRenderer) this.getWeaponRenderer()));
 	}
 	
 	// ===========================================================
@@ -55,6 +83,8 @@ public class Weapon extends Geometrie {
 
 		this.setShooter(shooter);
 		this.setTarget(target);
+		
+		this.setDmgEffect(shooter.getAttackBehavior().getWeaponPattern().getDmgEffect());
 	}
 
 

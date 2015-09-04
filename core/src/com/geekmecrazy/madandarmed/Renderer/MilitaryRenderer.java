@@ -1,9 +1,13 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Military;
+import com.geekmecrazy.madandarmed.Game.Element.Weapon;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.badlogic.gdx.utils.Array;
 
@@ -119,32 +123,42 @@ public class MilitaryRenderer extends MultiActionRenderer {
 	/** C est ici que l on met les animations a afficher, elles se supperposent
 	 * on peut en supperposer pls pour un hit pour faire une grose explosion
 	 */
-	public void addHitActionRenderer(final AnimatedTextureType pHitActionTextureType){
+	public void addHitActionRenderer(final Weapon weapon){
 		
-		UniqueActionRenderer hitActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-		hitActionRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(pHitActionTextureType));
+		List<UniqueActionRenderer> weaponEffectList = new ArrayList<UniqueActionRenderer>();;
+		weapon.getWeaponRenderer().setWeaponEffect(weaponEffectList);
 		
-		//Position du hit
-		float hitPosX, hitPosY;
-		switch(pHitActionTextureType){
+		
+		UniqueActionRenderer hitActionRenderer;
+		
+		int size = weaponEffectList.size();
+		for(int i=0; i<size; i++){
+			hitActionRenderer = weaponEffectList.get(i);
+			
+			//Position du hit
+			float hitPosX, hitPosY;
+			switch(hitActionRenderer.getSpriteSheet().getAnimatedTextureTypeRoot()){
 
-		case IMPACT_BULLET :
-			hitPosX = ((float)Math.random()*this.getMilitaryRealSize() - this.getMilitaryRealSize()/2) /2; // /2 pour centrer un peu sur le military
-			hitPosY = ((float)Math.random()*this.getMilitaryRealSize() - this.getMilitaryRealSize()/2) /2; // /2 pour centrer un peu sur le military
-			break;
+			case IMPACT_BULLET :
+				hitPosX = ((float)Math.random()*this.getMilitaryRealSize() - this.getMilitaryRealSize()/2) /2; // /2 pour centrer un peu sur le military
+				hitPosY = ((float)Math.random()*this.getMilitaryRealSize() - this.getMilitaryRealSize()/2) /2; // /2 pour centrer un peu sur le military
+				break;
 
-		default:
-			hitPosX = 0;
-			hitPosY = 0;
-			break;
-		}
+			default:
+				hitPosX = 0;
+				hitPosY = 0;
+				break;
+			}
 
-		hitActionRenderer.setPosition(hitPosX, hitPosY);
+			hitActionRenderer.setPosition(hitPosX, hitPosY);
 
-		/** on add l'impact renderer du military */
-		this.attachChild(hitActionRenderer, Entity.Alignment.CENTER);
+			/** on add l'impact renderer du military */
+			this.attachChild(hitActionRenderer, Entity.Alignment.CENTER);
 
-		this.getHitActionRendererList().add(hitActionRenderer);
+			this.getHitActionRendererList().add(hitActionRenderer);
+		}	
+		
+		
 	}
 
 	/** C est ici que l on met les animations a afficher, elles se supperposent

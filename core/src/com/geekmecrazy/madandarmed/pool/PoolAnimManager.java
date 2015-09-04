@@ -18,13 +18,13 @@ import com.badlogic.gdx.utils.Pool;
 public class PoolAnimManager {
 
 	/** Number of Preloaded item */
-	private static final int ALLOCATE_UNIQUE_ACTION_RENDERER	= 100;
-	private static final int ALLOCATE_CREEP_RENDERER			= 100;
-	private static final int ALLOCATE_TURRET_RENDERER			= 100;
-	private static final int ALLOCATE_BARRICADE_RENDERER		= 100;
-	private static final int ALLOCATE_MISSILE_RENDERER			= 100;
-	private static final int ALLOCATE_FLAMETHROWER_RENDERER		= 100;
-	private static final int ALLOCATE_LIFEBAR_RENDERER			= 100;
+	private static final int ALLOCATE_UNIQUE_ACTION_RENDERER	= 10;
+	private static final int ALLOCATE_CREEP_RENDERER			= 10;
+	private static final int ALLOCATE_TURRET_RENDERER			= 10;
+	private static final int ALLOCATE_BARRICADE_RENDERER		= 10;
+	private static final int ALLOCATE_MISSILE_RENDERER			= 10;
+	private static final int ALLOCATE_FLAMETHROWER_RENDERER		= 10;
+	private static final int ALLOCATE_LIFEBAR_RENDERER			= 10;
 
 
 	/** SpriteSheet */
@@ -71,8 +71,8 @@ public class PoolAnimManager {
 	private static Pool<CreepRenderer> creepRendererPool;
 	private static Pool<TurretRenderer> turretRendererPool;
 	private static Pool<BarricadeRenderer> barricadeRendererPool;
-	private static Pool<MissileRenderer> missileRendererPool;
 	private static Pool<FlameThrowerRenderer> flameThrowerRendererPool;
+	private static Pool<MissileRenderer> missileRendererPool;
 	private static Pool<LifeBarRenderer> lifeBarRendererPool;
 
 	// ===========================================================

@@ -1,6 +1,5 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
-import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.WeaponManager;
 import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
@@ -13,10 +12,7 @@ public class Missile extends Weapon {
 	// Attributes
 	// ===========================================================
 	private Vector2d m_vel = new Vector2d();
-	private AnimatedTextureType hitAnimatedType;
 	private float vitesse;
-	private float dmgEffect;
-	MissileRenderer missileRenderer;
 	
 	public Missile() {
 	}
@@ -27,14 +23,12 @@ public class Missile extends Weapon {
 	public void init(float posX, float posY, Military shooter, Military target){
 		
 		super.init(posX, posY, shooter, target);
-		this.hitAnimatedType=shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType();
 		this.vitesse=shooter.getAttackBehavior().getWeaponPattern().getMissileSpeed();
-		this.dmgEffect=shooter.getAttackBehavior().getWeaponPattern().getDmgEffect();
 		
-		this.missileRenderer = PoolAnimManager.getManager().getMissileRendererPool().obtain();
-		this.missileRenderer.init(this);
+		this.setWeaponRenderer( PoolAnimManager.getManager().getMissileRendererPool().obtain() );
+		((MissileRenderer) this.getWeaponRenderer()).init(this);
 
-		FightScreen.getManager().getScene().attachChild(this.missileRenderer);
+		FightScreen.getManager().getScene().attachChild(this.getWeaponRenderer());
 		
 		}
 
@@ -64,7 +58,7 @@ public class Missile extends Weapon {
 
 		//on a atteint la cible au prochain coup?
 		if((distance - this.getTarget().getDiameter()/2f)<=vitesse){
-			this.getTarget().hit(dmgEffect, hitAnimatedType);
+			this.getTarget().hit(this);
 			WeaponManager.getManager().destroyWeapon(this);
 			return;
 		}
@@ -84,9 +78,6 @@ public class Missile extends Weapon {
 	public void reset() {
 		super.reset();
 		vitesse=0f;
-		//animatedMissile.setPosition(XSceneManager.OUT_OF_SCENE, XSceneManager.OUT_OF_SCENE);
-		PoolAnimManager.getManager().getMissileRendererPool().free(missileRenderer);
-		hitAnimatedType=null;
 	}
 
 }

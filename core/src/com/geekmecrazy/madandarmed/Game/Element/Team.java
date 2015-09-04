@@ -185,16 +185,6 @@ public class Team extends GameElement {
 		return nearestMilitary;
 	}
 
-	
-	//DEBUG METHOD
-	public void instantKillAllUnit(){
-		for(Military m : listMilitary){
-			if(m instanceof Creep) m.hit(100000, AnimatedTextureType.MISSILE_EXPLOSION);
-		}
-	}
-	
-	
-
 
 	public int getMoneyByTurn() {
 		return moneyByTurn;

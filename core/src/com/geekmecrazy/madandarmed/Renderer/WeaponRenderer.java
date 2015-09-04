@@ -6,13 +6,13 @@ import java.util.List;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
+import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 public abstract class WeaponRenderer extends Entity {
 
 	Weapon weapon;
 
 	private List<UniqueActionRenderer> weaponTravellingEffectList;
-	private List<UniqueActionRenderer> weaponEffectList;
 
 	// ===========================================================
 	// Constructors
@@ -20,7 +20,6 @@ public abstract class WeaponRenderer extends Entity {
 
 	public WeaponRenderer(){
 		weaponTravellingEffectList = new ArrayList<UniqueActionRenderer>();
-		weaponEffectList = new ArrayList<UniqueActionRenderer>();
 	}
 
 	// ===========================================================
@@ -39,18 +38,11 @@ public abstract class WeaponRenderer extends Entity {
 		return weaponTravellingEffectList;
 	}
 
-	public void setWeaponTravellingEffectList(
+	public void setWeaponTravellingEffectList(final 
 			List<UniqueActionRenderer> weaponTravellingEffectList) {
 		this.weaponTravellingEffectList = weaponTravellingEffectList;
 	}
 
-	public List<UniqueActionRenderer> getWeaponEffectList() {
-		return weaponEffectList;
-	}
-
-	public void setWeaponEffectList(List<UniqueActionRenderer> weaponEffectList) {
-		this.weaponEffectList = weaponEffectList;
-	}
 
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
@@ -65,6 +57,20 @@ public abstract class WeaponRenderer extends Entity {
 		//after because Position has been modified
 		super.onUpdate();
 	}
+	
+	@Override
+	public void reset(){
+		
+		weapon = null;
+		
+		int size = weaponTravellingEffectList.size();
+		for(int i=0; i<size; i++)
+			PoolAnimManager.getManager().getUniqueActionRendererPool().free(this.weaponTravellingEffectList.get(i));
+		weaponTravellingEffectList.clear();
+		
+		super.reset();
+		
+	}
 		
 	// ===========================================================
 	// Methods
@@ -76,15 +82,15 @@ public abstract class WeaponRenderer extends Entity {
 		this.setWeapon(weapon);
 		
 		this.setWeaponTravellingEffect(); //set the animations of the weapon running to the target
-		this.setWeaponEffect(); //set the animations of the weapon on the target
 	}
 	
 
 	/** Pattern of the weapon travelling to the unit **/
 	protected abstract void setWeaponTravellingEffect();
 	
-	/** Pattern of the weapon to the unit **/
-	protected abstract void setWeaponEffect();
+	/** Pattern of the weapon to the unit
+	 * We add to the weaponEffectList **/
+	protected abstract void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList);
 
 	/** attach all UniqueActionRenderer to entity **/
 	public void attachWeaponTravellingEffect(final Entity entity){
@@ -92,13 +98,6 @@ public abstract class WeaponRenderer extends Entity {
 		for(int i=0; i<size; i++)
 			entity.attachChild(this.weaponTravellingEffectList.get(i), Entity.Alignment.CENTER);
 	}
-	
-	/** attach all UniqueActionRenderer to entity **/
-	public void attachWeaponEffect(final Entity entity){
-		int size = weaponEffectList.size();
-		for(int i=0; i<size; i++)
-			entity.attachChild(this.weaponEffectList.get(i), Entity.Alignment.CENTER);
-	}
-	
+		
 
 }

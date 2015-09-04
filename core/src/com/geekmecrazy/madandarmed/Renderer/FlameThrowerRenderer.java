@@ -1,5 +1,7 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
+import java.util.List;
+
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
@@ -76,7 +78,7 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 	}
 	
 	@Override
-	protected void setWeaponEffect() {}
+	protected void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList) {}
 	
 	// ===========================================================
 	// Methods

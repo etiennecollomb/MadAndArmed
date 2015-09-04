@@ -1,8 +1,11 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import java.util.List;
+
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.Renderer.MilitaryRenderer;
+import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
@@ -143,11 +146,11 @@ public class Military extends Geometrie {
 		
 	}
 
-	public void hit(float getDmgEffect, AnimatedTextureType hitAnimatedType){
+	public void hit(final Weapon weapon){
 
-		life.hit(getDmgEffect);
+		life.hit(weapon.getDmgEffect());
 		
-		militaryRenderer.addHitActionRenderer(hitAnimatedType);
+		militaryRenderer.addHitActionRenderer(weapon);
 
 		if(life.isDead()){
 			this.noMoreLife();

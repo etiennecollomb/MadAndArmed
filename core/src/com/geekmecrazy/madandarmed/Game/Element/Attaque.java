@@ -108,12 +108,12 @@ public class Attaque extends GameElement {
 	
 	/** Attaque Gun */
 	private void attackGun(Military shooter, Military target){
-		target.hit(shooter.getAttackBehavior().getWeaponPattern().getDmgEffect(), shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType());
+		//target.hit(shooter.getAttackBehavior().getWeaponPattern().getDmgEffect(), shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType());
 	}
 	
 	/** Attaque CAC */
 	private void attackCac(Military shooter, Military target){
-		target.hit(shooter.getAttackBehavior().getWeaponPattern().getDmgEffect(), shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType());
+		//target.hit(shooter.getAttackBehavior().getWeaponPattern().getDmgEffect(), shooter.getAttackBehavior().getWeaponPattern().getAnimatedTextureType());
 	}
 	
 	/** Check de distance de Tir 
