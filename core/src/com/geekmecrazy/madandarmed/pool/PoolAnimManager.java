@@ -39,7 +39,7 @@ public class PoolAnimManager {
 	public static final SpriteSheet IMPACT_BULLET_SPRITESHEET = new SpriteSheet(AnimatedTextureType.IMPACT_BULLET, true);
 	public static final SpriteSheet FIRE_BLAST_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_64PX, true);
 	public static final SpriteSheet FIRE_BLAST_001_128PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_128PX, true);
-	public static final SpriteSheet SWORD_001_256PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.SWORD_001_256PX, true);
+	public static final SpriteSheet SWORD_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.SWORD_001_64PX, true);
 	
 
 	//DEAD
@@ -161,7 +161,7 @@ public class PoolAnimManager {
 		spriteSheets.put(AnimatedTextureType.IMPACT_BULLET, IMPACT_BULLET_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.FIRE_BLAST_001_64PX, FIRE_BLAST_001_64PX_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.FIRE_BLAST_001_128PX, FIRE_BLAST_001_128PX_SPRITESHEET);
-		spriteSheets.put(AnimatedTextureType.SWORD_001_256PX, SWORD_001_256PX_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.SWORD_001_64PX, SWORD_001_64PX_SPRITESHEET);
 		
 		//DEAD
 		spriteSheets.put(AnimatedTextureType.DEAD, DEAD_SPRITESHEET);

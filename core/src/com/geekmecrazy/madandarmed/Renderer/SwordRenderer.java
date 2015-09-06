@@ -26,7 +26,8 @@ public class SwordRenderer extends WeaponRenderer {
 	@Override
 	protected void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList) {
 		UniqueActionRenderer uniqueActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-		uniqueActionRenderer.init(PoolAnimManager.SWORD_001_256PX_SPRITESHEET);
+		uniqueActionRenderer.init(PoolAnimManager.SWORD_001_64PX_SPRITESHEET);
+		uniqueActionRenderer.setAnimationSpeed(1f);
 		weaponEffectList.add(uniqueActionRenderer);
 	}
 	

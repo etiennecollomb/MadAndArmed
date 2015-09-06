@@ -62,8 +62,6 @@ public class UniqueActionRenderer extends SimpleRenderer  {
 			animationSpeedModulo = animationSpeedModulo + this.getAnimationSpeed() % 1.0f;
 			this.mCurrentFrame = this.mCurrentFrame + (int)this.getAnimationSpeed();
 		}
-			
-		
 		
 		//after because OffSet has been modified
 		super.onUpdate();

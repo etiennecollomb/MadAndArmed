@@ -4,7 +4,7 @@
         weaponName: SWORD_1
 		weaponType: SWORD
 		hitRange: 50
-		hitSpeed: 10
+		hitSpeed: 20
 		dmgEffect: 30
 		animatedTextureType: IMPACT_BULLET
 		soundsType: [ PUNCH_01, PUNCH_02 ]
