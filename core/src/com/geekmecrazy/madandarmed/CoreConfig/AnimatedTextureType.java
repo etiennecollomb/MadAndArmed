@@ -25,50 +25,6 @@ public enum AnimatedTextureType {
 	BUILDING_DEATH_64PX		("game/cloud_debris_blast_sprite_sheet_64px.png", 512, 512, 8, 8), //BUILDING
 	BUILDING_DEATH_32PX		("game/cloud_debris_blast_sprite_sheet_32px.png", 256, 256, 8, 8), //BUILDING
 
-	//TEAM 1 (USER) UNITS
-	MARINE_SMALL_TEAM1		("game/marine1-red_64px_0000_0000#0000.png", 1024, 1024,16,16, -1, 32),
-	MARINE_SMALL_TEAM1_2	("game/marine1-red-shoot_128px_0000_0000#0000.png", 1024, 128,8,1),
-	MARINE_SMALL_TEAM1_3	("game/marine1-red-shoot_128px_0000_0000#0001.png", 1024, 128,8,1),
-
-	MARINE_BIG_TEAM1        ("game/Mech1_red_128px_0000_0000#0000.png", 1024, 1024, 8, 8, -1, 64),
-    MARINE_BIG_TEAM1_2		("game/Mech1_red_128px_0000_0000#0001.png", 1024, 1024, 8, 8),
-    MARINE_BIG_TEAM1_3		("game/Mech1_red_128px_0000_0001#0000.png", 1024, 1024, 8, 8),
-    MARINE_BIG_TEAM1_4		("game/Mech1_red_128px_0000_0001#0001.png", 1024, 1024, 8, 8),
-    MARINE_BIG_TEAM1_5		("game/Mech1_red_128px_0000_0002#0000.png", 1024, 1024, 8, 8),
-    MARINE_BIG_TEAM1_6		("game/Mech1_red_128px_0000_0002#0001.png", 1024, 1024, 8, 8),
-	//MARINE_BIG_TEAM1_7		("game/marine1-red-shoot_256px_0000_0000#0002.png", 1024, 256, 4, 1),
-	//MARINE_BIG_TEAM1_8		("game/marine1-red-shoot_256px_0000_0000#0003.png", 1024, 256, 4, 1),
-
-	GLADIATOR_TEAM1			("game/gladiator01-red_64px_0000_0000#0000.png", 1024, 1024, 16, 16, -1, 32),
-	GLADIATOR_TEAM1_2		("game/gladiator01-red-shoot_128px_0000_0000#0000.png", 1024, 1024, 8, 8),
-	GLADIATOR_TEAM1_3		("game/gladiator01-red-shoot_128px_0000_0000#0001.png", 1024, 1024, 8, 8),
-
-	//TEAM 2 (IA) UNITS
-	MARINE_SMALL_TEAM2		("game/marine1-blue_64px_0000_0000#0000.png", 1024, 1024,16,16, -1, 32),
-	MARINE_SMALL_TEAM2_2	("game/marine1-blue-shoot_128px_0000_0000#0000.png", 1024, 128,8,1),
-	MARINE_SMALL_TEAM2_3	("game/marine1-blue-shoot_128px_0000_0000#0001.png", 1024, 128,8,1),
-
-	MARINE_BIG_TEAM2		("game/Mech1_128px_0000_0000#0000.png", 1024, 1024, 8, 8, -1, 64),
-	MARINE_BIG_TEAM2_2		("game/Mech1_128px_0000_0000#0001.png", 1024, 1024, 8, 8),
-	MARINE_BIG_TEAM2_3		("game/Mech1_128px_0000_0001#0000.png", 1024, 1024, 8, 8),
-	MARINE_BIG_TEAM2_4		("game/Mech1_128px_0000_0001#0001.png", 1024, 1024, 8, 8),
-	MARINE_BIG_TEAM2_5		("game/Mech1_128px_0000_0002#0000.png", 1024, 1024, 8, 8),
-	MARINE_BIG_TEAM2_6		("game/Mech1_128px_0000_0002#0001.png", 1024, 1024, 8, 8),
-	//MARINE_BIG_TEAM2_7		("game/marine1-blue-shoot_256px_0000_0000#0002.png", 1024, 256, 4, 1),
-	//MARINE_BIG_TEAM2_8		("game/marine1-blue-shoot_256px_0000_0000#0003.png", 1024, 256, 4, 1),
-
-	GLADIATOR_TEAM2			("game/gladiator01-blue_64px_0000_0000#0000.png", 1024, 1024, 16, 16, -1, 32),
-	GLADIATOR_TEAM2_2		("game/gladiator01-blue-shoot_128px_0000_0000#0000.png", 1024, 1024, 8, 8),
-	GLADIATOR_TEAM2_3		("game/gladiator01-blue-shoot_128px_0000_0000#0001.png", 1024, 1024, 8, 8),
-
-	//FLAMETHOWER				("game/Flame-Thrower-01_64px_0000_0000#0000.png", 1024, 64, 16, 1, -1, 64),
-	TURRET_01				("game/Fr-Launcher-03_128px_0000_0000#0000.png", 1024, 128, 8, 1, -1, 96),
-	TURRET_01_2				("game/Fr-Launcher-03_128px_0000_0000#0001.png", 1024, 128, 8, 1, -1, 96),
-
-	TURRET_02				("game/Turret-08_256px_0000_0000#0000.png", 1024, 256, 4, 1, -1, 96),
-	TURRET_02_2				("game/Turret-08_256px_0000_0000#0001.png", 1024, 256, 4, 1, -1, 96),
-	TURRET_02_3				("game/Turret-08_256px_0000_0000#0002.png", 1024, 256, 4, 1, -1, 96),
-	TURRET_02_4				("game/Turret-08_256px_0000_0000#0003.png", 1024, 256, 4, 1, -1, 96),
 
 	// QG UI
 	BUY					("qg/buy2.png", 128, 64, 2, 1),
