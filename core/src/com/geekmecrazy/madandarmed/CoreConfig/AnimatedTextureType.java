@@ -17,14 +17,12 @@ public enum AnimatedTextureType {
 	FIRE_BLAST_001_128PX	("game/SB-2_1_128px.png", 1024, 1024, 8, 8),
 	SWORD_001_256PX			("game/swordeffect_256px.png", 1024, 256, 4, 1),
 	SWORD_001_64PX			("game/swordeffect_64px.png", 256, 64, 4, 1),
-	
 
 	//DEAD ANIMATION
 	DEAD					("game/deadCreep.png", 512, 64, 8, 1, 8),  //CREEP
 	BUILDING_DEATH_128PX	("game/cloud_debris_blast_sprite_sheet_128px.png", 1024, 1024, 8, 8), //BUILDING
 	BUILDING_DEATH_64PX		("game/cloud_debris_blast_sprite_sheet_64px.png", 512, 512, 8, 8), //BUILDING
 	BUILDING_DEATH_32PX		("game/cloud_debris_blast_sprite_sheet_32px.png", 256, 256, 8, 8), //BUILDING
-
 
 	// QG UI
 	BUY					("qg/buy2.png", 128, 64, 2, 1),
