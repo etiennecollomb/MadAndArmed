@@ -16,6 +16,11 @@
 		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
 		    	creepType: MESH
 				icon: MARINE_BIG_ICON
+		    },
+		    {
+		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
+		    	creepType: BULLHOUND
+				icon: MARINE_BIG_ICON
 		    }
 		]
 	}

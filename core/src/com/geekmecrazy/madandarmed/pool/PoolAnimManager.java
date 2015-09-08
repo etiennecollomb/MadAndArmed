@@ -53,10 +53,13 @@ public class PoolAnimManager {
 	public static final SpriteSheet GLADIATOR_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.GLADIATOR_HD_TEAM1, false);
 	public static final SpriteSheet MARINE_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MARINE_HD_TEAM1, false);
 	public static final SpriteSheet MESH_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM1, false);
+	public static final SpriteSheet BULLHOUND_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM1, false);
+	
 	//---TEAM2
 	public static final SpriteSheet GLADIATOR_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.GLADIATOR_HD_TEAM2, false);
 	public static final SpriteSheet MARINE_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MARINE_HD_TEAM2, false);
 	public static final SpriteSheet MESH_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2, false);
+	public static final SpriteSheet BULLHOUND_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM2, false);
 
 	//BUILDING
 	//---TEAM1
@@ -173,10 +176,12 @@ public class PoolAnimManager {
 		spriteSheets.put(AnimatedTextureType.GLADIATOR_HD_TEAM1, GLADIATOR_HD_TEAM1_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.MARINE_HD_TEAM1, MARINE_HD_TEAM1_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.MESH_HD_TEAM1, MESH_HD_TEAM1_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.BULLHOUND_HD_TEAM1, BULLHOUND_HD_TEAM1_SPRITESHEET);
 		//---TEAM2
 		spriteSheets.put(AnimatedTextureType.GLADIATOR_HD_TEAM2, GLADIATOR_HD_TEAM2_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.MARINE_HD_TEAM2, MARINE_HD_TEAM2_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.MESH_HD_TEAM2, MESH_HD_TEAM2_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.BULLHOUND_HD_TEAM2, BULLHOUND_HD_TEAM2_SPRITESHEET);
 		//BUILDING
 		//---TEAM1
 		spriteSheets.put(AnimatedTextureType.TURRET_01_HD_TEAM1, TURRET_01_HD_TEAM1_SPRITESHEET);

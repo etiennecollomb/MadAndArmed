@@ -10,7 +10,8 @@ public class CreepPattern {
 	public static enum CreepType {
 		GLADIATOR,
 		MARINE,
-		MESH
+		MESH,
+		BULLHOUND
 	} 
 	
 	public static enum CreepSize {
