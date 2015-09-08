@@ -96,7 +96,6 @@ public class SpriteSheet {
 
 		String animatedTextureRootName = pAnimatedTextureTypeRoot.name();
 
-
 		//get final array size
 		int tiledSize = pAnimatedTextureTypeRoot.getWidth()/pAnimatedTextureTypeRoot.getNumberOfColumn();
 		int numberOfSpriteOnSameLine = tiledSize / SpriteSheet.MIN_TILED_SIZE; 
