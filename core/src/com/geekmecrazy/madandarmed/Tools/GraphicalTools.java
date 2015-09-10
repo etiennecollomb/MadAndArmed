@@ -7,7 +7,7 @@ public class GraphicalTools {
 
 
 	/** nombre d orientations graphiques possible des unités */
-	private static final int NB_ORIENTATION = 16;
+	public static final int NB_ORIENTATION = 16;
 
 	/** angle de depart du spritesheet */
 	private static final float START_ANGLE = 90f;
