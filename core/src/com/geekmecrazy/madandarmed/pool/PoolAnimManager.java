@@ -72,7 +72,7 @@ public class PoolAnimManager {
 	public static final SpriteSheet BARRICADE_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BARRICADES, true);
 
 	//MISSILE
-	public static final SpriteSheet MISSILE_TYPE_1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MISSILE_TYPE_1, false);
+	public static final SpriteSheet MISSILE_TYPE_1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MISSILE_TYPE_1, true);
 
 
 	/** Pools */
