@@ -52,12 +52,14 @@ public class PoolAnimManager {
 	//---TEAM1
 	public static final SpriteSheet GLADIATOR_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.GLADIATOR_HD_TEAM1, false);
 	public static final SpriteSheet MARINE_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MARINE_HD_TEAM1, false);
+	public static final SpriteSheet FLAMETHROWER1_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM1, false);
 	public static final SpriteSheet MESH_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM1, false);
 	public static final SpriteSheet BULLHOUND_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM1, false);
 	
 	//---TEAM2
 	public static final SpriteSheet GLADIATOR_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.GLADIATOR_HD_TEAM2, false);
 	public static final SpriteSheet MARINE_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MARINE_HD_TEAM2, false);
+	public static final SpriteSheet FLAMETHROWER1_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2, false);
 	public static final SpriteSheet MESH_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2, false);
 	public static final SpriteSheet BULLHOUND_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM2, false);
 
@@ -175,11 +177,13 @@ public class PoolAnimManager {
 		//---TEAM1
 		spriteSheets.put(AnimatedTextureType.GLADIATOR_HD_TEAM1, GLADIATOR_HD_TEAM1_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.MARINE_HD_TEAM1, MARINE_HD_TEAM1_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.FLAMETHROWER1_HD_TEAM1, FLAMETHROWER1_HD_TEAM1_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.MESH_HD_TEAM1, MESH_HD_TEAM1_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.BULLHOUND_HD_TEAM1, BULLHOUND_HD_TEAM1_SPRITESHEET);
 		//---TEAM2
 		spriteSheets.put(AnimatedTextureType.GLADIATOR_HD_TEAM2, GLADIATOR_HD_TEAM2_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.MARINE_HD_TEAM2, MARINE_HD_TEAM2_SPRITESHEET);
+		spriteSheets.put(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2, FLAMETHROWER1_HD_TEAM2_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.MESH_HD_TEAM2, MESH_HD_TEAM2_SPRITESHEET);
 		spriteSheets.put(AnimatedTextureType.BULLHOUND_HD_TEAM2, BULLHOUND_HD_TEAM2_SPRITESHEET);
 		//BUILDING

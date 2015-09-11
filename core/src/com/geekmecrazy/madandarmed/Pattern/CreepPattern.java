@@ -10,6 +10,7 @@ public class CreepPattern {
 	public static enum CreepType {
 		GLADIATOR,
 		MARINE,
+		FLAMETHROWER,
 		MESH,
 		BULLHOUND
 	} 

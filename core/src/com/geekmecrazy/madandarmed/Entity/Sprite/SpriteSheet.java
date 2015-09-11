@@ -53,6 +53,7 @@ public class SpriteSheet {
 	 */
 	public SpriteSheet(final AnimatedTextureType pAnimatedTextureType, final boolean pIsUniqueSprite) {
 
+		long timeTEMP = System.currentTimeMillis();
 		this.mIsUniqueSprite = pIsUniqueSprite;
 
 		this.mAnimatedTextureTypeRoot = pAnimatedTextureType;
@@ -66,6 +67,9 @@ public class SpriteSheet {
 		this.mNumberOfTiled = this.mNumberOfColumn * this.mNumberOfRow;
 		if(this.mIsUniqueSprite)
 			this.mNumberOfTiled = pAnimatedTextureType.getNumberOfTiled(); //on impose un nombre de tiled
+
+		System.out.println("##### SpriteSheet Loading :  " + pAnimatedTextureType.name() + " > "  + (System.currentTimeMillis() - timeTEMP)/1000f + " sec." );
+		
 
 	}
 
