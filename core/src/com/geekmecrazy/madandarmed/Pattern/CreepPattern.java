@@ -194,7 +194,7 @@ public class CreepPattern {
 		switch (weaponPattern.getWeaponType()){
 		case SWORD:
 			//Corps a corps : 1234567 1234567...etc
-			state1Counter=this.getFireAnimationRow().size();
+			state1Counter = this.getFireAnimationRow().size();
 			state2Counter = 2; //4 = ralenti x4 des coups 
 
 			this.fireAnimation = new int[state1Counter*state2Counter];

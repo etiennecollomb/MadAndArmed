@@ -43,7 +43,8 @@ public class IaManager {
 	private final long TURN=100; //100
 	private long nbTurnAfterPreviousSpawn;
 	
-	private final long BIG_TURN=6;
+	private final long MESH_TURN=12;
+	private final long BULLHOUND_TURN=6;
 	private long big_spawn;
 
 
@@ -54,12 +55,15 @@ public class IaManager {
         if(CreepManager.getManager().getCreepsNumber()<200) {
 
             if (nbTurnAfterPreviousSpawn >= TURN) {
-                if (big_spawn >= BIG_TURN) {
+                if (big_spawn == MESH_TURN) {
                     CreepManager.getManager().askForCreateCreep(CreepType.MESH, FightScreen.getManager().getTeamIA());
                     big_spawn = 0;
-                } else {
-                    big_spawn++;
                 }
+                else if (big_spawn == BULLHOUND_TURN) {
+                	CreepManager.getManager().askForCreateCreep(CreepType.BULLHOUND, FightScreen.getManager().getTeamIA());
+                }
+
+                big_spawn++;
 
                 CreepManager.getManager().askForCreateCreep(CreepType.GLADIATOR, FightScreen.getManager().getTeamIA());
                 CreepManager.getManager().askForCreateCreep(CreepType.GLADIATOR, FightScreen.getManager().getTeamIA());
