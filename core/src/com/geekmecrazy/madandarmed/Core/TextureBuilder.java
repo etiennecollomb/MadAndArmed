@@ -37,7 +37,7 @@ public class TextureBuilder {
 
         this.setTextureWidth(pWidth);
         this.setTextureHeight(pHeight);
-        finalPixmap = new Pixmap(pWidth, pHeight, Pixmap.Format.RGBA8888);
+        finalPixmap = new Pixmap(pWidth, pHeight, Pixmap.Format.RGBA4444);
 
         //DEBUG
 //        Pixmap pixmapBrick = new Pixmap(textureWidth, textureHeight, Pixmap.Format.RGBA8888);

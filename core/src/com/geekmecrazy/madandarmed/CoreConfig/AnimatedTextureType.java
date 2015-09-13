@@ -50,6 +50,9 @@ public enum AnimatedTextureType {
 	TURRET_02_HD_TEAM1      ("game/Turrets/Turret02_256px_Red", 128),
 	TURRET_02_HD_TEAM2      ("game/Turrets/Turret02_256px_Blue", 128),
 
+	
+	/** TEST **/
+	TEST      ("game/test", 128),
 	;
 
 

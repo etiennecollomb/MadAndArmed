@@ -9,7 +9,10 @@ import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.utils.Array;
 
 
 public class SpriteSheet {
@@ -43,6 +46,11 @@ public class SpriteSheet {
 
 	private boolean mIsUniqueSprite; //si il n y a qu un spriteSheet et non une composition de plusieurs , on est plus souple sur son emploi
 
+	/** list des textureAtlas si on cree le spriteSheet a partir de ca **/
+	private List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
+	private int numberOfWalkFrame;
+	private int numberOfShootFrame;
+
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -61,7 +69,7 @@ public class SpriteSheet {
 		if(pIsUniqueSprite)
 			this.generateUniqueSpriteSheet(this.mAnimatedTextureTypeRoot);
 		else
-			this.generateSpriteSheet(this.mAnimatedTextureTypeRoot);
+			this.generateSpriteSheetFromAtlas(this.mAnimatedTextureTypeRoot);
 
 		//on supose que toutes les sprites definissent une meta sprite de NxN
 		this.mNumberOfTiled = this.mNumberOfColumn * this.mNumberOfRow;
@@ -69,7 +77,7 @@ public class SpriteSheet {
 			this.mNumberOfTiled = pAnimatedTextureType.getNumberOfTiled(); //on impose un nombre de tiled
 
 		System.out.println("##### SpriteSheet Loading :  " + pAnimatedTextureType.name() + " > "  + (System.currentTimeMillis() - timeTEMP)/1000f + " sec." );
-		
+
 
 	}
 
@@ -100,6 +108,99 @@ public class SpriteSheet {
 	// ===========================================================
 	// Methods
 	// ===========================================================
+
+	public void generateSpriteSheetFromAtlas(AnimatedTextureType animatedTextureType){
+
+
+		/** Get all files in dir **/
+		FileHandle dirHandle;
+		if (Gdx.app.getType() == ApplicationType.Android) {
+			dirHandle = Gdx.files.internal(animatedTextureType.getPath());
+		} else { // ApplicationType.Desktop ..
+			dirHandle = Gdx.files.internal("./bin/"+animatedTextureType.getPath());
+		}
+
+		/** create all texture atlas **/
+		for (FileHandle fileHandle: dirHandle.list()) {
+			String fileName = fileHandle.file().getName();
+			String extension = fileName.substring(fileName.lastIndexOf(".")+1);
+
+			if(extension.equals("txt")){
+				TextureAtlas textureAtlas = new TextureAtlas(Gdx.files.internal(fileHandle.file().getPath()),Gdx.files.internal(fileHandle.file().getParent()));
+				textureAtlasList.add(textureAtlas);
+			}
+		}
+
+		/** get atlas datas **/
+		mNumberOfColumn = 0;
+		
+		numberOfWalkFrame = 0;
+		numberOfShootFrame = 0;
+		Array<Integer> walkColumns = new Array<Integer>();
+		Array<Integer> walkRows = new Array<Integer>();
+		Array<TextureRegion> walkTextureRegion = new Array<TextureRegion>();
+		Array<Integer> shootColumns = new Array<Integer>();
+		Array<Integer> shootRows = new Array<Integer>();
+		Array<TextureRegion> shootTextureRegion = new Array<TextureRegion>();
+		
+		int atlasListSize = textureAtlasList.size();
+		for(int i=0; i<atlasListSize; i++){
+			Array<AtlasRegion> atlasRegions = textureAtlasList.get(i).getRegions();
+			for(int j=0; j<atlasRegions.size; j++){
+
+				/** file name example : XXXXX#0000#0000.png **/
+				String fileName = atlasRegions.get(j).name;
+				int pos = fileName.length();
+				int column = Integer.parseInt(fileName.substring(pos-5, pos));
+				int row = Integer.parseInt(fileName.substring(pos-10, pos-6));
+
+				pos = fileName.indexOf("#");
+				String actionName = fileName.substring(0, pos);
+
+				if(column>mNumberOfColumn) mNumberOfColumn = column;
+				if(actionName.equals("1Walk")){
+					if(row>numberOfWalkFrame) numberOfWalkFrame = row;
+					walkColumns.add(new Integer(column));
+					walkRows.add(new Integer(row));
+					walkTextureRegion.add(atlasRegions.get(j));
+				}else if(actionName.equals("3Shoot")){
+					if(row>numberOfShootFrame) numberOfShootFrame = row;
+					shootColumns.add(new Integer(column));
+					shootRows.add(new Integer(row));
+					shootTextureRegion.add(atlasRegions.get(j));
+				}
+			}
+		}
+		numberOfWalkFrame++;
+		numberOfShootFrame++;
+
+		mNumberOfColumn++;
+		mNumberOfRow = numberOfWalkFrame + numberOfShootFrame;
+
+		System.out.println("#### Spritesheet Size : " +mNumberOfColumn+" "+mNumberOfRow+"");
+		
+		/** set SpriteSheet**/
+		mSprites = new TextureRegion[mNumberOfColumn][mNumberOfRow];
+		mSpritesSize = new int[mNumberOfColumn][mNumberOfRow];
+
+		/** Walk **/
+		int currentIndex=0;
+		for(int i=0; i<walkTextureRegion.size; i++){
+			mSprites[walkColumns.get(i)][walkRows.get(i)+currentIndex] = walkTextureRegion.get(i);
+			mSpritesSize[walkColumns.get(i)][walkRows.get(i)+currentIndex] = 256;
+		}
+		currentIndex = currentIndex + numberOfWalkFrame;
+		
+		/** Shoot **/
+		for(int i=0; i<shootTextureRegion.size; i++){
+			mSprites[shootColumns.get(i)][shootRows.get(i)+currentIndex] = shootTextureRegion.get(i);
+			mSpritesSize[shootColumns.get(i)][shootRows.get(i)+currentIndex] = 256;
+		}
+		currentIndex = currentIndex + numberOfShootFrame;
+		
+	}
+
+
 
 	/**
 	 * on recupere tous les texture des spritesheet d un dir
@@ -154,15 +255,15 @@ public class SpriteSheet {
 		int size = numberOfSpriteSheetByLine.size();
 		int indexTextures=0;
 		for(int i=0; i<size; i++){
-			
+
 			int sizeOfTiled = numberOfSpriteSheetByLine.get(i)*textures.get(indexTextures).getWidth()/GraphicalTools.NB_ORIENTATION;
 			tiledSize.add(new Integer(sizeOfTiled));
 
 			mNumberOfRow = mNumberOfRow + textures.get(0).getHeight()/sizeOfTiled;
-			
+
 			indexTextures = indexTextures + numberOfSpriteSheetByLine.get(i);
 		}
-		
+
 
 		this.mNumberOfColumn = GraphicalTools.NB_ORIENTATION;
 

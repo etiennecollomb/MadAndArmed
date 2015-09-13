@@ -1,7 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
@@ -148,6 +147,14 @@ public class FightScreen extends Screen implements IUpdatable {
 
         //principalement update des positions des renderer (a faire apres calcul metier...donc a la fin)
         super.onUpdate();
+        
+        
+        
+        /** Memory Usage **/
+        System.out.println("################## MEMORY USAGE ##################");
+        System.out.println("Java Heap : " + Gdx.app.getJavaHeap()/1000000f + " Mo" );
+        System.out.println("Native Heap : " + Gdx.app.getNativeHeap()/1000000f + " Mo" );
+        System.out.println("##################################################");
 
     }
 
@@ -241,6 +248,14 @@ public class FightScreen extends Screen implements IUpdatable {
         
 		/** Start Sound Background */
         SoundManager.playMusicBackground();
+        
+        
+        
+//        /** Memory Usage **/
+//        System.out.println("################## MEMORY USAGE ##################");
+//        System.out.println("Java Heap : " + Gdx.app.getJavaHeap()/1000000f + " Mo" );
+//        System.out.println("Native Heap : " + Gdx.app.getNativeHeap()/1000000f + " Mo" );
+//        System.out.println("##################################################");
         
         
 	}

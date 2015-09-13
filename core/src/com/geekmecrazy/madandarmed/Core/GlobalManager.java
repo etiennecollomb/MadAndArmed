@@ -109,8 +109,8 @@ public class GlobalManager {
 	// ===========================================================
 
 	/** Menu Scene */
-	public static final int MENU_SCENE_WIDTH = DEVICE_SCREEN_WIDTH;
-	public static final int MENU_SCENE_HEIGHT = DEVICE_SCREEN_HEIGHT;
+	public static final int MENU_SCENE_WIDTH = DEVICE_SCREEN_WIDTH*5;
+	public static final int MENU_SCENE_HEIGHT = DEVICE_SCREEN_HEIGHT*5;
 
 	/** FIGHT Map */
 	public static final int MAP_FIGHT_WIDTH = 4096; //2048;
