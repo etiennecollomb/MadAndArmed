@@ -190,7 +190,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 	@Override
 	public void onUpdate(){
 		super.onUpdate();
-		
+
 	}
 	
 	
