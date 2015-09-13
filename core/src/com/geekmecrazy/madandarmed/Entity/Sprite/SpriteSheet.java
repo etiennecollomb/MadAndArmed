@@ -138,10 +138,10 @@ public class SpriteSheet {
 		numberOfShootFrame = 0;
 		Array<Integer> walkColumns = new Array<Integer>();
 		Array<Integer> walkRows = new Array<Integer>();
-		Array<TextureRegion> walkTextureRegion = new Array<TextureRegion>();
+		Array<AtlasRegion> walkTextureRegion = new Array<AtlasRegion>();
 		Array<Integer> shootColumns = new Array<Integer>();
 		Array<Integer> shootRows = new Array<Integer>();
-		Array<TextureRegion> shootTextureRegion = new Array<TextureRegion>();
+		Array<AtlasRegion> shootTextureRegion = new Array<AtlasRegion>();
 		
 		int atlasListSize = textureAtlasList.size();
 		for(int i=0; i<atlasListSize; i++){

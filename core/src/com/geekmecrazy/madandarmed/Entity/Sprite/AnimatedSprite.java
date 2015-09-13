@@ -45,6 +45,9 @@ public class AnimatedSprite extends Sprite {
 		this.mCurrentFrameY = (pCurrentFrameY<this.getSpriteSheet().getNumberOfRow())? pCurrentFrameY: this.getSpriteSheet().getNumberOfRow()-1;
 		this.setWidth(this.getCurrentFrameSize());
 		this.setHeight(this.getCurrentFrameSize());
+		
+		//testtexturepacker
+//		this.setOffset
 	}
 
 	public void setCurrentFrame(final int pNumber) {
