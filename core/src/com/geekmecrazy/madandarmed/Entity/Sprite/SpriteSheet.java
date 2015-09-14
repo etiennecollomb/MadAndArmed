@@ -104,6 +104,10 @@ public class SpriteSheet {
 		return mNumberOfRow;
 	}
 
+	public boolean isFromTexturePack() {
+		return isFromTexturePack;
+	}
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
@@ -411,6 +415,20 @@ public class SpriteSheet {
 			return ((AtlasRegion)this.mSprites[pCol_x][pRow_y]).offsetY;
 		else
 			return 0;
+	}
+	
+	public float getFrameOriginalWidth(final int pCol_x, final int pRow_y) {
+		if(this.isFromTexturePack)
+			return ((AtlasRegion)this.mSprites[pCol_x][pRow_y]).originalWidth;
+		else
+			return this.mSprites[pCol_x][pRow_y].getRegionWidth();
+	}
+	
+	public float getFrameOriginalHeight(final int pCol_x, final int pRow_y) {
+		if(this.isFromTexturePack)
+			return ((AtlasRegion)this.mSprites[pCol_x][pRow_y]).originalHeight;
+		else
+			return this.mSprites[pCol_x][pRow_y].getRegionHeight();
 	}
 	
 }
