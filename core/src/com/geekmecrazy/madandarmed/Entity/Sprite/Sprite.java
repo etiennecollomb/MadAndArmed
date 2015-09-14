@@ -242,8 +242,6 @@ public class Sprite extends Shape {
 		this.setDraw_srcWidth(this.getTextureRegion().getRegionWidth());
 		this.setDraw_srcHeight(this.getTextureRegion().getRegionHeight());
 		
-//		System.out.println("->" + this.getWidth() + " " +this.getTextureRegion().getRegionWidth() );
-
 		/** si dans un Layout
 		 * on gere les bord coupés
 		 */

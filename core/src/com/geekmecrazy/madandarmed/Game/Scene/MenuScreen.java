@@ -186,6 +186,11 @@ public class MenuScreen extends Screen implements IUpdatable {
 		as1.setPosition(300f,  300f);
 		as1.setCurrentFrame(0);
 		this.getScene().attachChild(as1);
+		
+		Rectangle r2d2 = new Rectangle();
+		r2d2.init(300f,300f,9, 9);
+		r2d2.setColor(1,0,0,1);
+		this.getScene().attachChild(r2d2);
 
 	}
 	

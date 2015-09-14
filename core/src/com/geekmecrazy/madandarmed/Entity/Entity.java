@@ -53,7 +53,10 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
     private float mCenterY;
 
     private float mOffsetX;
-    private float mOffsetY;
+	private float mOffsetY;
+
+	private float mAlignementOffsetX;
+	private float mAlignementOffsetY;
 
     private float mWidth;
     private float mHeight;
@@ -173,22 +176,38 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
     public void setCenterY(final float pCenterY) {
         this.mCenterY = pCenterY;
     }
-
+    
     public float getOffsetX() {
-        return mOffsetX;
-    }
+		return mOffsetX;
+	}
 
-    public void setOffsetX(final float pOffsetX) {
-        this.mOffsetX = pOffsetX;
-    }
+	public void setOffsetX(float mOffsetX) {
+		this.mOffsetX = mOffsetX;
+	}
 
-    public float getOffsetY() {
-        return mOffsetY;
-    }
+	public float getOffsetY() {
+		return mOffsetY;
+	}
 
-    public void setOffsetY(final float pOffsetY) {
-        this.mOffsetY = pOffsetY;
-    }
+	public void setOffsetY(float mOffsetY) {
+		this.mOffsetY = mOffsetY;
+	}
+
+    public float getAlignementOffsetX() {
+		return mAlignementOffsetX;
+	}
+
+	public void setAlignementOffsetX(float mAlignementOffsetX) {
+		this.mAlignementOffsetX = mAlignementOffsetX;
+	}
+
+	public float getAlignementOffsetY() {
+		return mAlignementOffsetY;
+	}
+
+	public void setAlignementOffsetY(float mAlignementOffsetY) {
+		this.mAlignementOffsetY = mAlignementOffsetY;
+	}
 
     public float getWidth() {
         return this.mWidth;
@@ -294,8 +313,8 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
 		this.setSceneX(0);
 		this.setSceneY(0);
 		
-		this.setOffsetX(0);
-		this.setOffsetY(0);
+		this.setAlignementOffsetX(0);
+		this.setAlignementOffsetY(0);
 
         this.setWidth(0);
         this.setHeight(0);
@@ -337,8 +356,8 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
 		this.setSceneX(pX);
 		this.setSceneY(pY);
 
-		this.setOffsetX(0);
-        this.setOffsetY(0);
+		this.setAlignementOffsetX(0);
+        this.setAlignementOffsetY(0);
 
         this.setWidth(0);
         this.setHeight(0);
@@ -496,8 +515,8 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
 
     /** For onUpdate */
     public void setSceneCoordinates() {
-        this.setSceneX( this.getX() + this.getOffsetX() );
-        this.setSceneY( this.getY() + this.getOffsetY() );
+        this.setSceneX( this.getX() + this.getAlignementOffsetX() + this.getOffsetX() );
+        this.setSceneY( this.getY() + this.getAlignementOffsetY() + this.getOffsetY() );
 
         if(this.getParent() != null){
 
@@ -506,9 +525,9 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
 
             //on reajuste en fonction du zoom du pere (distance des centres)
             if(this.isScalable()){
-                float distanceX = this.getParent().getCenterX() - (this.getCenterX() + this.getOffsetX() );
+                float distanceX = this.getParent().getCenterX() - (this.getCenterX() + this.getAlignementOffsetX() + this.getOffsetX() );
                 this.setSceneX(this.getSceneX() + (distanceX * (1 - this.getParent().getSceneScaleX())));
-                float distanceY = this.getParent().getCenterY() - (this.getCenterY() + this.getOffsetY() );
+                float distanceY = this.getParent().getCenterY() - (this.getCenterY() + this.getAlignementOffsetY() + this.getOffsetY() );
                 this.setSceneY(this.getSceneY() + (distanceY * (1 - this.getParent().getSceneScaleY())));
             }
         }
@@ -540,61 +559,61 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
 			this.getChildren().get(i).onUpdate();
 	}
 
-    public void setOffsetX(){
+    public void setAlignementOffsetX(){
 
         if(this.getParent() != null) {
             switch (this.getAlignmentX()) {
                 case LEFT:
-                    this.setOffsetX(0);
+                    this.setAlignementOffsetX(0);
                     break;
                 case CENTER_X:
-                    this.setOffsetX( this.getParent().getWidth() / 2f - this.getWidth() / 2f);
+                    this.setAlignementOffsetX( this.getParent().getWidth() / 2f - this.getWidth() / 2f);
                     break;
                 case RIGHT:
-                    this.setOffsetX( this.getParent().getWidth() - this.getWidth());
+                    this.setAlignementOffsetX( this.getParent().getWidth() - this.getWidth());
                     break;
                 case CENTER_ON_ITSELF:
-                    this.setOffsetX(-this.getWidth()/2f);
+                    this.setAlignementOffsetX(-this.getWidth()/2f);
                     break;
                 default:
-                    this.setOffsetX(0);
+                    this.setAlignementOffsetX(0);
                     break;
             }
         }else{
-            this.setOffsetX(-this.getWidth()/2f); //Center on itself
+            this.setAlignementOffsetX(-this.getWidth()/2f); //Center on itself
         }
 
     }
 
-    public void setOffsetY(){
+    public void setAlignementOffsetY(){
 
         if(this.getParent() != null) {
             switch (this.getAlignmentY()) {
                 case BOTTOM:
-                    this.setOffsetY(0);
+                    this.setAlignementOffsetY(0);
                     break;
                 case CENTER_Y:
-                    this.setOffsetY(this.getParent().getHeight() / 2f - this.getHeight() / 2f);
+                    this.setAlignementOffsetY(this.getParent().getHeight() / 2f - this.getHeight() / 2f);
                     break;
                 case TOP:
-                    this.setOffsetY(this.getParent().getHeight() - this.getHeight());
+                    this.setAlignementOffsetY(this.getParent().getHeight() - this.getHeight());
                     break;
                 case CENTER_ON_ITSELF:
-                    this.setOffsetY(-this.getHeight() / 2f);
+                    this.setAlignementOffsetY(-this.getHeight() / 2f);
                     break;
                 default:
-                    this.setOffsetY(0);
+                    this.setAlignementOffsetY(0);
                     break;
             }
         }else{
-            this.setOffsetY(-this.getHeight() / 2f); //Center on itself
+            this.setAlignementOffsetY(-this.getHeight() / 2f); //Center on itself
         }
 
     }
 
-    public void setOffsets(){
-        this.setOffsetX();
-        this.setOffsetY();
+    public void setAlignementOffsets(){
+        this.setAlignementOffsetX();
+        this.setAlignementOffsetY();
     }
 
     public void setCenters(){
@@ -606,7 +625,7 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
     public void onUpdate() {
 
         this.setCenters();
-        this.setOffsets();
+        this.setAlignementOffsets();
 
         if(this.isScalable())
             this.setSceneScales();

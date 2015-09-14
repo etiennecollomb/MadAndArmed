@@ -33,8 +33,8 @@ public class SpriteSheet {
 	 * TiledSprite[][] sprites = {{t,t2},{t3,t4},{t5,t6,t7,t8}};
 	 * on supose que toutes les sprites definissent une meta sprite carree de [N x N] tiled
 	 */
-	public TextureRegion[][] mSprites;  //TOTO mettre private
-
+	private TextureRegion[][] mSprites;
+	
 	private int mNumberOfColumn;
 
 	private int mNumberOfRow;
@@ -44,6 +44,7 @@ public class SpriteSheet {
 	private boolean mIsUniqueSprite; //si il n y a qu un spriteSheet et non une composition de plusieurs , on est plus souple sur son emploi
 
 	/** list des textureAtlas si on cree le spriteSheet a partir de ca **/
+	private boolean isFromTexturePack;
 	private List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
 	private int numberOfWalkFrame;
 	private int numberOfShootFrame;
@@ -63,11 +64,15 @@ public class SpriteSheet {
 		this.mIsUniqueSprite = pIsUniqueSprite;
 
 		this.mAnimatedTextureTypeRoot = pAnimatedTextureType;
+		
+		this.isFromTexturePack = false;
 
 		if(pIsUniqueSprite)
 			this.generateUniqueSpriteSheet(this.mAnimatedTextureTypeRoot);
-		else
+		else{
 			this.generateSpriteSheetFromAtlas(this.mAnimatedTextureTypeRoot);
+			this.isFromTexturePack = true;
+		}
 
 		//on supose que toutes les sprites definissent une meta sprite de NxN
 		this.mNumberOfTiled = this.mNumberOfColumn * this.mNumberOfRow;
@@ -393,6 +398,21 @@ public class SpriteSheet {
 	public int getFrameHeight(final int pCol_x, final int pRow_y) {
 		return this.mSprites[pCol_x][pRow_y].getRegionHeight();
 	}
+	
+	public float getFrameOffsetX(final int pCol_x, final int pRow_y) {
+		if(this.isFromTexturePack)
+			return ((AtlasRegion)this.mSprites[pCol_x][pRow_y]).offsetX;
+		else
+			return 0;
+	}
+	
+	public float getFrameOffsetY(final int pCol_x, final int pRow_y) {
+		if(this.isFromTexturePack)
+			return ((AtlasRegion)this.mSprites[pCol_x][pRow_y]).offsetY;
+		else
+			return 0;
+	}
+	
 }
 
 
