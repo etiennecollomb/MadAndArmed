@@ -39,7 +39,7 @@ public class FlameThrowerRenderer extends WeaponRenderer {
     	float positionX = 0;
     	float positionY = 0;
     	
-    	float distanceBetweenSprite = (float) (Math.sqrt(2.0f*5.0f*5.0f) * (float)sp.getFrameSize(0, 0)/64.0f); // 5.0f for 64px looks good
+    	float distanceBetweenSprite = (float) (Math.sqrt(2.0f*5.0f*5.0f) * (float)sp.getFrameWidth(0, 0)/64.0f); // 5.0f for 64px looks good
 
     	int delai = 0;
     	int delaiIncrement = 1;

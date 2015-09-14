@@ -89,6 +89,8 @@ public class MenuScreen extends Screen implements IUpdatable {
 				if(y>=maxY){y=0; x++; if(x>=maxX){x=0;} }
 				as1.setCurrentFrameX(x);
 				as1.setCurrentFrameY(y);
+				
+				System.out.println("size: " +as1.getWidth()+" "+as1.getHeight());
 //				fireThrower(20f, 30f, 0.71f, 0.71f); //TEST
 				//FINTEST
 
@@ -277,7 +279,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 		float positionX = posX;
 		float positionY = posY;
 
-		float distanceBetweenSprite = (float) (Math.sqrt(2.0f*5.0f*5.0f) * (float)sp.getFrameSize(0, 0)/64.0f); // 5.0f for 64px looks good
+		float distanceBetweenSprite = (float) (Math.sqrt(2.0f*5.0f*5.0f) * (float)sp.getFrameWidth(0, 0)/64.0f); // 5.0f for 64px looks good
 
 		int delai = 0;
 		int delaiIncrement = 1;

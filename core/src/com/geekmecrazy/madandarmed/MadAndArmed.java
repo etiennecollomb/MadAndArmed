@@ -123,7 +123,7 @@ public class MadAndArmed extends ApplicationAdapter {
 		fpsControl.check();
 
 		//FSP log
-		fpsLogger.log();
+		//fpsLogger.log();
 
 	}
 

@@ -31,23 +31,18 @@ public class AnimatedSprite extends Sprite {
 	}
 
 	public void setCurrentFrameX(final int pCurrentFrameX) {
-		this.mCurrentFrameX = (pCurrentFrameX<this.getSpriteSheet().getNumberOfColumn())? pCurrentFrameX: this.getSpriteSheet().getNumberOfColumn()-1;
-		this.setWidth(this.getCurrentFrameSize());
+		this.setCurrentFrame(pCurrentFrameX, this.mCurrentFrameY);
 	}
 
 	public void setCurrentFrameY(final int pCurrentFrameY) {
-		this.mCurrentFrameY = (pCurrentFrameY<this.getSpriteSheet().getNumberOfRow())? pCurrentFrameY: this.getSpriteSheet().getNumberOfRow()-1;
-		this.setHeight(this.getCurrentFrameSize());
+		this.setCurrentFrame(this.mCurrentFrameX, pCurrentFrameY);
 	}
 	
 	public void setCurrentFrame(final int pCurrentFrameX, final int pCurrentFrameY) {
 		this.mCurrentFrameX = (pCurrentFrameX<this.getSpriteSheet().getNumberOfColumn())? pCurrentFrameX: this.getSpriteSheet().getNumberOfColumn()-1;
 		this.mCurrentFrameY = (pCurrentFrameY<this.getSpriteSheet().getNumberOfRow())? pCurrentFrameY: this.getSpriteSheet().getNumberOfRow()-1;
-		this.setWidth(this.getCurrentFrameSize());
-		this.setHeight(this.getCurrentFrameSize());
-		
-		//testtexturepacker
-//		this.setOffset
+		this.setWidth(this.getCurrentFrameWidth());
+		this.setHeight(this.getCurrentFrameHeight());
 	}
 
 	public void setCurrentFrame(final int pNumber) {
@@ -94,8 +89,12 @@ public class AnimatedSprite extends Sprite {
 		this.setCurrentFrame(0, 0);
 	}
 
-	public int getCurrentFrameSize(){
-		return this.getSpriteSheet().getFrameSize(this.getCurrentFrameX(), this.getCurrentFrameY());
+	public int getCurrentFrameWidth(){
+		return this.getSpriteSheet().getFrameWidth(this.getCurrentFrameX(), this.getCurrentFrameY());
+	}
+	
+	public int getCurrentFrameHeight(){
+		return this.getSpriteSheet().getFrameHeight(this.getCurrentFrameX(), this.getCurrentFrameY());
 	}
 
 	public int getNumberOfFrame(){

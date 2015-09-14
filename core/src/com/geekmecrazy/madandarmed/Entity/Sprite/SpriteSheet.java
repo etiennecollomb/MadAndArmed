@@ -33,7 +33,7 @@ public class SpriteSheet {
 	 * TiledSprite[][] sprites = {{t,t2},{t3,t4},{t5,t6,t7,t8}};
 	 * on supose que toutes les sprites definissent une meta sprite carree de [N x N] tiled
 	 */
-	private TextureRegion[][] mSprites;
+	public TextureRegion[][] mSprites;  //TOTO mettre private
 
 	private int mNumberOfColumn;
 
@@ -41,16 +41,14 @@ public class SpriteSheet {
 
 	private int mNumberOfTiled;
 
-	/** size of sprites */
-	private int mSpritesSize[][]; //square size NxN
-
 	private boolean mIsUniqueSprite; //si il n y a qu un spriteSheet et non une composition de plusieurs , on est plus souple sur son emploi
 
 	/** list des textureAtlas si on cree le spriteSheet a partir de ca **/
 	private List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
 	private int numberOfWalkFrame;
 	private int numberOfShootFrame;
-
+	
+	
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -138,10 +136,10 @@ public class SpriteSheet {
 		numberOfShootFrame = 0;
 		Array<Integer> walkColumns = new Array<Integer>();
 		Array<Integer> walkRows = new Array<Integer>();
-		Array<AtlasRegion> walkTextureRegion = new Array<AtlasRegion>();
+		Array<AtlasRegion> walkAtlasRegion = new Array<AtlasRegion>();
 		Array<Integer> shootColumns = new Array<Integer>();
 		Array<Integer> shootRows = new Array<Integer>();
-		Array<AtlasRegion> shootTextureRegion = new Array<AtlasRegion>();
+		Array<AtlasRegion> shootAtlasRegion = new Array<AtlasRegion>();
 		
 		int atlasListSize = textureAtlasList.size();
 		for(int i=0; i<atlasListSize; i++){
@@ -162,12 +160,12 @@ public class SpriteSheet {
 					if(row>numberOfWalkFrame) numberOfWalkFrame = row;
 					walkColumns.add(new Integer(column));
 					walkRows.add(new Integer(row));
-					walkTextureRegion.add(atlasRegions.get(j));
+					walkAtlasRegion.add(atlasRegions.get(j));
 				}else if(actionName.equals("3Shoot")){
 					if(row>numberOfShootFrame) numberOfShootFrame = row;
 					shootColumns.add(new Integer(column));
 					shootRows.add(new Integer(row));
-					shootTextureRegion.add(atlasRegions.get(j));
+					shootAtlasRegion.add(atlasRegions.get(j));
 				}
 			}
 		}
@@ -181,20 +179,17 @@ public class SpriteSheet {
 		
 		/** set SpriteSheet**/
 		mSprites = new TextureRegion[mNumberOfColumn][mNumberOfRow];
-		mSpritesSize = new int[mNumberOfColumn][mNumberOfRow];
 
 		/** Walk **/
 		int currentIndex=0;
-		for(int i=0; i<walkTextureRegion.size; i++){
-			mSprites[walkColumns.get(i)][walkRows.get(i)+currentIndex] = walkTextureRegion.get(i);
-			mSpritesSize[walkColumns.get(i)][walkRows.get(i)+currentIndex] = 256;
+		for(int i=0; i<walkAtlasRegion.size; i++){
+			mSprites[walkColumns.get(i)][walkRows.get(i)+currentIndex] = walkAtlasRegion.get(i);
 		}
 		currentIndex = currentIndex + numberOfWalkFrame;
 		
 		/** Shoot **/
-		for(int i=0; i<shootTextureRegion.size; i++){
-			mSprites[shootColumns.get(i)][shootRows.get(i)+currentIndex] = shootTextureRegion.get(i);
-			mSpritesSize[shootColumns.get(i)][shootRows.get(i)+currentIndex] = 256;
+		for(int i=0; i<shootAtlasRegion.size; i++){
+			mSprites[shootColumns.get(i)][shootRows.get(i)+currentIndex] = shootAtlasRegion.get(i);
 		}
 		currentIndex = currentIndex + numberOfShootFrame;
 		
@@ -270,7 +265,6 @@ public class SpriteSheet {
 
 		/** init arrays **/
 		mSprites = new TextureRegion[mNumberOfColumn][mNumberOfRow];
-		mSpritesSize = new int[mNumberOfColumn][mNumberOfRow];
 
 		/** fill array **/
 		int tmpX=0, tmpY=0;
@@ -283,7 +277,6 @@ public class SpriteSheet {
 			for(int i=0; i<mFrames.length; i++)
 				for(int j=0; j<mFrames[i].length; j++){
 					mSprites[tmpX+j][tmpY+i] = mFrames[i][j];
-					mSpritesSize[tmpX+j][tmpY+i] = tiledSize.get(currentLine);
 				}
 
 			tmpX = tmpX + mFrames[0].length;
@@ -343,7 +336,6 @@ public class SpriteSheet {
 
 		//init arrays
 		mSprites = new TextureRegion[mNumberOfColumn][mNumberOfRow];
-		mSpritesSize = new int[mNumberOfColumn][mNumberOfRow];
 
 		//fill array
 		int tmpX=0, tmpY=0;
@@ -369,7 +361,6 @@ public class SpriteSheet {
 				for(int i=0; i<mFrames.length; i++)
 					for(int j=0; j<mFrames[i].length; j++){
 						mSprites[tmpX+j][tmpY+i] = mFrames[i][j];
-						mSpritesSize[tmpX+j][tmpY+i] = tiledSize;
 					}
 
 				tmpX = tmpX + mFrames[0].length;
@@ -395,8 +386,12 @@ public class SpriteSheet {
 		return this.getFrame(col_x, row_y);
 	}
 
-	public int getFrameSize(final int pCol_x, final int pRow_y) {
-		return this.mSpritesSize[pCol_x][pRow_y];
+	public int getFrameWidth(final int pCol_x, final int pRow_y) {
+		return this.mSprites[pCol_x][pRow_y].getRegionWidth();
+	}
+	
+	public int getFrameHeight(final int pCol_x, final int pRow_y) {
+		return this.mSprites[pCol_x][pRow_y].getRegionHeight();
 	}
 }
 
