@@ -29,25 +29,20 @@ public class AnimatedSprite extends Sprite {
 	public int getCurrentFrameY() {
 		return mCurrentFrameY;
 	}
-
-	public void setCurrentFrameX(final int pCurrentFrameX) {
-		this.setCurrentFrame(pCurrentFrameX, this.mCurrentFrameY);
-	}
-
-	public void setCurrentFrameY(final int pCurrentFrameY) {
-		this.setCurrentFrame(this.mCurrentFrameX, pCurrentFrameY);
-	}
 	
 	public void setCurrentFrame(final int pCurrentFrameX, final int pCurrentFrameY) {
 		this.mCurrentFrameX = (pCurrentFrameX<this.getSpriteSheet().getNumberOfColumn())? pCurrentFrameX: this.getSpriteSheet().getNumberOfColumn()-1;
 		this.mCurrentFrameY = (pCurrentFrameY<this.getSpriteSheet().getNumberOfRow())? pCurrentFrameY: this.getSpriteSheet().getNumberOfRow()-1;
 		this.setWidth(this.getCurrentFrameWidth());
 		this.setHeight(this.getCurrentFrameHeight());
+		/** usefull in case of TexturePack animatedSprite **/
+		//TODO a faire correcttement 256 = taille original de l image
+//		this.setOffsetX(this.getCurrentFrameOffsetX()+(this.getTextureRegion().getRegionWidth()/2f)-(256/2f));
+//		this.setOffsetY(this.getCurrentFrameOffsetY()+(this.getTextureRegion().getRegionHeight()/2f)-(256/2f));
 	}
 
 	public void setCurrentFrame(final int pNumber) {
-		this.setCurrentFrameX(pNumber%this.getSpriteSheet().getNumberOfColumn());
-		this.setCurrentFrameY(pNumber/this.getSpriteSheet().getNumberOfColumn());
+		this.setCurrentFrame(pNumber%this.getSpriteSheet().getNumberOfColumn(), pNumber/this.getSpriteSheet().getNumberOfColumn());
 	}
 
 	public SpriteSheet getSpriteSheet() {
@@ -71,8 +66,7 @@ public class AnimatedSprite extends Sprite {
 	public void reset() {
 		super.reset();
 		
-		this.setCurrentFrameX(0);
-		this.setCurrentFrameY(0);
+		this.setCurrentFrame(0, 0);
 
 		this.setSpriteSheet(null);
 		
@@ -97,6 +91,14 @@ public class AnimatedSprite extends Sprite {
 		return this.getSpriteSheet().getFrameHeight(this.getCurrentFrameX(), this.getCurrentFrameY());
 	}
 
+	public float getCurrentFrameOffsetX(){
+		return this.getSpriteSheet().getFrameOffsetX(this.getCurrentFrameX(), this.getCurrentFrameY());
+	}
+	
+	public float getCurrentFrameOffsetY(){
+		return this.getSpriteSheet().getFrameOffsetY(this.getCurrentFrameX(), this.getCurrentFrameY());
+	}	
+	
 	public int getNumberOfFrame(){
 		return this.getSpriteSheet().getNumberOfTiled();
 	}

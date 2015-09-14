@@ -312,7 +312,10 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
 
 		this.setSceneX(0);
 		this.setSceneY(0);
-		
+
+		this.setOffsetX(0);
+        this.setOffsetY(0);
+        
 		this.setAlignementOffsetX(0);
 		this.setAlignementOffsetY(0);
 
@@ -356,6 +359,9 @@ public class Entity implements IDrawable, IUpdatable, Poolable {
 		this.setSceneX(pX);
 		this.setSceneY(pY);
 
+		this.setOffsetX(0);
+        this.setOffsetY(0);
+        
 		this.setAlignementOffsetX(0);
         this.setAlignementOffsetY(0);
 

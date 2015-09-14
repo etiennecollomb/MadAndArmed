@@ -87,8 +87,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				int maxY = as1.getSpriteSheet().getNumberOfRow();
 				y++;
 				if(y>=maxY){y=0; x++; if(x>=maxX){x=0;} }
-				as1.setCurrentFrameX(x);
-				as1.setCurrentFrameY(y);
+				as1.setCurrentFrame(x, y);
 				
 				System.out.println("size: " +as1.getWidth()+" "+as1.getHeight());
 //				fireThrower(20f, 30f, 0.71f, 0.71f); //TEST
@@ -196,8 +195,19 @@ public class MenuScreen extends Screen implements IUpdatable {
 	
 	@Override
 	public void onUpdate(){
-		super.onUpdate();
 
+		//TEST
+		int x = as1.getCurrentFrameX();
+		int y = as1.getCurrentFrameY();
+		int maxX = as1.getSpriteSheet().getNumberOfColumn();
+		int maxY = as1.getSpriteSheet().getNumberOfRow();
+		y++;
+		if(y>=maxY){y=0; x++; if(x>=maxX){x=0;} }
+		as1.setCurrentFrame(x, y);
+		//FINTEST
+		
+
+		super.onUpdate();
 	}
 	
 	
