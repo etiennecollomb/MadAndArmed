@@ -131,7 +131,7 @@ public class SpriteSheet {
 		for (FileHandle fileHandle: dirHandle.list()) {
 			String fileName = fileHandle.file().getName();
 			String extension = fileName.substring(fileName.lastIndexOf(".")+1);
-
+			
 			if(extension.equals("txt")){
 				TextureAtlas textureAtlas = new TextureAtlas(Gdx.files.internal(fileHandle.file().getPath()),Gdx.files.internal(fileHandle.file().getParent()));
 				textureAtlasList.add(textureAtlas);
@@ -143,6 +143,8 @@ public class SpriteSheet {
 		
 		numberOfWalkFrame = 0;
 		numberOfShootFrame = 0;
+		boolean isWalkFrames = false;
+		boolean isShootFrames = false;
 		Array<Integer> walkColumns = new Array<Integer>();
 		Array<Integer> walkRows = new Array<Integer>();
 		Array<AtlasRegion> walkAtlasRegion = new Array<AtlasRegion>();
@@ -166,11 +168,13 @@ public class SpriteSheet {
 
 				if(column>mNumberOfColumn) mNumberOfColumn = column;
 				if(actionName.equals("1Walk")){
+					isWalkFrames = true;
 					if(row>numberOfWalkFrame) numberOfWalkFrame = row;
 					walkColumns.add(new Integer(column));
 					walkRows.add(new Integer(row));
 					walkAtlasRegion.add(atlasRegions.get(j));
 				}else if(actionName.equals("3Shoot")){
+					isShootFrames = true;
 					if(row>numberOfShootFrame) numberOfShootFrame = row;
 					shootColumns.add(new Integer(column));
 					shootRows.add(new Integer(row));
@@ -178,8 +182,8 @@ public class SpriteSheet {
 				}
 			}
 		}
-		numberOfWalkFrame++;
-		numberOfShootFrame++;
+		if(isWalkFrames) numberOfWalkFrame++;
+		if(isShootFrames) numberOfShootFrame++;
 
 		mNumberOfColumn++;
 		mNumberOfRow = numberOfWalkFrame + numberOfShootFrame;
@@ -206,111 +210,6 @@ public class SpriteSheet {
 
 
 
-	/**
-	 * on recupere tous les texture des spritesheet d un dir
-	 * ancien format : example:  TiledSprite[][] sprites = {{t,t2},{t3,t4},{t5,t6,t7,t8}};
-	 * il faut que les noms de sprites dans le dir soient mis dans l'ordre
-	 * on suppose que les TiledSprite d'un meme sous groupe ont tous la meme taille
-	 */
-	private void generateSpriteSheet(AnimatedTextureType animatedTextureType){
-
-		//animatedTextureType = animatedTextureType.GLADIATOR_HD_TEAM1;
-
-		List<Texture> textures = new ArrayList<Texture>();
-		List<Integer> numberOfSpriteSheetByLine = new ArrayList<Integer>();
-		List<Integer> tiledSize = new ArrayList<Integer>();
-
-		//Get all texture
-		FileHandle dirHandle;
-		if (Gdx.app.getType() == ApplicationType.Android) {
-			dirHandle = Gdx.files.internal(animatedTextureType.getPath());
-		} else { // ApplicationType.Desktop ..
-			dirHandle = Gdx.files.internal("./bin/"+animatedTextureType.getPath());
-		}
-
-		/** get all texture and number of spritesheet by line **/
-		int currentRowFile = 0;
-		numberOfSpriteSheetByLine.add(new Integer(0));
-		for (FileHandle fileHandle: dirHandle.list()) {
-
-			/** file name example : gladiator01-red-shoot_256px_0000_0000#0001.png **/
-			String fileName = fileHandle.file().getName();
-			int pos = fileName.lastIndexOf(".");
-			int columnFile = Integer.parseInt(fileName.substring(pos-4, pos));
-			int rowFile = Integer.parseInt(fileName.substring(pos-9, pos-5));
-
-			/** Add Textures **/
-			textures.add(new Texture(Gdx.files.internal(fileHandle.file().getPath())));
-
-			/** if new spriteSheet line, save size and number of row **/
-			if(currentRowFile != rowFile){
-				currentRowFile = rowFile;
-				numberOfSpriteSheetByLine.add(new Integer(0));
-			}
-
-			/** set number of spriteSheet by Line **/
-			int index = numberOfSpriteSheetByLine.size()-1;
-			numberOfSpriteSheetByLine.set(index , numberOfSpriteSheetByLine.get(index) +1 ); 
-
-		}
-
-		/** get number of row and tiled size for this line **/
-		mNumberOfRow = 0;
-		int size = numberOfSpriteSheetByLine.size();
-		int indexTextures=0;
-		for(int i=0; i<size; i++){
-
-			int sizeOfTiled = numberOfSpriteSheetByLine.get(i)*textures.get(indexTextures).getWidth()/GraphicalTools.NB_ORIENTATION;
-			tiledSize.add(new Integer(sizeOfTiled));
-
-			mNumberOfRow = mNumberOfRow + textures.get(0).getHeight()/sizeOfTiled;
-
-			indexTextures = indexTextures + numberOfSpriteSheetByLine.get(i);
-		}
-
-
-		this.mNumberOfColumn = GraphicalTools.NB_ORIENTATION;
-
-
-		/** init arrays **/
-		mSprites = new TextureRegion[mNumberOfColumn][mNumberOfRow];
-
-		/** fill array **/
-		int tmpX=0, tmpY=0;
-		int currentLine = 0 ;
-		int numberOfSpriteSheet = numberOfSpriteSheetByLine.get(currentLine);
-		for (final Texture currentTexture: textures){
-
-			TextureRegion[][] mFrames = TextureRegion.split(currentTexture, tiledSize.get(currentLine), tiledSize.get(currentLine));
-
-			for(int i=0; i<mFrames.length; i++)
-				for(int j=0; j<mFrames[i].length; j++){
-					mSprites[tmpX+j][tmpY+i] = mFrames[i][j];
-				}
-
-			tmpX = tmpX + mFrames[0].length;
-
-
-			/** On a finit avec toutes les sprites sheet d une meme ligne? **/
-			numberOfSpriteSheet--;
-			if(numberOfSpriteSheet <= 0){
-
-				tmpX=0;
-				tmpY = tmpY + mFrames.length;
-
-				currentLine++;
-				if(currentLine >= numberOfSpriteSheetByLine.size()) break;
-				numberOfSpriteSheet = numberOfSpriteSheetByLine.get(currentLine);
-			}
-		}
-
-	}
-
-
-
-
-
-	//////////////////////////////////////////////////////////
 	private void generateUniqueSpriteSheet(final AnimatedTextureType pAnimatedTextureTypeRoot){
 
 
@@ -432,6 +331,121 @@ public class SpriteSheet {
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////
+//
+///**
+// * on recupere tous les texture des spritesheet d un dir
+// * ancien format : example:  TiledSprite[][] sprites = {{t,t2},{t3,t4},{t5,t6,t7,t8}};
+// * il faut que les noms de sprites dans le dir soient mis dans l'ordre
+// * on suppose que les TiledSprite d'un meme sous groupe ont tous la meme taille
+// */
+//private void generateSpriteSheet(AnimatedTextureType animatedTextureType){
+//
+//	//animatedTextureType = animatedTextureType.GLADIATOR_HD_TEAM1;
+//
+//	List<Texture> textures = new ArrayList<Texture>();
+//	List<Integer> numberOfSpriteSheetByLine = new ArrayList<Integer>();
+//	List<Integer> tiledSize = new ArrayList<Integer>();
+//
+//	//Get all texture
+//	FileHandle dirHandle;
+//	if (Gdx.app.getType() == ApplicationType.Android) {
+//		dirHandle = Gdx.files.internal(animatedTextureType.getPath());
+//	} else { // ApplicationType.Desktop ..
+//		dirHandle = Gdx.files.internal("./bin/"+animatedTextureType.getPath());
+//	}
+//
+//	/** get all texture and number of spritesheet by line **/
+//	int currentRowFile = 0;
+//	numberOfSpriteSheetByLine.add(new Integer(0));
+//	for (FileHandle fileHandle: dirHandle.list()) {
+//
+//		/** file name example : gladiator01-red-shoot_256px_0000_0000#0001.png **/
+//		String fileName = fileHandle.file().getName();
+//		int pos = fileName.lastIndexOf(".");
+//		int columnFile = Integer.parseInt(fileName.substring(pos-4, pos));
+//		int rowFile = Integer.parseInt(fileName.substring(pos-9, pos-5));
+//
+//		/** Add Textures **/
+//		textures.add(new Texture(Gdx.files.internal(fileHandle.file().getPath())));
+//
+//		/** if new spriteSheet line, save size and number of row **/
+//		if(currentRowFile != rowFile){
+//			currentRowFile = rowFile;
+//			numberOfSpriteSheetByLine.add(new Integer(0));
+//		}
+//
+//		/** set number of spriteSheet by Line **/
+//		int index = numberOfSpriteSheetByLine.size()-1;
+//		numberOfSpriteSheetByLine.set(index , numberOfSpriteSheetByLine.get(index) +1 ); 
+//
+//	}
+//
+//	/** get number of row and tiled size for this line **/
+//	mNumberOfRow = 0;
+//	int size = numberOfSpriteSheetByLine.size();
+//	int indexTextures=0;
+//	for(int i=0; i<size; i++){
+//
+//		int sizeOfTiled = numberOfSpriteSheetByLine.get(i)*textures.get(indexTextures).getWidth()/GraphicalTools.NB_ORIENTATION;
+//		tiledSize.add(new Integer(sizeOfTiled));
+//
+//		mNumberOfRow = mNumberOfRow + textures.get(0).getHeight()/sizeOfTiled;
+//
+//		indexTextures = indexTextures + numberOfSpriteSheetByLine.get(i);
+//	}
+//
+//
+//	this.mNumberOfColumn = GraphicalTools.NB_ORIENTATION;
+//
+//
+//	/** init arrays **/
+//	mSprites = new TextureRegion[mNumberOfColumn][mNumberOfRow];
+//
+//	/** fill array **/
+//	int tmpX=0, tmpY=0;
+//	int currentLine = 0 ;
+//	int numberOfSpriteSheet = numberOfSpriteSheetByLine.get(currentLine);
+//	for (final Texture currentTexture: textures){
+//
+//		TextureRegion[][] mFrames = TextureRegion.split(currentTexture, tiledSize.get(currentLine), tiledSize.get(currentLine));
+//
+//		for(int i=0; i<mFrames.length; i++)
+//			for(int j=0; j<mFrames[i].length; j++){
+//				mSprites[tmpX+j][tmpY+i] = mFrames[i][j];
+//			}
+//
+//		tmpX = tmpX + mFrames[0].length;
+//
+//
+//		/** On a finit avec toutes les sprites sheet d une meme ligne? **/
+//		numberOfSpriteSheet--;
+//		if(numberOfSpriteSheet <= 0){
+//
+//			tmpX=0;
+//			tmpY = tmpY + mFrames.length;
+//
+//			currentLine++;
+//			if(currentLine >= numberOfSpriteSheetByLine.size()) break;
+//			numberOfSpriteSheet = numberOfSpriteSheetByLine.get(currentLine);
+//		}
+//	}
+//
+//}
+
+
+
+
 
 
 

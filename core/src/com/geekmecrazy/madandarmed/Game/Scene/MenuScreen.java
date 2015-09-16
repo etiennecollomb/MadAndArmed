@@ -187,7 +187,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 		MenuScreen.getManager().getHUD().registerTouchableShape(layout_test);
 		
 		//TEST
-		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.TEST, false);
+		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM2, false);
 		as1 = new AnimatedSprite();
 		as1.init(spshit, 256, 256);
 		as1.setPosition(300f,  300f);
@@ -199,7 +199,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 		r2d2.setColor(1,0,0,1);
 		this.getScene().attachChild(r2d2);
 		
-		SpriteSheet spshit2 = new SpriteSheet(AnimatedTextureType.TEST, false);
+		SpriteSheet spshit2 = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM2, false);
 		as2 = new AnimatedSprite();
 		as2.init(spshit2, 256, 256);
 		as2.setPosition(450f,  300f);
@@ -211,7 +211,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 		r2d3.setColor(1,0,0,1);
 		this.getScene().attachChild(r2d3);
 		
-		SpriteSheet spshit3 = new SpriteSheet(AnimatedTextureType.TEST, false);
+		SpriteSheet spshit3 = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM2, false);
 		as3 = new AnimatedSprite();
 		as3.init(spshit3, 256, 256);
 		as3.setPosition(300f,  500f);
@@ -223,7 +223,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 		r2d4.setColor(1,0,0,1);
 		this.getScene().attachChild(r2d4);
 		
-		SpriteSheet spshit4 = new SpriteSheet(AnimatedTextureType.TEST, false);
+		SpriteSheet spshit4 = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2, false);
 		as4 = new AnimatedSprite();
 		as4.init(spshit4, 256, 256);
 		as4.setPosition(450f,  500f);
@@ -259,20 +259,20 @@ public class MenuScreen extends Screen implements IUpdatable {
 		if(y>=32){y=0; x++; if(x>=maxX){x=0;} }
 		as2.setCurrentFrame(x, y);
 		
-		x = as3.getCurrentFrameX();
+		x = 16;//as3.getCurrentFrameX();
 		y = as3.getCurrentFrameY();
 		maxX = as3.getSpriteSheet().getNumberOfColumn();
 		maxY = as3.getSpriteSheet().getNumberOfRow();
 		y++;
-		if(y>=maxY){y=0; x++; if(x>=maxX){x=0;} }
+		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
 		as3.setCurrentFrame(x, y);
 		
-		x = as4.getCurrentFrameX();
+		x = 16;//as4.getCurrentFrameX();
 		y = as4.getCurrentFrameY();
 		maxX = as4.getSpriteSheet().getNumberOfColumn();
 		maxY = as4.getSpriteSheet().getNumberOfRow();
 		y++;
-		if(y>=maxY){y=0; x++; if(x>=maxX){x=0;} }
+		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
 		as4.setCurrentFrame(x, y);
 		//FINTEST
 		

@@ -1,0 +1,179 @@
+gladiator-11.png
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+1Walk#00000#00014
+  rotate: false
+  xy: 100, 368
+  size: 50, 75
+  orig: 128, 128
+  offset: 29, 11
+  index: -1
+1Walk#00001#00005
+  rotate: false
+  xy: 54, 2
+  size: 50, 91
+  orig: 128, 128
+  offset: 41, 12
+  index: -1
+1Walk#00001#00014
+  rotate: false
+  xy: 152, 361
+  size: 50, 75
+  orig: 128, 128
+  offset: 29, 11
+  index: -1
+1Walk#00002#00005
+  rotate: false
+  xy: 2, 287
+  size: 49, 90
+  orig: 128, 128
+  offset: 42, 13
+  index: -1
+1Walk#00003#00005
+  rotate: false
+  xy: 52, 98
+  size: 47, 89
+  orig: 128, 128
+  offset: 44, 14
+  index: -1
+1Walk#00003#00006
+  rotate: false
+  xy: 2, 2
+  size: 50, 94
+  orig: 128, 128
+  offset: 39, 13
+  index: -1
+1Walk#00003#00014
+  rotate: false
+  xy: 204, 432
+  size: 50, 74
+  orig: 128, 128
+  offset: 30, 12
+  index: -1
+1Walk#00005#00005
+  rotate: false
+  xy: 53, 189
+  size: 47, 88
+  orig: 128, 128
+  offset: 43, 15
+  index: -1
+1Walk#00006#00005
+  rotate: false
+  xy: 53, 279
+  size: 47, 87
+  orig: 128, 128
+  offset: 43, 16
+  index: -1
+1Walk#00006#00006
+  rotate: false
+  xy: 106, 2
+  size: 50, 91
+  orig: 128, 128
+  offset: 39, 16
+  index: -1
+1Walk#00007#00005
+  rotate: false
+  xy: 153, 184
+  size: 47, 87
+  orig: 128, 128
+  offset: 43, 16
+  index: -1
+1Walk#00008#00005
+  rotate: false
+  xy: 153, 273
+  size: 47, 86
+  orig: 128, 128
+  offset: 43, 17
+  index: -1
+1Walk#00009#00005
+  rotate: false
+  xy: 51, 379
+  size: 47, 86
+  orig: 128, 128
+  offset: 43, 17
+  index: -1
+1Walk#00010#00005
+  rotate: false
+  xy: 102, 184
+  size: 49, 86
+  orig: 128, 128
+  offset: 42, 18
+  index: -1
+1Walk#00011#00005
+  rotate: false
+  xy: 102, 272
+  size: 49, 86
+  orig: 128, 128
+  offset: 42, 18
+  index: -1
+1Walk#00038#00005
+  rotate: false
+  xy: 158, 2
+  size: 49, 91
+  orig: 128, 128
+  offset: 43, 13
+  index: -1
+1Walk#00040#00014
+  rotate: false
+  xy: 204, 355
+  size: 50, 75
+  orig: 128, 128
+  offset: 29, 11
+  index: -1
+3Shoot#00005#00003
+  rotate: false
+  xy: 101, 95
+  size: 49, 87
+  orig: 256, 256
+  offset: 105, 76
+  index: -1
+3Shoot#00006#00001
+  rotate: false
+  xy: 202, 270
+  size: 49, 83
+  orig: 256, 256
+  offset: 103, 78
+  index: -1
+3Shoot#00007#00001
+  rotate: false
+  xy: 152, 95
+  size: 49, 87
+  orig: 256, 256
+  offset: 101, 78
+  index: -1
+3Shoot#00007#00002
+  rotate: false
+  xy: 2, 379
+  size: 47, 90
+  orig: 256, 256
+  offset: 103, 76
+  index: -1
+3Shoot#00008#00002
+  rotate: false
+  xy: 2, 194
+  size: 49, 91
+  orig: 256, 256
+  offset: 101, 76
+  index: -1
+3Shoot#00012#00009
+  rotate: false
+  xy: 2, 98
+  size: 48, 94
+  orig: 256, 256
+  offset: 103, 74
+  index: -1
+3Shoot#00015#00007
+  rotate: false
+  xy: 202, 184
+  size: 48, 84
+  orig: 256, 256
+  offset: 103, 82
+  index: -1
+3Shoot#00017#00001
+  rotate: false
+  xy: 203, 95
+  size: 51, 74
+  orig: 256, 256
+  offset: 99, 78
+  index: -1
