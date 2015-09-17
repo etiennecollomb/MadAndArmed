@@ -35,6 +35,14 @@
 		maxOverlappingSound: 10
 		minDelayBetweenSound: 100
     },
+    "FLAMETHROWER_1": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: FLAMETHROWER_1
+		weaponType: FLAMETHROWER
+		hitRange: 50
+		hitSpeed: 20
+		dmgEffect: 1000
+    },
     "MISSILE_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
         weaponName: MISSILE_1

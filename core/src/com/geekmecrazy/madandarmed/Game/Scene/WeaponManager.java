@@ -85,7 +85,6 @@ public class WeaponManager implements IUpdatable {
 			this.fireFlameThrower(shooter, target);
 			break;
 		case MISSILE:
-			
 			this.fireMISSILE(shooter, target);
 			break;
 		default:

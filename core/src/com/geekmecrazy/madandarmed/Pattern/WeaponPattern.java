@@ -13,6 +13,7 @@ public class WeaponPattern{
 		SWORD_1,
 		GUN_1,
 		GUN_2,
+		FLAMETHROWER_1,
 		MISSILE_1,
 		MISSILE_2
 	}

@@ -151,10 +151,10 @@ public class FightScreen extends Screen implements IUpdatable {
         
         
         /** Memory Usage **/
-        System.out.println("################## MEMORY USAGE ##################");
-        System.out.println("Java Heap : " + Gdx.app.getJavaHeap()/1000000f + " Mo" );
-        System.out.println("Native Heap : " + Gdx.app.getNativeHeap()/1000000f + " Mo" );
-        System.out.println("##################################################");
+//        System.out.println("################## MEMORY USAGE ##################");
+//        System.out.println("Java Heap : " + Gdx.app.getJavaHeap()/1000000f + " Mo" );
+//        System.out.println("Native Heap : " + Gdx.app.getNativeHeap()/1000000f + " Mo" );
+//        System.out.println("##################################################");
 
     }
 

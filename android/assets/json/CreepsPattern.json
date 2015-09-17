@@ -30,10 +30,10 @@
 	"FLAMETHROWER": {
 			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
 			creepType: FLAMETHROWER
-			weaponName: SWORD_1
+			weaponName: FLAMETHROWER_1
 			creepSize: SMALL
 			diameter: 20
-			life: 200
+			life: 2000
 			walkSpeed: 2.5
 			price: 80
 			animationWalkPixelLength: 55
