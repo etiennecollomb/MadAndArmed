@@ -40,7 +40,7 @@
         weaponName: FLAMETHROWER_1
 		weaponType: FLAMETHROWER
 		hitRange: 50
-		hitSpeed: 20
+		hitSpeed: 30
 		dmgEffect: 1000
     },
     "MISSILE_1": {
