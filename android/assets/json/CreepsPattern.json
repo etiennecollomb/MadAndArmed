@@ -8,10 +8,10 @@
 			life: 100
 			walkSpeed: 2.5
 			price: 50
-			animationWalkPixelLength: 64
-			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12 ]
-			aimAnimationRow: [ 9 ]
-			fireAnimationRow: [ 16,17,18,19,20,21,22 ]
+			animationWalkPixelLength: 55
+			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40 ]
+			aimAnimationRow: [ 41 ]
+			fireAnimationRow: [ 41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61 ]
 			},
 	"MARINE": {
 			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
@@ -22,10 +22,10 @@
 			life: 200
 			walkSpeed: 2.5
 			price: 80
-			animationWalkPixelLength: 64
-			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28 ]
-			aimAnimationRow: [ 14 ]
-			fireAnimationRow: [ 14,15 ]
+			animationWalkPixelLength: 60
+			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 ]
+			aimAnimationRow: [ 28 ]
+			fireAnimationRow: [ 28 ]
 			},
 	"FLAMETHROWER": {
 			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
@@ -36,10 +36,10 @@
 			life: 200
 			walkSpeed: 2.5
 			price: 80
-			animationWalkPixelLength: 64
-			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39 ]
-			aimAnimationRow: [ 40 ]
-			fireAnimationRow: [ 40 ]
+			animationWalkPixelLength: 55
+			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40 ]
+			aimAnimationRow: [ 41 ]
+			fireAnimationRow: [ 41 ]
 			},
 	"MESH": {
 			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
@@ -50,10 +50,10 @@
 			life: 500
 			walkSpeed: 1
 			price: 200
-			animationWalkPixelLength: 100
-			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 ]
-			aimAnimationRow: [ 20 ]
-			fireAnimationRow: [ 20 ]
+			animationWalkPixelLength: 85
+			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59 ]
+			aimAnimationRow: [ 10 ]
+			fireAnimationRow: [ 10 ]
 			},
 	"BULLHOUND": {
 			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
@@ -64,9 +64,9 @@
 			life: 1500
 			walkSpeed: 1.7
 			price: 200
-			animationWalkPixelLength: 100
+			animationWalkPixelLength: 70
 			walkAnimationRow: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32 ]
-			aimAnimationRow: [ 29 ]
+			aimAnimationRow: [ 33 ]
 			fireAnimationRow: [ 33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57 ]
 			}
 }

@@ -10,7 +10,7 @@ public class GraphicalTools {
 	public static final int NB_ORIENTATION = 16;
 
 	/** angle de depart du spritesheet */
-	private static final float START_ANGLE = 90f;
+	private static final float START_ANGLE = 270f;
 	
 	protected static float[][][] graphicOrientation; //liste des valeurs cos et sin pour la direction graphique
 
@@ -108,12 +108,12 @@ public class GraphicalTools {
 		else{ for(i=halfsize; i<size; i++) if(graphicOrientation[i+1][0][0]<x) break;}
 
 		//trigonometric (y>0)
-		//if (y>0) return (int)graphicOrientation[i][0][2];
-		//return (int)graphicOrientation[i][1][2];
+		if (y>0) return (int)graphicOrientation[i][0][2];
+		return (int)graphicOrientation[i][1][2];
 
 		//non-trigonometric ie Y-axis inversion (y<0)
-		if (y<0) return (int)graphicOrientation[i][0][2];
-		return (int)graphicOrientation[i][1][2];
+//		if (y<0) return (int)graphicOrientation[i][0][2];
+//		return (int)graphicOrientation[i][1][2];
 	}
 
 }

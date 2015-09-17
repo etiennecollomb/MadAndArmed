@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
+import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet.SpriteSheetType;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
 import com.geekmecrazy.madandarmed.Renderer.FlameThrowerRenderer;
@@ -35,46 +36,46 @@ public class PoolAnimManager {
 	private static Map<AnimatedTextureType, SpriteSheet> spriteSheets;
 
 	//WEAPON EFFECT
-	public static final SpriteSheet MISSILE_EXPLOSION_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MISSILE_EXPLOSION, true);
-	public static final SpriteSheet IMPACT_BULLET_SPRITESHEET = new SpriteSheet(AnimatedTextureType.IMPACT_BULLET, true);
-	public static final SpriteSheet FIRE_BLAST_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_64PX, true);
-	public static final SpriteSheet FIRE_BLAST_001_128PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_128PX, true);
-	public static final SpriteSheet SWORD_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.SWORD_001_64PX, true);
+	public static final SpriteSheet MISSILE_EXPLOSION_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MISSILE_EXPLOSION, SpriteSheetType.UNIQUE);
+	public static final SpriteSheet IMPACT_BULLET_SPRITESHEET = new SpriteSheet(AnimatedTextureType.IMPACT_BULLET, SpriteSheetType.UNIQUE);
+	public static final SpriteSheet FIRE_BLAST_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_64PX, SpriteSheetType.UNIQUE);
+	public static final SpriteSheet FIRE_BLAST_001_128PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_128PX, SpriteSheetType.UNIQUE);
+	public static final SpriteSheet SWORD_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.SWORD_001_64PX, SpriteSheetType.UNIQUE);
 	
 
 	//DEAD
-	public static final SpriteSheet DEAD_SPRITESHEET = new SpriteSheet(AnimatedTextureType.DEAD, true);
-	public static final SpriteSheet BUILDING_DEATH_128PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BUILDING_DEATH_128PX, true);
-	public static final SpriteSheet BUILDING_DEATH_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BUILDING_DEATH_64PX, true);
-	public static final SpriteSheet BUILDING_DEATH_32PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BUILDING_DEATH_32PX, true);
+	public static final SpriteSheet DEAD_SPRITESHEET = new SpriteSheet(AnimatedTextureType.DEAD, SpriteSheetType.UNIQUE);
+	public static final SpriteSheet BUILDING_DEATH_128PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BUILDING_DEATH_128PX, SpriteSheetType.UNIQUE);
+	public static final SpriteSheet BUILDING_DEATH_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BUILDING_DEATH_64PX, SpriteSheetType.UNIQUE);
+	public static final SpriteSheet BUILDING_DEATH_32PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BUILDING_DEATH_32PX, SpriteSheetType.UNIQUE);
 
 	//UNIT
 	//---TEAM1
-	public static final SpriteSheet GLADIATOR_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.GLADIATOR_HD_TEAM1, false);
-	public static final SpriteSheet MARINE_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MARINE_HD_TEAM1, false);
-	public static final SpriteSheet FLAMETHROWER1_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM1, false);
-	public static final SpriteSheet MESH_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM1, false);
-	public static final SpriteSheet BULLHOUND_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM1, false);
+	public static final SpriteSheet GLADIATOR_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.GLADIATOR_HD_TEAM1, SpriteSheetType.FROM_ATLAS);
+	public static final SpriteSheet MARINE_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MARINE_HD_TEAM1, SpriteSheetType.FROM_ATLAS);
+	public static final SpriteSheet FLAMETHROWER1_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM1, SpriteSheetType.FROM_ATLAS);
+	public static final SpriteSheet MESH_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM1, SpriteSheetType.FROM_ATLAS);
+	public static final SpriteSheet BULLHOUND_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM1, SpriteSheetType.FROM_ATLAS);
 	
 	//---TEAM2
-	public static final SpriteSheet GLADIATOR_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.GLADIATOR_HD_TEAM2, false);
-	public static final SpriteSheet MARINE_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MARINE_HD_TEAM2, false);
-	public static final SpriteSheet FLAMETHROWER1_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2, false);
-	public static final SpriteSheet MESH_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2, false);
-	public static final SpriteSheet BULLHOUND_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM2, false);
+	public static final SpriteSheet GLADIATOR_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.GLADIATOR_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
+	public static final SpriteSheet MARINE_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MARINE_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
+	public static final SpriteSheet FLAMETHROWER1_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
+	public static final SpriteSheet MESH_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
+	public static final SpriteSheet BULLHOUND_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
 
 	//BUILDING
 	//---TEAM1
-	public static final SpriteSheet TURRET_01_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_01_HD_TEAM1, false);
-	public static final SpriteSheet TURRET_02_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_02_HD_TEAM1, false);
+	public static final SpriteSheet TURRET_01_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_01_HD_TEAM1, SpriteSheetType.FROM_DIR);
+	public static final SpriteSheet TURRET_02_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_02_HD_TEAM1, SpriteSheetType.FROM_DIR);
 	//---TEAM2
-	public static final SpriteSheet TURRET_01_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_01_HD_TEAM2, false);
-	public static final SpriteSheet TURRET_02_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_02_HD_TEAM2, false);
+	public static final SpriteSheet TURRET_01_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_01_HD_TEAM2, SpriteSheetType.FROM_DIR);
+	public static final SpriteSheet TURRET_02_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_02_HD_TEAM2, SpriteSheetType.FROM_DIR);
 	//---BARRICADE
-	public static final SpriteSheet BARRICADE_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BARRICADES, true);
+	public static final SpriteSheet BARRICADE_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BARRICADES, SpriteSheetType.UNIQUE);
 
 	//MISSILE
-	public static final SpriteSheet MISSILE_TYPE_1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MISSILE_TYPE_1, true);
+	public static final SpriteSheet MISSILE_TYPE_1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MISSILE_TYPE_1, SpriteSheetType.UNIQUE);
 
 
 	/** Pools */
