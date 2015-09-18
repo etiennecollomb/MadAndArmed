@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Renderer;
 
 import java.util.List;
 
+import com.geekmecrazy.madandarmed.Game.Element.Military;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
@@ -20,8 +21,7 @@ public class GunRenderer extends WeaponRenderer {
 	// ===========================================================
 
 	@Override
-	public void setWeaponTravellingEffect(){
-	}
+	public void setWeaponTravellingEffect(){}
 	
 	@Override
 	protected void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList) {
@@ -34,7 +34,7 @@ public class GunRenderer extends WeaponRenderer {
 	// Methods
 	// ===========================================================
 
-	public void init(final Weapon weapon){
+	public void init(final Weapon weapon, final Military military){
 		super.init(weapon);
 	}
 

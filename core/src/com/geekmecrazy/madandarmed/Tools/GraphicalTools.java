@@ -10,7 +10,11 @@ public class GraphicalTools {
 	public static final int NB_ORIENTATION = 16;
 
 	/** angle de depart du spritesheet */
-	private static final float START_ANGLE = 270f;
+	public static final float START_ANGLE = 270f;
+	public static final float START_ANGLE_RADIAN = (float)(START_ANGLE*Math.PI/180.0f);
+	
+	/** angle entre chaque orientation graphique **/
+	public static final float STEP_ANGLE_RADIAN = (float) (2*Math.PI/NB_ORIENTATION);
 	
 	protected static float[][][] graphicOrientation; //liste des valeurs cos et sin pour la direction graphique
 

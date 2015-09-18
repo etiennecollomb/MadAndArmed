@@ -39,7 +39,7 @@
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
         weaponName: FLAMETHROWER_1
 		weaponType: FLAMETHROWER
-		hitRange: 50
+		hitRange: 100
 		hitSpeed: 30
 		dmgEffect: 1000
     },

@@ -33,6 +33,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 	
 	//TEST
 	AnimatedSprite as1, as2, as3, as4;
+	float start_angle = (float) (Math.PI/2f);
 	//FIN TEST//
 	
 	
@@ -83,7 +84,25 @@ public class MenuScreen extends Screen implements IUpdatable {
 				
 				
 				//TEST
-				fireThrower(20f, 30f, 0.71f, 0.71f); //TEST
+				int x_ = as4.getCurrentFrameX()+1;
+				if(x_>= as4.getSpriteSheet().getNumberOfColumn()) x_=0;
+				as4.setCurrentFrame(x_, as4.getCurrentFrameY());
+				
+
+				start_angle = start_angle + (float)(2*Math.PI/16f);
+				start_angle = (start_angle >= 2*Math.PI)? 0:start_angle;
+				
+				float dirX = (float)Math.cos(start_angle);
+				float dirY = (float)Math.sin(start_angle);
+				
+				/** start_angle is (2*Math.PI/16f)*graphicOrientation **/
+				float deltaAngleWeapon = (float) (-Math.PI/24);
+				float posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
+				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
+				posY_ = posY_/1.5f + 2f;
+				
+				fireThrower(as4.getX()+posX_, as4.getY()+posY_, dirX, dirY); //TEST
+//				System.out.println("3333 "+start_angle + " " + dirX + " " + dirY );
 				//FINTEST
 
 			}
@@ -172,12 +191,12 @@ public class MenuScreen extends Screen implements IUpdatable {
 		MenuScreen.getManager().getHUD().registerTouchableShape(layout_test);
 		
 		//TEST
-//		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
-//		as1 = new AnimatedSprite();
-//		as1.init(spshit, 256, 256);
-//		as1.setPosition(300f,  300f);
-//		as1.setCurrentFrame(0);
-//		this.getScene().attachChild(as1);
+		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
+		as1 = new AnimatedSprite();
+		as1.init(spshit, 256, 256);
+		as1.setPosition(300f,  300f);
+		as1.setCurrentFrame(0);
+		this.getScene().attachChild(as1);
 //		
 //		Rectangle r2d2 = new Rectangle();
 //		r2d2.init(300f,300f,9, 9);
@@ -208,13 +227,13 @@ public class MenuScreen extends Screen implements IUpdatable {
 //		r2d4.setColor(1,0,0,1);
 //		this.getScene().attachChild(r2d4);
 //		
-//		SpriteSheet spshit4 = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
-//		as4 = new AnimatedSprite();
-//		as4.init(spshit4, 256, 256);
-//		as4.setPosition(450f,  500f);
-//		as4.setCurrentFrame(8,0);
-//		this.getScene().attachChild(as4);
-//		
+		SpriteSheet spshit4 = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
+		as4 = new AnimatedSprite();
+		as4.init(spshit4, 256, 256);
+		as4.setPosition(450f,  500f);
+		as4.setCurrentFrame(8,0);
+		this.getScene().attachChild(as4);
+		
 //		Rectangle r2d5 = new Rectangle();
 //		r2d5.init(300f,300f,9, 9);
 //		r2d5.setColor(1,0,0,1);
@@ -228,13 +247,13 @@ public class MenuScreen extends Screen implements IUpdatable {
 	public void onUpdate(){
 
 		//TEST
-//		int x = as1.getCurrentFrameX();
-//		int y = as1.getCurrentFrameY();
-//		int maxX = as1.getSpriteSheet().getNumberOfColumn();
-//		int maxY = as1.getSpriteSheet().getNumberOfRow();
-//		y++;
-//		if(y>=maxY){y=33; x++; if(x>=maxX){x=0;} }
-//		as1.setCurrentFrame(x, y);
+		int x = as1.getCurrentFrameX();
+		int y = as1.getCurrentFrameY();
+		int maxX = as1.getSpriteSheet().getNumberOfColumn();
+		int maxY = as1.getSpriteSheet().getNumberOfRow();
+		y++;
+		if(y>=maxY){y=33; x++; if(x>=maxX){x=0;} }
+		as1.setCurrentFrame(x, y);
 //		
 //		x = as2.getCurrentFrameX();
 //		y = as2.getCurrentFrameY();
@@ -252,13 +271,13 @@ public class MenuScreen extends Screen implements IUpdatable {
 //		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
 //		as3.setCurrentFrame(x, y);
 //		
-//		x = 16;//as4.getCurrentFrameX();
-//		y = as4.getCurrentFrameY();
-//		maxX = as4.getSpriteSheet().getNumberOfColumn();
-//		maxY = as4.getSpriteSheet().getNumberOfRow();
-//		y++;
-//		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
-//		as4.setCurrentFrame(x, y);
+		x = as4.getCurrentFrameX();
+		y = as4.getCurrentFrameY();
+		maxX = as4.getSpriteSheet().getNumberOfColumn();
+		maxY = as4.getSpriteSheet().getNumberOfRow();
+		y++;
+		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
+		as4.setCurrentFrame(x, maxY-1);
 		//FINTEST
 		
 
@@ -353,7 +372,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 		int delai = 0;
 		int delaiIncrement = 1;
-		float numberOfBalls = 7;
+		float numberOfBalls = 12;
 		float animationSpeedStart = 4.0f;
 
 		float increment, currentValue, scale, animationSpeed;

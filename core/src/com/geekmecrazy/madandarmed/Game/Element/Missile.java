@@ -26,7 +26,7 @@ public class Missile extends Weapon {
 		this.vitesse=shooter.getAttackBehavior().getWeaponPattern().getMissileSpeed();
 		
 		this.setWeaponRenderer( PoolAnimManager.getManager().getMissileRendererPool().obtain() );
-		((MissileRenderer) this.getWeaponRenderer()).init(this);
+		((MissileRenderer) this.getWeaponRenderer()).init(this, shooter);
 
 		FightScreen.getManager().getScene().attachChild(this.getWeaponRenderer());
 		

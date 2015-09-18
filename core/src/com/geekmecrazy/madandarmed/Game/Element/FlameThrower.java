@@ -10,8 +10,7 @@ public class FlameThrower extends Weapon {
 
 	FlameThrowerRenderer flameThrowerRenderer;
 	
-	public FlameThrower() {
-	}
+	public FlameThrower() {}
 
 
 	public void init(float posX, float posY, Military shooter, Military target){
