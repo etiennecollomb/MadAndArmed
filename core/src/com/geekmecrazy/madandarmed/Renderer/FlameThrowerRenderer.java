@@ -31,11 +31,6 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 	// ===========================================================
 
 	@Override
-	public void reset() {
-		super.reset();
-	}
-
-	@Override
 	public void setWeaponTravellingEffect(){
 
 		SpriteSheet sp = PoolAnimManager.FIRE_BLAST_001_128PX_SPRITESHEET; //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
@@ -75,7 +70,7 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 		float animationSpeedStart = 4.0f;
 
 		float increment, currentValue, scale, animationSpeed;
-		for(int i=0; i<=numberOfBalls; i++){
+		for(int i=0; i<=numberOfBalls-1; i++){
 
 			//Exponential value : Exp(-2) = env. 0 to Exp(0) = 1
 			increment = -2.0f + (2.0f/numberOfBalls)*(i);

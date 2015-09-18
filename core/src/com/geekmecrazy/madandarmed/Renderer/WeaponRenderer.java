@@ -57,6 +57,16 @@ public abstract class WeaponRenderer extends Entity {
 
 		//after because Position has been modified
 		super.onUpdate();
+		
+		/** We delete finished weapon effect sprites **/
+		int size = weaponTravellingEffectList.size();
+		for(int i=0; i<size; i++){
+			if(this.weaponTravellingEffectList.get(i).isFinished()){
+				PoolAnimManager.getManager().getUniqueActionRendererPool().free(this.weaponTravellingEffectList.get(i));
+				this.weaponTravellingEffectList.remove(i);
+				size = size-1; i = i-1;
+			}	
+		}
 	}
 	
 	@Override
