@@ -17,6 +17,7 @@ public enum AnimatedTextureType {
 	FIRE_BLAST_001_128PX	("game/SB-2_1_128px.png", 1024, 1024, 8, 8),
 	SWORD_001_256PX			("game/swordeffect_256px.png", 1024, 256, 4, 1),
 	SWORD_001_64PX			("game/swordeffect_64px.png", 256, 64, 4, 1),
+	HALO_BLUE_192PX			("game/halo_blue_192px.png", 1024, 1024, 5, 4),
 
 	//DEAD ANIMATION
 	DEAD					("game/deadCreep.png", 512, 64, 8, 1, 8),  //CREEP
