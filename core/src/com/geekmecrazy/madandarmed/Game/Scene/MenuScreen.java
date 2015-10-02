@@ -32,7 +32,7 @@ import aurelienribon.tweenengine.equations.Quad;
 public class MenuScreen extends Screen implements IUpdatable {
 	
 	//TEST
-	AnimatedSprite as1, as2, as3, as4;
+	AnimatedSprite as1, as2, as3, as4, as5;
 	float start_angle = (float) (Math.PI/2f);
 	//FIN TEST//
 	
@@ -84,9 +84,9 @@ public class MenuScreen extends Screen implements IUpdatable {
 				
 				
 				//TEST
-				int x_ = as4.getCurrentFrameX()+1;
-				if(x_>= as4.getSpriteSheet().getNumberOfColumn()) x_=0;
-				as4.setCurrentFrame(x_, as4.getCurrentFrameY());
+				int x_ = as5.getCurrentFrameX()+1;
+				if(x_>= as5.getSpriteSheet().getNumberOfColumn()) x_=0;
+				as5.setCurrentFrame(x_, as5.getCurrentFrameY());
 				
 
 				start_angle = start_angle + (float)(2*Math.PI/16f);
@@ -101,7 +101,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
 				posY_ = posY_/1.5f + 2f;
 				
-				fireThrower(as4.getX()+posX_, as4.getY()+posY_, dirX, dirY); //TEST
+				//fireThrower(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY); //TEST
 //				System.out.println("3333 "+start_angle + " " + dirX + " " + dirY );
 				//FINTEST
 
@@ -227,12 +227,19 @@ public class MenuScreen extends Screen implements IUpdatable {
 //		r2d4.setColor(1,0,0,1);
 //		this.getScene().attachChild(r2d4);
 //		
-		SpriteSheet spshit4 = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
-		as4 = new AnimatedSprite();
-		as4.init(spshit4, 256, 256);
-		as4.setPosition(450f,  500f);
-		as4.setCurrentFrame(8,0);
-		this.getScene().attachChild(as4);
+//		SpriteSheet spshit4 = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
+//		as4 = new AnimatedSprite();
+//		as4.init(spshit4, 256, 256);
+//		as4.setPosition(450f,  500f);
+//		as4.setCurrentFrame(8,0); //y sur la position de tir !
+//		this.getScene().attachChild(as4);
+		
+		SpriteSheet spshit5 = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
+		as5 = new AnimatedSprite();
+		as5.init(spshit5, 256, 256);
+		as5.setPosition(450f,  500f);
+		as5.setCurrentFrame(8,0); //y sur la position de tir !
+		this.getScene().attachChild(as5);
 		
 //		Rectangle r2d5 = new Rectangle();
 //		r2d5.init(300f,300f,9, 9);
@@ -271,13 +278,22 @@ public class MenuScreen extends Screen implements IUpdatable {
 //		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
 //		as3.setCurrentFrame(x, y);
 //		
-		x = as4.getCurrentFrameX();
-		y = as4.getCurrentFrameY();
-		maxX = as4.getSpriteSheet().getNumberOfColumn();
-		maxY = as4.getSpriteSheet().getNumberOfRow();
+//		x = as4.getCurrentFrameX();
+//		y = as4.getCurrentFrameY();
+//		maxX = as4.getSpriteSheet().getNumberOfColumn();
+//		maxY = as4.getSpriteSheet().getNumberOfRow();
+//		y++;
+//		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
+//		as4.setCurrentFrame(x, maxY-1);
+		
+		
+		x = as5.getCurrentFrameX();
+		y = as5.getCurrentFrameY();
+		maxX = as5.getSpriteSheet().getNumberOfColumn();
+		maxY = as5.getSpriteSheet().getNumberOfRow();
 		y++;
 		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
-		as4.setCurrentFrame(x, maxY-1);
+		as5.setCurrentFrame(x, maxY-1);
 		//FINTEST
 		
 
