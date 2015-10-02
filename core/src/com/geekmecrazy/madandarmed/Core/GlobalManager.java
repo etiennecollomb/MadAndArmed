@@ -66,6 +66,7 @@ public class GlobalManager {
 	/** Ground */
 	public static int GROUNDTILEDWIDTH = 128;
 	public static int GROUNDTILEDHEIGHT = 64;
+	public static float ISO_CIRCLE_RATIO = 1.5f; //permet d'approximer le cerle applatit en iso sur les abscisse , ie: y = y / ISO_TILED_RATIO
 
 	/** Z-Index */
 	public static int ZINDEXMAXVALUE = 1000000000;

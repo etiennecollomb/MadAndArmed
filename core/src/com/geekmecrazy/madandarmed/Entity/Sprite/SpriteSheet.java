@@ -324,77 +324,23 @@ public class SpriteSheet {
 
 
 	private void generateUniqueSpriteSheet(final AnimatedTextureType pAnimatedTextureTypeRoot){
-
-
-		String animatedTextureRootName = pAnimatedTextureTypeRoot.name();
-
-		//get final array size
-		int tiledSize = pAnimatedTextureTypeRoot.getWidth()/pAnimatedTextureTypeRoot.getNumberOfColumn();
-		int numberOfSpriteOnSameLine = tiledSize / SpriteSheet.MIN_TILED_SIZE; 
-		this.mNumberOfColumn = numberOfSpriteOnSameLine * pAnimatedTextureTypeRoot.getNumberOfColumn();
-		if(this.mIsUniqueSprite) this.mNumberOfColumn = pAnimatedTextureTypeRoot.getNumberOfColumn();
-
-		this.mNumberOfRow = 0;
-		numberOfSpriteOnSameLine = 0;
-		for (final AnimatedTextureType t: AnimatedTextureType.values()){
-			if(t.name().startsWith(animatedTextureRootName)){
-				if(numberOfSpriteOnSameLine == 0){
-					if(this.mIsUniqueSprite)
-						numberOfSpriteOnSameLine = 1;
-					else{
-						tiledSize = t.getWidth()/t.getNumberOfColumn();
-						numberOfSpriteOnSameLine = tiledSize / SpriteSheet.MIN_TILED_SIZE; 
-					}
-				}
-
-				numberOfSpriteOnSameLine--;
-
-				if(numberOfSpriteOnSameLine == 0){
-					this.mNumberOfRow = this.mNumberOfRow + t.getNumberOfRow();
-				}
-			}
-		}
-
+		
+		this.mNumberOfColumn = pAnimatedTextureTypeRoot.getNumberOfColumn();
+		this.mNumberOfRow = pAnimatedTextureTypeRoot.getNumberOfRow();
+		
 		//init arrays
 		mSprites = new TextureRegion[mNumberOfColumn][mNumberOfRow];
 
-		//fill array
-		int tmpX=0, tmpY=0;
-		numberOfSpriteOnSameLine = 0;
-		for (final AnimatedTextureType t: AnimatedTextureType.values()){
+		Texture currentTexture = new Texture(Gdx.files.internal(pAnimatedTextureTypeRoot.getPath()));
+		TextureRegion[][] mFrames = TextureRegion.split(currentTexture, currentTexture.getWidth()/pAnimatedTextureTypeRoot.getNumberOfColumn(), currentTexture.getHeight()/pAnimatedTextureTypeRoot.getNumberOfRow());
 
-			if(t.name().startsWith(animatedTextureRootName)){
-
-				//on a mis toutes les tiled de la taille courant sur la meme ligne?
-				if(numberOfSpriteOnSameLine == 0){
-
-					if(this.mIsUniqueSprite)
-						numberOfSpriteOnSameLine = 1;
-					else{
-						tiledSize = t.getWidth()/t.getNumberOfColumn();
-						numberOfSpriteOnSameLine = tiledSize / SpriteSheet.MIN_TILED_SIZE; 
-					}
-				}
-
-				Texture currentTexture = new Texture(Gdx.files.internal(t.getPath()));
-				TextureRegion[][] mFrames = TextureRegion.split(currentTexture, currentTexture.getWidth()/t.getNumberOfColumn(), currentTexture.getHeight()/t.getNumberOfRow());
-
-				for(int i=0; i<mFrames.length; i++)
-					for(int j=0; j<mFrames[i].length; j++){
-						mSprites[tmpX+j][tmpY+i] = mFrames[i][j];
-					}
-
-				tmpX = tmpX + mFrames[0].length;
-
-				numberOfSpriteOnSameLine--;
-
-				if(numberOfSpriteOnSameLine == 0){
-					tmpX=0;
-					tmpY = tmpY + mFrames.length;
-				}
+		for(int i=0; i<mFrames.length; i++)
+			for(int j=0; j<mFrames[i].length; j++){
+				mSprites[j][i] = mFrames[i][j];
 			}
-		}
+
 	}
+	
 
 	public TextureRegion getFrame(final int pCol_x, final int pRow_y) {
 		return this.mSprites[pCol_x][pRow_y];

@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Renderer;
 
 import java.util.List;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
@@ -55,7 +56,12 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 				float deltaAngleWeapon = (float) (-Math.PI/24);
 				positionX = (float)Math.cos(fire_angle + deltaAngleWeapon) * 80 ;
 				positionY = (float)Math.sin(fire_angle + deltaAngleWeapon) * 80;
-				positionY = positionY/1.5f + 2f;
+				positionY = positionY/GlobalManager.ISO_CIRCLE_RATIO + 2f;
+				break;
+				
+			default:
+				positionX = 0;
+				positionY = 0;
 				break;
 			}
 
@@ -92,7 +98,7 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 
 			/** direction of the shooter **/
 			float dirX = this.getWeapon().getShooter().getNormalizedDir().getX();
-			float dirY = this.getWeapon().getShooter().getNormalizedDir().getY();
+			float dirY = this.getWeapon().getShooter().getNormalizedDir().getY()/GlobalManager.ISO_CIRCLE_RATIO;
 			positionX = positionX + distanceBetweenSprite*dirX;
 			positionY = positionY + distanceBetweenSprite*dirY;
 

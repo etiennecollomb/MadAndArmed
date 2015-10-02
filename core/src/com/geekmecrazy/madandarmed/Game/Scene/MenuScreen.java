@@ -397,7 +397,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 			delai = delai + delaiIncrement;
 
 			positionX = positionX + distanceBetweenSprite*dirX;
-			positionY = positionY + distanceBetweenSprite*dirY;
+			positionY = (float) (positionY + distanceBetweenSprite*dirY/GlobalManager.ISO_CIRCLE_RATIO);
 
 		}
 
