@@ -61,14 +61,14 @@ public class SpriteSheet {
 	 * baseName : racine commune du groupe de Sprite a associer ensemble
 	 * usually baseName = tiledTextureType.XXXX.name()
 	 */
-	public SpriteSheet(final AnimatedTextureType pAnimatedTextureType, final SpriteSheetType spriteType) {
+	public SpriteSheet(final AnimatedTextureType pAnimatedTextureType) {
 
 		long timeTEMP = System.currentTimeMillis();
 
 		this.mAnimatedTextureTypeRoot = pAnimatedTextureType;
 		this.isFromTexturePack = false;
 
-		switch(spriteType){
+		switch(pAnimatedTextureType.getSpriteSheetType()){
 		case UNIQUE:
 			this.generateUniqueSpriteSheet(this.mAnimatedTextureTypeRoot);
 			break;

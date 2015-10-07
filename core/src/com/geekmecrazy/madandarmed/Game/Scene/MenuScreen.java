@@ -191,7 +191,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 		MenuScreen.getManager().getHUD().registerTouchableShape(layout_test);
 		
 		//TEST
-		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
+		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2);
 		as1 = new AnimatedSprite();
 		as1.init(spshit, 256, 256);
 		as1.setPosition(300f,  300f);
@@ -234,7 +234,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 //		as4.setCurrentFrame(8,0); //y sur la position de tir !
 //		this.getScene().attachChild(as4);
 		
-		SpriteSheet spshit5 = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
+		SpriteSheet spshit5 = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2);
 		as5 = new AnimatedSprite();
 		as5.init(spshit5, 256, 256);
 		as5.setPosition(450f,  500f);
@@ -380,7 +380,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 	public void fireThrower(final float posX, final float posY, final float dirX, final float dirY){
 
 		//SpriteSheet sp = PoolAnimManager.FIRE_BLAST_001_128PX_SPRITESHEET; //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
-		SpriteSheet sp = PoolAnimManager.HALO_BLUE_192PX_SPRITESHEET;
+		SpriteSheet sp = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX_BLUE);
 
 		float positionX = posX;
 		float positionY = posY;

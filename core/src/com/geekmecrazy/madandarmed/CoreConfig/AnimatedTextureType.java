@@ -1,5 +1,7 @@
 package com.geekmecrazy.madandarmed.CoreConfig;
 
+import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet.SpriteSheetType;
+
 //===========================================================
 // List of tiled sprite used in game
 //===========================================================
@@ -10,10 +12,12 @@ public enum AnimatedTextureType {
 	//WEAPON 
 	MISSILE_TYPE_1			("game/missile.png", 64, 64),
 
-	//WEAPON HIT EFFECT8,4
+	//WEAPON HIT EFFECT
 	IMPACT_BULLET			("game/metal_impact_strip_64px.png", 64, 64, 3),
 	FIRE_BLAST_001_64PX		("game/SB-2_1_64px.png", 64, 64),
 	FIRE_BLAST_001_128PX	("game/SB-2_1_128px.png", 128, 128),
+	FIRE_BLAST_001_64PX_BLUE("game/SB-2_1_64px.png", 64, 64),
+	FIRE_BLAST_001_128PX_BLUE	("game/SB-2_1_128px.png", 128, 128),
 	SWORD_001_256PX			("game/swordeffect_256px.png", 256, 256),
 	SWORD_001_64PX			("game/swordeffect_64px.png", 64, 64),
 	
@@ -55,6 +59,7 @@ public enum AnimatedTextureType {
 	;
 
 
+	private SpriteSheetType spriteSheetType;
 	private String path;
 	private int tiledWidth;
 	private int tiledHeight;
@@ -67,6 +72,7 @@ public enum AnimatedTextureType {
 
 	/** unique sprite **/
 	private AnimatedTextureType(final String path, final int tiledWidth, final int tiledHeight) {
+		this.spriteSheetType = SpriteSheetType.UNIQUE;
 		this.path = path;
 		this.tiledWidth = tiledWidth;
 		this.tiledHeight = tiledHeight;
@@ -75,6 +81,7 @@ public enum AnimatedTextureType {
 	}
 
 	private AnimatedTextureType(final String path, final int tiledWidth, final int tiledHeight, final int numberOfTiled) {
+		this.spriteSheetType = SpriteSheetType.UNIQUE;
 		this.path = path;;
 		this.tiledWidth = tiledWidth;
 		this.tiledHeight = tiledHeight;
@@ -82,8 +89,9 @@ public enum AnimatedTextureType {
 		this.realSizeRenderer = 0;
 	}
 	
-	/** multi animated sprite **/
+	/** multi animated sprite from ATLAS **/
 	private AnimatedTextureType(final String path, final int realSizeRenderer) {
+		this.spriteSheetType = SpriteSheetType.FROM_ATLAS;
 		this.path = path;
 		this.tiledWidth = -1;
 		this.tiledHeight = -1;
@@ -96,6 +104,10 @@ public enum AnimatedTextureType {
 	// Getter & Setter
 	// ===========================================================
 
+	public SpriteSheetType getSpriteSheetType() {
+		return spriteSheetType;
+	}
+	
 	public String getPath() {
 		return path;
 	}
