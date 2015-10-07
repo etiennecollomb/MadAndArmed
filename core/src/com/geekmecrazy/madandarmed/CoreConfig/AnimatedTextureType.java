@@ -8,29 +8,30 @@ public enum AnimatedTextureType {
 	//ALIAS				sprite path/ sprite width/ sprite height/ number tile's column / number tile's row/ number of frame/ real size of render
 
 	//WEAPON 
-	MISSILE_TYPE_1			("game/missile.png", 64, 64, 1, 1, 1),
+	MISSILE_TYPE_1			("game/missile.png", 64, 64),
 
 	//WEAPON HIT EFFECT8,4
-	MISSILE_EXPLOSION		("game/wind_002_s2_blue.png", 512, 512, 5, 5, 25), //A REVOIR !!!
-	IMPACT_BULLET			("game/metal_impact_strip_64px.png", 256, 64, 4, 1, 3),
-	FIRE_BLAST_001_64PX		("game/SB-2_1_64px.png", 512, 512, 8, 8),
-	FIRE_BLAST_001_128PX	("game/SB-2_1_128px.png", 1024, 1024, 8, 8),
-	SWORD_001_256PX			("game/swordeffect_256px.png", 1024, 256, 4, 1),
-	SWORD_001_64PX			("game/swordeffect_64px.png", 256, 64, 4, 1),
-	HALO_BLUE_192PX			("game/halo_blue_192px.png", 1024, 1024, 5, 4),
+	IMPACT_BULLET			("game/metal_impact_strip_64px.png", 64, 64, 3),
+	FIRE_BLAST_001_64PX		("game/SB-2_1_64px.png", 64, 64),
+	FIRE_BLAST_001_128PX	("game/SB-2_1_128px.png", 128, 128),
+	SWORD_001_256PX			("game/swordeffect_256px.png", 256, 256),
+	SWORD_001_64PX			("game/swordeffect_64px.png", 64, 64),
+	
+	HALO_BLUE_192PX			("game/halo_blue_192px.png", 192, 192),
+	MISSILE_EXPLOSION		("game/wind_002_s2_blue.png", 102, 102), //A REVOIR (remmettre le png original) !!!
 
 	//DEAD ANIMATION
-	DEAD					("game/deadCreep.png", 512, 64, 8, 1, 8),  //CREEP
-	BUILDING_DEATH_128PX	("game/cloud_debris_blast_sprite_sheet_128px.png", 1024, 1024, 8, 8), //BUILDING
-	BUILDING_DEATH_64PX		("game/cloud_debris_blast_sprite_sheet_64px.png", 512, 512, 8, 8), //BUILDING
-	BUILDING_DEATH_32PX		("game/cloud_debris_blast_sprite_sheet_32px.png", 256, 256, 8, 8), //BUILDING
+	DEAD					("game/deadCreep.png", 64, 64),  //CREEP
+	BUILDING_DEATH_128PX	("game/cloud_debris_blast_sprite_sheet_128px.png", 128, 128), //BUILDING
+	BUILDING_DEATH_64PX		("game/cloud_debris_blast_sprite_sheet_64px.png", 64, 64), //BUILDING
+	BUILDING_DEATH_32PX		("game/cloud_debris_blast_sprite_sheet_32px.png", 32, 32), //BUILDING
 
 	// QG UI
-	BUY					("qg/buy2.png", 128, 64, 2, 1),
-	OKKO				("qg/ok_ko.png", 64, 32, 2, 1),
+	BUY						("qg/buy2.png", 64, 64),
+	OKKO					("qg/ok_ko.png", 32, 32),
 	
     //BARRICADE
-    BARRICADES				("game/barricade_tiles.png", 512, 512, 4, 4, 128),
+    BARRICADES				("game/barricade_tiles.png", 128, 128),
 
     
     /** UNITS HIGH DEF */
@@ -55,10 +56,8 @@ public enum AnimatedTextureType {
 
 
 	private String path;
-	private int width;
-	private int height;
-	private int numberOfColumn;
-	private int numberOfRow;
+	private int tiledWidth;
+	private int tiledHeight;
 	private int numberOfTiled;
 	private int realSizeRenderer; //taille reelle du rendu en pixel
 
@@ -67,46 +66,27 @@ public enum AnimatedTextureType {
 	// ===========================================================
 
 	/** unique sprite **/
-	private AnimatedTextureType(final String path, final int width, final int height, final int numberOfColumn, final int numberOfRow) {
+	private AnimatedTextureType(final String path, final int tiledWidth, final int tiledHeight) {
 		this.path = path;
-		this.width = width;
-		this.height = height;
-		this.numberOfColumn = numberOfColumn;
-		this.numberOfRow = numberOfRow;
-		this.numberOfTiled = this.numberOfColumn*this.numberOfRow;
+		this.tiledWidth = tiledWidth;
+		this.tiledHeight = tiledHeight;
+		this.numberOfTiled = -1;
 		this.realSizeRenderer = 0;
 	}
 
-	private AnimatedTextureType(final String path, final int width, final int height, final int numberOfColumn, final int numberOfRow, final int numberOfTiled) {
-		this.path = path;
-		this.width = width;
-		this.height = height;
-		this.numberOfColumn = numberOfColumn;
-		this.numberOfRow = numberOfRow;
+	private AnimatedTextureType(final String path, final int tiledWidth, final int tiledHeight, final int numberOfTiled) {
+		this.path = path;;
+		this.tiledWidth = tiledWidth;
+		this.tiledHeight = tiledHeight;
 		this.numberOfTiled = numberOfTiled;
 		this.realSizeRenderer = 0;
-	}
-
-	private AnimatedTextureType(final String path, final int width, final int height, final int numberOfColumn, final int numberOfRow, final int numberOfTiled, final int realSizeRenderer) {
-		this.path = path;
-		this.width = width;
-		this.height = height;
-		this.numberOfColumn = numberOfColumn;
-		this.numberOfRow = numberOfRow;
-		if(numberOfTiled == -1)
-			this.numberOfTiled = this.numberOfColumn*this.numberOfRow;
-		else
-			this.numberOfTiled = numberOfTiled;
-		this.realSizeRenderer = realSizeRenderer;
 	}
 	
 	/** multi animated sprite **/
 	private AnimatedTextureType(final String path, final int realSizeRenderer) {
 		this.path = path;
-		this.width = -1;
-		this.height = -1;
-		this.numberOfColumn = -1;
-		this.numberOfRow = -1;
+		this.tiledWidth = -1;
+		this.tiledHeight = -1;
 		this.numberOfTiled = -1;
 		this.realSizeRenderer = realSizeRenderer;
 	}
@@ -119,18 +99,15 @@ public enum AnimatedTextureType {
 	public String getPath() {
 		return path;
 	}
-	public int getWidth() {
-		return width;
+
+	public int getTiledWidth() {
+		return tiledWidth;
 	}
-	public int getHeight() {
-		return height;
+
+	public int getTiledHeight() {
+		return tiledHeight;
 	}
-	public int getNumberOfColumn() {
-		return numberOfColumn;
-	}
-	public int getNumberOfRow() {
-		return numberOfRow;
-	}
+
 	public int getNumberOfTiled() {
 		return numberOfTiled;
 	}

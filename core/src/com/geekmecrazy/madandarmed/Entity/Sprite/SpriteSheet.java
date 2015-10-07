@@ -87,7 +87,7 @@ public class SpriteSheet {
 
 		//on supose que toutes les sprites definissent une meta sprite de NxN
 		this.mNumberOfTiled = this.mNumberOfColumn * this.mNumberOfRow;
-		if(this.mIsUniqueSprite)
+		if(this.mIsUniqueSprite && pAnimatedTextureType.getNumberOfTiled() >= 0)
 			this.mNumberOfTiled = pAnimatedTextureType.getNumberOfTiled(); //on impose un nombre de tiled
 
 		System.out.println("##### SpriteSheet Loading :  " + pAnimatedTextureType.name() + " > "  + (System.currentTimeMillis() - timeTEMP)/1000f + " sec." );
@@ -227,6 +227,7 @@ public class SpriteSheet {
 	 * il faut que les noms de sprites dans le dir soient mis dans l'ordre
 	 * on suppose que les TiledSprite d'un meme sous groupe ont tous la meme taille
 	 */
+	@Deprecated
 	private void generateSpriteSheet(AnimatedTextureType animatedTextureType){
 
 		//animatedTextureType = animatedTextureType.GLADIATOR_HD_TEAM1;
@@ -322,18 +323,27 @@ public class SpriteSheet {
 	}
 
 
+//	/** SpriteSheet unique 
+//	 * tiled size equals (width/number of tiled) ....
+//	 */
+//	private void generateUniqueSpriteSheet(final AnimatedTextureType pAnimatedTextureTypeRoot){
+//		Texture currentTexture = new Texture(Gdx.files.internal(pAnimatedTextureTypeRoot.getPath()));
+//		this.generateUniqueSpriteSheet(pAnimatedTextureTypeRoot, currentTexture.getWidth()/pAnimatedTextureTypeRoot.getNumberOfColumn(), currentTexture.getHeight()/pAnimatedTextureTypeRoot.getNumberOfRow());
+//	}
 
+	/** SpriteSheet unique 
+	 * Tiled size must be specified
+	 */
 	private void generateUniqueSpriteSheet(final AnimatedTextureType pAnimatedTextureTypeRoot){
-		
-		this.mNumberOfColumn = pAnimatedTextureTypeRoot.getNumberOfColumn();
-		this.mNumberOfRow = pAnimatedTextureTypeRoot.getNumberOfRow();
-		
-		//init arrays
-		mSprites = new TextureRegion[mNumberOfColumn][mNumberOfRow];
+
 
 		Texture currentTexture = new Texture(Gdx.files.internal(pAnimatedTextureTypeRoot.getPath()));
-		TextureRegion[][] mFrames = TextureRegion.split(currentTexture, currentTexture.getWidth()/pAnimatedTextureTypeRoot.getNumberOfColumn(), currentTexture.getHeight()/pAnimatedTextureTypeRoot.getNumberOfRow());
-
+		TextureRegion[][] mFrames = TextureRegion.split(currentTexture, pAnimatedTextureTypeRoot.getTiledWidth(), pAnimatedTextureTypeRoot.getTiledHeight());
+		
+		this.mNumberOfColumn = currentTexture.getWidth()/pAnimatedTextureTypeRoot.getTiledWidth();
+		this.mNumberOfRow = currentTexture.getHeight()/pAnimatedTextureTypeRoot.getTiledHeight();
+		mSprites = new TextureRegion[mNumberOfColumn][mNumberOfRow];
+		
 		for(int i=0; i<mFrames.length; i++)
 			for(int j=0; j<mFrames[i].length; j++){
 				mSprites[j][i] = mFrames[i][j];

@@ -101,7 +101,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
 				posY_ = posY_/1.5f + 2f;
 				
-				//fireThrower(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY); //TEST
+				fireThrower(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY); //TEST
 //				System.out.println("3333 "+start_angle + " " + dirX + " " + dirY );
 				//FINTEST
 
