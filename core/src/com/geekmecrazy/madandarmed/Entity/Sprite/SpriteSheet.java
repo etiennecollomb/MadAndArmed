@@ -46,8 +46,6 @@ public class SpriteSheet {
 
 	private int mNumberOfTiled;
 
-	private boolean mIsUniqueSprite; //si il n y a qu un spriteSheet et non une composition de plusieurs , on est plus souple sur son emploi
-
 	/** list des textureAtlas si on cree le spriteSheet a partir de ca **/
 	private boolean isFromTexturePack;
 	private List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
@@ -68,12 +66,10 @@ public class SpriteSheet {
 		long timeTEMP = System.currentTimeMillis();
 
 		this.mAnimatedTextureTypeRoot = pAnimatedTextureType;
-		this.mIsUniqueSprite = false;		
 		this.isFromTexturePack = false;
 
 		switch(spriteType){
 		case UNIQUE:
-			this.mIsUniqueSprite = true;
 			this.generateUniqueSpriteSheet(this.mAnimatedTextureTypeRoot);
 			break;
 		case FROM_DIR:
@@ -87,7 +83,7 @@ public class SpriteSheet {
 
 		//on supose que toutes les sprites definissent une meta sprite de NxN
 		this.mNumberOfTiled = this.mNumberOfColumn * this.mNumberOfRow;
-		if(this.mIsUniqueSprite && pAnimatedTextureType.getNumberOfTiled() >= 0)
+		if(pAnimatedTextureType.getNumberOfTiled() >= 0)
 			this.mNumberOfTiled = pAnimatedTextureType.getNumberOfTiled(); //on impose un nombre de tiled
 
 		System.out.println("##### SpriteSheet Loading :  " + pAnimatedTextureType.name() + " > "  + (System.currentTimeMillis() - timeTEMP)/1000f + " sec." );

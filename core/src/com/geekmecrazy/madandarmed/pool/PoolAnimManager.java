@@ -41,6 +41,7 @@ public class PoolAnimManager {
 	public static final SpriteSheet FIRE_BLAST_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_64PX, SpriteSheetType.UNIQUE);
 	public static final SpriteSheet FIRE_BLAST_001_128PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_128PX, SpriteSheetType.UNIQUE);
 	public static final SpriteSheet SWORD_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.SWORD_001_64PX, SpriteSheetType.UNIQUE);
+	public static final SpriteSheet HALO_BLUE_192PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.HALO_BLUE_192PX, SpriteSheetType.UNIQUE);
 	
 
 	//DEAD
