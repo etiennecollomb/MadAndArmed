@@ -455,7 +455,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 			uar.setScalable(true);
 			uar.setScale(scale);
 			uar.setStartDelay(delai);
-			uar.setAnimationSpeed(animationSpeed);
+			uar.setAnimationSpeed(animationSpeed/3f);
 			uar.setPosition(positionX, positionY);
 			this.getScene().attachChild(uar);
 			
@@ -465,7 +465,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 			uar2.setScalable(true);
 			uar2.setScale(scale);
 			uar2.setStartDelay(delai);
-			uar2.setAnimationSpeed(animationSpeed/2f);
+			uar2.setAnimationSpeed(animationSpeed);
 			uar2.setPosition(positionX, positionY);
 			this.getScene().attachChild(uar2);
 
