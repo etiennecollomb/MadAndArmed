@@ -16,7 +16,7 @@ public enum AnimatedTextureType {
 	IMPACT_BULLET			("game/metal_impact_strip_64px.png", 64, 64, 3),
 	FIRE_BLAST_001_64PX		("game/SB-2_1_64px.png", 64, 64),
 	FIRE_BLAST_001_128PX	("game/SB-2_1_128px.png", 128, 128),
-	FIRE_BLAST_001_64PX_BLUE("game/SB-2_1_64px.png", 64, 64),
+	FIRE_BLAST_001_64PX_BLUE	("game/SB-2_1_64px.png", 64, 64),
 	FIRE_BLAST_001_128PX_BLUE	("game/SB-2_1_128px.png", 128, 128),
 	SWORD_001_256PX			("game/swordeffect_256px.png", 256, 256),
 	SWORD_001_64PX			("game/swordeffect_64px.png", 64, 64),
@@ -29,10 +29,6 @@ public enum AnimatedTextureType {
 	BUILDING_DEATH_128PX	("game/cloud_debris_blast_sprite_sheet_128px.png", 128, 128), //BUILDING
 	BUILDING_DEATH_64PX		("game/cloud_debris_blast_sprite_sheet_64px.png", 64, 64), //BUILDING
 	BUILDING_DEATH_32PX		("game/cloud_debris_blast_sprite_sheet_32px.png", 32, 32), //BUILDING
-
-	// QG UI
-	BUY						("qg/buy2.png", 64, 64),
-	OKKO					("qg/ok_ko.png", 32, 32),
 	
     //BARRICADE
     BARRICADES				("game/barricade_tiles.png", 128, 128),

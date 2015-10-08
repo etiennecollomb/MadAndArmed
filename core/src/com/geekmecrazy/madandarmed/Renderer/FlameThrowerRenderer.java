@@ -34,7 +34,7 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 	@Override
 	public void setWeaponTravellingEffect(){
 
-		SpriteSheet sp = PoolAnimManager.FIRE_BLAST_001_128PX_SPRITESHEET; //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
+		SpriteSheet sp = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX); //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
 
 
 		/** TODO: switch unit type **/
