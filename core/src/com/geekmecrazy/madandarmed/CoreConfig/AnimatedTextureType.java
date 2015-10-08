@@ -16,8 +16,8 @@ public enum AnimatedTextureType {
 	IMPACT_BULLET			("game/metal_impact_strip_64px.png", 64, 64, 3),
 	FIRE_BLAST_001_64PX		("game/SB-2_1_64px.png", 64, 64),
 	FIRE_BLAST_001_128PX	("game/SB-2_1_128px.png", 128, 128),
-	FIRE_BLAST_001_64PX_BLUE	("game/SB-2_1_64px.png", 64, 64),
-	FIRE_BLAST_001_128PX_BLUE	("game/SB-2_1_128px.png", 128, 128),
+	FIRE_BLAST_001_64PX_BLUE	("game/SB-4_1_64px_blue.png", 64, 64),
+	FIRE_BLAST_001_128PX_BLUE	("game/SB-4_1_128px_blue.png", 128, 128),
 	SWORD_001_256PX			("game/swordeffect_256px.png", 256, 256),
 	SWORD_001_64PX			("game/swordeffect_64px.png", 64, 64),
 	

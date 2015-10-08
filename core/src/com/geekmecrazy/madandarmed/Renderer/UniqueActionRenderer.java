@@ -41,26 +41,29 @@ public class UniqueActionRenderer extends SimpleRenderer  {
 	// ===========================================================
 
 	@Override
-	public void onUpdate() {		
+	public void onUpdate() {	
+		
 		//on demarre apres le delay
 		if(this.delay <= 0 && !this.isFinished()){
+			
+			//Set current frame regarding the animation speed
+			if(this.getAnimationSpeed()<=1.0f){
+				animationSpeedModulo = animationSpeedModulo + this.getAnimationSpeed();
+				if(animationSpeedModulo>1.0f){
+					animationSpeedModulo = animationSpeedModulo - 1.0f;
+					this.mCurrentFrame++;
+				}
+			}else{ // ie. > 1.0f
+				animationSpeedModulo = animationSpeedModulo + this.getAnimationSpeed() % 1.0f;
+				this.mCurrentFrame = this.mCurrentFrame + (int)this.getAnimationSpeed();
+			}
+
 			this.setVisible(true);
 			this.setCurrentFrame(this.mCurrentFrame);
+			
 		}else{
 			this.setVisible(false);
 			this.delay = this.delay - 1;
-		}
-		
-		//Set current frame regarding the animation speed
-		if(this.getAnimationSpeed()<=1.0f){
-			animationSpeedModulo = animationSpeedModulo + this.getAnimationSpeed();
-			if(animationSpeedModulo>1.0f){
-				animationSpeedModulo = animationSpeedModulo - 1.0f;
-				this.mCurrentFrame++;
-			}
-		}else{ // ie. > 1.0f
-			animationSpeedModulo = animationSpeedModulo + this.getAnimationSpeed() % 1.0f;
-			this.mCurrentFrame = this.mCurrentFrame + (int)this.getAnimationSpeed();
 		}
 		
 		//after because OffSet has been modified
