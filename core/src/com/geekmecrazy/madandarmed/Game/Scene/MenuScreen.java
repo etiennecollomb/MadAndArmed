@@ -427,7 +427,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 	public void fireThrowerMesh(final float posX, final float posY, final float dirX, final float dirY){
 
 		SpriteSheet sp = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.HALO_BLUE_192PX);
-		SpriteSheet sp2 = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX_BLUE);
+		SpriteSheet sp2 = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX_BLUE);
 
 		float positionX = posX;
 		float positionY = posY;
@@ -476,6 +476,9 @@ public class MenuScreen extends Screen implements IUpdatable {
 			positionY = (float) (positionY + distanceBetweenSprite*dirY/GlobalManager.ISO_CIRCLE_RATIO);
 
 		}
+		
+		/** MASS explosion **/
+		
 
 	}
 
