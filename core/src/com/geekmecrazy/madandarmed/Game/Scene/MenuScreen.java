@@ -100,7 +100,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
 				posY_ = posY_/1.5f + 2f;
 
-//				fireThrower(as4.getX()+posX_, as4.getY()+posY_, dirX, dirY);
+				//				fireThrower(as4.getX()+posX_, as4.getY()+posY_, dirX, dirY);
 				fireThrowerMesh(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY);
 				//				System.out.println("3333 "+start_angle + " " + dirX + " " + dirY );
 				//FINTEST
@@ -427,7 +427,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 	public void fireThrowerMesh(final float posX, final float posY, final float dirX, final float dirY){
 
 		SpriteSheet sp = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.HALO_BLUE_192PX);
-		SpriteSheet sp2 = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX_BLUE);
+		SpriteSheet sp2 = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX);
 
 		float positionX = posX;
 		float positionY = posY;
@@ -435,8 +435,9 @@ public class MenuScreen extends Screen implements IUpdatable {
 		float distanceBetweenSprite = (float) (Math.sqrt(2.0f*5.0f*5.0f) * (float)sp.getFrameWidth(0, 0)/64.0f); // 5.0f for 64px looks good
 
 		int delai = 0;
-		int delaiIncrement = 10;
+		int delaiIncrement = 5;
 		float numberOfBalls = 12;
+		float numberOfEndingExplosions = 10;
 		float animationSpeedStart = 4.0f;
 
 		float increment, currentValue, scale, animationSpeed;
@@ -458,7 +459,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 			uar.setAnimationSpeed(animationSpeed/3f);
 			uar.setPosition(positionX, positionY);
 			this.getScene().attachChild(uar);
-			
+
 			/** Explosion effect **/
 			UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
 			uar2.init(sp2);
@@ -469,16 +470,37 @@ public class MenuScreen extends Screen implements IUpdatable {
 			uar2.setPosition(positionX, positionY);
 			this.getScene().attachChild(uar2);
 
-			
 			delai = delai + delaiIncrement;
 
 			positionX = positionX + distanceBetweenSprite*dirX;
 			positionY = (float) (positionY + distanceBetweenSprite*dirY/GlobalManager.ISO_CIRCLE_RATIO);
 
 		}
-		
+
 		/** MASS explosion **/
-		
+		float explosionsWidth = (5f);
+
+		for(int j=0; j<=4; j++){
+			for(int i=0; i<=numberOfEndingExplosions; i++){
+
+				float x_ = (float) (positionX + Math.random()*2f*explosionsWidth-explosionsWidth);
+				float y_ = (float) (positionY + Math.random()*2f*explosionsWidth-explosionsWidth);
+
+				/** Explosion effect **/
+				UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+				uar2.init(sp2);
+				uar2.setScalable(true);
+				//			uar2.setScale(scale);
+				uar2.setStartDelay(delai);
+				//			uar2.setAnimationSpeed(animationSpeed);
+				uar2.setPosition(x_, y_);
+				this.getScene().attachChild(uar2);
+
+				delai = delai + 2;
+			}
+			explosionsWidth = explosionsWidth + 25f;
+		}
+
 
 	}
 
