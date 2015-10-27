@@ -95,23 +95,23 @@ public class MenuScreen extends Screen implements IUpdatable {
 				float dirY = (float)Math.sin(start_angle);
 
 				/** start_angle is (2*Math.PI/16f)*graphicOrientation **/
-//				float deltaAngleWeapon = (float) (-Math.PI/24);
-//				float posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
-//				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
-//				posY_ = posY_/1.5f + 2f;
+				//				float deltaAngleWeapon = (float) (-Math.PI/24);
+				//				float posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
+				//				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
+				//				posY_ = posY_/1.5f + 2f;
 
 				float deltaAngleWeapon = (float) (-Math.PI/5);
 				float posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
 				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
 				posY_ = posY_/1.5f - 20f;
 				fireThrowerMesh(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY);
-				
+
 				deltaAngleWeapon = (float) (+Math.PI/5);
 				posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
 				posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
 				posY_ = posY_/1.5f - 20f;
 				fireThrowerMesh(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY);
-				
+
 				//				fireThrower(as4.getX()+posX_, as4.getY()+posY_, dirX, dirY);
 				//fireThrowerMesh(as5.getX()+posX_-50, as5.getY()+posY_, dirX, dirY);
 				//				System.out.println("3333 "+start_angle + " " + dirX + " " + dirY );
@@ -449,7 +449,6 @@ public class MenuScreen extends Screen implements IUpdatable {
 		int delai = 0;
 		int delaiIncrement = 0;
 		float numberOfBalls = 12;
-		float numberOfEndingExplosions = 10;
 		float animationSpeedStart = 4.0f;
 
 		float increment, currentValue, scale, animationSpeed;
@@ -490,28 +489,33 @@ public class MenuScreen extends Screen implements IUpdatable {
 		}
 
 		/** MASS explosion **/
-		float explosionsWidth = (5f);
-		float explosionsWidthIncrement = 150f/5f/numberOfEndingExplosions;
+		float numberOfEndingExplosions = 50;
+		float maxExplosionsWidth = 150f;
+		increment = 9f/numberOfEndingExplosions;
+		
+		for(int i=0; i<=numberOfEndingExplosions; i++){
+			
+			/** explosionsWidth Increment Formula : (log10(x)+4)/5*maxWidth within [1, 10]
+			log 1   = 0    ie. min width
+			log 10  = 1    ie. max width **/
 
-		for(int j=0; j<=4; j++){
-			for(int i=0; i<=numberOfEndingExplosions; i++){
+			float explosionsWidth = (float) (Math.log10(1f + (float)(i*(increment))) *maxExplosionsWidth) ;
+			System.out.println("explosionsWidth "+explosionsWidth+" "+(1f + (float)(i*(increment))) );
 
-				float x_ = (float) (positionX + Math.random()*2f*explosionsWidth-explosionsWidth);
-				float y_ = (float) (positionY + Math.random()*2f*explosionsWidth-explosionsWidth);
+			float x_ = (float) (positionX + Math.random()*2f*explosionsWidth-explosionsWidth);
+			float y_ = (float) (positionY + Math.random()*2f*explosionsWidth-explosionsWidth);
 
-				/** Explosion effect **/
-				UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-				uar2.init(sp2);
-				uar2.setScalable(true);
-				//			uar2.setScale(scale);
-				uar2.setStartDelay(delai);
-				//			uar2.setAnimationSpeed(animationSpeed);
-				uar2.setPosition(x_, y_);
-				this.getScene().attachChild(uar2);
+			/** Explosion effect **/
+			UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+			uar2.init(sp2);
+			uar2.setScalable(true);
+			//			uar2.setScale(scale);
+			uar2.setStartDelay(delai);
+			//			uar2.setAnimationSpeed(animationSpeed);
+			uar2.setPosition(x_, y_);
+			this.getScene().attachChild(uar2);
 
-				delai = delai + 2;
-				explosionsWidth = explosionsWidth + explosionsWidthIncrement;
-			}
+			delai = delai + 2;
 		}
 
 
