@@ -104,13 +104,13 @@ public class MenuScreen extends Screen implements IUpdatable {
 				//				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
 				//				posY_ = posY_/1.5f + 2f;
 
-				float deltaAngleWeapon = (float) (-Math.PI/5);
+				float deltaAngleWeapon = (float) (+Math.PI/5);
 				float posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
 				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
 				posY_ = posY_/1.5f - 20f;
 				fireThrowerMesh(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY, start_angle, 0);
 
-				deltaAngleWeapon = (float) (+Math.PI/5);
+				deltaAngleWeapon = (float) (-Math.PI/5);
 				posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
 				posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
 				posY_ = posY_/1.5f - 20f;
@@ -472,12 +472,12 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 			/** We print only if not hide by the mesh - specific case for mesh **/
 			if(!(
-				(angle==1* Math.PI*2/16)&&(i<1)
-				||(angle==2* Math.PI*2/16)&&(i<2)
-				||(angle==3* Math.PI*2/16)&&(i<3)
-				||(angle==5* Math.PI*2/16)&&(i<3)
-				||(angle==6* Math.PI*2/16)&&(i<2)
-				||(angle==7* Math.PI*2/16)&&(i<1)
+				((weapon==0)&&(angle>=1* Math.PI*2/16-Math.PI/16)&&(angle<=1* Math.PI*2/16+Math.PI/16)&&(i<1))
+				||((weapon==0)&&(angle>=2* Math.PI*2/16-Math.PI/16)&&(angle<=2* Math.PI*2/16+Math.PI/16)&&(i<2))
+				||((weapon==0)&&(angle>=3* Math.PI*2/16-Math.PI/16)&&(angle<=3* Math.PI*2/16+Math.PI/16)&&(i<3))
+				||((weapon==1)&&(angle>=5* Math.PI*2/16-Math.PI/16)&&(angle<=5* Math.PI*2/16+Math.PI/16)&&(i<3))
+				||((weapon==1)&&(angle>=6* Math.PI*2/16-Math.PI/16)&&(angle<=6* Math.PI*2/16+Math.PI/16)&&(i<2))
+				||((weapon==1)&&(angle>=7* Math.PI*2/16-Math.PI/16)&&(angle<=7* Math.PI*2/16+Math.PI/16)&&(i<1))
 				)) {
 				
 				//Exponential value : Exp(-2) = env. 0 to Exp(0) = 1
