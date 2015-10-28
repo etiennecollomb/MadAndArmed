@@ -434,7 +434,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 	// TEST FIRETHROWER
 	/** from Pos through the direction vector
-	     dirX, dirY must be unitary vector
+		     dirX, dirY must be unitary vector
 	 */
 	public void fireThrowerMesh(final float posX, final float posY, final float dirX, final float dirY){
 
@@ -449,6 +449,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 		int delai = 0;
 		int delaiIncrement = 0;
 		float numberOfBalls = 12;
+		float numberOfEndingExplosions = 10;
 		float animationSpeedStart = 4.0f;
 
 		float increment, currentValue, scale, animationSpeed;
@@ -489,38 +490,32 @@ public class MenuScreen extends Screen implements IUpdatable {
 		}
 
 		/** MASS explosion **/
-		float numberOfEndingExplosions = 50;
-		float maxExplosionsWidth = 150f;
-		increment = 9f/numberOfEndingExplosions;
-		
-		for(int i=0; i<=numberOfEndingExplosions; i++){
-			
-			/** explosionsWidth Increment Formula : (log10(x)+4)/5*maxWidth within [1, 10]
-			log 1   = 0    ie. min width
-			log 10  = 1    ie. max width **/
+		float explosionsWidth = (5f);
+		float explosionsWidthIncrement = 150f/5f/numberOfEndingExplosions;
 
-			float explosionsWidth = (float) (Math.log10(1f + (float)(i*(increment))) *maxExplosionsWidth) ;
-			System.out.println("explosionsWidth "+explosionsWidth+" "+(1f + (float)(i*(increment))) );
+		for(int j=0; j<=4; j++){
+			for(int i=0; i<=numberOfEndingExplosions; i++){
 
-			float x_ = (float) (positionX + Math.random()*2f*explosionsWidth-explosionsWidth);
-			float y_ = (float) (positionY + Math.random()*2f*explosionsWidth-explosionsWidth);
+				float x_ = (float) (positionX + Math.random()*2f*explosionsWidth-explosionsWidth);
+				float y_ = (float) (positionY + Math.random()*2f*explosionsWidth-explosionsWidth);
 
-			/** Explosion effect **/
-			UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-			uar2.init(sp2);
-			uar2.setScalable(true);
-			//			uar2.setScale(scale);
-			uar2.setStartDelay(delai);
-			//			uar2.setAnimationSpeed(animationSpeed);
-			uar2.setPosition(x_, y_);
-			this.getScene().attachChild(uar2);
+				/** Explosion effect **/
+				UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+				uar2.init(sp2);
+				uar2.setScalable(true);
+				//			uar2.setScale(scale);
+				uar2.setStartDelay(delai);
+				//			uar2.setAnimationSpeed(animationSpeed);
+				uar2.setPosition(x_, y_);
+				this.getScene().attachChild(uar2);
 
-			delai = delai + 2;
+				delai = delai + 2;
+				explosionsWidth = explosionsWidth + explosionsWidthIncrement;
+			}
 		}
 
 
 	}
-
 
 
 
