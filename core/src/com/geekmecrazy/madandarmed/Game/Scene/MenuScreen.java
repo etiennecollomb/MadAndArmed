@@ -1,5 +1,9 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
@@ -104,13 +108,13 @@ public class MenuScreen extends Screen implements IUpdatable {
 				float posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
 				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
 				posY_ = posY_/1.5f - 20f;
-				fireThrowerMesh(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY);
+				fireThrowerMesh(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY, start_angle, 0);
 
 				deltaAngleWeapon = (float) (+Math.PI/5);
 				posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
 				posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
 				posY_ = posY_/1.5f - 20f;
-				fireThrowerMesh(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY);
+				fireThrowerMesh(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY, start_angle, 1);
 
 				//				fireThrower(as4.getX()+posX_, as4.getY()+posY_, dirX, dirY);
 				//fireThrowerMesh(as5.getX()+posX_-50, as5.getY()+posY_, dirX, dirY);
@@ -436,18 +440,29 @@ public class MenuScreen extends Screen implements IUpdatable {
 	/** from Pos through the direction vector
 		     dirX, dirY must be unitary vector
 	 */
-	public void fireThrowerMesh(final float posX, final float posY, final float dirX, final float dirY){
+	public void fireThrowerMesh(final float posX, final float posY, final float dirX, final float dirY, final float angle, final float weapon){
+
+		Random random = new Random();
 
 		SpriteSheet sp = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.HALO_BLUE_192PX);
 		SpriteSheet sp2 = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX);
 
+		List<SpriteSheet> explosionsList = new ArrayList<SpriteSheet>();
+		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX));
+		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_002_128PX));
+		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_003_128PX));
+		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX));
+		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_005_128PX));
+
+
 		float positionX = posX;
 		float positionY = posY;
 
+		/** Jet Explosion **/
 		float distanceBetweenSprite = (float) (Math.sqrt(2.0f*5.0f*5.0f) * (float)sp.getFrameWidth(0, 0)/64.0f); // 5.0f for 64px looks good
 
 		int delai = 0;
-		int delaiIncrement = 0;
+		int delaiIncrement = 1;
 		float numberOfBalls = 12;
 		float numberOfEndingExplosions = 10;
 		float animationSpeedStart = 4.0f;
@@ -455,32 +470,43 @@ public class MenuScreen extends Screen implements IUpdatable {
 		float increment, currentValue, scale, animationSpeed;
 		for(int i=0; i<=numberOfBalls; i++){
 
-			//Exponential value : Exp(-2) = env. 0 to Exp(0) = 1
-			increment = -2.0f + (2.0f/numberOfBalls)*(i);
-			currentValue = (float) Math.exp(increment);
+			/** We print only if not hide by the mesh - specific case for mesh **/
+			if(!(
+				(angle==1* Math.PI*2/16)&&(i<1)
+				||(angle==2* Math.PI*2/16)&&(i<2)
+				||(angle==3* Math.PI*2/16)&&(i<3)
+				||(angle==5* Math.PI*2/16)&&(i<3)
+				||(angle==6* Math.PI*2/16)&&(i<2)
+				||(angle==7* Math.PI*2/16)&&(i<1)
+				)) {
+				
+				//Exponential value : Exp(-2) = env. 0 to Exp(0) = 1
+				increment = -2.0f + (2.0f/numberOfBalls)*(i);
+				currentValue = (float) Math.exp(increment);
 
-			scale = currentValue;
-			animationSpeed = (1.0f-currentValue)*animationSpeedStart;
+				scale = currentValue;
+				animationSpeed = (1.0f-currentValue)*animationSpeedStart;
 
-			/** Under explosion effect **/
-			UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-			uar.init(sp);
-			uar.setScalable(true);
-			uar.setScale(scale);
-			uar.setStartDelay(delai);
-			uar.setAnimationSpeed(animationSpeed/3f);
-			uar.setPosition(positionX, positionY);
-			this.getScene().attachChild(uar);
+				/** Under explosion effect **/
+				UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+				uar.init(sp);
+				uar.setScalable(true);
+				uar.setScale(scale);
+				uar.setStartDelay(delai);
+				uar.setAnimationSpeed(animationSpeed/3f);
+				uar.setPosition(positionX, positionY);
+				this.getScene().attachChild(uar);
 
-			/** Explosion effect **/
-			UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-			uar2.init(sp2);
-			uar2.setScalable(true);
-			uar2.setScale(scale);
-			uar2.setStartDelay(delai);
-			uar2.setAnimationSpeed(animationSpeed);
-			uar2.setPosition(positionX, positionY);
-			this.getScene().attachChild(uar2);
+				/** Explosion effect **/
+				UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+				uar2.init(sp2);
+				uar2.setScalable(true);
+				uar2.setScale(scale);
+				uar2.setStartDelay(delai);
+				uar2.setAnimationSpeed(animationSpeed);
+				uar2.setPosition(positionX, positionY);
+				this.getScene().attachChild(uar2);
+			}
 
 			delai = delai + delaiIncrement;
 
@@ -499,13 +525,15 @@ public class MenuScreen extends Screen implements IUpdatable {
 				float x_ = (float) (positionX + Math.random()*2f*explosionsWidth-explosionsWidth);
 				float y_ = (float) (positionY + Math.random()*2f*explosionsWidth-explosionsWidth);
 
+				SpriteSheet sp_explosion = explosionsList.get(random.nextInt(explosionsList.size()));
+
 				/** Explosion effect **/
 				UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-				uar2.init(sp2);
+				uar2.init(sp_explosion);
 				uar2.setScalable(true);
-				//			uar2.setScale(scale);
+				//uar2.setScale(scale);
 				uar2.setStartDelay(delai);
-				//			uar2.setAnimationSpeed(animationSpeed);
+				//uar2.setAnimationSpeed(animationSpeed);
 				uar2.setPosition(x_, y_);
 				this.getScene().attachChild(uar2);
 
