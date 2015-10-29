@@ -2,112 +2,112 @@ turret-launcher-03.png
 format: RGBA4444
 filter: Linear,Linear
 repeat: none
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00000
   rotate: false
   xy: 160, 248
   size: 75, 74
   orig: 128, 128
   offset: 24, 27
   index: 0
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00001
   rotate: false
   xy: 2, 2
   size: 81, 79
   orig: 128, 128
   offset: 20, 27
   index: 1
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00002
   rotate: false
   xy: 2, 167
   size: 79, 83
   orig: 128, 128
   offset: 21, 27
   index: 2
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00003
   rotate: false
   xy: 155, 324
   size: 71, 83
   orig: 128, 128
   offset: 27, 27
   index: 3
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00004
   rotate: false
   xy: 2, 420
   size: 69, 81
   orig: 128, 128
   offset: 29, 27
   index: 4
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00005
   rotate: false
   xy: 79, 330
   size: 71, 83
   orig: 128, 128
   offset: 27, 27
   index: 5
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00006
   rotate: false
   xy: 166, 164
   size: 79, 82
   orig: 128, 128
   offset: 21, 27
   index: 6
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00007
   rotate: false
   xy: 167, 2
   size: 80, 79
   orig: 128, 128
   offset: 20, 27
   index: 7
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00008
   rotate: false
   xy: 79, 253
   size: 74, 75
   orig: 128, 128
   offset: 24, 27
   index: 8
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00009
   rotate: false
   xy: 167, 83
   size: 80, 79
   orig: 128, 128
   offset: 19, 27
   index: 9
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00010
   rotate: false
   xy: 2, 83
   size: 80, 82
   orig: 128, 128
   offset: 19, 27
   index: 10
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00011
   rotate: false
   xy: 83, 168
   size: 75, 83
   orig: 128, 128
   offset: 24, 27
   index: 11
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00012
   rotate: false
   xy: 2, 337
   size: 70, 81
   orig: 128, 128
   offset: 29, 27
   index: 12
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00013
   rotate: false
   xy: 2, 252
   size: 75, 83
   orig: 128, 128
   offset: 24, 27
   index: 13
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00014
   rotate: false
   xy: 85, 2
   size: 80, 83
   orig: 128, 128
   offset: 19, 27
   index: 14
-Fr-Launcher-03_noAction_00000
+1Walk#00000#00015
   rotate: false
   xy: 84, 87
   size: 80, 79
