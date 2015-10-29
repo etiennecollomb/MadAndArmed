@@ -164,7 +164,7 @@ public class SpriteSheet {
 			Array<AtlasRegion> atlasRegions = textureAtlasList.get(i).getRegions();
 			for(int j=0; j<atlasRegions.size; j++){
 
-				/** file name example : XXXXX#0000#0000.png **/
+				/** file name example : XXXXX#00000#00000.png **/
 				String fileName = atlasRegions.get(j).name;
 				int pos = fileName.length();
 				int column = Integer.parseInt(fileName.substring(pos-5, pos));
