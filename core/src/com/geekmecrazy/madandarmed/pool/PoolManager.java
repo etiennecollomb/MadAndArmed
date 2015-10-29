@@ -6,6 +6,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.FlameThrower;
 import com.geekmecrazy.madandarmed.Game.Element.Gun;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
+import com.geekmecrazy.madandarmed.Game.Element.MeshMultiExplosion;
 import com.geekmecrazy.madandarmed.Game.Element.Missile;
 import com.geekmecrazy.madandarmed.Game.Element.Sword;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
@@ -24,6 +25,7 @@ public class PoolManager {
 	private static final int STARTING_ALLOCATE_SWORD				= 20;
 	private static final int STARTING_ALLOCATE_GUN					= 20;
 	private static final int STARTING_ALLOCATE_FLAMETHROWER			= 20;
+	private static final int STARTING_ALLOCATE_MESHMULTIEXPLOSION	= 20;
 	private static final int STARTING_ALLOCATE_MISSILE 				= 20;
 	private static final int STARTING_ALLOCATE_LIFE 				= 20;
 	private static final int STARTING_ALLOCATE_TURRET 				= 10;
@@ -40,6 +42,7 @@ public class PoolManager {
 	private Pool<Sword> swordPool;
 	private Pool<Gun> gunPool;
 	private Pool<FlameThrower> flameThrowerPool;
+	private Pool<MeshMultiExplosion> meshMultiExplosionPool;
 	private Pool<Missile> missilePool;
 	private Pool<Life> lifePool;
 	private Pool<Turret> turretPool;
@@ -90,7 +93,11 @@ public class PoolManager {
 	public Pool<FlameThrower> getFlameThrowerPool() {
 		return flameThrowerPool;
 	}
-	
+
+	public Pool<MeshMultiExplosion> getMeshMultiExplosionPool() {
+		return meshMultiExplosionPool;
+	}
+
 	public Pool<Missile> getMissilePool() {
 		return missilePool;
 	}
@@ -178,6 +185,14 @@ public class PoolManager {
 			 }
 		};
 		
+		meshMultiExplosionPool = new Pool<MeshMultiExplosion>(STARTING_ALLOCATE_MESHMULTIEXPLOSION){
+			@Override
+			protected MeshMultiExplosion newObject() {
+                //System.out.println("#__ POOL __# allocate new Object : " + MeshMultiExplosion.class.getName());
+				return new MeshMultiExplosion();
+			 }
+		};
+				
 		missilePool = new Pool<Missile>(STARTING_ALLOCATE_MISSILE){
 			@Override
 			protected Missile newObject() {

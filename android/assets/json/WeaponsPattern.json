@@ -43,6 +43,14 @@
 		hitSpeed: 30
 		dmgEffect: 1000
     },
+    "MESH_MULTIEXPLOSION_1": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: MESH_MULTIEXPLOSION_1
+		weaponType: MESH_MULTIEXPLOSION
+		hitRange: 1000
+		hitSpeed: 100
+		dmgEffect: 1000
+    },
     "MISSILE_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
         weaponName: MISSILE_1

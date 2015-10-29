@@ -11,6 +11,7 @@ import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
 import com.geekmecrazy.madandarmed.Renderer.FlameThrowerRenderer;
 import com.geekmecrazy.madandarmed.Renderer.GunRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
+import com.geekmecrazy.madandarmed.Renderer.MeshMultiExplosionRenderer;
 import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
 import com.geekmecrazy.madandarmed.Renderer.SwordRenderer;
 import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
@@ -28,56 +29,14 @@ public class PoolAnimManager {
 	private static final int ALLOCATE_SWORD_RENDERER			= 10;
 	private static final int ALLOCATE_GUN_RENDERER				= 10;
 	private static final int ALLOCATE_FLAMETHROWER_RENDERER		= 10;
+	private static final int ALLOCATE_MESHMULTIEXPLOSION_RENDERER		= 10;
 	private static final int ALLOCATE_MISSILE_RENDERER			= 10;
 	private static final int ALLOCATE_LIFEBAR_RENDERER			= 10;
 
 
 	/** SpriteSheet */
 	private static Map<AnimatedTextureType, SpriteSheet> spriteSheets;
-
-//	//WEAPON EFFECT
-//	public static final SpriteSheet MISSILE_EXPLOSION_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MISSILE_EXPLOSION, SpriteSheetType.UNIQUE);
-//	public static final SpriteSheet IMPACT_BULLET_SPRITESHEET = new SpriteSheet(AnimatedTextureType.IMPACT_BULLET, SpriteSheetType.UNIQUE);
-//	public static final SpriteSheet FIRE_BLAST_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_64PX, SpriteSheetType.UNIQUE);
-//	public static final SpriteSheet FIRE_BLAST_001_128PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FIRE_BLAST_001_128PX, SpriteSheetType.UNIQUE);
-//	public static final SpriteSheet SWORD_001_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.SWORD_001_64PX, SpriteSheetType.UNIQUE);
-//	public static final SpriteSheet HALO_BLUE_192PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.HALO_BLUE_192PX, SpriteSheetType.UNIQUE);
-//	
-//
-//	//DEAD
-//	public static final SpriteSheet DEAD_SPRITESHEET = new SpriteSheet(AnimatedTextureType.DEAD, SpriteSheetType.UNIQUE);
-//	public static final SpriteSheet BUILDING_DEATH_128PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BUILDING_DEATH_128PX, SpriteSheetType.UNIQUE);
-//	public static final SpriteSheet BUILDING_DEATH_64PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BUILDING_DEATH_64PX, SpriteSheetType.UNIQUE);
-//	public static final SpriteSheet BUILDING_DEATH_32PX_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BUILDING_DEATH_32PX, SpriteSheetType.UNIQUE);
-//
-//	//UNIT
-//	//---TEAM1
-//	public static final SpriteSheet GLADIATOR_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.GLADIATOR_HD_TEAM1, SpriteSheetType.FROM_ATLAS);
-//	public static final SpriteSheet MARINE_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MARINE_HD_TEAM1, SpriteSheetType.FROM_ATLAS);
-//	public static final SpriteSheet FLAMETHROWER1_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM1, SpriteSheetType.FROM_ATLAS);
-//	public static final SpriteSheet MESH_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM1, SpriteSheetType.FROM_ATLAS);
-//	public static final SpriteSheet BULLHOUND_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM1, SpriteSheetType.FROM_ATLAS);
-//	
-//	//---TEAM2
-//	public static final SpriteSheet GLADIATOR_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.GLADIATOR_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
-//	public static final SpriteSheet MARINE_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MARINE_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
-//	public static final SpriteSheet FLAMETHROWER1_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
-//	public static final SpriteSheet MESH_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
-//	public static final SpriteSheet BULLHOUND_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BULLHOUND_HD_TEAM2, SpriteSheetType.FROM_ATLAS);
-//
-//	//BUILDING
-//	//---TEAM1
-//	public static final SpriteSheet TURRET_01_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_01_HD_TEAM1, SpriteSheetType.FROM_DIR);
-//	public static final SpriteSheet TURRET_02_HD_TEAM1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_02_HD_TEAM1, SpriteSheetType.FROM_DIR);
-//	//---TEAM2
-//	public static final SpriteSheet TURRET_01_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_01_HD_TEAM2, SpriteSheetType.FROM_DIR);
-//	public static final SpriteSheet TURRET_02_HD_TEAM2_SPRITESHEET = new SpriteSheet(AnimatedTextureType.TURRET_02_HD_TEAM2, SpriteSheetType.FROM_DIR);
-//	//---BARRICADE
-//	public static final SpriteSheet BARRICADE_SPRITESHEET = new SpriteSheet(AnimatedTextureType.BARRICADES, SpriteSheetType.UNIQUE);
-//
-//	//MISSILE
-//	public static final SpriteSheet MISSILE_TYPE_1_SPRITESHEET = new SpriteSheet(AnimatedTextureType.MISSILE_TYPE_1, SpriteSheetType.UNIQUE);
-
+	
 
 	/** Pools */
 	private static Pool<UniqueActionRenderer> uniqueActionRendererPool;
@@ -87,6 +46,7 @@ public class PoolAnimManager {
 	private static Pool<SwordRenderer> swordRendererPool;
 	private static Pool<GunRenderer> gunRendererPool;
 	private static Pool<FlameThrowerRenderer> flameThrowerRendererPool;
+	private static Pool<MeshMultiExplosionRenderer> meshMultiExplosionRendererPool;
 	private static Pool<MissileRenderer> missileRendererPool;
 	private static Pool<LifeBarRenderer> lifeBarRendererPool;
 
@@ -142,6 +102,10 @@ public class PoolAnimManager {
 	public Pool<FlameThrowerRenderer> getFlameThrowerRendererPool() {
 		return flameThrowerRendererPool;
 	}
+	
+	public static Pool<MeshMultiExplosionRenderer> getMeshMultiExplosionRendererPool() {
+		return meshMultiExplosionRendererPool;
+	}
 
 	public Pool<MissileRenderer> getMissileRendererPool() {
 		return missileRendererPool;
@@ -169,45 +133,7 @@ public class PoolAnimManager {
 			spriteSheets.put(animatedTextureType, spriteSheet);
 		}
 		
-//		
-//		//WEAPON EFFECT
-//		spriteSheets.put(AnimatedTextureType.MISSILE_EXPLOSION, MISSILE_EXPLOSION_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.IMPACT_BULLET, IMPACT_BULLET_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.FIRE_BLAST_001_64PX, FIRE_BLAST_001_64PX_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.FIRE_BLAST_001_128PX, FIRE_BLAST_001_128PX_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.SWORD_001_64PX, SWORD_001_64PX_SPRITESHEET);
-//		
-//		//DEAD
-//		spriteSheets.put(AnimatedTextureType.DEAD, DEAD_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.BUILDING_DEATH_128PX, BUILDING_DEATH_128PX_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.BUILDING_DEATH_64PX, BUILDING_DEATH_64PX_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.BUILDING_DEATH_32PX, BUILDING_DEATH_32PX_SPRITESHEET);
-//		//UNIT
-//		//---TEAM1
-//		spriteSheets.put(AnimatedTextureType.GLADIATOR_HD_TEAM1, GLADIATOR_HD_TEAM1_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.MARINE_HD_TEAM1, MARINE_HD_TEAM1_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.FLAMETHROWER1_HD_TEAM1, FLAMETHROWER1_HD_TEAM1_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.MESH_HD_TEAM1, MESH_HD_TEAM1_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.BULLHOUND_HD_TEAM1, BULLHOUND_HD_TEAM1_SPRITESHEET);
-//		//---TEAM2
-//		spriteSheets.put(AnimatedTextureType.GLADIATOR_HD_TEAM2, GLADIATOR_HD_TEAM2_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.MARINE_HD_TEAM2, MARINE_HD_TEAM2_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2, FLAMETHROWER1_HD_TEAM2_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.MESH_HD_TEAM2, MESH_HD_TEAM2_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.BULLHOUND_HD_TEAM2, BULLHOUND_HD_TEAM2_SPRITESHEET);
-//		//BUILDING
-//		//---TEAM1
-//		spriteSheets.put(AnimatedTextureType.TURRET_01_HD_TEAM1, TURRET_01_HD_TEAM1_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.TURRET_02_HD_TEAM1, TURRET_02_HD_TEAM1_SPRITESHEET);
-//		//---TEAM2
-//		spriteSheets.put(AnimatedTextureType.TURRET_01_HD_TEAM2, TURRET_01_HD_TEAM2_SPRITESHEET);
-//		spriteSheets.put(AnimatedTextureType.TURRET_02_HD_TEAM2, TURRET_02_HD_TEAM2_SPRITESHEET);
-//		//---BARRICADE
-//		spriteSheets.put(AnimatedTextureType.BARRICADES, BARRICADE_SPRITESHEET);
-//		//MISSILE
-//		spriteSheets.put(AnimatedTextureType.MISSILE_TYPE_1, MISSILE_TYPE_1_SPRITESHEET);
-
-
+		
 		/** Pools */
 		uniqueActionRendererPool = createUniqueActionRendererPool(ALLOCATE_UNIQUE_ACTION_RENDERER);
 		creepRendererPool = createCreepRendererPool(ALLOCATE_CREEP_RENDERER);
@@ -216,6 +142,7 @@ public class PoolAnimManager {
 		swordRendererPool = createSwordRendererPool(ALLOCATE_SWORD_RENDERER);
 		gunRendererPool = createGunRendererPool(ALLOCATE_GUN_RENDERER);
 		flameThrowerRendererPool = createFlameThrowerRendererPool(ALLOCATE_FLAMETHROWER_RENDERER);
+		meshMultiExplosionRendererPool = createMeshMultiExplosionRendererPool(ALLOCATE_MESHMULTIEXPLOSION_RENDERER);
 		missileRendererPool = createMissileRendererPool(ALLOCATE_MISSILE_RENDERER);
 		lifeBarRendererPool = createLifeBarRendererPool(ALLOCATE_LIFEBAR_RENDERER);
 
@@ -347,6 +274,25 @@ public class PoolAnimManager {
 			protected FlameThrowerRenderer newObject() {
 				//System.out.println("#__ POOL __# allocate new Object : " + FlameThrowerRenderer.class.getName());
 				return new FlameThrowerRenderer();
+			}
+
+		};
+
+		for(int i=0; i<initPoolNumber ; i++)
+			pool.obtain();
+		return pool;
+	}
+	
+	
+	//MESHMULTIEXPLOSION RENDERER
+	private Pool<MeshMultiExplosionRenderer> createMeshMultiExplosionRendererPool(int initPoolNumber){
+
+		Pool<MeshMultiExplosionRenderer> pool = new Pool<MeshMultiExplosionRenderer>(initPoolNumber) {
+
+			@Override
+			protected MeshMultiExplosionRenderer newObject() {
+				//System.out.println("#__ POOL __# allocate new Object : " + MeshMultiExplosionRenderer.class.getName());
+				return new MeshMultiExplosionRenderer();
 			}
 
 		};

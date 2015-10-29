@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Pool.Poolable;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Game.Element.FlameThrower;
 import com.geekmecrazy.madandarmed.Game.Element.Gun;
+import com.geekmecrazy.madandarmed.Game.Element.MeshMultiExplosion;
 import com.geekmecrazy.madandarmed.Game.Element.Military;
 import com.geekmecrazy.madandarmed.Game.Element.Missile;
 import com.geekmecrazy.madandarmed.Game.Element.Sword;
@@ -84,6 +85,9 @@ public class WeaponManager implements IUpdatable {
 		case FLAMETHROWER:
 			this.fireFlameThrower(shooter, target);
 			break;
+		case MESH_MULTIEXPLOSION:
+			this.fireMeshMultiExplosion(shooter, target);
+			break;
 		case MISSILE:
 			this.fireMISSILE(shooter, target);
 			break;
@@ -140,6 +144,17 @@ public class WeaponManager implements IUpdatable {
 		float startingFirePosY = shooter.getPos().getY();
 		flameThrower.init(startingFirePosX, startingFirePosY, shooter, target);
 		this.addWeapon(flameThrower);
+
+	}
+	
+	private void fireMeshMultiExplosion(Military shooter, Military target){
+
+		//SoundManager.playSound(SoundType.ROCKET_LAUNCH);
+		MeshMultiExplosion meshMultiExplosion = PoolManager.getManager().getMeshMultiExplosionPool().obtain();
+		float startingFirePosX = shooter.getPos().getX();
+		float startingFirePosY = shooter.getPos().getY();
+		meshMultiExplosion.init(startingFirePosX, startingFirePosY, shooter, target);
+		this.addWeapon(meshMultiExplosion);
 
 	}
 	

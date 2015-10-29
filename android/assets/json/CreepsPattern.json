@@ -44,7 +44,7 @@
 	"MESH": {
 			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
 			creepType: MESH
-			weaponName: GUN_2
+			weaponName: MESH_MULTIEXPLOSION_1
 			creepSize: MEDIUM
 			diameter: 20
 			life: 500

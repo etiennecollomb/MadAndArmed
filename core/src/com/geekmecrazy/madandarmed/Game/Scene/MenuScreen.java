@@ -103,6 +103,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				//				float posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
 				//				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
 				//				posY_ = posY_/1.5f + 2f;
+				//				fireThrower(as4.getX()+posX_, as4.getY()+posY_, dirX, dirY);
 
 				float deltaAngleWeapon = (float) (+Math.PI/5);
 				float posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
@@ -116,7 +117,6 @@ public class MenuScreen extends Screen implements IUpdatable {
 				posY_ = posY_/1.5f - 20f;
 				fireThrowerMesh(as5.getX()+posX_, as5.getY()+posY_, dirX, dirY, start_angle, 1);
 
-				//				fireThrower(as4.getX()+posX_, as4.getY()+posY_, dirX, dirY);
 				//fireThrowerMesh(as5.getX()+posX_-50, as5.getY()+posY_, dirX, dirY);
 				//				System.out.println("3333 "+start_angle + " " + dirX + " " + dirY );
 				//FINTEST

@@ -43,7 +43,7 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 		float fire_angle = (float) GraphicalTools.STEP_ANGLE_RADIAN * GraphicalTools.getGraphicDirection(this.getWeapon().getShooter().getNormalizedDir()) ;
 		fire_angle = fire_angle + GraphicalTools.START_ANGLE_RADIAN;
 
-
+		/** Position center of parent **/
 		float positionX = 0;
 		float positionY = 0;
 
