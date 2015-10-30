@@ -105,6 +105,9 @@ public class CreepRenderer extends VehicleRenderer {
     		
             if (thisCreep.getAttackBehavior().isAttacking()){
                 this.setFireCurrentFrame(this.getFireCurrentFrame()+1);
+                if(fireAnimation==null){
+                	System.out.println("");
+                }
                 if(this.getFireCurrentFrame() >= fireAnimation.length)
                     this.setFireCurrentFrame(0);
                 this.setCurrentFrame(GraphicalTools.getGraphicDirection(thisCreep.getNormalizedDir()), fireAnimation[getFireCurrentFrame()]);

@@ -1,4 +1,4 @@
-package com.geekmecrazy.madandarmed.Renderer;
+package com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Military;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
+import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
@@ -51,14 +52,14 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 
 			Creep shooterCreep = (Creep)this.getWeapon().getShooter();
 			switch(shooterCreep.getPattern().getCreepType()){
-			
+
 			case FLAMETHROWER:
 				float deltaAngleWeapon = (float) (-Math.PI/24);
 				positionX = (float)Math.cos(fire_angle + deltaAngleWeapon) * 80 ;
 				positionY = (float)Math.sin(fire_angle + deltaAngleWeapon) * 80;
 				positionY = positionY/GlobalManager.ISO_CIRCLE_RATIO + 2f;
 				break;
-				
+
 			default:
 				positionX = 0;
 				positionY = 0;
@@ -85,14 +86,16 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 			scale = currentValue;
 			animationSpeed = (1.0f-currentValue)*animationSpeedStart;
 
-			UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-			uar.init(sp);
-			uar.setScalable(true);
-			uar.setScale(scale);
-			uar.setStartDelay(delai);
-			uar.setAnimationSpeed(animationSpeed);
-			uar.setPosition(positionX, positionY);
-			this.getWeaponTravellingEffectList().add(uar);
+			if(animationSpeed>0f){
+				UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+				uar.init(sp);
+				uar.setScalable(true);
+				uar.setScale(scale);
+				uar.setStartDelay(delai);
+				uar.setAnimationSpeed(animationSpeed);
+				uar.setPosition(positionX, positionY);
+				this.getWeaponTravellingEffectList().add(uar);
+			}
 
 			delai = delai + delaiIncrement;
 
@@ -107,7 +110,7 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 	}
 
 	@Override
-	protected void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList) {}
+	public void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList) {}
 
 	// ===========================================================
 	// Methods

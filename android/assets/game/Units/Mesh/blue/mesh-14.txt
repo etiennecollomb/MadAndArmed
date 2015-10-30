@@ -366,3 +366,10 @@ repeat: none
   orig: 256, 256
   offset: 46, 44
   index: -1
+3Shoot#00000#00006
+  rotate: false
+  xy: 425, 148
+  size: 144, 140
+  orig: 256, 256
+  offset: 46, 45
+  index: -1

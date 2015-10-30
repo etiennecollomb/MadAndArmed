@@ -310,3 +310,17 @@ repeat: none
   orig: 256, 256
   offset: 64, 38
   index: -1
+3Shoot#00000#00002
+  rotate: false
+  xy: 2, 2
+  size: 144, 158
+  orig: 256, 256
+  offset: 56, 30
+  index: -1
+3Shoot#00000#00003
+  rotate: false
+  xy: 2, 322
+  size: 123, 158
+  orig: 256, 256
+  offset: 65, 33
+  index: -1

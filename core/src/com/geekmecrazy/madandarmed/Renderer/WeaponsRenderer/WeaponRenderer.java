@@ -1,4 +1,4 @@
-package com.geekmecrazy.madandarmed.Renderer;
+package com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Game.Element.Military;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
+import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 public abstract class WeaponRenderer extends Entity {
@@ -97,11 +98,11 @@ public abstract class WeaponRenderer extends Entity {
 	
 
 	/** Pattern of the weapon travelling to the unit **/
-	protected abstract void setWeaponTravellingEffect();
+	public abstract void setWeaponTravellingEffect();
 	
 	/** Pattern of the weapon to the unit
 	 * We add to the weaponEffectList **/
-	protected abstract void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList);
+	public abstract void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList);
 
 	/** attach all UniqueActionRenderer to entity **/
 	public void attachWeaponTravellingEffect(final Entity entity){

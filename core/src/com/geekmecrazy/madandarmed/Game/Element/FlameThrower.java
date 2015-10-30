@@ -2,7 +2,7 @@ package com.geekmecrazy.madandarmed.Game.Element;
 
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.WeaponManager;
-import com.geekmecrazy.madandarmed.Renderer.FlameThrowerRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.FlameThrowerRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 

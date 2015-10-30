@@ -417,14 +417,17 @@ public class MenuScreen extends Screen implements IUpdatable {
 			scale = currentValue;
 			animationSpeed = (1.0f-currentValue)*animationSpeedStart;
 
-			UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-			uar.init(sp);
-			uar.setScalable(true);
-			uar.setScale(scale);
-			uar.setStartDelay(delai);
-			uar.setAnimationSpeed(animationSpeed);
-			uar.setPosition(positionX, positionY);
-			this.getScene().attachChild(uar);
+			if(animationSpeed>0f){
+				
+				UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+				uar.init(sp);
+				uar.setScalable(true);
+				uar.setScale(scale);
+				uar.setStartDelay(delai);
+				uar.setAnimationSpeed(animationSpeed);
+				uar.setPosition(positionX, positionY);
+				this.getScene().attachChild(uar);
+			}
 
 			delai = delai + delaiIncrement;
 
@@ -464,7 +467,6 @@ public class MenuScreen extends Screen implements IUpdatable {
 		int delai = 0;
 		int delaiIncrement = 1;
 		float numberOfBalls = 12;
-		float numberOfEndingExplosions = 10;
 		float animationSpeedStart = 4.0f;
 
 		float increment, currentValue, scale, animationSpeed;
@@ -472,14 +474,14 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 			/** We print only if not hide by the mesh - specific case for mesh **/
 			if(!(
-				((weapon==0)&&(angle>=1* Math.PI*2/16-Math.PI/16)&&(angle<=1* Math.PI*2/16+Math.PI/16)&&(i<1))
-				||((weapon==0)&&(angle>=2* Math.PI*2/16-Math.PI/16)&&(angle<=2* Math.PI*2/16+Math.PI/16)&&(i<2))
-				||((weapon==0)&&(angle>=3* Math.PI*2/16-Math.PI/16)&&(angle<=3* Math.PI*2/16+Math.PI/16)&&(i<3))
-				||((weapon==1)&&(angle>=5* Math.PI*2/16-Math.PI/16)&&(angle<=5* Math.PI*2/16+Math.PI/16)&&(i<3))
-				||((weapon==1)&&(angle>=6* Math.PI*2/16-Math.PI/16)&&(angle<=6* Math.PI*2/16+Math.PI/16)&&(i<2))
-				||((weapon==1)&&(angle>=7* Math.PI*2/16-Math.PI/16)&&(angle<=7* Math.PI*2/16+Math.PI/16)&&(i<1))
-				)) {
-				
+					((weapon==0)&&(angle>=1* Math.PI*2/16-Math.PI/16)&&(angle<=1* Math.PI*2/16+Math.PI/16)&&(i<1))
+					||((weapon==0)&&(angle>=2* Math.PI*2/16-Math.PI/16)&&(angle<=2* Math.PI*2/16+Math.PI/16)&&(i<2))
+					||((weapon==0)&&(angle>=3* Math.PI*2/16-Math.PI/16)&&(angle<=3* Math.PI*2/16+Math.PI/16)&&(i<3))
+					||((weapon==1)&&(angle>=5* Math.PI*2/16-Math.PI/16)&&(angle<=5* Math.PI*2/16+Math.PI/16)&&(i<3))
+					||((weapon==1)&&(angle>=6* Math.PI*2/16-Math.PI/16)&&(angle<=6* Math.PI*2/16+Math.PI/16)&&(i<2))
+					||((weapon==1)&&(angle>=7* Math.PI*2/16-Math.PI/16)&&(angle<=7* Math.PI*2/16+Math.PI/16)&&(i<1))
+					)) {
+
 				//Exponential value : Exp(-2) = env. 0 to Exp(0) = 1
 				increment = -2.0f + (2.0f/numberOfBalls)*(i);
 				currentValue = (float) Math.exp(increment);
@@ -487,25 +489,28 @@ public class MenuScreen extends Screen implements IUpdatable {
 				scale = currentValue;
 				animationSpeed = (1.0f-currentValue)*animationSpeedStart;
 
-				/** Under explosion effect **/
-				UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-				uar.init(sp);
-				uar.setScalable(true);
-				uar.setScale(scale);
-				uar.setStartDelay(delai);
-				uar.setAnimationSpeed(animationSpeed/3f);
-				uar.setPosition(positionX, positionY);
-				this.getScene().attachChild(uar);
+				if(animationSpeed>0f){
 
-				/** Explosion effect **/
-				UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-				uar2.init(sp2);
-				uar2.setScalable(true);
-				uar2.setScale(scale);
-				uar2.setStartDelay(delai);
-				uar2.setAnimationSpeed(animationSpeed);
-				uar2.setPosition(positionX, positionY);
-				this.getScene().attachChild(uar2);
+					/** Under explosion effect **/
+					UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+					uar.init(sp);
+					uar.setScalable(true);
+					uar.setScale(scale);
+					uar.setStartDelay(delai);
+					uar.setAnimationSpeed(animationSpeed/3f);
+					uar.setPosition(positionX, positionY);
+					this.getScene().attachChild(uar);
+
+//					/** Explosion effect **/
+//					UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+//					uar2.init(sp2);
+//					uar2.setScalable(true);
+//					uar2.setScale(scale);
+//					uar2.setStartDelay(delai);
+//					uar2.setAnimationSpeed(animationSpeed);
+//					uar2.setPosition(positionX, positionY);
+//					this.getScene().attachChild(uar2);
+				}
 			}
 
 			delai = delai + delaiIncrement;
@@ -517,9 +522,10 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 		/** MASS explosion **/
 		float explosionsWidth = (5f);
-		float explosionsWidthIncrement = 150f/5f/numberOfEndingExplosions;
+		float numberOfEndingExplosions = 5;
+		float explosionsWidthIncrement = 150f/4f/numberOfEndingExplosions;
 
-		for(int j=0; j<=4; j++){
+		for(int j=0; j<=3; j++){
 			for(int i=0; i<=numberOfEndingExplosions; i++){
 
 				float x_ = (float) (positionX + Math.random()*2f*explosionsWidth-explosionsWidth);
@@ -533,7 +539,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				uar2.setScalable(true);
 				//uar2.setScale(scale);
 				uar2.setStartDelay(delai);
-				//uar2.setAnimationSpeed(animationSpeed);
+				uar2.setAnimationSpeed(0.8f);
 				uar2.setPosition(x_, y_);
 				this.getScene().attachChild(uar2);
 

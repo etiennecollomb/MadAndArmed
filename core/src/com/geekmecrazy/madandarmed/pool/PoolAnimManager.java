@@ -8,14 +8,14 @@ import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet.SpriteSheetType;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
-import com.geekmecrazy.madandarmed.Renderer.FlameThrowerRenderer;
-import com.geekmecrazy.madandarmed.Renderer.GunRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
-import com.geekmecrazy.madandarmed.Renderer.MeshMultiExplosionRenderer;
-import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
-import com.geekmecrazy.madandarmed.Renderer.SwordRenderer;
 import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
 import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.FlameThrowerRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.GunRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MeshMultiExplosionRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MissileRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.SwordRenderer;
 import com.badlogic.gdx.utils.Pool;
 
 
@@ -103,7 +103,7 @@ public class PoolAnimManager {
 		return flameThrowerRendererPool;
 	}
 	
-	public static Pool<MeshMultiExplosionRenderer> getMeshMultiExplosionRendererPool() {
+	public Pool<MeshMultiExplosionRenderer> getMeshMultiExplosionRendererPool() {
 		return meshMultiExplosionRendererPool;
 	}
 

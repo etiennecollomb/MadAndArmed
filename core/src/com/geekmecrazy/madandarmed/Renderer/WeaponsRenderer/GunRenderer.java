@@ -1,22 +1,18 @@
-package com.geekmecrazy.madandarmed.Renderer;
+package com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer;
 
 import java.util.List;
 
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Game.Element.Military;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
+import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
-
-public class MissileRenderer extends WeaponRenderer {
+public class GunRenderer extends WeaponRenderer {
 
 	// ===========================================================
 	// Constructors
 	// ===========================================================
-
-	public MissileRenderer(){
-		super();
-	}
 
 	// ===========================================================
 	// Getter & Setter
@@ -27,21 +23,12 @@ public class MissileRenderer extends WeaponRenderer {
 	// ===========================================================
 
 	@Override
-	public void reset() {
-		super.reset();
-	}
-
-	@Override
-	public void setWeaponTravellingEffect(){
-		UniqueActionRenderer uniqueActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-		uniqueActionRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.MISSILE_EXPLOSION));
-		this.getWeaponTravellingEffectList().add(uniqueActionRenderer);
-	}
+	public void setWeaponTravellingEffect(){}
 	
 	@Override
-	protected void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList) {
+	public void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList) {
 		UniqueActionRenderer uniqueActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-		uniqueActionRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX));
+		uniqueActionRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.IMPACT_BULLET));
 		weaponEffectList.add(uniqueActionRenderer);
 	}
 	
@@ -51,11 +38,8 @@ public class MissileRenderer extends WeaponRenderer {
 
 	public void init(final Weapon weapon, final Military military){
 		super.init(weapon);
-		
-		this.attachWeaponTravellingEffect(this); //atacah to himself the travelling effect
 	}
 
 
-
-
+	
 }

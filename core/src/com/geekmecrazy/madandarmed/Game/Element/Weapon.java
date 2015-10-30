@@ -1,7 +1,11 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
-import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
-import com.geekmecrazy.madandarmed.Renderer.WeaponRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.FlameThrowerRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.GunRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MeshMultiExplosionRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MissileRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.SwordRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.WeaponRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 public class Weapon extends Geometrie {
@@ -69,8 +73,17 @@ public class Weapon extends Geometrie {
 		this.shooter = null;
 		this.target = null;
 
+		//TODO : mettre dans le reset de chaque weapon type au lieu de faire les appels ici avec des instanceof.....
 		if(this.getWeaponRenderer() instanceof MissileRenderer)
 			PoolAnimManager.getManager().getMissileRendererPool().free(((MissileRenderer) this.getWeaponRenderer()));
+		if(this.getWeaponRenderer() instanceof FlameThrowerRenderer)
+			PoolAnimManager.getManager().getFlameThrowerRendererPool().free(((FlameThrowerRenderer) this.getWeaponRenderer()));
+		if(this.getWeaponRenderer() instanceof GunRenderer)
+			PoolAnimManager.getManager().getGunRendererPool().free(((GunRenderer) this.getWeaponRenderer()));
+		if(this.getWeaponRenderer() instanceof MeshMultiExplosionRenderer)
+			PoolAnimManager.getManager().getMeshMultiExplosionRendererPool().free(((MeshMultiExplosionRenderer) this.getWeaponRenderer()));
+		if(this.getWeaponRenderer() instanceof SwordRenderer)
+			PoolAnimManager.getManager().getSwordRendererPool().free(((SwordRenderer) this.getWeaponRenderer()));
 	}
 	
 	// ===========================================================

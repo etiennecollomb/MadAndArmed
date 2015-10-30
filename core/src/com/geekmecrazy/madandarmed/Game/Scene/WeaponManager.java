@@ -16,7 +16,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Sword;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponType;
-import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MissileRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 

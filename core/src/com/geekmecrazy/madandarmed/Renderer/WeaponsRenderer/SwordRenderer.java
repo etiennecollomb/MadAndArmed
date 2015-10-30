@@ -1,13 +1,14 @@
-package com.geekmecrazy.madandarmed.Renderer;
+package com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer;
 
 import java.util.List;
 
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Game.Element.Military;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
+import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
-public class GunRenderer extends WeaponRenderer {
+public class SwordRenderer extends WeaponRenderer {
 
 	// ===========================================================
 	// Constructors
@@ -22,12 +23,14 @@ public class GunRenderer extends WeaponRenderer {
 	// ===========================================================
 
 	@Override
-	public void setWeaponTravellingEffect(){}
+	public void setWeaponTravellingEffect(){
+	}
 	
 	@Override
-	protected void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList) {
+	public void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList) {
 		UniqueActionRenderer uniqueActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-		uniqueActionRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.IMPACT_BULLET));
+		uniqueActionRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.SWORD_001_64PX));
+		uniqueActionRenderer.setAnimationSpeed(1f);
 		weaponEffectList.add(uniqueActionRenderer);
 	}
 	

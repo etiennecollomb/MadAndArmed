@@ -194,6 +194,7 @@ public class CreepPattern {
 		WeaponPattern weaponPattern = DataLoader.getWeaponsPattern().get(this.getWeaponName().name());
 		switch (weaponPattern.getWeaponType()){
 		case FLAMETHROWER:
+		case MESH_MULTIEXPLOSION:
 		case SWORD:
 			//Corps a corps : 1234567 1234567...etc
 			state1Counter = this.getFireAnimationRow().size();

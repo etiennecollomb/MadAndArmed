@@ -2,9 +2,9 @@ package com.geekmecrazy.madandarmed.Game.Element;
 
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.WeaponManager;
-import com.geekmecrazy.madandarmed.Renderer.GunRenderer;
-import com.geekmecrazy.madandarmed.Renderer.MissileRenderer;
-import com.geekmecrazy.madandarmed.Renderer.SwordRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.GunRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MissileRenderer;
+import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.SwordRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 public class Sword extends Weapon {
