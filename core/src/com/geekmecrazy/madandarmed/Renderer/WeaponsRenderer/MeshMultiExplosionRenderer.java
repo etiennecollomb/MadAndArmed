@@ -110,12 +110,12 @@ public class MeshMultiExplosionRenderer extends WeaponRenderer {
 		float positionY = posY;
 
 		/** Jet Explosion **/
-		float distanceBetweenSprite = (float) (Math.sqrt(2.0f*5.0f*5.0f) * (float)sp.getFrameWidth(0, 0)/64.0f); // 5.0f for 64px looks good
+		float distanceBetweenSprite = 40f;
 
 		int delai = 0;
 		int delaiIncrement = 1;
 		float numberOfBalls = 30;
-		float animationSpeedStart = 4.0f;
+		//		float animationSpeedStart = 4.0f;
 
 		float increment, currentValue, scale, animationSpeed;
 		for(int i=0; i<=numberOfBalls; i++){
@@ -135,7 +135,7 @@ public class MeshMultiExplosionRenderer extends WeaponRenderer {
 				currentValue = (float) Math.exp(increment);
 
 				scale = currentValue;
-				animationSpeed = (1.0f-currentValue)*animationSpeedStart;
+				animationSpeed = 4f;//(1.0f-currentValue)*animationSpeedStart;
 
 				if(animationSpeed>0f){
 					/** Under explosion effect **/
@@ -148,15 +148,15 @@ public class MeshMultiExplosionRenderer extends WeaponRenderer {
 					uar.setPosition(positionX, positionY);
 					this.getWeaponTravellingEffectList().add(uar);
 
-//					/** Explosion effect **/
-//					UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-//					uar2.init(sp2);
-//					uar2.setScalable(true);
-//					uar2.setScale(scale);
-//					uar2.setStartDelay(delai);
-//					uar2.setAnimationSpeed(animationSpeed);
-//					uar2.setPosition(positionX, positionY);
-//					this.getWeaponTravellingEffectList().add(uar2);
+					//					/** Explosion effect **/
+					//					UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+					//					uar2.init(sp2);
+					//					uar2.setScalable(true);
+					//					uar2.setScale(scale);
+					//					uar2.setStartDelay(delai);
+					//					uar2.setAnimationSpeed(animationSpeed);
+					//					uar2.setPosition(positionX, positionY);
+					//					this.getWeaponTravellingEffectList().add(uar2);
 				}
 			}
 
@@ -169,30 +169,28 @@ public class MeshMultiExplosionRenderer extends WeaponRenderer {
 
 		/** MASS explosion **/
 		float explosionsWidth = (5f);
-		float numberOfEndingExplosions = 5;
-		float explosionsWidthIncrement = 150f/4f/numberOfEndingExplosions;
+		float numberOfEndingExplosions = 20;
+		float explosionsWidthIncrement = 150f/numberOfEndingExplosions;
 
-		for(int j=0; j<=3; j++){
-			for(int i=0; i<=numberOfEndingExplosions; i++){
+		for(int i=0; i<=numberOfEndingExplosions; i++){
 
-				float x_ = (float) (positionX + Math.random()*2f*explosionsWidth-explosionsWidth);
-				float y_ = (float) (positionY + Math.random()*2f*explosionsWidth-explosionsWidth);
+			float x_ = (float) (positionX + Math.random()*2f*explosionsWidth-explosionsWidth);
+			float y_ = (float) (positionY + Math.random()*2f*explosionsWidth-explosionsWidth);
 
-				SpriteSheet sp_explosion = explosionsList.get(random.nextInt(explosionsList.size()));
+			SpriteSheet sp_explosion = explosionsList.get(random.nextInt(explosionsList.size()));
 
-				/** Explosion effect **/
-				UniqueActionRenderer uar3 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-				uar3.init(sp_explosion);
-				uar3.setScalable(true);
-				//uar3.setScale(scale);
-				uar3.setStartDelay(delai);
-				uar3.setAnimationSpeed(0.8f);
-				uar3.setPosition(x_, y_);
-				this.getWeaponTravellingEffectList().add(uar3);
+			/** Explosion effect **/
+			UniqueActionRenderer uar3 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+			uar3.init(sp_explosion);
+			uar3.setScalable(true);
+			//uar3.setScale(scale);
+			uar3.setStartDelay(delai);
+			uar3.setAnimationSpeed(0.8f);
+			uar3.setPosition(x_, y_);
+			this.getWeaponTravellingEffectList().add(uar3);
 
-				delai = delai + 2;
-				explosionsWidth = explosionsWidth + explosionsWidthIncrement;
-			}
+			delai = delai + 2;
+			explosionsWidth = explosionsWidth + explosionsWidthIncrement;
 		}
 
 
