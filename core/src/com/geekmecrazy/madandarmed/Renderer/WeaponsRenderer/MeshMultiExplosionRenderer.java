@@ -91,6 +91,7 @@ public class MeshMultiExplosionRenderer extends WeaponRenderer {
 	}
 
 
+	//TODO: mettre en variable global tout ce qui est calculé identique....
 	public void fireThrowerMesh(final float posX, final float posY, final float dirX, final float dirY, final float angle, final float weaponID){
 
 		Random random = new Random();

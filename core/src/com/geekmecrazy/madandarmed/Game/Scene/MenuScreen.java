@@ -22,6 +22,7 @@ import com.geekmecrazy.madandarmed.Game.Tween.RectangleTween;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.Layout;
 import com.geekmecrazy.madandarmed.Game.UI.Layout.Orientation;
+import com.geekmecrazy.madandarmed.Renderer.MyTiledMapRenderer;
 import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
@@ -342,11 +343,9 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 				//init GROUND
 				/*WORKING : A REMETTRE ON une fois debug fini*/
-				/*
-                        MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
-                        tiledGround.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
-                        FightScreen.getManager().setTiledGround(tiledGround);
-				 */
+				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
+				tiledGround.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
+				FightScreen.getManager().setTiledGround(tiledGround);
 			}
 		})
 		.ease(Quad.OUT)
@@ -418,7 +417,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 			animationSpeed = (1.0f-currentValue)*animationSpeedStart;
 
 			if(animationSpeed>0f){
-				
+
 				UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
 				uar.init(sp);
 				uar.setScalable(true);
@@ -501,15 +500,15 @@ public class MenuScreen extends Screen implements IUpdatable {
 					uar.setPosition(positionX, positionY);
 					this.getScene().attachChild(uar);
 
-//					/** Explosion effect **/
-//					UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-//					uar2.init(sp2);
-//					uar2.setScalable(true);
-//					uar2.setScale(scale);
-//					uar2.setStartDelay(delai);
-//					uar2.setAnimationSpeed(animationSpeed);
-//					uar2.setPosition(positionX, positionY);
-//					this.getScene().attachChild(uar2);
+					//					/** Explosion effect **/
+					//					UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+					//					uar2.init(sp2);
+					//					uar2.setScalable(true);
+					//					uar2.setScale(scale);
+					//					uar2.setStartDelay(delai);
+					//					uar2.setAnimationSpeed(animationSpeed);
+					//					uar2.setPosition(positionX, positionY);
+					//					this.getScene().attachChild(uar2);
 				}
 			}
 

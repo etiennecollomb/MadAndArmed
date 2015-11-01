@@ -30,7 +30,7 @@ public enum TextureType{
 	QG_BUILDING_ICON_7  ("qg/QG_BUILDING_ICON_7.png", 128, 128),
 
 	//FIGHT MAP & UI
-    GROUND_BATTLE				("game/groundBattle_green_001.png", 1024, 480),
+	GROUND_BATTLE				("game/groundBattle_green_001.png", 1024, 480),
 	BORD_TREE_UP  				("game/bord_trees_up.png", 1024, 128),
 	BORD_TREE_DOWN  			("game/bord_trees_down.png", 1024, 128),
 	SOL_SOUS_BUILDING  			("game/Sol_Sous_Building.png", 128, 128),
@@ -55,65 +55,67 @@ public enum TextureType{
 	GLADIATOR_ICON						("game/gladiator_icon.png", 2.1f,2.1f),
 	MARINE_SMALL_ICON					("game/marine_small_icon.png", 2.1f,2.1f),
 	MARINE_BIG_ICON						("game/marine_big_icon.png", 2.1f,2.1f),
-
-    //TILES
-    TILE_1QUART_UP                      ("game/Tiles/128_64/1quartUP.png", 128, 64),
-    TILE_1QUART_RIGHT                   ("game/Tiles/128_64/1quartRIGHT.png", 128, 64),
-    TILE_1QUART_DOWN                    ("game/Tiles/128_64/1quartDOWN.png", 128, 64),
-    TILE_1QUART_LEFT                    ("game/Tiles/128_64/1quartLEFT.png", 128, 64),
-    TILE_3QUART_UP                      ("game/Tiles/128_64/3quartUP.png", 128, 64),
-    TILE_3QUART_RIGHT                   ("game/Tiles/128_64/3quartRIGHT.png", 128, 64),
-    TILE_3QUART_DOWN                    ("game/Tiles/128_64/3quartDOWN.png", 128, 64),
-    TILE_3QUART_LEFT                    ("game/Tiles/128_64/3quartLEFT.png", 128, 64),
-    TILE_DIAG_LEFT_UP                   ("game/Tiles/128_64/diagLEFT_UP.png", 128, 64),
-    TILE_DIAG_RIGHT_UP                  ("game/Tiles/128_64/diagRIGHT_UP.png", 128, 64),
-    TILE_DIAG_RIGHT_DOWN                ("game/Tiles/128_64/diagRIGHT_DOWN.png", 128, 64),
-    TILE_DIAG_LEFT_DOWN                 ("game/Tiles/128_64/diagLEFT_DOWN.png", 128, 64),
-    TILE_FULL                           ("game/Tiles/128_64/Full.png", 128, 64),
-
-    TILE_1QUART_UP_BROWN                ("game/Tiles/128_64/1quartUP_BROWN.png", 128, 64),
-    TILE_1QUART_RIGHT_BROWN             ("game/Tiles/128_64/1quartRIGHT_BROWN.png", 128, 64),
-    TILE_1QUART_DOWN_BROWN              ("game/Tiles/128_64/1quartDOWN_BROWN.png", 128, 64),
-    TILE_1QUART_LEFT_BROWN              ("game/Tiles/128_64/1quartLEFT_BROWN.png", 128, 64),
-    TILE_3QUART_UP_BROWN                ("game/Tiles/128_64/3quartUP_BROWN.png", 128, 64),
-    TILE_3QUART_RIGHT_BROWN             ("game/Tiles/128_64/3quartRIGHT_BROWN.png", 128, 64),
-    TILE_3QUART_DOWN_BROWN              ("game/Tiles/128_64/3quartDOWN_BROWN.png", 128, 64),
-    TILE_3QUART_LEFT_BROWN              ("game/Tiles/128_64/3quartLEFT_BROWN.png", 128, 64),
-    TILE_DIAG_LEFT_UP_BROWN             ("game/Tiles/128_64/diagLEFT_UP_BROWN.png", 128, 64),
-    TILE_DIAG_RIGHT_UP_BROWN            ("game/Tiles/128_64/diagRIGHT_UP_BROWN.png", 128, 64),
-    TILE_DIAG_RIGHT_DOWN_BROWN          ("game/Tiles/128_64/diagRIGHT_DOWN_BROWN.png", 128, 64),
-    TILE_DIAG_LEFT_DOWN_BROWN           ("game/Tiles/128_64/diagLEFT_DOWN_BROWN.png", 128, 64),
-    TILE_FULL_BROWN                     ("game/Tiles/128_64/Full_BROWN.png", 128, 64),
-    
-    TILE_FULL_RED                     	("game/Tiles/Full_RED_64x32.png", 64, 32),
-
-    //DECORATION
-    PLANT_00                    ("game/Decorations/Plant00_64.png", 64, 64),
-    PLANT_01                    ("game/Decorations/Plant01_64.png", 64, 64),
-    PLANT_02                    ("game/Decorations/Plant02_64.png", 64, 64),
-    PLANT_03                    ("game/Decorations/Plant03_64.png", 64, 64),
-
-    PLANT_00_MEDIUM                    ("game/Decorations/Plant00_128.png", 128, 128),
-    PLANT_01_MEDIUM                    ("game/Decorations/Plant01_128.png", 128, 128),
-    PLANT_02_MEDIUM                    ("game/Decorations/Plant02_128.png", 128, 128),
-    PLANT_03_MEDIUM                    ("game/Decorations/Plant03_128.png", 128, 128),
-
-    //HQ
-    BUILDING_TEST       	("game/building_test.png", 200, 200),
-    //GREEN_ARROW_LEFT    ("game/greenArrow_left.png", 256, 256),
-    //GREEN_ARROW_TOP     ("game/greenArrow_top.png", 256, 256),
-    //GREEN_ARROW_RIGHT   ("game/greenArrow_right.png", 256, 256),
-    //GREEN_ARROW_BOTTOM  ("game/greenArrow_bottom.png", 256, 256);
 	
+	/** Tiles Ground **/
+	TILE_1QUART_UP                      ("game/Tiles/128_64/1quartUP.png", 128, 64),
+	TILE_1QUART_RIGHT                   ("game/Tiles/128_64/1quartRIGHT.png", 128, 64),
+	TILE_1QUART_DOWN                    ("game/Tiles/128_64/1quartDOWN.png", 128, 64),
+	TILE_1QUART_LEFT                    ("game/Tiles/128_64/1quartLEFT.png", 128, 64),
+	TILE_3QUART_UP                      ("game/Tiles/128_64/3quartUP.png", 128, 64),
+	TILE_3QUART_RIGHT                   ("game/Tiles/128_64/3quartRIGHT.png", 128, 64),
+	TILE_3QUART_DOWN                    ("game/Tiles/128_64/3quartDOWN.png", 128, 64),
+	TILE_3QUART_LEFT                    ("game/Tiles/128_64/3quartLEFT.png", 128, 64),
+	TILE_DIAG_LEFT_UP                   ("game/Tiles/128_64/diagLEFT_UP.png", 128, 64),
+	TILE_DIAG_RIGHT_UP                  ("game/Tiles/128_64/diagRIGHT_UP.png", 128, 64),
+	TILE_DIAG_RIGHT_DOWN                ("game/Tiles/128_64/diagRIGHT_DOWN.png", 128, 64),
+	TILE_DIAG_LEFT_DOWN                 ("game/Tiles/128_64/diagLEFT_DOWN.png", 128, 64),
+	TILE_FULL                           ("game/Tiles/128_64/Full.png", 128, 64),
+
+	TILE_1QUART_UP_BROWN                ("game/Tiles/128_64/1quartUP_BROWN.png", 128, 64),
+	TILE_1QUART_RIGHT_BROWN             ("game/Tiles/128_64/1quartRIGHT_BROWN.png", 128, 64),
+	TILE_1QUART_DOWN_BROWN              ("game/Tiles/128_64/1quartDOWN_BROWN.png", 128, 64),
+	TILE_1QUART_LEFT_BROWN              ("game/Tiles/128_64/1quartLEFT_BROWN.png", 128, 64),
+	TILE_3QUART_UP_BROWN                ("game/Tiles/128_64/3quartUP_BROWN.png", 128, 64),
+	TILE_3QUART_RIGHT_BROWN             ("game/Tiles/128_64/3quartRIGHT_BROWN.png", 128, 64),
+	TILE_3QUART_DOWN_BROWN              ("game/Tiles/128_64/3quartDOWN_BROWN.png", 128, 64),
+	TILE_3QUART_LEFT_BROWN              ("game/Tiles/128_64/3quartLEFT_BROWN.png", 128, 64),
+	TILE_DIAG_LEFT_UP_BROWN             ("game/Tiles/128_64/diagLEFT_UP_BROWN.png", 128, 64),
+	TILE_DIAG_RIGHT_UP_BROWN            ("game/Tiles/128_64/diagRIGHT_UP_BROWN.png", 128, 64),
+	TILE_DIAG_RIGHT_DOWN_BROWN          ("game/Tiles/128_64/diagRIGHT_DOWN_BROWN.png", 128, 64),
+	TILE_DIAG_LEFT_DOWN_BROWN           ("game/Tiles/128_64/diagLEFT_DOWN_BROWN.png", 128, 64),
+	TILE_FULL_BROWN                     ("game/Tiles/128_64/Full_BROWN.png", 128, 64),
+
+	TILE_FULL_RED                     	("game/Tiles/Full_RED_64x32.png", 64, 32),
+
+
+
+	//DECORATION
+	PLANT_00                    ("game/Decorations/Plant00_64.png", 64, 64),
+	PLANT_01                    ("game/Decorations/Plant01_64.png", 64, 64),
+	PLANT_02                    ("game/Decorations/Plant02_64.png", 64, 64),
+	PLANT_03                    ("game/Decorations/Plant03_64.png", 64, 64),
+
+	PLANT_00_MEDIUM                    ("game/Decorations/Plant00_128.png", 128, 128),
+	PLANT_01_MEDIUM                    ("game/Decorations/Plant01_128.png", 128, 128),
+	PLANT_02_MEDIUM                    ("game/Decorations/Plant02_128.png", 128, 128),
+	PLANT_03_MEDIUM                    ("game/Decorations/Plant03_128.png", 128, 128),
+
+	//HQ
+	BUILDING_TEST       	("game/building_test.png", 200, 200),
+	//GREEN_ARROW_LEFT    ("game/greenArrow_left.png", 256, 256),
+	//GREEN_ARROW_TOP     ("game/greenArrow_top.png", 256, 256),
+	//GREEN_ARROW_RIGHT   ("game/greenArrow_right.png", 256, 256),
+	//GREEN_ARROW_BOTTOM  ("game/greenArrow_bottom.png", 256, 256);
+
 	ORTHOGRID       		("game/OrthometricGrid.png", 2048, 2048),
 	ISOGRID       			("game/IsometricGrid.png", 1024, 1024),
-	
+
 	BARRICADE_ICON 			("game/BarricadeIcon.png", 1f, 1f),
 	BARRICADE_ICON2 		("game/BarricadeIcon.png", 128, 128),
-	
+
 	SOUND_ICON 				("game/SoundIcon.png", 1f, 1f),
 	SOUND_ICON2 			("game/SoundIcon.png", 128, 128),
-	
+
 	;
 
 
