@@ -2,6 +2,9 @@ package com.geekmecrazy.madandarmed.CoreConfig;
 
 import java.util.HashMap;
 
+import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
+import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
+
 /**
  * Created by ECollomb on 03/03/2015.
  */
@@ -36,8 +39,40 @@ public class TilesType {
 
         //Tiles
         tilesType = new HashMap<Integer, TextureType>();
+        /** Testing purpose **/
         //GROUND 00
-        tilesType.put(idStartGround00 + ID_TILE_FULL, TextureType.TILE_FULL);
+//        tilesType.put(idStartGround00 + ID_TILE_FULL, TextureType.TILE_FULL);
+//        tilesType.put(idStartGround00 + ID_TILE_1QUART_UP, TextureType.TILE_1QUART_UP);
+//        tilesType.put(idStartGround00 + ID_TILE_1QUART_RIGHT, TextureType.TILE_1QUART_RIGHT);
+//        tilesType.put(idStartGround00 + ID_TILE_1QUART_DOWN, TextureType.TILE_1QUART_DOWN);
+//        tilesType.put(idStartGround00 + ID_TILE_1QUART_LEFT, TextureType.TILE_1QUART_LEFT);
+//        tilesType.put(idStartGround00 + ID_TILE_3QUART_UP, TextureType.TILE_3QUART_UP);
+//        tilesType.put(idStartGround00 + ID_TILE_3QUART_RIGHT, TextureType.TILE_3QUART_RIGHT);
+//        tilesType.put(idStartGround00 + ID_TILE_3QUART_DOWN, TextureType.TILE_3QUART_DOWN);
+//        tilesType.put(idStartGround00 + ID_TILE_3QUART_LEFT, TextureType.TILE_3QUART_LEFT);
+//        tilesType.put(idStartGround00 + ID_TILE_DIAG_LEFT_UP, TextureType.TILE_DIAG_LEFT_UP);
+//        tilesType.put(idStartGround00 + ID_TILE_DIAG_RIGHT_UP, TextureType.TILE_DIAG_RIGHT_UP);
+//        tilesType.put(idStartGround00 + ID_TILE_DIAG_RIGHT_DOWN, TextureType.TILE_DIAG_RIGHT_DOWN);
+//        tilesType.put(idStartGround00 + ID_TILE_DIAG_LEFT_DOWN, TextureType.TILE_DIAG_LEFT_DOWN);
+//        //GROUND 01
+//        tilesType.put(idStartGround01 + ID_TILE_FULL, TextureType.TILE_FULL_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_1QUART_UP, TextureType.TILE_1QUART_UP_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_1QUART_RIGHT, TextureType.TILE_1QUART_RIGHT_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_1QUART_DOWN, TextureType.TILE_1QUART_DOWN_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_1QUART_LEFT, TextureType.TILE_1QUART_LEFT_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_3QUART_UP, TextureType.TILE_3QUART_UP_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_3QUART_RIGHT, TextureType.TILE_3QUART_RIGHT_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_3QUART_DOWN, TextureType.TILE_3QUART_DOWN_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_3QUART_LEFT, TextureType.TILE_3QUART_LEFT_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_DIAG_LEFT_UP, TextureType.TILE_DIAG_LEFT_UP_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_DIAG_RIGHT_UP, TextureType.TILE_DIAG_RIGHT_UP_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_DIAG_RIGHT_DOWN, TextureType.TILE_DIAG_RIGHT_DOWN_BROWN);
+//        tilesType.put(idStartGround01 + ID_TILE_DIAG_LEFT_DOWN, TextureType.TILE_DIAG_LEFT_DOWN_BROWN);
+        
+        SpriteSheet sp = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX);
+        
+        //GROUND 00
+        tilesType.put(idStartGround00 + ID_TILE_FULL, sp.getFrame(0, 0).getTexture());
         tilesType.put(idStartGround00 + ID_TILE_1QUART_UP, TextureType.TILE_1QUART_UP);
         tilesType.put(idStartGround00 + ID_TILE_1QUART_RIGHT, TextureType.TILE_1QUART_RIGHT);
         tilesType.put(idStartGround00 + ID_TILE_1QUART_DOWN, TextureType.TILE_1QUART_DOWN);
