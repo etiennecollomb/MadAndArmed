@@ -218,11 +218,10 @@ public class MyTiledMapRenderer extends Shape {
         //1- Stock all pixmap from tileType in hastable
         HashMap<Integer, Pixmap> pixmaps = new HashMap<Integer, Pixmap>();
 
-        for (Map.Entry<Integer,TextureType> entry : this.mTilesType.tilesType.entrySet()) {
+        for (Map.Entry<Integer,Texture> entry : this.mTilesType.tilesType.entrySet()) {
             final Integer key = entry.getKey();
-            final TextureType textureType = entry.getValue();
+            final Texture texture = entry.getValue();
 
-            Texture texture = new Texture(Gdx.files.internal( textureType.getPath()) );
             Pixmap pixmap = textureBuilder.getPixmapFromTexture(texture);
 
             pixmaps.put(key, pixmap);
