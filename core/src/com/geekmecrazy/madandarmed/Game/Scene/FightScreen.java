@@ -199,7 +199,7 @@ public class FightScreen extends Screen implements IUpdatable {
 		isoGrid.init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
         IsoGridRenderer gridRenderer = new IsoGridRenderer();
         gridRenderer.init(isoGrid);
-        this.getScene().attachChild(gridRenderer);
+        //this.getScene().attachChild(gridRenderer);
         
 		/** Init des 2 teams */
 		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getSpawnPoint(), TeamID.TEAM1, MAX_THORIUM));

@@ -56,7 +56,9 @@ public enum TextureType{
 	MARINE_SMALL_ICON					("game/marine_small_icon.png", 2.1f,2.1f),
 	MARINE_BIG_ICON						("game/marine_big_icon.png", 2.1f,2.1f),
 	
-	/** Tiles Ground **/
+	/** Tiles Ground TEST **/
+	TILE_FULL_BROWN                     ("game/Tiles/128_64/Full_BROWN.png", 128, 64),
+	
 	TILE_1QUART_UP                      ("game/Tiles/128_64/1quartUP.png", 128, 64),
 	TILE_1QUART_RIGHT                   ("game/Tiles/128_64/1quartRIGHT.png", 128, 64),
 	TILE_1QUART_DOWN                    ("game/Tiles/128_64/1quartDOWN.png", 128, 64),
@@ -71,21 +73,25 @@ public enum TextureType{
 	TILE_DIAG_LEFT_DOWN                 ("game/Tiles/128_64/diagLEFT_DOWN.png", 128, 64),
 	TILE_FULL                           ("game/Tiles/128_64/Full.png", 128, 64),
 
-	TILE_1QUART_UP_BROWN                ("game/Tiles/128_64/1quartUP_BROWN.png", 128, 64),
-	TILE_1QUART_RIGHT_BROWN             ("game/Tiles/128_64/1quartRIGHT_BROWN.png", 128, 64),
-	TILE_1QUART_DOWN_BROWN              ("game/Tiles/128_64/1quartDOWN_BROWN.png", 128, 64),
-	TILE_1QUART_LEFT_BROWN              ("game/Tiles/128_64/1quartLEFT_BROWN.png", 128, 64),
-	TILE_3QUART_UP_BROWN                ("game/Tiles/128_64/3quartUP_BROWN.png", 128, 64),
-	TILE_3QUART_RIGHT_BROWN             ("game/Tiles/128_64/3quartRIGHT_BROWN.png", 128, 64),
-	TILE_3QUART_DOWN_BROWN              ("game/Tiles/128_64/3quartDOWN_BROWN.png", 128, 64),
-	TILE_3QUART_LEFT_BROWN              ("game/Tiles/128_64/3quartLEFT_BROWN.png", 128, 64),
-	TILE_DIAG_LEFT_UP_BROWN             ("game/Tiles/128_64/diagLEFT_UP_BROWN.png", 128, 64),
-	TILE_DIAG_RIGHT_UP_BROWN            ("game/Tiles/128_64/diagRIGHT_UP_BROWN.png", 128, 64),
-	TILE_DIAG_RIGHT_DOWN_BROWN          ("game/Tiles/128_64/diagRIGHT_DOWN_BROWN.png", 128, 64),
-	TILE_DIAG_LEFT_DOWN_BROWN           ("game/Tiles/128_64/diagLEFT_DOWN_BROWN.png", 128, 64),
-	TILE_FULL_BROWN                     ("game/Tiles/128_64/Full_BROWN.png", 128, 64),
-
 	TILE_FULL_RED                     	("game/Tiles/Full_RED_64x32.png", 64, 32),
+
+	/** Tiles Ground 01 **/
+	TILE_GROUND01_FULL_BROWN                     ("game/Tiles/128_64/Ground01/tile_40.png", 128, 64),
+	
+	TILE_GROUND01_1QUART_UP                      ("game/Tiles/128_64/Ground01/tile_13.png", 128, 64),
+	TILE_GROUND01_1QUART_RIGHT                   ("game/Tiles/128_64/Ground01/tile_37.png", 128, 64),
+	TILE_GROUND01_1QUART_DOWN                    ("game/Tiles/128_64/Ground01/tile_39.png", 128, 64),
+	TILE_GROUND01_1QUART_LEFT                    ("game/Tiles/128_64/Ground01/tile_31.png", 128, 64),
+	TILE_GROUND01_3QUART_UP                      ("game/Tiles/128_64/Ground01/tile_1.png", 128, 64),
+	TILE_GROUND01_3QUART_RIGHT                   ("game/Tiles/128_64/Ground01/tile_9.png", 128, 64),
+	TILE_GROUND01_3QUART_DOWN                    ("game/Tiles/128_64/Ground01/tile_27.png", 128, 64),
+	TILE_GROUND01_3QUART_LEFT                    ("game/Tiles/128_64/Ground01/tile_3.png", 128, 64),
+	TILE_GROUND01_DIAG_LEFT_UP                   ("game/Tiles/128_64/Ground01/tile_4.png", 128, 64),
+	TILE_GROUND01_DIAG_RIGHT_UP                  ("game/Tiles/128_64/Ground01/tile_10.png", 128, 64),
+	TILE_GROUND01_DIAG_RIGHT_DOWN                ("game/Tiles/128_64/Ground01/tile_36.png", 128, 64),
+	TILE_GROUND01_DIAG_LEFT_DOWN                 ("game/Tiles/128_64/Ground01/tile_30.png", 128, 64),
+	TILE_GROUND01_FULL                           ("game/Tiles/128_64/Ground01/tile_0.png", 128, 64),
+
 
 
 
