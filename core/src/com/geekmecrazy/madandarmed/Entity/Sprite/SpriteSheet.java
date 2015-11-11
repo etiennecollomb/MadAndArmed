@@ -133,7 +133,7 @@ public class SpriteSheet {
 		} else { // ApplicationType.Desktop ..
 			dirHandle = Gdx.files.internal("./bin/"+animatedTextureType.getPath());
 		}
-
+		
 		/** create all texture atlas **/
 		for (FileHandle fileHandle: dirHandle.list()) {
 			String fileName = fileHandle.file().getName();
@@ -144,7 +144,7 @@ public class SpriteSheet {
 				textureAtlasList.add(textureAtlas);
 			}
 		}
-
+		
 		/** get atlas datas **/
 		mNumberOfColumn = 0;
 

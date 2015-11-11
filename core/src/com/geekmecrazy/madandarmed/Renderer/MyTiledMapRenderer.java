@@ -147,11 +147,12 @@ public class MyTiledMapRenderer extends Shape {
 		this.calculateOrthoMapSize();
 		this.computeTiledMapSize();
 		this.generateUsedCoordinates(); //Square in wich we fit the screen
-
+		
 		this.generateOrthoMap(this.mTilesType.idStartGround00, this.mTilesType.idStartGround01);
+		
 		this.generateBackgroundSprites();
 		TextureBuilder.attachSprites(this, this.backgroundSprite);
-
+ 
 	}
 
 
@@ -180,6 +181,7 @@ public class MyTiledMapRenderer extends Shape {
 	}
 
 	//The "square" of tiled visible on screen
+	/** pas besoin d etre tres precis si c est en dehors de l'image le draw pixmap zap (teste) **/
 	public void generateUsedCoordinates(){
 
 		int size = this.getOrthoMapSize()/2;
@@ -207,14 +209,13 @@ public class MyTiledMapRenderer extends Shape {
 
 		this.addTileOnTexture(this.mTilesType.idStartGround00, this.mTilesType.idStartGround01);
 		//        this.addDecoration();
-
 		backgroundSprite = textureBuilder.splitInSprites();
-
+		
 	}
 
 	/** from UsedTiled to CreatedTexture */
 	private void addTileOnTexture(int pIdStartgroundBase, int pIdStartgroundSmoothed){
-
+		
 		//1- Stock all pixmap from tileType in hastable
 		HashMap<Integer, Pixmap> pixmaps = new HashMap<Integer, Pixmap>();
 
@@ -227,7 +228,7 @@ public class MyTiledMapRenderer extends Shape {
 
 			pixmaps.put(key, pixmap);
 		}
-
+		
 		//2- create texture
 		int size = this.usedCoordinates.size();
 		for(int i=0; i<size; i++) {
@@ -254,12 +255,11 @@ public class MyTiledMapRenderer extends Shape {
 				textureBuilder.getFinalPixmap().drawPixmap(pixmaps.get(pIdStartgroundBase), posX, posY) ;
 			}
 			
-			if(pixmaps.get(tileId) == null){
-				System.out.println("");
-			}
 			textureBuilder.getFinalPixmap().drawPixmap(pixmaps.get(tileId), posX, posY) ;
+			
 		}
 
+		
 		//3- dispose all pixmaps
 		for (Map.Entry<Integer,Pixmap> entry : pixmaps.entrySet()) {
 			final Pixmap pixmap = entry.getValue();
