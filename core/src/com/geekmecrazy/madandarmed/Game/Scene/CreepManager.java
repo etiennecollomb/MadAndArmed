@@ -9,7 +9,7 @@ import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Factory.CreepFactory;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
@@ -74,7 +74,7 @@ public class CreepManager {
 	
 	/** Enregistre les demandes création de creep */
 	public void askForCreateCreep(CreepType creepType, Team team){
-		CreepPattern creepPattern = DataLoader.getCreepsPattern().get(creepType.name());
+		CreepPattern creepPattern = PatternLoader.getCreepsPattern().get(creepType.name());
 		if(team.hasEnoughtMoney(creepPattern.getPrice())){
 			team.subMoney(creepPattern.getPrice());
 			team.getListAskForCreateCreep().add(creepType);
@@ -95,7 +95,7 @@ public class CreepManager {
 
 	/** Creation du nouveau creep */
 	public void createCreep(CreepType creepID, Team team){
-		CreepPattern creepPattern = DataLoader.getCreepsPattern().get(creepID.name());
+		CreepPattern creepPattern = PatternLoader.getCreepsPattern().get(creepID.name());
 		Creep creep = CreepFactory.createCreep(creepPattern, team);
 		addCreep(creep);
 	}

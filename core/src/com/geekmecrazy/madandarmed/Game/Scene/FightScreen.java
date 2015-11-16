@@ -16,7 +16,7 @@ import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
 import com.geekmecrazy.madandarmed.Game.UI.UnitButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 
@@ -202,8 +202,8 @@ public class FightScreen extends Screen implements IUpdatable {
         //this.getScene().attachChild(gridRenderer);
         
 		/** Init des 2 teams */
-		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getSpawnPoint(), TeamID.TEAM1, MAX_THORIUM));
-		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getSpawnPoint(), TeamID.TEAM2, MAX_THORIUM));
+		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getSpawnPoint(), TeamID.TEAM1, MAX_THORIUM));
+		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getSpawnPoint(), TeamID.TEAM2, MAX_THORIUM));
 
 		BuildingManager.initManager();
 		CreepManager.initManager(this.getScene(), this.getTeamPlayer(), this.getTeamIA());
@@ -263,7 +263,7 @@ public class FightScreen extends Screen implements IUpdatable {
 	public void loadData() {
 		
 		/** Json */
-		DataLoader.loadPatternsData();
+		PatternLoader.loadPatternsData();
 		
 	}
 

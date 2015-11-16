@@ -12,7 +12,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Factory.BuildingFactory;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
@@ -73,12 +73,12 @@ public class BuildingManager {
 	/** Creation des buildings en debut de partie */
 	public void initBuildingAtStart(){
 		
-		for(BuildingMapPattern buildingLevelModel: DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getBuildingsList()){
-			BuildingPattern buildingPattern = DataLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
+		for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getBuildingsList()){
+			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
 			BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, FightScreen.teamPlayer);
 		}
-		for(BuildingMapPattern buildingLevelModel: DataLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
-			BuildingPattern buildingPattern = DataLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
+		for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
+			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
 			BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, FightScreen.teamIA);
 		}
 	}

@@ -5,7 +5,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
 import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
@@ -31,7 +31,7 @@ public class Turret extends Building {
 		
 		/** Renderer */
 		TurretRenderer turretRenderer = PoolAnimManager.getManager().getTurretRendererPool().obtain();
-		AnimatedTextureType animatedTextureType = DataLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingType().name());
+		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingType().name());
 		turretRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), this);
 		FightScreen.isoGrid.place(turretRenderer, (int)posX, (int)posY);
 		FightScreen.isoGrid.getIsoMapState().add(turretRenderer);

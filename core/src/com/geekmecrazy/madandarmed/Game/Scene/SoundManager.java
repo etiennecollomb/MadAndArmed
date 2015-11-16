@@ -8,7 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.geekmecrazy.madandarmed.CoreConfig.SoundType;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponName;
 
@@ -96,7 +96,7 @@ public class SoundManager {
 
 		for (WeaponName weaponName : WeaponName.values()) {
 
-			WeaponPattern weaponPattern = DataLoader.getWeaponsPattern().get(weaponName.name());
+			WeaponPattern weaponPattern = PatternLoader.getWeaponsPattern().get(weaponName.name());
 
 			/** sound is setted in json? */
 			if(weaponPattern.getSoundsType() != null){

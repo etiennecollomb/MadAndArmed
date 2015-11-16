@@ -10,7 +10,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Game.Scene.BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
@@ -80,7 +80,7 @@ public class BuildingFactory{
 		if(buildingPattern.getWeaponName()!=null){
 						
 			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
-			attackBehavior.init(DataLoader.getWeaponsPattern().get(buildingPattern.getWeaponName().name()));
+			attackBehavior.init(PatternLoader.getWeaponsPattern().get(buildingPattern.getWeaponName().name()));
 			attackBehavior.setAttacking(true);
 			turret.setAttackBehavior(attackBehavior);
 			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();

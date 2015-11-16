@@ -2,7 +2,7 @@ package com.geekmecrazy.madandarmed.Pattern;
 
 import java.util.ArrayList;
 
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponName;
 
 
@@ -136,7 +136,7 @@ public class BuildingPattern {
 	/** renvoie une array de row correspondant a une animation */
 	public void calculateAnimationListFire(){
 		
-		WeaponPattern weaponPattern = DataLoader.getWeaponsPattern().get(this.getWeaponName().name());
+		WeaponPattern weaponPattern = PatternLoader.getWeaponsPattern().get(this.getWeaponName().name());
 		
 		if(weaponPattern !=null){
 			switch (weaponPattern.getWeaponType()){

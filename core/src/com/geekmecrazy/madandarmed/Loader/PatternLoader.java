@@ -1,4 +1,4 @@
-package com.geekmecrazy.madandarmed.Json;
+package com.geekmecrazy.madandarmed.Loader;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Json;
@@ -12,7 +12,7 @@ import com.geekmecrazy.madandarmed.Pattern.MenuPattern;
 import com.geekmecrazy.madandarmed.Pattern.TexturePattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 
-public class DataLoader {
+public class PatternLoader {
 
 	private static ObjectMap<String, BuildingPattern> buildingsPattern;
 	private static ObjectMap<String, WeaponPattern> weaponsPattern;
@@ -34,7 +34,7 @@ public class DataLoader {
 	}
 
 	public static void setMapsPattern(ObjectMap<String, MapPattern> mapsPattern) {
-		DataLoader.mapsPattern = mapsPattern;
+		PatternLoader.mapsPattern = mapsPattern;
 	}
 
 	public static ObjectMap<String, TexturePattern> getTexturesPattern() {
@@ -43,7 +43,7 @@ public class DataLoader {
 
 	public static void setTexturesPattern(
 			ObjectMap<String, TexturePattern> texturesPattern) {
-		DataLoader.texturesPattern = texturesPattern;
+		PatternLoader.texturesPattern = texturesPattern;
 	}
 
 	public static ObjectMap<String, BuildingPattern> getBuildingsPattern() {
@@ -52,7 +52,7 @@ public class DataLoader {
 
 	public static void setBuildingsPattern(
 			ObjectMap<String, BuildingPattern> buildingsPattern) {
-		DataLoader.buildingsPattern = buildingsPattern;
+		PatternLoader.buildingsPattern = buildingsPattern;
 	}
 
 	public static ObjectMap<String, WeaponPattern> getWeaponsPattern() {
@@ -61,7 +61,7 @@ public class DataLoader {
 
 	public static void setWeaponsPattern(
 			ObjectMap<String, WeaponPattern> weaponsPattern) {
-		DataLoader.weaponsPattern = weaponsPattern;
+		PatternLoader.weaponsPattern = weaponsPattern;
 	}
 
 	public static ObjectMap<String, CreepPattern> getCreepsPattern() {
@@ -70,7 +70,7 @@ public class DataLoader {
 
 	public static void setCreepsPattern(
 			ObjectMap<String, CreepPattern> creepsPattern) {
-		DataLoader.creepsPattern = creepsPattern;
+		PatternLoader.creepsPattern = creepsPattern;
 	}
 
 	public static ObjectMap<String, MenuPattern> getMenusPattern() {
@@ -78,7 +78,7 @@ public class DataLoader {
 	}
 
 	public static void setMenusPattern(ObjectMap<String, MenuPattern> menusPattern) {
-		DataLoader.menusPattern = menusPattern;
+		PatternLoader.menusPattern = menusPattern;
 	}
 
 	// ===========================================================

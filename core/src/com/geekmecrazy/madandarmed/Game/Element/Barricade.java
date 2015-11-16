@@ -4,7 +4,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape.ShapeState;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
@@ -21,7 +21,7 @@ public class Barricade extends Building {
 		/** Renderer */
 		BarricadeRenderer barricadeRenderer = PoolAnimManager.getManager().getBarricadeRendererPool().obtain();
 		
-		AnimatedTextureType animatedTextureType = DataLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingType().name());
+		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingType().name());
 		barricadeRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), this, FightScreen.isoGrid);
 		FightScreen.isoGrid.place(barricadeRenderer, (int)posX, (int)posY);
 		FightScreen.isoGrid.getIsoMapState().add(barricadeRenderer);

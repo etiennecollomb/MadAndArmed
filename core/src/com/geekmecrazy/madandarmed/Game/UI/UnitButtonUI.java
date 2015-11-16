@@ -10,7 +10,7 @@ import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Scene.CreepManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.ButtonPattern;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Renderer.UnitButtonRenderer;
@@ -36,10 +36,10 @@ public class UnitButtonUI extends Layout implements IMoneyListener {
 
 		FightScreen.getManager().getTeamPlayer().addMoneyListener(this);
 
-		List<ButtonPattern> buttonsPattern = DataLoader.getMenusPattern().get("MENU_1").getButtonsPattern();
+		List<ButtonPattern> buttonsPattern = PatternLoader.getMenusPattern().get("MENU_1").getButtonsPattern();
 		for (final ButtonPattern buttonPattern: buttonsPattern){
 
-			final CreepPattern creepPattern = DataLoader.getCreepsPattern().get(buttonPattern.getCreepType().name());
+			final CreepPattern creepPattern = PatternLoader.getCreepsPattern().get(buttonPattern.getCreepType().name());
 
 			//ADD BUTTON
 

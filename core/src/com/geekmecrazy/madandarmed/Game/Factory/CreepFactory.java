@@ -9,7 +9,7 @@ import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.IA.GroundMoveBehavior;
 import com.geekmecrazy.madandarmed.IA.GroundPathFinding;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
@@ -60,7 +60,7 @@ public class CreepFactory {
 		if(creepPattern.getWeaponName()!=null){
 
 			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
-			attackBehavior.init(DataLoader.getWeaponsPattern().get(creepPattern.getWeaponName().name()));
+			attackBehavior.init(PatternLoader.getWeaponsPattern().get(creepPattern.getWeaponName().name()));
 			creep.setAttackBehavior(attackBehavior);
 			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
 			attackBehavior.setAttaque(attaque);

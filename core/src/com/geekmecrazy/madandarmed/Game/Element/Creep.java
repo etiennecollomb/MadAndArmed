@@ -5,7 +5,7 @@ import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Factory.CreepFactory;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
@@ -20,7 +20,7 @@ public class Creep extends Vehicle {
 
 		super.init(creepPattern, posX, posY, diameter, life, myTeam, ennemyTeam);
 		this.militaryRenderer=animatedMilitary;
-		AnimatedTextureType animatedTextureType = DataLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(creepPattern.getCreepType().name());
+		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(creepPattern.getCreepType().name());
 		((CreepRenderer)this.militaryRenderer).init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), creepPattern, this);
 
         animatedMilitary.setAlignment(Entity.Alignment.CENTER_ON_ITSELF);

@@ -6,7 +6,7 @@ import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
-import com.geekmecrazy.madandarmed.Json.DataLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
@@ -100,8 +100,8 @@ public class CreepRenderer extends VehicleRenderer {
         this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)thisCreep.getPos().getY());
 
         if(thisCreep.isAlive()){
-        	int[] fireAnimation = DataLoader.getCreepsPattern().get( ((Creep)this.getMilitary()).getPattern().getCreepType().name() ).getFireAnimation();
-        	int[] walkAnimation = DataLoader.getCreepsPattern().get( ((Creep)this.getMilitary()).getPattern().getCreepType().name() ).getWalkAnimation();
+        	int[] fireAnimation = PatternLoader.getCreepsPattern().get( ((Creep)this.getMilitary()).getPattern().getCreepType().name() ).getFireAnimation();
+        	int[] walkAnimation = PatternLoader.getCreepsPattern().get( ((Creep)this.getMilitary()).getPattern().getCreepType().name() ).getWalkAnimation();
     		
             if (thisCreep.getAttackBehavior().isAttacking()){
                 this.setFireCurrentFrame(this.getFireCurrentFrame()+1);
