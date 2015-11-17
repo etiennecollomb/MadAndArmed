@@ -8,6 +8,7 @@ import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Game.UI.Layout;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
+import com.geekmecrazy.madandarmed.Loader.AssetsLoader;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.Utils.FPSControl;
 import com.badlogic.gdx.ApplicationAdapter;
@@ -23,6 +24,8 @@ public class MadAndArmed extends ApplicationAdapter {
 	private FPSControl fpsControl;
 	
 	private FPSLogger fpsLogger;
+	
+	private AssetsLoader dataLoader;
 
 	@Override
 	public void create () {
@@ -33,10 +36,15 @@ public class MadAndArmed extends ApplicationAdapter {
 		System.out.println("### Gdx.graphics: " + Gdx.graphics.getWidth() + " " + Gdx.graphics.getHeight());
 		fpsLogger = new FPSLogger();
 
-        Assets.load();
+		/** Data Loader **/
+		dataLoader = new AssetsLoader();
+        Assets.load(); // TOD  a virer (Zachry staff a foutre dans dataloader)
 
 		globalManager = GlobalManager.getManager();
 		globalManager.init();
+        
+        
+        
 
 		/** MAD AND ARMED GAME */
 	    /*Scene fightScene = new Scene();
@@ -105,6 +113,8 @@ public class MadAndArmed extends ApplicationAdapter {
 
         ////// FIN TEST //////
 
+        
+        
 	}
 
 
@@ -130,6 +140,10 @@ public class MadAndArmed extends ApplicationAdapter {
 	//Update
 	public void onUpdate(){
 		ScreenManager.getCurrentScreen().onUpdate();
+		
+		/** Dataloader **/
+		System.out.println("Loading ... " + dataLoader.getAssetManager().getProgress());
+		dataLoader.getAssetManager().update();
 	}
 
 
