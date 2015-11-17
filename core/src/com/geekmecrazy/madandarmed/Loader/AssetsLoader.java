@@ -1,5 +1,8 @@
 package com.geekmecrazy.madandarmed.Loader;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -19,10 +22,10 @@ public class AssetsLoader {
 
 
 	public AssetsLoader(){
-		
+
 		assetManager = new AssetManager();
-		
-		
+
+
 		/** Set Units Dir **/
 		FileHandle dirHandle;
 		if (Gdx.app.getType() == ApplicationType.Android)
@@ -30,40 +33,66 @@ public class AssetsLoader {
 		else
 			dirHandle = Gdx.files.internal("./bin/"+unitDir); /** ApplicationType.Desktop **/
 
-		
+
 		/** List all Units **/
 		for (FileHandle unitType: dirHandle.list()) {
 
 			/** list all Colors **/
 			if(unitType.isDirectory()){
 				for (FileHandle colorType: unitType.list()) {
-					
+
 					/** list All assets **/
 					for (FileHandle asset: colorType.list()) {
-						
+
 						String fileName = asset.file().getName();
 						String extension = fileName.substring(fileName.lastIndexOf(".")+1);
 
 						if(extension.equals("txt")){
-							
+
 							System.out.println("asset: " + asset.path());
 							/** Load assests **/
 							assetManager.load(asset.path(), TextureAtlas.class);
 						}
-						
+
 					}
 				}
-				
+
 			}
 
 		}
 
 	}
-	
+
 
 	public AssetManager getAssetManager() {
 		return assetManager;
 	}
 
 
+	/** Get all assests loaded inside a specific Dir **/
+	public List<TextureAtlas> getTextureAtlasListFromDirName(String dirName){
+
+		List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
+
+		for(String assetNames : assetManager.getAssetNames()){
+			if(assetNames.startsWith(dirName)){
+				
+				System.out.println("List of Assests: " + assetNames);
+				
+				TextureAtlas textureAtlas = assetManager.get(assetNames, TextureAtlas.class);
+				textureAtlasList.add(textureAtlas);
+			}
+		}
+
+		return textureAtlasList;
+
+	}
+
+
+
 }
+
+
+
+
+

@@ -48,9 +48,6 @@ public class SpriteSheet {
 
 	/** list des textureAtlas si on cree le spriteSheet a partir de ca **/
 	private boolean isFromTexturePack;
-	private List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
-	private int numberOfWalkFrame;
-	private int numberOfShootFrame;
 
 
 	// ===========================================================
@@ -135,6 +132,7 @@ public class SpriteSheet {
 		}
 		
 		/** create all texture atlas **/
+		List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
 		for (FileHandle fileHandle: dirHandle.list()) {
 			String fileName = fileHandle.file().getName();
 			String extension = fileName.substring(fileName.lastIndexOf(".")+1);
@@ -148,8 +146,8 @@ public class SpriteSheet {
 		/** get atlas datas **/
 		mNumberOfColumn = 0;
 
-		numberOfWalkFrame = 0;
-		numberOfShootFrame = 0;
+		int numberOfWalkFrame = 0;
+		int numberOfShootFrame = 0;
 		boolean isWalkFrames = false;
 		boolean isShootFrames = false;
 		Array<Integer> walkColumns = new Array<Integer>();
