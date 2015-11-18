@@ -13,6 +13,7 @@ import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.Layout;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.geekmecrazy.madandarmed.Input.MyGestureListener;
+import com.geekmecrazy.madandarmed.Loader.AssetsLoader;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
@@ -82,17 +83,11 @@ public class GlobalManager {
 	private static TweenManager tweenManager;
 
 	public static Random random;
+	
+	/** **/
+	public static AssetsLoader assestsLoader;
+	public static boolean isAssestsLoaded;
 
-
-	//    // ===========================================================
-	//    // XML
-	//    // ===========================================================
-
-	/** XML path */
-	public static final String XML_CREEP = "xml/CreepPattern.xml";
-	public static final String XML_BUILDINGPATTERN = "xml/BuildingPattern.xml";
-	public static final String XML_BUILDINGQGPATTERN = "xml/BuildingPatternQG.xml";
-	public static final String XML_LEVEL11 = "xml/level/map_1_1.xml";
 
 	// ===========================================================
 	// JSON
@@ -196,6 +191,10 @@ public class GlobalManager {
 		Tween.registerAccessor(OrthographicCamera.class, new OrthographicCameraTween());
 		Tween.registerAccessor(Sprite.class, new SpriteTween());
 		Tween.registerAccessor(Layout.class, new LayoutTween());
+		
+		/** Data Loader **/
+		assestsLoader = new AssetsLoader();
+		isAssestsLoaded = false;
 	}
 
 	/** Set Camera */

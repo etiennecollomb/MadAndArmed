@@ -1,23 +1,15 @@
 package com.geekmecrazy.madandarmed.Game.UI;
 
-import com.geekmecrazy.madandarmed.Assets.Assets;
-import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
-import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IMoneyListener;
 import com.geekmecrazy.madandarmed.Entity.IScoreListener;
-import com.geekmecrazy.madandarmed.Entity.Rectangle;
-import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Renderer.FontRenderer;
-import com.geekmecrazy.madandarmed.Renderer.ScoreBarRenderer;
-import com.geekmecrazy.madandarmed.Screen.ScreenManager;
+import com.geekmecrazy.madandarmed.Renderer.ProgressBarRenderer;
 import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-
-import javax.xml.bind.annotation.XmlElementDecl;
 
 
 public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener {
@@ -26,16 +18,16 @@ public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener
     FontRenderer fontRenderer_1; //Money
     FontRenderer fontRenderer_2; //Money by Turn
 
-    ScoreBarRenderer scoreBarRenderer_0;
-    ScoreBarRenderer scoreBarRenderer_1;
+    ProgressBarRenderer scoreBarRenderer_0;
+    ProgressBarRenderer scoreBarRenderer_1;
 
     // ===========================================================
     // Constructors
     // ===========================================================
 
     public ScoreBarUI(){
-        scoreBarRenderer_0 = new ScoreBarRenderer();
-        scoreBarRenderer_1 = new ScoreBarRenderer();
+        scoreBarRenderer_0 = new ProgressBarRenderer();
+        scoreBarRenderer_1 = new ProgressBarRenderer();
 
         fontRenderer_0 = new FontRenderer( new BitmapFont(Gdx.files.internal("font/trivial_14.fnt"), false) );
         fontRenderer_1 = new FontRenderer( new BitmapFont(Gdx.files.internal("font/trivial_14.fnt"), false) );
@@ -54,7 +46,7 @@ public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener
     @Override
     public void moneyChange(Team team) {
         fontRenderer_0.setText(this.getMoneyText());
-        float size_ = ((float)team.getMoney() / (float)team.getMoneyMax()) * (float)(this.scoreBarRenderer_0.getScore_bar_maxX() - this.scoreBarRenderer_0.getScore_bar_minX());
+        float size_ = ((float)team.getMoney() / (float)team.getMoneyMax()) * (float)(this.scoreBarRenderer_0.getProgressBarMaX() - this.scoreBarRenderer_0.getProgressBarMinX());
         this.scoreBarRenderer_0.setBarSize((int) size_);
 
         fontRenderer_2.setText(this.getMoneyTurnText());
@@ -63,7 +55,7 @@ public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener
     @Override
     public void scoreChange(Team team) {
         fontRenderer_1.setText(this.getScoreText());
-        float size_ = ((float)this.getScore() / (float)team.getThoriumMax()) * (float)(this.scoreBarRenderer_1.getScore_bar_maxX() - this.scoreBarRenderer_1.getScore_bar_minX());
+        float size_ = ((float)this.getScore() / (float)team.getThoriumMax()) * (float)(this.scoreBarRenderer_1.getProgressBarMaX() - this.scoreBarRenderer_1.getProgressBarMinX());
         this.scoreBarRenderer_1.setBarSize((int)size_);
     }
 
@@ -85,7 +77,7 @@ public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener
 
         float posX_0 = 0f;
         float posY_0 = 0f; //VirtualViewport.convertWorldHeightToUnit(-60f);
-        this.scoreBarRenderer_0.init(TextureType.SCORE_BAR_BLUE, posX_0, posY_0, score_bar_min, score_bar_max, score_bar_min_size);
+        this.scoreBarRenderer_0.init(TextureType.PROGRESS_BAR_BLUE, posX_0, posY_0, score_bar_min, score_bar_max, score_bar_min_size);
         this.add(scoreBarRenderer_0);
 //        this.scoreBarRenderer_0.setColor(1f, 1f, 1f, 0.5f);
 
@@ -97,7 +89,7 @@ public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener
 
         float posX_1 = 0f;
         float posY_1 = 0f;
-        this.scoreBarRenderer_1.init(TextureType.SCORE_BAR_YELLOW, posX_1, posY_1, score_bar_min, score_bar_max, score_bar_min_size);
+        this.scoreBarRenderer_1.init(TextureType.PROGRESS_BAR_YELLOW, posX_1, posY_1, score_bar_min, score_bar_max, score_bar_min_size);
         this.add(scoreBarRenderer_1);
 //        this.scoreBarRenderer_1.setColor(1f, 1f, 1f, 0.5f);
 

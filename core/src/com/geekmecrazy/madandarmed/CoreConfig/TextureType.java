@@ -36,13 +36,13 @@ public enum TextureType{
 	SOL_SOUS_BUILDING  			("game/Sol_Sous_Building.png", 128, 128),
 	SOL_SOUS_BUILDING_BIG 		("game/Sol_Sous_Building_big.png", 256, 256),
 
-	SCORE_BAR_BORDER			("game/score_bar_border.png", 4.8f, 1.2f),
-	SCORE_BAR_YELLOW			("game/score_bar_yellow.png", 4.8f, 1.2f),
-	//SCORE_BAR_PURPLE			("game/score_bar_purple.png", 256, 64),
-	SCORE_BAR_BLUE			    ("game/score_bar_blue.png", 4.8f, 1.2f),
-	//SCORE_BAR_ORANGE			("game/score_bar_orange.png", 256, 64),
-	SCORE_BAR_BACKGROUND		("game/score_bar_background.png", 4.8f, 1.2f),
-	SCORE_BAR_REFLET			("game/score_bar_reflet.png", 4.8f, 1.2f),
+	PROGRESS_BAR_BORDER			("game/score_bar_border.png", 4.8f, 1.2f),
+	PROGRESS_BAR_YELLOW			("game/score_bar_yellow.png", 4.8f, 1.2f),
+	//PROGRESS_BAR_PURPLE			("game/score_bar_purple.png", 256, 64),
+	PROGRESS_BAR_BLUE			    ("game/score_bar_blue.png", 4.8f, 1.2f),
+	//PROGRESS_BAR_ORANGE			("game/score_bar_orange.png", 256, 64),
+	PROGRESS_BAR_BACKGROUND		("game/score_bar_background.png", 4.8f, 1.2f),
+	PROGRESS_BAR_REFLET			("game/score_bar_reflet.png", 4.8f, 1.2f),
 
 	BLOOD_ON_FLOOR				("game/bloodOnFloor.png", 64, 64),
 
