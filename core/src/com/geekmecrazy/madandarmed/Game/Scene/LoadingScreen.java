@@ -1,38 +1,13 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
-import com.geekmecrazy.madandarmed.Entity.Rectangle;
-import com.geekmecrazy.madandarmed.Entity.Scene.FightScene;
-import com.geekmecrazy.madandarmed.Entity.Scene.HQScene;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
-import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
-import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
-import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
-import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet.SpriteSheetType;
-import com.geekmecrazy.madandarmed.Game.IAction;
-import com.geekmecrazy.madandarmed.Game.Tween.RectangleTween;
-import com.geekmecrazy.madandarmed.Game.UI.Button;
-import com.geekmecrazy.madandarmed.Game.UI.Layout;
-import com.geekmecrazy.madandarmed.Game.UI.Layout.Orientation;
-import com.geekmecrazy.madandarmed.Renderer.MyTiledMapRenderer;
 import com.geekmecrazy.madandarmed.Renderer.ProgressBarRenderer;
-import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
-
-import aurelienribon.tweenengine.BaseTween;
-import aurelienribon.tweenengine.Tween;
-import aurelienribon.tweenengine.TweenCallback;
-import aurelienribon.tweenengine.equations.Quad;
 
 
 public class LoadingScreen extends Screen implements IUpdatable {
