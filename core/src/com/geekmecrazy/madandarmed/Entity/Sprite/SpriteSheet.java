@@ -3,6 +3,7 @@ package com.geekmecrazy.madandarmed.Entity.Sprite;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 import com.badlogic.gdx.Application.ApplicationType;
@@ -123,25 +124,29 @@ public class SpriteSheet {
 	public void generateSpriteSheetFromAtlas(AnimatedTextureType animatedTextureType){
 
 
-		/** Get all files in dir **/
-		FileHandle dirHandle;
-		if (Gdx.app.getType() == ApplicationType.Android) {
-			dirHandle = Gdx.files.internal(animatedTextureType.getPath());
-		} else { // ApplicationType.Desktop ..
-			dirHandle = Gdx.files.internal("./bin/"+animatedTextureType.getPath());
-		}
+//		/** Get all files in dir **/
+//		FileHandle dirHandle;
+//		if (Gdx.app.getType() == ApplicationType.Android) {
+//			dirHandle = Gdx.files.internal(animatedTextureType.getPath());
+//		} else { // ApplicationType.Desktop ..
+//			dirHandle = Gdx.files.internal("./bin/"+animatedTextureType.getPath());
+//		}
+//		
+//		/** create all texture atlas **/
+//		List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
+//		for (FileHandle fileHandle: dirHandle.list()) {
+//			String fileName = fileHandle.file().getName();
+//			String extension = fileName.substring(fileName.lastIndexOf(".")+1);
+//
+//			if(extension.equals("txt")){
+//				TextureAtlas textureAtlas = new TextureAtlas(Gdx.files.internal(fileHandle.file().getPath()),Gdx.files.internal(fileHandle.file().getParent()));
+//				textureAtlasList.add(textureAtlas);
+//			}
+//		}
 		
-		/** create all texture atlas **/
-		List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
-		for (FileHandle fileHandle: dirHandle.list()) {
-			String fileName = fileHandle.file().getName();
-			String extension = fileName.substring(fileName.lastIndexOf(".")+1);
 
-			if(extension.equals("txt")){
-				TextureAtlas textureAtlas = new TextureAtlas(Gdx.files.internal(fileHandle.file().getPath()),Gdx.files.internal(fileHandle.file().getParent()));
-				textureAtlasList.add(textureAtlas);
-			}
-		}
+		List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
+		textureAtlasList = GlobalManager.assestsLoader.getTextureAtlasListFromDirName(animatedTextureType.getPath());
 		
 		/** get atlas datas **/
 		mNumberOfColumn = 0;

@@ -208,12 +208,12 @@ public class MenuScreen extends Screen implements IUpdatable {
 		MenuScreen.getManager().getHUD().registerTouchableShape(layout_test);
 
 		//TEST
-		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2);
-		as1 = new AnimatedSprite();
-		as1.init(spshit, 256, 256);
-		as1.setPosition(300f,  300f);
-		as1.setCurrentFrame(0);
-		this.getScene().attachChild(as1);
+//		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2);
+//		as1 = new AnimatedSprite();
+//		as1.init(spshit, 256, 256);
+//		as1.setPosition(300f,  300f);
+//		as1.setCurrentFrame(0);
+//		this.getScene().attachChild(as1);
 		//		
 		//		Rectangle r2d2 = new Rectangle();
 		//		r2d2.init(300f,300f,9, 9);
@@ -251,12 +251,12 @@ public class MenuScreen extends Screen implements IUpdatable {
 		//		as4.setCurrentFrame(8,0); //y sur la position de tir !
 		//		this.getScene().attachChild(as4);
 
-		SpriteSheet spshit5 = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2);
-		as5 = new AnimatedSprite();
-		as5.init(spshit5, 256, 256);
-		as5.setPosition(450f,  500f);
-		as5.setCurrentFrame(8,0); //y sur la position de tir !
-		this.getScene().attachChild(as5);
+//		SpriteSheet spshit5 = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2);
+//		as5 = new AnimatedSprite();
+//		as5.init(spshit5, 256, 256);
+//		as5.setPosition(450f,  500f);
+//		as5.setCurrentFrame(8,0); //y sur la position de tir !
+//		this.getScene().attachChild(as5);
 
 		//		Rectangle r2d5 = new Rectangle();
 		//		r2d5.init(300f,300f,9, 9);
@@ -271,13 +271,13 @@ public class MenuScreen extends Screen implements IUpdatable {
 	public void onUpdate(){
 
 		//TEST
-		int x = as1.getCurrentFrameX();
-		int y = as1.getCurrentFrameY();
-		int maxX = as1.getSpriteSheet().getNumberOfColumn();
-		int maxY = as1.getSpriteSheet().getNumberOfRow();
-		y++;
-		if(y>=maxY){y=33; x++; if(x>=maxX){x=0;} }
-		as1.setCurrentFrame(x, y);
+//		int x = as1.getCurrentFrameX();
+//		int y = as1.getCurrentFrameY();
+//		int maxX = as1.getSpriteSheet().getNumberOfColumn();
+//		int maxY = as1.getSpriteSheet().getNumberOfRow();
+//		y++;
+//		if(y>=maxY){y=33; x++; if(x>=maxX){x=0;} }
+//		as1.setCurrentFrame(x, y);
 		//		
 		//		x = as2.getCurrentFrameX();
 		//		y = as2.getCurrentFrameY();
@@ -304,13 +304,13 @@ public class MenuScreen extends Screen implements IUpdatable {
 		//		as4.setCurrentFrame(x, maxY-1);
 
 
-		x = as5.getCurrentFrameX();
-		y = as5.getCurrentFrameY();
-		maxX = as5.getSpriteSheet().getNumberOfColumn();
-		maxY = as5.getSpriteSheet().getNumberOfRow();
-		y++;
-		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
-		as5.setCurrentFrame(x, maxY-1);
+//		x = as5.getCurrentFrameX();
+//		y = as5.getCurrentFrameY();
+//		maxX = as5.getSpriteSheet().getNumberOfColumn();
+//		maxY = as5.getSpriteSheet().getNumberOfRow();
+//		y++;
+//		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
+//		as5.setCurrentFrame(x, maxY-1);
 		//FINTEST
 
 

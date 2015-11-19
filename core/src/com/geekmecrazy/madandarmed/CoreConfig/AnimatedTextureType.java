@@ -64,10 +64,10 @@ public enum AnimatedTextureType {
 	BULLHOUND_HD_TEAM2      		("game/Units/Bullhound/blue", 128),
 		
     /** TURRETS HIGH DEF */
-	TURRET_01_HD_TEAM1      		("game/Turrets/Turret01_512px_Red", 128),
-	TURRET_01_HD_TEAM2      		("game/Turrets/Turret01_512px_Blue", 128),
-	TURRET_02_HD_TEAM1      		("game/Turrets/Turret02_256px_Red", 128),
-	TURRET_02_HD_TEAM2      		("game/Turrets/Turret02_256px_Blue", 128),
+	TURRET_01_HD_TEAM1      		("game/Turrets/Turret01_512px/red", 128),
+	TURRET_01_HD_TEAM2      		("game/Turrets/Turret01_512px/blue", 128),
+	TURRET_02_HD_TEAM1      		("game/Turrets/Turret02_256px/red", 128),
+	TURRET_02_HD_TEAM2      		("game/Turrets/Turret02_256px/blue", 128),
 
 	;
 

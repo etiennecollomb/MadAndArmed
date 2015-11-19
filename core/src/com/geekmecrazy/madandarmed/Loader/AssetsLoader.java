@@ -15,7 +15,8 @@ import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 
 public class AssetsLoader {
 
-	static String unitDir = "game/Units";
+	static String UNIT_DIR = "game/Units";
+	static String TURRET_DIR = "game/Turrets";
 
 	/** Should not be static ! **/
 	AssetManager assetManager;
@@ -25,13 +26,22 @@ public class AssetsLoader {
 
 		assetManager = new AssetManager();
 
+		this.loadAssetsFromDir(UNIT_DIR);
+		this.loadAssetsFromDir(TURRET_DIR);
 
+
+	}
+
+	
+	/** structure Dir : dirName/{color subdir}/assests.{txt || png} **/
+	private void loadAssetsFromDir(String dirName){
+		
 		/** Set Units Dir **/
 		FileHandle dirHandle;
 		if (Gdx.app.getType() == ApplicationType.Android)
-			dirHandle = Gdx.files.internal(unitDir); /** Android Application **/
+			dirHandle = Gdx.files.internal(dirName); /** Android Application **/
 		else
-			dirHandle = Gdx.files.internal("./bin/"+unitDir); /** ApplicationType.Desktop **/
+			dirHandle = Gdx.files.internal("./bin/"+dirName); /** ApplicationType.Desktop **/
 
 
 		/** List all Units **/
@@ -60,10 +70,10 @@ public class AssetsLoader {
 			}
 
 		}
-
+		
 	}
 
-
+	
 	public AssetManager getAssetManager() {
 		return assetManager;
 	}
@@ -72,15 +82,27 @@ public class AssetsLoader {
 	/** Get all assests loaded inside a specific Dir **/
 	public List<TextureAtlas> getTextureAtlasListFromDirName(String dirName){
 
+		if (Gdx.app.getType() == ApplicationType.Android)
+			dirName = dirName; /** Android Application **/
+		else
+			dirName = "./bin/"+dirName; /** ApplicationType.Desktop **/
+
+		
 		List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
 
-		for(String assetNames : assetManager.getAssetNames()){
-			if(assetNames.startsWith(dirName)){
+		for(String assetName : assetManager.getAssetNames()){			
+			if(assetName.startsWith(dirName)){
 				
-				System.out.println("List of Assests: " + assetNames);
+				String fileName = assetName;
+				String extension = fileName.substring(fileName.lastIndexOf(".")+1);
+
+				if(extension.equals("txt")){
+					System.out.println("List of Assests: " + assetName);
+					
+					TextureAtlas textureAtlas = assetManager.get(assetName, TextureAtlas.class);
+					textureAtlasList.add(textureAtlas);
+				}
 				
-				TextureAtlas textureAtlas = assetManager.get(assetNames, TextureAtlas.class);
-				textureAtlasList.add(textureAtlas);
 			}
 		}
 

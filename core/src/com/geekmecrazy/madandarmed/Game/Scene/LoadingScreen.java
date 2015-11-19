@@ -82,8 +82,10 @@ public class LoadingScreen extends Screen implements IUpdatable {
 		if(!GlobalManager.isAssestsLoaded){
 			//Continue to load
 			GlobalManager.assestsLoader.getAssetManager().update();
-			if(GlobalManager.assestsLoader.getAssetManager().getProgress() == 1f)
+			if(GlobalManager.assestsLoader.getAssetManager().getProgress() == 1f){
+				GlobalManager.assestsLoader.getAssetManager().finishLoading(); /** to be sure... **/
 				GlobalManager.isAssestsLoaded = true;
+			}
 			
 			/** set loading bar renderer **/
 			//TEST a refaire propre en [0; 1.0]
