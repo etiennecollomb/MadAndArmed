@@ -36,6 +36,8 @@ public class AssetsLoader {
 	/** structure Dir : dirName/{color subdir}/assests.{txt || png} **/
 	private void loadAssetsFromDir(String dirName){
 		
+		//TODO : optim pour gagner 5 s de load : mettre en dur les path des assest car lister sur mobile via file handle est tres long !
+		
 		/** Set Units Dir **/
 		FileHandle dirHandle;
 		if (Gdx.app.getType() == ApplicationType.Android)
