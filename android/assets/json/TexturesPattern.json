@@ -15,7 +15,7 @@
 	TEAM2: {
 		class: com.geekmecrazy.madandarmed.Pattern.TexturePattern
 		textures: {
-			GLADIATOR: GLADIATOR_HD_TEAM2
+			GLADIATOR: IROBOT_BLACK_HD_TEAM2
 			MARINE: MARINE_HD_TEAM2
 			FLAMETHROWER: FLAMETHROWER1_HD_TEAM2
 			MESH: MESH_HD_TEAM2
