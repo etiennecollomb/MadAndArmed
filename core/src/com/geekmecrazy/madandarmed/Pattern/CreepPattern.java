@@ -12,7 +12,9 @@ public class CreepPattern {
 		MARINE,
 		FLAMETHROWER,
 		MESH,
-		BULLHOUND
+		BULLHOUND,
+		HACKER,
+		MEDIC
 	} 
 	
 	public static enum CreepSize {
