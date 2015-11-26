@@ -6,6 +6,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.TilesType;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
@@ -482,4 +483,34 @@ public class MyTiledMapRenderer extends Shape {
 			}
 
 	}
+	
+	
+	/** Save generated Map to PNG **/
+	public void saveBackgroundSpriteToPNG(){
+//        try{
+//            FileHandle fh;
+//            do{
+//                fh = new FileHandle(Gdx.files.getLocalStoragePath() + "screenshot" + counter++ + ".png");
+//            }while (fh.exists());
+//            Pixmap pixmap = getScreenshot(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
+//            PixmapIO.writePNG(fh, pixmap);
+//            pixmap.dispose();
+//            
+//            
+//            
+//            
+//            
+//        }catch (Exception e){           
+//        }
+//        
+        int size = backgroundSprite.size();
+        int counter = 0;
+        FileHandle fh;
+        for(int i=0; i<size ; i++){
+        	fh = new FileHandle(Gdx.files.getLocalStoragePath() + "screenshot" + counter++ + ".png");
+        }
+    }
+	
+	
+	
 }
