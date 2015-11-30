@@ -84,8 +84,7 @@ public class SpriteSheet {
 		if(pAnimatedTextureType.getNumberOfTiled() >= 0)
 			this.mNumberOfTiled = pAnimatedTextureType.getNumberOfTiled(); //on impose un nombre de tiled
 
-		System.out.println("##### SpriteSheet Loading :  " + pAnimatedTextureType.name() + " > "  + (System.currentTimeMillis() - timeTEMP)/1000f + " sec." );
-
+		System.out.println("SpriteSheet Loading :  " + pAnimatedTextureType.name() + " > "  + (System.currentTimeMillis() - timeTEMP)/1000f + " sec.\n---------------" );
 
 	}
 
@@ -124,6 +123,7 @@ public class SpriteSheet {
 	public void generateSpriteSheetFromAtlas(AnimatedTextureType animatedTextureType){
 
 
+		/** Le code ci dessous permet de calculer le temps de chargement pas groupe d asset (Unit type...), util pour regarder les stats **/
 //		/** Get all files in dir **/
 //		FileHandle dirHandle;
 //		if (Gdx.app.getType() == ApplicationType.Android) {
@@ -198,7 +198,7 @@ public class SpriteSheet {
 		mNumberOfColumn++;
 		mNumberOfRow = numberOfWalkFrame + numberOfShootFrame;
 
-		System.out.println("#### Spritesheet Size : " +mNumberOfColumn+" "+mNumberOfRow+"");
+		System.out.println("Spritesheet Size : " +mNumberOfColumn+" "+mNumberOfRow+"");
 
 		/** set SpriteSheet**/
 		mSprites = new TextureRegion[mNumberOfColumn][mNumberOfRow];
@@ -237,11 +237,8 @@ public class SpriteSheet {
 
 		//Get all texture
 		FileHandle dirHandle;
-		if (Gdx.app.getType() == ApplicationType.Android) {
-			dirHandle = Gdx.files.internal(animatedTextureType.getPath());
-		} else { // ApplicationType.Desktop ..
-			dirHandle = Gdx.files.internal("./bin/"+animatedTextureType.getPath());
-		}
+		
+		dirHandle = Gdx.files.internal(GlobalManager.convertToDevicePath(animatedTextureType.getPath()));
 
 		/** get all texture and number of spritesheet by line **/
 		int currentRowFile = 0;

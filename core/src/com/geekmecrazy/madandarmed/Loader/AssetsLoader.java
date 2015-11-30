@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 
 public class AssetsLoader {
 
@@ -36,11 +37,7 @@ public class AssetsLoader {
 		
 		/** Set Units Dir **/
 		FileHandle dirHandle;
-		if (Gdx.app.getType() == ApplicationType.Android)
-			dirHandle = Gdx.files.internal(dirName); /** Android Application **/
-		else
-			dirHandle = Gdx.files.internal("./bin/"+dirName); /** ApplicationType.Desktop **/
-
+		dirHandle = Gdx.files.internal(GlobalManager.convertToDevicePath(dirName));
 
 		/** List all Units **/
 		for (FileHandle unitType: dirHandle.list()) {
@@ -80,11 +77,7 @@ public class AssetsLoader {
 	/** Get all assests loaded inside a specific Dir **/
 	public List<TextureAtlas> getTextureAtlasListFromDirName(String dirName){
 
-		if (Gdx.app.getType() == ApplicationType.Android)
-			dirName = dirName; /** Android Application **/
-		else
-			dirName = "./bin/"+dirName; /** ApplicationType.Desktop **/
-
+		dirName = GlobalManager.convertToDevicePath(dirName);
 		
 		List<TextureAtlas> textureAtlasList = new ArrayList<TextureAtlas>();
 

@@ -20,6 +20,8 @@ import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.Application.ApplicationType;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -394,6 +396,17 @@ public class GlobalManager {
 		GlobalManager.tweenManager = tweenManager;
 	}
 
+	public static String convertToDevicePath(String dirName){
+		
+		/** Set Units Dir **/
+		FileHandle dirHandle;
+		if (Gdx.app.getType() == ApplicationType.Android)
+			return dirName; /** Android Application **/
+		else
+			return "./bin/"+dirName; /** ApplicationType.Desktop **/
+		
+		
+	}
 
 }
 

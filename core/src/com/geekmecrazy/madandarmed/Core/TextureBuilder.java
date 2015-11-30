@@ -8,8 +8,10 @@ import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Entity.Alignment;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -128,6 +130,8 @@ public class TextureBuilder {
 		/** Create sub texture only if Max texture Size smaller size of Map Fight Size **/
 		if(numberColumns == 1 && numberRows == 1){
 			
+			//savePixmapToPNG(this.getFinalPixmap(), "image_0");  /** Generate PNG image to a dir (used for programming **/
+			
 			Texture spriteTexture = this.createTexture();
 
 			//Create Sprite
@@ -135,9 +139,9 @@ public class TextureBuilder {
 			newSprite.init(0, 0, spriteTexture.getWidth(), spriteTexture.getHeight());
 			newSprite.setTextureRegion(new TextureRegion(spriteTexture));
 			newSprite.setAlignment(Alignment.NONE);
-			
+
 			sprites.add(newSprite);
-			
+
 		}else{
 
 			Pixmap megaPixmap = this.getFinalPixmap();
@@ -152,6 +156,8 @@ public class TextureBuilder {
 					//TODO : calculer la taille restante en puissance de 2 (limite espace memoire)
 					this.init(maxTextureWidth, maxTextureHeight);
 					this.getFinalPixmap().drawPixmap(megaPixmap, -posX, -posY);
+
+					//savePixmapToPNG(this.getFinalPixmap(), "image_" + i);  /** Generate PNG image to a dir (used for programming **/
 
 					Texture spriteTexture = this.createTexture();
 
@@ -189,6 +195,22 @@ public class TextureBuilder {
 			father.attachChild(sprite);
 		}
 	}
+
+
+
+	/** Save generated Map to PNG (For Programming Use Only) **/
+	public void savePixmapToPNG(Pixmap pixmap, String fileName){
+
+		String storageRoot = Gdx.files.getExternalStoragePath(); /** C:\Users\Etienne\ **/
+//		String storageRoot = Gdx.files.getLocalStoragePath(); /** M:\_MadAndArmed\Eclipse_ADT\git\MadAndArmed\desktop\ **/
+		
+		FileHandle fh = new FileHandle(storageRoot + fileName + ".png");
+		System.out.println("Writing " + storageRoot + fileName + ".png ...");
+
+		PixmapIO.writePNG(fh, pixmap);
+
+	}
+
 
 
 }

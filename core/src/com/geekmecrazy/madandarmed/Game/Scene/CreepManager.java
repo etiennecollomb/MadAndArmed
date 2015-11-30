@@ -106,7 +106,7 @@ public class CreepManager {
 			newCreep.getMyTeam().addMilitary(newCreep);
 			listCreeps.add(newCreep);
 
-            System.out.println("####### NUMBER OF UNITS : " + this.getCreepsNumber());		}
+            System.out.println("NUMBER OF UNITS : " + this.getCreepsNumber());		}
 	}
 
     public int getCreepsNumber(){
