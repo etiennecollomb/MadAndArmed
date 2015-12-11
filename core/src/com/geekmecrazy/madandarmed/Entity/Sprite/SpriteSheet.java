@@ -152,12 +152,21 @@ public class SpriteSheet {
 		mNumberOfColumn = 0;
 
 		int numberOfWalkFrame = 0;
+		int numberOfAimFrame = 0;
 		int numberOfShootFrame = 0;
+		
 		boolean isWalkFrames = false;
+		boolean isAimFrames = false;
 		boolean isShootFrames = false;
+		
 		Array<Integer> walkColumns = new Array<Integer>();
 		Array<Integer> walkRows = new Array<Integer>();
 		Array<AtlasRegion> walkAtlasRegion = new Array<AtlasRegion>();
+		
+		Array<Integer> aimColumns = new Array<Integer>();
+		Array<Integer> aimRows = new Array<Integer>();
+		Array<AtlasRegion> aimAtlasRegion = new Array<AtlasRegion>();
+		
 		Array<Integer> shootColumns = new Array<Integer>();
 		Array<Integer> shootRows = new Array<Integer>();
 		Array<AtlasRegion> shootAtlasRegion = new Array<AtlasRegion>();
@@ -177,12 +186,19 @@ public class SpriteSheet {
 				String actionName = fileName.substring(0, pos);
 
 				if(column>mNumberOfColumn) mNumberOfColumn = column;
+				
 				if(actionName.equals("1Walk")){
 					isWalkFrames = true;
 					if(row>numberOfWalkFrame) numberOfWalkFrame = row;
 					walkColumns.add(new Integer(column));
 					walkRows.add(new Integer(row));
 					walkAtlasRegion.add(atlasRegions.get(j));
+				}else if(actionName.equals("2Aim")){
+					isAimFrames = true;
+					if(row>numberOfAimFrame) numberOfAimFrame = row;
+					aimColumns.add(new Integer(column));
+					aimRows.add(new Integer(row));
+					aimAtlasRegion.add(atlasRegions.get(j));
 				}else if(actionName.equals("3Shoot")){
 					isShootFrames = true;
 					if(row>numberOfShootFrame) numberOfShootFrame = row;
@@ -193,10 +209,11 @@ public class SpriteSheet {
 			}
 		}
 		if(isWalkFrames) numberOfWalkFrame++;
+		if(isAimFrames) numberOfAimFrame++;
 		if(isShootFrames) numberOfShootFrame++;
 
 		mNumberOfColumn++;
-		mNumberOfRow = numberOfWalkFrame + numberOfShootFrame;
+		mNumberOfRow = numberOfWalkFrame + numberOfAimFrame + numberOfShootFrame;
 
 		System.out.println("Spritesheet Size : " +mNumberOfColumn+" "+mNumberOfRow+"");
 
@@ -210,6 +227,12 @@ public class SpriteSheet {
 		}
 		currentIndex = currentIndex + numberOfWalkFrame;
 
+		/** Aim **/
+		for(int i=0; i<aimAtlasRegion.size; i++){
+			mSprites[aimColumns.get(i)][aimRows.get(i)+currentIndex] = aimAtlasRegion.get(i);
+		}
+		currentIndex = currentIndex + numberOfAimFrame;
+		
 		/** Shoot **/
 		for(int i=0; i<shootAtlasRegion.size; i++){
 			mSprites[shootColumns.get(i)][shootRows.get(i)+currentIndex] = shootAtlasRegion.get(i);

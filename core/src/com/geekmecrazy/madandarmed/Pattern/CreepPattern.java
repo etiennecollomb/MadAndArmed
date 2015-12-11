@@ -235,44 +235,28 @@ public class CreepPattern {
 	}
 
 	//renvoie une array a lire de gauche a droite en boucle
-	//type marche : 123454321...etc
 	public void calculateAnimationListWalk(){
-
-		//TODO A TOUT REFAIRE !!!
-		
-//		float nominalWalkPixelLength = 1f; /** ie: if AnimationWalkPixelLength=1 then vitesse=1 **/
-//		
-//		float nominalSpeedCreep =  (float)this.getAnimationWalkPixelLength() / nominalWalkPixelLength; /** sa vitesse par rapport a la vitesse arbitraire de base nominalSpeed **/
-//		
-//		 /** ie: un creep qui a une walkPiwelLength 2 fois plus petite que la nominalWalkPixelLength devaitr aller a 4 fois la vitesse nominal (=1) pour etre a walkSpeed = 2 **/
-//		int numberOfFrames = (float)this.getWalkAnimationRow().size() * ( (float)this.getWalkSpeed() / nominalSpeedCreep ) ;
-		
-//		//on "etale" les frame selon le ratio modulo sur la array
-//		int size_ = this.getWalkAnimationRow().size();
-//		float nbFramePerStep = ((float)this.getAnimationWalkPixelLength())/((float)size_*(float)this.getWalkSpeed()); //nb de frame entre 2 dessins
-//		this.walkAnimation = new int[(int)(((float)this.getAnimationWalkPixelLength())/((float)this.getWalkSpeed()))];
-//
-//		float frameCounter=0f;
-//		int stepCounter=0;
-//		for(int i=0; i<this.walkAnimation.length; i++){
-//
-//			if(frameCounter>nbFramePerStep){
-//				stepCounter=stepCounter+1;
-//				frameCounter=frameCounter-nbFramePerStep;
-//			}
-//			this.walkAnimation[i]=this.getWalkAnimationRow().get(stepCounter);
-//			frameCounter = frameCounter+1;
-//		}
-		
 		
 		/** set walk speed per frame **/
-		this.setWalkSpeed( this.getAnimationWalkPixelLength() / (float)this.getWalkAnimationRow().size() );
+//		this.setWalkSpeed( this.getAnimationWalkPixelLength() / (float)this.getWalkAnimationRow().size() );
 		
-		this.walkAnimation = new int[ this.getWalkAnimationRow().size() ];
-		for(int i=0; i<this.walkAnimation.length; i++){
-			this.walkAnimation[i]=this.getWalkAnimationRow().get(i);
+		int frameRepetition = 2; /** double, triple...etc les frames si neccessaire **/
+		int size = this.getWalkAnimationRow().size();
+		this.walkAnimation = new int[ size * frameRepetition ];
+		for(int i=0; i<size; i++){
+			for(int j=0; j<frameRepetition; j++)
+				this.walkAnimation[i*frameRepetition+j]=this.getWalkAnimationRow().get(i);
 		}
 		
+//		/** TEST :saute des frame **/
+//		int delaiFrame = 2;
+//		this.walkAnimation = new int[ this.getWalkAnimationRow().size()/delaiFrame*delaiFrame ];
+//		for(int i=0; i<this.walkAnimation.length/delaiFrame; i++){
+//			for(int j=0; j<delaiFrame; j++)
+//				this.walkAnimation[i*delaiFrame+j]=this.getWalkAnimationRow().get(i*delaiFrame);
+//		}
+		
+
 	}
 
 
