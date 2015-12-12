@@ -1,81 +1,117 @@
 bullhound-9.png
+size: 512, 1024
 format: RGBA4444
 filter: Linear,Linear
 repeat: none
-1Walk#00004#00004
+1Walk#00005#00000
   rotate: false
-  xy: 2, 281
-  size: 180, 89
+  xy: 402, 425
+  size: 81, 141
   orig: 256, 256
-  offset: 51, 67
+  offset: 84, 37
   index: -1
-1Walk#00005#00004
+1Walk#00013#00015
   rotate: false
-  xy: 2, 372
-  size: 178, 92
+  xy: 348, 139
+  size: 110, 142
   orig: 256, 256
-  offset: 53, 67
+  offset: 59, 37
   index: -1
-1Walk#00007#00012
+1Walk#00015#00000
   rotate: false
-  xy: 2, 924
-  size: 173, 92
+  xy: 197, 416
+  size: 81, 140
   orig: 256, 256
-  offset: 17, 65
+  offset: 82, 40
   index: -1
-1Walk#00008#00012
+1Walk#00017#00000
   rotate: false
-  xy: 2, 831
-  size: 174, 91
+  xy: 92, 419
+  size: 81, 138
   orig: 256, 256
-  offset: 17, 65
+  offset: 82, 39
   index: -1
-1Walk#00009#00012
+1Walk#00019#00000
   rotate: false
-  xy: 2, 560
-  size: 175, 91
+  xy: 1, 281
+  size: 89, 137
   orig: 256, 256
-  offset: 18, 65
+  offset: 76, 39
   index: -1
-1Walk#00010#00004
+1Walk#00021#00000
   rotate: false
-  xy: 2, 93
-  size: 180, 92
+  xy: 117, 140
+  size: 98, 136
   orig: 256, 256
-  offset: 47, 67
+  offset: 68, 39
   index: -1
-1Walk#00010#00012
+1Walk#00023#00000
   rotate: false
-  xy: 2, 466
-  size: 178, 92
+  xy: 217, 276
+  size: 96, 138
   orig: 256, 256
-  offset: 18, 65
+  offset: 69, 39
   index: -1
-1Walk#00019#00004
+1Walk#00027#00000
   rotate: false
-  xy: 2, 2
-  size: 182, 89
+  xy: 315, 283
+  size: 85, 141
   orig: 256, 256
-  offset: 48, 65
+  offset: 79, 38
   index: -1
-1Walk#00021#00004
+1Walk#00031#00000
   rotate: false
-  xy: 2, 653
-  size: 175, 88
+  xy: 402, 283
+  size: 85, 140
   orig: 256, 256
-  offset: 56, 64
+  offset: 77, 39
   index: -1
-1Walk#00022#00004
+1Walk#00031#00001
   rotate: false
-  xy: 2, 743
-  size: 175, 86
+  xy: 117, 1
+  size: 114, 137
   orig: 256, 256
-  offset: 56, 65
+  offset: 76, 39
   index: -1
-3Shoot#00014#00005
+1Walk#00031#00015
   rotate: false
-  xy: 2, 187
-  size: 180, 92
+  xy: 348, 1
+  size: 113, 136
   orig: 256, 256
-  offset: 62, 55
+  offset: 48, 40
+  index: -1
+3Shoot#00003#00015
+  rotate: false
+  xy: 233, 1
+  size: 113, 137
+  orig: 256, 256
+  offset: 64, 45
+  index: -1
+3Shoot#00005#00000
+  rotate: false
+  xy: 1, 1
+  size: 114, 140
+  orig: 256, 256
+  offset: 81, 47
+  index: -1
+3Shoot#00007#00015
+  rotate: false
+  xy: 101, 278
+  size: 94, 139
+  orig: 256, 256
+  offset: 75, 37
+  index: -1
+3Shoot#00009#00000
+  rotate: false
+  xy: 1, 143
+  size: 98, 136
+  orig: 256, 256
+  offset: 82, 34
+  index: -1
+3Shoot#00009#00015
+  rotate: false
+  xy: 217, 140
+  size: 97, 134
+  orig: 256, 256
+  offset: 72, 37
   index: -1

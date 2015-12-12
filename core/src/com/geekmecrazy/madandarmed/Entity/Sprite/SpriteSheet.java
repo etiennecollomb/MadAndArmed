@@ -171,6 +171,8 @@ public class SpriteSheet {
 		Array<Integer> shootRows = new Array<Integer>();
 		Array<AtlasRegion> shootAtlasRegion = new Array<AtlasRegion>();
 
+		int frameSkiped = 2; /** Durty but flexible, without regenerated all images : allow to get 1 of n image **/
+		
 		int atlasListSize = textureAtlasList.size();
 		for(int i=0; i<atlasListSize; i++){
 			Array<AtlasRegion> atlasRegions = textureAtlasList.get(i).getRegions();
@@ -180,7 +182,7 @@ public class SpriteSheet {
 				String fileName = atlasRegions.get(j).name;
 				int pos = fileName.length();
 				int column = Integer.parseInt(fileName.substring(pos-5, pos));
-				int row = Integer.parseInt(fileName.substring(pos-10, pos-6));
+				int row = Integer.parseInt(fileName.substring(pos-10, pos-6)) / frameSkiped; /** "/ frameSkiped": durty but flexible fro text **/
 
 				pos = fileName.indexOf("#");
 				String actionName = fileName.substring(0, pos);

@@ -1,0 +1,131 @@
+mesh-10.png
+size: 512, 1024
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+1Walk#00009#00004
+  rotate: false
+  xy: 313, 1
+  size: 101, 146
+  orig: 256, 256
+  offset: 76, 39
+  index: -1
+1Walk#00011#00004
+  rotate: false
+  xy: 207, 148
+  size: 101, 145
+  orig: 256, 256
+  offset: 76, 39
+  index: -1
+1Walk#00013#00004
+  rotate: false
+  xy: 1, 1
+  size: 102, 145
+  orig: 256, 256
+  offset: 75, 39
+  index: -1
+1Walk#00021#00004
+  rotate: false
+  xy: 1, 148
+  size: 101, 146
+  orig: 256, 256
+  offset: 76, 39
+  index: -1
+1Walk#00023#00004
+  rotate: false
+  xy: 411, 301
+  size: 100, 146
+  orig: 256, 256
+  offset: 77, 39
+  index: -1
+1Walk#00025#00004
+  rotate: false
+  xy: 205, 444
+  size: 99, 146
+  orig: 256, 256
+  offset: 78, 39
+  index: -1
+1Walk#00027#00004
+  rotate: false
+  xy: 102, 588
+  size: 98, 147
+  orig: 256, 256
+  offset: 79, 38
+  index: -1
+1Walk#00029#00004
+  rotate: false
+  xy: 104, 148
+  size: 101, 146
+  orig: 256, 256
+  offset: 76, 38
+  index: -1
+1Walk#00037#00004
+  rotate: false
+  xy: 1, 296
+  size: 100, 145
+  orig: 256, 256
+  offset: 77, 38
+  index: -1
+1Walk#00039#00004
+  rotate: false
+  xy: 103, 296
+  size: 100, 144
+  orig: 256, 256
+  offset: 77, 38
+  index: -1
+1Walk#00041#00004
+  rotate: false
+  xy: 103, 442
+  size: 100, 144
+  orig: 256, 256
+  offset: 77, 38
+  index: -1
+1Walk#00043#00004
+  rotate: false
+  xy: 310, 149
+  size: 101, 144
+  orig: 256, 256
+  offset: 76, 39
+  index: -1
+1Walk#00045#00004
+  rotate: false
+  xy: 105, 1
+  size: 102, 145
+  orig: 256, 256
+  offset: 76, 39
+  index: -1
+1Walk#00047#00004
+  rotate: false
+  xy: 209, 1
+  size: 102, 145
+  orig: 256, 256
+  offset: 76, 40
+  index: -1
+1Walk#00051#00004
+  rotate: false
+  xy: 207, 295
+  size: 100, 147
+  orig: 256, 256
+  offset: 77, 41
+  index: -1
+1Walk#00053#00004
+  rotate: false
+  xy: 309, 295
+  size: 100, 147
+  orig: 256, 256
+  offset: 77, 42
+  index: -1
+1Walk#00055#00004
+  rotate: false
+  xy: 1, 443
+  size: 99, 148
+  orig: 256, 256
+  offset: 78, 42
+  index: -1
+1Walk#00057#00004
+  rotate: false
+  xy: 413, 149
+  size: 98, 150
+  orig: 256, 256
+  offset: 79, 41
+  index: -1

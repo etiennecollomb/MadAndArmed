@@ -1,0 +1,131 @@
+flamethrower-3.png
+size: 256, 512
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+1Walk#00001#00008
+  rotate: false
+  xy: 69, 337
+  size: 66, 76
+  orig: 256, 256
+  offset: 90, 76
+  index: -1
+1Walk#00003#00008
+  rotate: false
+  xy: 1, 252
+  size: 67, 76
+  orig: 256, 256
+  offset: 89, 77
+  index: -1
+1Walk#00005#00008
+  rotate: false
+  xy: 73, 173
+  size: 68, 74
+  orig: 256, 256
+  offset: 89, 80
+  index: -1
+1Walk#00007#00008
+  rotate: false
+  xy: 143, 230
+  size: 68, 74
+  orig: 256, 256
+  offset: 89, 82
+  index: -1
+1Walk#00007#00009
+  rotate: false
+  xy: 149, 156
+  size: 70, 72
+  orig: 256, 256
+  offset: 90, 81
+  index: -1
+1Walk#00009#00009
+  rotate: false
+  xy: 1, 88
+  size: 71, 75
+  orig: 256, 256
+  offset: 89, 81
+  index: -1
+1Walk#00013#00009
+  rotate: false
+  xy: 76, 1
+  size: 73, 84
+  orig: 256, 256
+  offset: 87, 78
+  index: -1
+1Walk#00027#00007
+  rotate: false
+  xy: 1, 1
+  size: 73, 85
+  orig: 256, 256
+  offset: 89, 81
+  index: -1
+1Walk#00027#00008
+  rotate: false
+  xy: 1, 330
+  size: 66, 87
+  orig: 256, 256
+  offset: 93, 82
+  index: -1
+1Walk#00029#00008
+  rotate: false
+  xy: 73, 249
+  size: 67, 86
+  orig: 256, 256
+  offset: 92, 82
+  index: -1
+1Walk#00031#00008
+  rotate: false
+  xy: 1, 419
+  size: 66, 85
+  orig: 256, 256
+  offset: 92, 81
+  index: -1
+1Walk#00033#00007
+  rotate: false
+  xy: 1, 165
+  size: 70, 85
+  orig: 256, 256
+  offset: 89, 78
+  index: -1
+1Walk#00033#00008
+  rotate: false
+  xy: 142, 306
+  size: 66, 84
+  orig: 256, 256
+  offset: 92, 80
+  index: -1
+1Walk#00035#00007
+  rotate: false
+  xy: 76, 87
+  size: 71, 84
+  orig: 256, 256
+  offset: 88, 76
+  index: -1
+1Walk#00035#00008
+  rotate: false
+  xy: 69, 415
+  size: 63, 82
+  orig: 256, 256
+  offset: 93, 79
+  index: -1
+1Walk#00037#00007
+  rotate: false
+  xy: 151, 1
+  size: 73, 81
+  orig: 256, 256
+  offset: 86, 75
+  index: -1
+1Walk#00039#00008
+  rotate: false
+  xy: 134, 415
+  size: 65, 77
+  orig: 256, 256
+  offset: 91, 76
+  index: -1
+1Walk#00039#00009
+  rotate: false
+  xy: 151, 84
+  size: 72, 70
+  orig: 256, 256
+  offset: 87, 79
+  index: -1
