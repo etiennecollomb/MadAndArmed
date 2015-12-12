@@ -58,7 +58,7 @@
 	"BULLHOUND": {
 			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
 			creepType: BULLHOUND
-			weaponName: SWORD_1
+			weaponName: BULLHOUND_1
 			creepSize: MEDIUM
 			diameter: 20
 			life: 1500
@@ -72,7 +72,7 @@
 	"HACKER": {
 			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
 			creepType: HACKER
-			weaponName: SWORD_1
+			weaponName: HACKER_1
 			creepSize: SMALL
 			diameter: 20
 			life: 500
@@ -86,7 +86,7 @@
 	"MEDIC": {
 			class: com.geekmecrazy.madandarmed.Pattern.CreepPattern
 			creepType: MEDIC
-			weaponName: SWORD_1
+			weaponName: MEDIC_1
 			creepSize: SMALL
 			diameter: 20
 			life: 200

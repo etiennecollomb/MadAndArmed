@@ -70,5 +70,41 @@
 		dmgEffect: 5
 		missileSpeed: 6
 		animatedTextureType: MISSILE_EXPLOSION
+    },
+    "BULLHOUND_1": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: SWORD_1
+		weaponType: SWORD
+		hitRange: 50
+		hitSpeed: 20
+		dmgEffect: 30
+		animatedTextureType: IMPACT_BULLET
+		soundsType: [ PUNCH_01, PUNCH_02 ]
+		maxOverlappingSound: 10
+		minDelayBetweenSound: 50
+    },
+    "MEDIC_1": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: SWORD_1
+		weaponType: SWORD
+		hitRange: 50
+		hitSpeed: 20
+		dmgEffect: 30
+		animatedTextureType: IMPACT_BULLET
+		soundsType: [ PUNCH_01, PUNCH_02 ]
+		maxOverlappingSound: 10
+		minDelayBetweenSound: 50
+    },
+    "HACKER_1": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: SWORD_1
+		weaponType: SWORD
+		hitRange: 50
+		hitSpeed: 20
+		dmgEffect: 30
+		animatedTextureType: IMPACT_BULLET
+		soundsType: [ PUNCH_01, PUNCH_02 ]
+		maxOverlappingSound: 10
+		minDelayBetweenSound: 50
     }
 }

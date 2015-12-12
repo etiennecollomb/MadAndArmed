@@ -16,7 +16,10 @@ public class WeaponPattern{
 		FLAMETHROWER_1,
 		MISSILE_1,
 		MISSILE_2,
-		MESH_MULTIEXPLOSION_1
+		MESH_MULTIEXPLOSION_1,
+		BULLHOUND_1,
+		MEDIC_1,
+		HACKER_1
 	}
 	
 	public static enum WeaponType {
@@ -24,7 +27,10 @@ public class WeaponPattern{
 		GUN,
 		FLAMETHROWER,
 		MISSILE,
-		MESH_MULTIEXPLOSION
+		MESH_MULTIEXPLOSION,
+		BULLHOUND,
+		MEDIC,
+		HACKER
 	}	
 	
 	/** Weapon Name */

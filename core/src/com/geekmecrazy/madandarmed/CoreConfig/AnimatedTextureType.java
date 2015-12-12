@@ -62,9 +62,9 @@ public enum AnimatedTextureType {
 	MESH_HD_TEAM2           		("game/Units/Mesh/blue", 128),
 	BULLHOUND_HD_TEAM1      		("game/Units/Bullhound/red", 128),
 	BULLHOUND_HD_TEAM2      		("game/Units/Bullhound/blue", 128),
-	IROBOT_WHITE_HD_TEAM1      		("game/Units/IRobot/white-blue", 64),
+	IROBOT_WHITE_HD_TEAM1      		("game/Units/IRobot/white-red", 64),
 	IROBOT_WHITE_HD_TEAM2      		("game/Units/IRobot/white-blue", 64),
-	IROBOT_BLACK_HD_TEAM1      		("game/Units/IRobot/black-blue", 64),
+	IROBOT_BLACK_HD_TEAM1      		("game/Units/IRobot/black-red", 64),
 	IROBOT_BLACK_HD_TEAM2      		("game/Units/IRobot/black-blue", 64),
 		
     /** TURRETS HIGH DEF */

@@ -1,4 +1,4 @@
-irobot-white-blue-0.png
+white-blue-0.png
 size: 1024, 1024
 format: RGBA4444
 filter: Linear,Linear
