@@ -14,7 +14,9 @@ public class CreepPattern {
 		MESH,
 		BULLHOUND,
 		HACKER,
-		MEDIC
+		MEDIC,
+		GARGAN,
+		SNIPER
 	} 
 	
 	public static enum CreepSize {
@@ -200,6 +202,8 @@ public class CreepPattern {
 		case BULLHOUND:
 		case MEDIC:
 		case HACKER:
+		case GARGAN:
+		case SNIPER:
 		case SWORD:
 			//Corps a corps : 1234567 1234567...etc
 			state1Counter = this.getFireAnimationRow().size();

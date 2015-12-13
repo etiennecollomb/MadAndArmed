@@ -73,8 +73,8 @@
     },
     "BULLHOUND_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
-        weaponName: SWORD_1
-		weaponType: SWORD
+        weaponName: BULLHOUND_1
+		weaponType: BULLHOUND
 		hitRange: 50
 		hitSpeed: 20
 		dmgEffect: 30
@@ -85,8 +85,8 @@
     },
     "MEDIC_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
-        weaponName: SWORD_1
-		weaponType: SWORD
+        weaponName: MEDIC_1
+		weaponType: MEDIC
 		hitRange: 50
 		hitSpeed: 20
 		dmgEffect: 30
@@ -97,8 +97,32 @@
     },
     "HACKER_1": {
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
-        weaponName: SWORD_1
-		weaponType: SWORD
+        weaponName: HACKER_1
+		weaponType: HACKER
+		hitRange: 50
+		hitSpeed: 20
+		dmgEffect: 30
+		animatedTextureType: IMPACT_BULLET
+		soundsType: [ PUNCH_01, PUNCH_02 ]
+		maxOverlappingSound: 10
+		minDelayBetweenSound: 50
+    },
+    "GARGAN_1": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: GARGAN_1
+		weaponType: GARGAN
+		hitRange: 50
+		hitSpeed: 20
+		dmgEffect: 30
+		animatedTextureType: IMPACT_BULLET
+		soundsType: [ PUNCH_01, PUNCH_02 ]
+		maxOverlappingSound: 10
+		minDelayBetweenSound: 50
+    },
+    "SNIPER_1": {
+        class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
+        weaponName: SNIPER_1
+		weaponType: SNIPER
 		hitRange: 50
 		hitSpeed: 20
 		dmgEffect: 30

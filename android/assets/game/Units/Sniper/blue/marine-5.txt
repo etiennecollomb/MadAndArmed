@@ -1,0 +1,215 @@
+sniper-5.png
+size: 512, 1024
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+1Walk#00001#00008
+  rotate: false
+  xy: 343, 634
+  size: 89, 109
+  orig: 270, 270
+  offset: 87, 76
+  index: -1
+1Walk#00001#00009
+  rotate: false
+  xy: 240, 602
+  size: 101, 97
+  orig: 270, 270
+  offset: 79, 81
+  index: -1
+1Walk#00003#00005
+  rotate: false
+  xy: 277, 205
+  size: 136, 104
+  orig: 270, 270
+  offset: 103, 76
+  index: -1
+1Walk#00003#00007
+  rotate: false
+  xy: 95, 728
+  size: 86, 107
+  orig: 270, 270
+  offset: 92, 75
+  index: -1
+1Walk#00003#00008
+  rotate: false
+  xy: 420, 1
+  size: 90, 107
+  orig: 270, 270
+  offset: 87, 79
+  index: -1
+1Walk#00003#00009
+  rotate: false
+  xy: 246, 504
+  size: 102, 96
+  orig: 270, 270
+  offset: 79, 84
+  index: -1
+1Walk#00005#00007
+  rotate: false
+  xy: 206, 701
+  size: 89, 105
+  orig: 270, 270
+  offset: 91, 79
+  index: -1
+1Walk#00005#00008
+  rotate: false
+  xy: 419, 110
+  size: 92, 106
+  orig: 270, 270
+  offset: 86, 82
+  index: -1
+1Walk#00005#00009
+  rotate: false
+  xy: 136, 519
+  size: 102, 96
+  orig: 270, 270
+  offset: 80, 87
+  index: -1
+1Walk#00005#00010
+  rotate: false
+  xy: 276, 311
+  size: 135, 93
+  orig: 270, 270
+  offset: 45, 86
+  index: -1
+1Walk#00007#00007
+  rotate: false
+  xy: 413, 325
+  size: 93, 103
+  orig: 270, 270
+  offset: 90, 83
+  index: -1
+1Walk#00007#00008
+  rotate: false
+  xy: 1, 635
+  size: 92, 105
+  orig: 270, 270
+  offset: 86, 86
+  index: -1
+1Walk#00007#00009
+  rotate: false
+  xy: 350, 531
+  size: 101, 101
+  orig: 270, 270
+  offset: 81, 85
+  index: -1
+1Walk#00007#00010
+  rotate: false
+  xy: 138, 318
+  size: 134, 95
+  orig: 270, 270
+  offset: 45, 84
+  index: -1
+1Walk#00009#00007
+  rotate: false
+  xy: 415, 218
+  size: 96, 105
+  orig: 270, 270
+  offset: 89, 85
+  index: -1
+1Walk#00009#00009
+  rotate: false
+  xy: 1, 526
+  size: 101, 107
+  orig: 270, 270
+  offset: 81, 84
+  index: -1
+1Walk#00009#00010
+  rotate: false
+  xy: 1, 315
+  size: 135, 97
+  orig: 270, 270
+  offset: 43, 82
+  index: -1
+1Walk#00011#00006
+  rotate: false
+  xy: 274, 406
+  size: 133, 96
+  orig: 270, 270
+  offset: 93, 85
+  index: -1
+1Walk#00011#00007
+  rotate: false
+  xy: 104, 617
+  size: 100, 109
+  orig: 270, 270
+  offset: 87, 86
+  index: -1
+1Walk#00011#00010
+  rotate: false
+  xy: 139, 216
+  size: 135, 100
+  orig: 270, 270
+  offset: 41, 80
+  index: -1
+1Walk#00013#00006
+  rotate: false
+  xy: 1, 216
+  size: 136, 97
+  orig: 270, 270
+  offset: 92, 85
+  index: -1
+1Walk#00019#00006
+  rotate: false
+  xy: 1, 109
+  size: 136, 105
+  orig: 270, 270
+  offset: 89, 87
+  index: -1
+1Walk#00021#00006
+  rotate: false
+  xy: 139, 109
+  size: 136, 105
+  orig: 270, 270
+  offset: 88, 87
+  index: -1
+1Walk#00023#00006
+  rotate: false
+  xy: 1, 1
+  size: 138, 106
+  orig: 270, 270
+  offset: 88, 86
+  index: -1
+1Walk#00025#00006
+  rotate: false
+  xy: 141, 1
+  size: 138, 106
+  orig: 270, 270
+  offset: 88, 85
+  index: -1
+1Walk#00027#00006
+  rotate: false
+  xy: 281, 95
+  size: 136, 108
+  orig: 270, 270
+  offset: 88, 83
+  index: -1
+1Walk#00029#00006
+  rotate: false
+  xy: 1, 414
+  size: 133, 110
+  orig: 270, 270
+  offset: 88, 81
+  index: -1
+1Walk#00037#00009
+  rotate: false
+  xy: 136, 415
+  size: 108, 102
+  orig: 270, 270
+  offset: 71, 83
+  index: -1
+1Walk#00039#00009
+  rotate: false
+  xy: 409, 430
+  size: 102, 99
+  orig: 270, 270
+  offset: 77, 81
+  index: -1
+1Walk#00039#00010
+  rotate: false
+  xy: 281, 1
+  size: 137, 92
+  orig: 270, 270
+  offset: 43, 87
+  index: -1

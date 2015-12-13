@@ -66,6 +66,10 @@ public enum AnimatedTextureType {
 	IROBOT_WHITE_HD_TEAM2      		("game/Units/IRobot/white-blue", 64),
 	IROBOT_BLACK_HD_TEAM1      		("game/Units/IRobot/black-red", 64),
 	IROBOT_BLACK_HD_TEAM2      		("game/Units/IRobot/black-blue", 64),
+	GARGAN_HD_TEAM1      			("game/Units/Gargan/red", 64),
+	GARGAN_HD_TEAM2      			("game/Units/Gargan/blue", 64),
+	SNIPER_HD_TEAM1      			("game/Units/Sniper/red", 64),
+	SNIPER_HD_TEAM2      			("game/Units/Sniper/blue", 64),
 		
     /** TURRETS HIGH DEF */
 	TURRET_01_HD_TEAM1      		("game/Turrets/Turret01_512px/red", 128),
