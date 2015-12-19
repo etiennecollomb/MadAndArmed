@@ -26,6 +26,26 @@
 		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
 		    	creepType: BULLHOUND
 				icon: MARINE_BIG_ICON
+		    },
+		    {
+		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
+		    	creepType: HACKER
+				icon: MARINE_BIG_ICON
+		    },
+		    {
+		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
+		    	creepType: MEDIC
+				icon: MARINE_BIG_ICON
+		    },
+		    {
+		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
+		    	creepType: GARGAN
+				icon: MARINE_BIG_ICON
+		    },
+		    {
+		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
+		    	creepType: SNIPER
+				icon: MARINE_BIG_ICON
 		    }
 		]
 	}
