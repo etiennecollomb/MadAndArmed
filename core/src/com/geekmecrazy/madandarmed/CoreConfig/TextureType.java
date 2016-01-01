@@ -94,7 +94,6 @@ public enum TextureType{
 
 
 
-
 	//DECORATION
 	PLANT_00                    ("game/Decorations/Plant00_64.png", 64, 64),
 	PLANT_01                    ("game/Decorations/Plant01_64.png", 64, 64),
