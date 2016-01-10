@@ -14,6 +14,7 @@ public class AssetsLoader {
 
 	static String UNIT_DIR = "game/Units";
 	static String TURRET_DIR = "game/Turrets";
+	static String CAMPBUILDING_DIR = "game/CampBuilding";
 
 	/** Should not be static ! **/
 	AssetManager assetManager;
@@ -25,6 +26,7 @@ public class AssetsLoader {
 
 		this.loadAssetsFromDir(UNIT_DIR);
 		this.loadAssetsFromDir(TURRET_DIR);
+		this.loadAssetsFromDir(CAMPBUILDING_DIR);
 
 
 	}

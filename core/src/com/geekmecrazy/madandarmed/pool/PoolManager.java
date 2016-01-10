@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.pool;
 
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
+import com.geekmecrazy.madandarmed.Game.Element.CampBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.FlameThrower;
 import com.geekmecrazy.madandarmed.Game.Element.Gun;
@@ -29,6 +30,7 @@ public class PoolManager {
 	private static final int STARTING_ALLOCATE_MISSILE 				= 20;
 	private static final int STARTING_ALLOCATE_LIFE 				= 20;
 	private static final int STARTING_ALLOCATE_TURRET 				= 10;
+	private static final int STARTING_ALLOCATE_CAMPBUILDING			= 10;
 	private static final int STARTING_ALLOCATE_BARRICADE			= 10;
 	private static final int STARTING_ALLOCATE_GROUNDPATHFINDING 	= 20;
 	private static final int STARTING_ALLOCATE_AIRPATHFINDING 		= 20;
@@ -46,6 +48,7 @@ public class PoolManager {
 	private Pool<Missile> missilePool;
 	private Pool<Life> lifePool;
 	private Pool<Turret> turretPool;
+	private Pool<CampBuilding> campBuildingPool;
 	private Pool<Barricade> barricadePool;
 	private Pool<GroundPathFinding> groundPathFinding;
 	private Pool<AirPathFinding> airPathFindingPool;
@@ -108,6 +111,10 @@ public class PoolManager {
 
 	public Pool<Turret> getTurretPool() {
 		return turretPool;
+	}
+
+	public Pool<CampBuilding> getCampBuildingPool() {
+		return campBuildingPool;
 	}
 	
 	public Pool<Barricade> getBarricadePool() {
@@ -254,6 +261,14 @@ public class PoolManager {
 			protected Turret newObject() {
 				//System.out.println("#__ POOL __# allocate new Object : " + Turret.class.getName());
 				return new Turret();
+			 }
+		};
+		
+		campBuildingPool = new Pool<CampBuilding>(STARTING_ALLOCATE_CAMPBUILDING){
+			@Override
+			protected CampBuilding newObject() {
+				//System.out.println("#__ POOL __# allocate new Object : " + CampBuilding.class.getName());
+				return new CampBuilding();
 			 }
 		};
 

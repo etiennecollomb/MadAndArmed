@@ -11,6 +11,15 @@ public class BuildingPattern {
 	public static enum BuildingType {
 		CASTLE,
 		TURRET,
+		CAMP_BUILDING,
+		BARRICADE
+	}
+	
+	public static enum BuildingName {
+		CASTLE,
+		TURRET,
+		CAMP_BUILDING_01,
+		CAMP_BUILDING_02,
 		BARRICADE
 	} 
 	
@@ -35,6 +44,9 @@ public class BuildingPattern {
 	/** Building Type */
 	private BuildingType buildingType;
 	
+	/** Building Name */
+	private BuildingName buildingName;
+
 	/** Weapon type */
 	private WeaponName weaponName;
 	
@@ -45,7 +57,7 @@ public class BuildingPattern {
 	
 	/** cost to buy this building */
 	private int price;
-	
+		
 	/** list of row in spriteSheet for Aim Animation */
 	private ArrayList<Integer> aimAnimationRow;
 	
@@ -76,7 +88,15 @@ public class BuildingPattern {
 	public BuildingType getBuildingType() {
 		return buildingType;
 	}
+	
+	public BuildingName getBuildingName() {
+		return buildingName;
+	}
 
+	public void setBuildingName(BuildingName buildingName) {
+		this.buildingName = buildingName;
+	}
+	
 	public WeaponName getWeaponName() {
 		return weaponName;
 	}

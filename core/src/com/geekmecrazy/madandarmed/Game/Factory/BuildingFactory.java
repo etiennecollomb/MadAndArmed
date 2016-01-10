@@ -4,6 +4,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
+import com.geekmecrazy.madandarmed.Game.Element.CampBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
@@ -21,21 +22,23 @@ public class BuildingFactory{
 	// ===========================================================
 	// Constructors
 	// ===========================================================
-	
+
 	// disable object's instanciation (private constructor)
 	private BuildingFactory(){} 
 
 	public static void create (float posX, float posY, BuildingPattern buildingPattern, Team team) {
-		
+
 		Building building = null;
-		
+
 		if(buildingPattern.getBuildingType() == BuildingType.TURRET)
 			building = createTurret(posX, posY, buildingPattern, team);
 		else if(buildingPattern.getBuildingType() == BuildingType.CASTLE)
 			building = createTurret(posX, posY, buildingPattern, team);
 		else if(buildingPattern.getBuildingType() == BuildingType.BARRICADE)
 			building = createBarricade(posX, posY, buildingPattern, team);
-		
+		else if(buildingPattern.getBuildingType() == BuildingType.CAMP_BUILDING)
+			building = createCampBuilding(posX, posY, buildingPattern, team);
+
 		BuildingManager.getManager().addBuilding(building);
 	}
 
@@ -46,11 +49,11 @@ public class BuildingFactory{
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
-	
+
 	// ===========================================================
 	// Methods
 	// ===========================================================
-	
+
 	public static void destroy(Building building) {
 		BuildingManager.getManager().removeBuilding(building);
 		//building.recycle();
@@ -63,7 +66,7 @@ public class BuildingFactory{
 	}
 
 	public static Building createTurret(float posX, float posY, BuildingPattern buildingPattern, Team team){
-		
+
 		/** Life */
 		Life life = null;
 		if(buildingPattern.getLife()>0){
@@ -78,7 +81,7 @@ public class BuildingFactory{
 
 		/** AttackBehavior */
 		if(buildingPattern.getWeaponName()!=null){
-						
+
 			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
 			attackBehavior.init(PatternLoader.getWeaponsPattern().get(buildingPattern.getWeaponName().name()));
 			attackBehavior.setAttacking(true);
@@ -86,30 +89,49 @@ public class BuildingFactory{
 			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
 			attackBehavior.setAttaque(attaque);
 		}
-		
+
 		/** Castle Special Case */
 		if(buildingPattern.getBuildingType()==BuildingType.CASTLE)
-            team.registerCastle(turret);
-		
+			team.registerCastle(turret);
+
 		return turret;
 	}
-	
+
 	public static Building createBarricade(float posX, float posY, BuildingPattern buildingPattern, Team team){
-		
+
 		/** Life */
 		Life life = null;
 		if(buildingPattern.getLife()>0){
 			life = PoolManager.getManager().getLifePool().obtain();
 			life.init(buildingPattern.getLife());
 		}
-		
+
 		/** Building */
 		Barricade barricade = PoolManager.getManager().getBarricadePool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
 		barricade.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team));
-		
+
 		return barricade;
 	}
-	
+
+	public static Building createCampBuilding(float posX, float posY, BuildingPattern buildingPattern, Team team){
+
+		/** Life */
+		Life life = null;
+		if(buildingPattern.getLife()>0){
+			life = PoolManager.getManager().getLifePool().obtain();
+			life.init(buildingPattern.getLife());
+		}
+
+		/** Building */
+		CampBuilding campBuilding = PoolManager.getManager().getCampBuildingPool().obtain();
+		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
+		campBuilding.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team));
+
+		return campBuilding;
+	}
+
+
+
 
 }

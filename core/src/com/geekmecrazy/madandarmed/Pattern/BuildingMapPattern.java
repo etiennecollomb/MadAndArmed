@@ -1,10 +1,10 @@
 package com.geekmecrazy.madandarmed.Pattern;
 
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
+import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingName;
 
 public class BuildingMapPattern {
 
-	private BuildingType buildingType;
+	private BuildingName buildingName;
 	
 	private int gridPositionX;
 	
@@ -18,12 +18,12 @@ public class BuildingMapPattern {
 	// Getter & Setter
 	// ===========================================================
 	
-	public BuildingType getBuildingType() {
-		return buildingType;
+	public BuildingName getBuildingName() {
+		return buildingName;
 	}
 	
-	public void setBuildingType(BuildingType buildingType) {
-		this.buildingType = buildingType;
+	public void setBuildingName(BuildingName buildingName) {
+		this.buildingName = buildingName;
 	}
 
 	public int getGridPositionX() {

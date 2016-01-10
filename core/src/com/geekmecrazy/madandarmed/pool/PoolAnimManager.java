@@ -7,6 +7,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet.SpriteSheetType;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
+import com.geekmecrazy.madandarmed.Renderer.CampBuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
 import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
@@ -25,6 +26,7 @@ public class PoolAnimManager {
 	private static final int ALLOCATE_UNIQUE_ACTION_RENDERER	= 10;
 	private static final int ALLOCATE_CREEP_RENDERER			= 10;
 	private static final int ALLOCATE_TURRET_RENDERER			= 10;
+	private static final int ALLOCATE_CAMPBUILDING_RENDERER		= 10;
 	private static final int ALLOCATE_BARRICADE_RENDERER		= 10;
 	private static final int ALLOCATE_SWORD_RENDERER			= 10;
 	private static final int ALLOCATE_GUN_RENDERER				= 10;
@@ -42,6 +44,7 @@ public class PoolAnimManager {
 	private static Pool<UniqueActionRenderer> uniqueActionRendererPool;
 	private static Pool<CreepRenderer> creepRendererPool;
 	private static Pool<TurretRenderer> turretRendererPool;
+	private static Pool<CampBuildingRenderer> campBuildingRendererPool;
 	private static Pool<BarricadeRenderer> barricadeRendererPool;
 	private static Pool<SwordRenderer> swordRendererPool;
 	private static Pool<GunRenderer> gunRendererPool;
@@ -87,6 +90,10 @@ public class PoolAnimManager {
 		return turretRendererPool;
 	}
 
+	public Pool<CampBuildingRenderer> getCampBuildingRendererPool() {
+		return campBuildingRendererPool;
+	}
+	
 	public Pool<BarricadeRenderer> getBarricadeRendererPool() {
 		return barricadeRendererPool;
 	}
@@ -138,6 +145,7 @@ public class PoolAnimManager {
 		uniqueActionRendererPool = createUniqueActionRendererPool(ALLOCATE_UNIQUE_ACTION_RENDERER);
 		creepRendererPool = createCreepRendererPool(ALLOCATE_CREEP_RENDERER);
 		turretRendererPool = createTurretRendererPool(ALLOCATE_TURRET_RENDERER);
+		campBuildingRendererPool = createCampBuildingRendererPool(ALLOCATE_CAMPBUILDING_RENDERER);
 		barricadeRendererPool = createBarricadeRendererPool(ALLOCATE_BARRICADE_RENDERER);
 		swordRendererPool = createSwordRendererPool(ALLOCATE_SWORD_RENDERER);
 		gunRendererPool = createGunRendererPool(ALLOCATE_GUN_RENDERER);
@@ -207,7 +215,24 @@ public class PoolAnimManager {
 		return pool;
 	}
 
+	//CAMP BUILDING RENDERER
+	private Pool<CampBuildingRenderer> createCampBuildingRendererPool(int initPoolNumber){
 
+		Pool<CampBuildingRenderer> pool = new Pool<CampBuildingRenderer>(initPoolNumber) {
+
+			@Override
+			protected CampBuildingRenderer newObject() {
+				//System.out.println("#__ POOL __# allocate new Object : " + CampBuildingRenderer.class.getName());
+				return new CampBuildingRenderer();
+			}
+
+		};
+
+		for(int i=0; i<initPoolNumber ; i++)
+			pool.obtain();
+		return pool;
+	}
+	
 	//BARRICADE RENDERER
 	private Pool<BarricadeRenderer> createBarricadeRendererPool(int initPoolNumber){
 

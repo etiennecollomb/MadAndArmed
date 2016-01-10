@@ -1,0 +1,47 @@
+building02-1.png
+size: 256, 256
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+building02#00001#00004
+  rotate: false
+  xy: 1, 1
+  size: 98, 77
+  orig: 128, 128
+  offset: 20, 13
+  index: -1
+building02#00001#00006
+  rotate: false
+  xy: 101, 1
+  size: 98, 77
+  orig: 128, 128
+  offset: 20, 13
+  index: -1
+building02#00001#00007
+  rotate: false
+  xy: 1, 80
+  size: 98, 77
+  orig: 128, 128
+  offset: 20, 13
+  index: -1
+building02#00001#00008
+  rotate: false
+  xy: 1, 159
+  size: 98, 77
+  orig: 128, 128
+  offset: 20, 13
+  index: -1
+building02#00001#00009
+  rotate: false
+  xy: 101, 80
+  size: 98, 77
+  orig: 128, 128
+  offset: 20, 13
+  index: -1
+building02#00001#00010
+  rotate: false
+  xy: 101, 159
+  size: 98, 77
+  orig: 128, 128
+  offset: 20, 13
+  index: -1

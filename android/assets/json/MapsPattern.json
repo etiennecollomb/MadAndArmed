@@ -12,67 +12,73 @@
 		        buildingsList: [
 			        {
 				        class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: CASTLE
+						buildingName: CASTLE
 						gridPositionX: 7
 						gridPositionY: 28
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: TURRET
+						buildingName: TURRET
 						gridPositionX: 9
 						gridPositionY: 32
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: TURRET
+						buildingName: TURRET
 						gridPositionX: 7
 						gridPositionY: 36
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: BARRICADE
+						buildingName: CAMP_BUILDING_01
+						gridPositionX: 14
+						gridPositionY: 32
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingName: BARRICADE
 						gridPositionX: 15
 						gridPositionY: 15
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: BARRICADE
+						buildingName: BARRICADE
 						gridPositionX: 16
 						gridPositionY: 15
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: BARRICADE
+						buildingName: BARRICADE
 						gridPositionX: 17
 						gridPositionY: 15
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: BARRICADE
+						buildingName: BARRICADE
 						gridPositionX: 18
 						gridPositionY: 15
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: BARRICADE
+						buildingName: BARRICADE
 						gridPositionX: 19
 						gridPositionY: 15
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: BARRICADE
+						buildingName: BARRICADE
 						gridPositionX: 20
 						gridPositionY: 15
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: BARRICADE
+						buildingName: BARRICADE
 						gridPositionX: 21
 						gridPositionY: 15
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: BARRICADE
+						buildingName: BARRICADE
 						gridPositionX: 22
 						gridPositionY: 15
 					}
@@ -88,19 +94,19 @@
 		        buildingsList: [
 			        {
 				        class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: CASTLE
+						buildingName: CASTLE
 						gridPositionX: 25
 						gridPositionY: 106
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: TURRET
+						buildingName: TURRET
 						gridPositionX: 22
 						gridPositionY: 102
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
-						buildingType: TURRET
+						buildingName: TURRET
 						gridPositionX: 25
 						gridPositionY: 98
 					}

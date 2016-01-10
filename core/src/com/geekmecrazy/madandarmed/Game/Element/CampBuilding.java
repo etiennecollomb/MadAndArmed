@@ -7,21 +7,17 @@ import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
+import com.geekmecrazy.madandarmed.Renderer.CampBuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
-import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
-public class Turret extends Building {
+public class CampBuilding extends Building {
 
 	private Sprite floor;
 
 	private LifeBarRenderer lifeBarreRenderer;
 
-	/** pointing to target */
-	private Vector2d directionVector = new Vector2d();
-	
-	
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -30,14 +26,14 @@ public class Turret extends Building {
 		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam);
 		
 		/** Renderer */
-		TurretRenderer turretRenderer = PoolAnimManager.getManager().getTurretRendererPool().obtain();
+		CampBuildingRenderer campBuildingRenderer = PoolAnimManager.getManager().getCampBuildingRendererPool().obtain();
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingName().name());
-		turretRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), this);
-		FightScreen.isoGrid.place(turretRenderer, (int)posX, (int)posY);
-		FightScreen.isoGrid.getIsoMapState().add(turretRenderer);
-		this.setMilitaryRenderer(turretRenderer);
+		campBuildingRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), this);
+		FightScreen.isoGrid.place(campBuildingRenderer, (int)posX, (int)posY);
+		FightScreen.isoGrid.getIsoMapState().add(campBuildingRenderer);
+		this.setMilitaryRenderer(campBuildingRenderer);
 		
-		this.setPos(turretRenderer.getX(), turretRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
+		this.setPos(campBuildingRenderer.getX(), campBuildingRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
 		
 		/** Set LifeBar */
 		if(life!=null){
@@ -71,23 +67,14 @@ public class Turret extends Building {
 
 	@Override
 	public void onUpdateNextState(){
-
 		super.onUpdateNextState();
-
-		if(this.getAttackBehavior().isAttacking()){
-			//En mode attaque, on pointe sur la target
-			directionVector.set(-this.getPos().getX(), -this.getPos().getY());
-			directionVector.add(this.getAttackBehavior().getCurrentTarget().getPos());
-			setNormalizedDir(directionVector);
-		}
-
 	}
 	
 	@Override
 	public void noMoreLife(){
 		super.noMoreLife();
 
-		FightScreen.isoGrid.getIsoMapState().remove((TurretRenderer)this.getMilitaryRenderer());
+		FightScreen.isoGrid.getIsoMapState().remove((CampBuildingRenderer)this.getMilitaryRenderer());
 		
 		//on efface la lifebar
 		if(lifeBarreRenderer!=null) PoolAnimManager.getManager().getLifeBarRendererPool().free(lifeBarreRenderer);
@@ -102,7 +89,7 @@ public class Turret extends Building {
 		if(lifeBarreRenderer!=null) PoolAnimManager.getManager().getLifeBarRendererPool().free(lifeBarreRenderer);
 		lifeBarreRenderer = null;
 		
-		PoolAnimManager.getManager().getTurretRendererPool().free((TurretRenderer) this.militaryRenderer);
+		PoolAnimManager.getManager().getCampBuildingRendererPool().free((CampBuildingRenderer) this.militaryRenderer);
 	}
 	
 	// ===========================================================

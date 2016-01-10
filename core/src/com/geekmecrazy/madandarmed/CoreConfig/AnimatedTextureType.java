@@ -77,6 +77,12 @@ public enum AnimatedTextureType {
 	TURRET_02_HD_TEAM1      		("game/Turrets/Turret02_256px/red", 128),
 	TURRET_02_HD_TEAM2      		("game/Turrets/Turret02_256px/blue", 128),
 
+	
+	/** CAMP BUILDING HIGH DEF */
+	CAMPBUILDING_01_HD_TEAM1      		("game/CampBuilding/Building01/red", 128),
+	CAMPBUILDING_01_HD_TEAM2      		("game/CampBuilding/Building01/blue", 128),
+	CAMPBUILDING_02_HD_TEAM1      		("game/CampBuilding/Building02/red", 128),
+	CAMPBUILDING_02_HD_TEAM2      		("game/CampBuilding/Building02/blue", 128),
 	;
 
 

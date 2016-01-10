@@ -7,6 +7,7 @@ import java.util.Set;
 
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
+import com.geekmecrazy.madandarmed.Game.Element.CampBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
@@ -74,11 +75,11 @@ public class BuildingManager {
 	public void initBuildingAtStart(){
 		
 		for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getBuildingsList()){
-			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
+			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
 			BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, FightScreen.teamPlayer);
 		}
 		for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
-			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingType().name());
+			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
 			BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, FightScreen.teamIA);
 		}
 	}
@@ -123,8 +124,10 @@ public class BuildingManager {
 			
 			if(building instanceof Turret)
 				PoolManager.getManager().getTurretPool().free((Turret)building);
-			if(building instanceof Barricade)
+			else if(building instanceof Barricade)
 				PoolManager.getManager().getBarricadePool().free((Barricade)building);
+			else if(building instanceof CampBuilding)
+					PoolManager.getManager().getCampBuildingPool().free((CampBuilding)building);
 			
 		}
 		listBuildingsRecycle.clear();

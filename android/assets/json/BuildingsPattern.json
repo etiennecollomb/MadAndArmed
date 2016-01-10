@@ -2,6 +2,7 @@
     "CASTLE": {
         class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern
 		buildingType: CASTLE
+		buildingName: CASTLE
 		buildingSize: MEDIUM
 		weaponName: MISSILE_1
 		life: 50000
@@ -11,6 +12,7 @@
     "TURRET": {
         class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern
 		buildingType: TURRET
+		buildingName: TURRET
 		buildingSize: MEDIUM
 		weaponName: MISSILE_1
 		life: 5000
@@ -20,8 +22,25 @@
     "BARRICADE": {
         class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern
 		buildingType: BARRICADE
+		buildingName: BARRICADE
 		buildingSize: SMALL
 		life: 1000
 		price: 50
+    },
+    "CAMP_BUILDING_01": {
+        class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern
+		buildingType: CAMP_BUILDING
+		buildingName: CAMP_BUILDING_01
+		buildingSize: MEDIUM
+		life: 5000
+		price: 400
+    },
+    "CAMP_BUILDING_02": {
+        class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern
+		buildingType: CAMP_BUILDING
+		buildingName: CAMP_BUILDING_02
+		buildingSize: MEDIUM
+		life: 5000
+		price: 400
     }
 }
