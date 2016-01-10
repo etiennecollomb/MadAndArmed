@@ -82,7 +82,7 @@ public class CampBuildingRenderer extends BuildingRenderer {
 			this.setAnimCurrentFrame(this.animCurrentFrame+1);
 			if(this.getAnimCurrentFrame() >= GraphicalTools.NB_ORIENTATION)
 				this.setAnimCurrentFrame(0);
-			this.setCurrentFrame(this.getAnimCurrentFrame(), 0);
+			this.setCurrentFrame(0, this.getAnimCurrentFrame());
 		}
 		
 		//after because OffSet has been modified
