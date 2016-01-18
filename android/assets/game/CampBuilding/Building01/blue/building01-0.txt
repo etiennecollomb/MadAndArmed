@@ -3,70 +3,70 @@ size: 512, 256
 format: RGBA4444
 filter: Linear,Linear
 repeat: none
-1Walk#00000#00001
+1Walk#00000#00000
   rotate: false
   xy: 1, 1
   size: 97, 96
   orig: 128, 128
   offset: 15, 13
   index: -1
-1Walk#00001#00001
+1Walk#00001#00000
   rotate: false
   xy: 1, 99
   size: 97, 96
   orig: 128, 128
   offset: 15, 13
   index: -1
-1Walk#00002#00001
+1Walk#00002#00000
   rotate: false
   xy: 100, 1
   size: 97, 96
   orig: 128, 128
   offset: 15, 13
   index: -1
-1Walk#00003#00001
+1Walk#00003#00000
   rotate: false
   xy: 100, 99
   size: 97, 96
   orig: 128, 128
   offset: 15, 13
   index: -1
-1Walk#00004#00001
+1Walk#00004#00000
   rotate: false
   xy: 199, 1
   size: 97, 96
   orig: 128, 128
   offset: 15, 13
   index: -1
-1Walk#00005#00001
+1Walk#00005#00000
   rotate: false
   xy: 199, 99
   size: 97, 96
   orig: 128, 128
   offset: 15, 13
   index: -1
-1Walk#00006#00001
+1Walk#00006#00000
   rotate: false
   xy: 298, 1
   size: 97, 96
   orig: 128, 128
   offset: 15, 13
   index: -1
-1Walk#00007#00001
+1Walk#00007#00000
   rotate: false
   xy: 397, 1
   size: 97, 96
   orig: 128, 128
   offset: 15, 13
   index: -1
-1Walk#00008#00001
+1Walk#00008#00000
   rotate: false
   xy: 298, 99
   size: 97, 96
   orig: 128, 128
   offset: 15, 13
   index: -1
-1Walk#00009#00001
+1Walk#00009#00000
   rotate: false
   xy: 397, 99
   size: 97, 96

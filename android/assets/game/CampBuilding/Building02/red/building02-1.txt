@@ -3,7 +3,7 @@ size: 128, 128
 format: RGBA4444
 filter: Linear,Linear
 repeat: none
-1Walk#00015#00001
+1Walk#00015#00000
   rotate: false
   xy: 1, 1
   size: 98, 77
