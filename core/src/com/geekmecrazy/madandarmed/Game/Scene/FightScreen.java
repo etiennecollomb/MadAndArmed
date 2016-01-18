@@ -207,6 +207,7 @@ public class FightScreen extends Screen implements IUpdatable {
 
 		BuildingManager.initManager();
 		CreepManager.initManager(this.getScene(), this.getTeamPlayer(), this.getTeamIA());
+		TurnManager.initManager();
 		IaManager.initManager();
 		WeaponManager.initManager();
 
@@ -283,7 +284,8 @@ public class FightScreen extends Screen implements IUpdatable {
 	}
 
 	public void runUpdateNextState(){
-		IaManager.getManager().runUpdateNextState();	
+		TurnManager.getManager().runUpdateNextState();	
+		//IaManager.getManager().runUpdateNextState();
 		BuildingManager.getManager().runUpdateNextState();
 		CreepManager.getManager().runUpdateNextState();
 		WeaponManager.getManager().onUpdate();

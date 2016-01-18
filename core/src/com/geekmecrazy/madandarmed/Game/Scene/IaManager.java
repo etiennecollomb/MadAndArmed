@@ -3,6 +3,7 @@ package com.geekmecrazy.madandarmed.Game.Scene;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 
 
+/** Doit gerer le placement des buildings en fonction des pattern d'ordre de placement defini par le user **/
 public class IaManager {
 	
 	// ===========================================================

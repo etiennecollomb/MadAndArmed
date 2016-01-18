@@ -9,6 +9,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.CampBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
+import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
@@ -20,7 +21,11 @@ import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
 public class BuildingManager {
+
+	/** Spawn Building (spawn unit) : unreal building non destroyable **/
+	private List<SpawnBuilding> listSpawnBuildings;
 	
+	/** real building destroyable **/
 	private List<Building> listBuildings;
 
 	/** list of buildings to delete */

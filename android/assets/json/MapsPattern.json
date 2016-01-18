@@ -36,6 +36,12 @@
 					},
 					{
 						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingName: CAMP_BUILDING_02
+						gridPositionX: 20
+						gridPositionY: 32
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
 						buildingName: BARRICADE
 						gridPositionX: 15
 						gridPositionY: 15

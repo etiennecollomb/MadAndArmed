@@ -79,7 +79,7 @@ public class CampBuildingRenderer extends BuildingRenderer {
 		this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)this.getMilitary().getPos().getY());
 
 		if(thisBuilding.isAlive()){
-			this.setAnimCurrentFrame(this.animCurrentFrame+1);
+			this.setAnimCurrentFrame(this.getAnimCurrentFrame()+1);
 			if(this.getAnimCurrentFrame() >= GraphicalTools.NB_ORIENTATION)
 				this.setAnimCurrentFrame(0);
 			this.setCurrentFrame(0, this.getAnimCurrentFrame());
