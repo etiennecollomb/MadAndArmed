@@ -45,6 +45,7 @@ public class BuildingManager {
 
 	/** Disable object's instantiation (private constructor) */
 	private BuildingManager(){
+		this.listSpawnBuildings = new ArrayList<SpawnBuilding>();
 		this.listBuildings = new ArrayList<Building>();
 		this.listBuildingsRecycle = new HashSet<Building>();
 	}
@@ -148,4 +149,19 @@ public class BuildingManager {
 	public List<Building> getListBuildings() {
 		return listBuildings;
 	}
+
+	/************************************/
+	/** Spawn Building undestructibles **/
+	
+	/** Enregistre le building dans le manager
+	 * mais pas au niveau des military list de la team car peut pas etre une target... */
+	public void addSpawnBuilding(SpawnBuilding newBuilding){
+		listSpawnBuildings.add(newBuilding);
+	}
+	
+	public List<SpawnBuilding> getListSpawnBuildings() {
+		return listSpawnBuildings;
+	}
+
+	
 }
