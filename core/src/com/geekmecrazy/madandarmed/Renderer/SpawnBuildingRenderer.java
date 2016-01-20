@@ -1,7 +1,5 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
-import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
@@ -31,38 +29,7 @@ public class SpawnBuildingRenderer extends IsoBuildingRenderer {
 
 		super.onUpdate();
 	}
-	
-	@Override
-	public void setDeadPattern(){
 
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_128PX, 0f, 0f, 0);
-
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_64PX, 10f, 10f, 5);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_64PX, -10f, 10f, 5);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_64PX, 10f, -10f, 5);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_64PX, -10f, -10f, 5);
-		
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_64PX, 15f, 0f, 8);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_64PX, 0f, 15f, 8);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_64PX, -15f, 0f, 8);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_64PX, 0f, -15f, 8);
-		
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, 20f, -10f, 10);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, -10f, -20f, 12);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, 0f, 10f, 14);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, 15f, 15f, 16);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, -5f, 5f, 18);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, 5f, -15f, 20);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, -20f, 10f, 22);
-		
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, -20f, 10f, 15);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, -10f, 20f, 17);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, 0f, -20f, 19);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, -15f, -15f, 21);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, 5f, -5f, 23);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, -5f, 15f, 25);
-		addDeadActionRenderer(AnimatedTextureType.BUILDING_DEATH_32PX, 20f, -10f, 27);
-	}
 	
 	// ===========================================================
 	// Methods

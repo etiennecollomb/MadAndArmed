@@ -9,6 +9,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Gun;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.MeshMultiExplosion;
 import com.geekmecrazy.madandarmed.Game.Element.Missile;
+import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Sword;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.IA.AirMoveBehavior;
@@ -31,6 +32,7 @@ public class PoolManager {
 	private static final int STARTING_ALLOCATE_LIFE 				= 20;
 	private static final int STARTING_ALLOCATE_TURRET 				= 10;
 	private static final int STARTING_ALLOCATE_CAMPBUILDING			= 10;
+	private static final int STARTING_ALLOCATE_SPAWNBUILDING		= 10;
 	private static final int STARTING_ALLOCATE_BARRICADE			= 10;
 	private static final int STARTING_ALLOCATE_GROUNDPATHFINDING 	= 20;
 	private static final int STARTING_ALLOCATE_AIRPATHFINDING 		= 20;
@@ -49,6 +51,7 @@ public class PoolManager {
 	private Pool<Life> lifePool;
 	private Pool<Turret> turretPool;
 	private Pool<CampBuilding> campBuildingPool;
+	private Pool<SpawnBuilding> spawnBuildingPool;
 	private Pool<Barricade> barricadePool;
 	private Pool<GroundPathFinding> groundPathFinding;
 	private Pool<AirPathFinding> airPathFindingPool;
@@ -140,6 +143,11 @@ public class PoolManager {
 	public Pool<AirMoveBehavior> getAirBehaviorPool() {
 		return airBehaviorPool;
 	}
+	
+	public Pool<SpawnBuilding> getSpawnBuildingPool() {
+		return spawnBuildingPool;
+	}
+
 	
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
@@ -269,6 +277,14 @@ public class PoolManager {
 			protected CampBuilding newObject() {
 				//System.out.println("#__ POOL __# allocate new Object : " + CampBuilding.class.getName());
 				return new CampBuilding();
+			 }
+		};
+		
+		spawnBuildingPool = new Pool<SpawnBuilding>(STARTING_ALLOCATE_SPAWNBUILDING){
+			@Override
+			protected SpawnBuilding newObject() {
+				//System.out.println("#__ POOL __# allocate new Object : " + SpawnBuilding.class.getName());
+				return new SpawnBuilding();
 			 }
 		};
 
