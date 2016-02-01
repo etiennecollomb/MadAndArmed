@@ -6,18 +6,18 @@ import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 
 
-public class UnitButtonRenderer extends Shape {
+public class SpawnBuildingButtonRenderer extends Shape {
 
     Sprite shadow = new Sprite();
     Sprite background = new Sprite();
-    Sprite unit = new Sprite();
+    Sprite millitary = new Sprite();
     Sprite reflet = new Sprite();
 
     // ===========================================================
     // Constructors
     // ===========================================================
 
-    public UnitButtonRenderer() {
+    public SpawnBuildingButtonRenderer() {
         super();
 
         shadow.init(TextureType.BUTTON_UNIT_SHADOW);
@@ -39,7 +39,7 @@ public class UnitButtonRenderer extends Shape {
 
         shadow.setColor(r, g, b, a);
         background.setColor(r, g, b, a);
-        unit.setColor(r, g, b, a);
+        millitary.setColor(r, g, b, a);
         reflet.setColor(r, g, b, a);
     }
 
@@ -49,7 +49,7 @@ public class UnitButtonRenderer extends Shape {
 
         shadow.setSize(w,h);
         background.setSize(w,h);
-        unit.setSize(w,h);
+        millitary.setSize(w,h);
         reflet.setSize(w,h);
     }
 
@@ -59,7 +59,7 @@ public class UnitButtonRenderer extends Shape {
 
         shadow.setScaleX(scaleX);
         background.setScaleX(scaleX);
-        unit.setScaleX(scaleX);
+        millitary.setScaleX(scaleX);
         reflet.setScaleX(scaleX);
     }
 
@@ -69,7 +69,7 @@ public class UnitButtonRenderer extends Shape {
 
         shadow.setScaleY(scaleY);
         background.setScaleY(scaleY);
-        unit.setScaleY(scaleY);
+        millitary.setScaleY(scaleY);
         reflet.setScaleY(scaleY);
     }
 
@@ -90,7 +90,7 @@ public class UnitButtonRenderer extends Shape {
     public void reset() {
         super.reset();
 
-        this.unit.reset();
+        this.millitary.reset();
     }
 
     // ===========================================================
@@ -100,11 +100,11 @@ public class UnitButtonRenderer extends Shape {
     public void init(final TextureType pTextureType, final float pX, final float pY, final float pWidth, final float pHeight){
         super.init(pX, pY, pWidth, pHeight);
 
-        unit.init(pTextureType);
+        millitary.init(pTextureType);
 
         this.attachChild(shadow, Entity.Alignment.CENTER);
         this.attachChild(background, Entity.Alignment.CENTER);
-        this.attachChild(unit, Entity.Alignment.CENTER);
+        this.attachChild(millitary, Entity.Alignment.CENTER);
         this.attachChild(reflet, Entity.Alignment.CENTER);
     }
 

@@ -7,6 +7,7 @@ import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
+import com.geekmecrazy.madandarmed.Renderer.SpawnBuildingRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 public class SpawnBuilding extends Building {
@@ -19,22 +20,22 @@ public class SpawnBuilding extends Building {
 		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam);
 		
 		/** Renderer */
-		BarricadeRenderer barricadeRenderer = PoolAnimManager.getManager().getBarricadeRendererPool().obtain();
+		SpawnBuildingRenderer spawnBuildingRenderer = PoolAnimManager.getManager().getSpawnBuildingRendererPool().obtain();
 		
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingName().name());
-		barricadeRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), this, FightScreen.isoGrid);
-		FightScreen.isoGrid.place(barricadeRenderer, (int)posX, (int)posY);
-		FightScreen.isoGrid.getIsoMapState().add(barricadeRenderer);
-		this.setMilitaryRenderer(barricadeRenderer);
+		spawnBuildingRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), this, FightScreen.isoGrid);
+		FightScreen.isoGrid.place(spawnBuildingRenderer, (int)posX, (int)posY);
+		FightScreen.isoGrid.getIsoMapState().add(spawnBuildingRenderer);
+		this.setMilitaryRenderer(spawnBuildingRenderer);
 		
-		this.setPos(barricadeRenderer.getX(), barricadeRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
+		this.setPos(spawnBuildingRenderer.getX(), spawnBuildingRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
 		
 		FightScreen.getManager().getScene().attachChild(this.militaryRenderer);
 		
 		/** If player team : make it movable */
 		//TEMP : this should be only on edit mode
 		if(myTeam.getTeamID() == TeamID.TEAM1)
-			FightScreen.getManager().getScene().registerTouchableShape(barricadeRenderer);
+			FightScreen.getManager().getScene().registerTouchableShape(spawnBuildingRenderer);
 
 		
 	}
@@ -51,8 +52,8 @@ public class SpawnBuilding extends Building {
 	public void noMoreLife(){
 		super.noMoreLife();
 
-		((BarricadeRenderer)this.getMilitaryRenderer()).releaseControls();
-		FightScreen.isoGrid.getIsoMapState().remove((BarricadeRenderer)this.getMilitaryRenderer());
+		((SpawnBuildingRenderer)this.getMilitaryRenderer()).releaseControls();
+		FightScreen.isoGrid.getIsoMapState().remove((SpawnBuildingRenderer)this.getMilitaryRenderer());
 		
 	}
 	
@@ -60,7 +61,7 @@ public class SpawnBuilding extends Building {
 	public void reset() {
 		super.reset();
 		
-		PoolAnimManager.getManager().getBarricadeRendererPool().free((BarricadeRenderer) this.militaryRenderer);
+		PoolAnimManager.getManager().getSpawnBuildingRendererPool().free((SpawnBuildingRenderer) this.militaryRenderer);
 	}
 
 	// ===========================================================

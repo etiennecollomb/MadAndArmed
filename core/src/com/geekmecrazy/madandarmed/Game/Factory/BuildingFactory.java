@@ -6,6 +6,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.CampBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
+import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Game.Scene.BuildingManager;
@@ -26,7 +27,7 @@ public class BuildingFactory{
 	// disable object's instanciation (private constructor)
 	private BuildingFactory(){} 
 
-	public static void create (float posX, float posY, BuildingPattern buildingPattern, Team team) {
+	public static Building create (float posX, float posY, BuildingPattern buildingPattern, Team team) {
 
 		Building building = null;
 
@@ -39,7 +40,7 @@ public class BuildingFactory{
 		else if(buildingPattern.getBuildingType() == BuildingType.CAMP_BUILDING)
 			building = createCampBuilding(posX, posY, buildingPattern, team);
 
-		BuildingManager.getManager().addBuilding(building);
+		return building;
 	}
 
 	// ===========================================================
@@ -65,7 +66,7 @@ public class BuildingFactory{
 
 	}
 
-	public static Building createTurret(float posX, float posY, BuildingPattern buildingPattern, Team team){
+	private static Building createTurret(float posX, float posY, BuildingPattern buildingPattern, Team team){
 
 		/** Life */
 		Life life = null;
@@ -97,7 +98,7 @@ public class BuildingFactory{
 		return turret;
 	}
 
-	public static Building createBarricade(float posX, float posY, BuildingPattern buildingPattern, Team team){
+	private static Building createBarricade(float posX, float posY, BuildingPattern buildingPattern, Team team){
 
 		/** Life */
 		Life life = null;
@@ -114,7 +115,7 @@ public class BuildingFactory{
 		return barricade;
 	}
 
-	public static Building createCampBuilding(float posX, float posY, BuildingPattern buildingPattern, Team team){
+	private static Building createCampBuilding(float posX, float posY, BuildingPattern buildingPattern, Team team){
 
 		/** Life */
 		Life life = null;
@@ -131,6 +132,22 @@ public class BuildingFactory{
 		return campBuilding;
 	}
 
+	public static SpawnBuilding createSpawnBuilding(float posX, float posY, BuildingPattern buildingPattern, Team team){
+
+		/** Life */
+		Life life = null;
+		if(buildingPattern.getLife()>0){
+			life = PoolManager.getManager().getLifePool().obtain();
+			life.init(buildingPattern.getLife());
+		}
+
+		/** Building */
+		SpawnBuilding spawnBuilding = PoolManager.getManager().getSpawnBuildingPool().obtain();
+		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
+		spawnBuilding.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team));
+
+		return spawnBuilding;
+	}
 
 
 

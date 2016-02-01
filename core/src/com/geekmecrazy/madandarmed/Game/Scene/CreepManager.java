@@ -22,13 +22,13 @@ public class CreepManager {
 	private static CreepManager creepManager;
 
 	/** Creation et initialisation du manager */
-	public static void initManager(Scene scene, Team teamPlayer, Team teamIA) {
+	public static void initManager(Team teamPlayer, Team teamIA) {
 		if (creepManager != null) throw new RuntimeException("creepManager already created ! creepManager is not null");
-		creepManager = new CreepManager(scene, teamPlayer, teamIA);
+		creepManager = new CreepManager(teamPlayer, teamIA);
 	}
 
 	/** Disable object's instantiation (private constructor) */
-	private CreepManager(Scene scene, Team teamPlayer, Team teamIA){
+	private CreepManager(Team teamPlayer, Team teamIA){
 		this.teamPlayer = teamPlayer;
 		this.teamIA = teamIA;
 		this.listCreeps = new ArrayList<Creep>();

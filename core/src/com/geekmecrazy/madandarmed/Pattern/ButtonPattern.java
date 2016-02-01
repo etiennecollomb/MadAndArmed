@@ -1,14 +1,12 @@
 package com.geekmecrazy.madandarmed.Pattern;
 
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
-import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
-import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
+import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingName;
 
 
 public class ButtonPattern {
 
-	private CreepType creepType;
-	private BuildingType buildingType;
+	private BuildingName buildingName;
 	
 	private TextureType icon;
 
@@ -20,20 +18,12 @@ public class ButtonPattern {
 	// Getter & Setter
 	// ===========================================================
 
-	public CreepType getCreepType() {
-		return creepType;
+	public BuildingName getBuildingName() {
+		return buildingName;
 	}
 
-	public void setCreepType(CreepType creepType) {
-		this.creepType = creepType;
-	}
-
-	public BuildingType getBuildingType() {
-		return buildingType;
-	}
-
-	public void setBuildingType(BuildingType buildingType) {
-		this.buildingType = buildingType;
+	public void setBuildingName(BuildingName buildingName) {
+		this.buildingName = buildingName;
 	}
 
 	public TextureType getIcon() {
@@ -43,7 +33,7 @@ public class ButtonPattern {
 	public void setIcon(TextureType icon) {
 		this.icon = icon;
 	}
-	
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================

@@ -13,7 +13,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Property.GameMap;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.ScoreBarUI;
 import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
-import com.geekmecrazy.madandarmed.Game.UI.UnitButtonUI;
+import com.geekmecrazy.madandarmed.Game.UI.SpawnBuildingButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
@@ -38,7 +38,7 @@ public class FightScreen extends Screen implements IUpdatable {
 
     /** UI */
     private UIFinishGame uiFinishGame;
-    private UnitButtonUI mUnitButtonUI;
+    private SpawnBuildingButtonUI mUnitButtonUI;
     private ScoreBarUI mScoreBarUI;
 
     /** Time stuff */
@@ -122,6 +122,7 @@ public class FightScreen extends Screen implements IUpdatable {
 
         /**** Create Creep ***/
         CreepManager.getManager().excuteAskForCreateCreep();
+        BuildingManager.getManager().excuteAskForCreateSpawnBuilding();
 
         /******** PREPARATION DU TOUR ********/
         FightScreen.currentTime = System.currentTimeMillis();
@@ -205,8 +206,8 @@ public class FightScreen extends Screen implements IUpdatable {
 		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getSpawnPoint(), TeamID.TEAM1, MAX_THORIUM));
 		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getSpawnPoint(), TeamID.TEAM2, MAX_THORIUM));
 
-		BuildingManager.initManager();
-		CreepManager.initManager(this.getScene(), this.getTeamPlayer(), this.getTeamIA());
+		BuildingManager.initManager(this.getTeamPlayer(), this.getTeamIA());
+		CreepManager.initManager(this.getTeamPlayer(), this.getTeamIA());
 		TurnManager.initManager();
 		IaManager.initManager();
 		WeaponManager.initManager();
@@ -225,7 +226,7 @@ public class FightScreen extends Screen implements IUpdatable {
 		uiFinishGame = new UIFinishGame();
 		uiFinishGame.initUI();
 
-        mUnitButtonUI = new UnitButtonUI();
+        mUnitButtonUI = new SpawnBuildingButtonUI();
         mUnitButtonUI.init(0, 0);
         this.getHUD().attachChild(mUnitButtonUI, Entity.Alignment.LEFT_BOTTOM);
 

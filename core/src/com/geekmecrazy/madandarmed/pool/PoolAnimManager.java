@@ -97,7 +97,7 @@ public class PoolAnimManager {
 		return campBuildingRendererPool;
 	}
 
-	public static Pool<SpawnBuildingRenderer> getSpawnBuildingRendererPool() {
+	public Pool<SpawnBuildingRenderer> getSpawnBuildingRendererPool() {
 		return spawnBuildingRendererPool;
 	}
 
