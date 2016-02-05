@@ -90,12 +90,12 @@ public class CreepManager {
 		int size;
 		
 		size = teamPlayer.getListAskForCreateCreep().size();
-		for (int i=0; i<size; ){
+		for (int i=0; i<size; i++){
 			createCreep(teamPlayer.getListAskForCreateCreep().get(i), teamPlayer, teamPlayer.getListAskForCreateCreepPosX().get(i), teamPlayer.getListAskForCreateCreepPosY().get(i));
 		}
 		
 		size = teamIA.getListAskForCreateCreep().size();
-		for (int i=0; i<size; ){
+		for (int i=0; i<size; i++){
 			createCreep(teamIA.getListAskForCreateCreep().get(i), teamIA, teamIA.getListAskForCreateCreepPosX().get(i), teamIA.getListAskForCreateCreepPosY().get(i));
 		}
 

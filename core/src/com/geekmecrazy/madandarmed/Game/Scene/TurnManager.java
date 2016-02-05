@@ -62,7 +62,7 @@ public class TurnManager {
 				SpawnBuilding spbld = spawnBuildingList.get(i);
 				CreepType creepType = spbld.getPattern().getCreepType();
 
-				CreepManager.getManager().askForCreateCreep(creepType, spbld.getMyTeam(), 200, 200)
+				CreepManager.getManager().askForCreateCreep(creepType, spbld.getMyTeam(), 200, 200);
 			}
 		}
 
