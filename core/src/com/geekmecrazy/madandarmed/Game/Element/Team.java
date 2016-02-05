@@ -37,12 +37,13 @@ public class Team extends GameElement {
 	private int score;
 	
 	private int thoriumMax; //depends des upgrade de la base
-
-	private Vector2d spawnPoint;
 	
 	private Building castle;
 	
 	private List<CreepType> listAskForCreateCreep;
+	private List<Float> listAskForCreateCreepPosX; //Stock provisoirement la position de spawn (car les spawnbuilding peuvent bouger, pas tres propre
+	private List<Float> listAskForCreateCreepPosY; //Stock provisoirement la position de spawn (car les spawnbuilding peuvent bouger, pas tres propre
+	
 	private List<BuildingName> listAskForCreateSpawnBuilding;
 	
 	private List<Military> listMilitary; // liste des Military de la team (building + creep)
@@ -58,16 +59,17 @@ public class Team extends GameElement {
 	private List<IMoneyListener> moneyListeners;
 	private List<IScoreListener> scoreListeners;
 	
-	public Team(int startingMoney, int moneyByTurn, int moneyMax, Vector2d spawnPoint, TeamID teamID_, int thoriumMax) {
+	public Team(int startingMoney, int moneyByTurn, int moneyMax, TeamID teamID_, int thoriumMax) {
 		this.listMilitary = new ArrayList<Military>(FightScreen.MAX_UNITS);
 		this.listAskForCreateCreep=new ArrayList<CreepType>();
+		this.listAskForCreateCreepPosX=new ArrayList<Float>();
+		this.listAskForCreateCreepPosY=new ArrayList<Float>();
 		this.listAskForCreateSpawnBuilding=new ArrayList<BuildingName>();
 		this.moneyListeners = new ArrayList<IMoneyListener>();
 		this.scoreListeners = new ArrayList<IScoreListener>();
 		this.money = startingMoney;
 		this.moneyByTurn = moneyByTurn;
 		this.moneyMax = moneyMax;
-		this.spawnPoint = spawnPoint;
 		this.teamID = teamID_;
 		this.thoriumMax = thoriumMax;
 		
@@ -202,12 +204,16 @@ public class Team extends GameElement {
 		return castle;
 	}
 
-	public Vector2d getSpawnPoint() {
-		return spawnPoint;
-	}
-
 	public List<CreepType> getListAskForCreateCreep() {
 		return listAskForCreateCreep;
+	}	
+	
+	public List<Float> getListAskForCreateCreepPosX() {
+		return listAskForCreateCreepPosX;
+	}
+
+	public List<Float> getListAskForCreateCreepPosY() {
+		return listAskForCreateCreepPosY;
 	}
 	
 	public List<BuildingName> getListAskForCreateSpawnBuilding() {
@@ -255,14 +261,17 @@ public class Team extends GameElement {
 		
 	}
 
-
 	@Override
 	public void onUpdate() {
 		// TODO Auto-generated method stub
 		
 	}
 
-
+	public void clearListsAskForCreateCreep() {
+		listAskForCreateCreep.clear();
+		listAskForCreateCreepPosX.clear();
+		listAskForCreateCreepPosY.clear();
+	}
 
 	
 }

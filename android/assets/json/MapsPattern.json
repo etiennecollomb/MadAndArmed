@@ -4,11 +4,6 @@
 		teamMapPattern: {
 		    "TEAM1": {
 		        class: com.geekmecrazy.madandarmed.Pattern.TeamMapPattern
-		        spawnPoint: {
-							class: com.geekmecrazy.madandarmed.Utils.Vector2d
-							x: 100
-							y: 100
-						}
 		        buildingsList: [
 			        {
 				        class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
@@ -92,11 +87,6 @@
 		    },
 		    "TEAM2": {
 		        class: com.geekmecrazy.madandarmed.Pattern.TeamMapPattern
-		        spawnPoint: {
-							class: com.geekmecrazy.madandarmed.Utils.Vector2d
-							x: 4000
-							y: 4000
-						}
 		        buildingsList: [
 			        {
 				        class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern

@@ -5,9 +5,12 @@ import java.util.List;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
+import com.geekmecrazy.madandarmed.Utils.TimeIntervalControl;
 
 /** cree les units en fonction des spawnbuilding present sur le terrain **/
 public class TurnManager {
+
+	TimeIntervalControl spawnTurnTimer = new TimeIntervalControl(200);
 
 	// ===========================================================
 	// Singleton manager
@@ -49,14 +52,18 @@ public class TurnManager {
 	/** Mise a jour de l'état des missiles à chaque cycle */
 	public void runUpdateNextState(){
 
-		/** get spawn list from Building Manager SpawnBuilding **/
-		List<SpawnBuilding> spawnBuildingList = BuildingManager.getManager().getListSpawnBuildings();
-		int size = spawnBuildingList.size();
-		for(int i=0; i<size; i++){
-			SpawnBuilding spbld = spawnBuildingList.get(i);
-			CreepType creepType = spbld.getPattern().getCreepType();
+		if(!spawnTurnTimer.isInsideInterval()){
+			spawnTurnTimer.resetTimer();
 
-			CreepManager.getManager().askForCreateCreep(creepType, spbld.getMyTeam());
+			/** get spawn list from Building Manager SpawnBuilding **/
+			List<SpawnBuilding> spawnBuildingList = BuildingManager.getManager().getListSpawnBuildings();
+			int size = spawnBuildingList.size();
+			for(int i=0; i<size; i++){
+				SpawnBuilding spbld = spawnBuildingList.get(i);
+				CreepType creepType = spbld.getPattern().getCreepType();
+
+				CreepManager.getManager().askForCreateCreep(creepType, spbld.getMyTeam(), 200, 200)
+			}
 		}
 
 

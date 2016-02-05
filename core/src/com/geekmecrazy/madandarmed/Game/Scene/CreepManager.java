@@ -73,30 +73,40 @@ public class CreepManager {
 	private Set<Creep> listCreepsRecycle;
 	
 	/** Enregistre les demandes création de creep */
-	public void askForCreateCreep(CreepType creepType, Team team){
+	public void askForCreateCreep(CreepType creepType, Team team, float posX, float posY){
 		CreepPattern creepPattern = PatternLoader.getCreepsPattern().get(creepType.name());
+		
 		if(team.hasEnoughtMoney(creepPattern.getPrice())){
 			team.subMoney(creepPattern.getPrice());
+			
 			team.getListAskForCreateCreep().add(creepType);
+			team.getListAskForCreateCreepPosX().add(posX);
+			team.getListAskForCreateCreepPosY().add(posY);
 		}
 	}
 
 	/** Excecute les demandes de création de creep */
 	public void excuteAskForCreateCreep(){
-		for (CreepType creepType : teamPlayer.getListAskForCreateCreep()){
-			createCreep(creepType, teamPlayer);
+		int size;
+		
+		size = teamPlayer.getListAskForCreateCreep().size();
+		for (int i=0; i<size; ){
+			createCreep(teamPlayer.getListAskForCreateCreep().get(i), teamPlayer, teamPlayer.getListAskForCreateCreepPosX().get(i), teamPlayer.getListAskForCreateCreepPosY().get(i));
 		}
-		for (CreepType creepType : teamIA.getListAskForCreateCreep()){
-			createCreep(creepType, teamIA);
+		
+		size = teamIA.getListAskForCreateCreep().size();
+		for (int i=0; i<size; ){
+			createCreep(teamIA.getListAskForCreateCreep().get(i), teamIA, teamIA.getListAskForCreateCreepPosX().get(i), teamIA.getListAskForCreateCreepPosY().get(i));
 		}
-		teamPlayer.getListAskForCreateCreep().clear();
-		teamIA.getListAskForCreateCreep().clear();
+
+		teamPlayer.clearListsAskForCreateCreep();
+		teamIA.clearListsAskForCreateCreep();
 	}
 
 	/** Creation du nouveau creep */
-	public void createCreep(CreepType creepID, Team team){
+	public void createCreep(CreepType creepID, Team team, float spawnPosX, float spawnPosY){
 		CreepPattern creepPattern = PatternLoader.getCreepsPattern().get(creepID.name());
-		Creep creep = CreepFactory.createCreep(creepPattern, team);
+		Creep creep = CreepFactory.createCreep(creepPattern, team, spawnPosX, spawnPosY);
 		addCreep(creep);
 	}
 

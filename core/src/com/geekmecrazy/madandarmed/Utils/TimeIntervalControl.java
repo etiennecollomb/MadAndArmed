@@ -1,29 +1,27 @@
-package com.geekmecrazy.madandarmed.Pattern;
+package com.geekmecrazy.madandarmed.Utils;
 
-import java.util.List;
+import com.badlogic.gdx.utils.TimeUtils;
 
-import com.geekmecrazy.madandarmed.Utils.Vector2d;
 
-public class TeamMapPattern {
+public class TimeIntervalControl {
 
-	/** Team names... and AnimatedTextureType associated */
-	private List<BuildingMapPattern> buildingsList;
+	/** in ms */
+	private int mIntervalofTime;
+
+	private long mStartTime;
 
 	// ===========================================================
 	// Constructors
 	// ===========================================================
 
+	public TimeIntervalControl(int mIntervalofTime) {
+		this.mIntervalofTime = mIntervalofTime;
+		this.resetTimer();
+	}
+
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
-
-	public List<BuildingMapPattern> getBuildingsList() {
-		return buildingsList;
-	}
-
-	public void setBuildingsList(List<BuildingMapPattern> buildingsList) {
-		this.buildingsList = buildingsList;
-	}
 
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
@@ -32,4 +30,15 @@ public class TeamMapPattern {
 	// ===========================================================
 	// Methods
 	// ===========================================================
+
+	/** true = still within the interval, false = time consumed */
+	public boolean isInsideInterval () {
+		return ( TimeUtils.nanoTime() - this.mStartTime < this.mIntervalofTime );
+	}
+	
+	public void resetTimer() {
+		this.mStartTime = TimeUtils.nanoTime();
+	}
+
 }
+

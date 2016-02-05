@@ -24,7 +24,7 @@ public class CreepFactory {
 	private CreepFactory(){} 
 
 
-	public static Creep createCreep (CreepPattern creepPattern, Team team) {
+	public static Creep createCreep (CreepPattern creepPattern, Team team, float spwanPosX, float spwanPosY) {
 
 		// LIFE
 		Life life = PoolManager.getManager().getLifePool().obtain();
@@ -34,7 +34,7 @@ public class CreepFactory {
 		CreepRenderer creepRenderer = PoolAnimManager.getManager().getCreepRendererPool().obtain();
 		
 		Creep creep = PoolManager.getManager().getCreepPool().obtain();
-		creep.init(creepPattern, team.getSpawnPoint().getX()+randowSpawn(), team.getSpawnPoint().getY()+randowSpawn(), creepPattern.getDiameter(), life, team, FightScreen.getManager().getOtherTeam(team), creepRenderer);
+		creep.init(creepPattern, spwanPosX+randowSpawn(), spwanPosY+randowSpawn(), creepPattern.getDiameter(), life, team, FightScreen.getManager().getOtherTeam(team), creepRenderer);
 
 
 		/***********************************************/
