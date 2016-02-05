@@ -3,6 +3,7 @@ package com.geekmecrazy.madandarmed.Pattern;
 import java.util.ArrayList;
 
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponName;
 
 
@@ -12,7 +13,8 @@ public class BuildingPattern {
 		CASTLE,
 		TURRET,
 		CAMP_BUILDING,
-		BARRICADE
+		BARRICADE,
+		SPAWN_BUILDING
 	}
 	
 	public static enum BuildingName {
@@ -20,7 +22,9 @@ public class BuildingPattern {
 		TURRET,
 		CAMP_BUILDING_01,
 		CAMP_BUILDING_02,
-		BARRICADE
+		BARRICADE,
+		SPAWN_BUILDING_01,
+		SPAWN_BUILDING_02
 	} 
 	
 	public static enum BuildingSize {
@@ -63,6 +67,9 @@ public class BuildingPattern {
 	
 	/** list of row in spriteSheet for Fire Animation */
 	private ArrayList<Integer> fireAnimationRow;
+	
+	/** unit type spawned for SpawnBuilding **/
+	private CreepType creepType;
 
 
 	// ===========================================================
@@ -145,6 +152,15 @@ public class BuildingPattern {
 		this.fireAnimationRow = fireAnimationRow;
 	}
 
+	public CreepType getCreepType() {
+		return creepType;
+	}
+
+	public void setCreepType(CreepType creepType) {
+		this.creepType = creepType;
+	}
+	
+	
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
@@ -172,5 +188,6 @@ public class BuildingPattern {
 		}
 
 	}
+
 
 }

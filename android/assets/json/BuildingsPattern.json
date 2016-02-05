@@ -42,5 +42,21 @@
 		buildingSize: MEDIUM
 		life: 5000
 		price: 400
+    },
+    "SPAWN_BUILDING_01": {
+        class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern
+		buildingType: SPAWN_BUILDING
+		buildingName: SPAWN_BUILDING_01
+		buildingSize: MEDIUM
+		creepType: GLADIATOR
+		price: 400
+    },
+    "SPAWN_BUILDING_02": {
+        class: com.geekmecrazy.madandarmed.Pattern.BuildingPattern
+		buildingType: SPAWN_BUILDING
+		buildingName: SPAWN_BUILDING_02
+		buildingSize: MEDIUM
+		creepType: MARINE
+		price: 400
     }
 }

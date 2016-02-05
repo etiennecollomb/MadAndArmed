@@ -4,12 +4,12 @@
 		buttonsPattern: [
 		    {
 		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
-		    	buildingName: CAMP_BUILDING_01
+		    	buildingName: SPAWN_BUILDING_01
 				icon: GLADIATOR_ICON
 		    },
 		    {
 		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
-		    	buildingName: CAMP_BUILDING_02
+		    	buildingName: SPAWN_BUILDING_01
 				icon: MARINE_SMALL_ICON
 		    }
 		]
