@@ -10,7 +10,7 @@ import com.geekmecrazy.madandarmed.Utils.TimeIntervalControl;
 /** cree les units en fonction des spawnbuilding present sur le terrain **/
 public class TurnManager {
 
-	TimeIntervalControl spawnTurnTimer = new TimeIntervalControl(200);
+	TimeIntervalControl spawnTurnTimer = new TimeIntervalControl(2000);
 
 	// ===========================================================
 	// Singleton manager
@@ -53,6 +53,7 @@ public class TurnManager {
 	public void runUpdateNextState(){
 
 		if(!spawnTurnTimer.isInsideInterval()){
+			System.out.println("______START");
 			spawnTurnTimer.resetTimer();
 
 			/** get spawn list from Building Manager SpawnBuilding **/
@@ -62,8 +63,10 @@ public class TurnManager {
 				SpawnBuilding spbld = spawnBuildingList.get(i);
 				CreepType creepType = spbld.getPattern().getCreepType();
 
-				CreepManager.getManager().askForCreateCreep(creepType, spbld.getMyTeam(), 200, 200);
+				CreepManager.getManager().askForCreateCreep(creepType, spbld.getMyTeam(), spbld.getMilitaryRenderer().getX(), spbld.getMilitaryRenderer().getY());
 			}
+		}else{
+			System.out.println("PAUSE");
 		}
 
 

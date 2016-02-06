@@ -5,17 +5,19 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 public class TimeIntervalControl {
 
-	/** in ms */
-	private int mIntervalofTime;
+	public static int ONE_MILLISECOND_IN_NANOSECONDE = 1000000;
 
-	private long mStartTime;
+	private int mIntervalofTime; /** in ms */
+
+	private long mEndTime;
 
 	// ===========================================================
 	// Constructors
 	// ===========================================================
 
+	/** mIntervalofTime in Milli Seconde **/
 	public TimeIntervalControl(int mIntervalofTime) {
-		this.mIntervalofTime = mIntervalofTime;
+		this.mIntervalofTime = mIntervalofTime * ONE_MILLISECOND_IN_NANOSECONDE;
 		this.resetTimer();
 	}
 
@@ -33,11 +35,11 @@ public class TimeIntervalControl {
 
 	/** true = still within the interval, false = time consumed */
 	public boolean isInsideInterval () {
-		return ( TimeUtils.nanoTime() - this.mStartTime < this.mIntervalofTime );
+		return ( TimeUtils.nanoTime() < this.mEndTime );
 	}
 	
 	public void resetTimer() {
-		this.mStartTime = TimeUtils.nanoTime();
+		this.mEndTime = TimeUtils.nanoTime() + this.mIntervalofTime;
 	}
 
 }
