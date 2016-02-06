@@ -30,7 +30,7 @@ public class BarricadeRenderer extends IsoBuildingRenderer {
 		Building thisBuilding = ((Building)this.getMilitary());
 		
 		if(thisBuilding.isAlive()){
-			thisBuilding.setPos(this.getX(), this.getY()); //Update the position of the model (can be moved)
+			thisBuilding.setPos(this.getSceneX(), this.getSceneY()); //Update the position of the model (can be moved)
 			this.setOrientation();
 	        this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)this.getY());
 		}

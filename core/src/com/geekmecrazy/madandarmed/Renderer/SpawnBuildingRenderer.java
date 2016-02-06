@@ -29,7 +29,7 @@ public class SpawnBuildingRenderer extends IsoBuildingRenderer {
 		
 		Building thisBuilding = ((Building)this.getMilitary());
 		
-		thisBuilding.setPos(this.getX(), this.getY()); //Update the position of the model (can be moved)
+		thisBuilding.setPos(this.getSceneX(), this.getSceneY()); //Update the position of the model (can be moved)
         this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)this.getY());
 	}
 
