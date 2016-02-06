@@ -82,6 +82,16 @@ public class IsoBuildingRenderer extends BuildingRenderer {
     public void reset(){
     }
     
+	@Override
+	public void onUpdate(){
+		
+		Building thisBuilding = ((Building)this.getMilitary());
+		thisBuilding.setPos(this.getSceneX(), this.getSceneY()); //Update the position of the model (it can be moved)
+        this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)this.getY());
+        
+		super.onUpdate();
+	}
+    
 	// ===========================================================
 	// Methods
 	// ===========================================================

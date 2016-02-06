@@ -22,17 +22,6 @@ public class SpawnBuildingRenderer extends IsoBuildingRenderer {
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
-
-	@Override
-	public void onUpdate(){
-		super.onUpdate();
-		
-		Building thisBuilding = ((Building)this.getMilitary());
-		
-		thisBuilding.setPos(this.getSceneX(), this.getSceneY()); //Update the position of the model (can be moved)
-        this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)this.getY());
-	}
-
 	
 	// ===========================================================
 	// Methods
