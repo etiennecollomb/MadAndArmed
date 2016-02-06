@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.Renderer;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Scene.IsoGrid;
@@ -25,6 +26,11 @@ public class SpawnBuildingRenderer extends IsoBuildingRenderer {
 	@Override
 	public void onUpdate(){
 		super.onUpdate();
+		
+		Building thisBuilding = ((Building)this.getMilitary());
+		
+		thisBuilding.setPos(this.getX(), this.getY()); //Update the position of the model (can be moved)
+        this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)this.getY());
 	}
 
 	
