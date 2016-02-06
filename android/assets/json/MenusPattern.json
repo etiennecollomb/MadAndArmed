@@ -9,7 +9,7 @@
 		    },
 		    {
 		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
-		    	buildingName: SPAWN_BUILDING_01
+		    	buildingName: SPAWN_BUILDING_02
 				icon: MARINE_SMALL_ICON
 		    }
 		]
