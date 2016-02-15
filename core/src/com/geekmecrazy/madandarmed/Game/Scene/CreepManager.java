@@ -57,7 +57,6 @@ public class CreepManager {
 	// Manager
 	// ===========================================================
 	public static final int MAX_UNITS=1000;
-	public static final int MAX_DEAD_UNITS=100;
 
 	// Team
 	private Team teamPlayer;

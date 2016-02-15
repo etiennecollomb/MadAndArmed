@@ -12,7 +12,7 @@ import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
-public class CampBuilding extends Building {
+public class BaseBuilding extends Building {
 
 	private Sprite floor;
 

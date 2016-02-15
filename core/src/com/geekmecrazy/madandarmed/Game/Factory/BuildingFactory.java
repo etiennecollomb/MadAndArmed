@@ -4,7 +4,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
-import com.geekmecrazy.madandarmed.Game.Element.CampBuilding;
+import com.geekmecrazy.madandarmed.Game.Element.BaseBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
@@ -125,7 +125,7 @@ public class BuildingFactory{
 		}
 
 		/** Building */
-		CampBuilding campBuilding = PoolManager.getManager().getCampBuildingPool().obtain();
+		BaseBuilding campBuilding = PoolManager.getManager().getCampBuildingPool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
 		campBuilding.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team));
 

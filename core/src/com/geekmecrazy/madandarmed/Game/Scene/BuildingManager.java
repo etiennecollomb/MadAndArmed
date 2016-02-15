@@ -7,7 +7,7 @@ import java.util.Set;
 
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
-import com.geekmecrazy.madandarmed.Game.Element.CampBuilding;
+import com.geekmecrazy.madandarmed.Game.Element.BaseBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
@@ -138,8 +138,8 @@ public class BuildingManager {
 				PoolManager.getManager().getTurretPool().free((Turret)building);
 			else if(building instanceof Barricade)
 				PoolManager.getManager().getBarricadePool().free((Barricade)building);
-			else if(building instanceof CampBuilding)
-				PoolManager.getManager().getCampBuildingPool().free((CampBuilding)building);
+			else if(building instanceof BaseBuilding)
+				PoolManager.getManager().getCampBuildingPool().free((BaseBuilding)building);
 
 		}
 		listBuildingsRecycle.clear();
