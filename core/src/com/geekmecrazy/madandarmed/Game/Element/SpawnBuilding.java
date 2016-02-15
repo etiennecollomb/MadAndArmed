@@ -12,6 +12,8 @@ import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 public class SpawnBuilding extends Building {
 	
+	int spawnOrder; /** ordre d apparition du spawn building , -1 not initiated, 0 first one ...**/
+	
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -37,17 +39,26 @@ public class SpawnBuilding extends Building {
 		if(myTeam.getTeamID() == TeamID.TEAM1)
 			FightScreen.getManager().getScene().registerTouchableShape(spawnBuildingRenderer);
 
+		spawnOrder = -1;
 		
 	}
 	
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
+	
+	public int getSpawnOrder() {
+		return spawnOrder;
+	}
+
+	public void setSpawnOrder(int spawnOrder) {
+		this.spawnOrder = spawnOrder;
+	}
 
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
-	
+
 	@Override
 	public void noMoreLife(){
 		super.noMoreLife();
