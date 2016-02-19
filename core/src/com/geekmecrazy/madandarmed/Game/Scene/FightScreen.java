@@ -1,6 +1,5 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
-import com.badlogic.gdx.Gdx;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
@@ -234,18 +233,18 @@ public class FightScreen extends Screen implements IUpdatable {
         mScoreBarUI.init(0, 0);
         this.getHUD().attachChild(mScoreBarUI, Entity.Alignment.LEFT_TOP);
 
-        /** Barricade Button */
-        Button newBarricadButton = new Button();
-        newBarricadButton.init(0, 0, TextureType.SOUND_ICON);
-        newBarricadButton.setAction(new IAction(){
+        /** Sound Button */
+        Button soundButton = new Button();
+        soundButton.init(0, 0, TextureType.SOUND_ICON);
+        soundButton.setAction(new IAction(){
             @Override
             public void execute(){
             	SoundManager.swicthSoundONOFF();
             }
         });
-        newBarricadButton.setSize(1.0f, 1.0f);
-        this.getHUD().attachChild(newBarricadButton, Entity.Alignment.RIGHT_BOTTOM);
-        FightScreen.getManager().getHUD().registerTouchableShape(newBarricadButton);
+        soundButton.setSize(1.0f, 1.0f);
+        this.getHUD().attachChild(soundButton, Entity.Alignment.RIGHT_BOTTOM);
+        FightScreen.getManager().getHUD().registerTouchableShape(soundButton);
         
         
 		/** Start Sound Background */

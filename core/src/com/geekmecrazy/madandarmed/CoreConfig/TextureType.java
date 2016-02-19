@@ -5,7 +5,7 @@ package com.geekmecrazy.madandarmed.CoreConfig;
 // List of sprite used in game
 //===========================================================
 
-import com.geekmecrazy.madandarmed.Game.Element.Building;
+
 
 public enum TextureType{
 	//ALIAS				sprite path / sprite width / sprite height

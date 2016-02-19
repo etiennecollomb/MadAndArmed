@@ -3,7 +3,7 @@ package com.geekmecrazy.madandarmed.Entity.Scene;
 /**
  * Created by ECollomb on 10/03/2015.
  */
-public class FightScene extends Scene {
+public class WarBaseScene extends Scene {
 
 	// ===========================================================
 	// Constructors

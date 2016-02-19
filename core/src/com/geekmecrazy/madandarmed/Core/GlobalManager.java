@@ -115,8 +115,8 @@ public class GlobalManager {
 	public static final int MAP_FIGHT_HEIGHT = 4096; //2048;
 
 	/** HQ Scene */
-	public static final int HQ_SCENE_WIDTH = 2048;
-	public static final int HQ_SCENE_HEIGHT = 2048;
+	public static final int WARBASE_SCENE_WIDTH = 4096;
+	public static final int WARBASE_SCENE_HEIGHT = 4096;
 
 	public static final float BIG_NODESIZE = 64f;//32f LD, 64f HD;
 	public static final float SMALL_NODESIZE = BIG_NODESIZE/3f;

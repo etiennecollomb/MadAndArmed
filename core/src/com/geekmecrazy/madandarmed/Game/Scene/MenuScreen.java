@@ -11,8 +11,8 @@ import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Scene.FightScene;
-import com.geekmecrazy.madandarmed.Entity.Scene.HQScene;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
+import com.geekmecrazy.madandarmed.Entity.Scene.WarBaseScene;
 import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
@@ -85,9 +85,10 @@ public class MenuScreen extends Screen implements IUpdatable {
 		hqButton.setAction(new IAction(){
 			@Override
 			public void execute(){
-				//showHQScreen(); //A REMETTRE POUR LE QG
+				showWarBaseScreen(); //A REMETTRE POUR LE QG
 
-
+				/** TEST unit weapon on unit **/
+				/*
 				//TEST
 				int x_ = as5.getCurrentFrameX()+1;
 				if(x_>= as5.getSpriteSheet().getNumberOfColumn()) x_=0;
@@ -99,7 +100,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				float dirX = (float)Math.cos(start_angle);
 				float dirY = (float)Math.sin(start_angle);
 
-				/** start_angle is (2*Math.PI/16f)*graphicOrientation **/
+				// start_angle is (2*Math.PI/16f)*graphicOrientation
 				//				float deltaAngleWeapon = (float) (-Math.PI/24);
 				//				float posX_ = (float)Math.cos(start_angle + deltaAngleWeapon) * 80 ;
 				//				float posY_ = (float)Math.sin(start_angle + deltaAngleWeapon) * 80;
@@ -121,6 +122,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				//fireThrowerMesh(as5.getX()+posX_-50, as5.getY()+posY_, dirX, dirY);
 				//				System.out.println("3333 "+start_angle + " " + dirX + " " + dirY );
 				//FINTEST
+				*/
 
 			}
 		});
@@ -342,7 +344,6 @@ public class MenuScreen extends Screen implements IUpdatable {
 				FightScreen.getManager().newGame();
 
 				//init GROUND
-				/*WORKING : A REMETTRE ON une fois debug fini*/
 				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
 				tiledGround.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
 				FightScreen.getManager().setTiledGround(tiledGround);
@@ -352,7 +353,8 @@ public class MenuScreen extends Screen implements IUpdatable {
 		.start(GlobalManager.getTweenManager());
 	}
 
-	public void showHQScreen(){
+	
+	public void showWarBaseScreen(){
 		Tween.to(blackScreen, RectangleTween.ALPHA, 0.45f)
 		.target(1f)
 		.setCallbackTriggers(TweenCallback.END)
@@ -360,11 +362,19 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
-				Scene hqScene = new HQScene();
+				Scene warBaseScene = new WarBaseScene();
 
-				hqScene.init(GlobalManager.HQ_SCENE_WIDTH, GlobalManager.HQ_SCENE_HEIGHT);
-				HQScreen.getManager().init(hqScene);
-				ScreenManager.setCurrentScreen(HQScreen.getManager());
+				warBaseScene.init(GlobalManager.WARBASE_SCENE_WIDTH, GlobalManager.WARBASE_SCENE_HEIGHT);
+				WarBaseScreen.getManager().init(warBaseScene);
+				ScreenManager.setCurrentScreen(WarBaseScreen.getManager());
+
+				//WarBaseScreen.getManager().loadData(); //from xml, et precalcul
+				WarBaseScreen.getManager().newGame();
+
+				//init GROUND
+				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
+				tiledGround.init(GlobalManager.WARBASE_SCENE_WIDTH, GlobalManager.WARBASE_SCENE_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
+				WarBaseScreen.getManager().setTiledGround(tiledGround);
 			}
 		})
 		.ease(Quad.OUT)
