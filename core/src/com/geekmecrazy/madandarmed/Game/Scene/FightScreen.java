@@ -188,7 +188,7 @@ public class FightScreen extends Screen implements IUpdatable {
         System.out.println("Show Fight Screen");
     }
 
-    // Lance une nouvelle partie
+    // Lance le screen la premiere fois qu'on y accede
 	public void newGame(){
 		
 		/** Init SoundManager */

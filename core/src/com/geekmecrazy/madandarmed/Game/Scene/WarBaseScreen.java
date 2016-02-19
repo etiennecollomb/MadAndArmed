@@ -81,7 +81,7 @@ public class WarBaseScreen extends Screen implements IUpdatable {
         System.out.println("Show WarBase Screen");
     }
 
-    // Lance une nouvelle partie
+    // Lance le screen la premiere fois qu'on y accede
 	public void newGame(){
         
         /** Init IsoGrid */
@@ -91,7 +91,8 @@ public class WarBaseScreen extends Screen implements IUpdatable {
         gridRenderer.init(isoGrid);
         //this.getScene().attachChild(gridRenderer);
         
-
+        GameMap.initMaptttt();
+        
         
 //        /** Memory Usage **/
 //        System.out.println("################## MEMORY USAGE ##################");
