@@ -3,7 +3,7 @@ package com.geekmecrazy.madandarmed.IA;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Element.Vehicle;
-import com.geekmecrazy.madandarmed.Game.Scene.BuildingManager;
+import com.geekmecrazy.madandarmed.Game.Scene.FightBuildingManager;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepSize;
 import com.geekmecrazy.madandarmed.Tools.ResetArray;
 
@@ -131,7 +131,7 @@ public class StateMap {
 
 	public void setZoneBPositionMap(TeamID teamID){
 
-		List<Building> list_buildings_ = BuildingManager.getManager().getListBuildings();
+		List<Building> list_buildings_ = FightBuildingManager.getManager().getListBuildings();
 		for(Building building_ : list_buildings_){
 			//on ne recupere que les building de notre equipe
 			if(building_.getMyTeam().getTeamID() == teamID)

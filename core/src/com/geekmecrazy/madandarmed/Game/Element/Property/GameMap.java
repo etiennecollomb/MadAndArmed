@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Game.Element.Property;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
+import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Scene.DecorationManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
@@ -23,12 +24,12 @@ public class GameMap {
 	// disable object's instanciation (private constructor)
 	private GameMap(){} 
 
-	public static void initMap() {
+	public static void initMap(Scene scene) {
 
         DecorationManager decorationManager = new DecorationManager();
 
         decorationManager.setDecoration();
-        decorationManager.attachDecoration(FightScreen.getManager().getScene() );
+        decorationManager.attachDecoration( scene );
 
         
 	}

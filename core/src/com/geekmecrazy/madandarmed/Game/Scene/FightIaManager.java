@@ -2,25 +2,25 @@ package com.geekmecrazy.madandarmed.Game.Scene;
 
 
 /** Doit gerer le placement des buildings en fonction des pattern d'ordre de placement defini par le user **/
-public class IaManager {
+public class FightIaManager {
 	
 	// ===========================================================
 	// Singleton manager
 	// ===========================================================
-	private static IaManager iaManager;
+	private static FightIaManager iaManager;
 	
 	/** Creation et initialisation du manager */
 	public static void initManager() {
 		if (iaManager != null) throw new RuntimeException("IaManager already created ! IaManager is not null");
-		iaManager = new IaManager();
+		iaManager = new FightIaManager();
 	}
 
 	/** Disable object's instantiation (private constructor) */
-	private IaManager(){
+	private FightIaManager(){
 	}
 	
 	/** Acces au manager */
-	public static IaManager getManager(){
+	public static FightIaManager getManager(){
 		if (iaManager == null) throw new RuntimeException("IaManager not created ! IaManager is null");
 		return iaManager;
 	}
@@ -51,7 +51,7 @@ public class IaManager {
     public void runUpdateNextState(){
 
         //DEBUG
-        if(CreepManager.getManager().getCreepsNumber()<200) {
+        if(FightCreepManager.getManager().getCreepsNumber()<200) {
 
             if (nbTurnAfterPreviousSpawn >= TURN) {
                 if (big_spawn == MESH_TURN) {

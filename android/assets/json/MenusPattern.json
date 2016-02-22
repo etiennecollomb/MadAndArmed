@@ -1,5 +1,20 @@
 {
-	"MENU_1": {
+	"SPAWN_BUILDING_MENU": {
+		class: com.geekmecrazy.madandarmed.Pattern.MenuPattern
+		buttonsPattern: [
+		    {
+		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
+		    	buildingName: SPAWN_BUILDING_01
+				icon: GLADIATOR_ICON
+		    },
+		    {
+		    	class: com.geekmecrazy.madandarmed.Pattern.ButtonPattern
+		    	buildingName: SPAWN_BUILDING_02
+				icon: MARINE_SMALL_ICON
+		    }
+		]
+	},
+	"WARBASE_BUILDING_MENU": {
 		class: com.geekmecrazy.madandarmed.Pattern.MenuPattern
 		buttonsPattern: [
 		    {

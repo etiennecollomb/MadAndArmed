@@ -8,27 +8,27 @@ import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 import com.geekmecrazy.madandarmed.Utils.TimeIntervalControl;
 
 /** cree les units en fonction des spawnbuilding present sur le terrain **/
-public class TurnManager {
+public class FightTurnManager {
 
 	TimeIntervalControl spawnTurnTimer = new TimeIntervalControl(2000);
 
 	// ===========================================================
 	// Singleton manager
 	// ===========================================================
-	private static TurnManager turnManager;
+	private static FightTurnManager turnManager;
 
 	/** Creation et initialisation du manager */
 	public static void initManager() {
 		if (turnManager != null) throw new RuntimeException("TurnManager already created ! TurnManager is not null");
-		turnManager = new TurnManager();
+		turnManager = new FightTurnManager();
 	}
 
 	/** Disable object's instantiation (private constructor) */
-	private TurnManager(){
+	private FightTurnManager(){
 	}
 
 	/** Acces au manager */
-	public static TurnManager getManager(){
+	public static FightTurnManager getManager(){
 		if (turnManager == null) throw new RuntimeException("TurnManager not created ! TurnManager is null");
 		return turnManager;
 	}
@@ -57,13 +57,13 @@ public class TurnManager {
 			spawnTurnTimer.resetTimer();
 
 			/** get spawn list from Building Manager SpawnBuilding **/
-			List<SpawnBuilding> spawnBuildingList = BuildingManager.getManager().getListSpawnBuildings();
+			List<SpawnBuilding> spawnBuildingList = FightBuildingManager.getManager().getListSpawnBuildings();
 			int size = spawnBuildingList.size();
 			for(int i=0; i<size; i++){
 				SpawnBuilding spbld = spawnBuildingList.get(i);
 				CreepType creepType = spbld.getPattern().getCreepType();
 
-				CreepManager.getManager().askForCreateCreep(creepType, spbld.getMyTeam(), spbld.getMilitaryRenderer().getX(), spbld.getMilitaryRenderer().getY());
+				FightCreepManager.getManager().askForCreateCreep(creepType, spbld.getMyTeam(), spbld.getMilitaryRenderer().getX(), spbld.getMilitaryRenderer().getY());
 			}
 		}else{
 			System.out.println("PAUSE");

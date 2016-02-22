@@ -1,20 +1,16 @@
 package com.geekmecrazy.madandarmed.Game.UI;
 
-import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IMoneyListener;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.IAction;
-import com.geekmecrazy.madandarmed.Game.Scene.BuildingManager;
-import com.geekmecrazy.madandarmed.Game.Scene.CreepManager;
+import com.geekmecrazy.madandarmed.Game.Scene.FightBuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.ButtonPattern;
-import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Renderer.SpawnBuildingButtonRenderer;
 
 import java.util.HashMap;
@@ -38,7 +34,7 @@ public class SpawnBuildingButtonUI extends Layout implements IMoneyListener {
 
 		FightScreen.getManager().getTeamPlayer().addMoneyListener(this);
 
-		List<ButtonPattern> buttonsPattern = PatternLoader.getMenusPattern().get("MENU_1").getButtonsPattern();
+		List<ButtonPattern> buttonsPattern = PatternLoader.getMenusPattern().get("SPAWN_BUILDING_MENU").getButtonsPattern();
 		for (final ButtonPattern buttonPattern: buttonsPattern){
 
 			final BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buttonPattern.getBuildingName().name());
@@ -66,7 +62,7 @@ public class SpawnBuildingButtonUI extends Layout implements IMoneyListener {
 				public void execute(){
 					//System.out.println("#### TOUCH SPAWN BUILDING BUTTON !!");
 					if(spawnBuildingButtonsState.get(buildingPattern).intValue() == SpawnBuildingButtonUI.BUTTON_OK_STATE) {
-						BuildingManager.getManager().askForCreateSpawnBuilding(buttonPattern.getBuildingName(), FightScreen.getManager().getTeamPlayer());
+						FightBuildingManager.getManager().askForCreateSpawnBuilding(buttonPattern.getBuildingName(), FightScreen.getManager().getTeamPlayer());
 					}
 				}
 			});

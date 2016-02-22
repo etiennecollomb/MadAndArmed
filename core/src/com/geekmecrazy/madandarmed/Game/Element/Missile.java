@@ -1,7 +1,7 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Game.Scene.WeaponManager;
+import com.geekmecrazy.madandarmed.Game.Scene.FightWeaponManager;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MissileRenderer;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
@@ -40,9 +40,9 @@ public class Missile extends Weapon {
 	public void onUpdate(){
 		
 		//le cas ou la target est morte
-		//TODO : suivre les derniere coordonnée connues avant mort?
+		//TODO : suivre les derniere coordonnï¿½e connues avant mort?
 		if(!this.getTarget().isAlive()){
-			WeaponManager.getManager().destroyWeapon(this);
+			FightWeaponManager.getManager().destroyWeapon(this);
 			return;
 		}
 
@@ -59,7 +59,7 @@ public class Missile extends Weapon {
 		//on a atteint la cible au prochain coup?
 		if((distance - this.getTarget().getDiameter()/2f)<=vitesse){
 			this.getTarget().hit(this);
-			WeaponManager.getManager().destroyWeapon(this);
+			FightWeaponManager.getManager().destroyWeapon(this);
 			return;
 		}
 		//sinon on "avance" vers elle

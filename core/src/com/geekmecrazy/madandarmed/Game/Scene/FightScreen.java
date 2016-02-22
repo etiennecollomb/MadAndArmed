@@ -120,8 +120,8 @@ public class FightScreen extends Screen implements IUpdatable {
     public void onUpdate(){
 
         /**** Create Creep ***/
-        CreepManager.getManager().excuteAskForCreateCreep();
-        BuildingManager.getManager().excuteAskForCreateSpawnBuilding();
+        FightCreepManager.getManager().excuteAskForCreateCreep();
+        FightBuildingManager.getManager().excuteAskForCreateSpawnBuilding();
 
         /******** PREPARATION DU TOUR ********/
         FightScreen.currentTime = System.currentTimeMillis();
@@ -135,8 +135,8 @@ public class FightScreen extends Screen implements IUpdatable {
         this.runUpdateNextState();
 
         /******** RECYCLE ********/
-        CreepManager.getManager().recycleCreep();
-        BuildingManager.getManager().recycleBuilding();
+        FightCreepManager.getManager().recycleCreep();
+        FightBuildingManager.getManager().recycleBuilding();
 
         /******** FINALISATION DU TOUR ********/
 //        this.getTeamPlayer().calculateMilitarySpace();
@@ -205,21 +205,21 @@ public class FightScreen extends Screen implements IUpdatable {
 		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM1, MAX_THORIUM));
 		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM2, MAX_THORIUM));
 
-		BuildingManager.initManager(this.getTeamPlayer(), this.getTeamIA());
-		CreepManager.initManager(this.getTeamPlayer(), this.getTeamIA());
-		TurnManager.initManager();
-		IaManager.initManager();
-		WeaponManager.initManager();
+		FightBuildingManager.initManager(this.getTeamPlayer(), this.getTeamIA());
+		FightCreepManager.initManager(this.getTeamPlayer(), this.getTeamIA());
+		FightTurnManager.initManager();
+		FightIaManager.initManager();
+		FightWeaponManager.initManager();
 
-		BuildingManager.getManager().initBuildingAtStart();
-		BuildingManager.getManager().initTarget();
+		FightBuildingManager.getManager().initBuildingAtStart();
+		FightBuildingManager.getManager().initTarget();
 
         this.getTeamPlayer().getStateMap().initGame();
         this.getTeamPlayer().getStateMap().setZoneBPositionMap(this.getTeamPlayer().getTeamID());
         this.getTeamIA().getStateMap().initGame();
         this.getTeamIA().getStateMap().setZoneBPositionMap(this.getTeamIA().getTeamID());
 
-		GameMap.initMap();
+		GameMap.initMap( FightScreen.getManager().getScene() );
                 
         /** init UIs */
 		uiFinishGame = new UIFinishGame();
@@ -270,10 +270,10 @@ public class FightScreen extends Screen implements IUpdatable {
 
     public void closeGame(){
         //TODO: a revoir pour faire bien clean
-        BuildingManager.destroyManager();
-        CreepManager.destroyManager();
-        IaManager.destroyManager();
-        WeaponManager.destroyManager();
+        FightBuildingManager.destroyManager();
+        FightCreepManager.destroyManager();
+        FightIaManager.destroyManager();
+        FightWeaponManager.destroyManager();
     }
 
 	public Team getOtherTeam(final Team team){
@@ -284,11 +284,11 @@ public class FightScreen extends Screen implements IUpdatable {
 	}
 
 	public void runUpdateNextState(){
-		TurnManager.getManager().runUpdateNextState();	
+		FightTurnManager.getManager().runUpdateNextState();	
 		//IaManager.getManager().runUpdateNextState();
-		BuildingManager.getManager().runUpdateNextState();
-		CreepManager.getManager().runUpdateNextState();
-		WeaponManager.getManager().onUpdate();
+		FightBuildingManager.getManager().runUpdateNextState();
+		FightCreepManager.getManager().runUpdateNextState();
+		FightWeaponManager.getManager().onUpdate();
 	}
 
 	public void updateNextMoneyTurn(){

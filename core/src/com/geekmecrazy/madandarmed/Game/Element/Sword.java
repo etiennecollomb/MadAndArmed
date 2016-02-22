@@ -1,7 +1,7 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Game.Scene.WeaponManager;
+import com.geekmecrazy.madandarmed.Game.Scene.FightWeaponManager;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.GunRenderer;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MissileRenderer;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.SwordRenderer;
@@ -30,7 +30,7 @@ public class Sword extends Weapon {
 
 			/** effet immediat **/
 			this.getTarget().hit(this);
-			WeaponManager.getManager().destroyWeapon(this);
+			FightWeaponManager.getManager().destroyWeapon(this);
 
 		}
 

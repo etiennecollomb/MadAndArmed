@@ -1,7 +1,7 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Game.Scene.WeaponManager;
+import com.geekmecrazy.madandarmed.Game.Scene.FightWeaponManager;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MeshMultiExplosionRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
@@ -31,7 +31,7 @@ public class MeshMultiExplosion extends Weapon {
 
 		/** anim is finished we destroy it **/
 		if(this.meshMultiExplosionRenderer.getWeaponTravellingEffectList().size() == 0)
-			WeaponManager.getManager().destroyWeapon(this);
+			FightWeaponManager.getManager().destroyWeapon(this);
 
 	}
 

@@ -91,7 +91,7 @@ public class WarBaseScreen extends Screen implements IUpdatable {
         gridRenderer.init(isoGrid);
         //this.getScene().attachChild(gridRenderer);
         
-        GameMap.initMaptttt();
+        GameMap.initMap( WarBaseScreen.getManager().getScene() );
         
         
 //        /** Memory Usage **/

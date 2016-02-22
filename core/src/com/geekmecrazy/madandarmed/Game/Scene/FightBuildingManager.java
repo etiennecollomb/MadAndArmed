@@ -25,7 +25,7 @@ import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
-public class BuildingManager {
+public class FightBuildingManager {
 
 	/** Spawn Building (spawn unit) : unreal building non destroyable **/
 	private List<SpawnBuilding> listSpawnBuildings;
@@ -40,16 +40,16 @@ public class BuildingManager {
 	// Constructors
 	// ===========================================================
 
-	private static BuildingManager buildingManager;
+	private static FightBuildingManager buildingManager;
 
 	/** Creation et initialisation du manager */
 	public static void initManager(Team teamPlayer, Team teamIA) {
 		if (buildingManager != null) throw new RuntimeException("buildingManager already created ! buildingManager is not null");
-		buildingManager = new BuildingManager(teamPlayer, teamIA);
+		buildingManager = new FightBuildingManager(teamPlayer, teamIA);
 	}
 
 	/** Disable object's instantiation (private constructor) */
-	private BuildingManager(Team teamPlayer, Team teamIA){
+	private FightBuildingManager(Team teamPlayer, Team teamIA){
 		this.teamPlayer = teamPlayer;
 		this.teamIA = teamIA;
 		this.listSpawnBuildings = new ArrayList<SpawnBuilding>();
@@ -83,7 +83,7 @@ public class BuildingManager {
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
 
-	public static BuildingManager getManager(){
+	public static FightBuildingManager getManager(){
 		return buildingManager;
 	}
 

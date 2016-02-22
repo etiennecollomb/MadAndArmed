@@ -5,7 +5,7 @@ import java.util.List;
 import com.badlogic.gdx.audio.Sound;
 import com.geekmecrazy.madandarmed.CoreConfig.SoundType;
 import com.geekmecrazy.madandarmed.Game.Scene.SoundManager;
-import com.geekmecrazy.madandarmed.Game.Scene.WeaponManager;
+import com.geekmecrazy.madandarmed.Game.Scene.FightWeaponManager;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponType;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
@@ -68,7 +68,7 @@ public class Attaque extends GameElement {
 					shootCycleCounter=0;	
 
 					//On attaque !
-					WeaponManager.getManager().fireWeapon(m, target);
+					FightWeaponManager.getManager().fireWeapon(m, target);
 					
 					/** Sound */
 					if(weaponPattern.getSoundsType() != null){

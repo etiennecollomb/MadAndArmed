@@ -14,21 +14,21 @@ import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
-public class CreepManager {
+public class FightCreepManager {
 
 	// ===========================================================
 	// Singleton manager
 	// ===========================================================
-	private static CreepManager creepManager;
+	private static FightCreepManager creepManager;
 
 	/** Creation et initialisation du manager */
 	public static void initManager(Team teamPlayer, Team teamIA) {
 		if (creepManager != null) throw new RuntimeException("creepManager already created ! creepManager is not null");
-		creepManager = new CreepManager(teamPlayer, teamIA);
+		creepManager = new FightCreepManager(teamPlayer, teamIA);
 	}
 
 	/** Disable object's instantiation (private constructor) */
-	private CreepManager(Team teamPlayer, Team teamIA){
+	private FightCreepManager(Team teamPlayer, Team teamIA){
 		this.teamPlayer = teamPlayer;
 		this.teamIA = teamIA;
 		this.listCreeps = new ArrayList<Creep>();
@@ -37,7 +37,7 @@ public class CreepManager {
 	}
 
 	/** Acces au manager */
-	public static CreepManager getManager(){
+	public static FightCreepManager getManager(){
 		if (creepManager == null) throw new RuntimeException("creepManager not created ! creepManager is null");
 		return creepManager;
 	}

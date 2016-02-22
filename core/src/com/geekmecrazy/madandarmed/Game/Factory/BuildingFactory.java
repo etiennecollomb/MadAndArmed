@@ -9,7 +9,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
-import com.geekmecrazy.madandarmed.Game.Scene.BuildingManager;
+import com.geekmecrazy.madandarmed.Game.Scene.FightBuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
@@ -56,7 +56,7 @@ public class BuildingFactory{
 	// ===========================================================
 
 	public static void destroy(Building building) {
-		BuildingManager.getManager().removeBuilding(building);
+		FightBuildingManager.getManager().removeBuilding(building);
 		//building.recycle();
 		if(building.equals(FightScreen.getManager().getTeamIA().getCastle())){
 			FightScreen.getManager().getUiFinishGame().showUI(true);

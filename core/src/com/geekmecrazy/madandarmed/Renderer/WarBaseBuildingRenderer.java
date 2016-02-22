@@ -15,7 +15,7 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 
 
-public class HQBuildingRenderer extends Shape/* implements IMoveable*/{
+public class WarBaseBuildingRenderer extends Shape/* implements IMoveable*/{
 
     private Sprite icon;
     private Sprite leftArrow;
@@ -31,7 +31,7 @@ public class HQBuildingRenderer extends Shape/* implements IMoveable*/{
 	// ===========================================================
 
     
-    public HQBuildingRenderer(){
+    public WarBaseBuildingRenderer(){
         super();
         
         icon = new Sprite();
@@ -75,7 +75,7 @@ public class HQBuildingRenderer extends Shape/* implements IMoveable*/{
                 .setCallback(new TweenCallback() {
                     @Override
                     public void onEvent(int type, BaseTween<?> source) {
-                        Tween.to(HQBuildingRenderer.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
+                        Tween.to(WarBaseBuildingRenderer.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
                     }
                 })
                 .start(GlobalManager.getTweenManager());
@@ -91,7 +91,7 @@ public class HQBuildingRenderer extends Shape/* implements IMoveable*/{
                 .setCallback(new TweenCallback() {
                     @Override
                     public void onEvent(int type, BaseTween<?> source) {
-                        Tween.to(HQBuildingRenderer.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
+                        Tween.to(WarBaseBuildingRenderer.this,ShapeTween.SCALE,0.1f).target(1.0f,1.0f).start(GlobalManager.getTweenManager());
                     }
                 })
                 .start(GlobalManager.getTweenManager());
