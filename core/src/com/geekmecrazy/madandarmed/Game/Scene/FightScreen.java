@@ -12,7 +12,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Property.GameMap;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.ScoreBarUI;
 import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
-import com.geekmecrazy.madandarmed.Game.UI.SpawnBuildingButtonUI;
+import com.geekmecrazy.madandarmed.Game.UI.Fight_SpawnBuildingButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
@@ -37,7 +37,7 @@ public class FightScreen extends Screen implements IUpdatable {
 
     /** UI */
     private UIFinishGame uiFinishGame;
-    private SpawnBuildingButtonUI mUnitButtonUI;
+    private Fight_SpawnBuildingButtonUI mUnitButtonUI;
     private ScoreBarUI mScoreBarUI;
 
     /** Time stuff */
@@ -120,8 +120,8 @@ public class FightScreen extends Screen implements IUpdatable {
     public void onUpdate(){
 
         /**** Create Creep ***/
-        FightCreepManager.getManager().excuteAskForCreateCreep();
-        FightBuildingManager.getManager().excuteAskForCreateSpawnBuilding();
+        Fight_CreepManager.getManager().excuteAskForCreateCreep();
+        Fight_BuildingManager.getManager().excuteAskForCreateSpawnBuilding();
 
         /******** PREPARATION DU TOUR ********/
         FightScreen.currentTime = System.currentTimeMillis();
@@ -135,8 +135,8 @@ public class FightScreen extends Screen implements IUpdatable {
         this.runUpdateNextState();
 
         /******** RECYCLE ********/
-        FightCreepManager.getManager().recycleCreep();
-        FightBuildingManager.getManager().recycleBuilding();
+        Fight_CreepManager.getManager().recycleCreep();
+        Fight_BuildingManager.getManager().recycleBuilding();
 
         /******** FINALISATION DU TOUR ********/
 //        this.getTeamPlayer().calculateMilitarySpace();
@@ -205,14 +205,14 @@ public class FightScreen extends Screen implements IUpdatable {
 		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM1, MAX_THORIUM));
 		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM2, MAX_THORIUM));
 
-		FightBuildingManager.initManager(this.getTeamPlayer(), this.getTeamIA());
-		FightCreepManager.initManager(this.getTeamPlayer(), this.getTeamIA());
-		FightTurnManager.initManager();
-		FightIaManager.initManager();
-		FightWeaponManager.initManager();
+		Fight_BuildingManager.initManager(this.getTeamPlayer(), this.getTeamIA());
+		Fight_CreepManager.initManager(this.getTeamPlayer(), this.getTeamIA());
+		Fight_TurnManager.initManager();
+		Fight_IaManager.initManager();
+		Fight_WeaponManager.initManager();
 
-		FightBuildingManager.getManager().initBuildingAtStart();
-		FightBuildingManager.getManager().initTarget();
+		Fight_BuildingManager.getManager().initBuildingAtStart();
+		Fight_BuildingManager.getManager().initTarget();
 
         this.getTeamPlayer().getStateMap().initGame();
         this.getTeamPlayer().getStateMap().setZoneBPositionMap(this.getTeamPlayer().getTeamID());
@@ -225,7 +225,7 @@ public class FightScreen extends Screen implements IUpdatable {
 		uiFinishGame = new UIFinishGame();
 		uiFinishGame.initUI();
 
-        mUnitButtonUI = new SpawnBuildingButtonUI();
+        mUnitButtonUI = new Fight_SpawnBuildingButtonUI();
         mUnitButtonUI.init(0, 0);
         this.getHUD().attachChild(mUnitButtonUI, Entity.Alignment.LEFT_BOTTOM);
 
@@ -270,10 +270,10 @@ public class FightScreen extends Screen implements IUpdatable {
 
     public void closeGame(){
         //TODO: a revoir pour faire bien clean
-        FightBuildingManager.destroyManager();
-        FightCreepManager.destroyManager();
-        FightIaManager.destroyManager();
-        FightWeaponManager.destroyManager();
+        Fight_BuildingManager.destroyManager();
+        Fight_CreepManager.destroyManager();
+        Fight_IaManager.destroyManager();
+        Fight_WeaponManager.destroyManager();
     }
 
 	public Team getOtherTeam(final Team team){
@@ -284,11 +284,11 @@ public class FightScreen extends Screen implements IUpdatable {
 	}
 
 	public void runUpdateNextState(){
-		FightTurnManager.getManager().runUpdateNextState();	
+		Fight_TurnManager.getManager().runUpdateNextState();	
 		//IaManager.getManager().runUpdateNextState();
-		FightBuildingManager.getManager().runUpdateNextState();
-		FightCreepManager.getManager().runUpdateNextState();
-		FightWeaponManager.getManager().onUpdate();
+		Fight_BuildingManager.getManager().runUpdateNextState();
+		Fight_CreepManager.getManager().runUpdateNextState();
+		Fight_WeaponManager.getManager().onUpdate();
 	}
 
 	public void updateNextMoneyTurn(){

@@ -6,7 +6,7 @@ import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IMoneyListener;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.IAction;
-import com.geekmecrazy.madandarmed.Game.Scene.FightBuildingManager;
+import com.geekmecrazy.madandarmed.Game.Scene.Fight_BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.WarBaseScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
@@ -21,13 +21,13 @@ import java.util.Map;
 
 
 
-public class WarBaseBuildingButtonUI extends Layout {
+public class WarBase_BuildingButtonUI extends Layout {
 
 
 	private Map<BuildingPattern, WarBaseBuildingButtonRenderer> warBaseBuildingButtonsSprites;
 
 
-	public WarBaseBuildingButtonUI(){
+	public WarBase_BuildingButtonUI(){
 		//les boutons par type d unite
 		warBaseBuildingButtonsSprites = new HashMap<BuildingPattern, WarBaseBuildingButtonRenderer>();
 	}
@@ -60,7 +60,7 @@ public class WarBaseBuildingButtonUI extends Layout {
 				@Override
 				public void execute(){
 					//System.out.println("#### TOUCH WAR BASE BUILDING BUTTON !!");
-					FightBuildingManager.getManager().askForCreateSpawnBuilding(buttonPattern.getBuildingName(), WarBaseScreen.getManager().getTeamPlayer());
+					Fight_BuildingManager.getManager().askForCreateSpawnBuilding(buttonPattern.getBuildingName(), WarBaseScreen.getManager().getTeamPlayer());
 
 				}
 			});

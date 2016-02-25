@@ -4,12 +4,17 @@ import com.badlogic.gdx.utils.Array;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.BaseBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
+import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
+import com.geekmecrazy.madandarmed.Game.Factory.BuildingFactory;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
+import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingName;
 import com.geekmecrazy.madandarmed.Utils.SpawnOrderComparator;
 
 /** Gestion de l'etat de la base (sert aussi pour l edition du coup) **/
 
-public class WarBaseManager {
+public class WarBase_BuildingManager {
 
 	private Array<Barricade> listBarricades;
 	private Array<Turret> listTurrets;
@@ -20,7 +25,7 @@ public class WarBaseManager {
 	// Constructors
 	// ===========================================================
 
-	public WarBaseManager(){
+	public WarBase_BuildingManager(){
 
 		this.listBarricades = new Array<Barricade>();
 		this.listTurrets = new Array<Turret>();
@@ -135,6 +140,13 @@ public class WarBaseManager {
 	}
 	
 	
+	/** Creation d'un Building **/
+	public void createSpawnBuilding(float posX, float posY, BuildingName buildingName) {
+
+			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingName.name());
+			SpawnBuilding swpanBuilding = BuildingFactory.createSpawnBuilding(posX, posY, buildingPattern, team);
+			addSpawnBuilding(swpanBuilding);
+	}
 	
 	
 	

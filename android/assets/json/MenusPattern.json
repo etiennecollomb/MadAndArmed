@@ -1,5 +1,5 @@
 {
-	"SPAWN_BUILDING_MENU": {
+	"FIGHT_SPAWN_BUILDING_MENU": {
 		class: com.geekmecrazy.madandarmed.Pattern.MenuPattern
 		buttonsPattern: [
 		    {

@@ -4,7 +4,7 @@ package com.geekmecrazy.madandarmed.IA;
 
 
 import com.geekmecrazy.madandarmed.Game.Element.Military;
-import com.geekmecrazy.madandarmed.Game.Scene.FightCreepManager;
+import com.geekmecrazy.madandarmed.Game.Scene.Fight_CreepManager;
 import com.geekmecrazy.madandarmed.Tools.ResetArray;
 
 public class AstarMap {

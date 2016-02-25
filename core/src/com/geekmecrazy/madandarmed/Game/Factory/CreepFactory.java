@@ -4,7 +4,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
-import com.geekmecrazy.madandarmed.Game.Scene.FightCreepManager;
+import com.geekmecrazy.madandarmed.Game.Scene.Fight_CreepManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.IA.GroundMoveBehavior;
@@ -74,7 +74,7 @@ public class CreepFactory {
 	}
 
 	public static void destroy(Creep creep) {
-		FightCreepManager.getManager().removeCreep(creep);
+		Fight_CreepManager.getManager().removeCreep(creep);
 	}
 
 	//permet de ne pas spawner pile poil l un sur l autre

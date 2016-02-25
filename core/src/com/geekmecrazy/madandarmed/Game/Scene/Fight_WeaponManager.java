@@ -20,7 +20,7 @@ import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MissileRenderer;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
-public class FightWeaponManager implements IUpdatable {
+public class Fight_WeaponManager implements IUpdatable {
 
 	private List<Weapon> weaponsList;
 
@@ -29,21 +29,21 @@ public class FightWeaponManager implements IUpdatable {
 	// ===========================================================
 
 	/** Singleton manager **/
-	private static FightWeaponManager weaponManager;
+	private static Fight_WeaponManager weaponManager;
 
 	/** Creation et initialisation du manager */
 	public static void initManager() {
 		if (weaponManager != null) throw new RuntimeException("weaponManager already created ! weaponManager is not null");
-		weaponManager = new FightWeaponManager();
+		weaponManager = new Fight_WeaponManager();
 	}
 
 	/** Disable object's instantiation (private constructor) */
-	private FightWeaponManager(){
+	private Fight_WeaponManager(){
 		this.weaponsList = new ArrayList<Weapon>();
 	}
 
 	/** Acces au manager */
-	public static FightWeaponManager getManager(){
+	public static Fight_WeaponManager getManager(){
 		if (weaponManager == null) throw new RuntimeException("weaponManager not created ! weaponManager is null");
 		return weaponManager;
 	}

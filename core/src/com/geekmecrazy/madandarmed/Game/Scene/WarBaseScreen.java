@@ -12,7 +12,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Property.GameMap;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.ScoreBarUI;
 import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
-import com.geekmecrazy.madandarmed.Game.UI.SpawnBuildingButtonUI;
+import com.geekmecrazy.madandarmed.Game.UI.Fight_SpawnBuildingButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;

@@ -6,7 +6,7 @@ import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IMoneyListener;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.IAction;
-import com.geekmecrazy.madandarmed.Game.Scene.FightBuildingManager;
+import com.geekmecrazy.madandarmed.Game.Scene.Fight_BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
@@ -19,7 +19,7 @@ import java.util.Map;
 
 
 
-public class SpawnBuildingButtonUI extends Layout implements IMoneyListener {
+public class Fight_SpawnBuildingButtonUI extends Layout implements IMoneyListener {
 
 	private static int BUTTON_OK_STATE = 0;
 	private static int BUTTON_NO_MONEY_STATE = 1;
@@ -34,7 +34,7 @@ public class SpawnBuildingButtonUI extends Layout implements IMoneyListener {
 
 		FightScreen.getManager().getTeamPlayer().addMoneyListener(this);
 
-		List<ButtonPattern> buttonsPattern = PatternLoader.getMenusPattern().get("SPAWN_BUILDING_MENU").getButtonsPattern();
+		List<ButtonPattern> buttonsPattern = PatternLoader.getMenusPattern().get("FIGHT_SPAWN_BUILDING_MENU").getButtonsPattern();
 		for (final ButtonPattern buttonPattern: buttonsPattern){
 
 			final BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buttonPattern.getBuildingName().name());
@@ -49,7 +49,7 @@ public class SpawnBuildingButtonUI extends Layout implements IMoneyListener {
 
 			// State
 			setButtonOKState(spawnBuildingButtonRenderer);
-			spawnBuildingButtonsState.put(buildingPattern, Integer.valueOf(SpawnBuildingButtonUI.BUTTON_OK_STATE));
+			spawnBuildingButtonsState.put(buildingPattern, Integer.valueOf(Fight_SpawnBuildingButtonUI.BUTTON_OK_STATE));
 
 
 			///////////////////
@@ -61,8 +61,8 @@ public class SpawnBuildingButtonUI extends Layout implements IMoneyListener {
 				@Override
 				public void execute(){
 					//System.out.println("#### TOUCH SPAWN BUILDING BUTTON !!");
-					if(spawnBuildingButtonsState.get(buildingPattern).intValue() == SpawnBuildingButtonUI.BUTTON_OK_STATE) {
-						FightBuildingManager.getManager().askForCreateSpawnBuilding(buttonPattern.getBuildingName(), FightScreen.getManager().getTeamPlayer());
+					if(spawnBuildingButtonsState.get(buildingPattern).intValue() == Fight_SpawnBuildingButtonUI.BUTTON_OK_STATE) {
+						Fight_BuildingManager.getManager().askForCreateSpawnBuilding(buttonPattern.getBuildingName(), FightScreen.getManager().getTeamPlayer());
 					}
 				}
 			});
@@ -78,7 +78,7 @@ public class SpawnBuildingButtonUI extends Layout implements IMoneyListener {
 
 	}
 
-	public SpawnBuildingButtonUI(){
+	public Fight_SpawnBuildingButtonUI(){
 		//les boutons par type d unite
 		spawnBuildingButtonsSprites = new HashMap<BuildingPattern, SpawnBuildingButtonRenderer>();
 		spawnBuildingButtonsState = new HashMap<BuildingPattern, Integer>();
@@ -94,10 +94,10 @@ public class SpawnBuildingButtonUI extends Layout implements IMoneyListener {
 
 			if(team.hasEnoughtMoney(buildingPattern.getPrice())){
 				setButtonOKState(buttonLayer);
-				spawnBuildingButtonsState.put(buildingPattern, Integer.valueOf(SpawnBuildingButtonUI.BUTTON_OK_STATE));
+				spawnBuildingButtonsState.put(buildingPattern, Integer.valueOf(Fight_SpawnBuildingButtonUI.BUTTON_OK_STATE));
 			}else{
 				setButtonNoMoneyState(buttonLayer);
-				spawnBuildingButtonsState.put(buildingPattern,  Integer.valueOf(SpawnBuildingButtonUI.BUTTON_NO_MONEY_STATE));
+				spawnBuildingButtonsState.put(buildingPattern,  Integer.valueOf(Fight_SpawnBuildingButtonUI.BUTTON_NO_MONEY_STATE));
 			}
 		}
 	}
