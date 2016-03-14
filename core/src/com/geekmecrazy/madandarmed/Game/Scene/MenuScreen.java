@@ -42,22 +42,112 @@ public class MenuScreen extends Screen implements IUpdatable {
 	//FIN TEST//
 
 
-	// ===========================================================
-	// Singleton manager
-	// ===========================================================
-
-	private static MenuScreen menuScreen;
 	private Rectangle blackScreen;
 	private Button hqButton;
 	private Button worldButton;
 
+	
+	// ===========================================================
+	// Constructors
+	// ===========================================================
+    
+    // ===========================================================
+    // Getter & Setter
+    // ===========================================================
 
-	/** Access au manager */
-	public static MenuScreen getManager(){
-		if (menuScreen == null)
-			menuScreen = new MenuScreen();
-		return menuScreen;
+    // ===========================================================
+    // Methods for/from SuperClass/Interfaces
+    // ===========================================================
+
+	@Override
+	public void onUpdate(){
+
+		//TEST
+//		int x = as1.getCurrentFrameX();
+//		int y = as1.getCurrentFrameY();
+//		int maxX = as1.getSpriteSheet().getNumberOfColumn();
+//		int maxY = as1.getSpriteSheet().getNumberOfRow();
+//		y++;
+//		if(y>=maxY){y=33; x++; if(x>=maxX){x=0;} }
+//		as1.setCurrentFrame(x, y);
+		//		
+		//		x = as2.getCurrentFrameX();
+		//		y = as2.getCurrentFrameY();
+		//		maxX = as2.getSpriteSheet().getNumberOfColumn();
+		//		maxY = as2.getSpriteSheet().getNumberOfRow();
+		//		y++;
+		//		if(y>=32){y=0; x++; if(x>=maxX){x=0;} }
+		//		as2.setCurrentFrame(x, y);
+		//		
+		//		x = 16;//as3.getCurrentFrameX();
+		//		y = as3.getCurrentFrameY();
+		//		maxX = as3.getSpriteSheet().getNumberOfColumn();
+		//		maxY = as3.getSpriteSheet().getNumberOfRow();
+		//		y++;
+		//		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
+		//		as3.setCurrentFrame(x, y);
+		//		
+		//		x = as4.getCurrentFrameX();
+		//		y = as4.getCurrentFrameY();
+		//		maxX = as4.getSpriteSheet().getNumberOfColumn();
+		//		maxY = as4.getSpriteSheet().getNumberOfRow();
+		//		y++;
+		//		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
+		//		as4.setCurrentFrame(x, maxY-1);
+
+
+//		x = as5.getCurrentFrameX();
+//		y = as5.getCurrentFrameY();
+//		maxX = as5.getSpriteSheet().getNumberOfColumn();
+//		maxY = as5.getSpriteSheet().getNumberOfRow();
+//		y++;
+//		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
+//		as5.setCurrentFrame(x, maxY-1);
+		//FINTEST
+
+
+		super.onUpdate();
 	}
+
+
+
+	@Override
+	public void show() {
+		System.out.println("Show Menu Screen");
+	}
+
+	public void showWorldScreen(){
+		Tween.to(blackScreen, RectangleTween.ALPHA, 0.45f)
+		.target(1f)
+		.setCallbackTriggers(TweenCallback.END)
+		.setCallback(new TweenCallback() {
+
+			@Override
+			public void onEvent(int type, BaseTween<?> source) {
+				Scene fightScene = new FightScene();
+
+				fightScene.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT);
+				GlobalManager.fightScreen.init(fightScene);
+				ScreenManager.setCurrentScreen(GlobalManager.fightScreen);
+
+				GlobalManager.fightScreen.loadData(); //from xml, et precalcul
+				GlobalManager.fightScreen.newGame();
+
+				//init GROUND
+				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
+				tiledGround.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
+				GlobalManager.fightScreen.setTiledGround(tiledGround);
+			}
+		})
+		.ease(Quad.OUT)
+		.start(GlobalManager.getTweenManager());
+	}
+
+	
+	
+	// ===========================================================
+	// Methods
+	// ===========================================================
 
 	/** Creation et initialisation du manager */
 	public void init(final Scene pScene) {
@@ -77,7 +167,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				showWorldScreen();
 			}
 		});
-		MenuScreen.getManager().getHUD().registerTouchableShape(worldButton);
+		GlobalManager.menuScreen.getHUD().registerTouchableShape(worldButton);
 
 		hqButton = new Button();
 		hqButton.init(0, 0, TextureType.BUTTON_UNIT_BACKGROUND);
@@ -126,7 +216,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 			}
 		});
-		MenuScreen.getManager().getHUD().registerTouchableShape(hqButton);
+		GlobalManager.menuScreen.getHUD().registerTouchableShape(hqButton);
 
 
 		//TEST/////////////////////////////////////////
@@ -207,7 +297,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 		//        layout_test.add(r3);
 		this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
 		//        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_LEFT);
-		MenuScreen.getManager().getHUD().registerTouchableShape(layout_test);
+		GlobalManager.menuScreen.getHUD().registerTouchableShape(layout_test);
 
 		//TEST
 //		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2);
@@ -269,91 +359,6 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 	}
 
-	@Override
-	public void onUpdate(){
-
-		//TEST
-//		int x = as1.getCurrentFrameX();
-//		int y = as1.getCurrentFrameY();
-//		int maxX = as1.getSpriteSheet().getNumberOfColumn();
-//		int maxY = as1.getSpriteSheet().getNumberOfRow();
-//		y++;
-//		if(y>=maxY){y=33; x++; if(x>=maxX){x=0;} }
-//		as1.setCurrentFrame(x, y);
-		//		
-		//		x = as2.getCurrentFrameX();
-		//		y = as2.getCurrentFrameY();
-		//		maxX = as2.getSpriteSheet().getNumberOfColumn();
-		//		maxY = as2.getSpriteSheet().getNumberOfRow();
-		//		y++;
-		//		if(y>=32){y=0; x++; if(x>=maxX){x=0;} }
-		//		as2.setCurrentFrame(x, y);
-		//		
-		//		x = 16;//as3.getCurrentFrameX();
-		//		y = as3.getCurrentFrameY();
-		//		maxX = as3.getSpriteSheet().getNumberOfColumn();
-		//		maxY = as3.getSpriteSheet().getNumberOfRow();
-		//		y++;
-		//		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
-		//		as3.setCurrentFrame(x, y);
-		//		
-		//		x = as4.getCurrentFrameX();
-		//		y = as4.getCurrentFrameY();
-		//		maxX = as4.getSpriteSheet().getNumberOfColumn();
-		//		maxY = as4.getSpriteSheet().getNumberOfRow();
-		//		y++;
-		//		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
-		//		as4.setCurrentFrame(x, maxY-1);
-
-
-//		x = as5.getCurrentFrameX();
-//		y = as5.getCurrentFrameY();
-//		maxX = as5.getSpriteSheet().getNumberOfColumn();
-//		maxY = as5.getSpriteSheet().getNumberOfRow();
-//		y++;
-//		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
-//		as5.setCurrentFrame(x, maxY-1);
-		//FINTEST
-
-
-		super.onUpdate();
-	}
-
-
-
-	@Override
-	public void show() {
-		System.out.println("Show Menu Screen");
-	}
-
-	public void showWorldScreen(){
-		Tween.to(blackScreen, RectangleTween.ALPHA, 0.45f)
-		.target(1f)
-		.setCallbackTriggers(TweenCallback.END)
-		.setCallback(new TweenCallback() {
-
-			@Override
-			public void onEvent(int type, BaseTween<?> source) {
-				Scene fightScene = new FightScene();
-
-				fightScene.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT);
-				FightScreen.getManager().init(fightScene);
-				ScreenManager.setCurrentScreen(FightScreen.getManager());
-
-				FightScreen.getManager().loadData(); //from xml, et precalcul
-				FightScreen.getManager().newGame();
-
-				//init GROUND
-				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
-				tiledGround.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
-				FightScreen.getManager().setTiledGround(tiledGround);
-			}
-		})
-		.ease(Quad.OUT)
-		.start(GlobalManager.getTweenManager());
-	}
-
-	
 	public void showWarBaseScreen(){
 		Tween.to(blackScreen, RectangleTween.ALPHA, 0.45f)
 		.target(1f)
@@ -365,16 +370,16 @@ public class MenuScreen extends Screen implements IUpdatable {
 				Scene warBaseScene = new WarBaseScene();
 
 				warBaseScene.init(GlobalManager.WARBASE_SCENE_WIDTH, GlobalManager.WARBASE_SCENE_HEIGHT);
-				WarBaseScreen.getManager().init(warBaseScene);
-				ScreenManager.setCurrentScreen(WarBaseScreen.getManager());
+				GlobalManager.warBaseScreen.init(warBaseScene);
+				ScreenManager.setCurrentScreen(GlobalManager.warBaseScreen);
 
 				//WarBaseScreen.getManager().loadData(); //from xml, et precalcul
-				WarBaseScreen.getManager().newGame();
+				GlobalManager.warBaseScreen.newGame();
 
 				//init GROUND
 				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
 				tiledGround.init(GlobalManager.WARBASE_SCENE_WIDTH, GlobalManager.WARBASE_SCENE_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
-				WarBaseScreen.getManager().setTiledGround(tiledGround);
+				GlobalManager.warBaseScreen.setTiledGround(tiledGround);
 			}
 		})
 		.ease(Quad.OUT)

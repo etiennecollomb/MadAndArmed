@@ -20,36 +20,16 @@ import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 
 
-public class WarBaseScreen extends Screen implements IUpdatable {
+public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
 
 	
-    /** IsoGrid of WarBase scene */
-    public static IsoGrid isoGrid;
-
-    // ===========================================================
-    // Singleton manager
-    // ===========================================================
-
-	private static WarBaseScreen warBaseScreen;
-
-    /** Disable object's instantiation (private constructor) */
-    private WarBaseScreen(){ }
-
-    /** Access au manager */
-    public static WarBaseScreen getManager(){
-        if (warBaseScreen == null)
-        	warBaseScreen = new WarBaseScreen();
-        return warBaseScreen;
-    }
-
+	// ===========================================================
+	// Constructors
+	// ===========================================================
+    
     // ===========================================================
     // Getter & Setter
     // ===========================================================
-
-	public static void setIsoGrid(IsoGrid isoGrid) {
-		WarBaseScreen.isoGrid = isoGrid;
-	}
-
 
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
@@ -91,7 +71,7 @@ public class WarBaseScreen extends Screen implements IUpdatable {
         gridRenderer.init(isoGrid);
         //this.getScene().attachChild(gridRenderer);
         
-        GameMap.initMap( WarBaseScreen.getManager().getScene() );
+        GameMap.initMap( GlobalManager.warBaseScreen.getScene() );
         
         
 //        /** Memory Usage **/

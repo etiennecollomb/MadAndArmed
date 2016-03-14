@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.BaseBuilding;
@@ -117,8 +118,8 @@ public class Fight_BuildingManager {
 	public void initTarget(){
 		for(Building b : listBuildings){
 			if(b.getAttackBehavior()!=null){
-				b.getAttackBehavior().setMainTarget(FightScreen.getManager().getOtherTeam(b.getMyTeam()).getCastle());
-				b.getAttackBehavior().setCurrentTarget(FightScreen.getManager().getOtherTeam(b.getMyTeam()).getCastle());
+				b.getAttackBehavior().setMainTarget(GlobalManager.fightScreen.getOtherTeam(b.getMyTeam()).getCastle());
+				b.getAttackBehavior().setCurrentTarget(GlobalManager.fightScreen.getOtherTeam(b.getMyTeam()).getCastle());
 			}
 		}
 	}

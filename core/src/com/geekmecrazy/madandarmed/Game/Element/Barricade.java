@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape.ShapeState;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
@@ -29,12 +30,12 @@ public class Barricade extends Building {
 		
 		this.setPos(barricadeRenderer.getX(), barricadeRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
 		
-		FightScreen.getManager().getScene().attachChild(this.militaryRenderer);
+		GlobalManager.fightScreen.getScene().attachChild(this.militaryRenderer);
 		
 		/** If player team : make it movable */
 		//TEMP : this should be only on edit mode
 		if(myTeam.getTeamID() == TeamID.TEAM1)
-			FightScreen.getManager().getScene().registerTouchableShape(barricadeRenderer);
+			GlobalManager.fightScreen.getScene().registerTouchableShape(barricadeRenderer);
 
 		
 	}

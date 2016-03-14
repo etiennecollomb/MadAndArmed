@@ -39,8 +39,8 @@ public class MadAndArmed extends ApplicationAdapter {
 		/** Data Loader **/
 		Assets.load(); // TOD  a virer (Zachry staff a foutre dans dataloader)
 
-		globalManager = GlobalManager.getManager();
-		globalManager.init();
+		/** init GlobalManager **/
+		GlobalManager.init();
 
 
 
@@ -65,8 +65,8 @@ public class MadAndArmed extends ApplicationAdapter {
 		/** Loading Screen **/
 		Scene loadingScene = new Scene();
 		loadingScene.init(GlobalManager.MENU_SCENE_WIDTH, GlobalManager.MENU_SCENE_HEIGHT);
-		LoadingScreen.getManager().init(loadingScene);
-		ScreenManager.setCurrentScreen(LoadingScreen.getManager());
+		GlobalManager.loadingScreen.init(loadingScene);
+		ScreenManager.setCurrentScreen(GlobalManager.loadingScreen);
 
 		////// TEST //////
 

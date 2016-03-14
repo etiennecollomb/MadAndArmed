@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.UI;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Entity;
@@ -32,7 +33,7 @@ public class Fight_SpawnBuildingButtonUI extends Layout implements IMoneyListene
 
 		this.setOrientation(Orientation.HORIZONTAL);
 
-		FightScreen.getManager().getTeamPlayer().addMoneyListener(this);
+		GlobalManager.fightScreen.getTeamPlayer().addMoneyListener(this);
 
 		List<ButtonPattern> buttonsPattern = PatternLoader.getMenusPattern().get("FIGHT_SPAWN_BUILDING_MENU").getButtonsPattern();
 		for (final ButtonPattern buttonPattern: buttonsPattern){
@@ -62,7 +63,7 @@ public class Fight_SpawnBuildingButtonUI extends Layout implements IMoneyListene
 				public void execute(){
 					//System.out.println("#### TOUCH SPAWN BUILDING BUTTON !!");
 					if(spawnBuildingButtonsState.get(buildingPattern).intValue() == Fight_SpawnBuildingButtonUI.BUTTON_OK_STATE) {
-						Fight_BuildingManager.getManager().askForCreateSpawnBuilding(buttonPattern.getBuildingName(), FightScreen.getManager().getTeamPlayer());
+						Fight_BuildingManager.getManager().askForCreateSpawnBuilding(buttonPattern.getBuildingName(), GlobalManager.fightScreen.getTeamPlayer());
 					}
 				}
 			});
@@ -71,7 +72,7 @@ public class Fight_SpawnBuildingButtonUI extends Layout implements IMoneyListene
 
 			newSpawnBuildingButton.setSize(1.5f, 1.5f);
 			this.add(newSpawnBuildingButton);
-			FightScreen.getManager().getHUD().registerTouchableShape(newSpawnBuildingButton);
+			GlobalManager.fightScreen.getHUD().registerTouchableShape(newSpawnBuildingButton);
 
 
 		}

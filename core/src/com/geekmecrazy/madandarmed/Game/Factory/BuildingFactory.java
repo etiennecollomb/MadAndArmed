@@ -58,10 +58,10 @@ public class BuildingFactory{
 	public static void destroy(Building building) {
 		Fight_BuildingManager.getManager().removeBuilding(building);
 		//building.recycle();
-		if(building.equals(FightScreen.getManager().getTeamIA().getCastle())){
-			FightScreen.getManager().getUiFinishGame().showUI(true);
-		}else if(building.equals(FightScreen.getManager().getTeamPlayer().getCastle())){
-			FightScreen.getManager().getUiFinishGame().showUI(false);
+		if(building.equals(GlobalManager.fightScreen.getTeamIA().getCastle())){
+			GlobalManager.fightScreen.getUiFinishGame().showUI(true);
+		}else if(building.equals(GlobalManager.fightScreen.getTeamPlayer().getCastle())){
+			GlobalManager.fightScreen.getUiFinishGame().showUI(false);
 		}
 
 	}
@@ -78,7 +78,7 @@ public class BuildingFactory{
 		/** Building */
 		Turret turret = PoolManager.getManager().getTurretPool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
-		turret.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team));
+		turret.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
 
 		/** AttackBehavior */
 		if(buildingPattern.getWeaponName()!=null){
@@ -110,7 +110,7 @@ public class BuildingFactory{
 		/** Building */
 		Barricade barricade = PoolManager.getManager().getBarricadePool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
-		barricade.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team));
+		barricade.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
 
 		return barricade;
 	}
@@ -127,7 +127,7 @@ public class BuildingFactory{
 		/** Building */
 		BaseBuilding campBuilding = PoolManager.getManager().getCampBuildingPool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
-		campBuilding.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team));
+		campBuilding.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
 
 		return campBuilding;
 	}
@@ -144,7 +144,7 @@ public class BuildingFactory{
 		/** Building */
 		SpawnBuilding spawnBuilding = PoolManager.getManager().getSpawnBuildingPool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
-		spawnBuilding.init(posX, posY, diameter, buildingPattern, life, team, FightScreen.getManager().getOtherTeam(team));
+		spawnBuilding.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
 
 		return spawnBuilding;
 	}

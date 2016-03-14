@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
@@ -44,7 +45,7 @@ public class BaseBuilding extends Building {
 			this.militaryRenderer.attachChild(this.lifeBarreRenderer, Entity.Alignment.CENTER);
 		}
 
-		FightScreen.getManager().getScene().attachChild(this.militaryRenderer);
+		GlobalManager.fightScreen.getScene().attachChild(this.militaryRenderer);
 
 		
 		/** Floor */
@@ -53,7 +54,7 @@ public class BaseBuilding extends Building {
 		floor = new Sprite();
 		floor.init(TextureType.SOL_SOUS_BUILDING);
 		floor.setPosition(floorPosX, floorPosY+20);
-		FightScreen.getManager().getScene().attachChild(floor);
+		GlobalManager.fightScreen.getScene().attachChild(floor);
 		
 	}
 	

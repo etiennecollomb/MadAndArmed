@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.UI;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.IMoneyListener;
 import com.geekmecrazy.madandarmed.Entity.IScoreListener;
@@ -68,8 +69,8 @@ public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener
 
         this.setOrientation(Orientation.VERTICAL);
 
-        FightScreen.getManager().getTeamPlayer().addMoneyListener(this);
-        FightScreen.getManager().getTeamPlayer().addScoreListener(this);
+        GlobalManager.fightScreen.getTeamPlayer().addMoneyListener(this);
+        GlobalManager.fightScreen.getTeamPlayer().addScoreListener(this);
 
         float score_bar_min = 49;
         float score_bar_max = 207;
@@ -109,24 +110,24 @@ public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener
 
     private int getScore(){
 
-        int score = FightScreen.getManager().getTeamPlayer().getScore();
+        int score = GlobalManager.fightScreen.getTeamPlayer().getScore();
 
-        if(score > FightScreen.getManager().getTeamPlayer().getThoriumMax())
-            score = FightScreen.getManager().getTeamPlayer().getThoriumMax();
+        if(score > GlobalManager.fightScreen.getTeamPlayer().getThoriumMax())
+            score = GlobalManager.fightScreen.getTeamPlayer().getThoriumMax();
 
         return score;
     }
 
     private String getMoneyText(){
-        return FightScreen.getManager().getTeamPlayer().getMoney() + " / " + FightScreen.getManager().getTeamPlayer().getMoneyMax();
+        return GlobalManager.fightScreen.getTeamPlayer().getMoney() + " / " + GlobalManager.fightScreen.getTeamPlayer().getMoneyMax();
     }
 
     private String getScoreText(){
-        return getScore() + " / " + FightScreen.getManager().getTeamPlayer().getThoriumMax();
+        return getScore() + " / " + GlobalManager.fightScreen.getTeamPlayer().getThoriumMax();
     }
 
     private String getMoneyTurnText(){
-        return "" + FightScreen.getManager().getTeamPlayer().getMoneyByTurn();
+        return "" + GlobalManager.fightScreen.getTeamPlayer().getMoneyByTurn();
     }
 
 

@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.Fight_WeaponManager;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.FlameThrowerRenderer;
@@ -21,7 +22,7 @@ public class FlameThrower extends Weapon {
 		this.flameThrowerRenderer = PoolAnimManager.getManager().getFlameThrowerRendererPool().obtain(); //new FlameThrowerRenderer();
 		this.flameThrowerRenderer.init(this);
 
-		FightScreen.getManager().getScene().attachChild(this.flameThrowerRenderer);
+		GlobalManager.fightScreen.getScene().attachChild(this.flameThrowerRenderer);
 
 	}
 

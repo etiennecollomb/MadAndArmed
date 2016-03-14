@@ -20,7 +20,7 @@ import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 
 
-public class FightScreen extends Screen implements IUpdatable {
+public class FightScreen extends GamePlayScreen implements IUpdatable {
 
     private static final long TURN_MONEY_LENGTH =1000;
     public static final int START_MONEY=500;
@@ -31,10 +31,6 @@ public class FightScreen extends Screen implements IUpdatable {
 
     public static final int MAX_UNITS=1000;
 
-    /** Teams */
-    public static Team teamPlayer;
-    public static Team teamIA;
-
     /** UI */
     private UIFinishGame uiFinishGame;
     private Fight_SpawnBuildingButtonUI mUnitButtonUI;
@@ -43,37 +39,17 @@ public class FightScreen extends Screen implements IUpdatable {
     /** Time stuff */
     private static long currentTime;
     private static long previousMoneyTurnTime;
+
     
-    /** IsoGrid of fight scene */
-    public static IsoGrid isoGrid;
-
-    // ===========================================================
-    // Singleton manager
-    // ===========================================================
-
-	private static FightScreen fightScreen;
-
-    /** Disable object's instantiation (private constructor) */
-    private FightScreen(){ }
-
-    /** Access au manager */
-    public static FightScreen getManager(){
-        if (fightScreen == null)
-            fightScreen = new FightScreen();
-        return fightScreen;
-    }
-
+    
+	// ===========================================================
+	// Constructors
+	// ===========================================================
+    
     // ===========================================================
     // Getter & Setter
     // ===========================================================
 
-    public Team getTeamPlayer(){
-        return teamPlayer;
-    }
-
-    public Team getTeamIA() {
-        return teamIA;
-    }
 
     public UIFinishGame getUiFinishGame() {
         return uiFinishGame;
@@ -87,14 +63,6 @@ public class FightScreen extends Screen implements IUpdatable {
         return previousMoneyTurnTime;
     }
 
-    public static void setTeamPlayer(final Team pTeamPlayer) {
-        FightScreen.teamPlayer = pTeamPlayer;
-    }
-
-    public static void setTeamIA(final Team pTeamIA) {
-        FightScreen.teamIA = pTeamIA;
-    }
-
     public void setUiFinishGame(final UIFinishGame pUiFinishGame) {
         this.uiFinishGame = pUiFinishGame;
     }
@@ -106,11 +74,6 @@ public class FightScreen extends Screen implements IUpdatable {
     public static void setPreviousMoneyTurnTime(final long pPreviousMoneyTurnTime) {
         FightScreen.previousMoneyTurnTime = pPreviousMoneyTurnTime;
     }
-
-	public static void setIsoGrid(IsoGrid isoGrid) {
-		FightScreen.isoGrid = isoGrid;
-	}
-
 
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
@@ -219,7 +182,7 @@ public class FightScreen extends Screen implements IUpdatable {
         this.getTeamIA().getStateMap().initGame();
         this.getTeamIA().getStateMap().setZoneBPositionMap(this.getTeamIA().getTeamID());
 
-		GameMap.initMap( FightScreen.getManager().getScene() );
+		GameMap.initMap( GlobalManager.fightScreen.getScene() );
                 
         /** init UIs */
 		uiFinishGame = new UIFinishGame();
@@ -244,7 +207,7 @@ public class FightScreen extends Screen implements IUpdatable {
         });
         soundButton.setSize(1.0f, 1.0f);
         this.getHUD().attachChild(soundButton, Entity.Alignment.RIGHT_BOTTOM);
-        FightScreen.getManager().getHUD().registerTouchableShape(soundButton);
+        GlobalManager.fightScreen.getHUD().registerTouchableShape(soundButton);
         
         
 		/** Start Sound Background */

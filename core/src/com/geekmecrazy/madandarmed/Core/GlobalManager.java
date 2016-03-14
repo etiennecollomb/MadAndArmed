@@ -3,6 +3,10 @@ package com.geekmecrazy.madandarmed.Core;
 import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
+import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.LoadingScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.MenuScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.WarBaseScreen;
 import com.geekmecrazy.madandarmed.Game.Tween.ButtonTween;
 import com.geekmecrazy.madandarmed.Game.Tween.LayoutTween;
 import com.geekmecrazy.madandarmed.Game.Tween.OrthographicCameraTween;
@@ -89,6 +93,8 @@ public class GlobalManager {
 	/** **/
 	public static AssetsLoader assestsLoader;
 	public static boolean isAssestsLoaded;
+	
+	
 
 
 	// ===========================================================
@@ -103,9 +109,15 @@ public class GlobalManager {
 	public static final String JSON_MENUSPATTERN = "json/MenusPattern.json";
 
 	// ===========================================================
-	// Scenes
+	// Screen and Scenes
 	// ===========================================================
 
+	/** Screens **/
+	public static LoadingScreen loadingScreen = new LoadingScreen();
+	public static MenuScreen menuScreen = new MenuScreen();
+	public static FightScreen fightScreen = new FightScreen();
+	public static WarBaseScreen warBaseScreen = new WarBaseScreen();
+	
 	/** Menu Scene */
 	public static final int MENU_SCENE_WIDTH = DEVICE_SCREEN_WIDTH*5;
 	public static final int MENU_SCENE_HEIGHT = DEVICE_SCREEN_HEIGHT*5;
@@ -124,27 +136,13 @@ public class GlobalManager {
 	public static final int STARMAP_WIDTH = (int)(MAP_FIGHT_WIDTH / BIG_NODESIZE);
 	public static final int STARMAP_HEIGHT = (int)(MAP_FIGHT_HEIGHT / BIG_NODESIZE);
 
-	/** QG Map */
 
-	/** WORD Map */
-
+	
+    
 	// ===========================================================
-	// Singleton manager
+	// Constructors
 	// ===========================================================
-	private static GlobalManager globalManager;
-
-	/** Disable object's instantiation (private constructor) */
-	private GlobalManager(){
-		init();
-	}
-
-	/** Acces au manager */
-	public static GlobalManager getManager(){
-		if (globalManager == null)
-			globalManager = new GlobalManager();
-		return globalManager;
-	}
-
+    
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
@@ -157,7 +155,7 @@ public class GlobalManager {
 	// Methods
 	// ===========================================================
 
-	public void init(){
+	public static void init(){
 
 		GlobalManager.random = new Random();
 
@@ -174,8 +172,8 @@ public class GlobalManager {
 		//Virtual viewport
 		GlobalManager.vvp = new VirtualViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		GlobalManager.tweenManager = new TweenManager();
-		this.createCameras();
-		this.createInput();
+		GlobalManager.createCameras();
+		GlobalManager.createInput();
 
 		//SpriteBatches
 		GlobalManager.spriteBatchScene = new SpriteBatch();
@@ -200,7 +198,7 @@ public class GlobalManager {
 	}
 
 	/** Set Camera */
-	private void createCameras(){
+	private static void createCameras(){
 
 		GlobalManager.camera = new OrthographicCamera(GlobalManager.CAMERA_WIDTH, GlobalManager.CAMERA_HEIGHT);
 		GlobalManager.hudCamera = new OrthographicCamera(vvp.world_x, vvp.world_y);
@@ -234,7 +232,7 @@ public class GlobalManager {
 	}
 
 	/** Set GestureDetector */
-	private void createInput(){
+	private static void createInput(){
 		InputMultiplexer im = new InputMultiplexer();
 
 		MyGestureDetector gd = new MyGestureDetector(new MyGestureListener());

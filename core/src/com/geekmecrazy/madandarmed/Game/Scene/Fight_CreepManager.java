@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
@@ -132,7 +133,7 @@ public class Fight_CreepManager {
 		
 		for (Creep creep : listCreepsRecycle){
 			creep.getMyTeam().removeMilitary(creep);
-			FightScreen.getManager().getOtherTeam(creep.getMyTeam()).addScore(creep.getPattern().getPrice());
+			GlobalManager.fightScreen.getOtherTeam(creep.getMyTeam()).addScore(creep.getPattern().getPrice());
 			listCreeps.remove(creep);
             listSelectedCreeps.remove(creep);
 			PoolManager.getManager().getCreepPool().free(creep); //appel ensuite creep.reset()

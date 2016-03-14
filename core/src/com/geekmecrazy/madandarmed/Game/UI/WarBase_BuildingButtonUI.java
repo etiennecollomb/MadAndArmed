@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.UI;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Entity;
@@ -60,7 +61,7 @@ public class WarBase_BuildingButtonUI extends Layout {
 				@Override
 				public void execute(){
 					//System.out.println("#### TOUCH WAR BASE BUILDING BUTTON !!");
-					Fight_BuildingManager.getManager().askForCreateSpawnBuilding(buttonPattern.getBuildingName(), WarBaseScreen.getManager().getTeamPlayer());
+					//Fight_BuildingManager.getManager().askForCreateSpawnBuilding(buttonPattern.getBuildingName(), WarBaseScreen.getManager().getTeamPlayer());
 
 				}
 			});
@@ -69,7 +70,7 @@ public class WarBase_BuildingButtonUI extends Layout {
 
 			newWarBaseBuildingButton.setSize(1.5f, 1.5f);
 			this.add(newWarBaseBuildingButton);
-			WarBaseScreen.getManager().getHUD().registerTouchableShape(newWarBaseBuildingButton);
+			GlobalManager.warBaseScreen.getHUD().registerTouchableShape(newWarBaseBuildingButton);
 
 		}
 

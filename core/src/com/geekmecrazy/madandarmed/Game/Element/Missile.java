@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.Fight_WeaponManager;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MissileRenderer;
@@ -28,7 +29,7 @@ public class Missile extends Weapon {
 		this.setWeaponRenderer( PoolAnimManager.getManager().getMissileRendererPool().obtain() );
 		((MissileRenderer) this.getWeaponRenderer()).init(this, shooter);
 
-		FightScreen.getManager().getScene().attachChild(this.getWeaponRenderer());
+		GlobalManager.fightScreen.getScene().attachChild(this.getWeaponRenderer());
 		
 		}
 

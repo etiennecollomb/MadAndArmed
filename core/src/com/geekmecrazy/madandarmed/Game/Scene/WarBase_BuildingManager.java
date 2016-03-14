@@ -140,14 +140,5 @@ public class WarBase_BuildingManager {
 	}
 	
 	
-	/** Creation d'un Building **/
-	public void createSpawnBuilding(float posX, float posY, BuildingName buildingName) {
-
-			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingName.name());
-			SpawnBuilding swpanBuilding = BuildingFactory.createSpawnBuilding(posX, posY, buildingPattern, team);
-			addSpawnBuilding(swpanBuilding);
-	}
-	
-	
 	
 }
