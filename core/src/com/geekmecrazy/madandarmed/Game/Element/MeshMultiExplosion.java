@@ -32,7 +32,7 @@ public class MeshMultiExplosion extends Weapon {
 
 		/** anim is finished we destroy it **/
 		if(this.meshMultiExplosionRenderer.getWeaponTravellingEffectList().size() == 0)
-			Fight_WeaponManager.getManager().destroyWeapon(this);
+			GlobalManager.fight_WeaponManager.destroyWeapon(this);
 
 	}
 

@@ -17,19 +17,9 @@ import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 public class Fight_CreepManager {
 
-	// ===========================================================
-	// Singleton manager
-	// ===========================================================
-	private static Fight_CreepManager creepManager;
-
-	/** Creation et initialisation du manager */
-	public static void initManager(Team teamPlayer, Team teamIA) {
-		if (creepManager != null) throw new RuntimeException("creepManager already created ! creepManager is not null");
-		creepManager = new Fight_CreepManager(teamPlayer, teamIA);
-	}
 
 	/** Disable object's instantiation (private constructor) */
-	private Fight_CreepManager(Team teamPlayer, Team teamIA){
+	public Fight_CreepManager(Team teamPlayer, Team teamIA){
 		this.teamPlayer = teamPlayer;
 		this.teamIA = teamIA;
 		this.listCreeps = new ArrayList<Creep>();
@@ -37,26 +27,7 @@ public class Fight_CreepManager {
         this.listSelectedCreeps = new ArrayList<Creep>();
 	}
 
-	/** Acces au manager */
-	public static Fight_CreepManager getManager(){
-		if (creepManager == null) throw new RuntimeException("creepManager not created ! creepManager is null");
-		return creepManager;
-	}
 
-	/** Destruction du manager */
-	public static void destroyManager(){
-		if (creepManager == null) throw new RuntimeException("creepManager not created ! creepManager is null");
-		creepManager.destroy();
-	}
-
-	/** Destruction */
-	public void destroy(){
-		creepManager=null;
-	}
-
-	// ===========================================================
-	// Manager
-	// ===========================================================
 	public static final int MAX_UNITS=1000;
 
 	// Team

@@ -1,44 +1,10 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 
 /** Doit gerer le placement des buildings en fonction des pattern d'ordre de placement defini par le user **/
 public class Fight_IaManager {
-	
-	// ===========================================================
-	// Singleton manager
-	// ===========================================================
-	private static Fight_IaManager iaManager;
-	
-	/** Creation et initialisation du manager */
-	public static void initManager() {
-		if (iaManager != null) throw new RuntimeException("IaManager already created ! IaManager is not null");
-		iaManager = new Fight_IaManager();
-	}
 
-	/** Disable object's instantiation (private constructor) */
-	private Fight_IaManager(){
-	}
-	
-	/** Acces au manager */
-	public static Fight_IaManager getManager(){
-		if (iaManager == null) throw new RuntimeException("IaManager not created ! IaManager is null");
-		return iaManager;
-	}
-
-	/** Destruction du manager */
-	public static void destroyManager(){
-		if (iaManager == null) throw new RuntimeException("IaManager not created ! IaManager is null");
-		iaManager.destroy();
-	}
-	
-	/** Destruction */
-	public void destroy(){
-		iaManager=null;
-	}
-	
-	// ===========================================================
-	// Manager
-	// ===========================================================
 	private final long TURN=100; //100
 	private long nbTurnAfterPreviousSpawn;
 	
@@ -51,7 +17,7 @@ public class Fight_IaManager {
     public void runUpdateNextState(){
 
         //DEBUG
-        if(Fight_CreepManager.getManager().getCreepsNumber()<200) {
+        if(GlobalManager.fight_CreepManager.getCreepsNumber()<200) {
 
             if (nbTurnAfterPreviousSpawn >= TURN) {
                 if (big_spawn == MESH_TURN) {

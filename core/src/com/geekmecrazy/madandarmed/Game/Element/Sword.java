@@ -31,7 +31,7 @@ public class Sword extends Weapon {
 
 			/** effet immediat **/
 			this.getTarget().hit(this);
-			Fight_WeaponManager.getManager().destroyWeapon(this);
+			GlobalManager.fight_WeaponManager.destroyWeapon(this);
 
 		}
 

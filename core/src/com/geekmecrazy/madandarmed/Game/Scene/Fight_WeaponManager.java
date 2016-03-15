@@ -3,10 +3,6 @@ package com.geekmecrazy.madandarmed.Game.Scene;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
-import com.badlogic.gdx.utils.Pool.Poolable;
-import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Game.Element.FlameThrower;
 import com.geekmecrazy.madandarmed.Game.Element.Gun;
 import com.geekmecrazy.madandarmed.Game.Element.MeshMultiExplosion;
@@ -14,13 +10,9 @@ import com.geekmecrazy.madandarmed.Game.Element.Military;
 import com.geekmecrazy.madandarmed.Game.Element.Missile;
 import com.geekmecrazy.madandarmed.Game.Element.Sword;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
-import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
-import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponType;
-import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MissileRenderer;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
-public class Fight_WeaponManager implements IUpdatable {
+public class Fight_WeaponManager {
 
 	private List<Weapon> weaponsList;
 
@@ -28,32 +20,10 @@ public class Fight_WeaponManager implements IUpdatable {
 	// Constructors
 	// ===========================================================
 
-	/** Singleton manager **/
-	private static Fight_WeaponManager weaponManager;
-
-	/** Creation et initialisation du manager */
-	public static void initManager() {
-		if (weaponManager != null) throw new RuntimeException("weaponManager already created ! weaponManager is not null");
-		weaponManager = new Fight_WeaponManager();
-	}
-
-	/** Disable object's instantiation (private constructor) */
-	private Fight_WeaponManager(){
+	public Fight_WeaponManager(){
 		this.weaponsList = new ArrayList<Weapon>();
 	}
-
-	/** Acces au manager */
-	public static Fight_WeaponManager getManager(){
-		if (weaponManager == null) throw new RuntimeException("weaponManager not created ! weaponManager is null");
-		return weaponManager;
-	}
-
-	/** Destruction du manager */
-	public static void destroyManager(){
-		if (weaponManager == null) throw new RuntimeException("weaponManager not created ! weaponManager is null");
-		weaponManager=null;
-	}
-
+	
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
@@ -63,7 +33,7 @@ public class Fight_WeaponManager implements IUpdatable {
 	// ===========================================================
 
 	/** Mise a jour de l'état des missiles à chaque cycle */
-	public void onUpdate(){	
+	public void runUpdateNextState(){	
 		for(int i=0; i<weaponsList.size(); i++)
 			this.weaponsList.get(i).onUpdate();
 	}

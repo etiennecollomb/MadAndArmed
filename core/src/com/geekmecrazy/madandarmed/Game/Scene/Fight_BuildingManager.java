@@ -41,34 +41,14 @@ public class Fight_BuildingManager {
 	// Constructors
 	// ===========================================================
 
-	private static Fight_BuildingManager buildingManager;
-
-	/** Creation et initialisation du manager */
-	public static void initManager(Team teamPlayer, Team teamIA) {
-		if (buildingManager != null) throw new RuntimeException("buildingManager already created ! buildingManager is not null");
-		buildingManager = new Fight_BuildingManager(teamPlayer, teamIA);
-	}
-
 	/** Disable object's instantiation (private constructor) */
-	private Fight_BuildingManager(Team teamPlayer, Team teamIA){
+	public Fight_BuildingManager(Team teamPlayer, Team teamIA){
 		this.teamPlayer = teamPlayer;
 		this.teamIA = teamIA;
 		this.listSpawnBuildings = new ArrayList<SpawnBuilding>();
 		this.listBuildings = new ArrayList<Building>();
 		this.listBuildingsRecycle = new HashSet<Building>();
 	}
-
-	/** Destruction du manager */
-	public static void destroyManager(){
-		if (buildingManager == null) throw new RuntimeException("buildingManager not created ! buildingManager is null");
-		buildingManager.destroy();
-	}
-
-	/** Destruction */
-	public void destroy(){
-		buildingManager=null;
-	}
-
 
 
 	/** Team **/
@@ -83,10 +63,6 @@ public class Fight_BuildingManager {
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
-
-	public static Fight_BuildingManager getManager(){
-		return buildingManager;
-	}
 
 	// ===========================================================
 	// Methods

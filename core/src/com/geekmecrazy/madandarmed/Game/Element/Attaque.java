@@ -3,6 +3,7 @@ package com.geekmecrazy.madandarmed.Game.Element;
 import java.util.List;
 
 import com.badlogic.gdx.audio.Sound;
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.SoundType;
 import com.geekmecrazy.madandarmed.Game.Scene.SoundManager;
 import com.geekmecrazy.madandarmed.Game.Scene.Fight_WeaponManager;
@@ -68,13 +69,12 @@ public class Attaque extends GameElement {
 					shootCycleCounter=0;	
 
 					//On attaque !
-					Fight_WeaponManager.getManager().fireWeapon(m, target);
+					GlobalManager.fight_WeaponManager.fireWeapon(m, target);
 					
 					/** Sound */
 					if(weaponPattern.getSoundsType() != null){
 						SoundManager.playSound(weaponPattern);
 					}
-
 				}
 				shootCycleCounter++;
 			}

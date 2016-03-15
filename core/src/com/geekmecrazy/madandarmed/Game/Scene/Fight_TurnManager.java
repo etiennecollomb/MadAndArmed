@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Game.Scene;
 
 import java.util.List;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
@@ -12,43 +13,7 @@ public class Fight_TurnManager {
 
 	TimeIntervalControl spawnTurnTimer = new TimeIntervalControl(2000);
 
-	// ===========================================================
-	// Singleton manager
-	// ===========================================================
-	private static Fight_TurnManager turnManager;
-
-	/** Creation et initialisation du manager */
-	public static void initManager() {
-		if (turnManager != null) throw new RuntimeException("TurnManager already created ! TurnManager is not null");
-		turnManager = new Fight_TurnManager();
-	}
-
-	/** Disable object's instantiation (private constructor) */
-	private Fight_TurnManager(){
-	}
-
-	/** Acces au manager */
-	public static Fight_TurnManager getManager(){
-		if (turnManager == null) throw new RuntimeException("TurnManager not created ! TurnManager is null");
-		return turnManager;
-	}
-
-	/** Destruction du manager */
-	public static void destroyManager(){
-		if (turnManager == null) throw new RuntimeException("TurnManager not created ! TurnManager is null");
-		turnManager.destroy();
-	}
-
-	/** Destruction */
-	public void destroy(){
-		turnManager=null;
-	}
-
-	// ===========================================================
-	// Manager
-	// ===========================================================
-
-
+	
 	/** Mise a jour de l'état des missiles à chaque cycle */
 	public void runUpdateNextState(){
 
@@ -57,13 +22,13 @@ public class Fight_TurnManager {
 			spawnTurnTimer.resetTimer();
 
 			/** get spawn list from Building Manager SpawnBuilding **/
-			List<SpawnBuilding> spawnBuildingList = Fight_BuildingManager.getManager().getListSpawnBuildings();
+			List<SpawnBuilding> spawnBuildingList = GlobalManager.fight_BuildingManager.getListSpawnBuildings();
 			int size = spawnBuildingList.size();
 			for(int i=0; i<size; i++){
 				SpawnBuilding spbld = spawnBuildingList.get(i);
 				CreepType creepType = spbld.getPattern().getCreepType();
 
-				Fight_CreepManager.getManager().askForCreateCreep(creepType, spbld.getMyTeam(), spbld.getMilitaryRenderer().getX(), spbld.getMilitaryRenderer().getY());
+				GlobalManager.fight_CreepManager.askForCreateCreep(creepType, spbld.getMyTeam(), spbld.getMilitaryRenderer().getX(), spbld.getMilitaryRenderer().getY());
 			}
 		}else{
 			System.out.println("PAUSE");

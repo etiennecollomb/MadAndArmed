@@ -32,7 +32,7 @@ public class FlameThrower extends Weapon {
 
 		/** anim is finished we destroy it **/
 		if(this.flameThrowerRenderer.getWeaponTravellingEffectList().size() == 0)
-			Fight_WeaponManager.getManager().destroyWeapon(this);
+			GlobalManager.fight_WeaponManager.destroyWeapon(this);
 
 	}
 

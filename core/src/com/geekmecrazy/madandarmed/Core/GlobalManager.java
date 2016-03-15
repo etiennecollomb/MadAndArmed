@@ -3,7 +3,13 @@ package com.geekmecrazy.madandarmed.Core;
 import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
+import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.Fight_BuildingManager;
+import com.geekmecrazy.madandarmed.Game.Scene.Fight_CreepManager;
+import com.geekmecrazy.madandarmed.Game.Scene.Fight_IaManager;
+import com.geekmecrazy.madandarmed.Game.Scene.Fight_TurnManager;
+import com.geekmecrazy.madandarmed.Game.Scene.Fight_WeaponManager;
 import com.geekmecrazy.madandarmed.Game.Scene.LoadingScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.MenuScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.WarBaseScreen;
@@ -89,12 +95,12 @@ public class GlobalManager {
 	private static TweenManager tweenManager;
 
 	public static Random random;
-	
+
 	/** **/
 	public static AssetsLoader assestsLoader;
 	public static boolean isAssestsLoaded;
-	
-	
+
+
 
 
 	// ===========================================================
@@ -117,7 +123,7 @@ public class GlobalManager {
 	public static MenuScreen menuScreen = new MenuScreen();
 	public static FightScreen fightScreen = new FightScreen();
 	public static WarBaseScreen warBaseScreen = new WarBaseScreen();
-	
+
 	/** Menu Scene */
 	public static final int MENU_SCENE_WIDTH = DEVICE_SCREEN_WIDTH*5;
 	public static final int MENU_SCENE_HEIGHT = DEVICE_SCREEN_HEIGHT*5;
@@ -137,12 +143,24 @@ public class GlobalManager {
 	public static final int STARMAP_HEIGHT = (int)(MAP_FIGHT_HEIGHT / BIG_NODESIZE);
 
 
-	
-    
+	// ===========================================================
+	// Managers
+	// ===========================================================
+
+	/** Pools **/
+
+	/** Fight **/
+	public static Fight_BuildingManager fight_BuildingManager;
+	public static Fight_CreepManager fight_CreepManager;
+	public static Fight_TurnManager fight_TurnManager;
+	public static Fight_IaManager fight_IaManager;
+	public static Fight_WeaponManager fight_WeaponManager;
+
+
 	// ===========================================================
 	// Constructors
 	// ===========================================================
-    
+
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
@@ -191,7 +209,7 @@ public class GlobalManager {
 		Tween.registerAccessor(OrthographicCamera.class, new OrthographicCameraTween());
 		Tween.registerAccessor(Sprite.class, new SpriteTween());
 		Tween.registerAccessor(Layout.class, new LayoutTween());
-		
+
 		/** Data Loader **/
 		assestsLoader = new AssetsLoader();
 		isAssestsLoaded = false;
@@ -323,9 +341,9 @@ public class GlobalManager {
 		flipY - whether to flip the sprite vertically
 	 */
 	public static void spriteBatchDraw2(final Sprite sprite){
-		
+
 		GlobalManager.currentSpriteBatch.setColor(sprite.getColor());
-		
+
 		GlobalManager.currentSpriteBatch.draw(
 				sprite.getTextureRegion().getTexture(),
 				sprite.getDraw_x(),
@@ -395,15 +413,35 @@ public class GlobalManager {
 	}
 
 	public static String convertToDevicePath(String dirName){
-		
+
 		/** Set Units Dir **/
 		FileHandle dirHandle;
 		if (Gdx.app.getType() == ApplicationType.Android)
 			return dirName; /** Android Application **/
 		else
 			return "./bin/"+dirName; /** ApplicationType.Desktop **/
-		
-		
+
+
+	}
+
+	public static void createManagersForFight(Team teamPlayer, Team teamIA){
+
+		GlobalManager.fight_BuildingManager = new Fight_BuildingManager(teamPlayer, teamIA);
+		GlobalManager.fight_CreepManager = new Fight_CreepManager(teamPlayer, teamIA);
+		GlobalManager.fight_TurnManager = new Fight_TurnManager();
+		GlobalManager.fight_IaManager = new Fight_IaManager();
+		GlobalManager.fight_WeaponManager = new Fight_WeaponManager();
+
+	}
+	
+	public static void destroyManagersForFight(){
+
+		GlobalManager.fight_BuildingManager = null;
+		GlobalManager.fight_CreepManager = null;
+		GlobalManager.fight_TurnManager = null;
+		GlobalManager.fight_IaManager = null;
+		GlobalManager.fight_WeaponManager = null;
+
 	}
 
 }

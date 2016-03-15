@@ -75,7 +75,7 @@ public class CreepFactory {
 	}
 
 	public static void destroy(Creep creep) {
-		Fight_CreepManager.getManager().removeCreep(creep);
+		GlobalManager.fight_CreepManager.removeCreep(creep);
 	}
 
 	//permet de ne pas spawner pile poil l un sur l autre

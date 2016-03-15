@@ -45,7 +45,7 @@ public class LoadingScreen extends Screen implements IUpdatable {
 			float size_ = GlobalManager.assestsLoader.getAssetManager().getProgress() * (float)(this.loadingStatus.getProgressBarMaX() - this.loadingStatus.getProgressBarMinX());
 			this.loadingStatus.setBarSize((int)size_);
 
-			System.out.println("Loading ... " + GlobalManager.assestsLoader.getAssetManager().getProgress());
+			//System.out.println("Loading ... " + GlobalManager.assestsLoader.getAssetManager().getProgress());
 
 		}else{
 			//Launch next screen

@@ -43,7 +43,7 @@ public class Missile extends Weapon {
 		//le cas ou la target est morte
 		//TODO : suivre les derniere coordonn�e connues avant mort?
 		if(!this.getTarget().isAlive()){
-			Fight_WeaponManager.getManager().destroyWeapon(this);
+			GlobalManager.fight_WeaponManager.destroyWeapon(this);
 			return;
 		}
 
@@ -60,7 +60,7 @@ public class Missile extends Weapon {
 		//on a atteint la cible au prochain coup?
 		if((distance - this.getTarget().getDiameter()/2f)<=vitesse){
 			this.getTarget().hit(this);
-			Fight_WeaponManager.getManager().destroyWeapon(this);
+			GlobalManager.fight_WeaponManager.destroyWeapon(this);
 			return;
 		}
 		//sinon on "avance" vers elle
