@@ -3,6 +3,7 @@ package com.geekmecrazy.madandarmed.Game.Scene;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.FlameThrower;
 import com.geekmecrazy.madandarmed.Game.Element.Gun;
 import com.geekmecrazy.madandarmed.Game.Element.MeshMultiExplosion;
@@ -70,7 +71,7 @@ public class Fight_WeaponManager {
 	public void destroyWeapon(Weapon weapon){
 		
 		if(weapon instanceof Missile)
-			PoolManager.getManager().getMissilePool().free((Missile)weapon);
+			GlobalManager.poolManager.getMissilePool().free((Missile)weapon);
 
 		this.removeWeapon(weapon);
 	}
@@ -90,7 +91,7 @@ public class Fight_WeaponManager {
 	/** Type of weapons **/
 	private void fireSWORD(Military shooter, Military target){
 		
-		Sword sword = PoolManager.getManager().getSwordPool().obtain();
+		Sword sword = GlobalManager.poolManager.getSwordPool().obtain();
 		float startingFirePosX = shooter.getPos().getX();
 		float startingFirePosY = shooter.getPos().getY();
 		sword.init(startingFirePosX, startingFirePosY, shooter, target);
@@ -99,7 +100,7 @@ public class Fight_WeaponManager {
 
 	private void fireGUN(Military shooter, Military target){
 		
-		Gun gun = PoolManager.getManager().getGunPool().obtain();
+		Gun gun = GlobalManager.poolManager.getGunPool().obtain();
 		float startingFirePosX = shooter.getPos().getX();
 		float startingFirePosY = shooter.getPos().getY();
 		gun.init(startingFirePosX, startingFirePosY, shooter, target);
@@ -109,7 +110,7 @@ public class Fight_WeaponManager {
 	private void fireFlameThrower(Military shooter, Military target){
 
 		//SoundManager.playSound(SoundType.ROCKET_LAUNCH);
-		FlameThrower flameThrower = PoolManager.getManager().getFlameThrowerPool().obtain();
+		FlameThrower flameThrower = GlobalManager.poolManager.getFlameThrowerPool().obtain();
 		float startingFirePosX = shooter.getPos().getX();
 		float startingFirePosY = shooter.getPos().getY();
 		flameThrower.init(startingFirePosX, startingFirePosY, shooter, target);
@@ -120,7 +121,7 @@ public class Fight_WeaponManager {
 	private void fireMeshMultiExplosion(Military shooter, Military target){
 
 		//SoundManager.playSound(SoundType.ROCKET_LAUNCH);
-		MeshMultiExplosion meshMultiExplosion = PoolManager.getManager().getMeshMultiExplosionPool().obtain();
+		MeshMultiExplosion meshMultiExplosion = GlobalManager.poolManager.getMeshMultiExplosionPool().obtain();
 		float startingFirePosX = shooter.getPos().getX();
 		float startingFirePosY = shooter.getPos().getY();
 		meshMultiExplosion.init(startingFirePosX, startingFirePosY, shooter, target);
@@ -131,7 +132,7 @@ public class Fight_WeaponManager {
 	private void fireMISSILE(Military shooter, Military target){
 
 		//SoundManager.playSound(SoundType.ROCKET_LAUNCH);
-		Missile missile = PoolManager.getManager().getMissilePool().obtain();
+		Missile missile = GlobalManager.poolManager.getMissilePool().obtain();
 		float startingFirePosX = shooter.getPos().getX();
 		float startingFirePosY = shooter.getPos().getY();
 		missile.init(startingFirePosX, startingFirePosY, shooter, target);

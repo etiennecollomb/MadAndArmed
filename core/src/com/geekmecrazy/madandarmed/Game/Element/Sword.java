@@ -18,7 +18,7 @@ public class Sword extends Weapon {
 			
 			super.init(posX, posY, shooter, target);
 			
-			this.setWeaponRenderer( PoolAnimManager.getManager().getSwordRendererPool().obtain() );
+			this.setWeaponRenderer( GlobalManager.poolAnimManager.getSwordRendererPool().obtain() );
 			((SwordRenderer) this.getWeaponRenderer()).init(this, shooter);
 
 			GlobalManager.fightScreen.getScene().attachChild(this.getWeaponRenderer());

@@ -57,75 +57,66 @@ public class PoolAnimManager {
 	private static Pool<LifeBarRenderer> lifeBarRendererPool;
 
 	// ===========================================================
-	// Singleton manager
+	// Constructors
 	// ===========================================================
-	private static PoolAnimManager poolAnimManager;
-
-	/** Disable object's instantiation (private constructor) */
-	private PoolAnimManager(){
+	
+	public PoolAnimManager(){
 		init();
-	}
-
-	/** Acces au manager */
-	public static PoolAnimManager getManager(){
-		if (poolAnimManager == null)
-			poolAnimManager = new PoolAnimManager();
-		return poolAnimManager;
 	}
 
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
 
-	public Map<AnimatedTextureType, SpriteSheet> getSpriteSheets() {
+	public static Map<AnimatedTextureType, SpriteSheet> getSpriteSheets() {
 		return spriteSheets;
 	}
 
-	public Pool<UniqueActionRenderer> getUniqueActionRendererPool() {
+	public static Pool<UniqueActionRenderer> getUniqueActionRendererPool() {
 		return uniqueActionRendererPool;
 	}
 
-	public Pool<CreepRenderer> getCreepRendererPool() {
+	public static Pool<CreepRenderer> getCreepRendererPool() {
 		return creepRendererPool;
 	}
 
-	public Pool<TurretRenderer> getTurretRendererPool() {
+	public static Pool<TurretRenderer> getTurretRendererPool() {
 		return turretRendererPool;
 	}
 
-	public Pool<CampBuildingRenderer> getCampBuildingRendererPool() {
+	public static Pool<CampBuildingRenderer> getCampBuildingRendererPool() {
 		return campBuildingRendererPool;
 	}
 
-	public Pool<SpawnBuildingRenderer> getSpawnBuildingRendererPool() {
+	public static Pool<SpawnBuildingRenderer> getSpawnBuildingRendererPool() {
 		return spawnBuildingRendererPool;
 	}
 
-	public Pool<BarricadeRenderer> getBarricadeRendererPool() {
+	public static Pool<BarricadeRenderer> getBarricadeRendererPool() {
 		return barricadeRendererPool;
 	}
 
-	public Pool<SwordRenderer> getSwordRendererPool() {
+	public static Pool<SwordRenderer> getSwordRendererPool() {
 		return swordRendererPool;
 	}
 
-	public Pool<GunRenderer> getGunRendererPool() {
+	public static Pool<GunRenderer> getGunRendererPool() {
 		return gunRendererPool;
 	}
 
-	public Pool<FlameThrowerRenderer> getFlameThrowerRendererPool() {
+	public static Pool<FlameThrowerRenderer> getFlameThrowerRendererPool() {
 		return flameThrowerRendererPool;
 	}
 
-	public Pool<MeshMultiExplosionRenderer> getMeshMultiExplosionRendererPool() {
+	public static Pool<MeshMultiExplosionRenderer> getMeshMultiExplosionRendererPool() {
 		return meshMultiExplosionRendererPool;
 	}
 
-	public Pool<MissileRenderer> getMissileRendererPool() {
+	public static Pool<MissileRenderer> getMissileRendererPool() {
 		return missileRendererPool;
 	}
 
-	public Pool<LifeBarRenderer> getLifeBarRendererPool() {
+	public static Pool<LifeBarRenderer> getLifeBarRendererPool() {
 		return lifeBarRendererPool;
 	}
 
@@ -137,7 +128,7 @@ public class PoolAnimManager {
 	// Methods
 	// ===========================================================
 
-	public void init () {
+	public static void init () {
 
 		/** Sprites */
 		spriteSheets = new HashMap<AnimatedTextureType, SpriteSheet>();
@@ -168,7 +159,7 @@ public class PoolAnimManager {
 	//===================
 
 	//UNIQUE ACTION
-	private Pool<UniqueActionRenderer> createUniqueActionRendererPool(int initPoolNumber){
+	private static Pool<UniqueActionRenderer> createUniqueActionRendererPool(int initPoolNumber){
 
 		Pool<UniqueActionRenderer> pool = new Pool<UniqueActionRenderer>(initPoolNumber) {
 
@@ -187,7 +178,7 @@ public class PoolAnimManager {
 
 
 	//CREEP RENDERER
-	private Pool<CreepRenderer> createCreepRendererPool(int initPoolNumber){
+	private static Pool<CreepRenderer> createCreepRendererPool(int initPoolNumber){
 
 		Pool<CreepRenderer> pool = new Pool<CreepRenderer>(initPoolNumber) {
 
@@ -206,7 +197,7 @@ public class PoolAnimManager {
 
 
 	//TURRET RENDERER
-	private Pool<TurretRenderer> createTurretRendererPool(int initPoolNumber){
+	private static Pool<TurretRenderer> createTurretRendererPool(int initPoolNumber){
 
 		Pool<TurretRenderer> pool = new Pool<TurretRenderer>(initPoolNumber) {
 
@@ -224,7 +215,7 @@ public class PoolAnimManager {
 	}
 
 	//CAMP BUILDING RENDERER
-	private Pool<CampBuildingRenderer> createCampBuildingRendererPool(int initPoolNumber){
+	private static Pool<CampBuildingRenderer> createCampBuildingRendererPool(int initPoolNumber){
 
 		Pool<CampBuildingRenderer> pool = new Pool<CampBuildingRenderer>(initPoolNumber) {
 
@@ -242,7 +233,7 @@ public class PoolAnimManager {
 	}
 
 	//SPAWN BUILDING RENDERER
-	private Pool<SpawnBuildingRenderer> createSpawnBuildingRendererPool(int initPoolNumber){
+	private static Pool<SpawnBuildingRenderer> createSpawnBuildingRendererPool(int initPoolNumber){
 
 		Pool<SpawnBuildingRenderer> pool = new Pool<SpawnBuildingRenderer>(initPoolNumber) {
 
@@ -260,7 +251,7 @@ public class PoolAnimManager {
 	}
 
 	//BARRICADE RENDERER
-	private Pool<BarricadeRenderer> createBarricadeRendererPool(int initPoolNumber){
+	private static Pool<BarricadeRenderer> createBarricadeRendererPool(int initPoolNumber){
 
 		Pool<BarricadeRenderer> pool = new Pool<BarricadeRenderer>(initPoolNumber) {
 
@@ -279,7 +270,7 @@ public class PoolAnimManager {
 
 
 	//SWORD RENDERER
-	private Pool<SwordRenderer> createSwordRendererPool(int initPoolNumber){
+	private static Pool<SwordRenderer> createSwordRendererPool(int initPoolNumber){
 
 		Pool<SwordRenderer> pool = new Pool<SwordRenderer>(initPoolNumber) {
 
@@ -298,7 +289,7 @@ public class PoolAnimManager {
 
 
 	//GUN RENDERER
-	private Pool<GunRenderer> createGunRendererPool(int initPoolNumber){
+	private static Pool<GunRenderer> createGunRendererPool(int initPoolNumber){
 
 		Pool<GunRenderer> pool = new Pool<GunRenderer>(initPoolNumber) {
 
@@ -317,7 +308,7 @@ public class PoolAnimManager {
 
 
 	//FLAMETHROWER RENDERER
-	private Pool<FlameThrowerRenderer> createFlameThrowerRendererPool(int initPoolNumber){
+	private static Pool<FlameThrowerRenderer> createFlameThrowerRendererPool(int initPoolNumber){
 
 		Pool<FlameThrowerRenderer> pool = new Pool<FlameThrowerRenderer>(initPoolNumber) {
 
@@ -336,7 +327,7 @@ public class PoolAnimManager {
 
 
 	//MESHMULTIEXPLOSION RENDERER
-	private Pool<MeshMultiExplosionRenderer> createMeshMultiExplosionRendererPool(int initPoolNumber){
+	private static Pool<MeshMultiExplosionRenderer> createMeshMultiExplosionRendererPool(int initPoolNumber){
 
 		Pool<MeshMultiExplosionRenderer> pool = new Pool<MeshMultiExplosionRenderer>(initPoolNumber) {
 
@@ -355,7 +346,7 @@ public class PoolAnimManager {
 
 
 	//MISSILE RENDERER
-	private Pool<MissileRenderer> createMissileRendererPool(int initPoolNumber){
+	private static Pool<MissileRenderer> createMissileRendererPool(int initPoolNumber){
 
 		Pool<MissileRenderer> pool = new Pool<MissileRenderer>(initPoolNumber) {
 
@@ -374,7 +365,7 @@ public class PoolAnimManager {
 
 
 	//LIFEBAR RENDERER
-	private Pool<LifeBarRenderer> createLifeBarRendererPool(int initPoolNumber){
+	private static Pool<LifeBarRenderer> createLifeBarRendererPool(int initPoolNumber){
 
 		Pool<LifeBarRenderer> pool = new Pool<LifeBarRenderer>(initPoolNumber) {
 

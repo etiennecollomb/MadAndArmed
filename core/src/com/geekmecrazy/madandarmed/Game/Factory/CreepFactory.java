@@ -28,23 +28,23 @@ public class CreepFactory {
 	public static Creep createCreep (CreepPattern creepPattern, Team team, float spwanPosX, float spwanPosY) {
 
 		// LIFE
-		Life life = PoolManager.getManager().getLifePool().obtain();
+		Life life = GlobalManager.poolManager.getLifePool().obtain();
 		life.init(creepPattern.getLife());
 
 		// ANIM
-		CreepRenderer creepRenderer = PoolAnimManager.getManager().getCreepRendererPool().obtain();
+		CreepRenderer creepRenderer = GlobalManager.poolAnimManager.getCreepRendererPool().obtain();
 		
-		Creep creep = PoolManager.getManager().getCreepPool().obtain();
+		Creep creep = GlobalManager.poolManager.getCreepPool().obtain();
 		creep.init(creepPattern, spwanPosX+randowSpawn(), spwanPosY+randowSpawn(), creepPattern.getDiameter(), life, team, GlobalManager.fightScreen.getOtherTeam(team), creepRenderer);
 
 
 		/***********************************************/
 
 		//if(creepPattern.getUnitType()==UnitType.SOL){
-			GroundPathFinding groundPathFinding = PoolManager.getManager().getGroundPathFinding().obtain();
+			GroundPathFinding groundPathFinding = GlobalManager.poolManager.getGroundPathFinding().obtain();
 
 			groundPathFinding.init(creep, 3, 3, 20, 14);//(5, 5, 20, 20); zone A , zone B
-			GroundMoveBehavior groundBehavior = PoolManager.getManager().getGroundBehaviorPool().obtain();
+			GroundMoveBehavior groundBehavior = GlobalManager.poolManager.getGroundBehaviorPool().obtain();
 			groundBehavior.setPathFinding(groundPathFinding);
 			creep.setBehavior(groundBehavior);
 /*
@@ -60,10 +60,10 @@ public class CreepFactory {
 		// ATTAQUE
 		if(creepPattern.getWeaponName()!=null){
 
-			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
+			AttackBehavior attackBehavior = GlobalManager.poolManager.getAttackBehaviorPool().obtain();
 			attackBehavior.init(PatternLoader.getWeaponsPattern().get(creepPattern.getWeaponName().name()));
 			creep.setAttackBehavior(attackBehavior);
-			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
+			Attaque attaque = GlobalManager.poolManager.getAttaquePool().obtain();
 			attackBehavior.setAttaque(attaque);
 	
 			creep.getAttackBehavior().setMainTarget(GlobalManager.fightScreen.getOtherTeam(team).getCastle());

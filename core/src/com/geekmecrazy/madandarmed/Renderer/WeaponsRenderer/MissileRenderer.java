@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer;
 
 import java.util.List;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Game.Element.Military;
 import com.geekmecrazy.madandarmed.Game.Element.Weapon;
@@ -34,15 +35,15 @@ public class MissileRenderer extends WeaponRenderer {
 
 	@Override
 	public void setWeaponTravellingEffect(){
-		UniqueActionRenderer uniqueActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-		uniqueActionRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.MISSILE_EXPLOSION));
+		UniqueActionRenderer uniqueActionRenderer = GlobalManager.poolAnimManager.getUniqueActionRendererPool().obtain();
+		uniqueActionRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.MISSILE_EXPLOSION));
 		this.getWeaponTravellingEffectList().add(uniqueActionRenderer);
 	}
 	
 	@Override
 	public void setWeaponEffect(final List<UniqueActionRenderer> weaponEffectList) {
-		UniqueActionRenderer uniqueActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-		uniqueActionRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX));
+		UniqueActionRenderer uniqueActionRenderer = GlobalManager.poolAnimManager.getUniqueActionRendererPool().obtain();
+		uniqueActionRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX));
 		weaponEffectList.add(uniqueActionRenderer);
 	}
 	

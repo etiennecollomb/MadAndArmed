@@ -22,7 +22,7 @@ public class Creep extends Vehicle {
 		super.init(creepPattern, posX, posY, diameter, life, myTeam, ennemyTeam);
 		this.militaryRenderer=animatedMilitary;
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(creepPattern.getCreepType().name());
-		((CreepRenderer)this.militaryRenderer).init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), creepPattern, this);
+		((CreepRenderer)this.militaryRenderer).init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), creepPattern, this);
 
         animatedMilitary.setAlignment(Entity.Alignment.CENTER_ON_ITSELF);
         GlobalManager.fightScreen.getScene().attachChild(animatedMilitary);
@@ -95,7 +95,7 @@ public class Creep extends Vehicle {
 	public void reset() {
 		super.reset();
 		
-		PoolAnimManager.getManager().getCreepRendererPool().free((CreepRenderer) this.militaryRenderer);
+		GlobalManager.poolAnimManager.getCreepRendererPool().free((CreepRenderer) this.militaryRenderer);
 	}
 
 }

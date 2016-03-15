@@ -28,6 +28,8 @@ import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
+import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
+import com.geekmecrazy.madandarmed.pool.PoolManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Application.ApplicationType;
@@ -148,6 +150,8 @@ public class GlobalManager {
 	// ===========================================================
 
 	/** Pools **/
+	public static PoolManager poolManager;
+	public static PoolAnimManager poolAnimManager;
 
 	/** Fight **/
 	public static Fight_BuildingManager fight_BuildingManager;
@@ -444,6 +448,12 @@ public class GlobalManager {
 
 	}
 
+	public static void createPoolManagers(){
+	
+		GlobalManager.poolManager = new PoolManager();
+		GlobalManager.poolAnimManager = new PoolAnimManager();
+	}
+	
 }
 
 

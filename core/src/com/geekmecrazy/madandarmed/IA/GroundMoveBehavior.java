@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.IA;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Vehicle;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
@@ -27,7 +28,7 @@ public class GroundMoveBehavior extends MoveBehavior {
 
 	@Override
 	public void reset() {
-		PoolManager.getManager().getGroundPathFinding().free((GroundPathFinding) pathFinding);
+		GlobalManager.poolManager.getGroundPathFinding().free((GroundPathFinding) pathFinding);
 	}
 	
 }

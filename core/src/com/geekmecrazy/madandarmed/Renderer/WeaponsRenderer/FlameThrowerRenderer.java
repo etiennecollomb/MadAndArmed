@@ -35,7 +35,7 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 	@Override
 	public void setWeaponTravellingEffect(){
 
-		SpriteSheet sp = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX); //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
+		SpriteSheet sp = GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX); //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
 
 
 		/** TODO: switch unit type **/
@@ -87,7 +87,7 @@ public class FlameThrowerRenderer extends WeaponRenderer {
 			animationSpeed = (1.0f-currentValue)*animationSpeedStart;
 
 			if(animationSpeed>0f){
-				UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+				UniqueActionRenderer uar = GlobalManager.poolAnimManager.getUniqueActionRendererPool().obtain();
 				uar.init(sp);
 				uar.setScalable(true);
 				uar.setScale(scale);

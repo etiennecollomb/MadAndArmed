@@ -27,9 +27,9 @@ public class BaseBuilding extends Building {
 		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam);
 		
 		/** Renderer */
-		CampBuildingRenderer campBuildingRenderer = PoolAnimManager.getManager().getCampBuildingRendererPool().obtain();
+		CampBuildingRenderer campBuildingRenderer = GlobalManager.poolAnimManager.getCampBuildingRendererPool().obtain();
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingName().name());
-		campBuildingRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), this);
+		campBuildingRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), this);
 		FightScreen.isoGrid.place(campBuildingRenderer, (int)posX, (int)posY);
 		FightScreen.isoGrid.getIsoMapState().add(campBuildingRenderer);
 		this.setMilitaryRenderer(campBuildingRenderer);
@@ -38,7 +38,7 @@ public class BaseBuilding extends Building {
 		
 		/** Set LifeBar */
 		if(life!=null){
-			lifeBarreRenderer = PoolAnimManager.getManager().getLifeBarRendererPool().obtain();
+			lifeBarreRenderer = GlobalManager.poolAnimManager.getLifeBarRendererPool().obtain();
 			int lifeBarreWidth = 64;
 			int lifeBarreHeight = 10;
 			this.lifeBarreRenderer.init(life, 0, 100, lifeBarreWidth, lifeBarreHeight);
@@ -78,7 +78,7 @@ public class BaseBuilding extends Building {
 		FightScreen.isoGrid.getIsoMapState().remove((CampBuildingRenderer)this.getMilitaryRenderer());
 		
 		//on efface la lifebar
-		if(lifeBarreRenderer!=null) PoolAnimManager.getManager().getLifeBarRendererPool().free(lifeBarreRenderer);
+		if(lifeBarreRenderer!=null) GlobalManager.poolAnimManager.getLifeBarRendererPool().free(lifeBarreRenderer);
 		lifeBarreRenderer = null;
 		
 	}
@@ -87,10 +87,10 @@ public class BaseBuilding extends Building {
 	public void reset() {
 		super.reset();
 
-		if(lifeBarreRenderer!=null) PoolAnimManager.getManager().getLifeBarRendererPool().free(lifeBarreRenderer);
+		if(lifeBarreRenderer!=null) GlobalManager.poolAnimManager.getLifeBarRendererPool().free(lifeBarreRenderer);
 		lifeBarreRenderer = null;
 		
-		PoolAnimManager.getManager().getCampBuildingRendererPool().free((CampBuildingRenderer) this.militaryRenderer);
+		GlobalManager.poolAnimManager.getCampBuildingRendererPool().free((CampBuildingRenderer) this.militaryRenderer);
 	}
 	
 	// ===========================================================

@@ -23,10 +23,10 @@ public class SpawnBuilding extends Building {
 		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam);
 		
 		/** Renderer */
-		SpawnBuildingRenderer spawnBuildingRenderer = PoolAnimManager.getManager().getSpawnBuildingRendererPool().obtain();
+		SpawnBuildingRenderer spawnBuildingRenderer = GlobalManager.poolAnimManager.getSpawnBuildingRendererPool().obtain();
 		
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingName().name());
-		spawnBuildingRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), this, FightScreen.isoGrid);
+		spawnBuildingRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), this, FightScreen.isoGrid);
 		FightScreen.isoGrid.place(spawnBuildingRenderer, (int)posX, (int)posY);
 		FightScreen.isoGrid.getIsoMapState().add(spawnBuildingRenderer);
 		this.setMilitaryRenderer(spawnBuildingRenderer);
@@ -73,7 +73,7 @@ public class SpawnBuilding extends Building {
 	public void reset() {
 		super.reset();
 		
-		PoolAnimManager.getManager().getSpawnBuildingRendererPool().free((SpawnBuildingRenderer) this.militaryRenderer);
+		GlobalManager.poolAnimManager.getSpawnBuildingRendererPool().free((SpawnBuildingRenderer) this.militaryRenderer);
 	}
 
 	// ===========================================================

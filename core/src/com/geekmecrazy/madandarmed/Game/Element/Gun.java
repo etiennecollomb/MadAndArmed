@@ -17,7 +17,7 @@ public class Gun extends Weapon {
 			
 			super.init(posX, posY, shooter, target);
 			
-			this.setWeaponRenderer( PoolAnimManager.getManager().getGunRendererPool().obtain() );
+			this.setWeaponRenderer( GlobalManager.poolAnimManager.getGunRendererPool().obtain() );
 			((GunRenderer) this.getWeaponRenderer()).init(this, shooter);
 
 			GlobalManager.fightScreen.getScene().attachChild(this.getWeaponRenderer());

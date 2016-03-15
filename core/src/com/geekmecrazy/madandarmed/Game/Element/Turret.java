@@ -31,9 +31,9 @@ public class Turret extends Building {
 		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam);
 		
 		/** Renderer */
-		TurretRenderer turretRenderer = PoolAnimManager.getManager().getTurretRendererPool().obtain();
+		TurretRenderer turretRenderer = GlobalManager.poolAnimManager.getTurretRendererPool().obtain();
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingName().name());
-		turretRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(animatedTextureType), this);
+		turretRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), this);
 		FightScreen.isoGrid.place(turretRenderer, (int)posX, (int)posY);
 		FightScreen.isoGrid.getIsoMapState().add(turretRenderer);
 		this.setMilitaryRenderer(turretRenderer);
@@ -42,7 +42,7 @@ public class Turret extends Building {
 		
 		/** Set LifeBar */
 		if(life!=null){
-			lifeBarreRenderer = PoolAnimManager.getManager().getLifeBarRendererPool().obtain();
+			lifeBarreRenderer = GlobalManager.poolAnimManager.getLifeBarRendererPool().obtain();
 			int lifeBarreWidth = 64;
 			int lifeBarreHeight = 10;
 			this.lifeBarreRenderer.init(life, 0, 100, lifeBarreWidth, lifeBarreHeight);
@@ -91,7 +91,7 @@ public class Turret extends Building {
 		FightScreen.isoGrid.getIsoMapState().remove((TurretRenderer)this.getMilitaryRenderer());
 		
 		//on efface la lifebar
-		if(lifeBarreRenderer!=null) PoolAnimManager.getManager().getLifeBarRendererPool().free(lifeBarreRenderer);
+		if(lifeBarreRenderer!=null) GlobalManager.poolAnimManager.getLifeBarRendererPool().free(lifeBarreRenderer);
 		lifeBarreRenderer = null;
 		
 	}
@@ -100,10 +100,10 @@ public class Turret extends Building {
 	public void reset() {
 		super.reset();
 
-		if(lifeBarreRenderer!=null) PoolAnimManager.getManager().getLifeBarRendererPool().free(lifeBarreRenderer);
+		if(lifeBarreRenderer!=null) GlobalManager.poolAnimManager.getLifeBarRendererPool().free(lifeBarreRenderer);
 		lifeBarreRenderer = null;
 		
-		PoolAnimManager.getManager().getTurretRendererPool().free((TurretRenderer) this.militaryRenderer);
+		GlobalManager.poolAnimManager.getTurretRendererPool().free((TurretRenderer) this.militaryRenderer);
 	}
 	
 	// ===========================================================

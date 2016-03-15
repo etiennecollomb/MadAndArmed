@@ -19,7 +19,7 @@ public class FlameThrower extends Weapon {
 
 		super.init(posX, posY, shooter, target);
 
-		this.flameThrowerRenderer = PoolAnimManager.getManager().getFlameThrowerRendererPool().obtain(); //new FlameThrowerRenderer();
+		this.flameThrowerRenderer = GlobalManager.poolAnimManager.getFlameThrowerRendererPool().obtain(); //new FlameThrowerRenderer();
 		this.flameThrowerRenderer.init(this);
 
 		GlobalManager.fightScreen.getScene().attachChild(this.flameThrowerRenderer);

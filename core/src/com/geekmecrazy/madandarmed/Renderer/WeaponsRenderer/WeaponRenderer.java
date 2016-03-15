@@ -63,7 +63,7 @@ public abstract class WeaponRenderer extends Entity {
 		int size = weaponTravellingEffectList.size();
 		for(int i=0; i<size; i++){
 			if(this.weaponTravellingEffectList.get(i).isFinished()){
-				PoolAnimManager.getManager().getUniqueActionRendererPool().free(this.weaponTravellingEffectList.get(i));
+				GlobalManager.poolAnimManager.getUniqueActionRendererPool().free(this.weaponTravellingEffectList.get(i));
 				this.weaponTravellingEffectList.remove(i);
 				size = size-1; i = i-1;
 			}	
@@ -77,7 +77,7 @@ public abstract class WeaponRenderer extends Entity {
 		
 		int size = weaponTravellingEffectList.size();
 		for(int i=0; i<size; i++)
-			PoolAnimManager.getManager().getUniqueActionRendererPool().free(this.weaponTravellingEffectList.get(i));
+			GlobalManager.poolAnimManager.getUniqueActionRendererPool().free(this.weaponTravellingEffectList.get(i));
 		weaponTravellingEffectList.clear();
 		
 		super.reset();

@@ -112,11 +112,11 @@ public class Fight_BuildingManager {
 			listBuildings.remove(building);
 
 			if(building instanceof Turret)
-				PoolManager.getManager().getTurretPool().free((Turret)building);
+				GlobalManager.poolManager.getTurretPool().free((Turret)building);
 			else if(building instanceof Barricade)
-				PoolManager.getManager().getBarricadePool().free((Barricade)building);
+				GlobalManager.poolManager.getBarricadePool().free((Barricade)building);
 			else if(building instanceof BaseBuilding)
-				PoolManager.getManager().getCampBuildingPool().free((BaseBuilding)building);
+				GlobalManager.poolManager.getCampBuildingPool().free((BaseBuilding)building);
 
 		}
 		listBuildingsRecycle.clear();

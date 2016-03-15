@@ -41,110 +41,101 @@ public class PoolManager {
 	private static final int STARTING_ALLOCATE_AIRBEHAVIOR 			= 20;
 	
 	/** Pools */
-	private Pool<Attaque> attaquePool;
-	private Pool<Creep> creepPool;
-	private Pool<Sword> swordPool;
-	private Pool<Gun> gunPool;
-	private Pool<FlameThrower> flameThrowerPool;
-	private Pool<MeshMultiExplosion> meshMultiExplosionPool;
-	private Pool<Missile> missilePool;
-	private Pool<Life> lifePool;
-	private Pool<Turret> turretPool;
-	private Pool<BaseBuilding> campBuildingPool;
-	private Pool<SpawnBuilding> spawnBuildingPool;
-	private Pool<Barricade> barricadePool;
-	private Pool<GroundPathFinding> groundPathFinding;
-	private Pool<AirPathFinding> airPathFindingPool;
-	private Pool<AttackBehavior> attackBehaviorPool;
-	private Pool<GroundMoveBehavior> groundBehaviorPool;
-	private Pool<AirMoveBehavior> airBehaviorPool;
+	private static Pool<Attaque> attaquePool;
+	private static Pool<Creep> creepPool;
+	private static Pool<Sword> swordPool;
+	private static Pool<Gun> gunPool;
+	private static Pool<FlameThrower> flameThrowerPool;
+	private static Pool<MeshMultiExplosion> meshMultiExplosionPool;
+	private static Pool<Missile> missilePool;
+	private static Pool<Life> lifePool;
+	private static Pool<Turret> turretPool;
+	private static Pool<BaseBuilding> campBuildingPool;
+	private static Pool<SpawnBuilding> spawnBuildingPool;
+	private static Pool<Barricade> barricadePool;
+	private static Pool<GroundPathFinding> groundPathFinding;
+	private static Pool<AirPathFinding> airPathFindingPool;
+	private static Pool<AttackBehavior> attackBehaviorPool;
+	private static Pool<GroundMoveBehavior> groundBehaviorPool;
+	private static Pool<AirMoveBehavior> airBehaviorPool;
 	
-	
-	// ===========================================================
-	// Singleton manager
-	// ===========================================================
-	private static PoolManager poolManager;
 
-	/** Disable object's instantiation (private constructor) */
-	private PoolManager(){
+	// ===========================================================
+	// Constructors
+	// ===========================================================
+	
+	public PoolManager(){
 		init();
-	}
-
-	/** Acces au manager */
-	public static PoolManager getManager(){
-		if (poolManager == null)
-			poolManager = new PoolManager();
-		return poolManager;
 	}
 
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
-	public Pool<Attaque> getAttaquePool() {
+	public static Pool<Attaque> getAttaquePool() {
 		return attaquePool;
 	}
 
-	public Pool<Creep> getCreepPool() {
+	public static Pool<Creep> getCreepPool() {
 		return creepPool;
 	}
 
-	public Pool<Sword> getSwordPool() {
+	public static Pool<Sword> getSwordPool() {
 		return swordPool;
 	}
 	
-	public Pool<Gun> getGunPool() {
+	public static Pool<Gun> getGunPool() {
 		return gunPool;
 	}
 	
-	public Pool<FlameThrower> getFlameThrowerPool() {
+	public static Pool<FlameThrower> getFlameThrowerPool() {
 		return flameThrowerPool;
 	}
 
-	public Pool<MeshMultiExplosion> getMeshMultiExplosionPool() {
+	public static Pool<MeshMultiExplosion> getMeshMultiExplosionPool() {
 		return meshMultiExplosionPool;
 	}
 
-	public Pool<Missile> getMissilePool() {
+	public static Pool<Missile> getMissilePool() {
 		return missilePool;
 	}
 
-	public Pool<Life> getLifePool() {
+	public static Pool<Life> getLifePool() {
 		return lifePool;
 	}
 
-	public Pool<Turret> getTurretPool() {
+	public static Pool<Turret> getTurretPool() {
 		return turretPool;
 	}
 
-	public Pool<BaseBuilding> getCampBuildingPool() {
+	public static Pool<BaseBuilding> getCampBuildingPool() {
 		return campBuildingPool;
 	}
 	
-	public Pool<Barricade> getBarricadePool() {
+	public static Pool<Barricade> getBarricadePool() {
 		return barricadePool;
 	}
 
-	public Pool<GroundPathFinding> getGroundPathFinding() {
+	public static Pool<GroundPathFinding> getGroundPathFinding() {
 		return groundPathFinding;
 	}
 
-	public Pool<AirPathFinding> getAirPathFindingPool() {
+	public static Pool<AirPathFinding> getAirPathFindingPool() {
 		return airPathFindingPool;
 	}
 
-	public Pool<GroundMoveBehavior> getGroundBehaviorPool() {
+	public static Pool<GroundMoveBehavior> getGroundBehaviorPool() {
 		return groundBehaviorPool;
 	}
 
-	public Pool<AttackBehavior> getAttackBehaviorPool() {
+	public static Pool<AttackBehavior> getAttackBehaviorPool() {
 		return attackBehaviorPool;
 	}
 
-	public Pool<AirMoveBehavior> getAirBehaviorPool() {
+	public static Pool<AirMoveBehavior> getAirBehaviorPool() {
 		return airBehaviorPool;
 	}
 	
-	public Pool<SpawnBuilding> getSpawnBuildingPool() {
+	public static Pool<SpawnBuilding> getSpawnBuildingPool() {
 		return spawnBuildingPool;
 	}
 
@@ -158,7 +149,7 @@ public class PoolManager {
 	// ===========================================================
 	
 	/**  Starting PoolManager */
-	public void init () {
+	public static void init () {
 		
 		attaquePool = new Pool<Attaque>(STARTING_ALLOCATE_ATTAQUE){
 			@Override

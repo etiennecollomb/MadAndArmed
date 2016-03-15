@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Game.Element;
 
 import java.util.List;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.Renderer.MilitaryRenderer;
@@ -97,7 +98,7 @@ public class Military extends Geometrie {
 		}
 
 		if(attackBehavior!=null){
-			PoolManager.getManager().getAttackBehaviorPool().free(attackBehavior);
+			GlobalManager.poolManager.getAttackBehaviorPool().free(attackBehavior);
 			attackBehavior=null;
 		}
 

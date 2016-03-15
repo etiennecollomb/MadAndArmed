@@ -71,23 +71,23 @@ public class BuildingFactory{
 		/** Life */
 		Life life = null;
 		if(buildingPattern.getLife()>0){
-			life = PoolManager.getManager().getLifePool().obtain();
+			life = GlobalManager.poolManager.getLifePool().obtain();
 			life.init(buildingPattern.getLife());
 		}
 
 		/** Building */
-		Turret turret = PoolManager.getManager().getTurretPool().obtain();
+		Turret turret = GlobalManager.poolManager.getTurretPool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
 		turret.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
 
 		/** AttackBehavior */
 		if(buildingPattern.getWeaponName()!=null){
 
-			AttackBehavior attackBehavior = PoolManager.getManager().getAttackBehaviorPool().obtain();
+			AttackBehavior attackBehavior = GlobalManager.poolManager.getAttackBehaviorPool().obtain();
 			attackBehavior.init(PatternLoader.getWeaponsPattern().get(buildingPattern.getWeaponName().name()));
 			attackBehavior.setAttacking(true);
 			turret.setAttackBehavior(attackBehavior);
-			Attaque attaque = PoolManager.getManager().getAttaquePool().obtain();
+			Attaque attaque = GlobalManager.poolManager.getAttaquePool().obtain();
 			attackBehavior.setAttaque(attaque);
 		}
 
@@ -103,12 +103,12 @@ public class BuildingFactory{
 		/** Life */
 		Life life = null;
 		if(buildingPattern.getLife()>0){
-			life = PoolManager.getManager().getLifePool().obtain();
+			life = GlobalManager.poolManager.getLifePool().obtain();
 			life.init(buildingPattern.getLife());
 		}
 
 		/** Building */
-		Barricade barricade = PoolManager.getManager().getBarricadePool().obtain();
+		Barricade barricade = GlobalManager.poolManager.getBarricadePool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
 		barricade.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
 
@@ -120,12 +120,12 @@ public class BuildingFactory{
 		/** Life */
 		Life life = null;
 		if(buildingPattern.getLife()>0){
-			life = PoolManager.getManager().getLifePool().obtain();
+			life = GlobalManager.poolManager.getLifePool().obtain();
 			life.init(buildingPattern.getLife());
 		}
 
 		/** Building */
-		BaseBuilding campBuilding = PoolManager.getManager().getCampBuildingPool().obtain();
+		BaseBuilding campBuilding = GlobalManager.poolManager.getCampBuildingPool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
 		campBuilding.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
 
@@ -137,12 +137,12 @@ public class BuildingFactory{
 		/** Life */
 		Life life = null;
 		if(buildingPattern.getLife()>0){
-			life = PoolManager.getManager().getLifePool().obtain();
+			life = GlobalManager.poolManager.getLifePool().obtain();
 			life.init(buildingPattern.getLife());
 		}
 
 		/** Building */
-		SpawnBuilding spawnBuilding = PoolManager.getManager().getSpawnBuildingPool().obtain();
+		SpawnBuilding spawnBuilding = GlobalManager.poolManager.getSpawnBuildingPool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
 		spawnBuilding.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
 

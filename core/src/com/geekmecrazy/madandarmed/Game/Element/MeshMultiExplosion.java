@@ -19,7 +19,7 @@ public class MeshMultiExplosion extends Weapon {
 
 		super.init(posX, posY, shooter, target);
 
-		this.meshMultiExplosionRenderer = PoolAnimManager.getManager().getMeshMultiExplosionRendererPool().obtain();
+		this.meshMultiExplosionRenderer = GlobalManager.poolAnimManager.getMeshMultiExplosionRendererPool().obtain();
 		this.meshMultiExplosionRenderer.init(this);
 
 		GlobalManager.fightScreen.getScene().attachChild(this.meshMultiExplosionRenderer);

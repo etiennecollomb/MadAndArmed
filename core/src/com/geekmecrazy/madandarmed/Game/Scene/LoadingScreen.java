@@ -48,6 +48,9 @@ public class LoadingScreen extends Screen implements IUpdatable {
 			//System.out.println("Loading ... " + GlobalManager.assestsLoader.getAssetManager().getProgress());
 
 		}else{
+			/** create at last the pool*Managers, it doesn't take so much time **/
+			GlobalManager.createPoolManagers();
+			
 			//Launch next screen
 			this.showMenuScreen();
 		}

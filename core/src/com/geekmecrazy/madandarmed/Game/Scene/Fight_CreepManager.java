@@ -107,7 +107,7 @@ public class Fight_CreepManager {
 			GlobalManager.fightScreen.getOtherTeam(creep.getMyTeam()).addScore(creep.getPattern().getPrice());
 			listCreeps.remove(creep);
             listSelectedCreeps.remove(creep);
-			PoolManager.getManager().getCreepPool().free(creep); //appel ensuite creep.reset()
+            GlobalManager.poolManager.getCreepPool().free(creep); //appel ensuite creep.reset()
 		}
 		listCreepsRecycle.clear();
 

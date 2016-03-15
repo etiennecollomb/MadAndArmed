@@ -409,7 +409,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 	 */
 	public void fireThrower(final float posX, final float posY, final float dirX, final float dirY){
 
-		SpriteSheet sp = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX); //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
+		SpriteSheet sp = GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX); //MISSILE_EXPLOSION FIRE_BLAST_001_64PX ok
 
 		float positionX = posX;
 		float positionY = posY;
@@ -433,7 +433,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 			if(animationSpeed>0f){
 
-				UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+				UniqueActionRenderer uar = GlobalManager.poolAnimManager.getUniqueActionRendererPool().obtain();
 				uar.init(sp);
 				uar.setScalable(true);
 				uar.setScale(scale);
@@ -461,15 +461,15 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 		Random random = new Random();
 
-		SpriteSheet sp = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.HALO_BLUE_192PX);
-		SpriteSheet sp2 = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX);
+		SpriteSheet sp = GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.HALO_BLUE_192PX);
+		SpriteSheet sp2 = GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX);
 
 		List<SpriteSheet> explosionsList = new ArrayList<SpriteSheet>();
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_002_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_003_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_005_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_002_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_003_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_005_128PX));
 
 
 		float positionX = posX;
@@ -506,7 +506,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				if(animationSpeed>0f){
 
 					/** Under explosion effect **/
-					UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+					UniqueActionRenderer uar = GlobalManager.poolAnimManager.getUniqueActionRendererPool().obtain();
 					uar.init(sp);
 					uar.setScalable(true);
 					uar.setScale(scale);
@@ -516,7 +516,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 					this.getScene().attachChild(uar);
 
 					//					/** Explosion effect **/
-					//					UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+					//					UniqueActionRenderer uar2 = GlobalManager.poolAnimManager.getUniqueActionRendererPool().obtain();
 					//					uar2.init(sp2);
 					//					uar2.setScalable(true);
 					//					uar2.setScale(scale);
@@ -548,7 +548,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				SpriteSheet sp_explosion = explosionsList.get(random.nextInt(explosionsList.size()));
 
 				/** Explosion effect **/
-				UniqueActionRenderer uar2 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+				UniqueActionRenderer uar2 = GlobalManager.poolAnimManager.getUniqueActionRendererPool().obtain();
 				uar2.init(sp_explosion);
 				uar2.setScalable(true);
 				//uar2.setScale(scale);

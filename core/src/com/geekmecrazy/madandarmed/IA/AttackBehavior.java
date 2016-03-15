@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.IA;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.GameElement;
 import com.geekmecrazy.madandarmed.Game.Element.Military;
@@ -76,7 +77,7 @@ public class AttackBehavior extends GameElement {
 
 	@Override
 	public void reset() {
-		PoolManager.getManager().getAttaquePool().free(attaque);
+		GlobalManager.poolManager.getAttaquePool().free(attaque);
 		attaque=null;
 
 		weaponPattern=null;

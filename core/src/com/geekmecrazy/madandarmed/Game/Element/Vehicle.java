@@ -183,8 +183,8 @@ public abstract class Vehicle extends Military {
 	@Override
 	public void reset() {
 		super.reset();
-		if(behavior instanceof GroundMoveBehavior)PoolManager.getManager().getGroundBehaviorPool().free((GroundMoveBehavior) behavior);
-		else if(behavior instanceof AirMoveBehavior)PoolManager.getManager().getAirBehaviorPool().free((AirMoveBehavior) behavior);
+		if(behavior instanceof GroundMoveBehavior) GlobalManager.poolManager.getGroundBehaviorPool().free((GroundMoveBehavior) behavior);
+		else if(behavior instanceof AirMoveBehavior) GlobalManager.poolManager.getAirBehaviorPool().free((AirMoveBehavior) behavior);
 		behavior=null;
 	}
 

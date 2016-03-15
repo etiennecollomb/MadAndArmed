@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.FlameThrowerRenderer;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.GunRenderer;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MeshMultiExplosionRenderer;
@@ -75,15 +76,15 @@ public class Weapon extends Geometrie {
 
 		//TODO : mettre dans le reset de chaque weapon type au lieu de faire les appels ici avec des instanceof.....
 		if(this.getWeaponRenderer() instanceof MissileRenderer)
-			PoolAnimManager.getManager().getMissileRendererPool().free(((MissileRenderer) this.getWeaponRenderer()));
+			GlobalManager.poolAnimManager.getMissileRendererPool().free(((MissileRenderer) this.getWeaponRenderer()));
 		if(this.getWeaponRenderer() instanceof FlameThrowerRenderer)
-			PoolAnimManager.getManager().getFlameThrowerRendererPool().free(((FlameThrowerRenderer) this.getWeaponRenderer()));
+			GlobalManager.poolAnimManager.getFlameThrowerRendererPool().free(((FlameThrowerRenderer) this.getWeaponRenderer()));
 		if(this.getWeaponRenderer() instanceof GunRenderer)
-			PoolAnimManager.getManager().getGunRendererPool().free(((GunRenderer) this.getWeaponRenderer()));
+			GlobalManager.poolAnimManager.getGunRendererPool().free(((GunRenderer) this.getWeaponRenderer()));
 		if(this.getWeaponRenderer() instanceof MeshMultiExplosionRenderer)
-			PoolAnimManager.getManager().getMeshMultiExplosionRendererPool().free(((MeshMultiExplosionRenderer) this.getWeaponRenderer()));
+			GlobalManager.poolAnimManager.getMeshMultiExplosionRendererPool().free(((MeshMultiExplosionRenderer) this.getWeaponRenderer()));
 		if(this.getWeaponRenderer() instanceof SwordRenderer)
-			PoolAnimManager.getManager().getSwordRendererPool().free(((SwordRenderer) this.getWeaponRenderer()));
+			GlobalManager.poolAnimManager.getSwordRendererPool().free(((SwordRenderer) this.getWeaponRenderer()));
 	}
 	
 	// ===========================================================

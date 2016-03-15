@@ -39,15 +39,15 @@ public class MeshMultiExplosionRenderer extends WeaponRenderer {
 
 		Random random = new Random();
 
-		SpriteSheet sp = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.HALO_BLUE_192PX);
-		SpriteSheet sp2 = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX);
+		SpriteSheet sp = GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.HALO_BLUE_192PX);
+		SpriteSheet sp2 = GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX);
 
 		List<SpriteSheet> explosionsList = new ArrayList<SpriteSheet>();
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_002_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_003_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_005_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_002_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_003_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_005_128PX));
 
 		/** fire_angle is (2*Math.PI/16f)*graphicOrientation **/
 		float fire_angle = (float) GraphicalTools.STEP_ANGLE_RADIAN * GraphicalTools.getGraphicDirection(this.getWeapon().getShooter().getNormalizedDir()) ;
@@ -91,20 +91,20 @@ public class MeshMultiExplosionRenderer extends WeaponRenderer {
 	}
 
 
-	//TODO: mettre en variable global tout ce qui est calculé identique....
+	//TODO: mettre en variable global tout ce qui est calculï¿½ identique....
 	public void fireThrowerMesh(final float posX, final float posY, final float dirX, final float dirY, final float angle, final float weaponID){
 
 		Random random = new Random();
 
-		SpriteSheet sp = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.HALO_BLUE_192PX);
-		SpriteSheet sp2 = PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX);
+		SpriteSheet sp = GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.HALO_BLUE_192PX);
+		SpriteSheet sp2 = GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX);
 
 		List<SpriteSheet> explosionsList = new ArrayList<SpriteSheet>();
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_002_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_003_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX));
-		explosionsList.add(PoolAnimManager.getManager().getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_005_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_001_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_002_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_003_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_004_128PX));
+		explosionsList.add(GlobalManager.poolAnimManager.getSpriteSheets().get(AnimatedTextureType.FIRE_BLAST_005_128PX));
 
 
 		float positionX = posX;
@@ -140,7 +140,7 @@ public class MeshMultiExplosionRenderer extends WeaponRenderer {
 
 				if(animationSpeed>0f){
 					/** Under explosion effect **/
-					UniqueActionRenderer uar = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+					UniqueActionRenderer uar = GlobalManager.poolAnimManager.getUniqueActionRendererPool().obtain();
 					uar.init(sp);
 					uar.setScalable(true);
 					uar.setScale(scale);
@@ -181,7 +181,7 @@ public class MeshMultiExplosionRenderer extends WeaponRenderer {
 			SpriteSheet sp_explosion = explosionsList.get(random.nextInt(explosionsList.size()));
 
 			/** Explosion effect **/
-			UniqueActionRenderer uar3 = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
+			UniqueActionRenderer uar3 = GlobalManager.poolAnimManager.getUniqueActionRendererPool().obtain();
 			uar3.init(sp_explosion);
 			uar3.setScalable(true);
 			//uar3.setScale(scale);

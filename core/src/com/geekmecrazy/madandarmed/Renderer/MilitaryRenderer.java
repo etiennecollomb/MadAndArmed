@@ -3,6 +3,7 @@ package com.geekmecrazy.madandarmed.Renderer;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
@@ -95,7 +96,7 @@ public class MilitaryRenderer extends MultiActionRenderer {
 		}
 
 		if(!this.getMilitary().isAlive()) {
-			//Cas particuliers : On affiche les child qui sont pas affichés si le millitary est dead (visible = false)
+			//Cas particuliers : On affiche les child qui sont pas affichï¿½s si le millitary est dead (visible = false)
 			this.onDrawHit(); //on affiche qd meme le hit meme si le military est morte
 			this.onDrawDead();
 
@@ -173,8 +174,8 @@ public class MilitaryRenderer extends MultiActionRenderer {
 	 */
 	public void addDeadActionRenderer(final AnimatedTextureType pDeadActionTypeTexture, final float pPosX, final float pPosY, final int pStartDelay){
 
-		UniqueActionRenderer deadActionRenderer = PoolAnimManager.getManager().getUniqueActionRendererPool().obtain();
-		deadActionRenderer.init(PoolAnimManager.getManager().getSpriteSheets().get(pDeadActionTypeTexture));
+		UniqueActionRenderer deadActionRenderer = GlobalManager.poolAnimManager.getUniqueActionRendererPool().obtain();
+		deadActionRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(pDeadActionTypeTexture));
 		deadActionRenderer.setStartDelay(pStartDelay);
 		deadActionRenderer.setPosition(pPosX, pPosY);
 
@@ -190,7 +191,7 @@ public class MilitaryRenderer extends MultiActionRenderer {
 		for(int i=0; i<this.getHitActionRendererList().size; i++){
 			UniqueActionRenderer hitActionRenderer = this.getHitActionRendererList().get(i);
 			if(hitActionRenderer.isFinished()) {
-				PoolAnimManager.getManager().getUniqueActionRendererPool().free(hitActionRenderer);
+				GlobalManager.poolAnimManager.getUniqueActionRendererPool().free(hitActionRenderer);
 				this.getHitActionRendererList().removeIndex(i);
 			}
 			else{
@@ -205,7 +206,7 @@ public class MilitaryRenderer extends MultiActionRenderer {
 		for(int i=0; i<this.getDeadActionRendererList().size; i++){
 			UniqueActionRenderer deadActionRenderer = this.getDeadActionRendererList().get(i);
 			if(deadActionRenderer.isFinished()) {
-				PoolAnimManager.getManager().getUniqueActionRendererPool().free(deadActionRenderer);
+				GlobalManager.poolAnimManager.getUniqueActionRendererPool().free(deadActionRenderer);
 				this.getDeadActionRendererList().removeIndex(i);
 			}
 			else{
@@ -228,7 +229,7 @@ public class MilitaryRenderer extends MultiActionRenderer {
 	private void resetHits(){
 		for(int i=0; i<this.getHitActionRendererList().size; i++){
 			UniqueActionRenderer hitActionRenderer = this.getHitActionRendererList().get(i);
-			PoolAnimManager.getManager().getUniqueActionRendererPool().free(hitActionRenderer);
+			GlobalManager.poolAnimManager.getUniqueActionRendererPool().free(hitActionRenderer);
 		}		    
 		this.getHitActionRendererList().clear();
 	}
@@ -236,7 +237,7 @@ public class MilitaryRenderer extends MultiActionRenderer {
 	private void resetDeads(){
 		for(int i=0; i<this.getDeadActionRendererList().size; i++){
 			UniqueActionRenderer deadActionRenderer = this.getDeadActionRendererList().get(i);
-			PoolAnimManager.getManager().getUniqueActionRendererPool().free(deadActionRenderer);
+			GlobalManager.poolAnimManager.getUniqueActionRendererPool().free(deadActionRenderer);
 		}		    
 		this.getDeadActionRendererList().clear();
 	}
