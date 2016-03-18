@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.badlogic.gdx.utils.Array;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
@@ -23,16 +24,17 @@ import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingName;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
+import com.geekmecrazy.madandarmed.Utils.SpawnOrderComparator;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
 public class Fight_BuildingManager {
 
 	/** Spawn Building (spawn unit) : unreal building non destroyable **/
-	private List<SpawnBuilding> listSpawnBuildings;
+	private Array<SpawnBuilding> listSpawnBuildings;
 
 	/** real building destroyable **/
-	private List<Building> listBuildings;
+	private Array<Building> listBuildings;
 
 	/** list of buildings to delete */
 	private Set<Building> listBuildingsRecycle;
@@ -45,8 +47,8 @@ public class Fight_BuildingManager {
 	public Fight_BuildingManager(Team teamPlayer, Team teamIA){
 		this.teamPlayer = teamPlayer;
 		this.teamIA = teamIA;
-		this.listSpawnBuildings = new ArrayList<SpawnBuilding>();
-		this.listBuildings = new ArrayList<Building>();
+		this.listSpawnBuildings = new Array<SpawnBuilding>();
+		this.listBuildings = new Array<Building>();
 		this.listBuildingsRecycle = new HashSet<Building>();
 	}
 
@@ -109,7 +111,7 @@ public class Fight_BuildingManager {
 	public void recycleBuilding(){
 
 		for (Building building : listBuildingsRecycle){
-			listBuildings.remove(building);
+			listBuildings.removeValue(building, true);
 
 			if(building instanceof Turret)
 				GlobalManager.poolManager.getTurretPool().free((Turret)building);
@@ -129,7 +131,7 @@ public class Fight_BuildingManager {
 	}
 
 
-	public List<Building> getListBuildings() {
+	public Array<Building> getListBuildings() {
 		return listBuildings;
 	}
 
@@ -142,7 +144,7 @@ public class Fight_BuildingManager {
 		listSpawnBuildings.add(newBuilding);
 	}
 
-	public List<SpawnBuilding> getListSpawnBuildings() {
+	public Array<SpawnBuilding> getListSpawnBuildings() {
 		return listSpawnBuildings;
 	}
 
@@ -176,5 +178,54 @@ public class Fight_BuildingManager {
 			SpawnBuilding swpanBuilding = BuildingFactory.createSpawnBuilding(posX, posY, buildingPattern, team);
 			addSpawnBuilding(swpanBuilding);
 	}
+	
+	
+	
+	
+	
+	
+
+	/** Spawn Building Order **/
+	private void sortSpawBuilding() {
+		this.listSpawnBuildings.sort(SpawnOrderComparator.getInstance());
+	}
+
+	/** Remove doublon **/
+	private void removeDoublon(){
+
+		this.sortSpawBuilding(); /** Re-order **/
+
+		int previousSpawnOrder = -1;
+		for(int i=0; i<this.listSpawnBuildings.size ; i++){
+
+			if( this.listSpawnBuildings.get(i).getSpawnOrder() == previousSpawnOrder ){
+
+				/** if doublon, we shift all values **/
+				for(int j=i; j<this.listSpawnBuildings.size; j++ ){
+					this.listSpawnBuildings.get(j).setSpawnOrder( this.listSpawnBuildings.get(j).getSpawnOrder() +1 );
+				}
+
+				previousSpawnOrder = this.listSpawnBuildings.get(i).getSpawnOrder();
+			}
+		}
+	}
+
+	/** Remove empty space **/
+	private void removeEmptySpace(){
+
+		this.sortSpawBuilding(); /** Re-order **/
+
+		int previousSpawnOrder = -1;
+		for(int i=0; i<this.listSpawnBuildings.size ; i++){
+
+			if( this.listSpawnBuildings.get(i).getSpawnOrder() > previousSpawnOrder+1 ){
+				this.listSpawnBuildings.get(i).setSpawnOrder(previousSpawnOrder+1);
+			}
+
+			previousSpawnOrder = this.listSpawnBuildings.get(i).getSpawnOrder();
+
+		}
+	}
+	
 
 }

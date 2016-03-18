@@ -1,5 +1,6 @@
 package com.geekmecrazy.madandarmed.IA;
 
+import com.badlogic.gdx.utils.Array;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
@@ -132,8 +133,11 @@ public class StateMap {
 
 	public void setZoneBPositionMap(TeamID teamID){
 
-		List<Building> list_buildings_ = GlobalManager.fight_BuildingManager.getListBuildings();
-		for(Building building_ : list_buildings_){
+		Array<Building> list_buildings_ = GlobalManager.fight_BuildingManager.getListBuildings();
+		
+		Building building_;
+		for(int i=0; i<list_buildings_.size; i++){
+			building_ = list_buildings_.get(i);
 			//on ne recupere que les building de notre equipe
 			if(building_.getMyTeam().getTeamID() == teamID)
 				addBuilding(building_);

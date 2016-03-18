@@ -2,6 +2,7 @@ package com.geekmecrazy.madandarmed.Game.Scene;
 
 import java.util.List;
 
+import com.badlogic.gdx.utils.Array;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
@@ -22,9 +23,8 @@ public class Fight_TurnManager {
 			spawnTurnTimer.resetTimer();
 
 			/** get spawn list from Building Manager SpawnBuilding **/
-			List<SpawnBuilding> spawnBuildingList = GlobalManager.fight_BuildingManager.getListSpawnBuildings();
-			int size = spawnBuildingList.size();
-			for(int i=0; i<size; i++){
+			Array<SpawnBuilding> spawnBuildingList = GlobalManager.fight_BuildingManager.getListSpawnBuildings();
+			for(int i=0; i<spawnBuildingList.size; i++){
 				SpawnBuilding spbld = spawnBuildingList.get(i);
 				CreepType creepType = spbld.getPattern().getCreepType();
 
