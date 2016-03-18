@@ -5,7 +5,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Element.Vehicle;
-import com.geekmecrazy.madandarmed.Game.Scene.Fight_BuildingManager;
+import com.geekmecrazy.madandarmed.Game.Scene.GamePlay_BuildingManager;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepSize;
 import com.geekmecrazy.madandarmed.Tools.ResetArray;
 

@@ -28,7 +28,7 @@ import com.geekmecrazy.madandarmed.Utils.SpawnOrderComparator;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
-public class Fight_BuildingManager {
+public class GamePlay_BuildingManager {
 
 	/** Spawn Building (spawn unit) : unreal building non destroyable **/
 	private Array<SpawnBuilding> listSpawnBuildings;
@@ -44,7 +44,7 @@ public class Fight_BuildingManager {
 	// ===========================================================
 
 	/** Disable object's instantiation (private constructor) */
-	public Fight_BuildingManager(Team teamPlayer, Team teamIA){
+	public GamePlay_BuildingManager(Team teamPlayer, Team teamIA){
 		this.teamPlayer = teamPlayer;
 		this.teamIA = teamIA;
 		this.listSpawnBuildings = new Array<SpawnBuilding>();

@@ -5,7 +5,7 @@ import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Element.Team;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Game.Scene.Fight_BuildingManager;
+import com.geekmecrazy.madandarmed.Game.Scene.GamePlay_BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.Fight_CreepManager;
 import com.geekmecrazy.madandarmed.Game.Scene.Fight_IaManager;
 import com.geekmecrazy.madandarmed.Game.Scene.Fight_TurnManager;
@@ -154,7 +154,7 @@ public class GlobalManager {
 	public static PoolAnimManager poolAnimManager;
 
 	/** Fight **/
-	public static Fight_BuildingManager fight_BuildingManager;
+	public static GamePlay_BuildingManager fight_BuildingManager;
 	public static Fight_CreepManager fight_CreepManager;
 	public static Fight_TurnManager fight_TurnManager;
 	public static Fight_IaManager fight_IaManager;
@@ -430,7 +430,7 @@ public class GlobalManager {
 
 	public static void createManagersForFight(Team teamPlayer, Team teamIA){
 
-		GlobalManager.fight_BuildingManager = new Fight_BuildingManager(teamPlayer, teamIA);
+		GlobalManager.fight_BuildingManager = new GamePlay_BuildingManager(teamPlayer, teamIA);
 		GlobalManager.fight_CreepManager = new Fight_CreepManager(teamPlayer, teamIA);
 		GlobalManager.fight_TurnManager = new Fight_TurnManager();
 		GlobalManager.fight_IaManager = new Fight_IaManager();
