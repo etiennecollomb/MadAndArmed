@@ -61,7 +61,7 @@ public class WarBase_BuildingButtonUI extends Layout {
 				@Override
 				public void execute(){
 					//System.out.println("#### TOUCH WAR BASE BUILDING BUTTON !!");
-					//Fight_BuildingManager.getManager().askForCreateSpawnBuilding(buttonPattern.getBuildingName(), WarBaseScreen.getManager().getTeamPlayer());
+					GlobalManager.gamePlay_BuildingManager.askForCreateSpawnBuilding(buttonPattern.getBuildingName(), GlobalManager.warBaseScreen.getTeamPlayer());
 
 				}
 			});
