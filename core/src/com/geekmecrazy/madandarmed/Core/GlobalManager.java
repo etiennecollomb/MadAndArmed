@@ -154,7 +154,7 @@ public class GlobalManager {
 	public static PoolAnimManager poolAnimManager;
 
 	/** Fight **/
-	public static GamePlay_BuildingManager fight_BuildingManager;
+	public static GamePlay_BuildingManager gamePlay_BuildingManager;
 	public static Fight_CreepManager fight_CreepManager;
 	public static Fight_TurnManager fight_TurnManager;
 	public static Fight_IaManager fight_IaManager;
@@ -430,7 +430,7 @@ public class GlobalManager {
 
 	public static void createManagersForFight(Team teamPlayer, Team teamIA){
 
-		GlobalManager.fight_BuildingManager = new GamePlay_BuildingManager(teamPlayer, teamIA);
+		GlobalManager.gamePlay_BuildingManager = new GamePlay_BuildingManager(teamPlayer, teamIA);
 		GlobalManager.fight_CreepManager = new Fight_CreepManager(teamPlayer, teamIA);
 		GlobalManager.fight_TurnManager = new Fight_TurnManager();
 		GlobalManager.fight_IaManager = new Fight_IaManager();
@@ -440,7 +440,7 @@ public class GlobalManager {
 	
 	public static void destroyManagersForFight(){
 
-		GlobalManager.fight_BuildingManager = null;
+		GlobalManager.gamePlay_BuildingManager = null;
 		GlobalManager.fight_CreepManager = null;
 		GlobalManager.fight_TurnManager = null;
 		GlobalManager.fight_IaManager = null;

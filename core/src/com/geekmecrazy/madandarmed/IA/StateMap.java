@@ -133,7 +133,7 @@ public class StateMap {
 
 	public void setZoneBPositionMap(TeamID teamID){
 
-		Array<Building> list_buildings_ = GlobalManager.fight_BuildingManager.getListBuildings();
+		Array<Building> list_buildings_ = GlobalManager.gamePlay_BuildingManager.getListBuildings();
 		
 		Building building_;
 		for(int i=0; i<list_buildings_.size; i++){

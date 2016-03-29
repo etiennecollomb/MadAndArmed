@@ -23,7 +23,7 @@ public class Fight_TurnManager {
 			spawnTurnTimer.resetTimer();
 
 			/** get spawn list from Building Manager SpawnBuilding **/
-			Array<SpawnBuilding> spawnBuildingList = GlobalManager.fight_BuildingManager.getListSpawnBuildings();
+			Array<SpawnBuilding> spawnBuildingList = GlobalManager.gamePlay_BuildingManager.getListSpawnBuildings();
 			for(int i=0; i<spawnBuildingList.size; i++){
 				SpawnBuilding spbld = spawnBuildingList.get(i);
 				CreepType creepType = spbld.getPattern().getCreepType();

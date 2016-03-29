@@ -63,7 +63,7 @@ public class Fight_SpawnBuildingButtonUI extends Layout implements IMoneyListene
 				public void execute(){
 					//System.out.println("#### TOUCH SPAWN BUILDING BUTTON !!");
 					if(spawnBuildingButtonsState.get(buildingPattern).intValue() == Fight_SpawnBuildingButtonUI.BUTTON_OK_STATE) {
-						GlobalManager.fight_BuildingManager.askForCreateSpawnBuilding(buttonPattern.getBuildingName(), GlobalManager.fightScreen.getTeamPlayer());
+						GlobalManager.gamePlay_BuildingManager.askForCreateSpawnBuilding(buttonPattern.getBuildingName(), GlobalManager.fightScreen.getTeamPlayer());
 					}
 				}
 			});

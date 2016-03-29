@@ -56,7 +56,7 @@ public class BuildingFactory{
 	// ===========================================================
 
 	public static void destroy(Building building) {
-		GlobalManager.fight_BuildingManager.removeBuilding(building);
+		GlobalManager.gamePlay_BuildingManager.removeBuilding(building);
 		//building.recycle();
 		if(building.equals(GlobalManager.fightScreen.getTeamIA().getCastle())){
 			GlobalManager.fightScreen.getUiFinishGame().showUI(true);

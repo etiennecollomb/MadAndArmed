@@ -84,7 +84,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 
         /**** Create Creep ***/
     	GlobalManager.fight_CreepManager.excuteAskForCreateCreep();
-    	GlobalManager.fight_BuildingManager.excuteAskForCreateSpawnBuilding();
+    	GlobalManager.gamePlay_BuildingManager.excuteAskForCreateSpawnBuilding();
 
         /******** PREPARATION DU TOUR ********/
         FightScreen.currentTime = System.currentTimeMillis();
@@ -99,7 +99,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 
         /******** RECYCLE ********/
         GlobalManager.fight_CreepManager.recycleCreep();
-        GlobalManager.fight_BuildingManager.recycleBuilding();
+        GlobalManager.gamePlay_BuildingManager.recycleBuilding();
 
         /******** FINALISATION DU TOUR ********/
 //        this.getTeamPlayer().calculateMilitarySpace();
@@ -170,8 +170,8 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 
 		GlobalManager.createManagersForFight(this.teamPlayer, this.teamIA);
 
-		GlobalManager.fight_BuildingManager.initBuildingAtStart();
-		GlobalManager.fight_BuildingManager.initTarget();
+		GlobalManager.gamePlay_BuildingManager.initBuildingAtStart(this);
+		GlobalManager.gamePlay_BuildingManager.initTarget();
 
         this.getTeamPlayer().getStateMap().initGame();
         this.getTeamPlayer().getStateMap().setZoneBPositionMap(this.getTeamPlayer().getTeamID());
@@ -242,7 +242,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 	public void runUpdateNextState(){
 		GlobalManager.fight_TurnManager.runUpdateNextState();	
 		//GlobalManager.fight_IaManager.getManager().runUpdateNextState();
-		GlobalManager.fight_BuildingManager.runUpdateNextState();
+		GlobalManager.gamePlay_BuildingManager.runUpdateNextState();
 		GlobalManager.fight_CreepManager.runUpdateNextState();
 		GlobalManager.fight_WeaponManager.runUpdateNextState();
 	}
