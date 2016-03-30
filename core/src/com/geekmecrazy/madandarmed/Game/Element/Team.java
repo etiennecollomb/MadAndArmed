@@ -1,20 +1,15 @@
-//TODO : setSpawnPosition : appeler setCoord bignode..etc... sinon c est a zero au depart
-
-
 package com.geekmecrazy.madandarmed.Game.Element;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.IMoneyListener;
 import com.geekmecrazy.madandarmed.Entity.IScoreListener;
-import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.GamePlayScreen;
 import com.geekmecrazy.madandarmed.IA.StateMap;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingName;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
-import com.geekmecrazy.madandarmed.Utils.Vector2d;
 
 /**
  * Joueur (thune+score...) :)
@@ -60,7 +55,7 @@ public class Team extends GameElement {
 	private List<IScoreListener> scoreListeners;
 	
 	public Team(int startingMoney, int moneyByTurn, int moneyMax, TeamID teamID_, int thoriumMax) {
-		this.listMilitary = new ArrayList<Military>(FightScreen.MAX_UNITS);
+		this.listMilitary = new ArrayList<Military>(GamePlayScreen.MAX_UNITS);
 		this.listAskForCreateCreep=new ArrayList<CreepType>();
 		this.listAskForCreateCreepPosX=new ArrayList<Float>();
 		this.listAskForCreateCreepPosY=new ArrayList<Float>();

@@ -12,6 +12,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Property.GameMap;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.ScoreBarUI;
 import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
+import com.geekmecrazy.madandarmed.Game.UI.WarBase_BuildingButtonUI;
 import com.geekmecrazy.madandarmed.Game.UI.Fight_SpawnBuildingButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
@@ -22,7 +23,10 @@ import com.geekmecrazy.madandarmed.Screen.Screen;
 
 public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
 
-	
+	/** UI */
+    private WarBase_BuildingButtonUI mBuildingButtonUI;
+    
+    
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -71,8 +75,16 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
         gridRenderer.init(isoGrid);
         //this.getScene().attachChild(gridRenderer);
         
+        GlobalManager.createManagersForFight(null, null);
+        
+        
         GameMap.initMap( GlobalManager.warBaseScreen.getScene() );
         
+        /** init UIs */
+
+        mBuildingButtonUI = new WarBase_BuildingButtonUI();
+        mBuildingButtonUI.init(0, 0);
+        this.getHUD().attachChild(mBuildingButtonUI, Entity.Alignment.LEFT_BOTTOM);
         
 //        /** Memory Usage **/
 //        System.out.println("################## MEMORY USAGE ##################");
@@ -83,6 +95,10 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
         
 	}
 
+    public void closeGame(){
+        //TODO: a revoir pour faire bien clean
+    	GlobalManager.destroyManagers();
+    }
 
 	public void runUpdateNextState(){
 	}

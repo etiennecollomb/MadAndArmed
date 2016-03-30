@@ -5,6 +5,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
+import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Renderer.ProgressBarRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
@@ -51,7 +52,10 @@ public class LoadingScreen extends Screen implements IUpdatable {
 			/** create at last the pool*Managers, it doesn't take so much time **/
 			GlobalManager.createPoolManagers();
 			
-			//Launch next screen
+			/** load patterns **/
+			PatternLoader.loadPatternsData();
+			
+			/** Launch next screen **/
 			this.showMenuScreen();
 		}
 	}

@@ -29,7 +29,6 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 
     public static final int MAX_THORIUM=1000;
 
-    public static final int MAX_UNITS=1000;
 
     /** UI */
     private UIFinishGame uiFinishGame;
@@ -220,16 +219,9 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         
 	}
 
-	public void loadData() {
-		
-		/** Json */
-		PatternLoader.loadPatternsData();
-		
-	}
-
     public void closeGame(){
         //TODO: a revoir pour faire bien clean
-    	GlobalManager.destroyManagersForFight();
+    	GlobalManager.destroyManagers();
     }
 
 	public Team getOtherTeam(final Team team){

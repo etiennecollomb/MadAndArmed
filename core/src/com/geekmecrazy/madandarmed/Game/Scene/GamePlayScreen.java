@@ -7,6 +7,8 @@ import com.geekmecrazy.madandarmed.Screen.Screen;
 
 public class GamePlayScreen extends Screen implements IUpdatable {
 
+    public static final int MAX_UNITS=1000;
+    
     /** IsoGrid of WarBase scene */
     public static IsoGrid isoGrid;
     

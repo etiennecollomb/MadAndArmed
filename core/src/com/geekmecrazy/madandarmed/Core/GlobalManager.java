@@ -428,25 +428,32 @@ public class GlobalManager {
 
 	}
 
+	/** Fight Managers **/
 	public static void createManagersForFight(Team teamPlayer, Team teamIA){
-
+		
 		GlobalManager.gamePlay_BuildingManager = new GamePlay_BuildingManager(teamPlayer, teamIA);
 		GlobalManager.fight_CreepManager = new Fight_CreepManager(teamPlayer, teamIA);
 		GlobalManager.fight_TurnManager = new Fight_TurnManager();
 		GlobalManager.fight_IaManager = new Fight_IaManager();
 		GlobalManager.fight_WeaponManager = new Fight_WeaponManager();
-
 	}
 	
-	public static void destroyManagersForFight(){
-
+	/** WarBAse Managers **/
+	public static void createManagersForWarBase(Team teamPlayer, Team teamIA){
+		
+		GlobalManager.gamePlay_BuildingManager = new GamePlay_BuildingManager(teamPlayer, teamIA);
+	}
+	
+	public static void destroyManagers(){
+		
 		GlobalManager.gamePlay_BuildingManager = null;
 		GlobalManager.fight_CreepManager = null;
 		GlobalManager.fight_TurnManager = null;
 		GlobalManager.fight_IaManager = null;
 		GlobalManager.fight_WeaponManager = null;
-
 	}
+
+
 
 	public static void createPoolManagers(){
 	

@@ -43,8 +43,8 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 
 	private Rectangle blackScreen;
-	private Button hqButton;
-	private Button worldButton;
+	private Button warBaseScreenButton;
+	private Button fightScreenButton;
 
 	
 	// ===========================================================
@@ -116,33 +116,6 @@ public class MenuScreen extends Screen implements IUpdatable {
 		System.out.println("Show Menu Screen");
 	}
 
-	public void showWorldScreen(){
-		Tween.to(blackScreen, RectangleTween.ALPHA, 0.45f)
-		.target(1f)
-		.setCallbackTriggers(TweenCallback.END)
-		.setCallback(new TweenCallback() {
-
-			@Override
-			public void onEvent(int type, BaseTween<?> source) {
-				Scene fightScene = new FightScene();
-
-				fightScene.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT);
-				GlobalManager.fightScreen.init(fightScene);
-				ScreenManager.setCurrentScreen(GlobalManager.fightScreen);
-
-				GlobalManager.fightScreen.loadData(); //from xml, et precalcul
-				GlobalManager.fightScreen.newGame();
-
-				//init GROUND
-				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
-				tiledGround.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
-				GlobalManager.fightScreen.setTiledGround(tiledGround);
-			}
-		})
-		.ease(Quad.OUT)
-		.start(GlobalManager.getTweenManager());
-	}
-
 	
 	
 	// ===========================================================
@@ -157,22 +130,22 @@ public class MenuScreen extends Screen implements IUpdatable {
 		blackScreen.init(0,0,this.getHUD().getWidth(),this.getHUD().getHeight());
 		blackScreen.setColor(0,0,0,0f);
 
-		worldButton = new Button();
-		worldButton.init(0, 0, TextureType.BUTTON_UNIT_BACKGROUND);
-		worldButton.setSize(3f, 1.2f);
-		worldButton.setAction(new IAction(){
+		fightScreenButton = new Button();
+		fightScreenButton.init(0, 0, TextureType.BUTTON_UNIT_BACKGROUND);
+		fightScreenButton.setSize(3f, 1.2f);
+		fightScreenButton.setAction(new IAction(){
 			// Pour le moment ça va lancer le fight direct ce bouton au lieu du world
 			@Override
 			public void execute(){
-				showWorldScreen();
+				showFightScreen();
 			}
 		});
-		GlobalManager.menuScreen.getHUD().registerTouchableShape(worldButton);
+		GlobalManager.menuScreen.getHUD().registerTouchableShape(fightScreenButton);
 
-		hqButton = new Button();
-		hqButton.init(0, 0, TextureType.BUTTON_UNIT_BACKGROUND);
-		hqButton.setSize(3f, 1.2f);
-		hqButton.setAction(new IAction(){
+		warBaseScreenButton = new Button();
+		warBaseScreenButton.init(0, 0, TextureType.BUTTON_UNIT_BACKGROUND);
+		warBaseScreenButton.setSize(3f, 1.2f);
+		warBaseScreenButton.setAction(new IAction(){
 			@Override
 			public void execute(){
 				showWarBaseScreen(); //A REMETTRE POUR LE QG
@@ -216,7 +189,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 			}
 		});
-		GlobalManager.menuScreen.getHUD().registerTouchableShape(hqButton);
+		GlobalManager.menuScreen.getHUD().registerTouchableShape(warBaseScreenButton);
 
 
 		//TEST/////////////////////////////////////////
@@ -226,8 +199,8 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 		Layout l1 = new Layout();
 		l1.init(0,0);
-		l1.add(worldButton);
-		l1.add(hqButton);
+		l1.add(fightScreenButton);
+		l1.add(warBaseScreenButton);
 
 		Layout titleLayout = new Layout();
 		titleLayout.init(0,0);
@@ -359,6 +332,34 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 	}
 
+
+	public void showFightScreen(){
+		Tween.to(blackScreen, RectangleTween.ALPHA, 0.45f)
+		.target(1f)
+		.setCallbackTriggers(TweenCallback.END)
+		.setCallback(new TweenCallback() {
+
+			@Override
+			public void onEvent(int type, BaseTween<?> source) {
+				Scene fightScene = new FightScene();
+
+				fightScene.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT);
+				GlobalManager.fightScreen.init(fightScene);
+				ScreenManager.setCurrentScreen(GlobalManager.fightScreen);
+
+				GlobalManager.fightScreen.newGame();
+
+				//init GROUND
+				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
+				tiledGround.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
+				GlobalManager.fightScreen.setTiledGround(tiledGround);
+			}
+		})
+		.ease(Quad.OUT)
+		.start(GlobalManager.getTweenManager());
+	}
+
+	
 	public void showWarBaseScreen(){
 		Tween.to(blackScreen, RectangleTween.ALPHA, 0.45f)
 		.target(1f)
