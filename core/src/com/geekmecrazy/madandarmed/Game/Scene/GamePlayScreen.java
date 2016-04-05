@@ -37,16 +37,16 @@ public class GamePlayScreen extends Screen implements IUpdatable {
     }
 
     public static void setTeamPlayer(final GamePlay_Team pTeamPlayer) {
-        FightScreen.teamPlayer = pTeamPlayer;
+    	GamePlayScreen.teamPlayer = pTeamPlayer;
     }
 
     public static void setTeamIA(final GamePlay_Team pTeamIA) {
-        FightScreen.teamIA = pTeamIA;
+    	GamePlayScreen.teamIA = pTeamIA;
     }
 
     @Override
     public void show() {
-        System.out.println("Show WarBase Screen");
+        System.out.println("Show GamePlay Screen");
     }
 
 
