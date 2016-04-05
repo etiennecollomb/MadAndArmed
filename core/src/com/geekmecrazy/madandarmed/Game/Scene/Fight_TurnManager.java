@@ -5,7 +5,8 @@ import java.util.List;
 import com.badlogic.gdx.utils.Array;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
-import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 import com.geekmecrazy.madandarmed.Utils.TimeIntervalControl;
 
@@ -28,7 +29,7 @@ public class Fight_TurnManager {
 				SpawnBuilding spbld = spawnBuildingList.get(i);
 				CreepType creepType = spbld.getPattern().getCreepType();
 
-				GlobalManager.fight_CreepManager.askForCreateCreep(creepType, spbld.getMyTeam(), spbld.getMilitaryRenderer().getX(), spbld.getMilitaryRenderer().getY());
+				GlobalManager.fight_CreepManager.askForCreateCreep(creepType, (Fight_Team) spbld.getMyTeam(), spbld.getMilitaryRenderer().getX(), spbld.getMilitaryRenderer().getY());
 			}
 		}else{
 			System.out.println("PAUSE");

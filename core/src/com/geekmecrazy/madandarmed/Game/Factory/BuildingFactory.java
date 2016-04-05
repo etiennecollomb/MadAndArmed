@@ -4,10 +4,11 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
+import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
 import com.geekmecrazy.madandarmed.Game.Element.BaseBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
-import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Game.Scene.GamePlay_BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
@@ -15,6 +16,7 @@ import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
@@ -27,7 +29,7 @@ public class BuildingFactory{
 	// disable object's instanciation (private constructor)
 	private BuildingFactory(){} 
 
-	public static Building create (float posX, float posY, BuildingPattern buildingPattern, Team team) {
+	public static Building create (float posX, float posY, BuildingPattern buildingPattern, GamePlay_Team team) {
 
 		Building building = null;
 
@@ -66,7 +68,7 @@ public class BuildingFactory{
 
 	}
 
-	private static Building createTurret(float posX, float posY, BuildingPattern buildingPattern, Team team){
+	private static Building createTurret(float posX, float posY, BuildingPattern buildingPattern, GamePlay_Team team){
 
 		/** Life */
 		Life life = null;
@@ -92,13 +94,16 @@ public class BuildingFactory{
 		}
 
 		/** Castle Special Case */
+		/** TODO : isoler ... na  rien a faire dans class generic GamePlay **/
+		if(ScreenManager.getCurrentScreen() instanceof FightScreen){
 		if(buildingPattern.getBuildingType()==BuildingType.CASTLE)
-			team.registerCastle(turret);
+			((Fight_Team)team).registerCastle(turret);
+		}
 
 		return turret;
 	}
 
-	private static Building createBarricade(float posX, float posY, BuildingPattern buildingPattern, Team team){
+	private static Building createBarricade(float posX, float posY, BuildingPattern buildingPattern, GamePlay_Team team){
 
 		/** Life */
 		Life life = null;
@@ -115,7 +120,7 @@ public class BuildingFactory{
 		return barricade;
 	}
 
-	private static Building createCampBuilding(float posX, float posY, BuildingPattern buildingPattern, Team team){
+	private static Building createCampBuilding(float posX, float posY, BuildingPattern buildingPattern, GamePlay_Team team){
 
 		/** Life */
 		Life life = null;
@@ -132,7 +137,7 @@ public class BuildingFactory{
 		return campBuilding;
 	}
 
-	public static SpawnBuilding createSpawnBuilding(float posX, float posY, BuildingPattern buildingPattern, Team team){
+	public static SpawnBuilding createSpawnBuilding(float posX, float posY, BuildingPattern buildingPattern, GamePlay_Team team){
 
 		/** Life */
 		Life life = null;

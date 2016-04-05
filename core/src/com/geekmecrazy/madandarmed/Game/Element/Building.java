@@ -45,7 +45,7 @@ public class Building extends Military{
     // Methods
     // ===========================================================
     
-	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, Team myTeam, Team ennemyTeam) {
+	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam, GamePlay_Team ennemyTeam) {
 		super.init(posX, posY, diameter, life, myTeam, ennemyTeam);
 
 		this.pattern=buildingPattern;
@@ -55,13 +55,16 @@ public class Building extends Military{
 	/**si plus de vie , alors on enleve le building du jeu
 	 * (on fait le recycle Full une fois l anim de mort faite)
 	 */
+	/** TODO: a isoler dans les classes Fights!! ici classe generic GamePlay **/
 	@Override
 	public void noMoreLife(){
 		super.noMoreLife();
 
 		this.getMyTeam().removeMilitary(this);
 		this.getMyTeam().getStateMap().removeBuilding(this);
-		GlobalManager.fightScreen.getOtherTeam(this.getMyTeam()).addScore(this.getPattern().getPrice());
+		
+		/** TODO: a isoler dans les classes Fights!! ici classe generic GamePlay **/
+		GlobalManager.fightScreen.getOtherTeam((Fight_Team)this.getMyTeam()).addScore(this.getPattern().getPrice());
 
 	}
 	

@@ -45,7 +45,7 @@ public abstract class Vehicle extends Military {
 	// ===========================================================
 	// Init
 	// ===========================================================
-	public void init(CreepPattern pattern, float posX, float posY, float diameter, Life life, Team myTeam, Team ennemyTeam) {
+	public void init(CreepPattern pattern, float posX, float posY, float diameter, Life life, GamePlay_Team myTeam, GamePlay_Team ennemyTeam) {
 		super.init(posX, posY, diameter, life, myTeam, ennemyTeam);
 		this.pattern=pattern;
 

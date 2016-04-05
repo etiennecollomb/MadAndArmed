@@ -6,8 +6,9 @@ import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Game.IAction;
-import com.geekmecrazy.madandarmed.Game.Element.Team;
-import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
+import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Element.Property.GameMap;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.ScoreBarUI;
@@ -49,7 +50,6 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
     // Getter & Setter
     // ===========================================================
 
-
     public UIFinishGame getUiFinishGame() {
         return uiFinishGame;
     }
@@ -73,6 +73,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
     public static void setPreviousMoneyTurnTime(final long pPreviousMoneyTurnTime) {
         FightScreen.previousMoneyTurnTime = pPreviousMoneyTurnTime;
     }
+    
 
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
@@ -101,9 +102,6 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         GlobalManager.gamePlay_BuildingManager.recycleBuilding();
 
         /******** FINALISATION DU TOUR ********/
-//        this.getTeamPlayer().calculateMilitarySpace();
-//        this.getTeamIA().calculateMilitarySpace();
-
         this.getTeamPlayer().getStateMap().swap();
         this.getTeamIA().getStateMap().swap();
 
@@ -130,6 +128,17 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         this.setPreviousMoneyTurnTime(0);
     }
 
+    @Override
+    public Fight_Team getTeamPlayer() {
+        return (Fight_Team)teamPlayer;
+    }
+    
+    @Override
+    public Fight_Team getTeamIA() {
+        return (Fight_Team)teamIA;
+    }
+    
+    
     // ===========================================================
     // Methods
     // ===========================================================
@@ -142,7 +151,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 
         GlobalAstar.init();
 
-        AstarMap.init(GlobalManager.STARMAP_WIDTH, GlobalManager.STARMAP_HEIGHT);
+        AstarMap.init(GlobalManager.MAP_FIGHT_STARMAP_WIDTH, GlobalManager.MAP_FIGHT_STARMAP_HEIGHT);
     }
 
     @Override
@@ -164,10 +173,10 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         //this.getScene().attachChild(gridRenderer);
         
 		/** Init des 2 teams */
-		this.setTeamPlayer( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM1, MAX_THORIUM));
-		this.setTeamIA( new Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM2, MAX_THORIUM));
+		this.setTeamPlayer( new Fight_Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM1, MAX_THORIUM));
+		this.setTeamIA( new Fight_Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM2, MAX_THORIUM));
 
-		GlobalManager.createManagersForFight(this.teamPlayer, this.teamIA);
+		GlobalManager.createManagersForFight((Fight_Team)this.teamPlayer, (Fight_Team)this.teamIA);
 
 		GlobalManager.gamePlay_BuildingManager.initBuildingAtStart(this);
 		GlobalManager.gamePlay_BuildingManager.initTarget();
@@ -224,7 +233,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
     	GlobalManager.destroyManagers();
     }
 
-	public Team getOtherTeam(final Team team){
+	public Fight_Team getOtherTeam(final GamePlay_Team team){
 		if(team == this.getTeamPlayer())
             return this.getTeamIA();
 		else

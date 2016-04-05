@@ -1,6 +1,7 @@
 package com.geekmecrazy.madandarmed.Entity;
 
-import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 
 
 public interface IMoneyListener {
@@ -17,7 +18,7 @@ public interface IMoneyListener {
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
 
-    public void moneyChange(Team team);
+    public void moneyChange(Fight_Team team);
 	
 	// ===========================================================
 	// Methods

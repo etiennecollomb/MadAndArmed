@@ -21,8 +21,8 @@ public class Military extends Geometrie {
 	private Life life;
 	
 	/** Team */
-	private Team myTeam;
-	private Team ennemyTeam;
+	private GamePlay_Team myTeam;
+	private GamePlay_Team ennemyTeam;
 		
 	protected AttackBehavior attackBehavior;
 	
@@ -47,11 +47,11 @@ public class Military extends Geometrie {
 		return life;
 	}
 
-	public Team getMyTeam() {
+	public GamePlay_Team getMyTeam() {
 		return myTeam;
 	}
 
-	public Team getEnnemyTeam() {
+	public GamePlay_Team getEnnemyTeam() {
 		return ennemyTeam;
 	}
 
@@ -110,7 +110,7 @@ public class Military extends Geometrie {
     // Methods
     // ===========================================================
 	
-	public void init(float posX, float posY, float diameter, Life life, Team myTeam, Team ennemyTeam) {
+	public void init(float posX, float posY, float diameter, Life life, GamePlay_Team myTeam, GamePlay_Team ennemyTeam) {
 		super.init(posX, posY, diameter);
 		
 		this.life=life;

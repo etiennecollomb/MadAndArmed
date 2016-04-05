@@ -5,7 +5,8 @@ import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IMoneyListener;
-import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Scene.GamePlay_BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
@@ -88,7 +89,7 @@ public class Fight_SpawnBuildingButtonUI extends Layout implements IMoneyListene
 
 	//Change aspet bouton en fonction de la money
 	@Override
-	public void moneyChange(Team team) {
+	public void moneyChange(Fight_Team team) {
 
 		for(BuildingPattern buildingPattern : spawnBuildingButtonsSprites.keySet()){
 			Entity buttonLayer = spawnBuildingButtonsSprites.get(buildingPattern);

@@ -7,16 +7,18 @@ import com.badlogic.gdx.utils.Array;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
+import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
 import com.geekmecrazy.madandarmed.Game.Element.BaseBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
-import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
-import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Factory.BuildingFactory;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingName;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.Utils.SpawnOrderComparator;
 
 
@@ -36,7 +38,7 @@ public class GamePlay_BuildingManager {
 	// ===========================================================
 
 	/** Disable object's instantiation (private constructor) */
-	public GamePlay_BuildingManager(Team teamPlayer, Team teamIA){
+	public GamePlay_BuildingManager(GamePlay_Team teamPlayer, GamePlay_Team teamIA){
 		this.teamPlayer = teamPlayer;
 		this.teamIA = teamIA;
 		this.listSpawnBuildings = new Array<SpawnBuilding>();
@@ -46,8 +48,8 @@ public class GamePlay_BuildingManager {
 
 
 	/** Team **/
-	private Team teamPlayer;
-	private Team teamIA;
+	private GamePlay_Team teamPlayer;
+	private GamePlay_Team teamIA;
 
 
 	// ===========================================================
@@ -69,7 +71,7 @@ public class GamePlay_BuildingManager {
 			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
 			Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, gamePlayScreen.teamPlayer);
 			this.addBuilding(building);
-			}
+		}
 		for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
 			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
 			Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, gamePlayScreen.teamIA);
@@ -141,12 +143,16 @@ public class GamePlay_BuildingManager {
 	}
 
 	/** Enregistre les demandes création de creep */
-	public void askForCreateSpawnBuilding(BuildingName buildingName, Team team){
+	public void askForCreateSpawnBuilding(BuildingName buildingName, GamePlay_Team team){
 
 		BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingName.name());
-		if(team.hasEnoughtMoney(buildingPattern.getPrice())){
-			team.subMoney(buildingPattern.getPrice());
-			team.getListAskForCreateSpawnBuilding().add(buildingName);
+
+		/** TODO : isoler ... na  rien a faire dans class generic GamePlay **/
+		if(ScreenManager.getCurrentScreen() instanceof FightScreen){
+			if(((Fight_Team)team).hasEnoughtMoney(buildingPattern.getPrice())){
+				((Fight_Team)team).subMoney(buildingPattern.getPrice());
+				team.getListAskForCreateSpawnBuilding().add(buildingName);
+			}
 		}
 	}
 
@@ -162,20 +168,20 @@ public class GamePlay_BuildingManager {
 		teamIA.getListAskForCreateSpawnBuilding().clear();
 	}
 
-	
-	/** Creation d'un Spawn Building **/
-	public void createSpawnBuilding(Team team, float posX, float posY, BuildingName buildingName) {
 
-			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingName.name());
-			SpawnBuilding swpanBuilding = BuildingFactory.createSpawnBuilding(posX, posY, buildingPattern, team);
-			addSpawnBuilding(swpanBuilding);
+	/** Creation d'un Spawn Building **/
+	public void createSpawnBuilding(GamePlay_Team team, float posX, float posY, BuildingName buildingName) {
+
+		BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingName.name());
+		SpawnBuilding swpanBuilding = BuildingFactory.createSpawnBuilding(posX, posY, buildingPattern, team);
+		addSpawnBuilding(swpanBuilding);
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 
 	/** Spawn Building Order **/
 	private void sortSpawBuilding() {
@@ -218,6 +224,6 @@ public class GamePlay_BuildingManager {
 
 		}
 	}
-	
+
 
 }

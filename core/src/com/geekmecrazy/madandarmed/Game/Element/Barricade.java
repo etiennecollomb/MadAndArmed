@@ -3,7 +3,7 @@ package com.geekmecrazy.madandarmed.Game.Element;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Shape.ShapeState;
-import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
@@ -16,7 +16,7 @@ public class Barricade extends Building {
 	// Constructors
 	// ===========================================================
 
-	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, Team myTeam, Team ennemyTeam) {
+	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam, GamePlay_Team ennemyTeam) {
 		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam);
 		
 		/** Renderer */

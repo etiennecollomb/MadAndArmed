@@ -3,7 +3,7 @@ package com.geekmecrazy.madandarmed.Game.Element;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
-import com.geekmecrazy.madandarmed.Game.Element.Team.TeamID;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Factory.CreepFactory;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
@@ -17,7 +17,7 @@ public class Creep extends Vehicle {
 	// ===========================================================
 	// Init
 	// ===========================================================
-	public void init(CreepPattern creepPattern, float posX, float posY, float diameter, Life life, Team myTeam, Team ennemyTeam, CreepRenderer animatedMilitary){
+	public void init(CreepPattern creepPattern, float posX, float posY, float diameter, Life life, GamePlay_Team myTeam, GamePlay_Team ennemyTeam, CreepRenderer animatedMilitary){
 
 		super.init(creepPattern, posX, posY, diameter, life, myTeam, ennemyTeam);
 		this.militaryRenderer=animatedMilitary;

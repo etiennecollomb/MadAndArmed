@@ -4,7 +4,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
-import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Scene.Fight_CreepManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
@@ -25,7 +25,7 @@ public class CreepFactory {
 	private CreepFactory(){} 
 
 
-	public static Creep createCreep (CreepPattern creepPattern, Team team, float spwanPosX, float spwanPosY) {
+	public static Creep createCreep (CreepPattern creepPattern, GamePlay_Team team, float spwanPosX, float spwanPosY) {
 
 		// LIFE
 		Life life = GlobalManager.poolManager.getLifePool().obtain();

@@ -8,7 +8,8 @@ import java.util.Set;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
-import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Factory.CreepFactory;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
@@ -19,7 +20,7 @@ public class Fight_CreepManager {
 
 
 	/** Disable object's instantiation (private constructor) */
-	public Fight_CreepManager(Team teamPlayer, Team teamIA){
+	public Fight_CreepManager(Fight_Team teamPlayer, Fight_Team teamIA){
 		this.teamPlayer = teamPlayer;
 		this.teamIA = teamIA;
 		this.listCreeps = new ArrayList<Creep>();
@@ -31,8 +32,8 @@ public class Fight_CreepManager {
 	public static final int MAX_UNITS=1000;
 
 	// Team
-	private Team teamPlayer;
-	private Team teamIA;
+	private Fight_Team teamPlayer;
+	private Fight_Team teamIA;
 
 	// Creeps
 	private List<Creep> listCreeps;
@@ -44,7 +45,7 @@ public class Fight_CreepManager {
 	private Set<Creep> listCreepsRecycle;
 	
 	/** Enregistre les demandes création de creep */
-	public void askForCreateCreep(CreepType creepType, Team team, float posX, float posY){
+	public void askForCreateCreep(CreepType creepType, Fight_Team team, float posX, float posY){
 		CreepPattern creepPattern = PatternLoader.getCreepsPattern().get(creepType.name());
 		
 		if(team.hasEnoughtMoney(creepPattern.getPrice())){
@@ -75,7 +76,7 @@ public class Fight_CreepManager {
 	}
 
 	/** Creation du nouveau creep */
-	public void createCreep(CreepType creepID, Team team, float spawnPosX, float spawnPosY){
+	public void createCreep(CreepType creepID, GamePlay_Team team, float spawnPosX, float spawnPosY){
 		CreepPattern creepPattern = PatternLoader.getCreepsPattern().get(creepID.name());
 		Creep creep = CreepFactory.createCreep(creepPattern, team, spawnPosX, spawnPosY);
 		addCreep(creep);

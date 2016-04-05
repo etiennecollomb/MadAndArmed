@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class ScreenManager {
 	
-	private static Screen mCurrentScreen;
+	private static Screen currentScreen;
 		
 	// ===========================================================
 	// Constructors
@@ -20,13 +20,13 @@ public class ScreenManager {
 	// ===========================================================
 
 	public static Screen getCurrentScreen() {
-		return mCurrentScreen;
+		return currentScreen;
 	}
 
 	public static void setCurrentScreen(final Screen pCurrentScreen) {
-		mCurrentScreen = pCurrentScreen;
+		currentScreen = pCurrentScreen;
         GlobalManager.initCameras();
-        mCurrentScreen.show();
+        currentScreen.show();
 	}
 	
 	// ===========================================================
@@ -38,7 +38,7 @@ public class ScreenManager {
 	// ===========================================================
 
 	public static void init(){
-		mCurrentScreen = null;
+		currentScreen = null;
 	}
 
 

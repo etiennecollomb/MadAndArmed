@@ -3,7 +3,8 @@ package com.geekmecrazy.madandarmed.Core;
 import com.geekmecrazy.madandarmed.Entity.Rectangle;
 import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
-import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.GamePlay_BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.Fight_CreepManager;
@@ -120,6 +121,9 @@ public class GlobalManager {
 	// Screen and Scenes
 	// ===========================================================
 
+	public static final float BIG_NODESIZE = 64f;//32f LD, 64f HD;
+	public static final float SMALL_NODESIZE = BIG_NODESIZE/3f;
+	
 	/** Screens **/
 	public static LoadingScreen loadingScreen = new LoadingScreen();
 	public static MenuScreen menuScreen = new MenuScreen();
@@ -133,17 +137,17 @@ public class GlobalManager {
 	/** FIGHT Map */
 	public static final int MAP_FIGHT_WIDTH = 4096; //2048;
 	public static final int MAP_FIGHT_HEIGHT = 4096; //2048;
+	
+	public static final int MAP_FIGHT_STARMAP_WIDTH = (int)(MAP_FIGHT_WIDTH / GlobalManager.BIG_NODESIZE);
+	public static final int MAP_FIGHT_STARMAP_HEIGHT = (int)(MAP_FIGHT_HEIGHT / GlobalManager.BIG_NODESIZE);
 
-	/** HQ Scene */
+	/** WARBASE Scene */
 	public static final int WARBASE_SCENE_WIDTH = 4096;
 	public static final int WARBASE_SCENE_HEIGHT = 4096;
-
-	public static final float BIG_NODESIZE = 64f;//32f LD, 64f HD;
-	public static final float SMALL_NODESIZE = BIG_NODESIZE/3f;
-
-	public static final int STARMAP_WIDTH = (int)(MAP_FIGHT_WIDTH / BIG_NODESIZE);
-	public static final int STARMAP_HEIGHT = (int)(MAP_FIGHT_HEIGHT / BIG_NODESIZE);
-
+	
+	public static final int WARBASE_STARMAP_WIDTH = (int)(WARBASE_SCENE_WIDTH / GlobalManager.BIG_NODESIZE);
+	public static final int WARBASE_STARMAP_HEIGHT = (int)(WARBASE_SCENE_HEIGHT / GlobalManager.BIG_NODESIZE);
+	
 
 	// ===========================================================
 	// Managers
@@ -429,7 +433,7 @@ public class GlobalManager {
 	}
 
 	/** Fight Managers **/
-	public static void createManagersForFight(Team teamPlayer, Team teamIA){
+	public static void createManagersForFight(Fight_Team teamPlayer, Fight_Team teamIA){
 		
 		GlobalManager.gamePlay_BuildingManager = new GamePlay_BuildingManager(teamPlayer, teamIA);
 		GlobalManager.fight_CreepManager = new Fight_CreepManager(teamPlayer, teamIA);
@@ -439,7 +443,7 @@ public class GlobalManager {
 	}
 	
 	/** WarBAse Managers **/
-	public static void createManagersForWarBase(Team teamPlayer, Team teamIA){
+	public static void createManagersForWarBase(GamePlay_Team teamPlayer, GamePlay_Team teamIA){
 		
 		GlobalManager.gamePlay_BuildingManager = new GamePlay_BuildingManager(teamPlayer, teamIA);
 	}

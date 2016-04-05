@@ -1,7 +1,7 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
-import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 
 
@@ -13,8 +13,8 @@ public class GamePlayScreen extends Screen implements IUpdatable {
     public static IsoGrid isoGrid;
     
     /** Teams */
-    public static Team teamPlayer;
-    public static Team teamIA;
+    public static GamePlay_Team teamPlayer;
+    public static GamePlay_Team teamIA;
     
 	// ===========================================================
 	// Constructors
@@ -28,19 +28,19 @@ public class GamePlayScreen extends Screen implements IUpdatable {
 		FightScreen.isoGrid = isoGrid;
 	}
 	
-    public Team getTeamPlayer(){
+    public GamePlay_Team getTeamPlayer(){
         return teamPlayer;
     }
 
-    public Team getTeamIA() {
+    public GamePlay_Team getTeamIA() {
         return teamIA;
     }
 
-    public static void setTeamPlayer(final Team pTeamPlayer) {
+    public static void setTeamPlayer(final GamePlay_Team pTeamPlayer) {
         FightScreen.teamPlayer = pTeamPlayer;
     }
 
-    public static void setTeamIA(final Team pTeamIA) {
+    public static void setTeamIA(final GamePlay_Team pTeamIA) {
         FightScreen.teamIA = pTeamIA;
     }
 

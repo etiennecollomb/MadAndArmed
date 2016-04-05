@@ -4,7 +4,8 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.IMoneyListener;
 import com.geekmecrazy.madandarmed.Entity.IScoreListener;
-import com.geekmecrazy.madandarmed.Game.Element.Team;
+import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
+import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Renderer.FontRenderer;
 import com.geekmecrazy.madandarmed.Renderer.ProgressBarRenderer;
@@ -45,7 +46,7 @@ public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener
 
     //Change aspet bouton en fonction de la money
     @Override
-    public void moneyChange(Team team) {
+    public void moneyChange(Fight_Team team) {
         fontRenderer_0.setText(this.getMoneyText());
         float size_ = ((float)team.getMoney() / (float)team.getMoneyMax()) * (float)(this.scoreBarRenderer_0.getProgressBarMaX() - this.scoreBarRenderer_0.getProgressBarMinX());
         this.scoreBarRenderer_0.setBarSize((int) size_);
@@ -54,7 +55,7 @@ public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener
     }
 
     @Override
-    public void scoreChange(Team team) {
+    public void scoreChange(Fight_Team team) {
         fontRenderer_1.setText(this.getScoreText());
         float size_ = ((float)this.getScore() / (float)team.getThoriumMax()) * (float)(this.scoreBarRenderer_1.getProgressBarMaX() - this.scoreBarRenderer_1.getProgressBarMinX());
         this.scoreBarRenderer_1.setBarSize((int)size_);
