@@ -136,15 +136,15 @@ public class GlobalManager {
 	public static final int MENU_SCENE_HEIGHT = DEVICE_SCREEN_HEIGHT*5;
 
 	/** FIGHT Map */
-	public static final int FIGHT_SCENE_WIDTH = 4096; //2048;
-	public static final int FIGHT_SCENE_HEIGHT = 4096; //2048;
+	public static final int FIGHT_SCENE_WIDTH = 4096; //2048, 4096
+	public static final int FIGHT_SCENE_HEIGHT = 4096; //2048, 4096
 	
 	public static final int FIGHT_STARMAP_WIDTH = (int)(FIGHT_SCENE_WIDTH / GlobalManager.BIG_NODESIZE);
 	public static final int FIGHT_STARMAP_HEIGHT = (int)(FIGHT_SCENE_HEIGHT / GlobalManager.BIG_NODESIZE);
 
 	/** WARBASE Scene */
-	public static final int WARBASE_SCENE_WIDTH = 4096;
-	public static final int WARBASE_SCENE_HEIGHT = 4096;
+	public static final int WARBASE_SCENE_WIDTH = 2048;
+	public static final int WARBASE_SCENE_HEIGHT = 1024;
 	
 	public static final int WARBASE_STARMAP_WIDTH = (int)(WARBASE_SCENE_WIDTH / GlobalManager.BIG_NODESIZE);
 	public static final int WARBASE_STARMAP_HEIGHT = (int)(WARBASE_SCENE_HEIGHT / GlobalManager.BIG_NODESIZE);
