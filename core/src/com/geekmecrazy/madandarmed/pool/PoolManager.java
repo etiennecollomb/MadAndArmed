@@ -2,7 +2,7 @@ package com.geekmecrazy.madandarmed.pool;
 
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
-import com.geekmecrazy.madandarmed.Game.Element.BaseBuilding;
+import com.geekmecrazy.madandarmed.Game.Element.CampBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.FlameThrower;
 import com.geekmecrazy.madandarmed.Game.Element.Gun;
@@ -50,7 +50,7 @@ public class PoolManager {
 	private static Pool<Missile> missilePool;
 	private static Pool<Life> lifePool;
 	private static Pool<Turret> turretPool;
-	private static Pool<BaseBuilding> campBuildingPool;
+	private static Pool<CampBuilding> campBuildingPool;
 	private static Pool<SpawnBuilding> spawnBuildingPool;
 	private static Pool<Barricade> barricadePool;
 	private static Pool<GroundPathFinding> groundPathFinding;
@@ -107,7 +107,7 @@ public class PoolManager {
 		return turretPool;
 	}
 
-	public static Pool<BaseBuilding> getCampBuildingPool() {
+	public static Pool<CampBuilding> getCampBuildingPool() {
 		return campBuildingPool;
 	}
 	
@@ -263,11 +263,11 @@ public class PoolManager {
 			 }
 		};
 		
-		campBuildingPool = new Pool<BaseBuilding>(STARTING_ALLOCATE_CAMPBUILDING){
+		campBuildingPool = new Pool<CampBuilding>(STARTING_ALLOCATE_CAMPBUILDING){
 			@Override
-			protected BaseBuilding newObject() {
+			protected CampBuilding newObject() {
 				//System.out.println("#__ POOL __# allocate new Object : " + CampBuilding.class.getName());
-				return new BaseBuilding();
+				return new CampBuilding();
 			 }
 		};
 		

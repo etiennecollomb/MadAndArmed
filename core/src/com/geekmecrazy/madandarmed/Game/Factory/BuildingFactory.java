@@ -5,7 +5,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
-import com.geekmecrazy.madandarmed.Game.Element.BaseBuilding;
+import com.geekmecrazy.madandarmed.Game.Element.CampBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
@@ -59,11 +59,13 @@ public class BuildingFactory{
 
 	public static void destroy(Building building) {
 		GlobalManager.gamePlay_BuildingManager.removeBuilding(building);
-		//building.recycle();
-		if(building.equals(GlobalManager.fightScreen.getTeamIA().getCastle())){
-			GlobalManager.fightScreen.getUiFinishGame().showUI(true);
-		}else if(building.equals(GlobalManager.fightScreen.getTeamPlayer().getCastle())){
-			GlobalManager.fightScreen.getUiFinishGame().showUI(false);
+
+		if(ScreenManager.getCurrentScreen() instanceof FightScreen){
+			if(building.equals(GlobalManager.fightScreen.getTeamIA().getCastle())){
+				GlobalManager.fightScreen.getUiFinishGame().showUI(true);
+			}else if(building.equals(GlobalManager.fightScreen.getTeamPlayer().getCastle())){
+				GlobalManager.fightScreen.getUiFinishGame().showUI(false);
+			}
 		}
 
 	}
@@ -80,7 +82,7 @@ public class BuildingFactory{
 		/** Building */
 		Turret turret = GlobalManager.poolManager.getTurretPool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
-		turret.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
+		turret.init(posX, posY, diameter, buildingPattern, life, team);
 
 		/** AttackBehavior */
 		if(buildingPattern.getWeaponName()!=null){
@@ -96,8 +98,8 @@ public class BuildingFactory{
 		/** Castle Special Case */
 		/** TODO : isoler ... na  rien a faire dans class generic GamePlay **/
 		if(ScreenManager.getCurrentScreen() instanceof FightScreen){
-		if(buildingPattern.getBuildingType()==BuildingType.CASTLE)
-			((Fight_Team)team).registerCastle(turret);
+			if(buildingPattern.getBuildingType()==BuildingType.CASTLE)
+				((Fight_Team)team).registerCastle(turret);
 		}
 
 		return turret;
@@ -115,7 +117,7 @@ public class BuildingFactory{
 		/** Building */
 		Barricade barricade = GlobalManager.poolManager.getBarricadePool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
-		barricade.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
+		barricade.init(posX, posY, diameter, buildingPattern, life, team);
 
 		return barricade;
 	}
@@ -130,9 +132,9 @@ public class BuildingFactory{
 		}
 
 		/** Building */
-		BaseBuilding campBuilding = GlobalManager.poolManager.getCampBuildingPool().obtain();
+		CampBuilding campBuilding = GlobalManager.poolManager.getCampBuildingPool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
-		campBuilding.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
+		campBuilding.init(posX, posY, diameter, buildingPattern, life, team);
 
 		return campBuilding;
 	}
@@ -149,7 +151,7 @@ public class BuildingFactory{
 		/** Building */
 		SpawnBuilding spawnBuilding = GlobalManager.poolManager.getSpawnBuildingPool().obtain();
 		float diameter = buildingPattern.getBuildingSize().getBigNodeSize()*GlobalManager.BIG_NODESIZE;
-		spawnBuilding.init(posX, posY, diameter, buildingPattern, life, team, GlobalManager.fightScreen.getOtherTeam(team));
+		spawnBuilding.init(posX, posY, diameter, buildingPattern, life, team);
 
 		return spawnBuilding;
 	}

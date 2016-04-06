@@ -35,7 +35,7 @@ public class CreepFactory {
 		CreepRenderer creepRenderer = GlobalManager.poolAnimManager.getCreepRendererPool().obtain();
 		
 		Creep creep = GlobalManager.poolManager.getCreepPool().obtain();
-		creep.init(creepPattern, spwanPosX+randowSpawn(), spwanPosY+randowSpawn(), creepPattern.getDiameter(), life, team, GlobalManager.fightScreen.getOtherTeam(team), creepRenderer);
+		creep.init(creepPattern, spwanPosX+randowSpawn(), spwanPosY+randowSpawn(), creepPattern.getDiameter(), life, team, creepRenderer);
 
 
 		/***********************************************/

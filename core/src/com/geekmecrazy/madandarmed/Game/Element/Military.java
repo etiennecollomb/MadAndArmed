@@ -4,9 +4,11 @@ import java.util.List;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
+import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.Renderer.MilitaryRenderer;
 import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
@@ -110,12 +112,18 @@ public class Military extends Geometrie {
     // Methods
     // ===========================================================
 	
-	public void init(float posX, float posY, float diameter, Life life, GamePlay_Team myTeam, GamePlay_Team ennemyTeam) {
+	public void init(float posX, float posY, float diameter, Life life, GamePlay_Team myTeam) {
 		super.init(posX, posY, diameter);
 		
 		this.life=life;
 		this.myTeam=myTeam;
-		this.ennemyTeam=ennemyTeam;
+		
+		/** set enemyTeam if we are in fight Screen only **/
+		if(ScreenManager.getCurrentScreen() instanceof FightScreen)
+			this.ennemyTeam = GlobalManager.fightScreen.getOtherTeam(myTeam);
+		else
+			this.ennemyTeam = null;
+
 		this.isAlive = true;
 		this.militaryRenderer = null;
 		

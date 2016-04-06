@@ -45,8 +45,8 @@ public class Building extends Military{
     // Methods
     // ===========================================================
     
-	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam, GamePlay_Team ennemyTeam) {
-		super.init(posX, posY, diameter, life, myTeam, ennemyTeam);
+	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam) {
+		super.init(posX, posY, diameter, life, myTeam);
 
 		this.pattern=buildingPattern;
 

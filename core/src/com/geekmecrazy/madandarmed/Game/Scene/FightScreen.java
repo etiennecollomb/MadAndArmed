@@ -32,9 +32,9 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 
 
     /** UI */
-    private UIFinishGame uiFinishGame;
-    private Fight_SpawnBuildingButtonUI mUnitButtonUI;
-    private ScoreBarUI mScoreBarUI;
+    private static UIFinishGame uiFinishGame;
+    private static Fight_SpawnBuildingButtonUI mUnitButtonUI;
+    private static ScoreBarUI mScoreBarUI;
 
     /** Time stuff */
     private static long currentTime;
@@ -50,7 +50,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
     // Getter & Setter
     // ===========================================================
 
-    public UIFinishGame getUiFinishGame() {
+    public static UIFinishGame getUiFinishGame() {
         return uiFinishGame;
     }
 
@@ -62,8 +62,8 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         return previousMoneyTurnTime;
     }
 
-    public void setUiFinishGame(final UIFinishGame pUiFinishGame) {
-        this.uiFinishGame = pUiFinishGame;
+    public static void setUiFinishGame(final UIFinishGame pUiFinishGame) {
+    	FightScreen.uiFinishGame = pUiFinishGame;
     }
 
     public static void setCurrentTime(final long pCurrentTime) {

@@ -2,14 +2,12 @@ package com.geekmecrazy.madandarmed.Game.Element;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
-import com.geekmecrazy.madandarmed.Entity.Shape.ShapeState;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team.TeamID;
-import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.GamePlayScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
-import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
 import com.geekmecrazy.madandarmed.Renderer.SpawnBuildingRenderer;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
 public class SpawnBuilding extends Building {
 	
@@ -19,26 +17,26 @@ public class SpawnBuilding extends Building {
 	// Constructors
 	// ===========================================================
 
-	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam, GamePlay_Team ennemyTeam) {
-		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam);
+	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam) {
+		super.init(posX, posY, diameter, buildingPattern, life, myTeam);
 		
 		/** Renderer */
 		SpawnBuildingRenderer spawnBuildingRenderer = GlobalManager.poolAnimManager.getSpawnBuildingRendererPool().obtain();
 		
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingName().name());
-		spawnBuildingRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), this, FightScreen.isoGrid);
-		FightScreen.isoGrid.place(spawnBuildingRenderer, (int)posX, (int)posY);
-		FightScreen.isoGrid.getIsoMapState().add(spawnBuildingRenderer);
+		spawnBuildingRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), this, GamePlayScreen.isoGrid);
+		GamePlayScreen.isoGrid.place(spawnBuildingRenderer, (int)posX, (int)posY);
+		GamePlayScreen.isoGrid.getIsoMapState().add(spawnBuildingRenderer);
 		this.setMilitaryRenderer(spawnBuildingRenderer);
 		
 		this.setPos(spawnBuildingRenderer.getX(), spawnBuildingRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
 		
-		GlobalManager.fightScreen.getScene().attachChild(this.militaryRenderer);
+		ScreenManager.getCurrentScreen().getScene().attachChild(this.militaryRenderer);
 		
 		/** If player team : make it movable */
-		//TEMP : this should be only on edit mode
+		//TEMP : this should be only on edit mode WARBASE
 		if(myTeam.getTeamID() == TeamID.TEAM1)
-			GlobalManager.fightScreen.getScene().registerTouchableShape(spawnBuildingRenderer);
+			ScreenManager.getCurrentScreen().getScene().registerTouchableShape(spawnBuildingRenderer);
 
 		spawnOrder = -1;
 		
@@ -65,7 +63,7 @@ public class SpawnBuilding extends Building {
 		super.noMoreLife();
 
 		((SpawnBuildingRenderer)this.getMilitaryRenderer()).releaseControls();
-		FightScreen.isoGrid.getIsoMapState().remove((SpawnBuildingRenderer)this.getMilitaryRenderer());
+		GamePlayScreen.isoGrid.getIsoMapState().remove((SpawnBuildingRenderer)this.getMilitaryRenderer());
 		
 	}
 	

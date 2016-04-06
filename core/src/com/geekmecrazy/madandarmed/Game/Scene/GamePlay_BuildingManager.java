@@ -8,7 +8,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
-import com.geekmecrazy.madandarmed.Game.Element.BaseBuilding;
+import com.geekmecrazy.madandarmed.Game.Element.CampBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
@@ -111,8 +111,8 @@ public class GamePlay_BuildingManager {
 				GlobalManager.poolManager.getTurretPool().free((Turret)building);
 			else if(building instanceof Barricade)
 				GlobalManager.poolManager.getBarricadePool().free((Barricade)building);
-			else if(building instanceof BaseBuilding)
-				GlobalManager.poolManager.getCampBuildingPool().free((BaseBuilding)building);
+			else if(building instanceof CampBuilding)
+				GlobalManager.poolManager.getCampBuildingPool().free((CampBuilding)building);
 
 		}
 		listBuildingsRecycle.clear();
@@ -154,18 +154,28 @@ public class GamePlay_BuildingManager {
 				team.getListAskForCreateSpawnBuilding().add(buildingName);
 			}
 		}
+		
+		if(ScreenManager.getCurrentScreen() instanceof WarBaseScreen){
+			team.getListAskForCreateSpawnBuilding().add(buildingName);
+		}
+		
 	}
 
 	/** Excecute les demandes de création de creep */
 	public void excuteAskForCreateSpawnBuilding(){
-		for (BuildingName buildingName : teamPlayer.getListAskForCreateSpawnBuilding()){
-			this.createSpawnBuilding(teamPlayer, 10, 10, buildingName);
+		if(teamPlayer!=null){
+			for (BuildingName buildingName : teamPlayer.getListAskForCreateSpawnBuilding()){
+				this.createSpawnBuilding(teamPlayer, 10, 10, buildingName);
+			}
+			teamPlayer.getListAskForCreateSpawnBuilding().clear();
 		}
-		for (BuildingName buildingName : teamIA.getListAskForCreateSpawnBuilding()){
-			this.createSpawnBuilding(teamIA, 10, 10, buildingName);
+
+		if(teamIA!=null){
+			for (BuildingName buildingName : teamIA.getListAskForCreateSpawnBuilding()){
+				this.createSpawnBuilding(teamIA, 10, 10, buildingName);
+			}
+			teamIA.getListAskForCreateSpawnBuilding().clear();
 		}
-		teamPlayer.getListAskForCreateSpawnBuilding().clear();
-		teamIA.getListAskForCreateSpawnBuilding().clear();
 	}
 
 
@@ -176,8 +186,6 @@ public class GamePlay_BuildingManager {
 		SpawnBuilding swpanBuilding = BuildingFactory.createSpawnBuilding(posX, posY, buildingPattern, team);
 		addSpawnBuilding(swpanBuilding);
 	}
-
-
 
 
 

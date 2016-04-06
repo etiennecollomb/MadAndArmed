@@ -17,9 +17,9 @@ public class Creep extends Vehicle {
 	// ===========================================================
 	// Init
 	// ===========================================================
-	public void init(CreepPattern creepPattern, float posX, float posY, float diameter, Life life, GamePlay_Team myTeam, GamePlay_Team ennemyTeam, CreepRenderer animatedMilitary){
+	public void init(CreepPattern creepPattern, float posX, float posY, float diameter, Life life, GamePlay_Team myTeam, CreepRenderer animatedMilitary){
 
-		super.init(creepPattern, posX, posY, diameter, life, myTeam, ennemyTeam);
+		super.init(creepPattern, posX, posY, diameter, life, myTeam);
 		this.militaryRenderer=animatedMilitary;
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(creepPattern.getCreepType().name());
 		((CreepRenderer)this.militaryRenderer).init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), creepPattern, this);

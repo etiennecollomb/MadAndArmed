@@ -11,8 +11,8 @@ public class GamePlayScreen extends Screen implements IUpdatable {
     
     /** IsoGrid of WarBase scene */
     public static IsoGrid isoGrid;
-    
-    /** Teams */
+
+	/** Teams */
     public static GamePlay_Team teamPlayer;
     public static GamePlay_Team teamIA;
     
@@ -23,6 +23,10 @@ public class GamePlayScreen extends Screen implements IUpdatable {
     // ===========================================================
     // Getter & Setter
     // ===========================================================
+    
+    public static IsoGrid getIsoGrid() {
+		return isoGrid;
+	}
 
 	public static void setIsoGrid(IsoGrid isoGrid) {
 		GamePlayScreen.isoGrid = isoGrid;

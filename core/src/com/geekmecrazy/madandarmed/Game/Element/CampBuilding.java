@@ -6,14 +6,16 @@ import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.GamePlayScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Renderer.CampBuildingRenderer;
 import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
-public class BaseBuilding extends Building {
+public class CampBuilding extends Building {
 
 	private Sprite floor;
 
@@ -23,15 +25,15 @@ public class BaseBuilding extends Building {
 	// Constructors
 	// ===========================================================
 
-	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam, GamePlay_Team ennemyTeam) {
-		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam);
+	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam) {
+		super.init(posX, posY, diameter, buildingPattern, life, myTeam);
 		
 		/** Renderer */
 		CampBuildingRenderer campBuildingRenderer = GlobalManager.poolAnimManager.getCampBuildingRendererPool().obtain();
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingName().name());
 		campBuildingRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), this);
-		FightScreen.isoGrid.place(campBuildingRenderer, (int)posX, (int)posY);
-		FightScreen.isoGrid.getIsoMapState().add(campBuildingRenderer);
+		GamePlayScreen.isoGrid.place(campBuildingRenderer, (int)posX, (int)posY);
+		GamePlayScreen.isoGrid.getIsoMapState().add(campBuildingRenderer);
 		this.setMilitaryRenderer(campBuildingRenderer);
 		
 		this.setPos(campBuildingRenderer.getX(), campBuildingRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
@@ -45,7 +47,7 @@ public class BaseBuilding extends Building {
 			this.militaryRenderer.attachChild(this.lifeBarreRenderer, Entity.Alignment.CENTER);
 		}
 
-		GlobalManager.fightScreen.getScene().attachChild(this.militaryRenderer);
+		ScreenManager.getCurrentScreen().getScene().attachChild(this.militaryRenderer);
 
 		
 		/** Floor */
@@ -54,7 +56,7 @@ public class BaseBuilding extends Building {
 		floor = new Sprite();
 		floor.init(TextureType.SOL_SOUS_BUILDING);
 		floor.setPosition(floorPosX, floorPosY+20);
-		GlobalManager.fightScreen.getScene().attachChild(floor);
+		ScreenManager.getCurrentScreen().getScene().attachChild(floor);
 		
 	}
 	
@@ -75,7 +77,7 @@ public class BaseBuilding extends Building {
 	public void noMoreLife(){
 		super.noMoreLife();
 
-		FightScreen.isoGrid.getIsoMapState().remove((CampBuildingRenderer)this.getMilitaryRenderer());
+		GamePlayScreen.isoGrid.getIsoMapState().remove((CampBuildingRenderer)this.getMilitaryRenderer());
 		
 		//on efface la lifebar
 		if(lifeBarreRenderer!=null) GlobalManager.poolAnimManager.getLifeBarRendererPool().free(lifeBarreRenderer);

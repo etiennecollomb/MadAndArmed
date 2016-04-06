@@ -60,7 +60,7 @@ public class WarBase_BuildingButtonUI extends Layout {
 				// Pour le moment ça va lancer le fight direct ce bouton au lieu du world
 				@Override
 				public void execute(){
-					//System.out.println("#### TOUCH WAR BASE BUILDING BUTTON !!");
+					System.out.println("#### TOUCH WAR BASE BUILDING BUTTON !!");
 					GlobalManager.gamePlay_BuildingManager.askForCreateSpawnBuilding(buttonPattern.getBuildingName(), GlobalManager.warBaseScreen.getTeamPlayer());
 
 				}

@@ -16,8 +16,8 @@ public class Barricade extends Building {
 	// Constructors
 	// ===========================================================
 
-	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam, GamePlay_Team ennemyTeam) {
-		super.init(posX, posY, diameter, buildingPattern, life, myTeam, ennemyTeam);
+	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam) {
+		super.init(posX, posY, diameter, buildingPattern, life, myTeam);
 		
 		/** Renderer */
 		BarricadeRenderer barricadeRenderer = GlobalManager.poolAnimManager.getBarricadeRendererPool().obtain();

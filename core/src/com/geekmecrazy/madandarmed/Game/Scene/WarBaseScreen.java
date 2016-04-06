@@ -46,7 +46,6 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
     public void onUpdate(){
 
         /**** Create Creep ***/
-    	GlobalManager.fight_CreepManager.excuteAskForCreateCreep();
     	GlobalManager.gamePlay_BuildingManager.excuteAskForCreateSpawnBuilding();
 
         /******** PREPARATION DU TOUR ********/
@@ -55,18 +54,15 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
 
         /******** UPDATE EN COURS ********/
         teamPlayer.notifyListeners();
-        teamIA.notifyListeners();
 
         /******** TRAITEMENT DU TOUR ********/
         this.runUpdateNextState();
 
         /******** RECYCLE ********/
-        GlobalManager.fight_CreepManager.recycleCreep();
         GlobalManager.gamePlay_BuildingManager.recycleBuilding();
 
         /******** FINALISATION DU TOUR ********/
         this.getTeamPlayer().getStateMap().swap();
-        this.getTeamIA().getStateMap().swap();
 
         //principalement update des positions des renderer (a faire apres calcul metier...donc a la fin)
         super.onUpdate();
@@ -114,8 +110,10 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
         gridRenderer.init(isoGrid);
         //this.getScene().attachChild(gridRenderer);
         
+        /** Init des 2 teams */
+		this.setTeamPlayer( new WareBase_Team(TeamID.TEAM1));
+		
         GlobalManager.createManagersForWarBase((WareBase_Team)this.teamPlayer);
-        
         
         GameMap.initMap( GlobalManager.warBaseScreen.getScene() );
         
@@ -140,6 +138,7 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
     }
 
 	public void runUpdateNextState(){
+		GlobalManager.gamePlay_BuildingManager.runUpdateNextState();
 	}
 	
 
