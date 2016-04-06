@@ -120,8 +120,8 @@ public class TextureBuilder {
 
 
 		//max sub texture size allowed (depend about device capacity and <= of scene size
-		int maxTextureWidth = (GlobalManager.MAX_TEXTURE_WIDTH>GlobalManager.MAP_FIGHT_WIDTH)? GlobalManager.MAP_FIGHT_WIDTH : GlobalManager.MAX_TEXTURE_WIDTH;
-		int maxTextureHeight = (GlobalManager.MAX_TEXTURE_HEIGHT>GlobalManager.MAP_FIGHT_HEIGHT)? GlobalManager.MAP_FIGHT_HEIGHT : GlobalManager.MAX_TEXTURE_HEIGHT;
+		int maxTextureWidth = (GlobalManager.MAX_TEXTURE_WIDTH>GlobalManager.FIGHT_SCENE_WIDTH)? GlobalManager.FIGHT_SCENE_WIDTH : GlobalManager.MAX_TEXTURE_WIDTH;
+		int maxTextureHeight = (GlobalManager.MAX_TEXTURE_HEIGHT>GlobalManager.FIGHT_SCENE_HEIGHT)? GlobalManager.FIGHT_SCENE_HEIGHT : GlobalManager.MAX_TEXTURE_HEIGHT;
 
 		//Split texture in smaller one
 		int numberColumns = (this.getFinalPixmap().getWidth() < maxTextureWidth)? 1 : this.getFinalPixmap().getWidth() / maxTextureWidth;

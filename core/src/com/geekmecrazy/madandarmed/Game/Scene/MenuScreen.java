@@ -343,7 +343,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 			public void onEvent(int type, BaseTween<?> source) {
 				Scene fightScene = new FightScene();
 
-				fightScene.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT);
+				fightScene.init(GlobalManager.FIGHT_SCENE_WIDTH, GlobalManager.FIGHT_SCENE_HEIGHT);
 				GlobalManager.fightScreen.init(fightScene);
 				ScreenManager.setCurrentScreen(GlobalManager.fightScreen);
 
@@ -351,7 +351,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 				//init GROUND
 				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
-				tiledGround.init(GlobalManager.MAP_FIGHT_WIDTH, GlobalManager.MAP_FIGHT_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
+				tiledGround.init(GlobalManager.FIGHT_SCENE_WIDTH, GlobalManager.FIGHT_SCENE_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
 				GlobalManager.fightScreen.setTiledGround(tiledGround);
 			}
 		})

@@ -167,9 +167,9 @@ public abstract class Vehicle extends Military {
 
 			//Contrainte de la scene elle meme (NON penetration)
 			Vector2d pos = this.getPos();
-			if (pos.getX() > GlobalManager.MAP_FIGHT_WIDTH) pos.setX(GlobalManager.MAP_FIGHT_WIDTH);
+			if (pos.getX() > GlobalManager.FIGHT_SCENE_WIDTH) pos.setX(GlobalManager.FIGHT_SCENE_WIDTH);
 			if (pos.getX() < 0.0) pos.setX(0.0f);
-			if (pos.getY() > GlobalManager.MAP_FIGHT_HEIGHT) pos.setY(GlobalManager.MAP_FIGHT_HEIGHT);
+			if (pos.getY() > GlobalManager.FIGHT_SCENE_HEIGHT) pos.setY(GlobalManager.FIGHT_SCENE_HEIGHT);
 			if (pos.getY() < 0.0) pos.setY(0.0f);
 
 			this.setPos(pos.getX(), pos.getY());

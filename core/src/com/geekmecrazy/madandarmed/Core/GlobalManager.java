@@ -5,6 +5,7 @@ import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
+import com.geekmecrazy.madandarmed.Game.Element.WareBase_Team;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.GamePlay_BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.Fight_CreepManager;
@@ -135,11 +136,11 @@ public class GlobalManager {
 	public static final int MENU_SCENE_HEIGHT = DEVICE_SCREEN_HEIGHT*5;
 
 	/** FIGHT Map */
-	public static final int MAP_FIGHT_WIDTH = 4096; //2048;
-	public static final int MAP_FIGHT_HEIGHT = 4096; //2048;
+	public static final int FIGHT_SCENE_WIDTH = 4096; //2048;
+	public static final int FIGHT_SCENE_HEIGHT = 4096; //2048;
 	
-	public static final int MAP_FIGHT_STARMAP_WIDTH = (int)(MAP_FIGHT_WIDTH / GlobalManager.BIG_NODESIZE);
-	public static final int MAP_FIGHT_STARMAP_HEIGHT = (int)(MAP_FIGHT_HEIGHT / GlobalManager.BIG_NODESIZE);
+	public static final int FIGHT_STARMAP_WIDTH = (int)(FIGHT_SCENE_WIDTH / GlobalManager.BIG_NODESIZE);
+	public static final int FIGHT_STARMAP_HEIGHT = (int)(FIGHT_SCENE_HEIGHT / GlobalManager.BIG_NODESIZE);
 
 	/** WARBASE Scene */
 	public static final int WARBASE_SCENE_WIDTH = 4096;
@@ -443,9 +444,9 @@ public class GlobalManager {
 	}
 	
 	/** WarBAse Managers **/
-	public static void createManagersForWarBase(GamePlay_Team teamPlayer, GamePlay_Team teamIA){
+	public static void createManagersForWarBase(WareBase_Team teamPlayer){
 		
-		GlobalManager.gamePlay_BuildingManager = new GamePlay_BuildingManager(teamPlayer, teamIA);
+		GlobalManager.gamePlay_BuildingManager = new GamePlay_BuildingManager(teamPlayer, null);
 	}
 	
 	public static void destroyManagers(){

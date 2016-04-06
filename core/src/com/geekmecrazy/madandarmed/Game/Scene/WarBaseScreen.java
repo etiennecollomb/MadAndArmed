@@ -6,8 +6,10 @@ import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Game.IAction;
+import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team.TeamID;
+import com.geekmecrazy.madandarmed.Game.Element.WareBase_Team;
 import com.geekmecrazy.madandarmed.Game.Element.Property.GameMap;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.ScoreBarUI;
@@ -39,16 +41,53 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
 
+
     @Override
     public void onUpdate(){
-        
+
+        /**** Create Creep ***/
+    	GlobalManager.fight_CreepManager.excuteAskForCreateCreep();
+    	GlobalManager.gamePlay_BuildingManager.excuteAskForCreateSpawnBuilding();
+
+        /******** PREPARATION DU TOUR ********/
+    	//WarBaseScreen.currentTime = System.currentTimeMillis();
+        //this.updateNextMoneyTurn();
+
+        /******** UPDATE EN COURS ********/
+        teamPlayer.notifyListeners();
+        teamIA.notifyListeners();
+
+        /******** TRAITEMENT DU TOUR ********/
+        this.runUpdateNextState();
+
+        /******** RECYCLE ********/
+        GlobalManager.fight_CreepManager.recycleCreep();
+        GlobalManager.gamePlay_BuildingManager.recycleBuilding();
+
+        /******** FINALISATION DU TOUR ********/
+        this.getTeamPlayer().getStateMap().swap();
+        this.getTeamIA().getStateMap().swap();
+
         //principalement update des positions des renderer (a faire apres calcul metier...donc a la fin)
         super.onUpdate();
+        
+        /** Memory Usage **/
+//        System.out.println("################## MEMORY USAGE ##################");
+//        System.out.println("Java Heap : " + Gdx.app.getJavaHeap()/1000000f + " Mo" );
+//        System.out.println("Native Heap : " + Gdx.app.getNativeHeap()/1000000f + " Mo" );
+//        System.out.println("##################################################");
+
     }
 
     @Override
     public void reset(){
 
+        this.setTeamPlayer(null);
+    }
+
+    @Override
+    public WareBase_Team getTeamPlayer() {
+        return (WareBase_Team)teamPlayer;
     }
 
     // ===========================================================
@@ -75,7 +114,7 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
         gridRenderer.init(isoGrid);
         //this.getScene().attachChild(gridRenderer);
         
-        GlobalManager.createManagersForFight(null, null);
+        GlobalManager.createManagersForWarBase((WareBase_Team)this.teamPlayer);
         
         
         GameMap.initMap( GlobalManager.warBaseScreen.getScene() );
@@ -102,7 +141,7 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
 
 	public void runUpdateNextState(){
 	}
-
+	
 
 
 }

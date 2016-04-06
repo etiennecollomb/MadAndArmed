@@ -34,7 +34,7 @@ public class Fight_Team extends GamePlay_Team {
 	// ===========================================================
 	
 	public Fight_Team(int startingMoney, int moneyByTurn, int moneyMax, TeamID teamID_, int thoriumMax) {
-		super(teamID_, GlobalManager.MAP_FIGHT_STARMAP_WIDTH, GlobalManager.MAP_FIGHT_STARMAP_HEIGHT);
+		super(teamID_, GlobalManager.FIGHT_STARMAP_WIDTH, GlobalManager.FIGHT_STARMAP_HEIGHT);
 		
 		this.moneyListeners = new ArrayList<IMoneyListener>();
 		this.scoreListeners = new ArrayList<IScoreListener>();

@@ -25,7 +25,7 @@ public class GamePlayScreen extends Screen implements IUpdatable {
     // ===========================================================
 
 	public static void setIsoGrid(IsoGrid isoGrid) {
-		FightScreen.isoGrid = isoGrid;
+		GamePlayScreen.isoGrid = isoGrid;
 	}
 	
     public GamePlay_Team getTeamPlayer(){

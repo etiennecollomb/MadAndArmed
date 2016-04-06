@@ -392,8 +392,8 @@ public class Shape extends Entity implements IColor, ITouchable {
 			if(this.getX() < 0){
 				this.setPosition(0,this.getY());
 			}
-			else if(this.getX() + this.getWidth() > GlobalManager.MAP_FIGHT_WIDTH){
-				this.setPosition(GlobalManager.MAP_FIGHT_WIDTH - this.getWidth(),this.getY());
+			else if(this.getX() + this.getWidth() > GlobalManager.FIGHT_SCENE_WIDTH){
+				this.setPosition(GlobalManager.FIGHT_SCENE_WIDTH - this.getWidth(),this.getY());
 			}
 			else if(this.getX() < GlobalManager.camera.position.x - effectiveViewportWidth/2f){
 				GlobalManager.camera.position.x = this.getX() + effectiveViewportWidth/2f;
@@ -405,8 +405,8 @@ public class Shape extends Entity implements IColor, ITouchable {
 			if(this.getY() < 0){
 				this.setPosition(this.getX(),0);
 			}
-			else if(this.getY() + this.getHeight() > GlobalManager.MAP_FIGHT_HEIGHT){
-				this.setPosition(this.getX(),GlobalManager.MAP_FIGHT_HEIGHT - this.getHeight());
+			else if(this.getY() + this.getHeight() > GlobalManager.FIGHT_SCENE_HEIGHT){
+				this.setPosition(this.getX(),GlobalManager.FIGHT_SCENE_HEIGHT - this.getHeight());
 			}
 			else if(this.getY() < (GlobalManager.camera.position.y - effectiveViewportHeight/2f)){
 				GlobalManager.camera.position.y = this.getY() + effectiveViewportHeight/2f;
@@ -433,8 +433,8 @@ public class Shape extends Entity implements IColor, ITouchable {
 			if(this.getX() < 0){
 				this.setPosition(0,this.getY());
 			}
-			else if(this.getX() + this.getWidth() > GlobalManager.MAP_FIGHT_WIDTH){
-				this.setPosition(GlobalManager.MAP_FIGHT_WIDTH - this.getWidth(),this.getY());
+			else if(this.getX() + this.getWidth() > GlobalManager.FIGHT_SCENE_WIDTH){
+				this.setPosition(GlobalManager.FIGHT_SCENE_WIDTH - this.getWidth(),this.getY());
 			}
 			else if(this.getX() < GlobalManager.camera.position.x - effectiveViewportWidth/2f){
 				GlobalManager.camera.position.x = this.getX() + effectiveViewportWidth/2f;
@@ -446,8 +446,8 @@ public class Shape extends Entity implements IColor, ITouchable {
 			if(this.getY() < 0){
 				this.setPosition(this.getX(),0);
 			}
-			else if(this.getY() + this.getHeight() > GlobalManager.MAP_FIGHT_HEIGHT){
-				this.setPosition(this.getX(),GlobalManager.MAP_FIGHT_HEIGHT - this.getHeight());
+			else if(this.getY() + this.getHeight() > GlobalManager.FIGHT_SCENE_HEIGHT){
+				this.setPosition(this.getX(),GlobalManager.FIGHT_SCENE_HEIGHT - this.getHeight());
 			}
 			else if(this.getY() < (GlobalManager.camera.position.y - effectiveViewportHeight/2f)){
 				GlobalManager.camera.position.y = this.getY() + effectiveViewportHeight/2f;

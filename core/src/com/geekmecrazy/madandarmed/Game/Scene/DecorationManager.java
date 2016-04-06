@@ -58,7 +58,7 @@ public class DecorationManager {
             sprite.init(textureType);
 
             ran.nextBoolean();
-            sprite.setPosition( 100+(GlobalManager.MAP_FIGHT_WIDTH-200)*ran.nextFloat(), 10+(GlobalManager.MAP_FIGHT_WIDTH-100)*ran.nextFloat());
+            sprite.setPosition( 100+(GlobalManager.FIGHT_SCENE_WIDTH-200)*ran.nextFloat(), 10+(GlobalManager.FIGHT_SCENE_HEIGHT-100)*ran.nextFloat());
 
             this.listDecorations.add(sprite);
 

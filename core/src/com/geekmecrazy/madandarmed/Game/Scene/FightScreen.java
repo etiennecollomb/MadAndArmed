@@ -151,7 +151,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 
         GlobalAstar.init();
 
-        AstarMap.init(GlobalManager.MAP_FIGHT_STARMAP_WIDTH, GlobalManager.MAP_FIGHT_STARMAP_HEIGHT);
+        AstarMap.init(GlobalManager.FIGHT_STARMAP_WIDTH, GlobalManager.FIGHT_STARMAP_HEIGHT);
     }
 
     @Override
