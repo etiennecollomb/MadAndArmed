@@ -1,12 +1,9 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
-import java.util.List;
-
 import com.badlogic.gdx.utils.Array;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
-import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 import com.geekmecrazy.madandarmed.Utils.TimeIntervalControl;
 
@@ -20,7 +17,7 @@ public class Fight_TurnManager {
 	public void runUpdateNextState(){
 
 		if(!spawnTurnTimer.isInsideInterval()){
-			System.out.println("______START");
+			//System.out.println("______START");
 			spawnTurnTimer.resetTimer();
 
 			/** get spawn list from Building Manager SpawnBuilding **/
@@ -32,7 +29,7 @@ public class Fight_TurnManager {
 				GlobalManager.fight_CreepManager.askForCreateCreep(creepType, (Fight_Team) spbld.getMyTeam(), spbld.getMilitaryRenderer().getX(), spbld.getMilitaryRenderer().getY());
 			}
 		}else{
-			System.out.println("PAUSE");
+			//System.out.println("PAUSE");
 		}
 
 

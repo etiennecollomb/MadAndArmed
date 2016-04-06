@@ -29,7 +29,7 @@ public class BuildingFactory{
 	// disable object's instanciation (private constructor)
 	private BuildingFactory(){} 
 
-	public static Building create (float posX, float posY, BuildingPattern buildingPattern, GamePlay_Team team) {
+	public static Building create(float posX, float posY, BuildingPattern buildingPattern, GamePlay_Team team) {
 
 		Building building = null;
 
@@ -41,6 +41,8 @@ public class BuildingFactory{
 			building = createBarricade(posX, posY, buildingPattern, team);
 		else if(buildingPattern.getBuildingType() == BuildingType.CAMP_BUILDING)
 			building = createCampBuilding(posX, posY, buildingPattern, team);
+		else if(buildingPattern.getBuildingType() == BuildingType.SPAWN_BUILDING)
+			building = createSpawnBuilding(posX, posY, buildingPattern, team);
 
 		return building;
 	}

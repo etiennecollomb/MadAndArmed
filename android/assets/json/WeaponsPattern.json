@@ -55,7 +55,7 @@
         class: com.geekmecrazy.madandarmed.Pattern.WeaponPattern
         weaponName: MISSILE_1
 		weaponType: MISSILE
-		hitRange: 1500
+		hitRange: 200
 		hitSpeed: 15
 		dmgEffect: 500
 		missileSpeed: 6
