@@ -105,6 +105,18 @@
 						buildingName: TURRET
 						gridPositionX: 25
 						gridPositionY: 98
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingName: SPAWN_BUILDING_01
+						gridPositionX: 18
+						gridPositionY: 98
+					},
+					{
+						class: com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern
+						buildingName: SPAWN_BUILDING_02
+						gridPositionX: 21
+						gridPositionY: 94
 					}
 				]
 		    }
