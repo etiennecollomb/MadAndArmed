@@ -23,7 +23,7 @@ import com.geekmecrazy.madandarmed.Screen.Screen;
 
 public class FightScreen extends GamePlayScreen implements IUpdatable {
 
-    private static final long TURN_MONEY_LENGTH =1000;
+    public static final long TURN_MONEY_LENGTH =1000;
     public static final int START_MONEY=500;
     public static final int MAX_MONEY=2000;
     public static final int TURN_MONEY=500; //30
@@ -32,13 +32,13 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 
 
     /** UI */
-    private static UIFinishGame uiFinishGame;
-    private static Fight_SpawnBuildingButtonUI mUnitButtonUI;
-    private static ScoreBarUI mScoreBarUI;
+    private UIFinishGame uiFinishGame;
+    private Fight_SpawnBuildingButtonUI mUnitButtonUI;
+    private ScoreBarUI mScoreBarUI;
 
     /** Time stuff */
-    private static long currentTime;
-    private static long previousMoneyTurnTime;
+    private long currentTime;
+    private long previousMoneyTurnTime;
 
     
     
@@ -50,28 +50,28 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
     // Getter & Setter
     // ===========================================================
 
-    public static UIFinishGame getUiFinishGame() {
+    public UIFinishGame getUiFinishGame() {
         return uiFinishGame;
     }
 
-    public static long getCurrentTime() {
+    public long getCurrentTime() {
         return currentTime;
     }
 
-    public static long getPreviousMoneyTurnTime() {
+    public long getPreviousMoneyTurnTime() {
         return previousMoneyTurnTime;
     }
 
-    public static void setUiFinishGame(final UIFinishGame pUiFinishGame) {
-    	FightScreen.uiFinishGame = pUiFinishGame;
+    public void setUiFinishGame(final UIFinishGame pUiFinishGame) {
+    	this.uiFinishGame = pUiFinishGame;
     }
 
-    public static void setCurrentTime(final long pCurrentTime) {
-        FightScreen.currentTime = pCurrentTime;
+    public void setCurrentTime(final long pCurrentTime) {
+    	this.currentTime = pCurrentTime;
     }
 
-    public static void setPreviousMoneyTurnTime(final long pPreviousMoneyTurnTime) {
-        FightScreen.previousMoneyTurnTime = pPreviousMoneyTurnTime;
+    public void setPreviousMoneyTurnTime(final long pPreviousMoneyTurnTime) {
+    	this.previousMoneyTurnTime = pPreviousMoneyTurnTime;
     }
     
 
@@ -87,12 +87,12 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
     	GlobalManager.gamePlay_BuildingManager.excuteAskForCreateSpawnBuilding();
 
         /******** PREPARATION DU TOUR ********/
-        FightScreen.currentTime = System.currentTimeMillis();
+    	this.currentTime = System.currentTimeMillis();
         this.updateNextMoneyTurn();
 
         /******** UPDATE EN COURS ********/
-        teamPlayer.notifyListeners();
-        teamIA.notifyListeners();
+        this.getTeamPlayer().notifyListeners();
+        this.getTeamIA().notifyListeners();
 
         /******** TRAITEMENT DU TOUR ********/
         this.runUpdateNextState();
@@ -130,12 +130,12 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 
     @Override
     public Fight_Team getTeamPlayer() {
-        return (Fight_Team)teamPlayer;
+        return (Fight_Team)super.getTeamPlayer();
     }
     
     @Override
     public Fight_Team getTeamIA() {
-        return (Fight_Team)teamIA;
+        return (Fight_Team)super.getTeamIA();
     }
     
     
@@ -166,17 +166,17 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         new SoundManager();
         
         /** Init IsoGrid */
-		isoGrid = new IsoGrid();
-		isoGrid.init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
+		this.setIsoGrid(new IsoGrid());
+		this.getIsoGrid().init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
         IsoGridRenderer gridRenderer = new IsoGridRenderer();
-        gridRenderer.init(isoGrid);
+        gridRenderer.init(this.getIsoGrid());
         //this.getScene().attachChild(gridRenderer);
         
 		/** Init des 2 teams */
 		this.setTeamPlayer( new Fight_Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM1, MAX_THORIUM));
 		this.setTeamIA( new Fight_Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM2, MAX_THORIUM));
 
-		GlobalManager.createManagersForFight((Fight_Team)this.teamPlayer, (Fight_Team)this.teamIA);
+		GlobalManager.createManagersForFight((Fight_Team)this.getTeamPlayer(), (Fight_Team)this.getTeamIA());
 
 		GlobalManager.gamePlay_BuildingManager.initBuildingAtStart(this);
 		GlobalManager.gamePlay_BuildingManager.initTarget();
@@ -249,10 +249,10 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 	}
 
 	public void updateNextMoneyTurn(){
-		if(FightScreen.getCurrentTime() > this.getPreviousMoneyTurnTime() + TURN_MONEY_LENGTH){
+		if(this.getCurrentTime() > this.getPreviousMoneyTurnTime() + TURN_MONEY_LENGTH){
             this.getTeamPlayer().addMoneyNewTurn();
             this.getTeamIA().addMoneyNewTurn();
-			this.setPreviousMoneyTurnTime(FightScreen.getCurrentTime());
+			this.setPreviousMoneyTurnTime(this.getCurrentTime());
 		}
 	}
 

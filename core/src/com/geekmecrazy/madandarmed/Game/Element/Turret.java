@@ -5,7 +5,6 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
-import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.GamePlayScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
@@ -13,7 +12,6 @@ import com.geekmecrazy.madandarmed.Renderer.LifeBarRenderer;
 import com.geekmecrazy.madandarmed.Renderer.TurretRenderer;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.Utils.Vector2d;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 public class Turret extends Building {
 
@@ -24,6 +22,8 @@ public class Turret extends Building {
 	/** pointing to target */
 	private Vector2d directionVector = new Vector2d();
 	
+	private GamePlayScreen currentGamePlayScreen;
+	
 	
 	// ===========================================================
 	// Constructors
@@ -31,13 +31,15 @@ public class Turret extends Building {
 
 	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam) {
 		super.init(posX, posY, diameter, buildingPattern, life, myTeam);
+
+		currentGamePlayScreen = (GamePlayScreen)ScreenManager.getCurrentScreen();
 		
 		/** Renderer */
 		TurretRenderer turretRenderer = GlobalManager.poolAnimManager.getTurretRendererPool().obtain();
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingName().name());
 		turretRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), this);
-		GamePlayScreen.isoGrid.place(turretRenderer, (int)posX, (int)posY);
-		GamePlayScreen.isoGrid.getIsoMapState().add(turretRenderer);
+		this.currentGamePlayScreen.getIsoGrid().place(turretRenderer, (int)posX, (int)posY);
+		this.currentGamePlayScreen.getIsoGrid().getIsoMapState().add(turretRenderer);
 		this.setMilitaryRenderer(turretRenderer);
 		
 		this.setPos(turretRenderer.getX(), turretRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
@@ -51,7 +53,7 @@ public class Turret extends Building {
 			this.militaryRenderer.attachChild(this.lifeBarreRenderer, Entity.Alignment.CENTER);
 		}
 
-		ScreenManager.getCurrentScreen().getScene().attachChild(this.militaryRenderer);
+		this.currentGamePlayScreen.getScene().attachChild(this.militaryRenderer);
 
 		
 		/** Floor */
@@ -60,7 +62,7 @@ public class Turret extends Building {
 		floor = new Sprite();
 		floor.init(TextureType.SOL_SOUS_BUILDING);
 		floor.setPosition(floorPosX, floorPosY+20);
-		ScreenManager.getCurrentScreen().getScene().attachChild(floor);
+		this.currentGamePlayScreen.getScene().attachChild(floor);
 		
 	}
 	
@@ -90,7 +92,7 @@ public class Turret extends Building {
 	public void noMoreLife(){
 		super.noMoreLife();
 
-		GamePlayScreen.isoGrid.getIsoMapState().remove((TurretRenderer)this.getMilitaryRenderer());
+		this.currentGamePlayScreen.getIsoGrid().getIsoMapState().remove((TurretRenderer)this.getMilitaryRenderer());
 		
 		//on efface la lifebar
 		if(lifeBarreRenderer!=null) GlobalManager.poolAnimManager.getLifeBarRendererPool().free(lifeBarreRenderer);

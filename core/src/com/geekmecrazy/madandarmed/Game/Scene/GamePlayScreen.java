@@ -10,11 +10,11 @@ public class GamePlayScreen extends Screen implements IUpdatable {
     public static final int MAX_UNITS=1000;
     
     /** IsoGrid of WarBase scene */
-    public static IsoGrid isoGrid;
+    private IsoGrid isoGrid;
 
 	/** Teams */
-    public static GamePlay_Team teamPlayer;
-    public static GamePlay_Team teamIA;
+    private GamePlay_Team teamPlayer;
+    private GamePlay_Team teamIA;
     
 	// ===========================================================
 	// Constructors
@@ -24,12 +24,12 @@ public class GamePlayScreen extends Screen implements IUpdatable {
     // Getter & Setter
     // ===========================================================
     
-    public static IsoGrid getIsoGrid() {
+    public IsoGrid getIsoGrid() {
 		return isoGrid;
 	}
 
-	public static void setIsoGrid(IsoGrid isoGrid) {
-		GamePlayScreen.isoGrid = isoGrid;
+	public void setIsoGrid(IsoGrid isoGrid) {
+		this.isoGrid = isoGrid;
 	}
 	
     public GamePlay_Team getTeamPlayer(){
@@ -40,12 +40,12 @@ public class GamePlayScreen extends Screen implements IUpdatable {
         return teamIA;
     }
 
-    public static void setTeamPlayer(final GamePlay_Team pTeamPlayer) {
-    	GamePlayScreen.teamPlayer = pTeamPlayer;
+    public void setTeamPlayer(final GamePlay_Team pTeamPlayer) {
+    	this.teamPlayer = pTeamPlayer;
     }
 
-    public static void setTeamIA(final GamePlay_Team pTeamIA) {
-    	GamePlayScreen.teamIA = pTeamIA;
+    public void setTeamIA(final GamePlay_Team pTeamIA) {
+    	this.teamIA = pTeamIA;
     }
 
     @Override

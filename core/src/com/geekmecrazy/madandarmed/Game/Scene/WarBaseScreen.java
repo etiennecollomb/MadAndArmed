@@ -53,7 +53,7 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
         //this.updateNextMoneyTurn();
 
         /******** UPDATE EN COURS ********/
-        teamPlayer.notifyListeners();
+    	this.getTeamPlayer().notifyListeners();
 
         /******** TRAITEMENT DU TOUR ********/
         this.runUpdateNextState();
@@ -77,13 +77,12 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
 
     @Override
     public void reset(){
-
         this.setTeamPlayer(null);
     }
 
     @Override
     public WareBase_Team getTeamPlayer() {
-        return (WareBase_Team)teamPlayer;
+        return (WareBase_Team)super.getTeamPlayer();
     }
 
     // ===========================================================
@@ -104,16 +103,16 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
 	public void newGame(){
         
         /** Init IsoGrid */
-		isoGrid = new IsoGrid();
-		isoGrid.init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
+		this.setIsoGrid(new IsoGrid());
+		this.getIsoGrid().init(GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT, this.getScene());
         IsoGridRenderer gridRenderer = new IsoGridRenderer();
-        gridRenderer.init(isoGrid);
+        gridRenderer.init(this.getIsoGrid());
         //this.getScene().attachChild(gridRenderer);
         
         /** Init des 2 teams */
 		this.setTeamPlayer( new WareBase_Team(TeamID.TEAM1));
 		
-        GlobalManager.createManagersForWarBase((WareBase_Team)this.teamPlayer);
+        GlobalManager.createManagersForWarBase((WareBase_Team)this.getTeamPlayer());
         
         GameMap.initMap( GlobalManager.warBaseScreen.getScene() );
         

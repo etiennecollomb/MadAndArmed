@@ -2,15 +2,16 @@ package com.geekmecrazy.madandarmed.Game.Element;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
-import com.geekmecrazy.madandarmed.Entity.Shape.ShapeState;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team.TeamID;
-import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.GamePlayScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Renderer.BarricadeRenderer;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
 public class Barricade extends Building {
+	
+	private GamePlayScreen currentGamePlayScreen;
 	
 	// ===========================================================
 	// Constructors
@@ -19,23 +20,25 @@ public class Barricade extends Building {
 	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam) {
 		super.init(posX, posY, diameter, buildingPattern, life, myTeam);
 		
+		currentGamePlayScreen = (GamePlayScreen)ScreenManager.getCurrentScreen();
+		
 		/** Renderer */
 		BarricadeRenderer barricadeRenderer = GlobalManager.poolAnimManager.getBarricadeRendererPool().obtain();
 		
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingName().name());
-		barricadeRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), this, FightScreen.isoGrid);
-		FightScreen.isoGrid.place(barricadeRenderer, (int)posX, (int)posY);
-		FightScreen.isoGrid.getIsoMapState().add(barricadeRenderer);
+		barricadeRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), this, this.currentGamePlayScreen.getIsoGrid());
+		this.currentGamePlayScreen.getIsoGrid().place(barricadeRenderer, (int)posX, (int)posY);
+		this.currentGamePlayScreen.getIsoGrid().getIsoMapState().add(barricadeRenderer);
 		this.setMilitaryRenderer(barricadeRenderer);
 		
 		this.setPos(barricadeRenderer.getX(), barricadeRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
 		
-		GlobalManager.fightScreen.getScene().attachChild(this.militaryRenderer);
+		this.currentGamePlayScreen.getScene().attachChild(this.militaryRenderer);
 		
 		/** If player team : make it movable */
 		//TEMP : this should be only on edit mode
 		if(myTeam.getTeamID() == TeamID.TEAM1)
-			GlobalManager.fightScreen.getScene().registerTouchableShape(barricadeRenderer);
+			this.currentGamePlayScreen.getScene().registerTouchableShape(barricadeRenderer);
 
 		
 	}
@@ -53,7 +56,7 @@ public class Barricade extends Building {
 		super.noMoreLife();
 
 		((BarricadeRenderer)this.getMilitaryRenderer()).releaseControls();
-		FightScreen.isoGrid.getIsoMapState().remove((BarricadeRenderer)this.getMilitaryRenderer());
+		this.currentGamePlayScreen.getIsoGrid().getIsoMapState().remove((BarricadeRenderer)this.getMilitaryRenderer());
 		
 	}
 	

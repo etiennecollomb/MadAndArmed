@@ -13,30 +13,34 @@ public class SpawnBuilding extends Building {
 	
 	int spawnOrder; /** ordre d apparition du spawn building , -1 not initiated, 0 first one ...**/
 	
+	private GamePlayScreen currentGamePlayScreen;
+	
 	// ===========================================================
 	// Constructors
 	// ===========================================================
 
 	public void init(float posX, float posY, float diameter, BuildingPattern buildingPattern, Life life, GamePlay_Team myTeam) {
 		super.init(posX, posY, diameter, buildingPattern, life, myTeam);
+
+		currentGamePlayScreen = (GamePlayScreen)ScreenManager.getCurrentScreen();
 		
 		/** Renderer */
 		SpawnBuildingRenderer spawnBuildingRenderer = GlobalManager.poolAnimManager.getSpawnBuildingRendererPool().obtain();
 		
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingName().name());
-		spawnBuildingRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), this, GamePlayScreen.isoGrid);
-		GamePlayScreen.isoGrid.place(spawnBuildingRenderer, (int)posX, (int)posY);
-		GamePlayScreen.isoGrid.getIsoMapState().add(spawnBuildingRenderer);
+		spawnBuildingRenderer.init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), this, this.currentGamePlayScreen.getIsoGrid());
+		this.currentGamePlayScreen.getIsoGrid().place(spawnBuildingRenderer, (int)posX, (int)posY);
+		this.currentGamePlayScreen.getIsoGrid().getIsoMapState().add(spawnBuildingRenderer);
 		this.setMilitaryRenderer(spawnBuildingRenderer);
 		
 		this.setPos(spawnBuildingRenderer.getX(), spawnBuildingRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
 		
-		ScreenManager.getCurrentScreen().getScene().attachChild(this.militaryRenderer);
+		this.currentGamePlayScreen.getScene().attachChild(this.militaryRenderer);
 		
 		/** If player team : make it movable */
 		//TEMP : this should be only on edit mode WARBASE
 		if(myTeam.getTeamID() == TeamID.TEAM1)
-			ScreenManager.getCurrentScreen().getScene().registerTouchableShape(spawnBuildingRenderer);
+			this.currentGamePlayScreen.getScene().registerTouchableShape(spawnBuildingRenderer);
 
 		spawnOrder = -1;
 		
@@ -63,7 +67,7 @@ public class SpawnBuilding extends Building {
 		super.noMoreLife();
 
 		((SpawnBuildingRenderer)this.getMilitaryRenderer()).releaseControls();
-		GamePlayScreen.isoGrid.getIsoMapState().remove((SpawnBuildingRenderer)this.getMilitaryRenderer());
+		this.currentGamePlayScreen.getIsoGrid().getIsoMapState().remove((SpawnBuildingRenderer)this.getMilitaryRenderer());
 		
 	}
 	

@@ -69,12 +69,12 @@ public class GamePlay_BuildingManager {
 
 		for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getBuildingsList()){
 			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
-			Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, gamePlayScreen.teamPlayer);
+			Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, gamePlayScreen.getTeamPlayer());
 			this.addBuilding(building);
 		}
 		for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
 			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
-			Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, gamePlayScreen.teamIA);
+			Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, gamePlayScreen.getTeamIA());
 			this.addBuilding(building);
 		}
 	}
