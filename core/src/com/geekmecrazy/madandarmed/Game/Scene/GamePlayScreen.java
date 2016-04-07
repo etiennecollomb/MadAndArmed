@@ -5,7 +5,7 @@ import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 
 
-public class GamePlayScreen extends Screen implements IUpdatable {
+public abstract class GamePlayScreen extends Screen implements IUpdatable {
 
     public static final int MAX_UNITS=1000;
     
@@ -57,7 +57,31 @@ public class GamePlayScreen extends Screen implements IUpdatable {
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
+    
+    /** Load Screen First Time **/
+    @Override
+    public void loadScreenFirstTime(){
+    	super.loadScreenFirstTime();
+    }
 
+    /** Load Screen **/
+    @Override
+    public void loadScreen(){
+    	super.loadScreen();
+    }
+
+    /** UnLoad Screen **/
+    @Override
+    public void unLoadScreen(){
+    	super.unLoadScreen();
+    }
+
+    /** UnLoad Screen Last Time **/
+    @Override
+    public void unLoadScreenLastTime(){
+    	super.unLoadScreenLastTime();
+    }
+    
 	// ===========================================================
 	// Methods
 	// ===========================================================

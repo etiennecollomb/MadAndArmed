@@ -29,7 +29,6 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
     public static final int TURN_MONEY=500; //30
     public static final int MAX_THORIUM=1000;
 
-
     /** UI */
     private UIFinishGame uiFinishGame;
     private Fight_SpawnBuildingButtonUI mUnitButtonUI;
@@ -44,6 +43,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 	// ===========================================================
 	// Constructors
 	// ===========================================================
+    
     
     // ===========================================================
     // Getter & Setter
@@ -106,9 +106,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 
         //principalement update des positions des renderer (a faire apres calcul metier...donc a la fin)
         super.onUpdate();
-        
-        
-        
+
         /** Memory Usage **/
 //        System.out.println("################## MEMORY USAGE ##################");
 //        System.out.println("Java Heap : " + Gdx.app.getJavaHeap()/1000000f + " Mo" );
@@ -118,13 +116,8 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
     }
 
     @Override
-    public void reset(){
-
-        this.setTeamPlayer(null);
-        this.setTeamIA(null);
-
-        this.setCurrentTime(0);
-        this.setPreviousMoneyTurnTime(0);
+    public void show() {
+        System.out.println("Show Fight Screen");
     }
 
     @Override
@@ -149,11 +142,6 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         this.previousMoneyTurnTime=System.currentTimeMillis();
         GlobalAstar.init();
         AstarMap.init(GlobalManager.FIGHT_STARMAP_WIDTH, GlobalManager.FIGHT_STARMAP_HEIGHT);
-    }
-
-    @Override
-    public void show() {
-        System.out.println("Show Fight Screen");
     }
 
     
@@ -273,13 +261,57 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 	
 	/** Load First Time **/
 	//boolean ?
-	/** load Normal **/
-	/** unload **/
-	/** unload last Time **/
+	/** Load Normal **/
+	/** Unload **/
+	/** Unload last Time **/
 	
-	
-	
-	
+	/*
+	@Override
+	public void reset() {
+		this.getRegisteredUpdatable().clear();
+		this.mTiledGround = null;
+		this.mScene = null;
+		this.getHUD().reset();
+	}
+
+    @Override
+    public void reset(){
+
+        this.setTeamPlayer(null);
+        this.setTeamIA(null);
+
+        this.setCurrentTime(0);
+        this.setPreviousMoneyTurnTime(0);
+    }
+*/
+    
+    
+
+    /** Load Screen First Time **/
+    @Override
+    public void loadScreenFirstTime(){
+    	super.loadScreenFirstTime();
+    }
+
+    /** Load Screen **/
+    @Override
+    public void loadScreen(){
+    	super.loadScreen();
+    }
+
+    /** UnLoad Screen **/
+    @Override
+    public void unLoadScreen(){
+    	super.unLoadScreen();
+    }
+
+    /** UnLoad Screen Last Time **/
+    @Override
+    public void unLoadScreenLastTime(){
+    	super.unLoadScreenLastTime();
+    }
+    
+    
 	
 
 }

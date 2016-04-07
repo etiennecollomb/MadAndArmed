@@ -9,7 +9,7 @@ import com.geekmecrazy.madandarmed.Renderer.MyTiledMapRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool.Poolable;
 
-public abstract class Screen implements Poolable, IUpdatable, ITouchable {
+public abstract class Screen implements IUpdatable, ITouchable {
 
 	private Array<IUpdatable> mRegisteredUpdatable;
 
@@ -18,6 +18,8 @@ public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 	private Scene mScene;
 
 	private HUD mHUD;
+	
+	private boolean isLoadFirstTime;
 
 	// ===========================================================
 	// Constructors
@@ -60,6 +62,14 @@ public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 
 	public void setHUD(final HUD pHUD) { this.mHUD = pHUD; }
 
+	public boolean isLoadFirstTime() {
+		return isLoadFirstTime;
+	}
+
+	public void setLoadFirstTime(boolean isLoadFirstTime) {
+		this.isLoadFirstTime = isLoadFirstTime;
+	}
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
@@ -95,14 +105,6 @@ public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 		this.getHUD().onUpdate();
 	}
 
-	@Override
-	public void reset() {
-		this.getRegisteredUpdatable().clear();
-		this.mTiledGround = null;
-		this.mScene = null;
-		this.getHUD().reset();
-	}
-
 	// ===========================================================
 	// Methods
 	// ===========================================================
@@ -111,6 +113,7 @@ public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 		this.mTiledGround = null;
 		this.setScene(pScene);
 		this.getHUD().init();
+		this.setLoadFirstTime(true);
 	}
 
 	public void registerUpdatable(final IUpdatable pUpdatable){
@@ -122,6 +125,21 @@ public abstract class Screen implements Poolable, IUpdatable, ITouchable {
 	}
 
 	public abstract void show();
+	
+    /** Load Screen First Time **/
+    protected void loadScreenFirstTime(){}
+    
+    /** Load Screen **/
+    public void loadScreen(){
+    	if(this.isLoadFirstTime())
+    		this.loadScreenFirstTime();
+    }
+    
+    /** UnLoad Screen **/
+    public void unLoadScreen(){}
+    
+    /** UnLoad Screen Last Time **/
+    public void unLoadScreenLastTime(){}
 
 
 }

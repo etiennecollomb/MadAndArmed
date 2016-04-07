@@ -76,15 +76,33 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
     }
 
     @Override
-    public void reset(){
-        this.setTeamPlayer(null);
-    }
-
-    @Override
     public WarBase_Team getTeamPlayer() {
         return (WarBase_Team)super.getTeamPlayer();
     }
+    /** Load Screen First Time **/
+    @Override
+    public void loadScreenFirstTime(){
+    	super.loadScreenFirstTime();
+    }
 
+    /** Load Screen **/
+    @Override
+    public void loadScreen(){
+    	super.loadScreen();
+    }
+
+    /** UnLoad Screen **/
+    @Override
+    public void unLoadScreen(){
+    	super.unLoadScreen();
+    }
+
+    /** UnLoad Screen Last Time **/
+    @Override
+    public void unLoadScreenLastTime(){
+    	super.unLoadScreenLastTime();
+    }
+    
     // ===========================================================
     // Methods
     // ===========================================================

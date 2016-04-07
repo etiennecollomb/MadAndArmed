@@ -66,7 +66,31 @@ public class LoadingScreen extends Screen implements IUpdatable {
 	public void show() {
 		System.out.println("Show Loading Screen...");
 	}
+	
+    /** Load Screen First Time **/
+    @Override
+    public void loadScreenFirstTime(){
+    	super.loadScreenFirstTime();
+    }
 
+    /** Load Screen **/
+    @Override
+    public void loadScreen(){
+    	super.loadScreen();
+    }
+
+    /** UnLoad Screen **/
+    @Override
+    public void unLoadScreen(){
+    	super.unLoadScreen();
+    }
+
+    /** UnLoad Screen Last Time **/
+    @Override
+    public void unLoadScreenLastTime(){
+    	super.unLoadScreenLastTime();
+    }
+    
 	// ===========================================================
 	// Methods
 	// ===========================================================

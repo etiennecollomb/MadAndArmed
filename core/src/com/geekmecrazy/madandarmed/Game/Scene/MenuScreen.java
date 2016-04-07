@@ -115,7 +115,29 @@ public class MenuScreen extends Screen implements IUpdatable {
 		System.out.println("Show Menu Screen");
 	}
 
-	
+    /** Load Screen First Time **/
+    @Override
+    public void loadScreenFirstTime(){
+    	super.loadScreenFirstTime();
+    }
+
+    /** Load Screen **/
+    @Override
+    public void loadScreen(){
+    	super.loadScreen();
+    }
+
+    /** UnLoad Screen **/
+    @Override
+    public void unLoadScreen(){
+    	super.unLoadScreen();
+    }
+
+    /** UnLoad Screen Last Time **/
+    @Override
+    public void unLoadScreenLastTime(){
+    	super.unLoadScreenLastTime();
+    }
 	
 	// ===========================================================
 	// Methods
@@ -206,10 +228,6 @@ public class MenuScreen extends Screen implements IUpdatable {
 		titleLayout.setLayoutSize(Layout.Dimension.MATCH_PARENT, Layout.Dimension.WRAP_CONTENT);
 		titleLayout.add(title,Entity.Alignment.CENTER);
 
-		this.getHUD().attachChild(titleLayout, Entity.Alignment.CENTER_TOP);
-		this.getHUD().attachChild(l1,Entity.Alignment.CENTER);
-		this.getHUD().attachChild(blackScreen, Entity.Alignment.CENTER);
-
 		//TEST scrollable
 		Rectangle r1 = new Rectangle();
 		r1.init(0,0,3f, 1.2f);
@@ -267,10 +285,15 @@ public class MenuScreen extends Screen implements IUpdatable {
 		//        layout_test.add(r1);
 		//        layout_test.add(r2);
 		//        layout_test.add(r3);
-		this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
 		//        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_LEFT);
 		this.getHUD().registerTouchableShape(layout_test);
 
+
+		this.getHUD().attachChild(titleLayout, Entity.Alignment.CENTER_TOP);
+		this.getHUD().attachChild(l1,Entity.Alignment.CENTER);
+		this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
+		this.getHUD().attachChild(blackScreen, Entity.Alignment.CENTER);
+		
 		//TEST
 //		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2);
 //		as1 = new AnimatedSprite();
