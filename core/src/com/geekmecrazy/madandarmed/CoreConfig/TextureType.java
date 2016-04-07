@@ -122,6 +122,8 @@ public enum TextureType{
 	SOUND_ICON 				("game/SoundIcon.png", 1f, 1f),
 	SOUND_ICON2 			("game/SoundIcon.png", 128, 128),
 
+	BACK_ICON 				("game/back-icon.png", 1f, 1f),
+	
 	;
 
 

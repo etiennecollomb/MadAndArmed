@@ -217,7 +217,7 @@ public class GlobalManager {
 		assestsLoader = new AssetsLoader();
 		isAssestsLoaded = false;
 		
-		/** screens **/
+		/** Screens **/
 		ScreenManager.init();
 	}
 

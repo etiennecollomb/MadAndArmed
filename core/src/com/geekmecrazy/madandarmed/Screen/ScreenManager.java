@@ -6,9 +6,6 @@ import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.LoadingScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.MenuScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.WarBaseScreen;
-import com.geekmecrazy.madandarmed.Renderer.MyTiledMapRenderer;
-
-import java.util.HashMap;
 
 public class ScreenManager {
 

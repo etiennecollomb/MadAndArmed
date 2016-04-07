@@ -17,6 +17,8 @@ import com.geekmecrazy.madandarmed.Game.UI.Fight_SpawnBuildingButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager.ScreenType;
 
 
 public class FightScreen extends GamePlayScreen implements IUpdatable {
@@ -25,7 +27,6 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
     public static final int START_MONEY=500;
     public static final int MAX_MONEY=2000;
     public static final int TURN_MONEY=500; //30
-
     public static final int MAX_THORIUM=1000;
 
 
@@ -146,9 +147,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         super.init(pScene);
 
         this.previousMoneyTurnTime=System.currentTimeMillis();
-
         GlobalAstar.init();
-
         AstarMap.init(GlobalManager.FIGHT_STARMAP_WIDTH, GlobalManager.FIGHT_STARMAP_HEIGHT);
     }
 
@@ -157,6 +156,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         System.out.println("Show Fight Screen");
     }
 
+    
     // Lance le screen la premiere fois qu'on y accede
 	public void newGame(){
 		
@@ -199,6 +199,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         this.getHUD().attachChild(mScoreBarUI, Entity.Alignment.LEFT_TOP);
 
         /** Sound Button */
+        /*
         Button soundButton = new Button();
         soundButton.init(0, 0, TextureType.SOUND_ICON);
         soundButton.setAction(new IAction(){
@@ -210,6 +211,20 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         soundButton.setSize(1.0f, 1.0f);
         this.getHUD().attachChild(soundButton, Entity.Alignment.RIGHT_BOTTOM);
         this.getHUD().registerTouchableShape(soundButton);
+        */
+        
+        /** Back Button */
+        Button backButton = new Button();
+        backButton.init(0, 0, TextureType.BACK_ICON);
+        backButton.setAction(new IAction(){
+            @Override
+            public void execute(){
+            	ScreenManager.launchScreen(ScreenType.MENU);
+            }
+        });
+        backButton.setSize(1.0f, 1.0f);
+        this.getHUD().attachChild(backButton, Entity.Alignment.RIGHT_BOTTOM);
+        this.getHUD().registerTouchableShape(backButton);
         
         
 		/** Start Sound Background */
@@ -254,5 +269,17 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 		}
 	}
 
+	
+	
+	/** Load First Time **/
+	//boolean ?
+	/** load Normal **/
+	/** unload **/
+	/** unload last Time **/
+	
+	
+	
+	
+	
 
 }
