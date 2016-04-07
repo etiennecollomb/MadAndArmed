@@ -11,6 +11,7 @@ import com.geekmecrazy.madandarmed.Game.UI.Layout;
 import com.geekmecrazy.madandarmed.Input.MyGestureDetector;
 import com.geekmecrazy.madandarmed.Loader.AssetsLoader;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager.ScreenType;
 import com.geekmecrazy.madandarmed.Utils.FPSControl;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -63,10 +64,7 @@ public class MadAndArmed extends ApplicationAdapter {
 //		ScreenManager.setCurrentScreen(MenuScreen.getManager());
 		
 		/** Loading Screen **/
-		Scene loadingScene = new Scene();
-		loadingScene.init(GlobalManager.MENU_SCENE_WIDTH, GlobalManager.MENU_SCENE_HEIGHT);
-		GlobalManager.loadingScreen.init(loadingScene);
-		ScreenManager.setCurrentScreen(GlobalManager.loadingScreen);
+		ScreenManager.launchScreen(ScreenType.LOADING);
 
 		////// TEST //////
 

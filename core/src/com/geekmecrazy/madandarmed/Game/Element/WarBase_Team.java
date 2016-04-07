@@ -5,7 +5,7 @@ import com.geekmecrazy.madandarmed.Core.GlobalManager;
 /**
  * Joueur (thune+score...) :)
  */
-public class WareBase_Team extends GamePlay_Team {
+public class WarBase_Team extends GamePlay_Team {
 
 
 	
@@ -13,7 +13,7 @@ public class WareBase_Team extends GamePlay_Team {
 	// Constructors
 	// ===========================================================
 	
-	public WareBase_Team(TeamID teamID_) {
+	public WarBase_Team(TeamID teamID_) {
 		super(teamID_, GlobalManager.WARBASE_STARMAP_WIDTH, GlobalManager.WARBASE_STARMAP_HEIGHT);
 	}
 

@@ -16,9 +16,7 @@ import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
 import com.geekmecrazy.madandarmed.Game.UI.Fight_SpawnBuildingButtonUI;
 import com.geekmecrazy.madandarmed.IA.AstarMap;
 import com.geekmecrazy.madandarmed.IA.GlobalAstar;
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
-import com.geekmecrazy.madandarmed.Screen.Screen;
 
 
 public class FightScreen extends GamePlayScreen implements IUpdatable {
@@ -186,7 +184,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         this.getTeamIA().getStateMap().initGame();
         this.getTeamIA().getStateMap().setZoneBPositionMap(this.getTeamIA().getTeamID());
 
-		GameMap.initMap( GlobalManager.fightScreen.getScene() );
+		GameMap.initMap( this.getScene() );
                 
         /** init UIs */
 		uiFinishGame = new UIFinishGame();
@@ -211,7 +209,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
         });
         soundButton.setSize(1.0f, 1.0f);
         this.getHUD().attachChild(soundButton, Entity.Alignment.RIGHT_BOTTOM);
-        GlobalManager.fightScreen.getHUD().registerTouchableShape(soundButton);
+        this.getHUD().registerTouchableShape(soundButton);
         
         
 		/** Start Sound Background */

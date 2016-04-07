@@ -1,15 +1,10 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
-import java.util.List;
-
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.Renderer.MilitaryRenderer;
-import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
-import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
 /**
@@ -120,7 +115,7 @@ public class Military extends Geometrie {
 		
 		/** set enemyTeam if we are in fight Screen only **/
 		if(ScreenManager.getCurrentScreen() instanceof FightScreen)
-			this.ennemyTeam = GlobalManager.fightScreen.getOtherTeam(myTeam);
+			this.ennemyTeam = ScreenManager.fightScreen.getOtherTeam(myTeam);
 		else
 			this.ennemyTeam = null;
 

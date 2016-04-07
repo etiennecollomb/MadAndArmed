@@ -10,9 +10,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Rectangle;
-import com.geekmecrazy.madandarmed.Entity.Scene.FightScene;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
-import com.geekmecrazy.madandarmed.Entity.Scene.WarBaseScene;
 import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
@@ -26,6 +24,7 @@ import com.geekmecrazy.madandarmed.Renderer.MyTiledMapRenderer;
 import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager.ScreenType;
 import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
 
 import aurelienribon.tweenengine.BaseTween;
@@ -140,7 +139,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				showFightScreen();
 			}
 		});
-		GlobalManager.menuScreen.getHUD().registerTouchableShape(fightScreenButton);
+		this.getHUD().registerTouchableShape(fightScreenButton);
 
 		warBaseScreenButton = new Button();
 		warBaseScreenButton.init(0, 0, TextureType.BUTTON_UNIT_BACKGROUND);
@@ -189,7 +188,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 			}
 		});
-		GlobalManager.menuScreen.getHUD().registerTouchableShape(warBaseScreenButton);
+		this.getHUD().registerTouchableShape(warBaseScreenButton);
 
 
 		//TEST/////////////////////////////////////////
@@ -270,7 +269,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 		//        layout_test.add(r3);
 		this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
 		//        this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_LEFT);
-		GlobalManager.menuScreen.getHUD().registerTouchableShape(layout_test);
+		this.getHUD().registerTouchableShape(layout_test);
 
 		//TEST
 //		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2);
@@ -341,18 +340,14 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
-				Scene fightScene = new FightScene();
-
-				fightScene.init(GlobalManager.FIGHT_SCENE_WIDTH, GlobalManager.FIGHT_SCENE_HEIGHT);
-				GlobalManager.fightScreen.init(fightScene);
-				ScreenManager.setCurrentScreen(GlobalManager.fightScreen);
-
-				GlobalManager.fightScreen.newGame();
+				
+				/** Fight Screen **/
+				ScreenManager.launchScreen(ScreenType.FIGHT);
 
 				//init GROUND
 				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
 				tiledGround.init(GlobalManager.FIGHT_SCENE_WIDTH, GlobalManager.FIGHT_SCENE_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
-				GlobalManager.fightScreen.setTiledGround(tiledGround);
+				ScreenManager.fightScreen.setTiledGround(tiledGround);
 			}
 		})
 		.ease(Quad.OUT)
@@ -368,19 +363,14 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
-				Scene warBaseScene = new WarBaseScene();
-
-				warBaseScene.init(GlobalManager.WARBASE_SCENE_WIDTH, GlobalManager.WARBASE_SCENE_HEIGHT);
-				GlobalManager.warBaseScreen.init(warBaseScene);
-				ScreenManager.setCurrentScreen(GlobalManager.warBaseScreen);
-
-				//WarBaseScreen.getManager().loadData(); //from xml, et precalcul
-				GlobalManager.warBaseScreen.newGame();
+				
+				/** WarBase Screen **/
+				ScreenManager.launchScreen(ScreenType.WARBASE);
 
 				//init GROUND
 				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
 				tiledGround.init(GlobalManager.WARBASE_SCENE_WIDTH, GlobalManager.WARBASE_SCENE_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
-				GlobalManager.warBaseScreen.setTiledGround(tiledGround);
+				ScreenManager.warBaseScreen.setTiledGround(tiledGround);
 			}
 		})
 		.ease(Quad.OUT)

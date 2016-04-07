@@ -1,9 +1,8 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
-import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Factory.BuildingFactory;
-import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
 
 public class Building extends Military{
@@ -64,7 +63,7 @@ public class Building extends Military{
 		this.getMyTeam().getStateMap().removeBuilding(this);
 		
 		/** TODO: a isoler dans les classes Fights!! ici classe generic GamePlay **/
-		GlobalManager.fightScreen.getOtherTeam((Fight_Team)this.getMyTeam()).addScore(this.getPattern().getPrice());
+		ScreenManager.fightScreen.getOtherTeam((Fight_Team)this.getMyTeam()).addScore(this.getPattern().getPrice());
 
 	}
 	

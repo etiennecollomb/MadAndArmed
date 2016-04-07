@@ -5,11 +5,10 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Factory.CreepFactory;
-import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
 
 public class Creep extends Vehicle {
@@ -25,11 +24,11 @@ public class Creep extends Vehicle {
 		((CreepRenderer)this.militaryRenderer).init(GlobalManager.poolAnimManager.getSpriteSheets().get(animatedTextureType), creepPattern, this);
 
         animatedMilitary.setAlignment(Entity.Alignment.CENTER_ON_ITSELF);
-        GlobalManager.fightScreen.getScene().attachChild(animatedMilitary);
+        ScreenManager.fightScreen.getScene().attachChild(animatedMilitary);
 
         //on ne peut selectionner que les units de sa team
         if(myTeam.getTeamID() == TeamID.TEAM1)
-        	GlobalManager.fightScreen.getScene().registerTouchableShape(animatedMilitary);
+        	ScreenManager.fightScreen.getScene().registerTouchableShape(animatedMilitary);
 		
 		/*
 		if(UnitType.AIR.equals(pattern.getUnitType()))GameManager.getManager().getScene().attachChild(animatedMilitary.getSupport(), LayerIndex.AIR);

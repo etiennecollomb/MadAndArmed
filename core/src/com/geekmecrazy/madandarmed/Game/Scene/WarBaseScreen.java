@@ -9,7 +9,7 @@ import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team.TeamID;
-import com.geekmecrazy.madandarmed.Game.Element.WareBase_Team;
+import com.geekmecrazy.madandarmed.Game.Element.WarBase_Team;
 import com.geekmecrazy.madandarmed.Game.Element.Property.GameMap;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
 import com.geekmecrazy.madandarmed.Game.UI.ScoreBarUI;
@@ -81,8 +81,8 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
     }
 
     @Override
-    public WareBase_Team getTeamPlayer() {
-        return (WareBase_Team)super.getTeamPlayer();
+    public WarBase_Team getTeamPlayer() {
+        return (WarBase_Team)super.getTeamPlayer();
     }
 
     // ===========================================================
@@ -110,11 +110,11 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
         //this.getScene().attachChild(gridRenderer);
         
         /** Init des 2 teams */
-		this.setTeamPlayer( new WareBase_Team(TeamID.TEAM1));
+		this.setTeamPlayer( new WarBase_Team(TeamID.TEAM1));
 		
-        GlobalManager.createManagersForWarBase((WareBase_Team)this.getTeamPlayer());
+        GlobalManager.createManagersForWarBase((WarBase_Team)this.getTeamPlayer());
         
-        GameMap.initMap( GlobalManager.warBaseScreen.getScene() );
+        GameMap.initMap( this.getScene() );
         
         /** init UIs */
 

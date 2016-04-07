@@ -9,6 +9,7 @@ import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Renderer.FontRenderer;
 import com.geekmecrazy.madandarmed.Renderer.ProgressBarRenderer;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.Utils.VirtualViewport;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -70,8 +71,8 @@ public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener
 
         this.setOrientation(Orientation.VERTICAL);
 
-        GlobalManager.fightScreen.getTeamPlayer().addMoneyListener(this);
-        GlobalManager.fightScreen.getTeamPlayer().addScoreListener(this);
+        ScreenManager.fightScreen.getTeamPlayer().addMoneyListener(this);
+        ScreenManager.fightScreen.getTeamPlayer().addScoreListener(this);
 
         float score_bar_min = 49;
         float score_bar_max = 207;
@@ -111,24 +112,24 @@ public class ScoreBarUI extends Layout implements IMoneyListener, IScoreListener
 
     private int getScore(){
 
-        int score = GlobalManager.fightScreen.getTeamPlayer().getScore();
+        int score = ScreenManager.fightScreen.getTeamPlayer().getScore();
 
-        if(score > GlobalManager.fightScreen.getTeamPlayer().getThoriumMax())
-            score = GlobalManager.fightScreen.getTeamPlayer().getThoriumMax();
+        if(score > ScreenManager.fightScreen.getTeamPlayer().getThoriumMax())
+            score = ScreenManager.fightScreen.getTeamPlayer().getThoriumMax();
 
         return score;
     }
 
     private String getMoneyText(){
-        return GlobalManager.fightScreen.getTeamPlayer().getMoney() + " / " + GlobalManager.fightScreen.getTeamPlayer().getMoneyMax();
+        return ScreenManager.fightScreen.getTeamPlayer().getMoney() + " / " + ScreenManager.fightScreen.getTeamPlayer().getMoneyMax();
     }
 
     private String getScoreText(){
-        return getScore() + " / " + GlobalManager.fightScreen.getTeamPlayer().getThoriumMax();
+        return getScore() + " / " + ScreenManager.fightScreen.getTeamPlayer().getThoriumMax();
     }
 
     private String getMoneyTurnText(){
-        return "" + GlobalManager.fightScreen.getTeamPlayer().getMoneyByTurn();
+        return "" + ScreenManager.fightScreen.getTeamPlayer().getMoneyByTurn();
     }
 
 

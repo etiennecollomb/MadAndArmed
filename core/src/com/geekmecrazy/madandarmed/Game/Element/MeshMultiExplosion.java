@@ -1,10 +1,8 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Game.Scene.Fight_WeaponManager;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MeshMultiExplosionRenderer;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
 
 public class MeshMultiExplosion extends Weapon {
@@ -22,7 +20,7 @@ public class MeshMultiExplosion extends Weapon {
 		this.meshMultiExplosionRenderer = GlobalManager.poolAnimManager.getMeshMultiExplosionRendererPool().obtain();
 		this.meshMultiExplosionRenderer.init(this);
 
-		GlobalManager.fightScreen.getScene().attachChild(this.meshMultiExplosionRenderer);
+		ScreenManager.fightScreen.getScene().attachChild(this.meshMultiExplosionRenderer);
 
 	}
 

@@ -5,7 +5,7 @@ import com.geekmecrazy.madandarmed.Entity.Shape;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
-import com.geekmecrazy.madandarmed.Game.Element.WareBase_Team;
+import com.geekmecrazy.madandarmed.Game.Element.WarBase_Team;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.GamePlay_BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.Fight_CreepManager;
@@ -124,12 +124,6 @@ public class GlobalManager {
 
 	public static final float BIG_NODESIZE = 64f;//32f LD, 64f HD;
 	public static final float SMALL_NODESIZE = BIG_NODESIZE/3f;
-	
-	/** Screens **/
-	public static LoadingScreen loadingScreen = new LoadingScreen();
-	public static MenuScreen menuScreen = new MenuScreen();
-	public static FightScreen fightScreen = new FightScreen();
-	public static WarBaseScreen warBaseScreen = new WarBaseScreen();
 
 	/** Menu Scene */
 	public static final int MENU_SCENE_WIDTH = DEVICE_SCREEN_WIDTH*5;
@@ -222,6 +216,9 @@ public class GlobalManager {
 		/** Data Loader **/
 		assestsLoader = new AssetsLoader();
 		isAssestsLoaded = false;
+		
+		/** screens **/
+		ScreenManager.init();
 	}
 
 	/** Set Camera */
@@ -444,7 +441,7 @@ public class GlobalManager {
 	}
 	
 	/** WarBAse Managers **/
-	public static void createManagersForWarBase(WareBase_Team teamPlayer){
+	public static void createManagersForWarBase(WarBase_Team teamPlayer){
 		
 		GlobalManager.gamePlay_BuildingManager = new GamePlay_BuildingManager(teamPlayer, null);
 	}

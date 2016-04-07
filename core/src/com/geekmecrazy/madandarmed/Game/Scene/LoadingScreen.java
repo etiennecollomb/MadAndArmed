@@ -9,6 +9,7 @@ import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Renderer.ProgressBarRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager.ScreenType;
 
 
 public class LoadingScreen extends Screen implements IUpdatable {
@@ -91,10 +92,8 @@ public class LoadingScreen extends Screen implements IUpdatable {
 
 	public void showMenuScreen(){
 
-		Scene menuScene = new Scene();
-		menuScene.init(GlobalManager.MENU_SCENE_WIDTH, GlobalManager.MENU_SCENE_HEIGHT);
-		GlobalManager.menuScreen.init(menuScene);
-		ScreenManager.setCurrentScreen(GlobalManager.menuScreen);
+		/** Menu Screen **/
+		ScreenManager.launchScreen(ScreenType.MENU);
 
 	}
 

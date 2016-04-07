@@ -1,12 +1,8 @@
 package com.geekmecrazy.madandarmed.Game.Element;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Game.Scene.Fight_WeaponManager;
-import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.GunRenderer;
-import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.MissileRenderer;
 import com.geekmecrazy.madandarmed.Renderer.WeaponsRenderer.SwordRenderer;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
 public class Sword extends Weapon {
 
@@ -21,7 +17,7 @@ public class Sword extends Weapon {
 			this.setWeaponRenderer( GlobalManager.poolAnimManager.getSwordRendererPool().obtain() );
 			((SwordRenderer) this.getWeaponRenderer()).init(this, shooter);
 
-			GlobalManager.fightScreen.getScene().attachChild(this.getWeaponRenderer());
+			ScreenManager.fightScreen.getScene().attachChild(this.getWeaponRenderer());
 			
 			}
 

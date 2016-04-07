@@ -5,16 +5,13 @@ import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
-import com.geekmecrazy.madandarmed.Game.Scene.Fight_CreepManager;
-import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.IA.GroundMoveBehavior;
 import com.geekmecrazy.madandarmed.IA.GroundPathFinding;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Renderer.CreepRenderer;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
-import com.geekmecrazy.madandarmed.pool.PoolManager;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
 
 public class CreepFactory {
@@ -66,8 +63,8 @@ public class CreepFactory {
 			Attaque attaque = GlobalManager.poolManager.getAttaquePool().obtain();
 			attackBehavior.setAttaque(attaque);
 	
-			creep.getAttackBehavior().setMainTarget(GlobalManager.fightScreen.getOtherTeam(team).getCastle());
-			creep.getAttackBehavior().setCurrentTarget(GlobalManager.fightScreen.getOtherTeam(team).getCastle());
+			creep.getAttackBehavior().setMainTarget(ScreenManager.fightScreen.getOtherTeam(team).getCastle());
+			creep.getAttackBehavior().setCurrentTarget(ScreenManager.fightScreen.getOtherTeam(team).getCastle());
 		}
 
 

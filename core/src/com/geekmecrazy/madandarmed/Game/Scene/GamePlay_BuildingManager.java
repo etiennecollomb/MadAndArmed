@@ -98,8 +98,8 @@ public class GamePlay_BuildingManager {
 	public void initTarget(){
 		for(Building b : listBuildings){
 			if(b.getAttackBehavior()!=null){
-				b.getAttackBehavior().setMainTarget(GlobalManager.fightScreen.getOtherTeam(b.getMyTeam()).getCastle());
-				b.getAttackBehavior().setCurrentTarget(GlobalManager.fightScreen.getOtherTeam(b.getMyTeam()).getCastle());
+				b.getAttackBehavior().setMainTarget(ScreenManager.fightScreen.getOtherTeam(b.getMyTeam()).getCastle());
+				b.getAttackBehavior().setCurrentTarget(ScreenManager.fightScreen.getOtherTeam(b.getMyTeam()).getCastle());
 			}
 		}
 	}

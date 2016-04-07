@@ -1,20 +1,39 @@
 package com.geekmecrazy.madandarmed.Screen;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
+import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
+import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.LoadingScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.MenuScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.WarBaseScreen;
+import com.geekmecrazy.madandarmed.Renderer.MyTiledMapRenderer;
 
 import java.util.HashMap;
 
 public class ScreenManager {
-	
+
+	public static enum ScreenType {
+		LOADING,
+		MENU,
+		FIGHT,
+		WARBASE
+	}
+
 	private static Screen currentScreen;
-		
+
+	/** Screens **/
+	public static LoadingScreen loadingScreen = new LoadingScreen();
+	public static MenuScreen menuScreen = new MenuScreen();
+	public static FightScreen fightScreen = new FightScreen();
+	public static WarBaseScreen warBaseScreen = new WarBaseScreen();
+
 	// ===========================================================
 	// Constructors
 	// ===========================================================
-	
+
 	/**  Disable object's instantiation (private constructor) */
 	private ScreenManager(){}
-	
+
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
@@ -23,12 +42,12 @@ public class ScreenManager {
 		return currentScreen;
 	}
 
-	public static void setCurrentScreen(final Screen pCurrentScreen) {
+	private static void setCurrentScreen(final Screen pCurrentScreen) {
 		currentScreen = pCurrentScreen;
-        GlobalManager.initCameras();
-        currentScreen.show();
+		GlobalManager.initCameras();
+		currentScreen.show();
 	}
-	
+
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
@@ -37,10 +56,54 @@ public class ScreenManager {
 	// Methods
 	// ===========================================================
 
+	public static void launchScreen(ScreenType screenType){
+
+		switch(screenType){
+		case LOADING:
+			ScreenManager.setCurrentScreen(ScreenManager.loadingScreen);
+			break;
+		case MENU:
+			ScreenManager.setCurrentScreen(ScreenManager.menuScreen);
+			break;
+		case FIGHT:
+			ScreenManager.setCurrentScreen(ScreenManager.fightScreen);
+			ScreenManager.fightScreen.newGame();
+			break;
+		case WARBASE:
+			ScreenManager.setCurrentScreen(ScreenManager.warBaseScreen);
+			ScreenManager.warBaseScreen.newGame();
+			break;
+		default:
+			break;
+		}
+
+	}
+
 	public static void init(){
 		currentScreen = null;
+
+		/** Loading Screen **/
+		Scene loadingScene = new Scene();
+		loadingScene.init(GlobalManager.MENU_SCENE_WIDTH, GlobalManager.MENU_SCENE_HEIGHT);
+		ScreenManager.loadingScreen.init(loadingScene);
+
+		/** Menu Screen **/
+		Scene menuScene = new Scene();
+		menuScene.init(GlobalManager.MENU_SCENE_WIDTH, GlobalManager.MENU_SCENE_HEIGHT);
+		ScreenManager.menuScreen.init(menuScene);
+
+		/** Fight Screen **/
+		Scene fightScene = new Scene();
+		fightScene.init(GlobalManager.FIGHT_SCENE_WIDTH, GlobalManager.FIGHT_SCENE_HEIGHT);
+		ScreenManager.fightScreen.init(fightScene);
+
+		/** WarBase Screen **/
+		Scene warBaseScene = new Scene();
+		warBaseScene.init(GlobalManager.WARBASE_SCENE_WIDTH, GlobalManager.WARBASE_SCENE_HEIGHT);
+		ScreenManager.warBaseScreen.init(warBaseScene);
 	}
 
 
-	
+
+
 }

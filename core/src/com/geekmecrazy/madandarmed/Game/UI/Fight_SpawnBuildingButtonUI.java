@@ -14,6 +14,7 @@ import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.ButtonPattern;
 import com.geekmecrazy.madandarmed.Renderer.SpawnBuildingButtonRenderer;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +35,7 @@ public class Fight_SpawnBuildingButtonUI extends Layout implements IMoneyListene
 
 		this.setOrientation(Orientation.HORIZONTAL);
 
-		GlobalManager.fightScreen.getTeamPlayer().addMoneyListener(this);
+		ScreenManager.fightScreen.getTeamPlayer().addMoneyListener(this);
 
 		List<ButtonPattern> buttonsPattern = PatternLoader.getMenusPattern().get("FIGHT_SPAWN_BUILDING_MENU").getButtonsPattern();
 		for (final ButtonPattern buttonPattern: buttonsPattern){
@@ -64,7 +65,7 @@ public class Fight_SpawnBuildingButtonUI extends Layout implements IMoneyListene
 				public void execute(){
 					//System.out.println("#### TOUCH SPAWN BUILDING BUTTON !!");
 					if(spawnBuildingButtonsState.get(buildingPattern).intValue() == Fight_SpawnBuildingButtonUI.BUTTON_OK_STATE) {
-						GlobalManager.gamePlay_BuildingManager.askForCreateSpawnBuilding(buttonPattern.getBuildingName(), GlobalManager.fightScreen.getTeamPlayer());
+						GlobalManager.gamePlay_BuildingManager.askForCreateSpawnBuilding(buttonPattern.getBuildingName(), ScreenManager.fightScreen.getTeamPlayer());
 					}
 				}
 			});
@@ -73,7 +74,7 @@ public class Fight_SpawnBuildingButtonUI extends Layout implements IMoneyListene
 
 			newSpawnBuildingButton.setSize(1.5f, 1.5f);
 			this.add(newSpawnBuildingButton);
-			GlobalManager.fightScreen.getHUD().registerTouchableShape(newSpawnBuildingButton);
+			ScreenManager.fightScreen.getHUD().registerTouchableShape(newSpawnBuildingButton);
 
 
 		}

@@ -10,14 +10,12 @@ import com.geekmecrazy.madandarmed.Game.Element.Life;
 import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
-import com.geekmecrazy.madandarmed.Game.Scene.GamePlay_BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
-import com.geekmecrazy.madandarmed.pool.PoolManager;
 
 
 public class BuildingFactory{
@@ -63,10 +61,10 @@ public class BuildingFactory{
 		GlobalManager.gamePlay_BuildingManager.removeBuilding(building);
 
 		if(ScreenManager.getCurrentScreen() instanceof FightScreen){
-			if(building.equals(GlobalManager.fightScreen.getTeamIA().getCastle())){
-				GlobalManager.fightScreen.getUiFinishGame().showUI(true);
-			}else if(building.equals(GlobalManager.fightScreen.getTeamPlayer().getCastle())){
-				GlobalManager.fightScreen.getUiFinishGame().showUI(false);
+			if(building.equals(ScreenManager.fightScreen.getTeamIA().getCastle())){
+				ScreenManager.fightScreen.getUiFinishGame().showUI(true);
+			}else if(building.equals(ScreenManager.fightScreen.getTeamPlayer().getCastle())){
+				ScreenManager.fightScreen.getUiFinishGame().showUI(false);
 			}
 		}
 

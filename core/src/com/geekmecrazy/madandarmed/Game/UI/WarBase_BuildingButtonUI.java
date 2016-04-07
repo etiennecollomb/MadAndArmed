@@ -2,19 +2,12 @@ package com.geekmecrazy.madandarmed.Game.UI;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
-import com.geekmecrazy.madandarmed.Entity.Shape;
-import com.geekmecrazy.madandarmed.Entity.Entity;
-import com.geekmecrazy.madandarmed.Entity.IMoneyListener;
-import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.IAction;
-import com.geekmecrazy.madandarmed.Game.Scene.GamePlay_BuildingManager;
-import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Game.Scene.WarBaseScreen;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.ButtonPattern;
-import com.geekmecrazy.madandarmed.Renderer.SpawnBuildingButtonRenderer;
 import com.geekmecrazy.madandarmed.Renderer.WarBaseBuildingButtonRenderer;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
 import java.util.HashMap;
 import java.util.List;
@@ -60,8 +53,8 @@ public class WarBase_BuildingButtonUI extends Layout {
 				// Pour le moment ça va lancer le fight direct ce bouton au lieu du world
 				@Override
 				public void execute(){
-					System.out.println("#### TOUCH WAR BASE BUILDING BUTTON !!");
-					GlobalManager.gamePlay_BuildingManager.askForCreateSpawnBuilding(buttonPattern.getBuildingName(), GlobalManager.warBaseScreen.getTeamPlayer());
+					//System.out.println("#### TOUCH WAR BASE BUILDING BUTTON !!");
+					GlobalManager.gamePlay_BuildingManager.askForCreateSpawnBuilding(buttonPattern.getBuildingName(), ScreenManager.warBaseScreen.getTeamPlayer());
 
 				}
 			});
@@ -70,7 +63,7 @@ public class WarBase_BuildingButtonUI extends Layout {
 
 			newWarBaseBuildingButton.setSize(1.5f, 1.5f);
 			this.add(newWarBaseBuildingButton);
-			GlobalManager.warBaseScreen.getHUD().registerTouchableShape(newWarBaseBuildingButton);
+			ScreenManager.warBaseScreen.getHUD().registerTouchableShape(newWarBaseBuildingButton);
 
 		}
 
