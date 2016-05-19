@@ -26,8 +26,8 @@ public class GameMap {
 
 	public static void initMap(Scene scene) {
 
+		/** Set decoration **/
         DecorationManager decorationManager = new DecorationManager();
-
         decorationManager.setDecoration();
         decorationManager.attachDecoration( scene );
 

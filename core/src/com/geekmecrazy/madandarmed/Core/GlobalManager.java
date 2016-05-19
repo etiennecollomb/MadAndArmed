@@ -14,6 +14,7 @@ import com.geekmecrazy.madandarmed.Game.Scene.Fight_TurnManager;
 import com.geekmecrazy.madandarmed.Game.Scene.Fight_WeaponManager;
 import com.geekmecrazy.madandarmed.Game.Scene.LoadingScreen;
 import com.geekmecrazy.madandarmed.Game.Scene.MenuScreen;
+import com.geekmecrazy.madandarmed.Game.Scene.SoundManager;
 import com.geekmecrazy.madandarmed.Game.Scene.WarBaseScreen;
 import com.geekmecrazy.madandarmed.Game.Tween.ButtonTween;
 import com.geekmecrazy.madandarmed.Game.Tween.LayoutTween;
@@ -124,7 +125,11 @@ public class GlobalManager {
 
 	public static final float BIG_NODESIZE = 64f;//32f LD, 64f HD;
 	public static final float SMALL_NODESIZE = BIG_NODESIZE/3f;
-
+	
+	/** Loading Scene */
+	public static final int LOADING_SCENE_WIDTH = DEVICE_SCREEN_WIDTH*5;
+	public static final int LOADING_SCENE_HEIGHT = DEVICE_SCREEN_HEIGHT*5;
+	
 	/** Menu Scene */
 	public static final int MENU_SCENE_WIDTH = DEVICE_SCREEN_WIDTH*5;
 	public static final int MENU_SCENE_HEIGHT = DEVICE_SCREEN_HEIGHT*5;
@@ -137,8 +142,8 @@ public class GlobalManager {
 	public static final int FIGHT_STARMAP_HEIGHT = (int)(FIGHT_SCENE_HEIGHT / GlobalManager.BIG_NODESIZE);
 
 	/** WARBASE Scene */
-	public static final int WARBASE_SCENE_WIDTH = 2048;
-	public static final int WARBASE_SCENE_HEIGHT = 1024;
+	public static final int WARBASE_SCENE_WIDTH = 4096;
+	public static final int WARBASE_SCENE_HEIGHT = 4096;
 	
 	public static final int WARBASE_STARMAP_WIDTH = (int)(WARBASE_SCENE_WIDTH / GlobalManager.BIG_NODESIZE);
 	public static final int WARBASE_STARMAP_HEIGHT = (int)(WARBASE_SCENE_HEIGHT / GlobalManager.BIG_NODESIZE);
@@ -219,6 +224,10 @@ public class GlobalManager {
 		
 		/** Screens **/
 		ScreenManager.init();
+		
+		/** Managers **/
+		GlobalManager.createManagers();
+		
 	}
 
 	/** Set Camera */
@@ -430,20 +439,14 @@ public class GlobalManager {
 
 	}
 
-	/** Fight Managers **/
-	public static void createManagersForFight(Fight_Team teamPlayer, Fight_Team teamIA){
+	/** Managers **/
+	public static void createManagers(){
 		
-		GlobalManager.gamePlay_BuildingManager = new GamePlay_BuildingManager(teamPlayer, teamIA);
-		GlobalManager.fight_CreepManager = new Fight_CreepManager(teamPlayer, teamIA);
+		GlobalManager.gamePlay_BuildingManager = new GamePlay_BuildingManager();
+		GlobalManager.fight_CreepManager = new Fight_CreepManager();
 		GlobalManager.fight_TurnManager = new Fight_TurnManager();
 		GlobalManager.fight_IaManager = new Fight_IaManager();
 		GlobalManager.fight_WeaponManager = new Fight_WeaponManager();
-	}
-	
-	/** WarBAse Managers **/
-	public static void createManagersForWarBase(WarBase_Team teamPlayer){
-		
-		GlobalManager.gamePlay_BuildingManager = new GamePlay_BuildingManager(teamPlayer, null);
 	}
 	
 	public static void destroyManagers(){

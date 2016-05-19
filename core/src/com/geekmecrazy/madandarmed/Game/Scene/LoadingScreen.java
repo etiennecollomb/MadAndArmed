@@ -52,10 +52,13 @@ public class LoadingScreen extends Screen implements IUpdatable {
 		}else{
 			/** create at last the pool*Managers, it doesn't take so much time **/
 			GlobalManager.createPoolManagers();
-			
+
 			/** load patterns **/
 			PatternLoader.loadPatternsData();
-			
+
+			/** Sound Manager **/
+			new SoundManager();
+
 			/** Launch next screen **/
 			this.showMenuScreen();
 		}
@@ -66,31 +69,33 @@ public class LoadingScreen extends Screen implements IUpdatable {
 	public void show() {
 		System.out.println("Show Loading Screen...");
 	}
-	
-    /** Load Screen First Time **/
-    @Override
-    public void loadScreenFirstTime(){
-    	super.loadScreenFirstTime();
-    }
 
-    /** Load Screen **/
-    @Override
-    public void loadScreen(){
+	/** Load Screen First Time **/
+	@Override
+	public void loadScreenFirstTime(){
+		super.loadScreenFirstTime();
+	}
+
+	/** Load Screen **/
+	@Override
+	public void loadScreen(){
+		if(this.isLoadFirstTime()) this.loadScreenFirstTime();
     	super.loadScreen();
-    }
+    	
+	}
 
-    /** UnLoad Screen **/
-    @Override
-    public void unLoadScreen(){
-    	super.unLoadScreen();
-    }
+	/** UnLoad Screen **/
+	@Override
+	public void unLoadScreen(){
+		super.unLoadScreen();
+	}
 
-    /** UnLoad Screen Last Time **/
-    @Override
-    public void unLoadScreenLastTime(){
-    	super.unLoadScreenLastTime();
-    }
-    
+	/** UnLoad Screen Last Time **/
+	@Override
+	public void unLoadScreenLastTime(){
+		super.unLoadScreenLastTime();
+	}
+
 	// ===========================================================
 	// Methods
 	// ===========================================================

@@ -7,7 +7,6 @@ import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Input.SelectedShapeManager;
 import com.geekmecrazy.madandarmed.Renderer.MyTiledMapRenderer;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Pool.Poolable;
 
 public abstract class Screen implements IUpdatable, ITouchable {
 
@@ -131,8 +130,12 @@ public abstract class Screen implements IUpdatable, ITouchable {
     
     /** Load Screen **/
     public void loadScreen(){
-    	if(this.isLoadFirstTime())
+    	
+    	if(this.isLoadFirstTime()){
     		this.loadScreenFirstTime();
+    		this.setLoadFirstTime(false);
+    	}
+		
     }
     
     /** UnLoad Screen **/

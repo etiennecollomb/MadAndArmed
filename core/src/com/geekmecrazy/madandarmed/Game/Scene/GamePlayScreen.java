@@ -61,13 +61,15 @@ public abstract class GamePlayScreen extends Screen implements IUpdatable {
     /** Load Screen First Time **/
     @Override
     public void loadScreenFirstTime(){
-    	super.loadScreenFirstTime();
+    		super.loadScreenFirstTime();
     }
 
     /** Load Screen **/
     @Override
     public void loadScreen(){
+    	if(this.isLoadFirstTime()) this.loadScreenFirstTime();
     	super.loadScreen();
+    	
     }
 
     /** UnLoad Screen **/

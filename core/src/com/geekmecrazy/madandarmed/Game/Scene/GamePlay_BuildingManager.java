@@ -33,24 +33,23 @@ public class GamePlay_BuildingManager {
 	/** list of buildings to delete */
 	private Set<Building> listBuildingsRecycle;
 
+	/** Team **/
+	private GamePlay_Team teamPlayer;
+	private GamePlay_Team teamIA;
+
+
 	// ===========================================================
 	// Constructors
 	// ===========================================================
 
 	/** Disable object's instantiation (private constructor) */
-	public GamePlay_BuildingManager(GamePlay_Team teamPlayer, GamePlay_Team teamIA){
-		this.teamPlayer = teamPlayer;
-		this.teamIA = teamIA;
+	public GamePlay_BuildingManager(){
+		this.teamPlayer = null;
+		this.teamIA = null;
 		this.listSpawnBuildings = new Array<SpawnBuilding>();
 		this.listBuildings = new Array<Building>();
 		this.listBuildingsRecycle = new HashSet<Building>();
 	}
-
-
-	/** Team **/
-	private GamePlay_Team teamPlayer;
-	private GamePlay_Team teamIA;
-
 
 	// ===========================================================
 	// Getter & Setter
@@ -65,26 +64,32 @@ public class GamePlay_BuildingManager {
 	// ===========================================================
 
 	/** Creation des buildings en debut de partie */
-	public void initBuildingAtStart(GamePlayScreen gamePlayScreen){
+	public void init(GamePlay_Team teamPlayer, GamePlay_Team teamIA){
 
-		for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getBuildingsList()){
-			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
-			Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, gamePlayScreen.getTeamPlayer());
-			
-			if(building instanceof SpawnBuilding)
-				this.addSpawnBuilding((SpawnBuilding)building);
-			else
-				this.addBuilding(building);
-		}
-		for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
-			BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
-			Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, gamePlayScreen.getTeamIA());
+		this.teamPlayer = teamPlayer;
+		this.teamIA = teamIA;
 
-			if(building instanceof SpawnBuilding)
-				this.addSpawnBuilding((SpawnBuilding)building);
-			else
-				this.addBuilding(building);
-		}
+		if(this.teamPlayer!=null)
+			for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getBuildingsList()){
+				BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
+				Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, this.teamPlayer);
+
+				if(building instanceof SpawnBuilding)
+					this.addSpawnBuilding((SpawnBuilding)building);
+				else
+					this.addBuilding(building);
+			}
+
+		if(this.teamIA!=null)
+			for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
+				BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
+				Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, this.teamIA);
+
+				if(building instanceof SpawnBuilding)
+					this.addSpawnBuilding((SpawnBuilding)building);
+				else
+					this.addBuilding(building);
+			}
 	}
 
 
@@ -162,11 +167,11 @@ public class GamePlay_BuildingManager {
 				team.getListAskForCreateSpawnBuilding().add(buildingName);
 			}
 		}
-		
+
 		if(ScreenManager.getCurrentScreen() instanceof WarBaseScreen){
 			team.getListAskForCreateSpawnBuilding().add(buildingName);
 		}
-		
+
 	}
 
 	/** Excecute les demandes de création de creep */

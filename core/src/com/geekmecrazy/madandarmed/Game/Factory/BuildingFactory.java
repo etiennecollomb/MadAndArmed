@@ -1,5 +1,7 @@
 package com.geekmecrazy.madandarmed.Game.Factory;
 
+import jdk.nashorn.internal.objects.Global;
+
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
@@ -59,15 +61,6 @@ public class BuildingFactory{
 
 	public static void destroy(Building building) {
 		GlobalManager.gamePlay_BuildingManager.removeBuilding(building);
-
-		if(ScreenManager.getCurrentScreen() instanceof FightScreen){
-			if(building.equals(ScreenManager.fightScreen.getTeamIA().getCastle())){
-				ScreenManager.fightScreen.getUiFinishGame().showUI(true);
-			}else if(building.equals(ScreenManager.fightScreen.getTeamPlayer().getCastle())){
-				ScreenManager.fightScreen.getUiFinishGame().showUI(false);
-			}
-		}
-
 	}
 
 	private static Building createTurret(float posX, float posY, BuildingPattern buildingPattern, GamePlay_Team team){
@@ -85,15 +78,16 @@ public class BuildingFactory{
 		turret.init(posX, posY, diameter, buildingPattern, life, team);
 
 		/** AttackBehavior */
-		if(buildingPattern.getWeaponName()!=null){
+		if(ScreenManager.getCurrentScreen()==ScreenManager.fightScreen)
+			if(buildingPattern.getWeaponName()!=null){
 
-			AttackBehavior attackBehavior = GlobalManager.poolManager.getAttackBehaviorPool().obtain();
-			attackBehavior.init(PatternLoader.getWeaponsPattern().get(buildingPattern.getWeaponName().name()));
-			attackBehavior.setAttacking(true);
-			turret.setAttackBehavior(attackBehavior);
-			Attaque attaque = GlobalManager.poolManager.getAttaquePool().obtain();
-			attackBehavior.setAttaque(attaque);
-		}
+				AttackBehavior attackBehavior = GlobalManager.poolManager.getAttackBehaviorPool().obtain();
+				attackBehavior.init(PatternLoader.getWeaponsPattern().get(buildingPattern.getWeaponName().name()));
+				attackBehavior.setAttacking(true);
+				turret.setAttackBehavior(attackBehavior);
+				Attaque attaque = GlobalManager.poolManager.getAttaquePool().obtain();
+				attackBehavior.setAttaque(attaque);
+			}
 
 		/** Castle Special Case */
 		/** TODO : isoler ... na  rien a faire dans class generic GamePlay **/

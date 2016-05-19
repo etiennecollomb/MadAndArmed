@@ -41,8 +41,6 @@ public class ScreenManager {
 
 	private static void setCurrentScreen(final Screen pCurrentScreen) {
 		currentScreen = pCurrentScreen;
-		GlobalManager.initCameras();
-		currentScreen.show();
 	}
 
 	// ===========================================================
@@ -52,9 +50,14 @@ public class ScreenManager {
 	// ===========================================================
 	// Methods
 	// ===========================================================
-
+	
 	public static void launchScreen(ScreenType screenType){
 
+		/** 1) unLoad previous screen **/
+		if(ScreenManager.getCurrentScreen()!=null)
+			ScreenManager.getCurrentScreen().unLoadScreen();
+		
+		/** 2) set current screen **/
 		switch(screenType){
 		case LOADING:
 			ScreenManager.setCurrentScreen(ScreenManager.loadingScreen);
@@ -73,6 +76,11 @@ public class ScreenManager {
 		default:
 			break;
 		}
+		
+		/** 3) load current screen **/
+		GlobalManager.initCameras();
+		ScreenManager.getCurrentScreen().loadScreen();
+		currentScreen.show();
 
 	}
 
@@ -81,7 +89,7 @@ public class ScreenManager {
 
 		/** Loading Screen **/
 		Scene loadingScene = new Scene();
-		loadingScene.init(GlobalManager.MENU_SCENE_WIDTH, GlobalManager.MENU_SCENE_HEIGHT);
+		loadingScene.init(GlobalManager.LOADING_SCENE_WIDTH, GlobalManager.LOADING_SCENE_HEIGHT);
 		ScreenManager.loadingScreen.init(loadingScene);
 
 		/** Menu Screen **/

@@ -14,7 +14,6 @@ import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Entity.Sprite.AnimatedSprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.Sprite;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
-import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet.SpriteSheetType;
 import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Tween.RectangleTween;
 import com.geekmecrazy.madandarmed.Game.UI.Button;
@@ -25,8 +24,6 @@ import com.geekmecrazy.madandarmed.Renderer.UniqueActionRenderer;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager.ScreenType;
-import com.geekmecrazy.madandarmed.pool.PoolAnimManager;
-
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
@@ -45,30 +42,30 @@ public class MenuScreen extends Screen implements IUpdatable {
 	private Button warBaseScreenButton;
 	private Button fightScreenButton;
 
-	
+
 	// ===========================================================
 	// Constructors
 	// ===========================================================
-    
-    // ===========================================================
-    // Getter & Setter
-    // ===========================================================
 
-    // ===========================================================
-    // Methods for/from SuperClass/Interfaces
-    // ===========================================================
+	// ===========================================================
+	// Getter & Setter
+	// ===========================================================
+
+	// ===========================================================
+	// Methods for/from SuperClass/Interfaces
+	// ===========================================================
 
 	@Override
 	public void onUpdate(){
 
 		//TEST
-//		int x = as1.getCurrentFrameX();
-//		int y = as1.getCurrentFrameY();
-//		int maxX = as1.getSpriteSheet().getNumberOfColumn();
-//		int maxY = as1.getSpriteSheet().getNumberOfRow();
-//		y++;
-//		if(y>=maxY){y=33; x++; if(x>=maxX){x=0;} }
-//		as1.setCurrentFrame(x, y);
+		//		int x = as1.getCurrentFrameX();
+		//		int y = as1.getCurrentFrameY();
+		//		int maxX = as1.getSpriteSheet().getNumberOfColumn();
+		//		int maxY = as1.getSpriteSheet().getNumberOfRow();
+		//		y++;
+		//		if(y>=maxY){y=33; x++; if(x>=maxX){x=0;} }
+		//		as1.setCurrentFrame(x, y);
 		//		
 		//		x = as2.getCurrentFrameX();
 		//		y = as2.getCurrentFrameY();
@@ -95,13 +92,13 @@ public class MenuScreen extends Screen implements IUpdatable {
 		//		as4.setCurrentFrame(x, maxY-1);
 
 
-//		x = as5.getCurrentFrameX();
-//		y = as5.getCurrentFrameY();
-//		maxX = as5.getSpriteSheet().getNumberOfColumn();
-//		maxY = as5.getSpriteSheet().getNumberOfRow();
-//		y++;
-//		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
-//		as5.setCurrentFrame(x, maxY-1);
+		//		x = as5.getCurrentFrameX();
+		//		y = as5.getCurrentFrameY();
+		//		maxX = as5.getSpriteSheet().getNumberOfColumn();
+		//		maxY = as5.getSpriteSheet().getNumberOfRow();
+		//		y++;
+		//		if(y>=maxY){y=0; /*x++; if(x>=maxX){x=0;}*/ }
+		//		as5.setCurrentFrame(x, maxY-1);
 		//FINTEST
 
 
@@ -115,30 +112,33 @@ public class MenuScreen extends Screen implements IUpdatable {
 		System.out.println("Show Menu Screen");
 	}
 
-    /** Load Screen First Time **/
-    @Override
-    public void loadScreenFirstTime(){
-    	super.loadScreenFirstTime();
-    }
+	/** Load Screen First Time **/
+	@Override
+	public void loadScreenFirstTime(){
+		super.loadScreenFirstTime();
+	}
 
-    /** Load Screen **/
-    @Override
-    public void loadScreen(){
+	/** Load Screen **/
+	@Override
+	public void loadScreen(){
+		if(this.isLoadFirstTime()) this.loadScreenFirstTime();
     	super.loadScreen();
-    }
 
-    /** UnLoad Screen **/
-    @Override
-    public void unLoadScreen(){
-    	super.unLoadScreen();
-    }
+		blackScreen.setColor(0,0,0,0f);
+	}
 
-    /** UnLoad Screen Last Time **/
-    @Override
-    public void unLoadScreenLastTime(){
-    	super.unLoadScreenLastTime();
-    }
-	
+	/** UnLoad Screen **/
+	@Override
+	public void unLoadScreen(){
+		super.unLoadScreen();
+	}
+
+	/** UnLoad Screen Last Time **/
+	@Override
+	public void unLoadScreenLastTime(){
+		super.unLoadScreenLastTime();
+	}
+
 	// ===========================================================
 	// Methods
 	// ===========================================================
@@ -206,7 +206,7 @@ public class MenuScreen extends Screen implements IUpdatable {
 				//fireThrowerMesh(as5.getX()+posX_-50, as5.getY()+posY_, dirX, dirY);
 				//				System.out.println("3333 "+start_angle + " " + dirX + " " + dirY );
 				//FINTEST
-				*/
+				 */
 
 			}
 		});
@@ -293,14 +293,14 @@ public class MenuScreen extends Screen implements IUpdatable {
 		this.getHUD().attachChild(l1,Entity.Alignment.CENTER);
 		this.getHUD().attachChild(layout_test, Entity.Alignment.CENTER_BOTTOM);
 		this.getHUD().attachChild(blackScreen, Entity.Alignment.CENTER);
-		
+
 		//TEST
-//		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2);
-//		as1 = new AnimatedSprite();
-//		as1.init(spshit, 256, 256);
-//		as1.setPosition(300f,  300f);
-//		as1.setCurrentFrame(0);
-//		this.getScene().attachChild(as1);
+		//		SpriteSheet spshit = new SpriteSheet(AnimatedTextureType.FLAMETHROWER1_HD_TEAM2);
+		//		as1 = new AnimatedSprite();
+		//		as1.init(spshit, 256, 256);
+		//		as1.setPosition(300f,  300f);
+		//		as1.setCurrentFrame(0);
+		//		this.getScene().attachChild(as1);
 		//		
 		//		Rectangle r2d2 = new Rectangle();
 		//		r2d2.init(300f,300f,9, 9);
@@ -338,12 +338,12 @@ public class MenuScreen extends Screen implements IUpdatable {
 		//		as4.setCurrentFrame(8,0); //y sur la position de tir !
 		//		this.getScene().attachChild(as4);
 
-//		SpriteSheet spshit5 = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2);
-//		as5 = new AnimatedSprite();
-//		as5.init(spshit5, 256, 256);
-//		as5.setPosition(450f,  500f);
-//		as5.setCurrentFrame(8,0); //y sur la position de tir !
-//		this.getScene().attachChild(as5);
+		//		SpriteSheet spshit5 = new SpriteSheet(AnimatedTextureType.MESH_HD_TEAM2);
+		//		as5 = new AnimatedSprite();
+		//		as5.init(spshit5, 256, 256);
+		//		as5.setPosition(450f,  500f);
+		//		as5.setCurrentFrame(8,0); //y sur la position de tir !
+		//		this.getScene().attachChild(as5);
 
 		//		Rectangle r2d5 = new Rectangle();
 		//		r2d5.init(300f,300f,9, 9);
@@ -363,21 +363,17 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
-				
+
 				/** Fight Screen **/
 				ScreenManager.launchScreen(ScreenType.FIGHT);
 
-				//init GROUND
-				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
-				tiledGround.init(GlobalManager.FIGHT_SCENE_WIDTH, GlobalManager.FIGHT_SCENE_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
-				ScreenManager.fightScreen.setTiledGround(tiledGround);
 			}
 		})
 		.ease(Quad.OUT)
 		.start(GlobalManager.getTweenManager());
 	}
 
-	
+
 	public void showWarBaseScreen(){
 		Tween.to(blackScreen, RectangleTween.ALPHA, 0.45f)
 		.target(1f)
@@ -386,14 +382,9 @@ public class MenuScreen extends Screen implements IUpdatable {
 
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
-				
+
 				/** WarBase Screen **/
 				ScreenManager.launchScreen(ScreenType.WARBASE);
-
-				//init GROUND
-				MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
-				tiledGround.init(GlobalManager.WARBASE_SCENE_WIDTH, GlobalManager.WARBASE_SCENE_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
-				ScreenManager.warBaseScreen.setTiledGround(tiledGround);
 			}
 		})
 		.ease(Quad.OUT)

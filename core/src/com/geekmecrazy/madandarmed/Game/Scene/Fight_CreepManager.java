@@ -17,17 +17,6 @@ import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
 public class Fight_CreepManager {
 
-
-	/** Disable object's instantiation (private constructor) */
-	public Fight_CreepManager(Fight_Team teamPlayer, Fight_Team teamIA){
-		this.teamPlayer = teamPlayer;
-		this.teamIA = teamIA;
-		this.listCreeps = new ArrayList<Creep>();
-		this.listCreepsRecycle = new HashSet<Creep>();
-        this.listSelectedCreeps = new ArrayList<Creep>();
-	}
-
-
 	public static final int MAX_UNITS=1000;
 
 	// Team
@@ -42,6 +31,24 @@ public class Fight_CreepManager {
 
 	// Dead & Recycle
 	private Set<Creep> listCreepsRecycle;
+	
+	
+
+	/** Disable object's instantiation (private constructor) */
+	public Fight_CreepManager(){
+		this.teamPlayer = null;
+		this.teamIA = null;
+		this.listCreeps = new ArrayList<Creep>();
+		this.listCreepsRecycle = new HashSet<Creep>();
+        this.listSelectedCreeps = new ArrayList<Creep>();
+	}
+	
+	public void init(Fight_Team teamPlayer, Fight_Team teamIA){
+		this.teamPlayer = teamPlayer;
+		this.teamIA = teamIA;
+	}
+
+
 	
 	/** Enregistre les demandes création de creep */
 	public void askForCreateCreep(CreepType creepType, Fight_Team team, float posX, float posY){

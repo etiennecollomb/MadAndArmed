@@ -1,26 +1,16 @@
 package com.geekmecrazy.madandarmed.Game.Scene;
 
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
-import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
-import com.geekmecrazy.madandarmed.Game.IAction;
-import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
-import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Element.WarBase_Team;
 import com.geekmecrazy.madandarmed.Game.Element.Property.GameMap;
-import com.geekmecrazy.madandarmed.Game.UI.Button;
-import com.geekmecrazy.madandarmed.Game.UI.ScoreBarUI;
-import com.geekmecrazy.madandarmed.Game.UI.UIFinishGame;
 import com.geekmecrazy.madandarmed.Game.UI.WarBase_BuildingButtonUI;
-import com.geekmecrazy.madandarmed.Game.UI.Fight_SpawnBuildingButtonUI;
-import com.geekmecrazy.madandarmed.IA.AstarMap;
-import com.geekmecrazy.madandarmed.IA.GlobalAstar;
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Renderer.IsoGridRenderer;
-import com.geekmecrazy.madandarmed.Screen.Screen;
+import com.geekmecrazy.madandarmed.Renderer.MyTiledMapRenderer;
+import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 
 
 public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
@@ -82,13 +72,22 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
     /** Load Screen First Time **/
     @Override
     public void loadScreenFirstTime(){
-    	super.loadScreenFirstTime();
+    		super.loadScreenFirstTime();
+    		
+            GameMap.initMap( this.getScene() );
+
+			//init GROUND
+			MyTiledMapRenderer tiledGround = new MyTiledMapRenderer();
+			tiledGround.init(GlobalManager.WARBASE_SCENE_WIDTH, GlobalManager.WARBASE_SCENE_HEIGHT, GlobalManager.GROUNDTILEDWIDTH, GlobalManager.GROUNDTILEDHEIGHT);
+			ScreenManager.warBaseScreen.setTiledGround(tiledGround);
     }
 
     /** Load Screen **/
     @Override
     public void loadScreen(){
+    	if(this.isLoadFirstTime()) this.loadScreenFirstTime();
     	super.loadScreen();
+    	
     }
 
     /** UnLoad Screen **/
@@ -130,9 +129,8 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
         /** Init des 2 teams */
 		this.setTeamPlayer( new WarBase_Team(TeamID.TEAM1));
 		
-        GlobalManager.createManagersForWarBase((WarBase_Team)this.getTeamPlayer());
+		GlobalManager.gamePlay_BuildingManager.init((WarBase_Team)this.getTeamPlayer(), null);
         
-        GameMap.initMap( this.getScene() );
         
         /** init UIs */
 

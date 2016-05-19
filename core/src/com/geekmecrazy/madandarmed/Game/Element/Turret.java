@@ -21,10 +21,10 @@ public class Turret extends Building {
 
 	/** pointing to target */
 	private Vector2d directionVector = new Vector2d();
-	
+
 	private GamePlayScreen currentGamePlayScreen;
-	
-	
+
+
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -33,7 +33,7 @@ public class Turret extends Building {
 		super.init(posX, posY, diameter, buildingPattern, life, myTeam);
 
 		currentGamePlayScreen = (GamePlayScreen)ScreenManager.getCurrentScreen();
-		
+
 		/** Renderer */
 		TurretRenderer turretRenderer = GlobalManager.poolAnimManager.getTurretRendererPool().obtain();
 		AnimatedTextureType animatedTextureType = PatternLoader.getTexturesPattern().get(myTeam.getTeamID().name()).getTextures().get(buildingPattern.getBuildingName().name());
@@ -41,9 +41,9 @@ public class Turret extends Building {
 		this.currentGamePlayScreen.getIsoGrid().place(turretRenderer, (int)posX, (int)posY);
 		this.currentGamePlayScreen.getIsoGrid().getIsoMapState().add(turretRenderer);
 		this.setMilitaryRenderer(turretRenderer);
-		
+
 		this.setPos(turretRenderer.getX(), turretRenderer.getY()); //TODO : mettre coord que sur military et non rendrer!
-		
+
 		/** Set LifeBar */
 		if(life!=null){
 			lifeBarreRenderer = GlobalManager.poolAnimManager.getLifeBarRendererPool().obtain();
@@ -55,7 +55,7 @@ public class Turret extends Building {
 
 		this.currentGamePlayScreen.getScene().attachChild(this.militaryRenderer);
 
-		
+
 		/** Floor */
 		float floorPosX = this.getPos().getX();
 		float floorPosY = this.getPos().getY();
@@ -63,9 +63,9 @@ public class Turret extends Building {
 		floor.init(TextureType.SOL_SOUS_BUILDING);
 		floor.setPosition(floorPosX, floorPosY+20);
 		this.currentGamePlayScreen.getScene().attachChild(floor);
-		
+
 	}
-	
+
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
@@ -79,37 +79,39 @@ public class Turret extends Building {
 
 		super.onUpdateNextState();
 
-		if(this.getAttackBehavior().isAttacking()){
-			//En mode attaque, on pointe sur la target
-			directionVector.set(-this.getPos().getX(), -this.getPos().getY());
-			directionVector.add(this.getAttackBehavior().getCurrentTarget().getPos());
-			setNormalizedDir(directionVector);
-		}
+
+		if(this.getAttackBehavior() != null)
+			if(this.getAttackBehavior().isAttacking()){
+				//En mode attaque, on pointe sur la target
+				directionVector.set(-this.getPos().getX(), -this.getPos().getY());
+				directionVector.add(this.getAttackBehavior().getCurrentTarget().getPos());
+				setNormalizedDir(directionVector);
+			}
 
 	}
-	
+
 	@Override
 	public void noMoreLife(){
 		super.noMoreLife();
 
 		this.currentGamePlayScreen.getIsoGrid().getIsoMapState().remove((TurretRenderer)this.getMilitaryRenderer());
-		
+
 		//on efface la lifebar
 		if(lifeBarreRenderer!=null) GlobalManager.poolAnimManager.getLifeBarRendererPool().free(lifeBarreRenderer);
 		lifeBarreRenderer = null;
-		
+
 	}
-	
+
 	@Override
 	public void reset() {
 		super.reset();
 
 		if(lifeBarreRenderer!=null) GlobalManager.poolAnimManager.getLifeBarRendererPool().free(lifeBarreRenderer);
 		lifeBarreRenderer = null;
-		
+
 		GlobalManager.poolAnimManager.getTurretRendererPool().free((TurretRenderer) this.militaryRenderer);
 	}
-	
+
 	// ===========================================================
 	// Methods
 	// ===========================================================
