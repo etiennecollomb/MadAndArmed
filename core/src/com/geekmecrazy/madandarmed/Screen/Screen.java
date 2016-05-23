@@ -17,8 +17,9 @@ public abstract class Screen implements IUpdatable, ITouchable {
 	private Scene mScene;
 
 	private HUD mHUD;
-	
+
 	private boolean isLoadFirstTime;
+	private boolean isUnloadLastTime;
 
 	// ===========================================================
 	// Constructors
@@ -67,6 +68,14 @@ public abstract class Screen implements IUpdatable, ITouchable {
 
 	public void setLoadFirstTime(boolean isLoadFirstTime) {
 		this.isLoadFirstTime = isLoadFirstTime;
+	}
+
+	public boolean isUnloadLastTime() {
+		return isUnloadLastTime;
+	}
+
+	public void setUnloadLastTime(boolean isUnloadLastTime) {
+		this.isUnloadLastTime = isUnloadLastTime;
 	}
 
 	// ===========================================================
@@ -124,25 +133,33 @@ public abstract class Screen implements IUpdatable, ITouchable {
 	}
 
 	public abstract void show();
-	
-    /** Load Screen First Time **/
-    protected void loadScreenFirstTime(){}
-    
-    /** Load Screen **/
-    public void loadScreen(){
-    	
-    	if(this.isLoadFirstTime()){
-    		this.loadScreenFirstTime();
-    		this.setLoadFirstTime(false);
-    	}
+
+	/** Load Screen First Time **/
+	protected void loadScreenFirstTime(){}
+
+	/** Load Screen **/
+	public void loadScreen(){
+
+		if(this.isLoadFirstTime()){
+			this.loadScreenFirstTime();
+			this.setLoadFirstTime(false);
+		}
+
+	}
+
+	/** UnLoad Screen **/
+	public void unLoadScreen(){
 		
-    }
-    
-    /** UnLoad Screen **/
-    public void unLoadScreen(){}
-    
-    /** UnLoad Screen Last Time **/
-    public void unLoadScreenLastTime(){}
+		
+		/** called at last **/
+		if(this.isUnloadLastTime()){
+			this.unLoadScreenLastTime();
+			this.setUnloadLastTime(false);
+		}
+	}
+
+	/** UnLoad Screen Last Time **/
+	public void unLoadScreenLastTime(){}
 
 
 }

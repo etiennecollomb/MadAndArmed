@@ -76,6 +76,9 @@ public abstract class GamePlayScreen extends Screen implements IUpdatable {
     @Override
     public void unLoadScreen(){
     	super.unLoadScreen();
+    	
+		/** called at last **/
+    	if(this.isUnloadLastTime()) this.unLoadScreenLastTime();
     }
 
     /** UnLoad Screen Last Time **/

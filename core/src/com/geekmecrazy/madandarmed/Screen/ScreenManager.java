@@ -67,11 +67,9 @@ public class ScreenManager {
 			break;
 		case FIGHT:
 			ScreenManager.setCurrentScreen(ScreenManager.fightScreen);
-			ScreenManager.fightScreen.newGame();
 			break;
 		case WARBASE:
 			ScreenManager.setCurrentScreen(ScreenManager.warBaseScreen);
-			ScreenManager.warBaseScreen.newGame();
 			break;
 		default:
 			break;

@@ -143,7 +143,7 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 		gridRenderer.init(this.getIsoGrid());
 		//this.getScene().attachChild(gridRenderer);
 
-		/** create 2 teams */
+		/** create teams */
 		this.setTeamPlayer( new Fight_Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM1, MAX_THORIUM));
 		this.setTeamIA( new Fight_Team(START_MONEY, TURN_MONEY, MAX_MONEY, TeamID.TEAM2, MAX_THORIUM));
 
@@ -151,12 +151,6 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 		
 	}
 
-
-	// Lance le screen la premiere fois qu'on y accede
-	public void newGame(){
-
-		
-	}
 
 	public void closeGame(){
 		//TODO: a revoir pour faire bien clean
@@ -297,6 +291,9 @@ public class FightScreen extends GamePlayScreen implements IUpdatable {
 	@Override
 	public void unLoadScreen(){
 		super.unLoadScreen();
+		
+		/** called at last **/
+		if(this.isUnloadLastTime()) this.unLoadScreenLastTime();
 	}
 
 	/** UnLoad Screen Last Time **/
