@@ -22,7 +22,6 @@ public class WarBaseScreen extends GamePlayScreen implements IUpdatable {
 	/** UI */
     private WarBase_BuildingButtonUI mBuildingButtonUI;
     
-    
 	// ===========================================================
 	// Constructors
 	// ===========================================================

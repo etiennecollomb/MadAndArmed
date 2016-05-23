@@ -16,7 +16,7 @@ public class LoadingScreen extends Screen implements IUpdatable {
 
 	/** loading status TODO: a generiser **/
 	ProgressBarRenderer loadingStatus; 
-
+	
 	// ===========================================================
 	// Constructors
 	// ===========================================================
