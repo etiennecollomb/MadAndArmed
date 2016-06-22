@@ -7,6 +7,7 @@ import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
 import com.geekmecrazy.madandarmed.Loader.PatternLoader;
 import com.geekmecrazy.madandarmed.Renderer.ProgressBarRenderer;
+import com.geekmecrazy.madandarmed.SaveState.Fight_SaveGameState;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager.ScreenType;
@@ -103,8 +104,13 @@ public class LoadingScreen extends Screen implements IUpdatable {
 	/** Creation et initialisation du manager */
 	public void init(final Scene pScene) {
 		super.init(pScene);
+		
+		///TEST
+		new Fight_SaveGameState();
+		////END TEST
+		
 
-		///////TEST//
+		/** Progress Bar **/
 		float score_bar_min = 49;
 		float score_bar_max = 207;
 		float score_bar_min_size = 2;
@@ -113,8 +119,7 @@ public class LoadingScreen extends Screen implements IUpdatable {
 		float posX_0 = 0f;
 		float posY_0 = 0f; //VirtualViewport.convertWorldHeightToUnit(-60f);
 		this.loadingStatus.init(TextureType.PROGRESS_BAR_BLUE, posX_0, posY_0, score_bar_min, score_bar_max, score_bar_min_size);
-		///FIN TEST//
-
+		
 
 		this.getHUD().attachChild(this.loadingStatus, Entity.Alignment.CENTER);
 	}
