@@ -5,7 +5,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternManager;
 import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 
 

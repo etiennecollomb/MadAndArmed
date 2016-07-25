@@ -5,7 +5,7 @@ import com.geekmecrazy.madandarmed.CoreConfig.AnimatedTextureType;
 import com.geekmecrazy.madandarmed.Entity.Sprite.SpriteSheet;
 import com.geekmecrazy.madandarmed.Game.Element.Building;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternManager;
 import com.geekmecrazy.madandarmed.Tools.GraphicalTools;
 
 
@@ -77,7 +77,7 @@ public class TurretRenderer extends BuildingRenderer {
 		this.setPosition(this.getMilitary().getPos().getX(), this.getMilitary().getPos().getY());
 		this.setZIndex(GlobalManager.ZINDEXMAXVALUE - (int)this.getMilitary().getPos().getY());
 
-		int[] fireAnimation = PatternLoader.getBuildingsPattern().get( ((Turret)this.getMilitary()).getPattern().getBuildingType().name() ).getFireAnimation();
+		int[] fireAnimation = PatternManager.getBuildingsPattern().get( ((Turret)this.getMilitary()).getPattern().getBuildingType().name() ).getFireAnimation();
 		if(thisBuilding.isAlive()){
 			if(thisBuilding.getAttackBehavior()!=null){
 				if (thisBuilding.getAttackBehavior().isAttacking()){

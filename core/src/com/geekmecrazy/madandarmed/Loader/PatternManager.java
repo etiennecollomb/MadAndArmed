@@ -1,9 +1,12 @@
 package com.geekmecrazy.madandarmed.Loader;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
+import com.geekmecrazy.madandarmed.Game.Element.Building;
+import com.geekmecrazy.madandarmed.Game.Element.SpawnBuilding;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
@@ -12,7 +15,7 @@ import com.geekmecrazy.madandarmed.Pattern.MenuPattern;
 import com.geekmecrazy.madandarmed.Pattern.TexturePattern;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern;
 
-public class PatternLoader {
+public class PatternManager {
 
 	private static ObjectMap<String, BuildingPattern> buildingsPattern;
 	private static ObjectMap<String, WeaponPattern> weaponsPattern;
@@ -34,7 +37,7 @@ public class PatternLoader {
 	}
 
 	public static void setMapsPattern(ObjectMap<String, MapPattern> mapsPattern) {
-		PatternLoader.mapsPattern = mapsPattern;
+		PatternManager.mapsPattern = mapsPattern;
 	}
 
 	public static ObjectMap<String, TexturePattern> getTexturesPattern() {
@@ -43,7 +46,7 @@ public class PatternLoader {
 
 	public static void setTexturesPattern(
 			ObjectMap<String, TexturePattern> texturesPattern) {
-		PatternLoader.texturesPattern = texturesPattern;
+		PatternManager.texturesPattern = texturesPattern;
 	}
 
 	public static ObjectMap<String, BuildingPattern> getBuildingsPattern() {
@@ -52,7 +55,7 @@ public class PatternLoader {
 
 	public static void setBuildingsPattern(
 			ObjectMap<String, BuildingPattern> buildingsPattern) {
-		PatternLoader.buildingsPattern = buildingsPattern;
+		PatternManager.buildingsPattern = buildingsPattern;
 	}
 
 	public static ObjectMap<String, WeaponPattern> getWeaponsPattern() {
@@ -61,7 +64,7 @@ public class PatternLoader {
 
 	public static void setWeaponsPattern(
 			ObjectMap<String, WeaponPattern> weaponsPattern) {
-		PatternLoader.weaponsPattern = weaponsPattern;
+		PatternManager.weaponsPattern = weaponsPattern;
 	}
 
 	public static ObjectMap<String, CreepPattern> getCreepsPattern() {
@@ -70,7 +73,7 @@ public class PatternLoader {
 
 	public static void setCreepsPattern(
 			ObjectMap<String, CreepPattern> creepsPattern) {
-		PatternLoader.creepsPattern = creepsPattern;
+		PatternManager.creepsPattern = creepsPattern;
 	}
 
 	public static ObjectMap<String, MenuPattern> getMenusPattern() {
@@ -78,7 +81,7 @@ public class PatternLoader {
 	}
 
 	public static void setMenusPattern(ObjectMap<String, MenuPattern> menusPattern) {
-		PatternLoader.menusPattern = menusPattern;
+		PatternManager.menusPattern = menusPattern;
 	}
 
 	// ===========================================================
@@ -112,6 +115,17 @@ public class PatternLoader {
 		
 	}
 
+	
+	// save pattern of base 
+	// first save building in buildingPatternPerso
+	//       Two type of building : spawnbuilding and building
+	// second save mapsPattern
+	// third save creepsPattern
+	// NOTE : If a field is marked transient, (by default) it is ignored and not included in the JSON serialization
+	
+	public static void savePatternsData() {
+		
+	}
 	
 }
 

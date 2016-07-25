@@ -10,7 +10,7 @@ import com.geekmecrazy.madandarmed.Game.Element.Creep;
 import com.geekmecrazy.madandarmed.Game.Element.Fight_Team;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Factory.CreepFactory;
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternManager;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
@@ -52,7 +52,7 @@ public class Fight_CreepManager {
 	
 	/** Enregistre les demandes création de creep */
 	public void askForCreateCreep(CreepType creepType, Fight_Team team, float posX, float posY){
-		CreepPattern creepPattern = PatternLoader.getCreepsPattern().get(creepType.name());
+		CreepPattern creepPattern = PatternManager.getCreepsPattern().get(creepType.name());
 		
 		if(team.hasEnoughtMoney(creepPattern.getPrice())){
 			team.subMoney(creepPattern.getPrice());
@@ -83,7 +83,7 @@ public class Fight_CreepManager {
 
 	/** Creation du nouveau creep */
 	public void createCreep(CreepType creepID, GamePlay_Team team, float spawnPosX, float spawnPosY){
-		CreepPattern creepPattern = PatternLoader.getCreepsPattern().get(creepID.name());
+		CreepPattern creepPattern = PatternManager.getCreepsPattern().get(creepID.name());
 		Creep creep = CreepFactory.createCreep(creepPattern, team, spawnPosX, spawnPosY);
 		addCreep(creep);
 	}

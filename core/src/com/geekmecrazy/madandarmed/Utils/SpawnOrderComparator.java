@@ -37,8 +37,8 @@ public class SpawnOrderComparator implements Comparator<SpawnBuilding> {
 	
 	@Override
 	public int compare(final SpawnBuilding pEntity0, final SpawnBuilding pEntity1) {
-		return (pEntity0.getSpawnOrder() < pEntity1.getSpawnOrder()) ? -1 : //classement par ordre croissant
-			(pEntity0.getSpawnOrder() == pEntity1.getSpawnOrder()) ? 0 : 1;
+		return (pEntity0.getPattern().getSpawnOrder() < pEntity1.getPattern().getSpawnOrder()) ? -1 : //classement par ordre croissant
+			(pEntity0.getPattern().getSpawnOrder() == pEntity1.getPattern().getSpawnOrder()) ? 0 : 1;
 	}
 
 }

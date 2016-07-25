@@ -10,7 +10,7 @@ import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.IAction;
 import com.geekmecrazy.madandarmed.Game.Scene.GamePlay_BuildingManager;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternManager;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.ButtonPattern;
 import com.geekmecrazy.madandarmed.Renderer.SpawnBuildingButtonRenderer;
@@ -37,10 +37,10 @@ public class Fight_SpawnBuildingButtonUI extends Layout implements IMoneyListene
 
 		ScreenManager.fightScreen.getTeamPlayer().addMoneyListener(this);
 
-		List<ButtonPattern> buttonsPattern = PatternLoader.getMenusPattern().get("FIGHT_SPAWN_BUILDING_MENU").getButtonsPattern();
+		List<ButtonPattern> buttonsPattern = PatternManager.getMenusPattern().get("FIGHT_SPAWN_BUILDING_MENU").getButtonsPattern();
 		for (final ButtonPattern buttonPattern: buttonsPattern){
 
-			final BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buttonPattern.getBuildingName().name());
+			final BuildingPattern buildingPattern = PatternManager.getBuildingsPattern().get(buttonPattern.getBuildingName().name());
 
 			//ADD BUTTON
 

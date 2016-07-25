@@ -1,7 +1,5 @@
 package com.geekmecrazy.madandarmed.Game.Factory;
 
-import jdk.nashorn.internal.objects.Global;
-
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.Game.Element.Attaque;
 import com.geekmecrazy.madandarmed.Game.Element.Barricade;
@@ -14,7 +12,7 @@ import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Game.Scene.FightScreen;
 import com.geekmecrazy.madandarmed.IA.AttackBehavior;
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternManager;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingType;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
@@ -82,7 +80,7 @@ public class BuildingFactory{
 			if(buildingPattern.getWeaponName()!=null){
 
 				AttackBehavior attackBehavior = GlobalManager.poolManager.getAttackBehaviorPool().obtain();
-				attackBehavior.init(PatternLoader.getWeaponsPattern().get(buildingPattern.getWeaponName().name()));
+				attackBehavior.init(PatternManager.getWeaponsPattern().get(buildingPattern.getWeaponName().name()));
 				attackBehavior.setAttacking(true);
 				turret.setAttackBehavior(attackBehavior);
 				Attaque attaque = GlobalManager.poolManager.getAttaquePool().obtain();

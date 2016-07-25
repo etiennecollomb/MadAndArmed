@@ -1,8 +1,9 @@
+
 package com.geekmecrazy.madandarmed.Pattern;
 
 import java.util.List;
 
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternManager;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponName;
 
 public class CreepPattern {
@@ -195,7 +196,7 @@ public class CreepPattern {
 		int state1Counter=0;
 		int state2Counter=0;
 
-		WeaponPattern weaponPattern = PatternLoader.getWeaponsPattern().get(this.getWeaponName().name());
+		WeaponPattern weaponPattern = PatternManager.getWeaponsPattern().get(this.getWeaponName().name());
 		switch (weaponPattern.getWeaponType()){
 		case FLAMETHROWER:
 		case MESH_MULTIEXPLOSION:

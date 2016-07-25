@@ -14,7 +14,7 @@ import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team;
 import com.geekmecrazy.madandarmed.Game.Element.Turret;
 import com.geekmecrazy.madandarmed.Game.Element.GamePlay_Team.TeamID;
 import com.geekmecrazy.madandarmed.Game.Factory.BuildingFactory;
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternManager;
 import com.geekmecrazy.madandarmed.Pattern.BuildingMapPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern.BuildingName;
@@ -70,8 +70,8 @@ public class GamePlay_BuildingManager {
 		this.teamIA = teamIA;
 
 		if(this.teamPlayer!=null)
-			for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getBuildingsList()){
-				BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
+			for(BuildingMapPattern buildingLevelModel: PatternManager.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM1.name()).getBuildingsList()){
+				BuildingPattern buildingPattern = PatternManager.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
 				Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, this.teamPlayer);
 
 				if(building instanceof SpawnBuilding)
@@ -81,8 +81,8 @@ public class GamePlay_BuildingManager {
 			}
 
 		if(this.teamIA!=null)
-			for(BuildingMapPattern buildingLevelModel: PatternLoader.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
-				BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
+			for(BuildingMapPattern buildingLevelModel: PatternManager.getMapsPattern().get("MAP_1").getTeamMapPattern().get(TeamID.TEAM2.name()).getBuildingsList()){
+				BuildingPattern buildingPattern = PatternManager.getBuildingsPattern().get(buildingLevelModel.getBuildingName().name());
 				Building building = BuildingFactory.create(buildingLevelModel.getGridPositionX(), buildingLevelModel.getGridPositionY(), buildingPattern, this.teamIA);
 
 				if(building instanceof SpawnBuilding)
@@ -158,7 +158,7 @@ public class GamePlay_BuildingManager {
 	/** Enregistre les demandes création de creep */
 	public void askForCreateSpawnBuilding(BuildingName buildingName, GamePlay_Team team){
 
-		BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingName.name());
+		BuildingPattern buildingPattern = PatternManager.getBuildingsPattern().get(buildingName.name());
 
 		/** TODO : isoler ... na  rien a faire dans class generic GamePlay **/
 		if(ScreenManager.getCurrentScreen() instanceof FightScreen){
@@ -195,7 +195,7 @@ public class GamePlay_BuildingManager {
 	/** Creation d'un Spawn Building **/
 	public void createSpawnBuilding(GamePlay_Team team, float posX, float posY, BuildingName buildingName) {
 
-		BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buildingName.name());
+		BuildingPattern buildingPattern = PatternManager.getBuildingsPattern().get(buildingName.name());
 		SpawnBuilding swpanBuilding = BuildingFactory.createSpawnBuilding(posX, posY, buildingPattern, team);
 		addSpawnBuilding(swpanBuilding);
 	}
@@ -217,14 +217,14 @@ public class GamePlay_BuildingManager {
 		int previousSpawnOrder = -1;
 		for(int i=0; i<this.listSpawnBuildings.size ; i++){
 
-			if( this.listSpawnBuildings.get(i).getSpawnOrder() == previousSpawnOrder ){
+			if( this.listSpawnBuildings.get(i).getPattern().getSpawnOrder() == previousSpawnOrder ){
 
 				/** if doublon, we shift all values **/
 				for(int j=i; j<this.listSpawnBuildings.size; j++ ){
-					this.listSpawnBuildings.get(j).setSpawnOrder( this.listSpawnBuildings.get(j).getSpawnOrder() +1 );
+					this.listSpawnBuildings.get(j).getPattern().setSpawnOrder( this.listSpawnBuildings.get(j).getPattern().getSpawnOrder() +1 );
 				}
 
-				previousSpawnOrder = this.listSpawnBuildings.get(i).getSpawnOrder();
+				previousSpawnOrder = this.listSpawnBuildings.get(i).getPattern().getSpawnOrder();
 			}
 		}
 	}
@@ -237,11 +237,11 @@ public class GamePlay_BuildingManager {
 		int previousSpawnOrder = -1;
 		for(int i=0; i<this.listSpawnBuildings.size ; i++){
 
-			if( this.listSpawnBuildings.get(i).getSpawnOrder() > previousSpawnOrder+1 ){
-				this.listSpawnBuildings.get(i).setSpawnOrder(previousSpawnOrder+1);
+			if( this.listSpawnBuildings.get(i).getPattern().getSpawnOrder() > previousSpawnOrder+1 ){
+				this.listSpawnBuildings.get(i).getPattern().setSpawnOrder(previousSpawnOrder+1);
 			}
 
-			previousSpawnOrder = this.listSpawnBuildings.get(i).getSpawnOrder();
+			previousSpawnOrder = this.listSpawnBuildings.get(i).getPattern().getSpawnOrder();
 
 		}
 	}

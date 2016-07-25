@@ -5,9 +5,8 @@ import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Entity.Entity;
 import com.geekmecrazy.madandarmed.Entity.IUpdatable;
 import com.geekmecrazy.madandarmed.Entity.Scene.Scene;
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternManager;
 import com.geekmecrazy.madandarmed.Renderer.ProgressBarRenderer;
-import com.geekmecrazy.madandarmed.SaveState.Fight_SaveGameState;
 import com.geekmecrazy.madandarmed.Screen.Screen;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager;
 import com.geekmecrazy.madandarmed.Screen.ScreenManager.ScreenType;
@@ -55,7 +54,7 @@ public class LoadingScreen extends Screen implements IUpdatable {
 			GlobalManager.createPoolManagers();
 
 			/** load patterns **/
-			PatternLoader.loadPatternsData();
+			PatternManager.loadPatternsData();
 
 			/** Sound Manager **/
 			new SoundManager();
@@ -105,11 +104,6 @@ public class LoadingScreen extends Screen implements IUpdatable {
 	public void init(final Scene pScene) {
 		super.init(pScene);
 		
-		///TEST
-		new Fight_SaveGameState();
-		////END TEST
-		
-
 		/** Progress Bar **/
 		float score_bar_min = 49;
 		float score_bar_max = 207;

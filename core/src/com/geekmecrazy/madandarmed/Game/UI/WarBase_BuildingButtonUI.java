@@ -3,7 +3,7 @@ package com.geekmecrazy.madandarmed.Game.UI;
 import com.geekmecrazy.madandarmed.Core.GlobalManager;
 import com.geekmecrazy.madandarmed.CoreConfig.TextureType;
 import com.geekmecrazy.madandarmed.Game.IAction;
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternManager;
 import com.geekmecrazy.madandarmed.Pattern.BuildingPattern;
 import com.geekmecrazy.madandarmed.Pattern.ButtonPattern;
 import com.geekmecrazy.madandarmed.Renderer.WarBaseBuildingButtonRenderer;
@@ -32,10 +32,10 @@ public class WarBase_BuildingButtonUI extends Layout {
 		this.setOrientation(Orientation.HORIZONTAL);
 
 
-		List<ButtonPattern> buttonsPattern = PatternLoader.getMenusPattern().get("WARBASE_BUILDING_MENU").getButtonsPattern();
+		List<ButtonPattern> buttonsPattern = PatternManager.getMenusPattern().get("WARBASE_BUILDING_MENU").getButtonsPattern();
 		for (final ButtonPattern buttonPattern: buttonsPattern){
 
-			final BuildingPattern buildingPattern = PatternLoader.getBuildingsPattern().get(buttonPattern.getBuildingName().name());
+			final BuildingPattern buildingPattern = PatternManager.getBuildingsPattern().get(buttonPattern.getBuildingName().name());
 
 			/** Add Button **/
 

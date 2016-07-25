@@ -2,7 +2,7 @@ package com.geekmecrazy.madandarmed.Pattern;
 
 import java.util.ArrayList;
 
-import com.geekmecrazy.madandarmed.Loader.PatternLoader;
+import com.geekmecrazy.madandarmed.Loader.PatternManager;
 import com.geekmecrazy.madandarmed.Pattern.CreepPattern.CreepType;
 import com.geekmecrazy.madandarmed.Pattern.WeaponPattern.WeaponName;
 
@@ -70,6 +70,9 @@ public class BuildingPattern {
 	
 	/** unit type spawned for SpawnBuilding **/
 	private CreepType creepType;
+	
+	/** ordre d apparition du spawn building , -1 not initiated, 0 first one ...**/
+	private int spawnOrder;
 
 
 	// ===========================================================
@@ -160,6 +163,13 @@ public class BuildingPattern {
 		this.creepType = creepType;
 	}
 	
+	public int getSpawnOrder() {
+		return spawnOrder;
+	}
+
+	public void setSpawnOrder(int spawnOrder) {
+		this.spawnOrder = spawnOrder;
+	}
 	
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
@@ -172,7 +182,7 @@ public class BuildingPattern {
 	/** renvoie une array de row correspondant a une animation */
 	public void calculateAnimationListFire(){
 		
-		WeaponPattern weaponPattern = PatternLoader.getWeaponsPattern().get(this.getWeaponName().name());
+		WeaponPattern weaponPattern = PatternManager.getWeaponsPattern().get(this.getWeaponName().name());
 		
 		if(weaponPattern !=null){
 			switch (weaponPattern.getWeaponType()){
