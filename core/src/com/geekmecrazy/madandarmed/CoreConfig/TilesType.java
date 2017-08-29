@@ -110,10 +110,18 @@ public class TilesType {
 		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_5);
 		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_6);
 		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_7);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_7_1);
 		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_8);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_8_1);
 		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9_1);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9_2);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9_3);
 		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10);
-		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_11);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10_1);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10_2);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10_3);
+		
 		tilesType.put(idStartGround00 + ID_TILE_FULL, ground00_tile_full);
 
 		/** Ground 01 superpose sur Ground 00 */

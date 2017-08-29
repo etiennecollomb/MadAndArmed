@@ -83,11 +83,18 @@ public enum TextureType{
 	TILE_GROUND00_FULL_5                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_05s.png", 128, 64),
 	TILE_GROUND00_FULL_6                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_06s.png", 128, 64),
 	TILE_GROUND00_FULL_7                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_07s.png", 128, 64),
+	TILE_GROUND00_FULL_7_1                ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_07s_1.png", 128, 64),
 	TILE_GROUND00_FULL_8                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_08s.png", 128, 64),
+	TILE_GROUND00_FULL_8_1                ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_08s_1.png", 128, 64),
 	TILE_GROUND00_FULL_9                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_09s.png", 128, 64),
+	TILE_GROUND00_FULL_9_1                ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_09s_1.png", 128, 64),
+	TILE_GROUND00_FULL_9_2                ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_09s_2.png", 128, 64),
+	TILE_GROUND00_FULL_9_3                ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_09s_3.png", 128, 64),
 	TILE_GROUND00_FULL_10                 ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_10s.png", 128, 64),
-	TILE_GROUND00_FULL_11                 ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_11s.png", 128, 64),
-	
+	TILE_GROUND00_FULL_10_1               ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_10s_1.png", 128, 64),
+	TILE_GROUND00_FULL_10_2               ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_10s_2.png", 128, 64),
+	TILE_GROUND00_FULL_10_3               ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_10s_3.png", 128, 64),
+		
 	/** Tiles Ground 01 **/
 	TILE_GROUND01_FULL                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_02s.png", 128, 64),
 	TILE_GROUND01_1QUART_UP             ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_03s.png", 128, 64),
