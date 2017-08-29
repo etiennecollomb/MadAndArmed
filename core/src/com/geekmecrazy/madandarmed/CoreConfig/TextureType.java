@@ -75,24 +75,34 @@ public enum TextureType{
 
 	TILE_FULL_RED                     	("game/Tiles/Full_RED_64x32.png", 64, 32),
 
-	/** Tiles Ground 01 **/
-	TILE_GROUND01_FULL_BROWN                     ("game/Tiles/128_64/Ground01/tile_40.png", 128, 64),
+	/** Tiles Ground 00 **/
+	TILE_GROUND00_FULL_1                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_01s.png", 128, 64),
+	TILE_GROUND00_FULL_2                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_02s.png", 128, 64),
+	TILE_GROUND00_FULL_3                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_03s.png", 128, 64),
+	TILE_GROUND00_FULL_4                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_04s.png", 128, 64),
+	TILE_GROUND00_FULL_5                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_05s.png", 128, 64),
+	TILE_GROUND00_FULL_6                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_06s.png", 128, 64),
+	TILE_GROUND00_FULL_7                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_07s.png", 128, 64),
+	TILE_GROUND00_FULL_8                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_08s.png", 128, 64),
+	TILE_GROUND00_FULL_9                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_09s.png", 128, 64),
+	TILE_GROUND00_FULL_10                 ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_10s.png", 128, 64),
+	TILE_GROUND00_FULL_11                 ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_11s.png", 128, 64),
 	
-	TILE_GROUND01_1QUART_UP                      ("game/Tiles/128_64/Ground01/tile_13.png", 128, 64),
-	TILE_GROUND01_1QUART_RIGHT                   ("game/Tiles/128_64/Ground01/tile_37.png", 128, 64),
-	TILE_GROUND01_1QUART_DOWN                    ("game/Tiles/128_64/Ground01/tile_39.png", 128, 64),
-	TILE_GROUND01_1QUART_LEFT                    ("game/Tiles/128_64/Ground01/tile_31.png", 128, 64),
-	TILE_GROUND01_3QUART_UP                      ("game/Tiles/128_64/Ground01/tile_1.png", 128, 64),
-	TILE_GROUND01_3QUART_RIGHT                   ("game/Tiles/128_64/Ground01/tile_9.png", 128, 64),
-	TILE_GROUND01_3QUART_DOWN                    ("game/Tiles/128_64/Ground01/tile_27.png", 128, 64),
-	TILE_GROUND01_3QUART_LEFT                    ("game/Tiles/128_64/Ground01/tile_3.png", 128, 64),
-	TILE_GROUND01_DIAG_LEFT_UP                   ("game/Tiles/128_64/Ground01/tile_4.png", 128, 64),
-	TILE_GROUND01_DIAG_RIGHT_UP                  ("game/Tiles/128_64/Ground01/tile_10.png", 128, 64),
-	TILE_GROUND01_DIAG_RIGHT_DOWN                ("game/Tiles/128_64/Ground01/tile_36.png", 128, 64),
-	TILE_GROUND01_DIAG_LEFT_DOWN                 ("game/Tiles/128_64/Ground01/tile_30.png", 128, 64),
-	TILE_GROUND01_FULL                           ("game/Tiles/128_64/Ground01/tile_0.png", 128, 64),
-
-
+	/** Tiles Ground 01 **/
+	TILE_GROUND01_FULL                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_02s.png", 128, 64),
+	TILE_GROUND01_1QUART_UP             ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_03s.png", 128, 64),
+	TILE_GROUND01_1QUART_RIGHT          ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_04s.png", 128, 64),
+	TILE_GROUND01_1QUART_DOWN           ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_05s.png", 128, 64),
+	TILE_GROUND01_1QUART_LEFT           ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_06s.png", 128, 64),
+	TILE_GROUND01_3QUART_UP             ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_07s.png", 128, 64),
+	TILE_GROUND01_3QUART_RIGHT          ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_08s.png", 128, 64),
+	TILE_GROUND01_3QUART_DOWN           ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_09s.png", 128, 64),
+	TILE_GROUND01_3QUART_LEFT           ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_10s.png", 128, 64),
+	TILE_GROUND01_DIAG_LEFT_UP          ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_11s.png", 128, 64),
+	TILE_GROUND01_DIAG_RIGHT_UP         ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_01s.png", 128, 64),
+	TILE_GROUND01_DIAG_RIGHT_DOWN       ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_02s.png", 128, 64),
+	TILE_GROUND01_DIAG_LEFT_DOWN        ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_03s.png", 128, 64),
+	
 
 	
 	//DECORATION

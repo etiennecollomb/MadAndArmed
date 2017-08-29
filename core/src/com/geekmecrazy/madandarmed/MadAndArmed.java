@@ -38,7 +38,7 @@ public class MadAndArmed extends ApplicationAdapter {
 		fpsLogger = new FPSLogger();
 
 		/** Data Loader **/
-		Assets.load(); // TOD  a virer (Zachry staff a foutre dans dataloader)
+		Assets.load(); // TODO  a virer (Zachry staff a foutre dans dataloader)
 
 		/** init GlobalManager **/
 		GlobalManager.init();

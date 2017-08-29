@@ -215,18 +215,27 @@ public class MyTiledMapRenderer extends Shape {
 
 	/** from UsedTiled to CreatedTexture */
 	private void addTileOnTexture(int pIdStartgroundBase, int pIdStartgroundSmoothed){
+
+		Random ran = new Random();
 		
 		//1- Stock all pixmap from tileType in hastable
-		HashMap<Integer, Pixmap> pixmaps = new HashMap<Integer, Pixmap>();
+		HashMap<Integer, ArrayList<Pixmap>> pixmaps = new HashMap<Integer, ArrayList<Pixmap>>();
 
-		for (Map.Entry<Integer,TextureType> entry : this.mTilesType.tilesType.entrySet()) {
+		for (Map.Entry<Integer,ArrayList<TextureType>> entry : this.mTilesType.tilesType.entrySet()) {
 			final Integer key = entry.getKey();
-			final TextureType textureType = entry.getValue();
+			final ArrayList<TextureType> textureTypeList = entry.getValue();
 
-			Texture texture = new Texture(Gdx.files.internal( textureType.getPath()) );
-			Pixmap pixmap = textureBuilder.getPixmapFromTexture(texture);
-
-			pixmaps.put(key, pixmap);
+			//list of pixmap of same type (tile type)
+			ArrayList<Pixmap> pixmapList = new ArrayList<Pixmap>();
+			
+			int textureTypeListSize = textureTypeList.size();
+			for(int i=0; i<textureTypeListSize;i++){
+				Texture texture = new Texture(Gdx.files.internal( textureTypeList.get(i).getPath()) );
+				Pixmap pixmap = textureBuilder.getPixmapFromTexture(texture);
+				pixmapList.add(pixmap);
+			}
+				
+			pixmaps.put(key, pixmapList);
 		}
 		
 		//2- create texture
@@ -251,19 +260,28 @@ public class MyTiledMapRenderer extends Shape {
 
 			int tileId = this.orthoMap[(int)coord.x][(int)coord.y];
 			if(tileId != pIdStartgroundBase && tileId != pIdStartgroundSmoothed) {
-				//if limits, we draw underground before
-				textureBuilder.getFinalPixmap().drawPixmap(pixmaps.get(pIdStartgroundBase), posX, posY) ;
+				//if limits between two ground type, we draw underground before
+
+				int tilePatternNumber = ran.nextInt( pixmaps.get(pIdStartgroundBase).size() ); //choose a random pattern among same type tiles
+				textureBuilder.getFinalPixmap().drawPixmap(pixmaps.get(pIdStartgroundBase).get(tilePatternNumber), posX, posY) ;
 			}
 			
-			textureBuilder.getFinalPixmap().drawPixmap(pixmaps.get(tileId), posX, posY) ;
+			int tilePatternNumber = ran.nextInt( pixmaps.get(tileId).size() ); //choose a random pattern among same type tiles
+			textureBuilder.getFinalPixmap().drawPixmap(pixmaps.get(tileId).get(tilePatternNumber), posX, posY) ;
 			
 		}
 
 		
 		//3- dispose all pixmaps
-		for (Map.Entry<Integer,Pixmap> entry : pixmaps.entrySet()) {
-			final Pixmap pixmap = entry.getValue();
-			pixmap.dispose();
+		for (Map.Entry<Integer,ArrayList<Pixmap>> entry : pixmaps.entrySet()) {
+			
+			ArrayList<Pixmap> pixmapList = entry.getValue();
+			
+			int pixmapListSize = pixmapList.size();
+			for(int i=0; i<pixmapListSize; i++){
+				pixmapList.get(i).dispose();
+			}
+			
 		}
 	}
 

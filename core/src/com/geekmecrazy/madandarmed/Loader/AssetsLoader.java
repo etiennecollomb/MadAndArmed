@@ -90,7 +90,7 @@ public class AssetsLoader {
 				String extension = fileName.substring(fileName.lastIndexOf(".")+1);
 
 				if(extension.equals("txt")){
-					System.out.println("List of Assests: " + assetName);
+					System.out.println("List   of Assests: " + assetName);
 					
 					TextureAtlas textureAtlas = assetManager.get(assetName, TextureAtlas.class);
 					textureAtlasList.add(textureAtlas);
