@@ -58,49 +58,13 @@ public class TilesType {
 
 	public TilesType(){
 
-
-		/** Testing purpose **/
-		//		/** Ground 00 */
-		//		tilesType.put(idStartGround00 + ID_TILE_FULL, TextureType.TILE_FULL_BROWN);
-		//		
-		//		/** Ground 01 superpose sur Ground 00 */
-		//		tilesType.put(idStartGround01 + ID_TILE_FULL, TextureType.TILE_FULL);
-		//		tilesType.put(idStartGround01 + ID_TILE_1QUART_UP, TextureType.TILE_1QUART_UP);
-		//		tilesType.put(idStartGround01 + ID_TILE_1QUART_RIGHT, TextureType.TILE_1QUART_RIGHT);
-		//		tilesType.put(idStartGround01 + ID_TILE_1QUART_DOWN, TextureType.TILE_1QUART_DOWN);
-		//		tilesType.put(idStartGround01 + ID_TILE_1QUART_LEFT, TextureType.TILE_1QUART_LEFT);
-		//		tilesType.put(idStartGround01 + ID_TILE_3QUART_UP, TextureType.TILE_3QUART_UP);
-		//		tilesType.put(idStartGround01 + ID_TILE_3QUART_RIGHT, TextureType.TILE_3QUART_RIGHT);
-		//		tilesType.put(idStartGround01 + ID_TILE_3QUART_DOWN, TextureType.TILE_3QUART_DOWN);
-		//		tilesType.put(idStartGround01 + ID_TILE_3QUART_LEFT, TextureType.TILE_3QUART_LEFT);
-		//		tilesType.put(idStartGround01 + ID_TILE_DIAG_LEFT_UP, TextureType.TILE_DIAG_LEFT_UP);
-		//		tilesType.put(idStartGround01 + ID_TILE_DIAG_RIGHT_UP, TextureType.TILE_DIAG_RIGHT_UP);
-		//		tilesType.put(idStartGround01 + ID_TILE_DIAG_RIGHT_DOWN, TextureType.TILE_DIAG_RIGHT_DOWN);
-		//		tilesType.put(idStartGround01 + ID_TILE_DIAG_LEFT_DOWN, TextureType.TILE_DIAG_LEFT_DOWN);
-
-
-		//				/** Ground 00 */
-		//				tilesType.put(idStartGround00 + ID_TILE_FULL, TextureType.TILE_GROUND01_FULL_BROWN);
-		//		
-		//				/** Ground 01 superpose sur Ground 00 */
-		//				tilesType.put(idStartGround01 + ID_TILE_FULL, TextureType.TILE_GROUND01_FULL);
-		//				tilesType.put(idStartGround01 + ID_TILE_1QUART_UP, TextureType.TILE_GROUND01_1QUART_UP);
-		//				tilesType.put(idStartGround01 + ID_TILE_1QUART_RIGHT, TextureType.TILE_GROUND01_1QUART_RIGHT);
-		//				tilesType.put(idStartGround01 + ID_TILE_1QUART_DOWN, TextureType.TILE_GROUND01_1QUART_DOWN);
-		//				tilesType.put(idStartGround01 + ID_TILE_1QUART_LEFT, TextureType.TILE_GROUND01_1QUART_LEFT);
-		//				tilesType.put(idStartGround01 + ID_TILE_3QUART_UP, TextureType.TILE_GROUND01_3QUART_UP);
-		//				tilesType.put(idStartGround01 + ID_TILE_3QUART_RIGHT, TextureType.TILE_GROUND01_3QUART_RIGHT);
-		//				tilesType.put(idStartGround01 + ID_TILE_3QUART_DOWN, TextureType.TILE_GROUND01_3QUART_DOWN);
-		//				tilesType.put(idStartGround01 + ID_TILE_3QUART_LEFT, TextureType.TILE_GROUND01_3QUART_LEFT);
-		//				tilesType.put(idStartGround01 + ID_TILE_DIAG_LEFT_UP, TextureType.TILE_GROUND01_DIAG_LEFT_UP);
-		//				tilesType.put(idStartGround01 + ID_TILE_DIAG_RIGHT_UP, TextureType.TILE_GROUND01_DIAG_RIGHT_UP);
-		//				tilesType.put(idStartGround01 + ID_TILE_DIAG_RIGHT_DOWN, TextureType.TILE_GROUND01_DIAG_RIGHT_DOWN);
-		//				tilesType.put(idStartGround01 + ID_TILE_DIAG_LEFT_DOWN, TextureType.TILE_GROUND01_DIAG_LEFT_DOWN);
-
-
 		
 		//each tilestype contains a list of tiles of types of the same type
 		//that will be choose randomly to avoid pattern repetition.
+		
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////////////////////////
 		/** Ground 00 */
 		//////////
 		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_1);
@@ -122,45 +86,133 @@ public class TilesType {
 		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10_2);
 		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10_3);
 		
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_7);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_7_1);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_8);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_8_1);
+		
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_7);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_7_1);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_8);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_8_1);
+		
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9_1);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9_2);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9_3);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10_1);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10_2);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10_3);
+		
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9_1);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9_2);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_9_3);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10_1);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10_2);
+		ground00_tile_full.add(TextureType.TILE_GROUND00_FULL_10_3);
+		
 		tilesType.put(idStartGround00 + ID_TILE_FULL, ground00_tile_full);
 
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////////////////////////
 		/** Ground 01 superpose sur Ground 00 */
 		//////////
-		ground01_tile_full.add(TextureType.TILE_FULL);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_1);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_2);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_3);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_4);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_5);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_6);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_7);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_7_1);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_8);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_8_1);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9_1);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9_2);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9_3);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10_1);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10_2);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10_3);
+		
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_7);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_7_1);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_8);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_8_1);
+		
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_7);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_7_1);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_8);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_8_1);
+		
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9_1);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9_2);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9_3);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10_1);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10_2);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10_3);
+		
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9_1);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9_2);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_9_3);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10_1);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10_2);
+		ground01_tile_full.add(TextureType.TILE_GROUND01_FULL_10_3);
 		tilesType.put(idStartGround01 + ID_TILE_FULL, ground01_tile_full);
+		
 		//////////
 		ground01_tile_1quart_up.add(TextureType.TILE_1QUART_UP);
 		tilesType.put(idStartGround01 + ID_TILE_1QUART_UP, ground01_tile_1quart_up);
+		
 		//////////
 		ground01_tile_1quart_right.add(TextureType.TILE_1QUART_RIGHT);
 		tilesType.put(idStartGround01 + ID_TILE_1QUART_RIGHT, ground01_tile_1quart_right);
+		
 		//////////
 		ground01_tile_1quart_down.add(TextureType.TILE_1QUART_DOWN);
 		tilesType.put(idStartGround01 + ID_TILE_1QUART_DOWN, ground01_tile_1quart_down);
+		
 		//////////
 		ground01_tile_1quart_left.add(TextureType.TILE_1QUART_LEFT);
 		tilesType.put(idStartGround01 + ID_TILE_1QUART_LEFT, ground01_tile_1quart_left);
+		
 		//////////
 		ground01_tile_3quart_up.add(TextureType.TILE_3QUART_UP);
 		tilesType.put(idStartGround01 + ID_TILE_3QUART_UP, ground01_tile_3quart_up);
+		
 		//////////
 		ground01_tile_3quart_right.add(TextureType.TILE_3QUART_RIGHT);
 		tilesType.put(idStartGround01 + ID_TILE_3QUART_RIGHT, ground01_tile_3quart_right);
+		
 		//////////
 		ground01_tile_3quart_down.add(TextureType.TILE_3QUART_DOWN);
 		tilesType.put(idStartGround01 + ID_TILE_3QUART_DOWN, ground01_tile_3quart_down);
+		
 		//////////
 		ground01_tile_3quart_left.add(TextureType.TILE_3QUART_LEFT);
 		tilesType.put(idStartGround01 + ID_TILE_3QUART_LEFT, ground01_tile_3quart_left);
+		
 		//////////
 		ground01_tile_diag_left_up.add(TextureType.TILE_DIAG_LEFT_UP);
 		tilesType.put(idStartGround01 + ID_TILE_DIAG_LEFT_UP, ground01_tile_diag_left_up);
+		
 		//////////
 		ground01_tile_diag_right_up.add(TextureType.TILE_DIAG_RIGHT_UP);
 		tilesType.put(idStartGround01 + ID_TILE_DIAG_RIGHT_UP, ground01_tile_diag_right_up);
+		
 		//////////
 		ground01_tile_diag_right_down.add(TextureType.TILE_DIAG_RIGHT_DOWN);
 		tilesType.put(idStartGround01 + ID_TILE_DIAG_RIGHT_DOWN, ground01_tile_diag_right_down);
+		
 		//////////
 		ground01_tile_diag_left_down.add(TextureType.TILE_DIAG_LEFT_DOWN);
 		tilesType.put(idStartGround01 + ID_TILE_DIAG_LEFT_DOWN, ground01_tile_diag_left_down);

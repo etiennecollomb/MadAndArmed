@@ -58,6 +58,7 @@ public enum TextureType{
 	
 	/** Tiles Ground TEST **/
 	TILE_FULL_BROWN                     ("game/Tiles/128_64/Full_BROWN.png", 128, 64),
+	TILE_FULL_RED                     	("game/Tiles/Full_RED_64x32.png", 64, 32),
 	
 	TILE_1QUART_UP                      ("game/Tiles/128_64/1quartUP.png", 128, 64),
 	TILE_1QUART_RIGHT                   ("game/Tiles/128_64/1quartRIGHT.png", 128, 64),
@@ -73,7 +74,6 @@ public enum TextureType{
 	TILE_DIAG_LEFT_DOWN                 ("game/Tiles/128_64/diagLEFT_DOWN.png", 128, 64),
 	TILE_FULL                           ("game/Tiles/128_64/Full.png", 128, 64),
 
-	TILE_FULL_RED                     	("game/Tiles/Full_RED_64x32.png", 64, 32),
 
 	/** Tiles Ground 00 **/
 	TILE_GROUND00_FULL_1                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_01s.png", 128, 64),
@@ -96,21 +96,41 @@ public enum TextureType{
 	TILE_GROUND00_FULL_10_3               ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_10s_3.png", 128, 64),
 		
 	/** Tiles Ground 01 **/
-	TILE_GROUND01_FULL                  ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_02s.png", 128, 64),
-	TILE_GROUND01_1QUART_UP             ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_03s.png", 128, 64),
-	TILE_GROUND01_1QUART_RIGHT          ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_04s.png", 128, 64),
-	TILE_GROUND01_1QUART_DOWN           ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_05s.png", 128, 64),
-	TILE_GROUND01_1QUART_LEFT           ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_06s.png", 128, 64),
-	TILE_GROUND01_3QUART_UP             ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_07s.png", 128, 64),
-	TILE_GROUND01_3QUART_RIGHT          ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_08s.png", 128, 64),
-	TILE_GROUND01_3QUART_DOWN           ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_09s.png", 128, 64),
-	TILE_GROUND01_3QUART_LEFT           ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_10s.png", 128, 64),
-	TILE_GROUND01_DIAG_LEFT_UP          ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_11s.png", 128, 64),
-	TILE_GROUND01_DIAG_RIGHT_UP         ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_01s.png", 128, 64),
-	TILE_GROUND01_DIAG_RIGHT_DOWN       ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_02s.png", 128, 64),
-	TILE_GROUND01_DIAG_LEFT_DOWN        ("game/Tiles/128_64/Ground00/grass_01_iso_tile_512_03s.png", 128, 64),
-	
+	TILE_GROUND01_FULL_1                  ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_01s.png", 128, 64),
+	TILE_GROUND01_FULL_2                  ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_02s.png", 128, 64),
+	TILE_GROUND01_FULL_3                  ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_03s.png", 128, 64),
+	TILE_GROUND01_FULL_4                  ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_04s.png", 128, 64),
+	TILE_GROUND01_FULL_5                  ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_05s.png", 128, 64),
+	TILE_GROUND01_FULL_6                  ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_06s.png", 128, 64),
+	TILE_GROUND01_FULL_7                  ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_07s.png", 128, 64),
+	TILE_GROUND01_FULL_7_1                ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_07s_1.png", 128, 64),
+	TILE_GROUND01_FULL_8                  ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_08s.png", 128, 64),
+	TILE_GROUND01_FULL_8_1                ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_08s_1.png", 128, 64),
+	TILE_GROUND01_FULL_9                  ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_09s.png", 128, 64),
+	TILE_GROUND01_FULL_9_1                ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_09s_1.png", 128, 64),
+	TILE_GROUND01_FULL_9_2                ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_09s_2.png", 128, 64),
+	TILE_GROUND01_FULL_9_3                ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_09s_3.png", 128, 64),
+	TILE_GROUND01_FULL_10                 ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_10s.png", 128, 64),
+	TILE_GROUND01_FULL_10_1               ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_10s_1.png", 128, 64),
+	TILE_GROUND01_FULL_10_2               ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_10s_2.png", 128, 64),
+	TILE_GROUND01_FULL_10_3               ("game/Tiles/128_64/Ground01/sand_01_iso_tile_512_10s_3.png", 128, 64),
 
+	TILE_GROUND01_1QUART_UP             ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_03s.png", 128, 64),
+	TILE_GROUND01_1QUART_RIGHT          ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_04s.png", 128, 64),
+	TILE_GROUND01_1QUART_DOWN           ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_05s.png", 128, 64),
+	TILE_GROUND01_1QUART_LEFT           ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_06s.png", 128, 64),
+	TILE_GROUND01_3QUART_UP             ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_07s.png", 128, 64),
+	TILE_GROUND01_3QUART_RIGHT          ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_08s.png", 128, 64),
+	TILE_GROUND01_3QUART_DOWN           ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_09s.png", 128, 64),
+	TILE_GROUND01_3QUART_LEFT           ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_10s.png", 128, 64),
+	TILE_GROUND01_DIAG_LEFT_UP          ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_11s.png", 128, 64),
+	TILE_GROUND01_DIAG_RIGHT_UP         ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_01s.png", 128, 64),
+	TILE_GROUND01_DIAG_RIGHT_DOWN       ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_02s.png", 128, 64),
+	TILE_GROUND01_DIAG_LEFT_DOWN        ("game/Tiles/128_64/Ground00/sand_01_iso_tile_512_03s.png", 128, 64),
+	
+	/** Tiles Ground 02 **/
+	TILE_GROUND02_FULL_1                  ("game/Tiles/128_64/Ground02/grass_02_iso_tile_512_01s.png", 128, 64),
+	
 	
 	//DECORATION
 	PLANT_00                    ("game/Decorations/Plant00_64.png", 64, 64),

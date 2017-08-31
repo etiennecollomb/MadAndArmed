@@ -322,7 +322,7 @@ public class MyTiledMapRenderer extends Shape {
 
 
 		//put random pattern on orthoMap
-		int numberOfPatterns = 1000;
+		int numberOfPatterns = 1000; //1000
 		for(int i=0; i<numberOfPatterns; i++){
 			Random ran = new Random();
 			int patternNumber = ran.nextInt( patterns.size() );
