@@ -259,12 +259,14 @@ public class MyTiledMapRenderer extends Shape {
 			posY = posY + (int)(textureBuilder.getTextureHeight()/2f);
 
 			int tileId = this.orthoMap[(int)coord.x][(int)coord.y];
-			if(tileId != pIdStartgroundBase && tileId != pIdStartgroundSmoothed) {
-				//if limits between two ground type, we draw underground before
-
-				int tilePatternNumber = ran.nextInt( pixmaps.get(pIdStartgroundBase).size() ); //choose a random pattern among same type tiles
-				textureBuilder.getFinalPixmap().drawPixmap(pixmaps.get(pIdStartgroundBase).get(tilePatternNumber), posX, posY) ;
-			}
+			
+			//*only to su is we have tile with border and alpha part (lower randering , better to create the full tiles itself
+//			if(tileId != pIdStartgroundBase && tileId != pIdStartgroundSmoothed) {
+//				//if limits between two ground type, we draw underground before
+//
+//				int tilePatternNumber = ran.nextInt( pixmaps.get(pIdStartgroundBase).size() ); //choose a random pattern among same type tiles
+//				textureBuilder.getFinalPixmap().drawPixmap(pixmaps.get(pIdStartgroundBase).get(tilePatternNumber), posX, posY) ;
+//			}
 			
 			int tilePatternNumber = ran.nextInt( pixmaps.get(tileId).size() ); //choose a random pattern among same type tiles
 			textureBuilder.getFinalPixmap().drawPixmap(pixmaps.get(tileId).get(tilePatternNumber), posX, posY) ;
@@ -322,7 +324,7 @@ public class MyTiledMapRenderer extends Shape {
 
 
 		//put random pattern on orthoMap
-		int numberOfPatterns = 1000; //1000
+		int numberOfPatterns = 1000; //0 for one type of ground, 1000 for two types of ground
 		for(int i=0; i<numberOfPatterns; i++){
 			Random ran = new Random();
 			int patternNumber = ran.nextInt( patterns.size() );
