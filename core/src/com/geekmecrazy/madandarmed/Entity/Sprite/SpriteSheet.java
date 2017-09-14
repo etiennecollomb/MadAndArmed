@@ -19,7 +19,7 @@ import com.badlogic.gdx.utils.Array;
 public class SpriteSheet {
 
 
-	public static enum SpriteSheetType{
+	public static enum SpriteSheetType{ 
 		UNIQUE,
 		FROM_DIR, /** Old version TODO: a virer a terme, il ne faut que FROM_ATLAS **/
 		FROM_ATLAS
